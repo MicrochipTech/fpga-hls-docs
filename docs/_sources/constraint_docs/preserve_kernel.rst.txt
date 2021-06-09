@@ -1,0 +1,54 @@
+.. _preserve_kernel:
+
+preserve_kernel
+-------------
+
+The SmartHLS compiler optimizes away functions that are not used. 
+This parameter prevents a given function from being optimized away. 
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
++--------------------+------------+
+| Parameter          | Value Type |
++====================+============+
+| preserve_kernel    | String     |
++--------------------+------------+
+
+Valid Values
++++++++++++++
+
+See Examples
+
+Default Value
+++++++++++++++
+
+N/A
+
+Dependencies
++++++++++++++
+
+None
+
+Applicable Flows
++++++++++++++++++
+
+All devices and flows
+
+Test Status
+++++++++++++
+
+Actively in-use
+
+Examples
++++++++++
+
+``preserve_kernel "add"``
+
+--------------------------------------------------------------------------------
+

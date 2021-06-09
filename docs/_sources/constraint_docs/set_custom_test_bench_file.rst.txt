@@ -1,0 +1,35 @@
+.. _set_custom_test_bench_file:
+
+set_custom_test_bench_file
+-------------
+
+This TCL command is to specify the user-provided custom testbench file 
+that defines the custom testbench module, which is set via ``set_custom_test_bench_module``.
+This is not needed for SW/HW co-simulation.
+
+**Category**
+
+Simulation
+
+**Value Type**
+
+String
+
+**Dependencies**
+
+``set_custom_test_bench_module "user_tb"``
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+    ``set_custom_test_bench_file user_tb.v``
+
+--------------------------------------------------------------------------------
+
