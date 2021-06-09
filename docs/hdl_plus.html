@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -646,35 +638,35 @@ display:none;
 <span id="smartdesign"></span><h1>Instantiating SmartHLS IP Core in Libero SmartDesign<a class="headerlink" href="#instantiating-smarthls-ip-core-in-libero-smartdesign" title="Permalink to this headline">¶</a></h1>
 <p>After we use SmartHLS to design a hardware IP component, we will want to instantiate
 the component into Libero SmartDesign and integrate this core into our larger system.
-When SmartHLS generates the hardware, SmartHLS will also generate a <code class="docutils literal"><span class="pre">create_hdl_plus.tcl</span></code>
+When SmartHLS generates the hardware, SmartHLS will also generate a <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code>
 script to easily instantiate the SmartHLS-generated IP core into Libero SmartDesign.</p>
 <p>You will see the log message in the console which includes the full path to the script like this:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.1.2\workspace\sobel_part3\create_hdl_plus.tcl.
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.1.2\workspace\sobel_part3\create_hdl_plus.tcl.
 </pre></div>
 </div>
 <p>Now we can use Libero to open a Libero project, create a new SmartDesign, and give the newly created SmartDesign a suitable name.
 Alternatively, we can also open an existing SmartDesign.</p>
 <a class="reference internal image-reference" href="_images/create_SmartDesign_in_Libero.png"><img alt="_images/create_SmartDesign_in_Libero.png" class="align-center" src="_images/create_SmartDesign_in_Libero.png" style="width: 275.0px; height: 97.0px;" /></a>
-<p>We now go to the Libero <code class="docutils literal"><span class="pre">Project</span></code> menu and select <code class="docutils literal"><span class="pre">Execute</span> <span class="pre">Script</span></code> and give the path to
-the generated <code class="docutils literal"><span class="pre">create_hdl_plus.tcl</span></code> script as shown in the figures below. Then click <code class="docutils literal"><span class="pre">Run</span></code>.
-Running the Tcl script will add the SmartHLS-generated HDL+ component (<code class="docutils literal"><span class="pre">sobel_filter_top</span></code> in this example),
+<p>We now go to the Libero <code class="docutils literal notranslate"><span class="pre">Project</span></code> menu and select <code class="docutils literal notranslate"><span class="pre">Execute</span> <span class="pre">Script</span></code> and give the path to
+the generated <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code> script as shown in the figures below. Then click <code class="docutils literal notranslate"><span class="pre">Run</span></code>.
+Running the Tcl script will add the SmartHLS-generated HDL+ component (<code class="docutils literal notranslate"><span class="pre">sobel_filter_top</span></code> in this example),
 all required Verilog files, memory initialization files, and other dependencies to the Libero project.</p>
 <a class="reference internal image-reference" href="_images/projects_execute_script.png"><img alt="_images/projects_execute_script.png" class="align-center" src="_images/projects_execute_script.png" style="width: 166.0px; height: 272.0px;" /></a>
 <a class="reference internal image-reference" href="_images/execute_script.png"><img alt="_images/execute_script.png" class="align-center" src="_images/execute_script.png" style="width: 385.0px; height: 142.0px;" /></a>
 <p>As shown in the figures below, we can now instantiate the component in SmartDesign by right-clicking on the HDL+ component
-(<code class="docutils literal"><span class="pre">sobel_filter_top</span></code> in this example) in the <code class="docutils literal"><span class="pre">Design</span> <span class="pre">Hiearchy</span></code> panel on the left and selecting <code class="docutils literal"><span class="pre">Instantiate</span> <span class="pre">in</span> <span class="pre">system</span></code>.
-In the SmartDesign system we will now see the new IP component (<code class="docutils literal"><span class="pre">sobel_filter_top_0</span></code> in this example).</p>
+(<code class="docutils literal notranslate"><span class="pre">sobel_filter_top</span></code> in this example) in the <code class="docutils literal notranslate"><span class="pre">Design</span> <span class="pre">Hiearchy</span></code> panel on the left and selecting <code class="docutils literal notranslate"><span class="pre">Instantiate</span> <span class="pre">in</span> <span class="pre">system</span></code>.
+In the SmartDesign system we will now see the new IP component (<code class="docutils literal notranslate"><span class="pre">sobel_filter_top_0</span></code> in this example).</p>
 <a class="reference internal image-reference" href="_images/instantiate_in_system.png"><img alt="_images/instantiate_in_system.png" class="align-center" src="_images/instantiate_in_system.png" style="width: 393.0px; height: 190.0px;" /></a>
 <a class="reference internal image-reference" href="_images/new_IP_component.png"><img alt="_images/new_IP_component.png" class="align-center" src="_images/new_IP_component.png" style="width: 335.0px; height: 199.0px;" /></a>
-<p>The generated <code class="docutils literal"><span class="pre">create_hdl_plus.tcl</span></code> script will automatically group ports as AXI4-Master, AXI4-Slave or AXI4-Stream
-interfaces if they match the corresponding AXI4 specifications. In this example, since the <code class="docutils literal"><span class="pre">sobel_filter_top</span></code> IP component
+<p>The generated <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code> script will automatically group ports as AXI4-Master, AXI4-Slave or AXI4-Stream
+interfaces if they match the corresponding AXI4 specifications. In this example, since the <code class="docutils literal notranslate"><span class="pre">sobel_filter_top</span></code> IP component
 used SmartHLS FIFOs as top-level arguments and they match AXI4-Stream specifications, SmartHLS has automatically grouped
-the <code class="docutils literal"><span class="pre">output_fifo</span></code> and <code class="docutils literal"><span class="pre">input_fifo</span></code> data/ready/valid ports as AXI4-Stream interfaces.</p>
+the <code class="docutils literal notranslate"><span class="pre">output_fifo</span></code> and <code class="docutils literal notranslate"><span class="pre">input_fifo</span></code> data/ready/valid ports as AXI4-Stream interfaces.</p>
 <p>We also have the option to expose the sub-signals under the AXI4-Stream bus. This will allow us to connect individual
 ports instead of the entire bus. To do this, right click on the AXI4-Stream bus on the SmartHLS-generated IP component
 and choose Show/Hide BIF Pins. Then choose the sub-signals as appropriate. For example, in the figures below, if we
-choose all 3 sub-signals and press OK, we will see the 3 corresponding ports in the IP component: <code class="docutils literal"><span class="pre">output_fifo_ready</span></code>
-as an input, and <code class="docutils literal"><span class="pre">output_fifo[7:0]</span></code> and <code class="docutils literal"><span class="pre">output_fifo_axi4stream</span></code> as the outputs.</p>
+choose all 3 sub-signals and press OK, we will see the 3 corresponding ports in the IP component: <code class="docutils literal notranslate"><span class="pre">output_fifo_ready</span></code>
+as an input, and <code class="docutils literal notranslate"><span class="pre">output_fifo[7:0]</span></code> and <code class="docutils literal notranslate"><span class="pre">output_fifo_axi4stream</span></code> as the outputs.</p>
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals1.png"><img alt="_images/AXI4_Stream_subsignals1.png" class="align-center" src="_images/AXI4_Stream_subsignals1.png" style="width: 241.0px; height: 173.0px;" /></a>
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals2.png"><img alt="_images/AXI4_Stream_subsignals2.png" class="align-center" src="_images/AXI4_Stream_subsignals2.png" style="width: 190.0px; height: 159.0px;" /></a>
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals3.png"><img alt="_images/AXI4_Stream_subsignals3.png" class="align-center" src="_images/AXI4_Stream_subsignals3.png" style="width: 202.0px; height: 115.0px;" /></a>

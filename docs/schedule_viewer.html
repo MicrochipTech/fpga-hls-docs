@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -647,10 +639,10 @@ display:none;
 <p>The Schedule Viewer shows information on how the top-level function was scheduled in hardware by SmartHLS.
 This includes information on the flow of control between different functions and blocks of execution,
 as well as the cycle by cycle schedule of the operations in hardware.</p>
-<p>The Schedule Viewer can be launched by clicking the &#8220;Launch Schedule Viewer&#8221; button in the SmartHLS IDE.</p>
+<p>The Schedule Viewer can be launched by clicking the “Launch Schedule Viewer” button in the SmartHLS IDE.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Toolbar.png"><img alt="_images/Schedule_Viewer_Toolbar.png" class="align-center" src="_images/Schedule_Viewer_Toolbar.png" style="width: 297.0px; height: 26.0px;" /></a>
 <p>Alternatively, if using the Linux commandline, you can run the Schedule Viewer command.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>$ shls scheduleviewer
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ shls scheduleviewer
 </pre></div>
 </div>
 <p>The Schedule Viewer has the Explorer tab and four views: the Call Graph, Control Flow Graph, Schedule Chart and Pipeline Viewer.
@@ -665,19 +657,29 @@ The Schedule Chart and Pipeline Viewer shows the scheduling of instructions with
 These assembly-like instructions are called <a class="reference external" href="https://llvm.org/docs/LangRef.html">LLVM intermediate representation (IR)</a>.
 Some understanding of the LLVM IR is beneficial when using the Schedule Viewer.</p>
 <p>For example, given the 32-bit code:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span>result = a + b – 5
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>result = a + b – 5
 </pre></div>
 </div>
 <p>This C++ code could be represented as instructions in LLVM IR as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="mi">0</span> <span class="o">=</span> <span class="n">add</span> <span class="n">i32</span> <span class="o">%</span><span class="n">a</span><span class="p">,</span> <span class="o">%</span><span class="n">b</span>
+<span class="o">%</span><span class="n">result</span> <span class="o">=</span> <span class="n">sub</span> <span class="n">i32</span> <span class="o">%</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span>
+</pre></div>
+</div>
 <p>In LLVM IR, intermediate variables are prefixed with a “%”.
 Each operation (add/sub) includes the bitwidth “i32” indicating 32-bit integer.
 The add operands are %a + %b and the result is stored in a temporary 32-bit variable %0.
 The subtract operands are %0 – 5 and the result is stored in the variable %result.</p>
 <p>Basic blocks are also important concepts in LLVM IR.
 A basic block is a group of instructions that always run together with a single entry point at the beginning and a single exit point at the end.
-A basic block in LLVM IR always has a label at the beginning and a branching instruction at the end (<code class="docutils literal"><span class="pre">br</span></code>, <code class="docutils literal"><span class="pre">ret</span></code>, etc.).
+A basic block in LLVM IR always has a label at the beginning and a branching instruction at the end (<code class="docutils literal notranslate"><span class="pre">br</span></code>, <code class="docutils literal notranslate"><span class="pre">ret</span></code>, etc.).
 Control flow occurs between basic blocks.</p>
-<p>Here the <code class="docutils literal"><span class="pre">body.0</span></code> basic block performs some operations and then branches unconditionally to another basic block labeled <code class="docutils literal"><span class="pre">body.1</span></code>.</p>
+<p>Here the <code class="docutils literal notranslate"><span class="pre">body.0</span></code> basic block performs some operations and then branches unconditionally to another basic block labeled <code class="docutils literal notranslate"><span class="pre">body.1</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">body</span><span class="o">.</span><span class="mi">0</span><span class="p">:</span>
+  <span class="o">%</span><span class="mi">0</span> <span class="o">=</span> <span class="n">add</span> <span class="n">i32</span> <span class="o">%</span><span class="n">a</span><span class="p">,</span> <span class="o">%</span><span class="n">b</span>
+  <span class="o">%</span><span class="n">result</span> <span class="o">=</span> <span class="n">sub</span> <span class="n">i32</span> <span class="o">%</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span>
+  <span class="n">br</span> <span class="n">label</span> <span class="o">%</span><span class="n">body</span><span class="o">.</span><span class="mi">1</span>
+</pre></div>
+</div>
 <p>All of the basic blocks and instructions shown in the Scheduler Viewer are directly from the LLVM IR optimized by SmartHLS before being compiled into Verilog.</p>
 </div>
 <div class="section" id="call-graph">
@@ -685,11 +687,11 @@ Control flow occurs between basic blocks.</p>
 <p>When you open the Scheduler Viewer, the default view is of the Call Graph.
 You can also click on the “Call Graph” tab at the top.
 The Call Graph shows the top-level function and all of the sub-functions that are called.</p>
-<p>For example the following code has a function <code class="docutils literal"><span class="pre">main</span></code> which calls <code class="docutils literal"><span class="pre">top_level</span></code> which in turn calls
-<code class="docutils literal"><span class="pre">helper_func_0</span></code> and <code class="docutils literal"><span class="pre">helper_func_1</span></code>.
-The <code class="docutils literal"><span class="pre">noinline</span></code> attributes makes sure that SmartHLS does not inline these small functions into the
+<p>For example the following code has a function <code class="docutils literal notranslate"><span class="pre">main</span></code> which calls <code class="docutils literal notranslate"><span class="pre">top_level</span></code> which in turn calls
+<code class="docutils literal notranslate"><span class="pre">helper_func_0</span></code> and <code class="docutils literal notranslate"><span class="pre">helper_func_1</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">noinline</span></code> attributes makes sure that SmartHLS does not inline these small functions into the
 main function body, making sure we can see them in the Call Graph.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span>
 <span class="kt">void</span> <span class="n">helper_func_0</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">gv</span> <span class="o">+=</span> <span class="n">a</span><span class="p">;</span>
 <span class="p">}</span>
@@ -712,7 +714,7 @@ main function body, making sure we can see them in the Call Graph.</p>
 </pre></div>
 </div>
 <p>This will generate the Call Graph shown below.
-The Call Graph shows that <code class="docutils literal"><span class="pre">main</span></code> calls <code class="docutils literal"><span class="pre">top_level</span></code>, which in turn calls <code class="docutils literal"><span class="pre">helper_func_0</span></code> and <code class="docutils literal"><span class="pre">helper_function_1</span></code>.</p>
+The Call Graph shows that <code class="docutils literal notranslate"><span class="pre">main</span></code> calls <code class="docutils literal notranslate"><span class="pre">top_level</span></code>, which in turn calls <code class="docutils literal notranslate"><span class="pre">helper_func_0</span></code> and <code class="docutils literal notranslate"><span class="pre">helper_function_1</span></code>.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Call_Graph.png"><img alt="_images/Schedule_Viewer_Call_Graph.png" class="align-center" src="_images/Schedule_Viewer_Call_Graph.png" style="width: 698.5999999999999px; height: 445.2px;" /></a>
 </div>
 <div class="section" id="control-flow-graph">
@@ -721,7 +723,7 @@ The Call Graph shows that <code class="docutils literal"><span class="pre">main<
 The Control Flow Graph shows the connections between basic blocks and shows which basic blocks can branch to which other basic blocks.</p>
 <p>For example the following code has an if/else statement and then a for-loop in the else body.
 This has multiple code blocks and branches to different sections of the code.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">gv</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">gv</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -740,7 +742,7 @@ Control flow is represented by an arrow, where a basic block will only branch in
 <p>If you click on a non-pipelined block, the Schedule Chart will open.
 This shows the scheduling of instructions within a block on a cycle-by-cycle basis.</p>
 <p>For the following example, two multiplies are made then added and stored to a variable.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">mult1</span> <span class="o">=</span> <span class="n">coeff1</span> <span class="o">*</span> <span class="n">coeff1</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">mult1</span> <span class="o">=</span> <span class="n">coeff1</span> <span class="o">*</span> <span class="n">coeff1</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">mult2</span> <span class="o">=</span> <span class="n">coeff2</span> <span class="o">*</span> <span class="n">coeff2</span><span class="p">;</span>
 <span class="n">gv</span> <span class="o">=</span> <span class="n">mult1</span> <span class="o">+</span> <span class="n">mult2</span><span class="p">;</span>
 </pre></div>
@@ -758,7 +760,7 @@ Here the add depends on the two multiplies highlighted in red. The store highlig
 This shows the scheduling of instructions within a pipelined block on a cycle-by-cycle basis.</p>
 <p>For the following example a value is loaded an array, added to a value, then it is stored back into the array.
 This is done repeatedly in a loop and the loop is pipelined.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">coeff1</span><span class="p">;</span>
 <span class="p">}</span>

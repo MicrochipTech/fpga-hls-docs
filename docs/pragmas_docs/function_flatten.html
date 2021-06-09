@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -645,13 +637,13 @@ display:none;
   <div class="section" id="flatten-function">
 <span id="pragma-function-flatten"></span><h1>Flatten Function<a class="headerlink" href="#flatten-function" title="Permalink to this headline">¶</a></h1>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">flatten</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">flatten</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma unrolls all loops and inlines all subfunctions for a given function.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function flatten</span>
   <span class="p">...</span>
 <span class="p">}</span>

@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -659,25 +651,25 @@ This command is used to schedule each type operation to take the specified numbe
 Note: operator name should match the operation database file:
 boards/PolarFire/PolarFire.tcl or boards/set_operation_latency.tcl</p>
 <p><strong>Default Values</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fp_add 14
-fp_subtract 14
-fp_multiply 11
-fp_divide_32 33
-fp_divide_64 61
-fp_truncate_64 3
-fp_extend_32 2
-fp_fptosi 6
-fp_sitofp 6
-signed_comp_o 1
-signed_comp_u 1
-reg 2
-memory_port 2
-local_memory_port 1
-multiply 1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fp_add</span> <span class="mi">14</span>
+<span class="n">fp_subtract</span> <span class="mi">14</span>
+<span class="n">fp_multiply</span> <span class="mi">11</span>
+<span class="n">fp_divide_32</span> <span class="mi">33</span>
+<span class="n">fp_divide_64</span> <span class="mi">61</span>
+<span class="n">fp_truncate_64</span> <span class="mi">3</span>
+<span class="n">fp_extend_32</span> <span class="mi">2</span>
+<span class="n">fp_fptosi</span> <span class="mi">6</span>
+<span class="n">fp_sitofp</span> <span class="mi">6</span>
+<span class="n">signed_comp_o</span> <span class="mi">1</span>
+<span class="n">signed_comp_u</span> <span class="mi">1</span>
+<span class="n">reg</span> <span class="mi">2</span>
+<span class="n">memory_port</span> <span class="mi">2</span>
+<span class="n">local_memory_port</span> <span class="mi">1</span>
+<span class="n">multiply</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p><strong>Location Where Default is Specified</strong></p>
-<p><code class="docutils literal"><span class="pre">examples/smarthls.tcl</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/smarthls.tcl</span></code></p>
 <p><strong>Dependencies</strong></p>
 <p>None</p>
 <p><strong>Applicable Flows</strong></p>
@@ -686,10 +678,10 @@ multiply 1
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <p>// set memory operations to take 3 cycles
-<code class="docutils literal"><span class="pre">set_operation_latency</span> <span class="pre">memory_port</span> <span class="pre">3</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">memory_port</span> <span class="pre">3</span></code></p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>When implementing an integer multiply operation, SmartHLS&#8217;s default behaviour is
+<p class="admonition-title">Note</p>
+<p>When implementing an integer multiply operation, SmartHLS’s default behaviour is
 to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
 When a multiply operation is wider than the DSP can support, SmartHLS splits the
 multiply into multiple DSPs and automatically inserts registers to help RTL
@@ -697,12 +689,12 @@ synthesis tool to utilize registers in DSPs better, and hence achieve better
 timing.</p>
 <p>However, this split-multiply feature does not support a user-configurable
 latency.
-When <code class="docutils literal"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is specified by user, SmartHLS will
+When <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is specified by user, SmartHLS will
 turn off the split-multiply feature and use a generic multiplier that will
 adapt to user-specified latency.
 SmartHLS will also print a warnign as follows,
 <em>Warning: Detected set_operation_latency setting for integer multiplier.  However, configurable latency is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.</em></p>
-<p class="last">Similarly, <code class="docutils literal"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
+<p>Similarly, <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
 behaviour because the split-multiply does not support sharing the
 multipliers.</p>
 </div>

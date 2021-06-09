@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -646,12 +638,12 @@ display:none;
 <span id="id1"></span><h1>MULTIPLIER_MODULE<a class="headerlink" href="#multiplier-module" title="Permalink to this headline">¶</a></h1>
 <p>This parameter controls what type of multiplier is instantiated by SmartHLS when
 a multiplication operation is used in the program.
-When the &#8220;inline&#8221; parameter is used, SmartHLS will print out the &#8220;*&#8221; operator in
+When the “inline” parameter is used, SmartHLS will print out the “*” operator in
 Verilog.
-When the &#8220;generic&#8221; parameter is used, SmartHLS will instantiate a generic multiplier
+When the “generic” parameter is used, SmartHLS will instantiate a generic multiplier
 module that is parameterized for input/output bitwidths and the number of pipeline
 stages.</p>
-<p>Caveat 1: When the &#8220;inline&#8221; parameter is used, and the multiplication operation
+<p>Caveat 1: When the “inline” parameter is used, and the multiplication operation
 is set to take 1 or more cycles (with the set_operation_latency multiply parameter),
 some FPGA synthesis tools may not be able to utilize the internal registers of a
 DSP block, which can negatively affect the resulting Fmax.</p>
@@ -674,7 +666,7 @@ DSP block, which can negatively affect the resulting Fmax.</p>
 </div>
 <div class="section" id="location-where-default-is-specified">
 <h2>Location Where Default is Specified<a class="headerlink" href="#location-where-default-is-specified" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">examples/smarthls.tcl</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/smarthls.tcl</span></code></p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
@@ -691,8 +683,9 @@ DSP block, which can negatively affect the resulting Fmax.</p>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">set_parameter</span> <span class="pre">MULTIPLIER_MODULE</span> <span class="pre">&quot;inline&quot;</span></code>
-<code class="docutils literal"><span class="pre">set_parameter</span> <span class="pre">MULTIPLIER_MODULE</span> <span class="pre">&quot;generic&quot;</span></code></div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MULTIPLIER_MODULE</span> <span class="pre">&quot;inline&quot;</span></code>
+<code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MULTIPLIER_MODULE</span> <span class="pre">&quot;generic&quot;</span></code></p>
+</div></blockquote>
 <hr class="docutils" />
 </div>
 </div>

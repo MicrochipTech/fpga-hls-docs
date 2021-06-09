@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -645,31 +637,33 @@ display:none;
   <div class="section" id="llvm-profile">
 <span id="id1"></span><h1>LLVM_PROFILE<a class="headerlink" href="#llvm-profile" title="Permalink to this headline">¶</a></h1>
 <p>Enabling this parameter will allow the scheduler to modify scheduling based on
-the llvm profiling information. To enable this option, <code class="docutils literal"><span class="pre">LLVM_PROFILE=1</span></code> should
-be set in <code class="docutils literal"><span class="pre">Makefile.config</span></code> and <code class="docutils literal"><span class="pre">set_parameter</span> <span class="pre">LLVM_PROFILE</span> <span class="pre">1</span></code> should be
-set in <code class="docutils literal"><span class="pre">config.tcl</span></code> or <code class="docutils literal"><span class="pre">smarthls.tcl</span></code>.</p>
-<p>With <code class="docutils literal"><span class="pre">LLVM_PROFILE</span></code> enabled, the schedules will be modified for the
+the llvm profiling information. To enable this option, <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE=1</span></code> should
+be set in <code class="docutils literal notranslate"><span class="pre">Makefile.config</span></code> and <code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LLVM_PROFILE</span> <span class="pre">1</span></code> should be
+set in <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> or <code class="docutils literal notranslate"><span class="pre">smarthls.tcl</span></code>.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE</span></code> enabled, the schedules will be modified for the
 infrequently used basic blocks, which the basic blocks executed at or below the
-frequency threshold <code class="docutils literal"><span class="pre">LLVM_PROFILE_MAX_BB_FREQ_TO_ALTER</span></code>.
+frequency threshold <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_MAX_BB_FREQ_TO_ALTER</span></code>.
 This value can be set via</p>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">set_parameter</span> <span class="pre">LLVM_PROFILE_MAX_BB_FREQ_TO_ALTER</span> <span class="pre">$(USER_DEFINED_FREQUENCY)</span></code>.</div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LLVM_PROFILE_MAX_BB_FREQ_TO_ALTER</span> <span class="pre">$(USER_DEFINED_FREQUENCY)</span></code>.</p>
+</div></blockquote>
 <p>Two options are provided to further specify how the scheduling should be
 modified. The first option is to extend paths in infrequently executed BBs by a
 fixed number of states, which can be set with</p>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">set_parameter</span> <span class="pre">LLVM_PROFILE_EXTRA_CYCLES</span> <span class="pre">$(USER_DEFINED_CYCLES)</span></code>.</div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LLVM_PROFILE_EXTRA_CYCLES</span> <span class="pre">$(USER_DEFINED_CYCLES)</span></code>.</p>
+</div></blockquote>
 <p>Note that this change can only be applied to multi-cycle paths thus the
-parameter <code class="docutils literal"><span class="pre">MULTI_CYCLE_REMOVE_REG</span></code> must be set.</p>
+parameter <code class="docutils literal notranslate"><span class="pre">MULTI_CYCLE_REMOVE_REG</span></code> must be set.</p>
 <p>The second option is to adjust the target period for the infrequently executed
 basic blocks.
-As an alternative to <code class="docutils literal"><span class="pre">LLVM_PROFILE_EXTRA_CYCLES</span></code> which simply extends paths
-in infrequent basic blocks by a fixed amount, <code class="docutils literal"><span class="pre">LLVM_PROFILE_PERIOD_&lt;DEVICE&gt;</span></code>
+As an alternative to <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_EXTRA_CYCLES</span></code> which simply extends paths
+in infrequent basic blocks by a fixed amount, <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_PERIOD_&lt;DEVICE&gt;</span></code>
 can be used to change the target period for paths in infrequent blocks
 (e.g. a 13ns constraint on Cyclone II might be the best, but infrequent blocks
 can use a 6ns constraint instead). This target frequency parameter is set via
-a FPGA device-dependent parameter, either <code class="docutils literal"><span class="pre">LLVM_PROFILE_PERIOD_CII</span></code> (for
-Cyclone II) or <code class="docutils literal"><span class="pre">LLVM_PROFILE_PERIOD_SIV</span></code> (for Stratix IV).</p>
+a FPGA device-dependent parameter, either <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_PERIOD_CII</span></code> (for
+Cyclone II) or <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_PERIOD_SIV</span></code> (for Stratix IV).</p>
 <div class="section" id="category">
 <h2>Category<a class="headerlink" href="#category" title="Permalink to this headline">¶</a></h2>
 <p>HLS Constraints.</p>
@@ -681,11 +675,11 @@ Cyclone II) or <code class="docutils literal"><span class="pre">LLVM_PROFILE_PER
 <div class="section" id="valid-values">
 <h2>Valid Values<a class="headerlink" href="#valid-values" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">LLVM_PROFILE</span></code>: 0, 1</div>
-<div class="line"><code class="docutils literal"><span class="pre">LLVM_PROFILE_MAX_BB_FREQ_TO_ALTER</span></code>: positive integers</div>
-<div class="line"><code class="docutils literal"><span class="pre">LLVM_PROFILE_EXTRA_CYCLES</span></code>: positive integers</div>
-<div class="line"><code class="docutils literal"><span class="pre">LLVM_PROFILE_PERIOD_CII</span></code>: positive integers</div>
-<div class="line"><code class="docutils literal"><span class="pre">LLVM_PROFILE_PERIOD_SIV</span></code>: positive integers</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE</span></code>: 0, 1</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_MAX_BB_FREQ_TO_ALTER</span></code>: positive integers</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_EXTRA_CYCLES</span></code>: positive integers</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_PERIOD_CII</span></code>: positive integers</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_PERIOD_SIV</span></code>: positive integers</div>
 </div>
 </div>
 <div class="section" id="default-value">
@@ -694,12 +688,12 @@ Cyclone II) or <code class="docutils literal"><span class="pre">LLVM_PROFILE_PER
 </div>
 <div class="section" id="location-where-default-is-specified">
 <h2>Location Where Default is Specified<a class="headerlink" href="#location-where-default-is-specified" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">examples/smarthls.tcl</span></code>
-<code class="docutils literal"><span class="pre">examples/Makefile.config</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/smarthls.tcl</span></code>
+<code class="docutils literal notranslate"><span class="pre">examples/Makefile.config</span></code></p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">MULTI_CYCLE_REMOVE_REG</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">MULTI_CYCLE_REMOVE_REG</span></code></p>
 </div>
 <div class="section" id="applicable-flows">
 <h2>Applicable Flows<a class="headerlink" href="#applicable-flows" title="Permalink to this headline">¶</a></h2>
@@ -712,26 +706,27 @@ Cyclone II) or <code class="docutils literal"><span class="pre">LLVM_PROFILE_PER
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><dl class="docutils">
-<dt>Enable scheduling modification based on profiling information,</dt>
-<dd><code class="docutils literal"><span class="pre">set_parameter</span> <span class="pre">PRINT_BB_STATS</span> <span class="pre">LLVM_PROFILE</span></code> in <code class="docutils literal"><span class="pre">config.tcl</span></code>
-<code class="docutils literal"><span class="pre">LLVM_PROFILE=1</span></code> in <code class="docutils literal"><span class="pre">Makefile.config</span></code></dd>
-<dt>Specify the maximum execution frequency for infrequent basic blocks,</dt>
-<dd><code class="docutils literal"><span class="pre">set</span> <span class="pre">LLVM_PROFILE_MAX_BB_FREQ_TO_ALTER</span> <span class="pre">100</span></code></dd>
+<div><dl class="simple">
+<dt>Enable scheduling modification based on profiling information,</dt><dd><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">PRINT_BB_STATS</span> <span class="pre">LLVM_PROFILE</span></code> in <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>
+<code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE=1</span></code> in <code class="docutils literal notranslate"><span class="pre">Makefile.config</span></code></p>
+</dd>
+<dt>Specify the maximum execution frequency for infrequent basic blocks,</dt><dd><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">LLVM_PROFILE_MAX_BB_FREQ_TO_ALTER</span> <span class="pre">100</span></code></p>
+</dd>
 </dl>
-<p>With <code class="docutils literal"><span class="pre">set_parameter</span> <span class="pre">MULTI_CYCLE_REMOVE_REG</span> <span class="pre">1</span></code> enabled, paths in infrequent
+<p>With <code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MULTI_CYCLE_REMOVE_REG</span> <span class="pre">1</span></code> enabled, paths in infrequent
 executed basic block may be,</p>
 <ol class="arabic simple">
-<li>extended for 2 cycles,</li>
+<li><p>extended for 2 cycles,</p></li>
 </ol>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">set</span> <span class="pre">LVM_PROFILE_EXTRA_CYCLES</span> <span class="pre">2</span></code></div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">LVM_PROFILE_EXTRA_CYCLES</span> <span class="pre">2</span></code></p>
+</div></blockquote>
 <p>2) or be extended to match a more constrainted clock period,
 say 13ns for Cyclone II or 6ns for Stratix IV.</p>
 <blockquote>
 <div><div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">set</span> <span class="pre">LLVM_PROFILE_PERIOD_CII</span> <span class="pre">13</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">set</span> <span class="pre">LLVM_PROFILE_PERIOD_SIV</span> <span class="pre">6</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">LLVM_PROFILE_PERIOD_CII</span> <span class="pre">13</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">LLVM_PROFILE_PERIOD_SIV</span> <span class="pre">6</span></code></div>
 </div>
 </div></blockquote>
 </div></blockquote>

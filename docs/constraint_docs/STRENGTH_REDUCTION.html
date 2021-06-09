@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -646,21 +638,21 @@ display:none;
 <span id="id1"></span><h1>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction" title="Permalink to this headline">¶</a></h1>
 <p>Strength reduction is an optimization that
 converts multiply-by-constant into shifts and additions:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Info: StrengthReduction: Replacing multiply by constant (i26 33038) with 3 adders:
-        - (1 &lt;&lt; 1) + (1 &lt;&lt; 4) + (1 &lt;&lt; 8) + (1 &lt;&lt; 15)
-Info: StrengthReduction: Replacing multiply by constant (i26 6416) with 3 adders:
-        + (1 &lt;&lt; 4) + (1 &lt;&lt; 8) + (1 &lt;&lt; 11) + (1 &lt;&lt; 12)
-Info: StrengthReduction: Replacing multiply by constant (i26 28784) with 3 adders:
-        - (1 &lt;&lt; 4) + (1 &lt;&lt; 7) - (1 &lt;&lt; 12) + (1 &lt;&lt; 15)
-Info: StrengthReduction: Replacing multiply by constant (i26 4680) with 3 adders:
-        + (1 &lt;&lt; 3) + (1 &lt;&lt; 6) + (1 &lt;&lt; 9) + (1 &lt;&lt; 12)
-Info: StrengthReduction: Replacing multiply by constant (i26 33024) with 1 adder:
-        + (1 &lt;&lt; 8) + (1 &lt;&lt; 15)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
+        <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">6416</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">11</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">28784</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
+        <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">4680</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">9</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33024</span><span class="p">)</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">adder</span><span class="p">:</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This optimization saves DSP blocks on the FPGA but can also increase LUT usage in the design.</p>
 <p>You can tune the number of adders allowed per multiplier with the constraint:
-<a class="reference internal" href="../constraintsmanual.html#strength-reduction-adders-allowed-per-multiplier"><span>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</span></a></p>
+<a class="reference internal" href="../constraintsmanual.html#strength-reduction-adders-allowed-per-multiplier"><span class="std std-ref">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</span></a></p>
 <p><strong>Category</strong></p>
 <p>HLS Constraints</p>
 <p><strong>Value Type</strong></p>
@@ -670,7 +662,7 @@ Info: StrengthReduction: Replacing multiply by constant (i26 33024) with 1 adder
 <p><strong>Default Value</strong></p>
 <p>1</p>
 <p><strong>Location Where Default is Specified</strong></p>
-<p><code class="docutils literal"><span class="pre">examples/smarthls.tcl</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/smarthls.tcl</span></code></p>
 <p><strong>Dependencies</strong></p>
 <p>None</p>
 <p><strong>Applicable Flows</strong></p>
@@ -679,7 +671,8 @@ Info: StrengthReduction: Replacing multiply by constant (i26 33024) with 1 adder
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION</span> <span class="pre">1</span></code></div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION</span> <span class="pre">1</span></code></p>
+</div></blockquote>
 <hr class="docutils" />
 </div>
 

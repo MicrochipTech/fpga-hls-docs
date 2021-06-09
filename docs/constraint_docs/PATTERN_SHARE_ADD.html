@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -644,11 +636,11 @@ display:none;
             
   <div class="section" id="pattern-share-add">
 <h1>PATTERN_SHARE_ADD<a class="headerlink" href="#pattern-share-add" title="Permalink to this headline">¶</a></h1>
-<dl class="docutils">
-<dt>Select which instructions to share in pattern sharing. Choices are:</dt>
-<dd>Adders / Subtractors
+<dl class="simple">
+<dt>Select which instructions to share in pattern sharing. Choices are:</dt><dd><p>Adders / Subtractors
 Bitwise operations (AND, OR, XOR)
-Shifts (logical shift Left/Right and arithmetic shift Right)</dd>
+Shifts (logical shift Left/Right and arithmetic shift Right)</p>
+</dd>
 </dl>
 <p>If set, these instructions will be included in patterns and shared with 2-1
 muxing. Note that multipliers, dividers and remainders are not shared in
@@ -658,8 +650,8 @@ sharing is used for the smaller instructions above.</p>
 <p>This particular parameter pertains to sharing add.</p>
 <p>This parameter does NOTHING unless ENABLE_PATTERN_SHARING is 1.</p>
 <p>Paper: Stefan Hadjis, Andrew Canis, Jason Helge Anderson, Jongsok
-Choi, Kevin Nam, Stephen Dean Brown, Tomasz S. Czajkowski, &#8220;Impact of
-FPGA architecture on resource sharing in high-level synthesis,&#8221; FPGA
+Choi, Kevin Nam, Stephen Dean Brown, Tomasz S. Czajkowski, “Impact of
+FPGA architecture on resource sharing in high-level synthesis,” FPGA
 2012: 111-114</p>
 <div class="section" id="category">
 <h2>Category<a class="headerlink" href="#category" title="Permalink to this headline">¶</a></h2>
@@ -679,7 +671,7 @@ FPGA architecture on resource sharing in high-level synthesis,&#8221; FPGA
 </div>
 <div class="section" id="location-where-default-is-specified">
 <h2>Location Where Default is Specified<a class="headerlink" href="#location-where-default-is-specified" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">examples/smarthls.tcl</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/smarthls.tcl</span></code></p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
@@ -696,7 +688,8 @@ FPGA architecture on resource sharing in high-level synthesis,&#8221; FPGA
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><a href="#id1"><span class="problematic" id="id2">``</span></a>set_parameter PATTERN_SHARE_ADD 1&#8217;&#8216;</div></blockquote>
+<div><p><a href="#id1"><span class="problematic" id="id2">``</span></a>set_parameter PATTERN_SHARE_ADD 1’’</p>
+</div></blockquote>
 <hr class="docutils" />
 </div>
 </div>

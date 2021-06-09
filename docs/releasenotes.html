@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -515,6 +503,10 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. User Guide" href="userguide.html" />
     <link rel="prev" title="1. Getting Started" href="gettingstarted.html" /> 
 </head>
@@ -564,20 +556,25 @@ display:none;
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">1. Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">2. Release Notes</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Release Notes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#legup-hls-eap-2021-1-2-release-notes">2.1. LegUp HLS EAP 2021.1.2 Release Notes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#software-features-and-enhancements">2.1.1. Software Features and Enhancements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#resolved-issues">2.1.2. Resolved Issues</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#legup-hls-eap-9-2-1-release-notes">2.2. LegUp HLS EAP 9.2.1 Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#legup-hls-eap-2021-1-release-notes">2.2. LegUp HLS EAP 2021.1 Release Notes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">2.2.1. Software Features and Enhancements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">2.2.2. Resolved Issues</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#legup-hls-eap-9-1-release-notes">2.3. LegUp HLS EAP 9.1 Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#legup-hls-eap-9-2-1-release-notes">2.3. LegUp HLS EAP 9.2.1 Release Notes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id3">2.3.1. Software Features and Enhancements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">2.3.2. Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#legup-hls-eap-9-1-release-notes">2.4. LegUp HLS EAP 9.1 Release Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.4.1. Software Features and Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">2.4.2. Resolved Issues</a></li>
 </ul>
 </li>
 </ul>
@@ -644,7 +641,7 @@ display:none;
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>2. Release Notes</li>
+      <li><span class="section-number">2. </span>Release Notes</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -662,113 +659,124 @@ display:none;
            <div itemprop="articleBody">
             
   <div class="section" id="release-notes">
-<span id="release"></span><h1>2. Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<span id="release"></span><h1><span class="section-number">2. </span>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="legup-hls-eap-2021-1-2-release-notes">
-<h2>2.1. LegUp HLS EAP 2021.1.2 Release Notes<a class="headerlink" href="#legup-hls-eap-2021-1-2-release-notes" title="Permalink to this headline">¶</a></h2>
-<p>Release date: April 23, 2021</p>
+<h2><span class="section-number">2.1. </span>LegUp HLS EAP 2021.1.2 Release Notes<a class="headerlink" href="#legup-hls-eap-2021-1-2-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>Release date: June 14, 2021</p>
 <div class="section" id="software-features-and-enhancements">
-<h3>2.1.1. Software Features and Enhancements<a class="headerlink" href="#software-features-and-enhancements" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.1. </span>Software Features and Enhancements<a class="headerlink" href="#software-features-and-enhancements" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="resolved-issues">
+<h3><span class="section-number">2.1.2. </span>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
+<p>The following defects and enhancement requests were resolved:</p>
+</div>
+</div>
+<div class="section" id="legup-hls-eap-2021-1-release-notes">
+<h2><span class="section-number">2.2. </span>LegUp HLS EAP 2021.1 Release Notes<a class="headerlink" href="#legup-hls-eap-2021-1-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>Release date: April 23, 2021</p>
+<div class="section" id="id1">
+<h3><span class="section-number">2.2.1. </span>Software Features and Enhancements<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li>Full support for complex software testbenches.</li>
-<li>Automatically trigger re-compilation if needed to generate the software binary or Verilog when the C++ source code, Makefile, or TCL config files changed.</li>
-<li>Added limited SW/HW Co-Simulation support for multi-threading when all threads are joined in the function where the threads are forked.</li>
-<li>Added support for user-specified arguments of the main() function in software testbench.</li>
-<li>Added AP_RND_ZERO quantization mode to the ap_fixpt C++ library.</li>
-<li>Added a range() method to ap_int and ap_fixpt C++ libraries.</li>
-<li>Added a simulation with waves feature to LegUp IDE for custom testbench.</li>
+<li><p>Full support for complex software testbenches.</p></li>
+<li><p>Automatically trigger re-compilation if needed to generate the software binary or Verilog when the C++ source code, Makefile, or TCL config files changed.</p></li>
+<li><p>Added limited SW/HW Co-Simulation support for multi-threading when all threads are joined in the function where the threads are forked.</p></li>
+<li><p>Added support for user-specified arguments of the main() function in software testbench.</p></li>
+<li><p>Added AP_RND_ZERO quantization mode to the ap_fixpt C++ library.</p></li>
+<li><p>Added a range() method to ap_int and ap_fixpt C++ libraries.</p></li>
+<li><p>Added a simulation with waves feature to LegUp IDE for custom testbench.</p></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="resolved-issues">
-<h3>2.1.2. Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3><span class="section-number">2.2.2. </span>Resolved Issues<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li>HLS-59:     RTL Interface: fix memory port names</li>
-<li>HLS-174:    Spaces in LegUp workspace path makes synthesis fail. Add user error message to avoid spaces.</li>
-<li>HLS-177:    Change the header files on Windows</li>
-<li>HLS-199:    Add documentation comment to LegUp Library classes like ap_int similar to ap_fixpt so the user can mouse over the type in Eclipse and get the usage information</li>
-<li>HLS-225:    create_hdl_plus.tcl does not properly import mem_init files</li>
-<li>HLS-232:    Update windows installer link to LegUp getting started guide</li>
-<li>HLS-255:    After project import LegUp IDE does not save HLS constraints changes when closing</li>
-<li>HLS-269:    Missing legup_array_depth=1 for struct pass-in-by-reference</li>
-<li>HLS-277:    Automatically add array-depth attribute to pass-in-by-value structs.</li>
-<li>HLS-278:    Hardware functions are incorrectly removed by PreprocessThreadLib pass</li>
-<li>HLS-279:    Interface Report: Struct type IORam is incorrectly considered as scalar memory</li>
-<li>HLS-280:    Interface Report: byte-enable signal is not properly recognized for non-struct yet byte-enabled RAMs</li>
+<li><p>HLS-59:     RTL Interface: fix memory port names</p></li>
+<li><p>HLS-174:    Spaces in LegUp workspace path makes synthesis fail. Add user error message to avoid spaces.</p></li>
+<li><p>HLS-177:    Change the header files on Windows</p></li>
+<li><p>HLS-199:    Add documentation comment to LegUp Library classes like ap_int similar to ap_fixpt so the user can mouse over the type in Eclipse and get the usage information</p></li>
+<li><p>HLS-225:    create_hdl_plus.tcl does not properly import mem_init files</p></li>
+<li><p>HLS-232:    Update windows installer link to LegUp getting started guide</p></li>
+<li><p>HLS-255:    After project import LegUp IDE does not save HLS constraints changes when closing</p></li>
+<li><p>HLS-269:    Missing legup_array_depth=1 for struct pass-in-by-reference</p></li>
+<li><p>HLS-277:    Automatically add array-depth attribute to pass-in-by-value structs.</p></li>
+<li><p>HLS-278:    Hardware functions are incorrectly removed by PreprocessThreadLib pass</p></li>
+<li><p>HLS-279:    Interface Report: Struct type IORam is incorrectly considered as scalar memory</p></li>
+<li><p>HLS-280:    Interface Report: byte-enable signal is not properly recognized for non-struct yet byte-enabled RAMs</p></li>
 </ul>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="legup-hls-eap-9-2-1-release-notes">
-<h2>2.2. LegUp HLS EAP 9.2.1 Release Notes<a class="headerlink" href="#legup-hls-eap-9-2-1-release-notes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3. </span>LegUp HLS EAP 9.2.1 Release Notes<a class="headerlink" href="#legup-hls-eap-9-2-1-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>Release date: March 3, 2021</p>
-<div class="section" id="id1">
-<h3>2.2.1. Software Features and Enhancements<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3><span class="section-number">2.3.1. </span>Software Features and Enhancements<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li>Added support for new <code class="docutils literal"><span class="pre">legup::thread</span></code> multi-threading API (see <a class="reference internal" href="userguide.html#pthreads-multithreading"><span>Multi-threading with SmartHLS Threads</span></a>)</li>
+<li><p>Added support for new <code class="docutils literal notranslate"><span class="pre">legup::thread</span></code> multi-threading API (see <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading with SmartHLS Threads</span></a>)</p></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id2">
-<h3>2.2.2. Resolved Issues<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3><span class="section-number">2.3.2. </span>Resolved Issues<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li>HLS-42: Libero 12.6 complains about set_option -rom_map_logic.</li>
-<li>HLS-50: Sobel tutorial part 3 to match the syntax as part 1 &amp; 2.</li>
-<li>HLS-59: Fix the memory port names to a more understandable convention.</li>
-<li>HLS-60: Give a proper error when there are multiple top-level functions specified.</li>
-<li>HLS-63: Sefault if the top-level function pragma is removed from Sobel tutorial part 1.</li>
-<li>HLS-78: Loop pipeline support for variable loop bounds.</li>
-<li>HLS-97: Fmax improvements for customer design.</li>
-<li>HLS-121: Cannot access AXI4 slave without starting the accelerator (in concurrent_access mode).</li>
-<li>HLS-129: Loop unrolling crashes some designs.</li>
-<li>HLS-142: Running Libero synthesis, P&amp;R from LegUp will fail with Libero 12.5 or before on Windows.</li>
-<li>HLS-149: LLVM&#8217;s loop-unswitch performs an unwanted loop replication.</li>
-<li>HLS-156: CoSim: wrong values for ap_uint type being fed to the DUT.</li>
-<li>HLS-162: Verilog name conflict in generated Verilog between a RAM instance and a register.</li>
-<li>HLS-164: Cannot expand grouped AXI4stream ports in SmartDesign for HDL+ block.</li>
-<li>HLS-165: Some memory interfaces are not showing in the interface report.</li>
-<li>HLS-168: Clang errors out with none type memory partition pragma.</li>
-<li>HLS-200: Can&#8217;t set multiply latency when split mult is enabled.</li>
-<li>HLS-201: Execute create_hdl_plus.tcl from Libero got LEGUP_ROOT_DIR not set error.</li>
-<li>HLS-203: ScheduleViewer does not work when LegUp installation and workspace are in different drives.</li>
-<li>HLS-206: Red-line in Eclipse complaining about legup::thread/ref.</li>
+<li><p>HLS-42: Libero 12.6 complains about set_option -rom_map_logic.</p></li>
+<li><p>HLS-50: Sobel tutorial part 3 to match the syntax as part 1 &amp; 2.</p></li>
+<li><p>HLS-59: Fix the memory port names to a more understandable convention.</p></li>
+<li><p>HLS-60: Give a proper error when there are multiple top-level functions specified.</p></li>
+<li><p>HLS-63: Sefault if the top-level function pragma is removed from Sobel tutorial part 1.</p></li>
+<li><p>HLS-78: Loop pipeline support for variable loop bounds.</p></li>
+<li><p>HLS-97: Fmax improvements for customer design.</p></li>
+<li><p>HLS-121: Cannot access AXI4 slave without starting the accelerator (in concurrent_access mode).</p></li>
+<li><p>HLS-129: Loop unrolling crashes some designs.</p></li>
+<li><p>HLS-142: Running Libero synthesis, P&amp;R from LegUp will fail with Libero 12.5 or before on Windows.</p></li>
+<li><p>HLS-149: LLVM’s loop-unswitch performs an unwanted loop replication.</p></li>
+<li><p>HLS-156: CoSim: wrong values for ap_uint type being fed to the DUT.</p></li>
+<li><p>HLS-162: Verilog name conflict in generated Verilog between a RAM instance and a register.</p></li>
+<li><p>HLS-164: Cannot expand grouped AXI4stream ports in SmartDesign for HDL+ block.</p></li>
+<li><p>HLS-165: Some memory interfaces are not showing in the interface report.</p></li>
+<li><p>HLS-168: Clang errors out with none type memory partition pragma.</p></li>
+<li><p>HLS-200: Can’t set multiply latency when split mult is enabled.</p></li>
+<li><p>HLS-201: Execute create_hdl_plus.tcl from Libero got LEGUP_ROOT_DIR not set error.</p></li>
+<li><p>HLS-203: ScheduleViewer does not work when LegUp installation and workspace are in different drives.</p></li>
+<li><p>HLS-206: Red-line in Eclipse complaining about legup::thread/ref.</p></li>
 </ul>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="legup-hls-eap-9-1-release-notes">
-<h2>2.3. LegUp HLS EAP 9.1 Release Notes<a class="headerlink" href="#legup-hls-eap-9-1-release-notes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4. </span>LegUp HLS EAP 9.1 Release Notes<a class="headerlink" href="#legup-hls-eap-9-1-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>Release date: Jan 4, 2021</p>
-<div class="section" id="id3">
-<h3>2.3.1. Software Features and Enhancements<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3><span class="section-number">2.4.1. </span>Software Features and Enhancements<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li>Only support targeting Microchip PolarFire FPGAs</li>
-<li>Support for Libero 12.6</li>
-<li>Libero SmartDesign integration (see <a class="reference internal" href="userguide.html#smartdesign"><span>Instantiating SmartHLS IP Core in Libero SmartDesign</span></a>)</li>
-<li>Added support for pragmas (see <a class="reference internal" href="pragmas.html#pragmas"><span>SmartHLS Pragmas Manual</span></a>) in the source code to specify LegUp user constraints instead of using Tcl commands.</li>
-<li>Support for math.h functions (see <a class="reference internal" href="userguide.html#c-numerics-library"><span>C Numerics Library (math.h in C / &lt;cmath&gt; in C++)</span></a>)</li>
-<li>Documentation of top-level RTL interfaces (see <a class="reference internal" href="userguide.html#rtl-interface"><span>Top-Level RTL Interface</span></a>)</li>
-<li>Improvements to memory partitioning (see <a class="reference internal" href="userguide.html#memory-partitioning"><span>Memory Partitioning</span></a>)</li>
-<li>Added Microchip software end-user license agreement (EULA)</li>
+<li><p>Only support targeting Microchip PolarFire FPGAs</p></li>
+<li><p>Support for Libero 12.6</p></li>
+<li><p>Libero SmartDesign integration (see <a class="reference internal" href="userguide.html#smartdesign"><span class="std std-ref">Instantiating SmartHLS IP Core in Libero SmartDesign</span></a>)</p></li>
+<li><p>Added support for pragmas (see <a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a>) in the source code to specify LegUp user constraints instead of using Tcl commands.</p></li>
+<li><p>Support for math.h functions (see <a class="reference internal" href="userguide.html#c-numerics-library"><span class="std std-ref">C Numerics Library (math.h in C / &lt;cmath&gt; in C++)</span></a>)</p></li>
+<li><p>Documentation of top-level RTL interfaces (see <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>)</p></li>
+<li><p>Improvements to memory partitioning (see <a class="reference internal" href="userguide.html#memory-partitioning"><span class="std std-ref">Memory Partitioning</span></a>)</p></li>
+<li><p>Added Microchip software end-user license agreement (EULA)</p></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h3>2.3.2. Resolved Issues<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3><span class="section-number">2.4.2. </span>Resolved Issues<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Synthesize with Libero block flow to avoid limited number of top-level I/O pins</li>
-<li>Fixes for RAM initialization and reset logic</li>
-<li>Fix LegUp IDE cancel button on Windows</li>
-<li>Fix Libero FMax parsing</li>
-<li>Better error messages for unsupported C++ features (vector, map, etc.) and unsupported co-simulation cases</li>
+<li><p>Synthesize with Libero block flow to avoid limited number of top-level I/O pins</p></li>
+<li><p>Fixes for RAM initialization and reset logic</p></li>
+<li><p>Fix LegUp IDE cancel button on Windows</p></li>
+<li><p>Fix Libero FMax parsing</p></li>
+<li><p>Better error messages for unsupported C++ features (vector, map, etc.) and unsupported co-simulation cases</p></li>
 </ul>
 </div></blockquote>
 </div>

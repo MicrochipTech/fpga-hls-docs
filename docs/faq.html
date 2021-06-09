@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -515,6 +503,10 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="2. Constraints Manual" href="constraintsmanual.html" /> 
 </head>
 
@@ -575,7 +567,7 @@ display:none;
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">1. SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">2. Constraints Manual</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">3. Frequently Asked Questions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -626,7 +618,7 @@ display:none;
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>3. Frequently Asked Questions</li>
+      <li><span class="section-number">3. </span>Frequently Asked Questions</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -644,20 +636,24 @@ display:none;
            <div itemprop="articleBody">
             
   <div class="section" id="frequently-asked-questions">
-<span id="faq"></span><h1>3. Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
+<span id="faq"></span><h1><span class="section-number">3. </span>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
 <p><strong>What is the input software language to SmartHLS?</strong></p>
 <blockquote>
-<div>The input language to SmartHLS is C/C++. For compiling to hardware, SmartHLS supports most of C/C++, but does not support recursive functions or dynamic memory (malloc, calloc, new, etc). Also we do not support the STL C++ library (vector, map, set, etc.) and only support a subset of the C math library (see <a class="reference internal" href="userguide.html#c-numerics-library"><span>C Numerics Library (math.h in C / &lt;cmath&gt; in C++)</span></a>).
-These unsupported software constructs can be in the software testbench portion of the code, outside of the top-level function to be compiled to hardware (see <a class="reference internal" href="userguide.html#custom-top-level"><span>Specifying the Top-level Function</span></a>).</div></blockquote>
+<div><p>The input language to SmartHLS is C/C++. For compiling to hardware, SmartHLS supports most of C/C++, but does not support recursive functions or dynamic memory (malloc, calloc, new, etc). Also we do not support the STL C++ library (vector, map, set, etc.) and only support a subset of the C math library (see <a class="reference internal" href="userguide.html#c-numerics-library"><span class="std std-ref">C Numerics Library (math.h in C / &lt;cmath&gt; in C++)</span></a>).
+These unsupported software constructs can be in the software testbench portion of the code, outside of the top-level function to be compiled to hardware (see <a class="reference internal" href="userguide.html#custom-top-level"><span class="std std-ref">Specifying the Top-level Function</span></a>).</p>
+</div></blockquote>
 <p><strong>What is the generated RTL language?</strong></p>
 <blockquote>
-<div>Currently, SmartHLS only supports Verilog HDL output.</div></blockquote>
+<div><p>Currently, SmartHLS only supports Verilog HDL output.</p>
+</div></blockquote>
 <p><strong>Which FPGAs do you support?</strong></p>
 <blockquote>
-<div>SmartHLS supports Microchip PolarFire FPGAs.</div></blockquote>
+<div><p>SmartHLS supports Microchip PolarFire FPGAs.</p>
+</div></blockquote>
 <p><strong>How can I get support?</strong></p>
 <blockquote>
-<div>Please contact <a class="reference external" href="mailto:smarthls&#37;&#52;&#48;microchip&#46;com">smarthls<span>&#64;</span>microchip<span>&#46;</span>com</a>.</div></blockquote>
+<div><p>Please contact <a class="reference external" href="mailto:smarthls&#37;&#52;&#48;microchip&#46;com">smarthls<span>&#64;</span>microchip<span>&#46;</span>com</a>.</p>
+</div></blockquote>
 </div>
 
 

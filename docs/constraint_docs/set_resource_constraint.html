@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -645,23 +637,22 @@ display:none;
   <div class="section" id="set-resource-constraint">
 <span id="id1"></span><h1>set_resource_constraint<a class="headerlink" href="#set-resource-constraint" title="Permalink to this headline">¶</a></h1>
 <p>This Tcl command constrains the resource allocated by SmartHLS.
-For instance, to only have a single divider in the entire circuit, user can specify: <code class="docutils literal"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code>.
+For instance, to only have a single divider in the entire circuit, user can specify: <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code>.
 This makes SmartHLS instantiate a maximum of 1 divider in the circuit, and if there are multiple division operations required, they will share the same divider.</p>
-<dl class="docutils">
-<dt>Note: A constraint on &#8220;divide&#8221; will apply to:</dt>
-<dd><ul class="first last simple">
-<li>signed_divide_8</li>
-<li>signed_divide_16</li>
-<li>signed_divide_32</li>
-<li>signed_divide_64</li>
-<li>unsigned_divide_8</li>
-<li>unsigned_divide_16</li>
-<li>unsigned_divide_32</li>
-<li>unsigned_divide_64</li>
+<dl class="simple">
+<dt>Note: A constraint on “divide” will apply to:</dt><dd><ul class="simple">
+<li><p>signed_divide_8</p></li>
+<li><p>signed_divide_16</p></li>
+<li><p>signed_divide_32</p></li>
+<li><p>signed_divide_64</p></li>
+<li><p>unsigned_divide_8</p></li>
+<li><p>unsigned_divide_16</p></li>
+<li><p>unsigned_divide_32</p></li>
+<li><p>unsigned_divide_64</p></li>
 </ul>
 </dd>
 </dl>
-<p>It can also be used to constrain the number of memory ports. To make all memories single-ported: <code class="docutils literal"><span class="pre">set_resource_constraint</span> <span class="pre">memory_port</span> <span class="pre">1</span></code>
+<p>It can also be used to constrain the number of memory ports. To make all memories single-ported: <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">memory_port</span> <span class="pre">1</span></code>
 For memory ports, only 1 and 2 are valid values, as FPGA RAMs have up to 2 ports.</p>
 <p>This Tcl command should only be used by advanced SmartHLS users.</p>
 <p><strong>Category</strong></p>
@@ -675,19 +666,19 @@ For memory ports, only 1 and 2 are valid values, as FPGA RAMs have up to 2 ports
 Note: operator name should match the device family operation database file:
 boards/PolarFire/PolarFire.tcl</p>
 <p><strong>Default Values</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>memory_port 2
-divide 1
-modulus 1
-multiply 2
-fp_add 1
-fp_subtract 1
-fp_multiply 1
-fp_divide 1
-fp 1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">memory_port</span> <span class="mi">2</span>
+<span class="n">divide</span> <span class="mi">1</span>
+<span class="n">modulus</span> <span class="mi">1</span>
+<span class="n">multiply</span> <span class="mi">2</span>
+<span class="n">fp_add</span> <span class="mi">1</span>
+<span class="n">fp_subtract</span> <span class="mi">1</span>
+<span class="n">fp_multiply</span> <span class="mi">1</span>
+<span class="n">fp_divide</span> <span class="mi">1</span>
+<span class="n">fp</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p><strong>Location Where Default is Specified</strong></p>
-<p><code class="docutils literal"><span class="pre">examples/smarthls.tcl</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/smarthls.tcl</span></code></p>
 <p><strong>Dependencies</strong></p>
 <p>None</p>
 <p><strong>Applicable Flows</strong></p>
@@ -695,24 +686,24 @@ fp 1
 <p><strong>Test Status</strong></p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
-<p><code class="docutils literal"><span class="pre">set_resource_constraint</span> <span class="pre">signed_divide_16</span> <span class="pre">3</span></code></p>
-<p><code class="docutils literal"><span class="pre">set_resource_constraint</span> <span class="pre">signed_divide</span> <span class="pre">2</span></code></p>
-<p><code class="docutils literal"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">signed_divide_16</span> <span class="pre">3</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">signed_divide</span> <span class="pre">2</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code></p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>When implementing an integer multiply operation, SmartHLS&#8217;s default behaviour is
+<p class="admonition-title">Note</p>
+<p>When implementing an integer multiply operation, SmartHLS’s default behaviour is
 to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
 When a multiply operation is wider than the DSP can support, SmartHLS splits the
 multiply into multiple DSPs and automatically inserts registers to help RTL
 synthesis tool to utilize registers in DSPs better, and hence achieve better
 timing.</p>
 <p>However, this split-multiply feature cannot support sharing multipliers.
-When <code class="docutils literal"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is specified by user, SmartHLS will
+When <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is specified by user, SmartHLS will
 turn off the split-multiply feature and use a generic multiplier that can be
 shared by more than one multiply operations.
 SmartHLS will also print a warning as follows,
 <em>Warning: Detected set_resource_constraint setting for integer multiplier.  However, multiplier sharing is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.</em></p>
-<p class="last">Similarly, <code class="docutils literal"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
+<p>Similarly, <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
 behaviour because the split-multiply does not support user-configured
 multiply latency.</p>
 </div>

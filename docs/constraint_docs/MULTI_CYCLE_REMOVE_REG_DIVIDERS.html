@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -645,7 +637,7 @@ display:none;
   <div class="section" id="multi-cycle-remove-reg-dividers">
 <span id="id1"></span><h1>MULTI_CYCLE_REMOVE_REG_DIVIDERS<a class="headerlink" href="#multi-cycle-remove-reg-dividers" title="Permalink to this headline">¶</a></h1>
 <p>Enabling this parameter will multi-cycle dividers. This requires
-<a class="reference internal" href="MULTI_CYCLE_REMOVE_REG.html#multi-cycle-remove-reg"><span>MULTI_CYCLE_REMOVE_REG</span></a> to be set to 1.</p>
+<a class="reference internal" href="MULTI_CYCLE_REMOVE_REG.html#multi-cycle-remove-reg"><span class="std std-ref">MULTI_CYCLE_REMOVE_REG</span></a> to be set to 1.</p>
 <p>Multi-cycle paths are only enabled for the pure hardware flow with no
 multipumping and no pipelined resources.</p>
 <div class="section" id="category">
@@ -666,13 +658,13 @@ multipumping and no pipelined resources.</p>
 </div>
 <div class="section" id="location-where-default-is-specified">
 <h2>Location Where Default is Specified<a class="headerlink" href="#location-where-default-is-specified" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">examples/smarthls.tcl</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/smarthls.tcl</span></code></p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="MULTI_CYCLE_REMOVE_REG.html#multi-cycle-remove-reg"><span>MULTI_CYCLE_REMOVE_REG</span></a></p>
+<p><a class="reference internal" href="MULTI_CYCLE_REMOVE_REG.html#multi-cycle-remove-reg"><span class="std std-ref">MULTI_CYCLE_REMOVE_REG</span></a></p>
 <p>Related parameters:
-<a class="reference internal" href="MB_RANGE_FILE.html#mb-range-file"><span>MB_RANGE_FILE</span></a>, <a class="reference internal" href="MB_MAX_BACK_PASSES.html#mb-max-back-passes"><span>MB_MAX_BACK_PASSES</span></a>, <a class="reference internal" href="MB_PRINT_STATS.html#mb-print-stats"><span>MB_PRINT_STATS</span></a></p>
+<a class="reference internal" href="MB_RANGE_FILE.html#mb-range-file"><span class="std std-ref">MB_RANGE_FILE</span></a>, <a class="reference internal" href="MB_MAX_BACK_PASSES.html#mb-max-back-passes"><span class="std std-ref">MB_MAX_BACK_PASSES</span></a>, <a class="reference internal" href="MB_PRINT_STATS.html#mb-print-stats"><span class="std std-ref">MB_PRINT_STATS</span></a></p>
 </div>
 <div class="section" id="applicable-flows">
 <h2>Applicable Flows<a class="headerlink" href="#applicable-flows" title="Permalink to this headline">¶</a></h2>
@@ -684,7 +676,7 @@ multipumping and no pipelined resources.</p>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">set_parameter</span> <span class="pre">MULTI_CYCLE_REMOVE_REG_DIVIDERS</span> <span class="pre">1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MULTI_CYCLE_REMOVE_REG_DIVIDERS</span> <span class="pre">1</span></code></p>
 <hr class="docutils" />
 </div>
 </div>

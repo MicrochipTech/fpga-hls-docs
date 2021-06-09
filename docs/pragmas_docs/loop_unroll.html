@@ -479,8 +479,6 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
   
   
 
@@ -488,21 +486,11 @@ display:none;
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -514,7 +502,11 @@ display:none;
   <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
-<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -645,7 +637,7 @@ display:none;
   <div class="section" id="unroll-loop">
 <span id="pragma-loop-unroll"></span><h1>Unroll Loop<a class="headerlink" href="#unroll-loop" title="Permalink to this headline">¶</a></h1>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
 <p>Specifies a loop to be unrolled.</p>
 <p><strong>Parameters</strong></p>
@@ -653,47 +645,47 @@ display:none;
 If it is not specified, or specified as N (the total number of loop iterations), the loop will be fully unrolled.
 If it is specified as 2, the loop will be unrolled 2 times, where the number of loop iterations will be halved and the loop body will be replicated twice.
 If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="19%" />
-<col width="14%" />
-<col width="16%" />
-<col width="29%" />
-<col width="22%" />
+<col style="width: 19%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 29%" />
+<col style="width: 22%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Value</th>
-<th class="head">Optional</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Optional</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">factor</span></code></td>
-<td>Integer</td>
-<td>Yes</td>
-<td>N (fully unroll)</td>
-<td>Unroll count</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Yes</p></td>
+<td><p>N (fully unroll)</p></td>
+<td><p>Unroll count</p></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>Before the beginning of the loop.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If there is a loop label, the pragma should be placed after the label.</p>
+<p class="admonition-title">Note</p>
+<p>If there is a loop label, the pragma should be placed after the label.</p>
 </div>
 <p><strong>Examples</strong></p>
 <p>Fully unroll a loop.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
   <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Unroll the loop by 2 times only.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span>
 <span class="cp">#pragma HLS loop unroll factor(2)</span>
 <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
   <span class="p">...</span>
@@ -701,7 +693,7 @@ If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
 </pre></div>
 </div>
 <p>Small loops may be unrolled even without the unroll pragma. Make sure the loop is not unrolled.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(1)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(1)</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
   <span class="p">...</span>
 <span class="p">}</span>
