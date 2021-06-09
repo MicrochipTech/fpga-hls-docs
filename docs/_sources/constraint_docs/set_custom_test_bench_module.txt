@@ -1,0 +1,35 @@
+.. _set_custom_test_bench_module:
+
+set_custom_test_bench_module
+-------------
+
+This TCL command is to specify the name of the user-provided testbench module 
+to be using for RTL simulation. The testbench file must also be specified with
+:ref:`set_custom_test_bench_file`.
+
+**Category**
+
+Simulation
+
+**Value Type**
+
+String
+
+**Dependencies**
+
+``set_custom_test_bench_file user_tb.v``
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+    ``set_custom_test_bench_module "user_tb"``
+
+--------------------------------------------------------------------------------
+

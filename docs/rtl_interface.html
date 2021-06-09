@@ -1,0 +1,1390 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Header information-->
+    <meta name="Language" content="en">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  <title>Top-Level RTL Interface &mdash; SmartHLS 2021.1.2 documentation</title>
+  
+<!-- Header information-->
+<style type="text/css">svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.225em;
+}
+.svg-inline--fa.fa-w-1 {
+  width: 0.0625em;
+}
+.svg-inline--fa.fa-w-2 {
+  width: 0.125em;
+}
+.svg-inline--fa.fa-w-3 {
+  width: 0.1875em;
+}
+.svg-inline--fa.fa-w-4 {
+  width: 0.25em;
+}
+.svg-inline--fa.fa-w-5 {
+  width: 0.3125em;
+}
+.svg-inline--fa.fa-w-6 {
+  width: 0.375em;
+}
+.svg-inline--fa.fa-w-7 {
+  width: 0.4375em;
+}
+.svg-inline--fa.fa-w-8 {
+  width: 0.5em;
+}
+.svg-inline--fa.fa-w-9 {
+  width: 0.5625em;
+}
+.svg-inline--fa.fa-w-10 {
+  width: 0.625em;
+}
+.svg-inline--fa.fa-w-11 {
+  width: 0.6875em;
+}
+.svg-inline--fa.fa-w-12 {
+  width: 0.75em;
+}
+.svg-inline--fa.fa-w-13 {
+  width: 0.8125em;
+}
+.svg-inline--fa.fa-w-14 {
+  width: 0.875em;
+}
+.svg-inline--fa.fa-w-15 {
+  width: 0.9375em;
+}
+.svg-inline--fa.fa-w-16 {
+  width: 1em;
+}
+.svg-inline--fa.fa-w-17 {
+  width: 1.0625em;
+}
+.svg-inline--fa.fa-w-18 {
+  width: 1.125em;
+}
+.svg-inline--fa.fa-w-19 {
+  width: 1.1875em;
+}
+.svg-inline--fa.fa-w-20 {
+  width: 1.25em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-border {
+  height: 1.5em;
+}
+.svg-inline--fa.fa-li {
+  width: 2em;
+}
+.svg-inline--fa.fa-fw {
+  width: 1.25em;
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: #ff253a;
+  border-radius: 1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  height: 1.5em;
+  line-height: 1;
+  max-width: 5em;
+  min-width: 1.5em;
+  overflow: hidden;
+  padding: 0.25em;
+  right: 0;
+  text-overflow: ellipsis;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: 0;
+  right: 0;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  right: 0;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: 0;
+  right: auto;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -0.0667em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+}
+
+.fa-border {
+  border: solid 0.08em #eee;
+  border-radius: 0.1em;
+  padding: 0.2em 0.25em 0.15em;
+}
+
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left,
+.fas.fa-pull-left,
+.far.fa-pull-left,
+.fal.fa-pull-left,
+.fab.fa-pull-left {
+  margin-right: 0.3em;
+}
+.fa.fa-pull-right,
+.fas.fa-pull-right,
+.far.fa-pull-right,
+.fal.fa-pull-right,
+.fab.fa-pull-right {
+  margin-left: 0.3em;
+}
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+          animation: fa-spin 2s infinite linear;
+}
+
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+          animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
+}
+
+.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
+}
+
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical,
+:root .fa-flip-both {
+  -webkit-filter: none;
+          filter: none;
+}
+
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse {
+  color: #fff;
+}
+
+@media screen and (max-width: 768px)
+.booktitle #booktitle{
+display:none;
+}
+</style>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2021.1.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/common-ui-all.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
+<link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+		<div class="mchp-ghp"/>
+		<div class="root responsivegrid">
+								<noindex>
+								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
+"><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
+								          
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.1.2  </span>
+
+										  </h1>
+								
+								</div></div></div><section _ngcontent-hes-c23="" class="separator"></section></header>	
+								</noindex>		
+
+		</div>
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+		
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+         
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">2. Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">1. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">2. Optimization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">3. Hardware Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pragmas.html">1. SmartHLS Pragmas Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">2. Constraints Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">3. Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SmartHLS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Top-Level RTL Interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="top-level-rtl-interface">
+<span id="rtl-interface"></span><h1>Top-Level RTL Interface<a class="headerlink" href="#top-level-rtl-interface" title="Permalink to this headline">¶</a></h1>
+<p>The SmartHLS-generated top-level RTL module can be instantiated and integrated with other HDL blocks, by following the protocols used by the SmartHLS&#8217;s
+RTL interface.
+This section describes the types of interfaces that are supported by SmartHLS, the
+default interface for each data type in C/C++, and how to customize the
+interface.</p>
+<div class="section" id="module-control-interface">
+<h2>Module Control Interface<a class="headerlink" href="#module-control-interface" title="Permalink to this headline">¶</a></h2>
+<p>The top-level Verilog module generated by SmartHLS is always associated with a
+module control interface.  The table below shows the interface ports of the
+control interface.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Port Name</th>
+<th class="head">Direction</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>clock</cite></td>
+<td>IN</td>
+<td>The input clock signal to the RTL module.</td>
+</tr>
+<tr class="row-odd"><td><cite>reset</cite></td>
+<td>IN</td>
+<td>The input reset signal to the RTL module.</td>
+</tr>
+<tr class="row-even"><td><cite>ready</cite></td>
+<td>OUT</td>
+<td>Indicates the readiness of the RTL module.
+<cite>ready</cite> is set to 1 when the RTL module is ready to start a new iteration (invocation) with a new set
+of inputs.</td>
+</tr>
+<tr class="row-odd"><td><cite>start</cite></td>
+<td>IN</td>
+<td>When <cite>ready</cite> is 1, setting <cite>start</cite> to 1 will start the execution of the RTL module;
+When <cite>ready</cite> is 0, the <cite>start</cite> signal is ignored by the RTL module.</td>
+</tr>
+<tr class="row-even"><td><cite>finish</cite></td>
+<td>OUT</td>
+<td><cite>finish</cite> is set to 1 for one clock cycle when the RTL module finishes.</td>
+</tr>
+<tr class="row-odd"><td><cite>return_val</cite></td>
+<td>OUT</td>
+<td>Holds the valid return value when <cite>finish</cite> is asserted.
+This signal does not exist if the top-level function has a void return type.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>The top-level module starts a new iteration of execution upon the
+handshaking when both <cite>ready</cite> and <cite>start</cite> are high at a positive edge
+clock.</li>
+<li>For a circuit containing pipelined functions, the <cite>ready</cite> signal can be
+high before the previous invocations have finished, allowing multiple
+invocations to overlap and run in parallel.</li>
+<li>For circuits without pipelined functions, the <cite>ready</cite> signal is only
+asserted when the last invocation has finish.</li>
+<li>The scalar arguments (described in the next section) should be provided at
+the same time when the <cite>start</cite> signal is set to high.</li>
+</ul>
+</div>
+<div class="section" id="timing-diagram-no-pipeline-functions">
+<h3>Timing Diagram (No Pipeline Functions)<a class="headerlink" href="#timing-diagram-no-pipeline-functions" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/control_intf.png" class="align-center" src="_images/control_intf.png" />
+<p>The timing diagram above illustrates the behaviour of the module control
+interface when the generated circuit contains no pipelined circuits.</p>
+<ul class="simple">
+<li>First, the <cite>ready</cite> signal comes out high after reset (label 0).</li>
+<li>When the <cite>start</cite> signal becomes high at the next cycle (label a), the
+handshaking between <cite>ready</cite> and <cite>start</cite> (label 1 &amp; a) occurs and the
+top-level module starts running.<ul>
+<li>Notice that at the same time as the <cite>start</cite> signal is asserted (label a),
+the argument inputs (i.e., <cite>arg_X</cite> and <cite>arg_Y</cite>) should also be provided to
+the top-level module.  The scalar argument inputs are sampled by the
+top-level module when the handshaking occurs and will be used as the input
+for the current invocation.</li>
+</ul>
+</li>
+<li>Then the <cite>ready</cite> signal goes to low at the next cycle (label 2) to indicate
+the top-level module cannot accept a new invocation.</li>
+<li>When the <cite>ready</cite> signal is low, the <cite>start</cite> signal is ignored by the
+top-level module.
+For example, the <cite>start</cite> signal becomes high at label b. The <cite>ready</cite> signal
+from the top-level module is still low at this cycle and hence a new function
+invocation won&#8217;t be started yet.</li>
+<li>At label x, when the previous invocation finishes, the top-level module sets
+<cite>finish</cite> signal high for one clock cycle. In this clock cycle, the return
+value of the top-level function is available on the <cite>return_val</cite> port.</li>
+<li>Meanwhile, the <cite>ready</cite> signal becomes high as the previous invocation
+finishes (label 3). A new handshaking with <cite>start</cite> occurs (label 3 &amp; c), then
+the top-level function starts the second invocation and finishes at label y.</li>
+</ul>
+</div>
+<div class="section" id="timing-diagram-pipeline-functions">
+<h3>Timing Diagram (Pipeline Functions)<a class="headerlink" href="#timing-diagram-pipeline-functions" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/control_intf_func_pipeline.png" class="align-center" src="_images/control_intf_func_pipeline.png" />
+<p>The timing diagram above illustrates the module control interface when the
+generated circuit contains pipelined function(s).  In this case, the SmartHLS
+circuit can overlap the execution of multiple invocations, by starting a new
+invocation with a new set of inputs before previous invocations have finished.</p>
+<ul class="simple">
+<li>There are a total of five invocations (or five <cite>ready</cite> &amp; <cite>start</cite>
+handshakings, label 0-4 &amp; a-e). As shown in the diagram, the new invocations
+can start without waiting for the prior invocations to finish.</li>
+<li>Although the SmartHLS circuit can process multiple invocations in parallel,
+there are times when the SmartHLS circuit cannot start a new invocation.
+Such case can happen when the pipeline initiation internal is not 1 (i.e.,
+the SmartHLS circuit cannot start a new invocation every clock cycle),
+or when the circuit is stalled waiting for resource/data to become available
+(e.g., waiting to read from an input FIFO).
+When the SmartHLS circuit can not start a new invocation, the <cite>ready</cite> signal
+will be set to low.<ul>
+<li>For example, the <cite>ready</cite> signal is low for one cycle before label 2,
+postponing the start of the third invocation until the <cite>ready</cite> signal is
+back to high at label 2 &amp; c.</li>
+</ul>
+</li>
+<li>The external logic of the SmartHLS circuit can also lower the <cite>start</cite> signal to
+delay the start of a new invocation, as shown in the cycle before label d.</li>
+<li>The invocations are always finished in the same order as they started.
+That is, the handshakings at label 0 &amp; a, 1 &amp; b, 2 &amp; c, 3 &amp; d, 4 &amp; e,
+are corresponding to the completion at label o, p, q, r, s, respectively.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="scalar-argument">
+<h2>Scalar Argument<a class="headerlink" href="#scalar-argument" title="Permalink to this headline">¶</a></h2>
+<p>Each scalar argument of the top-level function (e.g., void foo(<strong>int
+scalar_arg</strong>);) becomes an input port of the top-level RTL module. Valid
+argument values should be provided on these input ports when the <cite>start</cite> signal
+is asserted.
+If the input port can be held valid and unchanged throughout the whole
+iteration of the execution, a <cite>stable</cite> option can be specified using the
+following pragma to inform SmartHLS and potentially save register usage in the
+generated module.</p>
+<div class="highlight-CPP"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface argument(&lt;SCALAR_ARGUMENT_NAME&gt;) type(simple) stable(&lt;false|true&gt;)</span>
+</pre></div>
+</div>
+<p>Note that the <cite>type</cite> option is not configurable in the current release but
+still needs to be specified if you wish to add the <cite>stable</cite> option.
+If <cite>stable</cite> is false, the pragma is not necessary because SmartHLS assumes not stable by default.</p>
+<p>As shown in the table below, each scalar argument corresponds to an input port
+of the top-level module,</p>
+</div>
+<div class="section" id="pointer-argument-and-shared-global-variable">
+<h2>Pointer Argument and Shared Global Variable<a class="headerlink" href="#pointer-argument-and-shared-global-variable" title="Permalink to this headline">¶</a></h2>
+<p>Pointer argument and global variables are considered as &#8220;memories&#8221; that
+maintain states in the circuit.  The &#8220;memories&#8221; may be implemented inside or
+outside of the SmartHLS-generated circuit, depending on the specified interface
+type.  For a global variable, a top-level RTL interface is only created if the
+variable is shared/accessed by both the software testbench and the HLS
+function.  If the global variable is only accessed by the HLS function, the
+&#8220;memory&#8221; will be implemented inside the generated circuit and has no top-level
+interface.</p>
+<p>There are three interface types for pointer arguments and shared global
+variables: memory, scalar memory, and AXI4 slave. As shown in the table below,
+the available and default interface types vary depending on the data type of
+the pointer or global variable.  We will explain each interface type in the
+sections below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="27%" />
+<col width="28%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" rowspan="2">Data Type</th>
+<th class="head" colspan="3">Interface Type</th>
+</tr>
+<tr class="row-even"><th class="head">Memory</th>
+<th class="head">Scalar memory</th>
+<th class="head">AXI4 Slave</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>Array</td>
+<td>Yes (default)</td>
+<td>Yes</td>
+<td>n/a</td>
+</tr>
+<tr class="row-even"><td>Struct</td>
+<td>Yes (default)</td>
+<td>Yes</td>
+<td>Yes  (global only)</td>
+</tr>
+<tr class="row-odd"><td>Scalar</td>
+<td>n/a</td>
+<td>Yes  (default)</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="memory-type">
+<h3>Memory Type<a class="headerlink" href="#memory-type" title="Permalink to this headline">¶</a></h3>
+<p>The memory interface can be used for array/struct arguments or shared global
+array/struct. The generated RTL interface can be connected to an external RAM
+module that stores the corresponding data.
+The pragma below specifies the memory interface type for a given argument or
+global variable,</p>
+<div class="highlight-CPP"><div class="highlight"><pre><span></span><span class="c1">// For top-level function arguments:</span>
+<span class="c1">// Add at the beginning of the function definition</span>
+<span class="cp">#pragma HLS interface argument(&lt;SCALAR_ARGUMENT_NAME&gt;) type(memory) num_elements(&lt;NUM_ARRAY_ELEMENTS&gt;)</span>
+
+<span class="c1">// For shared global variables:</span>
+<span class="c1">// Add before the variable definition</span>
+<span class="cp">#pragma HLS interface variable(&lt;SCALAR_ARGUMENT_NAME&gt;) type(memory) num_elements(&lt;NUM_ARRAY_ELEMENTS&gt;)</span>
+</pre></div>
+</div>
+<p>The <cite>num_elements</cite> option is only available for array type arguments. The array size
+can be specified or overridden (over the declared size in C++) by specifying
+the <cite>num_elements</cite> option.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The specified num_elements will represent the total number of elements of the
+array.  In the case of multi-dimensional array, the size of the outermost
+dimension will be overrided to (num_elements / COMBINE_DEPTH_OF_INNER_DIMENSIONS),
+and the sizes of inner dimensions will remain the same.
+For multi-dimensional arrays, the specified num_elements has to be a multiple
+of the combined number of elements of all inner dimensions (except the
+outermost dimension).  Meaning only the outermost dimension&#8217;s size can be
+overrided.</p>
+</div>
+<p>SmartHLS circuit expects a one cycle read latency, and two RAM ports will be
+created for each memory interface.  Moreover, a true dual-port memory is
+expected, allowing both ports to perform independent reads/writes
+simultaneously.
+The same port will not have both read and write requests at the same cycle.</p>
+<p>The table below lists the signals of each RAM port, with &#8220;_a&#8221; and &#8220;_b&#8221; suffixes
+respectively.  Some signals are not available when the memory is read-only or
+write-only, i.e., when the top-level function (and its descendant functions)
+never write to or read from the memory.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="9%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Port Name</th>
+<th class="head">Direction</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>&lt;ARG_NAME&gt;_address_&lt;a|b&gt;</cite></td>
+<td>OUT</td>
+<td>The address pointing to the RAM entry that SmartHLS module wants to access.</td>
+</tr>
+<tr class="row-odd"><td><cite>&lt;ARG_NAME&gt;_read_en_&lt;a|b&gt;</cite></td>
+<td>OUT</td>
+<td>Read enable port (n/a for write-only memory).</td>
+</tr>
+<tr class="row-even"><td><cite>&lt;ARG_NAME&gt;_read_data_&lt;a|b&gt;</cite></td>
+<td>IN</td>
+<td>Read data port (n/a for write-only memory).</td>
+</tr>
+<tr class="row-odd"><td><cite>&lt;ARG_NAME&gt;_write_en_&lt;a|b&gt;</cite></td>
+<td>OUT</td>
+<td>Write enable port (n/a for read-only memory).</td>
+</tr>
+<tr class="row-even"><td><cite>&lt;ARG_NAME&gt;_byte_en_&lt;a|b&gt;</cite></td>
+<td>OUT</td>
+<td>Byte-enable port. Only available if the memory requires writes to partial
+bytes of a memory word.
+(n/a for read-only memory, or when all write operations update the whole
+memory words).</td>
+</tr>
+<tr class="row-odd"><td><cite>&lt;ARG_NAME&gt;_write_data_&lt;a|b&gt;</cite></td>
+<td>OUT</td>
+<td>Write data port (n/a for read-only memory).</td>
+</tr>
+</tbody>
+</table>
+<p>The timing diagram shows the memory interface behaviour expected by the SmartHLS-generated module.</p>
+<img alt="_images/memory_intf.png" class="align-center" src="_images/memory_intf.png" />
+<ul class="simple">
+<li>At Cycle a, the top-level module performs a write operation to the connected
+external memory, by setting the <cite>arg_write_en</cite> port to high and providing the
+address &#8220;A0&#8221; and write data &#8220;D0&#8221; on the <cite>arg_address</cite> and <cite>arg_write_data</cite>
+ports respectively.</li>
+<li>At Cycle b, the top-level module issues a read from the connected external
+memory by setting <cite>arg_address</cite> to the read address &#8220;A0&#8221; and <cite>arg_read_en</cite> to
+high.  SmartHLS module expects the read data &#8220;D0&#8221; to be available on the
+<cite>arg_read_data</cite> port in the subsequent cycle (i.e., Cycle c).</li>
+<li>At Cycle d, the top-level module writes &#8220;D1&#8221; to address &#8220;A1&#8221;</li>
+<li>Keeping the address port the same and setting <cite>arg_read_en</cite> high at the next
+cycle, the top-level module reads from address &#8220;A1&#8221; at Cycle e, and expects to
+receive &#8220;D1&#8221; at the right next cycle at Cycle f.</li>
+</ul>
+</div>
+<div class="section" id="scalar-memory-type">
+<h3>Scalar Memory Type<a class="headerlink" href="#scalar-memory-type" title="Permalink to this headline">¶</a></h3>
+<p>The scalar memory interface is used by SmartHLS module to access external memory
+that has only one element, and can be thought of as a special memory interface
+that has no address port.
+The scalar memory interface is used by default for scalar pointer arguments and
+shared scalar global variables.  When scalar memory interface is specified for
+an array data type, SmartHLS will automatically partition the array into individual
+elements; and if SmartHLS fails to partition the array, an error will be given to
+report the array argument that cannot be partitioned.
+The pragma below specifies the scalar memory interface,</p>
+<div class="highlight-CPP"><div class="highlight"><pre><span></span><span class="c1">// For top-level function arguments:</span>
+<span class="c1">// Add at the beginning of the function definition</span>
+<span class="cp">#pragma HLS interface argument(&lt;SCALAR_ARGUMENT_NAME&gt;) type(scalar_memory)</span>
+
+<span class="c1">// For shared global variables:</span>
+<span class="c1">// Add before the variable definition</span>
+<span class="cp">#pragma HLS interface variable(&lt;SCALAR_ARGUMENT_NAME&gt;) type(scalar_memory)</span>
+</pre></div>
+</div>
+<p>The table below lists the associated RTL module ports for each scalar memory
+interface.  Some signals are not available when the memory is read-only or
+write-only, i.e., when the top-level function (and its descendant functions)
+never write to or read from the memory.</p>
+<p>Note that SmartHLS circuit expects a 0-cycle ready latency.
+This is, the <cite>&lt;ARG_NAME&gt;_read_data</cite> port is expected to always hold the valid
+data for the pointer argument such that the SmartHLS circuit can use its value at
+any time.</p>
+<p>One way of using the scalar memory interface is to connect the scalar memory
+interface to a register outside of the SmartHLS module. The <cite>read_data</cite> port can
+be connected to the register itself. The <cite>write_en</cite> and <cite>write_data</cite> ports will
+be used to update the register.</p>
+<img alt="_images/scalar_memory_intf.png" class="align-center" src="_images/scalar_memory_intf.png" />
+<p>The timing diagram gives an example of how the scalar memory interface would
+behave when it is connected to an external register.  Initially the external
+register is holding a value of &#8220;D0&#8221; and providing the value to the
+<cite>arg_read_data</cite> port.
+At Cycle a, the top-level module writes to the register by asserting
+<cite>arg_write_en</cite> and setting <cite>arg_write_data</cite> to &#8220;D1&#8221;.
+Then at the next cycle, Cycle b, the register value is updated, and the
+<cite>arg_read_data</cite> is also immediately updated to the new value.</p>
+<p>Note that the scalar memory interface does not always have to be connected to
+an external register.
+One use case of the scalar memory interface could be to connect the
+<cite>arg_read_data</cite> port to an input signal that is changing while the SmartHLS
+circuit runs, allowing the SmartHLS circuit to read the up-to-date value from the
+input. Typically, the pointer argument is read-only by the SmartHLS circuit in
+such case.</p>
+<p>Similarly, the <cite>arg_write_data</cite> can be connected to an output that needs to be
+updated in real-time.  In this case, the pointer argument is normally only
+written to by the SmartHLS circuit (with no read access).</p>
+</div>
+<div class="section" id="axi4-slave-type">
+<h3>AXI4 Slave Type<a class="headerlink" href="#axi4-slave-type" title="Permalink to this headline">¶</a></h3>
+<p>In contrast to the memory and scalar memory interfaces, when the AXI4 slave
+interface is used, the &#8220;memories&#8221; for storing the data is inside the
+SmartHLS-generated RTL module rather than outside.  The logic outside of SmartHLS
+module is responsible for initializing and/or retrieving the memory content
+before and/or after the execution of SmartHLS module. The pragma below specifies
+an AXI4 slave interface,</p>
+<div class="highlight-CPP"><div class="highlight"><pre><span></span><span class="c1">// For shared global variables:</span>
+<span class="c1">// Add before the variable definition</span>
+<span class="cp">#pragma HLS interface variable(&lt;SCALAR_ARGUMENT_NAME&gt;) type(axi_slave) concurrent_access(true|false)</span>
+</pre></div>
+</div>
+<p>When the <cite>concurrent_access</cite> option is set to true (default to false), the
+external logic can read/write the AXI4 slave interface while the SmartHLS module is
+running.  The concurrent access will however reduce the SmartHLS module&#8217;s
+throughput to access the memory.</p>
+<p>After compilation, SmartHLS will generate a report file
+(<code class="docutils literal"><span class="pre">reports/axi_slave_memory_map.hls.rpt</span></code>) to specify the address map for
+each struct element.
+Here is an example struct and its corresponding memory map,</p>
+<div class="highlight-CPP"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">SlaveLayout</span> <span class="p">{</span>
+    <span class="n">uint8</span> <span class="n">arr</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="n">uint32</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">uint32</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">uint64</span> <span class="n">sum_result</span><span class="p">;</span>
+    <span class="n">uint32</span> <span class="n">xor_result</span><span class="p">;</span>
+    <span class="n">uint32</span> <span class="n">or_result</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#pragma HLS interface variable(gv) type(axi_slave) concurrent_access(true)</span>
+<span class="n">SlaveLayout</span> <span class="n">gv</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The corresponding address map report
+(<code class="docutils literal"><span class="pre">reports/axi_slave_memory_map.hls.rpt</span></code>) is shown below.</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Address Map for AXI Slave Interface: gv
+
++--------------+-----------+-------------------+----------+
+| Word Address | Bit Range | Variables         | Removed? |
++--------------+-----------+-------------------+----------+
+| 0            |  63 : 56  | memory.arr[7]     |          |
+|              |  55 : 48  | memory.arr[6]     |          |
+|              |  47 : 40  | memory.arr[5]     |          |
+|              |  39 : 32  | memory.arr[4]     |          |
+|              |  31 : 24  | memory.arr[3]     |          |
+|              |  23 : 16  | memory.arr[2]     |          |
+|              |  15 :  8  | memory.arr[1]     |          |
+|              |   7 :  0  | memory.arr[0]     |          |
+| 1            |  63 : 32  | memory.b          |          |
+|              |  31 :  0  | memory.a          |          |
+| 2            |  63 :  0  | memory.sum_result |          |
+| 3            |  63 : 32  | memory.or_result  |          |
+|              |  31 :  0  | memory.xor_result |          |
+| 4            |   0 :  0  | slave_memory_ctrl |          |
++--------------+-----------+-------------------+----------+
+</pre></div>
+</div>
+<ul class="simple">
+<li>Note that the first column in the report shows the word-address &#8211; multiply
+by 8 to get the byte-address.</li>
+<li>The last column will indicate the struct elements that are optimized away
+from compilation because the SmartHLS module does not access them.</li>
+<li>Notice that the last element in the table, <code class="docutils literal"><span class="pre">slave_memory_ctrl</span></code>, is not part
+of the struct definition.  This is a special status control register for the
+SmartHLS module. Writing to the address of <code class="docutils literal"><span class="pre">slave_memory_ctrl</span></code> will start the
+SmartHLS module (if the module was not running), and reading the register can
+poll the status, a value of 1 indicates the SmartHLS module has finished
+running, and 0 otherwise.  This memory-mapped control interface can be useful
+for an AXI4 master to control the SmartHLS-generated module&#8217;s execution (e.g., a
+processor controlling the SmartHLS-generated module).</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>There are several limitations in the current release,</p>
+<ul class="last simple">
+<li>A SmartHLS module can have at most one AXI4 slave interface, and the AXI4 slave
+interface type can only be specified for a global variable with a struct
+data type.  If multiple data need to be placed behind the AXI4 slave
+interface, you can define a new struct type to include all the data, then
+instantiate a global variable with the struct type, and specify the above
+pragma for the global variable.</li>
+<li>The AXI4 slave interface only supports the AXI4-lite protocol with
+additional support for incremental bursting.</li>
+<li>The AXI4 slave interface always uses 32-bit address and 64-bit data width.</li>
+<li>Byte-enable write (via WSTRB port) must be aligned to the elements in the
+struct.
+For the WSTRB bits corresponding to (different bytes of) a common struct
+element, these WSTRB bits must be all 1s or all 0s.
+For example, if we are writing to a word address that maps to two &#8216;int&#8217;
+type integers (4 bytes each, packed together as one 64-bit AXI word), the
+upper 4 bits of the WSTRB port must be all 1s or 0s, and the same applies
+to the lower 4 bits of the WSTRB port.
+That is, we cannot update partial bytes of either &#8216;int&#8217; type integers, but
+updating all bytes of one of the two &#8216;int&#8217; type integers is allowed.</li>
+<li>The SW/HW Co-Simulation is only supported if the top level function is not
+pipelined.</li>
+<li>When AXI4 slave interface is used, the top-level function must use void
+return type.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="hls-fifo-argument">
+<h2>hls::FIFO Argument<a class="headerlink" href="#hls-fifo-argument" title="Permalink to this headline">¶</a></h2>
+<p>SmartHLS provides a <a class="reference internal" href="userguide.html#streaming-lib"><span>Streaming Library</span></a> which includes a FIFO
+template class for inferring the AXI4-stream like, ready-valid-data (RVD)
+interface.  When a <code class="docutils literal"><span class="pre">hls::FIFO</span></code> type argument is used by the top-level
+function, a corresponding RVD interface is always generated.</p>
+<p>The RVD interface is useful to transfer data from an upstream producer to a
+downstream consumer. The upstream sends the data along with a valid signal to
+indicate the data validity, while the downstream controls a ready signal to
+indicate its readiness to consume the data.  A data is only transferred when
+both valid and ready signals are high at a positive clock edge.</p>
+<img alt="_images/rvd_intf.png" class="align-center" src="_images/rvd_intf.png" />
+<p>As shown in the above timing diagram, three sets of data are transferred at
+the 2rd, 4th, and 6th positive clock edges.
+No data transfer occurs at the 3rd positive clock edge because the upstream
+does not assert the valid signal.
+The data &#8220;D2&#8221; is also not transferred at the 5th positive clock edge because
+the downstream back-pressures the upstream by lowering the ready signal.</p>
+<p>The <code class="docutils literal"><span class="pre">hls::FIFO</span></code> template class is declared as</p>
+<div class="highlight-CPP"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">pack</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">FIFO</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The template argument <code class="docutils literal"><span class="pre">T</span></code> defines the data type, which can be a scalar data
+type or a struct of multiple scalar types. The template argument <code class="docutils literal"><span class="pre">pack</span></code>
+defines whether the scalar elements inside the struct should be packed into a
+single data port. When <code class="docutils literal"><span class="pre">pack</span></code> is false, each scalar element has its own data
+port, and all scalar elements in the struct share the same pair of ready and
+valid ports.
+A <code class="docutils literal"><span class="pre">hls::FIFO</span></code> argument must be either write-only or read-only. The data and
+valid ports always have the same direction (output if write-only, input if
+read-only), while the ready port has the opposite direction. The following
+table shows the interface ports of the <code class="docutils literal"><span class="pre">hls::FIFO</span></code> argument depending on
+the template parameters.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="19%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Template Parameter</th>
+<th class="head">Port Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="2"><code class="docutils literal"><span class="pre">T</span></code> is a scalar data type  (<code class="docutils literal"><span class="pre">pack</span></code> is ignored)</td>
+<td><div class="first last line-block">
+<div class="line">&lt;ARG_NAME&gt;</div>
+<div class="line">&lt;ARG_NAME&gt;_valid</div>
+<div class="line">&lt;ARG_NAME&gt;_ready</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p class="first"><code class="docutils literal"><span class="pre">T</span></code> is a struct of scalars, e.g.,</p>
+<p class="last">struct MyAxiStream {
+ap_uint&lt;32&gt; data;
+ap_uint&lt;8&gt;  keep;
+ap_uint&lt;1&gt;  last;
+};</p>
+</td>
+<td><code class="docutils literal"><span class="pre">pack</span></code> = false</td>
+<td><div class="first last line-block">
+<div class="line">&lt;ARG_NAME&gt;_data</div>
+<div class="line">&lt;ARG_NAME&gt;_keep</div>
+<div class="line">&lt;ARG_NAME&gt;_last</div>
+<div class="line">&lt;ARG_NAME&gt;_valid</div>
+<div class="line">&lt;ARG_NAME&gt;_ready</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">pack</span></code> = true</td>
+<td><div class="first last line-block">
+<div class="line">&lt;ARG_NAME&gt;  // 41-bit wide.</div>
+<div class="line">&lt;ARG_NAME&gt;_valid</div>
+<div class="line">&lt;ARG_NAME&gt;_ready</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>In the struct type example above, the <code class="docutils literal"><span class="pre">ap_uint</span></code> template class is from
+<a class="reference internal" href="userguide.html#ap-lib"><span>C++ Arbitrary Precision Data Types Library</span></a>, which allows you
+to define custom bit-width integers.</p>
+<p>If you are familiar with the AXI4-stream interface, you may already notice that
+the struct example (non-pack case) yields an AXI4-stream interface.
+Indeed, this is how to infer AXI4-stream interface using <code class="docutils literal"><span class="pre">hls::FIFO</span></code> library.</p>
+<div class="section" id="implementing-a-custom-axi4-master-slave-using-hls-fifo">
+<h3>Implementing A Custom AXI4 Master/Slave Using hls::FIFO<a class="headerlink" href="#implementing-a-custom-axi4-master-slave-using-hls-fifo" title="Permalink to this headline">¶</a></h3>
+<p>In addition to inferring an AXI4-stream interface as shown in the example
+above, <code class="docutils literal"><span class="pre">hls::FIFO</span></code> can also be used to implement a custom AXI4 slave or
+AXI4 master.
+The AXI4 interface protocol has 5 channels, read address (AR), read data (R),
+write address (AW), write data (W), and write response (B). Each channel is an
+AXI4 stream interface and can be described in C++ as a <code class="docutils literal"><span class="pre">hls::FIFO</span></code> object.
+For example, the read address channel has an address signal and a length
+signal.  The AXI4 channel can be implemented as following in C++ to get the
+corresponding AR channel in the RTL interface.</p>
+<div class="highlight-CPP"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">RdAddrSignals</span> <span class="p">{</span> <span class="kt">uint32_t</span> <span class="n">addr</span><span class="p">;</span>  <span class="kt">uint8_t</span> <span class="n">len</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">MyTopFunctoin</span> <span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="n">RdAddrSignals</span><span class="o">&gt;</span> <span class="n">ar</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">RdAddrSignals</span> <span class="n">ar_sig</span><span class="p">;</span>
+  <span class="n">ar_sig</span><span class="p">.</span><span class="n">addr</span> <span class="o">=</span> <span class="mh">0x2000</span><span class="p">;</span>
+  <span class="n">ar_sig</span><span class="p">.</span><span class="n">len</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>  <span class="c1">// 8-beat burst.</span>
+  <span class="n">ar</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">ar_sig</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-Verilog"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">MyTopFunction</span> <span class="p">(</span>
+  <span class="k">input</span> <span class="n">clock</span><span class="p">,</span>
+  <span class="k">input</span> <span class="n">reset</span><span class="p">,</span>
+  <span class="k">input</span>         <span class="n">ar_ready</span><span class="p">,</span>
+  <span class="k">output</span>        <span class="n">ar_valid</span><span class="p">,</span>
+  <span class="k">output</span> <span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">ar_addr</span><span class="p">,</span>
+  <span class="k">output</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>  <span class="n">ar_len</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="c-library-for-custom-axi-master-interface">
+<h3>C++ Library for Custom AXI Master Interface<a class="headerlink" href="#c-library-for-custom-axi-master-interface" title="Permalink to this headline">¶</a></h3>
+<p>SmartHLS provides a C++ library for implementing the AXI4 master interfaces. The
+library defines the AXI4 master interface in C++ and provides several API
+functions for typical operations. For advanced users hoping to have more
+fine-grained custom control, or additional AXI4 interface signals that are not
+included in the library, the library can serve as a reference implementation
+for customization (create your own AXI4 master library based on SmartHLS&#8217;s
+<code class="docutils literal"><span class="pre">axi_interface.hpp</span></code> header file).</p>
+<p>To create an AXI4 master interface using SmartHLS&#8217;s library, include the header file:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;hls/axi_interface.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>To add an AXI4 master interface, you will need to</p>
+<ol class="arabic simple">
+<li>Create an instance of the <code class="docutils literal"><span class="pre">AxiInterface</span></code> class and specify the address width, data width and wstrb width through template parameters.</li>
+<li>Pass the created instance by reference to the top-level function.
+E.g., <code class="docutils literal"><span class="pre">void</span> <span class="pre">MyTop(AxiInterface&lt;/*</span> <span class="pre">ADDR:</span> <span class="pre">*/</span> <span class="pre">ap_uint&lt;32&gt;,</span> <span class="pre">/*</span> <span class="pre">DATA:</span> <span class="pre">*/</span> <span class="pre">ap_uint&lt;64&gt;,</span> <span class="pre">/*</span> <span class="pre">WSTRB:</span> <span class="pre">*/</span> <span class="pre">ap_uint&lt;8&gt;&gt;</span> <span class="pre">&amp;master);</span></code></li>
+<li>Use the utility functions (APIs) defined in the header to control the AXI master interface.</li>
+</ol>
+<p>Below are the API functions to access the AXI master interface.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">axi_m_read_req</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span>
+                    <span class="n">T_ADDR</span> <span class="n">byte_addr</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">9</span><span class="o">&gt;</span> <span class="n">burst_len</span><span class="p">);</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
+<span class="n">T_DATA</span> <span class="n">axi_m_read_data</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">axi_m_write_req</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span>
+                     <span class="n">T_ADDR</span> <span class="n">byte_addr</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">9</span><span class="o">&gt;</span> <span class="n">burst_len</span><span class="p">);</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">axi_m_write_data</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span>
+                      <span class="n">T_DATA</span> <span class="n">val</span><span class="p">,</span> <span class="n">T_WSTRB</span> <span class="n">strb</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">last</span><span class="p">);</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
+<span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span> <span class="n">axi_m_write_resp</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The read and write operations are independent and therefore can be executed in
+parallel at the same time.</p>
+<p>Same as the AXI4 slave interface, this AXI4 master interface library only
+supports the AXI4-lite protocol with additional support for bursting.</p>
+<p>SW/HW Co-Simulation is supported for AXI master, but requires modeling the AXI
+slave&#8217;s responses to the AXI master in software before the kernel is called. An
+example of an AXI4 master interface tested with CoSim is shown below.</p>
+<div class="highlight-CPP"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;hls/axi_interface.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;hls/ap_int.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">hls</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">simple_master</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">master</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function top</span>
+    <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">9</span><span class="o">&gt;</span> <span class="n">remaining</span> <span class="o">=</span> <span class="n">AXIM_MAX_BURST_LEN</span><span class="p">;</span>
+    <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span> <span class="n">r_addr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span> <span class="n">w_addr</span> <span class="o">=</span> <span class="n">AXIM_MAX_BURST_LEN</span> <span class="o">*</span> <span class="mi">8</span><span class="p">;</span>
+
+<span class="cp">#pragma HLS loop pipeline</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">remaining</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">remaining</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">is_last</span> <span class="o">=</span> <span class="n">remaining</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">remaining</span> <span class="o">==</span> <span class="n">AXIM_MAX_BURST_LEN</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Request to read data in burst.</span>
+            <span class="n">axi_m_read_req</span><span class="o">&lt;</span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">master</span><span class="p">,</span> <span class="n">r_addr</span><span class="p">,</span> <span class="n">AXIM_MAX_BURST_LEN</span><span class="p">);</span>
+
+            <span class="c1">// Request to write data in burst.</span>
+            <span class="n">axi_m_write_req</span><span class="o">&lt;</span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">master</span><span class="p">,</span> <span class="n">w_addr</span><span class="p">,</span> <span class="n">AXIM_MAX_BURST_LEN</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Write back the data we read + 1.</span>
+        <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">axi_m_read_data</span><span class="o">&lt;</span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">master</span><span class="p">);</span>
+        <span class="n">axi_m_write_data</span><span class="o">&lt;</span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">master</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">(</span><span class="n">data</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">0xFF</span><span class="p">),</span> <span class="n">is_last</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="c1">// After the last write, read the response code.</span>
+    <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span> <span class="n">bresp</span> <span class="o">=</span> <span class="n">axi_m_write_resp</span><span class="p">(</span><span class="n">master</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;&gt;</span> <span class="n">axi_if</span><span class="p">(</span><span class="n">AXIM_MAX_BURST_LEN</span><span class="p">);</span>
+
+    <span class="c1">// Prepare the data to be read by the AXI master.</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">AXIM_MAX_BURST_LEN</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">RdDataSignals</span><span class="o">&lt;</span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;&gt;</span> <span class="n">r_sig</span><span class="p">;</span>
+        <span class="n">r_sig</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="n">r_sig</span><span class="p">.</span><span class="n">resp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">r_sig</span><span class="p">.</span><span class="n">last</span> <span class="o">=</span> <span class="n">i</span> <span class="o">==</span> <span class="n">AXIM_MAX_BURST_LEN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">axi_if</span><span class="p">.</span><span class="n">r</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">r_sig</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Prepare the write response for the write from AXI master.</span>
+    <span class="n">WrRespSignals</span> <span class="n">b_sig</span><span class="p">;</span>
+    <span class="n">axi_if</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">b_sig</span><span class="p">);</span>
+
+    <span class="c1">// Run the top-level function that will be synthesize to hardware.</span>
+    <span class="n">simple_master</span><span class="p">(</span><span class="n">axi_if</span><span class="p">);</span>
+
+    <span class="kt">bool</span> <span class="n">failed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+    <span class="c1">// Clear the write and read request.</span>
+    <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span> <span class="n">r_addr</span> <span class="o">=</span> <span class="n">axi_if</span><span class="p">.</span><span class="n">ar</span><span class="p">.</span><span class="n">read</span><span class="p">().</span><span class="n">addr</span><span class="p">;</span>
+    <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span> <span class="n">w_addr</span> <span class="o">=</span> <span class="n">axi_if</span><span class="p">.</span><span class="n">aw</span><span class="p">.</span><span class="n">read</span><span class="p">().</span><span class="n">addr</span><span class="p">;</span>
+
+    <span class="c1">// Check that the read and write addresses were as expected.</span>
+    <span class="n">failed</span> <span class="o">|=</span> <span class="n">r_addr</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">failed</span> <span class="o">|=</span> <span class="n">w_addr</span> <span class="o">!=</span> <span class="n">AXIM_MAX_BURST_LEN</span> <span class="o">*</span> <span class="mi">8</span><span class="p">;</span>
+
+    <span class="c1">// Read all of write data.</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">AXIM_MAX_BURST_LEN</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Check that write data is i + 1.</span>
+        <span class="n">failed</span> <span class="o">|=</span> <span class="n">axi_if</span><span class="p">.</span><span class="n">w</span><span class="p">.</span><span class="n">read</span><span class="p">().</span><span class="n">data</span> <span class="o">!=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Now that all FIFOs have been cleared, the AXI interface could be prepared</span>
+    <span class="c1">// for more calls to the kernel..</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">failed</span><span class="p">)</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;PASS!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">else</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;FAILED!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">failed</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+<!-- Amandeep.Talwar: Moved the footer code to layout.html to resolve conflict with the Microchip template -->
+</footer>
+
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+  
+<footer _ngcontent-hes-c23=""><div _ngcontent-hes-c23="" class="social-icons">
+<a _ngcontent-hes-c23="" href="https://github.com/MicrochipTech/" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="fa-github-square" class="svg-inline--fa fa-github-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path
+     fill="currentColor"
+     d="m 151.375,357.33334 q 1.16667,-2 -0.875,-4.33334 -2.625,-2.33334 -4.08333,-0.66666 -1.16667,2 0.875,4.33332 2.625,2.33334 4.08333,0.66668 z m -8.16667,-13.66668 q -1.45833,-2.33332 -3.5,-1.33332 -1.75,1.33332 0,4 2.04167,2.66666 3.5,1.66666 1.75,-1.33334 0,-4.33334 z M 131.25,330.33334 Q 131.83333,329 129.79167,327.66666 127.75,327 127.45833,328.33334 126.58333,330 128.625,331 q 2.33333,0.66666 2.625,-0.66666 z M 137.375,338 q 0.58333,-0.33334 0.4375,-1.5 -0.14583,-1.16666 -1.02083,-1.83334 -1.75,-2.33332 -2.91667,-1 -1.16667,1.33334 0.29167,3.66668 1.75,2 3.20833,0.66666 z m 25.08333,25 q 0.58334,-2.33334 -2.625,-3.66666 -2.625,-1 -3.79166,1.33332 -0.58334,2.33334 2.625,3.66668 2.625,1 3.79166,-1.33334 z m 12.25,1 q 0,-2.66666 -3.5,-2.66666 -2.91666,0 -2.91666,2.66666 0,2.66666 3.20833,2.66666 3.20833,0 3.20833,-2.66666 z m 11.375,-2.33334 Q 185.5,359.33334 182.29167,360 q -3.20834,0.66666 -2.625,3 0.58333,2.66666 3.5,2 2.91666,-0.66666 2.91666,-3.33334 z M 373.33333,256 q 0,-70.66666 -43.75,-120.66666 Q 285.83333,85.333334 224,85.333334 q -61.83333,0 -105.58333,50.000006 -43.750003,50 -43.750003,120.66666 0,55.66666 28.583333,100.16666 28.58333,44.5 73.5,61.83334 5.25,1 7.72917,-1.66666 2.47916,-2.66668 2.47916,-6.66668 0,-17.33332 -0.29166,-31.66666 -1.75,0.33334 -4.52084,0.83334 -2.77083,0.5 -10.35416,0.66666 -7.58334,0.16666 -14,-1.33334 -6.41667,-1.5 -12.6875,-6.66666 Q 138.83333,366.33334 136.5,357.66666 129.79167,338 119.875,333 q -0.58333,-0.33334 -1.3125,-1.16666 L 116.22917,329.16666 114.1875,326 l 1.16667,-2.5 5.6875,-1.16666 q 1.75,0 4.375,0.66666 2.625,0.66666 8.75,5.16666 6.125,4.5 9.625,11.83334 4.66666,9.33334 10.9375,14 6.27083,4.66666 12.6875,4.66666 6.41666,0 11.08333,-1.16666 4.66667,-1.16666 8.75,-3.16666 2.04167,-15.66668 9.625,-23 -14.29167,-2 -25.08333,-6.16668 Q 161,321 150.5,312.16666 140,303.33334 134.3125,286.83334 128.625,270.33334 128.625,247 q 0,-26.33334 15.45833,-45.66666 -7,-20.66668 1.45834,-45.33334 5.54166,-2 15.89583,2.5 10.35417,4.5 17.64583,9.83334 l 7.58334,5.33332 Q 203.58333,168 224,168 q 20.41667,0 37.33333,5.66666 3.20834,-2.33332 8.3125,-6 Q 274.75,164 285.83333,159 q 11.08334,-5 16.625,-3 8.45834,24.66666 1.45834,45.33334 Q 319.375,220.66666 319.375,247 q 0,19 -4.08333,33.5 -4.08334,14.5 -10.35417,23.33334 -6.27083,8.83332 -15.60417,14.83332 -9.33333,6 -18.22916,8.66668 -8.89584,2.66666 -19.97917,4 10.20833,10.33332 10.20833,31.66666 0,13.33334 -0.14583,29.66666 -0.14583,16.33334 -0.14583,17 0,4 2.47916,6.66668 Q 266,419 271.25,418 316.16667,400.66666 344.75,356.16666 373.33333,311.66666 373.33333,256 Z M 448,96 v 320 q 0,39.66666 -24.64583,67.83334 Q 398.70833,512 364,512 H 84 Q 49.291667,512 24.645833,483.83334 0,455.66666 0,416 V 96 Q 0,56.333334 24.645833,28.166666 49.291667,0 84,0 H 364 Q 398.70833,0 423.35417,28.166666 448,56.333334 448,96 Z"/></svg></fa-icon></div>
+</a>
+
+
+
+<a _ngcontent-hes-c23="" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg></fa-icon></div></a>
+<a _ngcontent-hes-c23="" href="https://google.com/+MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="google"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square" class="svg-inline--fa fa-google-plus-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.linkedin.com/company/microchip-technology" target="_top"><div _ngcontent-hes-c23="" class="linkedin"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://twitter.com/MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="twitter"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square" class="svg-inline--fa fa-twitter-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.youtube.com/user/MicrochipTechnology" target="_top"><div _ngcontent-hes-c23="" class="youtube"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube-square" class="svg-inline--fa fa-youtube-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.microchip.com/rss/" target="_top"><div _ngcontent-hes-c23="" class="rss"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss-square" class="svg-inline--fa fa-rss-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM112 416c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm157.533 0h-34.335c-6.011 0-11.051-4.636-11.442-10.634-5.214-80.05-69.243-143.92-149.123-149.123-5.997-.39-10.633-5.431-10.633-11.441v-34.335c0-6.535 5.468-11.777 11.994-11.425 110.546 5.974 198.997 94.536 204.964 204.964.352 6.526-4.89 11.994-11.425 11.994zm103.027 0h-34.334c-6.161 0-11.175-4.882-11.427-11.038-5.598-136.535-115.204-246.161-251.76-251.76C68.882 152.949 64 147.935 64 141.774V107.44c0-6.454 5.338-11.664 11.787-11.432 167.83 6.025 302.21 141.191 308.205 308.205.232 6.449-4.978 11.787-11.432 11.787z"></path></svg></fa-icon></div></a></div><div _ngcontent-hes-c23="" id="mchip-overlay" onclick="off()" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; background-color: rgba(0,0,0,.3); display: none;"><div _ngcontent-hes-c23="" style="position: relative; width: 100%; height: 100%;"></div></div><div _ngcontent-hes-c23="" class="links"><nav _ngcontent-hes-c23=""><a _ngcontent-hes-c23="" href="https://www.microchip.com/products/" target="_top">Products</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Applications</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Design</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/training/" target="_top">Training</a><a _ngcontent-hes-c23="" href="https://www.microchipdirect.com/" target="_top">Sample</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/aboutus/" target="_top">About</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/contactus/" target="_top">Contact</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/legal/" target="_top">Legal</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/about-us/legal-information/privacy-policy" target="_top">Privacy Policy</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/investors/" target="_top">Investors</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/careers/" target="_top">Careers</a><a _ngcontent-hes-c23="" href="https://support.microchip.com/" target="_top">Support</a></nav><p _ngcontent-hes-c23="" class="links">©Copyright 2021 Microchip Technology Inc. All rights reserved.</p></div></footer>
+</body>
+</html>

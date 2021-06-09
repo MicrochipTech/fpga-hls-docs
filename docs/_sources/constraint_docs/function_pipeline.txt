@@ -1,0 +1,65 @@
+.. _function_pipeline:
+
+function_pipeline
+-------------
+
+This parameter enables pipelining for a given function in the code.
+Function pipelining allows a new invocation of a function to begin before the current one has completed, achieving higher throughput.
+Optional arguments:
+
++--------------------+-----------------------------------------------------------------------+
+| Parameter          | Description                                                           |
++====================+=======================================================================+
+| -ii                | Specify a pipeline initiation interval (default = 1)                  |
++--------------------+-----------------------------------------------------------------------+
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
++--------------------+------------+
+| Parameter          | Value Type |
++====================+============+
+| loop_pipeline      | String     |
++--------------------+------------+
+| -ii                | Integer    |
++--------------------+------------+
+
+Valid Values
++++++++++++++
+
+See Examples
+
+Default Value
+++++++++++++++
+
+N/A
+
+Dependencies
++++++++++++++
+
+None
+
+Applicable Flows
++++++++++++++++++
+
+All devices and flows
+
+Test Status
+++++++++++++
+
+Actively in-use
+
+Examples
++++++++++
+
+``function_pipeline "add"``
+
+``function_pipeline "add" -ii 1``
+
+--------------------------------------------------------------------------------
+

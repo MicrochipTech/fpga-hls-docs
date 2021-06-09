@@ -1,0 +1,45 @@
+.. _FAQ:
+
+Frequently Asked Questions
+==================================
+
+..
+    **How is SmartHLS different from other high-level synthesis (HLS) tools?**
+       SmartHLS is also the only HLS tool that supports the use of threads and OpenMP to
+       create parallel hardware. This powerful feature allows one to write standard multi-threaded software,
+       and automatically compile it to a multi-core hardware system. Lastly, SmartHLS can
+       generate a complete SoC, comprising a processor and hardware accelerators, with a click of a single button.
+    **Tell me more about threads and OpenMP support.**
+       threads and OpenMP are popular parallel programming methodologies in software.
+       The threads described in software gets compiled to execute on multiple processor cores.
+       SmartHLS can take the same software program and automatically compile it to multiple hardware cores.
+       This powerful technique allows one to create a multi-core hardware system directly from software, without any changes to the code.
+       This feature is available both for a hardware-only system (without a processor) or for a processor-accelerator hybrid system.
+    **Tell me more about the processor-accelerator hybrid flow.**
+       Not all programs are amenable for hardware acceleration. One may want to have a processor for controlling the hardware, or
+       to run an operating system, or just for ease-of-use. The processor-accelerator hybrid flow in SmartHLS allows one to accelerate a portion of the program while keeping the rest running in software on a processor.
+       All that the user has to do is simply designate which function(s) to accelerate in hardware, and the rest is taken care of automatically.
+       SmartHLS automatically partitions the program so that the designated function(s) and the descendant functions are compiled to
+       hardware accelerators, with the remainder of the program is compiled to execute on an ARM processor.
+       The tool automatically handles the software/hardware partitioning, and their communication interfaces and interconnect are also automatically generated.
+       This flow allows one to generate a complete SoC, comprising a processor and hardware accelerators, directly from software.
+
+**What is the input software language to SmartHLS?**
+
+    The input language to SmartHLS is C/C++. For compiling to hardware, SmartHLS supports most of C/C++, but does not support recursive functions or dynamic memory (malloc, calloc, new, etc). Also we do not support the STL C++ library (vector, map, set, etc.) and only support a subset of the C math library (see :ref:`c_numerics_library`).
+    These unsupported software constructs can be in the software testbench portion of the code, outside of the top-level function to be compiled to hardware (see :ref:`custom_top_level`).
+
+..
+  As mentioned above, SmartHLS also supports threads and OpenMP to create parallel hardware.
+
+**What is the generated RTL language?**
+
+  Currently, SmartHLS only supports Verilog HDL output.
+
+**Which FPGAs do you support?**
+
+  SmartHLS supports Microchip PolarFire FPGAs.
+
+**How can I get support?**
+
+  Please contact smarthls@microchip.com.

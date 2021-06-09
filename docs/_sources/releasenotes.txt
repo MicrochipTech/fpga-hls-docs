@@ -1,0 +1,100 @@
+.. _release:
+
+Release Notes
+===============
+
+LegUp HLS EAP 2021.1.2 Release Notes
+---------------------------------
+
+Release date: April 23, 2021
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ * Full support for complex software testbenches.
+ * Automatically trigger re-compilation if needed to generate the software binary or Verilog when the C++ source code, Makefile, or TCL config files changed.
+ * Added limited SW/HW Co-Simulation support for multi-threading when all threads are joined in the function where the threads are forked.
+ * Added support for user-specified arguments of the main() function in software testbench.
+ * Added AP_RND_ZERO quantization mode to the ap_fixpt C++ library.
+ * Added a range() method to ap_int and ap_fixpt C++ libraries.
+ * Added a simulation with waves feature to LegUp IDE for custom testbench.
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-59:     RTL Interface: fix memory port names
+ * HLS-174:    Spaces in LegUp workspace path makes synthesis fail. Add user error message to avoid spaces.
+ * HLS-177:    Change the header files on Windows
+ * HLS-199:    Add documentation comment to LegUp Library classes like ap_int similar to ap_fixpt so the user can mouse over the type in Eclipse and get the usage information
+ * HLS-225:    create_hdl_plus.tcl does not properly import mem_init files
+ * HLS-232:    Update windows installer link to LegUp getting started guide
+ * HLS-255:    After project import LegUp IDE does not save HLS constraints changes when closing
+ * HLS-269:    Missing legup_array_depth=1 for struct pass-in-by-reference
+ * HLS-277:    Automatically add array-depth attribute to pass-in-by-value structs.
+ * HLS-278:    Hardware functions are incorrectly removed by PreprocessThreadLib pass
+ * HLS-279:    Interface Report: Struct type IORam is incorrectly considered as scalar memory
+ * HLS-280:    Interface Report: byte-enable signal is not properly recognized for non-struct yet byte-enabled RAMs
+
+
+LegUp HLS EAP 9.2.1 Release Notes
+---------------------------------
+
+Release date: March 3, 2021
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Added support for new ``legup::thread`` multi-threading API (see :ref:`pthreads_multithreading`)
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-42: Libero 12.6 complains about set_option -rom_map_logic.
+ * HLS-50: Sobel tutorial part 3 to match the syntax as part 1 & 2.
+ * HLS-59: Fix the memory port names to a more understandable convention.
+ * HLS-60: Give a proper error when there are multiple top-level functions specified.
+ * HLS-63: Sefault if the top-level function pragma is removed from Sobel tutorial part 1.
+ * HLS-78: Loop pipeline support for variable loop bounds.
+ * HLS-97: Fmax improvements for customer design.
+ * HLS-121: Cannot access AXI4 slave without starting the accelerator (in concurrent_access mode).
+ * HLS-129: Loop unrolling crashes some designs.
+ * HLS-142: Running Libero synthesis, P&R from LegUp will fail with Libero 12.5 or before on Windows.
+ * HLS-149: LLVM's loop-unswitch performs an unwanted loop replication.
+ * HLS-156: CoSim: wrong values for ap_uint type being fed to the DUT.
+ * HLS-162: Verilog name conflict in generated Verilog between a RAM instance and a register.
+ * HLS-164: Cannot expand grouped AXI4stream ports in SmartDesign for HDL+ block.
+ * HLS-165: Some memory interfaces are not showing in the interface report.
+ * HLS-168: Clang errors out with none type memory partition pragma.
+ * HLS-200: Can't set multiply latency when split mult is enabled.
+ * HLS-201: Execute create_hdl_plus.tcl from Libero got LEGUP_ROOT_DIR not set error.
+ * HLS-203: ScheduleViewer does not work when LegUp installation and workspace are in different drives.
+ * HLS-206: Red-line in Eclipse complaining about legup::thread/ref.
+
+LegUp HLS EAP 9.1 Release Notes
+---------------------------------
+
+Release date: Jan 4, 2021
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Only support targeting Microchip PolarFire FPGAs
+ * Support for Libero 12.6
+ * Libero SmartDesign integration (see :ref:`smartdesign`)
+ * Added support for pragmas (see :ref:`pragmas`) in the source code to specify LegUp user constraints instead of using Tcl commands.
+ * Support for math.h functions (see :ref:`c_numerics_library`)
+ * Documentation of top-level RTL interfaces (see :ref:`rtl_interface`)
+ * Improvements to memory partitioning (see :ref:`memory_partitioning`)
+ * Added Microchip software end-user license agreement (EULA)
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+The following defects and enhancement requests were resolved:
+
+ * Synthesize with Libero block flow to avoid limited number of top-level I/O pins
+ * Fixes for RAM initialization and reset logic
+ * Fix LegUp IDE cancel button on Windows
+ * Fix Libero FMax parsing
+ * Better error messages for unsupported C++ features (vector, map, etc.) and unsupported co-simulation cases

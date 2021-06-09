@@ -1,0 +1,48 @@
+.. highlight:: c
+
+.. _pragma_interface_memory_variable:
+
+Configure Global as AXI4 Interface 
+----------------------------------
+
+**Syntax**
+
+
+``#pragma HLS interface variable(<var_name>) type(axi_slave) concurrent_access(true|false)``
+
+**Description**
+
+This pragma specifies an AXI4 slave interface.
+When the `concurrent_access` option is set to true (default to false), the
+external logic can read/write the AXI4 slave interface while the SmartHLS module is
+running.  The concurrent access will however reduce the SmartHLS module's
+throughput to access the memory.
+More details in :ref:`rtl_interface` section.
+
+**Parameters**
+
+
++-----------------------+----------------+----------+----------------+-------------------------------------------------------+
+|     Parameter         |   Value        | Optional |     Default    |                    Description                        |
++=======================+================+==========+================+=======================================================+
+|    ``variable``       |  String        |    No    |                | Variable name                                         |
++-----------------------+----------------+----------+----------------+-------------------------------------------------------+
+|      ``type``         | ``axi_slave``  |    No    |                | Interface type                                        |
++-----------------------+----------------+----------+----------------+-------------------------------------------------------+
+| ``concurrent_access`` | ``true|false`` |    Yes   |   ``false``    | Enable/disable concurrent access                      |
++-----------------------+----------------+----------+----------------+-------------------------------------------------------+
+
+**Position**
+
+Before the global variable declaration.
+
+**Examples**
+
+
+.. code-block:: c
+
+  #pragma HLS interface variable(b) type(axi_slave) concurrent_access(true)
+  int b[SIZE];
+
+--------------------------------------------------------------------------------
+

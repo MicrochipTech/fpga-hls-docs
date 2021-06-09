@@ -1,0 +1,69 @@
+.. _set_argument_interface_type:
+
+set_argument_interface_type
+----------------------------
+
+This parameter specifies the interface type for the top-level interface.
+This can be used to specify a pointer argument for a single element (single-element array or a single-element global variable) passed into the top-level function to become a simpler wire/register interface.
+``set_argument_interface_type data_out register/wire``
+
+A global variable can also be specified to become an AXI slave interface.
+``set_argument_interface_type slave_memory axi_s``
+
+For a single-element array/global variable passed in as argument to top-level function, there can be 5 different types of interface. 
+1. If element is read from and written to, SmartHLS creates readdata, write_enable, writedata ports (default behaviour). 
+2. If element is read-only, only readdata port is created (default behaviour)
+3. If element is write-only, write_enable and writedata ports are created (default behaviour)
+4. If element is write-only, and user wants the written data registered inside the top-level module so that the written data at the top-level interface is held constant, set_argument_interface_type <arg_name> register can be used. This creates only writedata ports at the top-level interface, which is connected to the output of the instantiated register in the top-level module.
+5. If element is write-only, and user wants only the writedata port at the top-level interface without written data being registered (wire connection directly to the top-level), set_argument_interface_type <arg_name> wire -always_valid can be used.
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
++--------------------+------------+
+| Parameter          | Value Type |
++====================+============+
+| argument_name      | String     |
++--------------------+------------+
+| interface_type     | String     |
++--------------------+------------+
+
+Valid Values
++++++++++++++
+
+Three types of interface can be specified, "wire", "register", and "axi_s".
+
+Dependencies
++++++++++++++
+
+Require top-level function to be set via ``set_custom_top_level_module``. 
+
+Applicable Flows
++++++++++++++++++
+
+All devices for pure hardware flow
+
+Test Status
+++++++++++++
+
+Actively in-use
+
+Examples
++++++++++
+
+    ``set_argument_interface_type data_out register``
+data_out is a write-only single-element pointer argument passed into the top-level function. A register will be created at the top-level module to flop the written data for data_out. The output of the register is connected to the data_out writedata port at the top-level interface. 
+    
+    ``set_argument_interface_type data_out wire -always_valid``
+data_out is a write-only single-element pointer argument passed into the top-level function. Only the writedata port will be created at the top-level for data_out. 
+
+    ``set_argument_interface_type slave_memory axi_s``
+slave_memory is a global variable specified to be an AXI slave interface.     
+
+--------------------------------------------------------------------------------
+
