@@ -442,29 +442,43 @@ The corresponding address map report
 
 
 .. NOTE::
-  There are several limitations in the current release,
+  **IMPORTANT: the AXI4 slave has some restrictions**,
 
-  - A SmartHLS module can have at most one AXI4 slave interface, and the AXI4 slave
-    interface type can only be specified for a global variable with a struct
-    data type.  If multiple data need to be placed behind the AXI4 slave
-    interface, you can define a new struct type to include all the data, then
-    instantiate a global variable with the struct type, and specify the above
-    pragma for the global variable.
+  - A SmartHLS module can have at most one AXI4 slave interface, and the AXI4
+    slave interface type can only be specified for a global variable with a
+    struct data type.
+
+    - If multiple data need to be placed behind the AXI4 slave interface, you
+      can define a new struct type to include all the data, then instantiate a
+      global variable with the struct type, and specify the above pragma for
+      the global variable.
+
+  - The AXI4 slave interface always uses 32-bit address and 64-bit data width.
+
   - The AXI4 slave interface only supports the AXI4-lite protocol with
     additional support for incremental bursting.
-  - The AXI4 slave interface always uses 32-bit address and 64-bit data width.
+
+  - The AxBURST and AxSIZE input signals are ignored by the slave logic.
+
+    - Regardless of the actual input values of the AxBURST and AxSIZE signals,
+      the AXI4 slave always uses the incremental burst type (AxBURST == 1) with a
+      size of 8 bytes per transfer (AxSIZE == 3).
+
   - Byte-enable write (via WSTRB port) must be aligned to the elements in the
     struct.
-    For the WSTRB bits corresponding to (different bytes of) a common struct
-    element, these WSTRB bits must be all 1s or all 0s.
-    For example, if we are writing to a word address that maps to two 'int'
-    type integers (4 bytes each, packed together as one 64-bit AXI word), the
-    upper 4 bits of the WSTRB port must be all 1s or 0s, and the same applies
-    to the lower 4 bits of the WSTRB port.
-    That is, we cannot update partial bytes of either 'int' type integers, but
-    updating all bytes of one of the two 'int' type integers is allowed.
+
+    - For the WSTRB bits corresponding to (different bytes of) a common struct
+      element, these WSTRB bits must be all 1s or all 0s.
+    - For example, if we are writing to a word address that maps to two 'int'
+      type integers (4 bytes each, packed together as one 64-bit AXI word), the
+      upper 4 bits of the WSTRB port must be all 1s or 0s, and the same applies
+      to the lower 4 bits of the WSTRB port.
+      That is, we cannot update partial bytes of either 'int' type integers, but
+      updating all bytes of one of the two 'int' type integers is allowed.
+
   - The SW/HW Co-Simulation is only supported if the top level function is not
     pipelined.
+
   - When AXI4 slave interface is used, the top-level function must use void
     return type.
 
@@ -601,21 +615,61 @@ Below are the API functions to access the AXI master interface.
 
 .. code-block:: cpp
 
+    /*
+    Send a read request starting from 'byte_addr' for 'burst_len' number of transfers.
+    - 'burst_len' can not be greater than 256 (max: 256) according to AXI4 specification.
+    - 'burst_type' is optional. The default value is 1 (incremental).
+    - 'transfer_size' is optional. The default value is automatically set to the full size matching T_DATA.
+      - The byte size per transfer equals to 2 to the power of transfer_size.
+      - e.g., if T_DATA is of an ap_uint<64> or uint64 type, the default transfer_size is 3.
+    */
     template <class T_ADDR, class T_DATA, class T_WSTRB>
     void axi_m_read_req(AxiInterface<T_ADDR, T_DATA, T_WSTRB> &m, 
-                        T_ADDR byte_addr, ap_uint<9> burst_len);
+                        T_ADDR byte_addr, ap_uint<9> burst_len,
+                        ap_uint<2> burst_type = 1,
+                        ap_uint<3> transfer_size = <SIZE_MATCHING_T_DATA>);
 
+    /*
+    Receive the read data (return value) for one read transfer.
+    - The function should be called after a read request is sent by 'axi_m_read_req'.
+    - For a read request with 'burst_len' number of transfers, this function
+      should be called for 'burst_len' number of times to receive all read data.
+    */
     template <class T_ADDR, class T_DATA, class T_WSTRB>
     T_DATA axi_m_read_data(AxiInterface<T_ADDR, T_DATA, T_WSTRB> &m);
 
+    /*
+    Send a write request starting from 'byte_addr' for 'burst_len' number of transfers.
+    - 'burst_len' can not be greater than 256 (max: 256) according to AXI4 specification.
+    - 'burst_type' is optional. The default value is 1 (incremental).
+    - 'transfer_size' is optional. The default value is automatically set to the full size matching T_DATA.
+      - The byte size per transfer equals to 2 to the power of transfer_size.
+      - e.g., if T_DATA is of an ap_uint<64> or uint64 type, the default transfer_size is 3.
+    */
     template <class T_ADDR, class T_DATA, class T_WSTRB>
     void axi_m_write_req(AxiInterface<T_ADDR, T_DATA, T_WSTRB> &m, 
-                         T_ADDR byte_addr, ap_uint<9> burst_len);
+                         T_ADDR byte_addr, ap_uint<9> burst_len,
+                         ap_uint<2> burst_type = 1,
+                         ap_uint<3> transfer_size = <SIZE_MATCHING_T_DATA>);
 
+    /*
+    Send the write data 'val' for one write transfer.
+    - The function should be called after a write request is sent by 'axi_m_write_req'.
+    - For a write request with 'burst_len' number of transfers, this function
+      should be called for 'burst_len' number of times to send all write data.
+      - 'strb' acts as the byte-enable with each bit corresponds to a byte of the data.
+      - 'last' should be set to 1 if and only if the current function call
+        corresponds to the last transfer of the current write request.
+    */
     template <class T_ADDR, class T_DATA, class T_WSTRB>
     void axi_m_write_data(AxiInterface<T_ADDR, T_DATA, T_WSTRB> &m, 
                           T_DATA val, T_WSTRB strb, bool last);
 
+    /*
+    Receive the response acknowledgement for the last write request from the slave.
+    - The function should be called after all write data are sent by 'axi_m_write_data'.
+    - A return value of 0 means 'OK'; otherwise indicates an error.
+    */
     template <class T_ADDR, class T_DATA, class T_WSTRB>
     ap_uint<2> axi_m_write_resp(AxiInterface<T_ADDR, T_DATA, T_WSTRB> &m);
 

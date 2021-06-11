@@ -3143,27 +3143,41 @@ processor controlling the SmartHLS-generated module).</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>There are several limitations in the current release,</p>
+<p><strong>IMPORTANT: the AXI4 slave has some restrictions</strong>,</p>
 <ul class="simple">
-<li><p>A SmartHLS module can have at most one AXI4 slave interface, and the AXI4 slave
-interface type can only be specified for a global variable with a struct
-data type.  If multiple data need to be placed behind the AXI4 slave
-interface, you can define a new struct type to include all the data, then
-instantiate a global variable with the struct type, and specify the above
-pragma for the global variable.</p></li>
+<li><p>A SmartHLS module can have at most one AXI4 slave interface, and the AXI4
+slave interface type can only be specified for a global variable with a
+struct data type.</p>
+<ul>
+<li><p>If multiple data need to be placed behind the AXI4 slave interface, you
+can define a new struct type to include all the data, then instantiate a
+global variable with the struct type, and specify the above pragma for
+the global variable.</p></li>
+</ul>
+</li>
+<li><p>The AXI4 slave interface always uses 32-bit address and 64-bit data width.</p></li>
 <li><p>The AXI4 slave interface only supports the AXI4-lite protocol with
 additional support for incremental bursting.</p></li>
-<li><p>The AXI4 slave interface always uses 32-bit address and 64-bit data width.</p></li>
+<li><p>The AxBURST and AxSIZE input signals are ignored by the slave logic.</p>
+<ul>
+<li><p>Regardless of the actual input values of the AxBURST and AxSIZE signals,
+the AXI4 slave always uses the incremental burst type (AxBURST == 1) with a
+size of 8 bytes per transfer (AxSIZE == 3).</p></li>
+</ul>
+</li>
 <li><p>Byte-enable write (via WSTRB port) must be aligned to the elements in the
-struct.
-For the WSTRB bits corresponding to (different bytes of) a common struct
-element, these WSTRB bits must be all 1s or all 0s.
-For example, if we are writing to a word address that maps to two ‘int’
+struct.</p>
+<ul>
+<li><p>For the WSTRB bits corresponding to (different bytes of) a common struct
+element, these WSTRB bits must be all 1s or all 0s.</p></li>
+<li><p>For example, if we are writing to a word address that maps to two ‘int’
 type integers (4 bytes each, packed together as one 64-bit AXI word), the
 upper 4 bits of the WSTRB port must be all 1s or 0s, and the same applies
 to the lower 4 bits of the WSTRB port.
 That is, we cannot update partial bytes of either ‘int’ type integers, but
 updating all bytes of one of the two ‘int’ type integers is allowed.</p></li>
+</ul>
+</li>
 <li><p>The SW/HW Co-Simulation is only supported if the top level function is not
 pipelined.</p></li>
 <li><p>When AXI4 slave interface is used, the top-level function must use void
@@ -3311,21 +3325,61 @@ E.g., <code class="docutils literal notranslate"><span class="pre">void</span> <
 <li><p>Use the utility functions (APIs) defined in the header to control the AXI master interface.</p></li>
 </ol>
 <p>Below are the API functions to access the AXI master interface.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">Send a read request starting from &#39;byte_addr&#39; for &#39;burst_len&#39; number of transfers.</span>
+<span class="cm">- &#39;burst_len&#39; can not be greater than 256 (max: 256) according to AXI4 specification.</span>
+<span class="cm">- &#39;burst_type&#39; is optional. The default value is 1 (incremental).</span>
+<span class="cm">- &#39;transfer_size&#39; is optional. The default value is automatically set to the full size matching T_DATA.</span>
+<span class="cm">  - The byte size per transfer equals to 2 to the power of transfer_size.</span>
+<span class="cm">  - e.g., if T_DATA is of an ap_uint&lt;64&gt; or uint64 type, the default transfer_size is 3.</span>
+<span class="cm">*/</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
 <span class="kt">void</span> <span class="n">axi_m_read_req</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span>
-                    <span class="n">T_ADDR</span> <span class="n">byte_addr</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">9</span><span class="o">&gt;</span> <span class="n">burst_len</span><span class="p">);</span>
+                    <span class="n">T_ADDR</span> <span class="n">byte_addr</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">9</span><span class="o">&gt;</span> <span class="n">burst_len</span><span class="p">,</span>
+                    <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span> <span class="n">burst_type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span> <span class="n">transfer_size</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">SIZE_MATCHING_T_DATA</span><span class="o">&gt;</span><span class="p">);</span>
 
+<span class="cm">/*</span>
+<span class="cm">Receive the read data (return value) for one read transfer.</span>
+<span class="cm">- The function should be called after a read request is sent by &#39;axi_m_read_req&#39;.</span>
+<span class="cm">- For a read request with &#39;burst_len&#39; number of transfers, this function</span>
+<span class="cm">  should be called for &#39;burst_len&#39; number of times to receive all read data.</span>
+<span class="cm">*/</span>
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
 <span class="n">T_DATA</span> <span class="n">axi_m_read_data</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
 
+<span class="cm">/*</span>
+<span class="cm">Send a write request starting from &#39;byte_addr&#39; for &#39;burst_len&#39; number of transfers.</span>
+<span class="cm">- &#39;burst_len&#39; can not be greater than 256 (max: 256) according to AXI4 specification.</span>
+<span class="cm">- &#39;burst_type&#39; is optional. The default value is 1 (incremental).</span>
+<span class="cm">- &#39;transfer_size&#39; is optional. The default value is automatically set to the full size matching T_DATA.</span>
+<span class="cm">  - The byte size per transfer equals to 2 to the power of transfer_size.</span>
+<span class="cm">  - e.g., if T_DATA is of an ap_uint&lt;64&gt; or uint64 type, the default transfer_size is 3.</span>
+<span class="cm">*/</span>
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
 <span class="kt">void</span> <span class="n">axi_m_write_req</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span>
-                     <span class="n">T_ADDR</span> <span class="n">byte_addr</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">9</span><span class="o">&gt;</span> <span class="n">burst_len</span><span class="p">);</span>
+                     <span class="n">T_ADDR</span> <span class="n">byte_addr</span><span class="p">,</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">9</span><span class="o">&gt;</span> <span class="n">burst_len</span><span class="p">,</span>
+                     <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span> <span class="n">burst_type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                     <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span> <span class="n">transfer_size</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">SIZE_MATCHING_T_DATA</span><span class="o">&gt;</span><span class="p">);</span>
 
+<span class="cm">/*</span>
+<span class="cm">Send the write data &#39;val&#39; for one write transfer.</span>
+<span class="cm">- The function should be called after a write request is sent by &#39;axi_m_write_req&#39;.</span>
+<span class="cm">- For a write request with &#39;burst_len&#39; number of transfers, this function</span>
+<span class="cm">  should be called for &#39;burst_len&#39; number of times to send all write data.</span>
+<span class="cm">  - &#39;strb&#39; acts as the byte-enable with each bit corresponds to a byte of the data.</span>
+<span class="cm">  - &#39;last&#39; should be set to 1 if and only if the current function call</span>
+<span class="cm">    corresponds to the last transfer of the current write request.</span>
+<span class="cm">*/</span>
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
 <span class="kt">void</span> <span class="n">axi_m_write_data</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span>
                       <span class="n">T_DATA</span> <span class="n">val</span><span class="p">,</span> <span class="n">T_WSTRB</span> <span class="n">strb</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">last</span><span class="p">);</span>
 
+<span class="cm">/*</span>
+<span class="cm">Receive the response acknowledgement for the last write request from the slave.</span>
+<span class="cm">- The function should be called after all write data are sent by &#39;axi_m_write_data&#39;.</span>
+<span class="cm">- A return value of 0 means &#39;OK&#39;; otherwise indicates an error.</span>
+<span class="cm">*/</span>
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T_ADDR</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_DATA</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T_WSTRB</span><span class="o">&gt;</span>
 <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span> <span class="n">axi_m_write_resp</span><span class="p">(</span><span class="n">AxiInterface</span><span class="o">&lt;</span><span class="n">T_ADDR</span><span class="p">,</span> <span class="n">T_DATA</span><span class="p">,</span> <span class="n">T_WSTRB</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
 </pre></div>

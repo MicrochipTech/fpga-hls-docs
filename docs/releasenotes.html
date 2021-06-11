@@ -557,9 +557,10 @@ display:none;
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">1. Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#legup-hls-eap-2021-1-2-release-notes">2.1. LegUp HLS EAP 2021.1.2 Release Notes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#software-features-and-enhancements">2.1.1. Software Features and Enhancements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#resolved-issues">2.1.2. Resolved Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smart-hls-eap-2021-1-2-release-notes">2.1. Smart HLS EAP 2021.1.2 Release Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#legup-hls-is-now-rebranded-to-smart-hls">2.1.1. LegUp HLS is now rebranded to Smart HLS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-features-and-enhancements">2.1.2. Software Features and Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resolved-issues">2.1.3. Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#legup-hls-eap-2021-1-release-notes">2.2. LegUp HLS EAP 2021.1 Release Notes</a><ul>
@@ -660,15 +661,51 @@ display:none;
             
   <div class="section" id="release-notes">
 <span id="release"></span><h1><span class="section-number">2. </span>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="legup-hls-eap-2021-1-2-release-notes">
-<h2><span class="section-number">2.1. </span>LegUp HLS EAP 2021.1.2 Release Notes<a class="headerlink" href="#legup-hls-eap-2021-1-2-release-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smart-hls-eap-2021-1-2-release-notes">
+<h2><span class="section-number">2.1. </span>Smart HLS EAP 2021.1.2 Release Notes<a class="headerlink" href="#smart-hls-eap-2021-1-2-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>Release date: June 14, 2021</p>
+<div class="section" id="legup-hls-is-now-rebranded-to-smart-hls">
+<h3><span class="section-number">2.1.1. </span>LegUp HLS is now rebranded to Smart HLS<a class="headerlink" href="#legup-hls-is-now-rebranded-to-smart-hls" title="Permalink to this headline">¶</a></h3>
+<p>To port your existing LegUp HLS projects to Smart HLS, the following changes
+will be needed in the source code:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The include path of HLS library: change <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;legup/...&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;hls/...&quot;</span></code></p></li>
+<li><p>All <code class="docutils literal notranslate"><span class="pre">legup</span></code> namespace is renamed to <code class="docutils literal notranslate"><span class="pre">hls</span></code>; e.g., <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span> <span class="pre">hls;</span></code> or <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">LEGUP</span> <span class="pre">...</span></code> should be changed to <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">...</span></code></p></li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="software-features-and-enhancements">
-<h3><span class="section-number">2.1.1. </span>Software Features and Enhancements<a class="headerlink" href="#software-features-and-enhancements" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.2. </span>Software Features and Enhancements<a class="headerlink" href="#software-features-and-enhancements" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Extended AXI4 master interface with AxSIZE and AxBURST support.</p></li>
+<li><p>Improved FIFO depth modeling in software, and full-ness detection in software and RTL simulation.</p></li>
+<li><p>Enhanced bit-width reduction to support very wide integer types (e.g., ap_uint&lt;1024&gt;).</p></li>
+<li><p>Added support for unpartitioned structs (and nested structs) in CoSimulation.</p></li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="resolved-issues">
-<h3><span class="section-number">2.1.2. </span>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.3. </span>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
 <p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HLS-282:   Rename “LegUp HLS” to “Smart HLS”</p></li>
+<li><p>HLS-335:   AP width memory controller gets “Warning: Invalid bitwidth ‘256’ for instr.”</p></li>
+<li><p>HLS-330:   VectorBlox design not finish when in multithreading with axi_read loops unmerged</p></li>
+<li><p>HLS-328:   Loop pipeline fails with ap_int type induction variable</p></li>
+<li><p>HLS-327:   Fix bug in software emulation of certain ap_int wide multiply operations</p></li>
+<li><p>HLS-324:   Legality check and error message about the one-to-one connection between FIFO and function’s FIFO argument</p></li>
+<li><p>HLS-303:   If Conversion Pass - DFS never exits with a &gt;40,000 basic block size loop</p></li>
+<li><p>HLS-296:   If conversion pass errored out while trying to pipeline a loop</p></li>
+<li><p>HLS-260:   Segfault due to struct of ap_int top-level argument</p></li>
+<li><p>HLS-158:   Crashes at visitLocalMemoryInst – a struct argument containing ap_uint</p></li>
+<li><p>HLS-147:   Incorrect Transformation by if-conv</p></li>
+<li><p>HLS-112:   Add volatile support in extractArgs/cosim for parsing debug info for volatile</p></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="legup-hls-eap-2021-1-release-notes">
