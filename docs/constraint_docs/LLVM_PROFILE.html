@@ -639,7 +639,7 @@ display:none;
 <p>Enabling this parameter will allow the scheduler to modify scheduling based on
 the llvm profiling information. To enable this option, <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE=1</span></code> should
 be set in <code class="docutils literal notranslate"><span class="pre">Makefile.config</span></code> and <code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LLVM_PROFILE</span> <span class="pre">1</span></code> should be
-set in <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> or <code class="docutils literal notranslate"><span class="pre">smarthls.tcl</span></code>.</p>
+set in <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> or <code class="docutils literal notranslate"><span class="pre">legup.tcl</span></code>.</p>
 <p>With <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE</span></code> enabled, the schedules will be modified for the
 infrequently used basic blocks, which the basic blocks executed at or below the
 frequency threshold <code class="docutils literal notranslate"><span class="pre">LLVM_PROFILE_MAX_BB_FREQ_TO_ALTER</span></code>.
@@ -688,7 +688,7 @@ Cyclone II) or <code class="docutils literal notranslate"><span class="pre">LLVM
 </div>
 <div class="section" id="location-where-default-is-specified">
 <h2>Location Where Default is Specified<a class="headerlink" href="#location-where-default-is-specified" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">examples/smarthls.tcl</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code>
 <code class="docutils literal notranslate"><span class="pre">examples/Makefile.config</span></code></p>
 </div>
 <div class="section" id="dependencies">

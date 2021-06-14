@@ -39,7 +39,7 @@ SDC_BACKTRACKING
 Location Where Default is Specified
 +++++++++++++++++++++++++++++++++++
 
-``examples/smarthls.tcl``
+``examples/legup.tcl``
 
 Dependencies
 +++++++++++++

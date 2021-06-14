@@ -2374,7 +2374,7 @@ Bit Reduction XNOR:
   SmartHLS also has a pure software flow that can be used for testing your C code.
   The pure software flow works for both MIPS and ARM processors.
   To target a specific processor architecture, SmartHLS makes sure an appropriate project
-  has been selected in ``smarthls/examples/smarthls.tcl``.
+  has been selected in ``smarthls/examples/legup.tcl``.
 
   The SmartHLS script is shls. The following shls targets are relevant to the pure software flow:
    * ``shls sw``: generate an ELF file for the desired processor architecture

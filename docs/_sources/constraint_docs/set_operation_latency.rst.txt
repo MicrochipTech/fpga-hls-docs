@@ -47,7 +47,7 @@ boards/PolarFire/PolarFire.tcl or boards/set_operation_latency.tcl
 
 **Location Where Default is Specified**
 
-``examples/smarthls.tcl``
+``examples/legup.tcl``
 
 **Dependencies**
 

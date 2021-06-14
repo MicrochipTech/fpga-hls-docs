@@ -6,7 +6,7 @@ LLVM_PROFILE
 Enabling this parameter will allow the scheduler to modify scheduling based on
 the llvm profiling information. To enable this option, ``LLVM_PROFILE=1`` should
 be set in ``Makefile.config`` and ``set_parameter LLVM_PROFILE 1`` should be
-set in ``config.tcl`` or ``smarthls.tcl``.
+set in ``config.tcl`` or ``legup.tcl``.
 
 With ``LLVM_PROFILE`` enabled, the schedules will be modified for the
 infrequently used basic blocks, which the basic blocks executed at or below the
@@ -58,7 +58,7 @@ Default Value
 Location Where Default is Specified
 +++++++++++++++++++++++++++++++++++
 
-``examples/smarthls.tcl``
+``examples/legup.tcl``
 ``examples/Makefile.config``
 
 Dependencies

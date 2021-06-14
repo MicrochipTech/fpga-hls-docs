@@ -5,7 +5,7 @@ SYSTEM_PROJECT_NAME
 
 The name of the directory containing the project and system to
 be used by the software and hybrid makefile targets. The directory must also 
-include a smarthls.tcl file that describes the Qsys system. This constraint is set 
+include a legup.tcl file that describes the Qsys system. This constraint is set 
 in the set_project function and should not be set independently.
 
 Category
@@ -31,7 +31,7 @@ Tiger_SDRAM
 Location Where Default is Specified
 +++++++++++++++++++++++++++++++++++
 
-``examples/smarthls.tcl``
+``examples/legup.tcl``
 
 Dependencies
 +++++++++++++
