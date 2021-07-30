@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -13,7 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Instantiating SmartHLS IP Core in Libero SmartDesign &mdash; SmartHLS 2021.1.2 documentation</title>
+  <title>Instantiating SmartHLS IP Core in Libero SmartDesign &mdash; SmartHLS 2021.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -517,7 +518,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.1.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2  </span>
 
 										  </h1>
 								
@@ -566,11 +567,17 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">1. SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">2. Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">3. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">3. Setup Smart HLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">4. Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs">Main (2021.2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/2021.1.2">2021.1.2</a></li>
 </ul>
 
             
@@ -634,14 +641,14 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="instantiating-smarthls-ip-core-in-libero-smartdesign">
+  <section id="instantiating-smarthls-ip-core-in-libero-smartdesign">
 <span id="smartdesign"></span><h1>Instantiating SmartHLS IP Core in Libero SmartDesign<a class="headerlink" href="#instantiating-smarthls-ip-core-in-libero-smartdesign" title="Permalink to this headline">¶</a></h1>
 <p>After we use SmartHLS to design a hardware IP component, we will want to instantiate
 the component into Libero SmartDesign and integrate this core into our larger system.
 When SmartHLS generates the hardware, SmartHLS will also generate a <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code>
 script to easily instantiate the SmartHLS-generated IP core into Libero SmartDesign.</p>
 <p>You will see the log message in the console which includes the full path to the script like this:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.1.2\workspace\sobel_part3\create_hdl_plus.tcl.
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.2\workspace\sobel_part3\create_hdl_plus.tcl.
 </pre></div>
 </div>
 <p>Now we can use Libero to open a Libero project, create a new SmartDesign, and give the newly created SmartDesign a suitable name.
@@ -670,7 +677,7 @@ as an input, and <code class="docutils literal notranslate"><span class="pre">ou
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals1.png"><img alt="_images/AXI4_Stream_subsignals1.png" class="align-center" src="_images/AXI4_Stream_subsignals1.png" style="width: 241.0px; height: 173.0px;" /></a>
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals2.png"><img alt="_images/AXI4_Stream_subsignals2.png" class="align-center" src="_images/AXI4_Stream_subsignals2.png" style="width: 190.0px; height: 159.0px;" /></a>
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals3.png"><img alt="_images/AXI4_Stream_subsignals3.png" class="align-center" src="_images/AXI4_Stream_subsignals3.png" style="width: 202.0px; height: 115.0px;" /></a>
-</div>
+</section>
 
 
            </div>

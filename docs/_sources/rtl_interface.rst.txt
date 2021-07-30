@@ -151,7 +151,7 @@ of the top-level module,
 +---------------------+-----------+-------------------------------------------------------------------------------------------------------+
 | Port Name           | Direction | Description                                                                                           |
 +=====================+===========+=======================================================================================================+
-| `<ARGUMENT_NAME>`   | IN        | The input value of the scalar argument.  This input port is sampled by the SmartHLS module when both     |
+| `<ARGUMENT_NAME>`   | IN        | The input value of the scalar argument.  This input port is sampled by the SmartHLS module when both  |
 |                     |           | `start` and `ready` signals are 1.                                                                    |
 +---------------------+-----------+-------------------------------------------------------------------------------------------------------+
 
@@ -167,23 +167,23 @@ function.  If the global variable is only accessed by the HLS function, the
 "memory" will be implemented inside the generated circuit and has no top-level
 interface.
 
-There are three interface types for pointer arguments and shared global
-variables: memory, scalar memory, and AXI4 slave. As shown in the table below,
+There are two interface types for pointer arguments and shared global
+variables: memory and AXI4 slave. As shown in the table below,
 the available and default interface types vary depending on the data type of
 the pointer or global variable.  We will explain each interface type in the
 sections below.
 
-+-----------+--------------------------------------------------------------+
-| Data Type |                  Interface Type                              |
-|           +-------------------+--------------------+---------------------+
-|           |    Memory         |   Scalar memory    |    AXI4 Slave       |
-+===========+===================+====================+=====================+
-| Array     |  Yes (default)    |    Yes             |    n/a              |
-+-----------+-------------------+--------------------+---------------------+
-| Struct    |  Yes (default)    |    Yes             |  Yes  (global only) |
-+-----------+-------------------+--------------------+---------------------+
-| Scalar    |   n/a             |    Yes  (default)  |    n/a              |
-+-----------+-------------------+--------------------+---------------------+
++-----------+------------------------------------------+
+| Data Type |                  Interface Type          |
+|           +-------------------+----------------------+
+|           |    Memory         |     AXI4 Slave       |
++===========+===================+======================+
+| Array     |  Yes (default)    |     n/a              |
++-----------+-------------------+----------------------+
+| Struct    |  Yes (default)    |   Yes  (global only) |
++-----------+-------------------+----------------------+
+| Scalar    |  Yes (default)    |     n/a              |
++-----------+-------------------+----------------------+
 
 Memory Type
 ++++++++++++++++++++++
@@ -198,11 +198,11 @@ global variable,
 
   // For top-level function arguments:
   // Add at the beginning of the function definition
-  #pragma HLS interface argument(<SCALAR_ARGUMENT_NAME>) type(memory) num_elements(<NUM_ARRAY_ELEMENTS>)
+  #pragma HLS interface argument(<ARGUMENT_NAME>) type(memory) num_elements(<NUM_ARRAY_ELEMENTS>)
 
   // For shared global variables:
   // Add before the variable definition
-  #pragma HLS interface variable(<SCALAR_ARGUMENT_NAME>) type(memory) num_elements(<NUM_ARRAY_ELEMENTS>)
+  #pragma HLS interface variable(<ARGUMENT_NAME>) type(memory) num_elements(<NUM_ARRAY_ELEMENTS>)
 
 .. The default read latency is 1 clock cycle and can be overrided via the following TCL command:
 The `num_elements` option is only available for array type arguments. The array size
@@ -219,11 +219,15 @@ the `num_elements` option.
   outermost dimension).  Meaning only the outermost dimension's size can be
   overrided.
 
-SmartHLS circuit expects a one cycle read latency, and two RAM ports will be
-created for each memory interface.  Moreover, a true dual-port memory is
-expected, allowing both ports to perform independent reads/writes
-simultaneously.
-The same port will not have both read and write requests at the same cycle.
+Aggregate Memory Type (array, struct, or class)
+^^^^^^^^^^^^^^
+
+When the memory has more than 1 elements (not a scalar type memory), SmartHLS
+creates an interface with two RAM ports. Each RAM port can do both read and
+write to the external RAM. A one cycle read latency is expected.
+Typically an external true dual-port RAM can be connected to the interface,
+allowing both ports to perform independent reads/writes simultaneously.
+The same port will not perform read and write at the same cycle.
 
 The table below lists the signals of each RAM port, with "_a" and "_b" suffixes
 respectively.  Some signals are not available when the memory is read-only or
@@ -272,29 +276,28 @@ The timing diagram shows the memory interface behaviour expected by the SmartHLS
 
 
 Scalar Memory Type
-++++++++++++++++++++++
+^^^^^^^^^^^^^^
 
-The scalar memory interface is used by SmartHLS module to access external memory
-that has only one element, and can be thought of as a special memory interface
-that has no address port.
+The scalar memory interface is used by SmartHLS module to access an external
+memory that has only one element, and can be thought of as a special memory
+interface that has no address port and expects a 0-cycle read latency.
+
 The scalar memory interface is used by default for scalar pointer arguments and
-shared scalar global variables.  When scalar memory interface is specified for
-an array data type, SmartHLS will automatically partition the array into individual
-elements; and if SmartHLS fails to partition the array, an error will be given to
-report the array argument that cannot be partitioned.
-The pragma below specifies the scalar memory interface,
+shared scalar global variables. 
+Note that specifying an array / struct data type to be partitioned into individual
+elements using `#pragma HLS memory partition` (See :ref:`_memory_partitioning` for details) can create scalar interfaces.
+The following example has an array interface `array` that is partitioned completely into 10 elements, each element is
+a scalar memory.
 
 .. TODO: output_registered option.
 
 .. code-block:: CPP
 
-  // For top-level function arguments:
-  // Add at the beginning of the function definition
-  #pragma HLS interface argument(<SCALAR_ARGUMENT_NAME>) type(scalar_memory)
-
-  // For shared global variables:
-  // Add before the variable definition
-  #pragma HLS interface variable(<SCALAR_ARGUMENT_NAME>) type(scalar_memory)
+  int kernel(int array[10]) {
+  #pragma HLS function top
+  #pragma HLS memory partition argument(array) type(complete)
+    ...
+  }
 
 The table below lists the associated RTL module ports for each scalar memory
 interface.  Some signals are not available when the memory is read-only or
@@ -312,15 +315,15 @@ never write to or read from the memory.
 | `<ARG_NAME>_write_data`     | OUT       | The output value of the argument (n/a for read-only memory).             |
 |                             |           | The `write_data` port has valid value                                    |
 |                             |           | only when the `write_en` signal is high.                                 |
-|                             |           | This port is not available if the SmartHLS circuit never writes to the      |
+|                             |           | This port is not available if the SmartHLS circuit never writes to the   |
 |                             |           | pointer argument (or global variable).                                   |
 +-----------------------------+-----------+--------------------------------------------------------------------------+
 | `<ARG_NAME>_write_en`       | OUT       | Indicates the write_data is valid (n/a for read-only memory).            |
-|                             |           | This port is not available if the SmartHLS circuit never writes to the      |
+|                             |           | This port is not available if the SmartHLS circuit never writes to the   |
 |                             |           | pointer argument (or global variable).                                   |
 +-----------------------------+-----------+--------------------------------------------------------------------------+
 
-Note that SmartHLS circuit expects a 0-cycle ready latency.
+Note that SmartHLS circuit expects a 0-cycle read latency.
 This is, the `<ARG_NAME>_read_data` port is expected to always hold the valid
 data for the pointer argument such that the SmartHLS circuit can use its value at
 any time.
@@ -386,46 +389,14 @@ After compilation, SmartHLS will generate a report file
 each struct element.
 Here is an example struct and its corresponding memory map,
 
-.. code-block:: CPP
-
-  struct SlaveLayout {
-      uint8 arr[8];
-      uint32 a;
-      uint32 b;
-      uint64 sum_result;
-      uint32 xor_result;
-      uint32 or_result;
-  };
-
-  #pragma HLS interface variable(gv) type(axi_slave) concurrent_access(true)
-  SlaveLayout gv;
+.. literalinclude:: ../examples/axi_interface/simple_slave_LinkedByUG/axi_slave_LinkedByUG.h
+.. literalinclude:: ../examples/axi_interface/simple_slave_LinkedByUG/global_var_LinkedByUG.cpp
 
 The corresponding address map report
 (``reports/axi_slave_memory_map.hls.rpt``) is shown below. 
 
-.. code-block:: text
-
-    Address Map for AXI Slave Interface: gv
-
-    +--------------+-----------+-------------------+----------+
-    | Word Address | Bit Range | Variables         | Removed? |
-    +--------------+-----------+-------------------+----------+
-    | 0            |  63 : 56  | memory.arr[7]     |          |
-    |              |  55 : 48  | memory.arr[6]     |          |
-    |              |  47 : 40  | memory.arr[5]     |          |
-    |              |  39 : 32  | memory.arr[4]     |          |
-    |              |  31 : 24  | memory.arr[3]     |          |
-    |              |  23 : 16  | memory.arr[2]     |          |
-    |              |  15 :  8  | memory.arr[1]     |          |
-    |              |   7 :  0  | memory.arr[0]     |          |
-    | 1            |  63 : 32  | memory.b          |          |
-    |              |  31 :  0  | memory.a          |          |
-    | 2            |  63 :  0  | memory.sum_result |          |
-    | 3            |  63 : 32  | memory.or_result  |          |
-    |              |  31 :  0  | memory.xor_result |          |
-    | 4            |   0 :  0  | slave_memory_ctrl |          |
-    +--------------+-----------+-------------------+----------+
-
+.. literalinclude:: ../examples/axi_interface/simple_slave_LinkedByUG/axi_slave_memory_map.hls.rpt.LinkedByUG
+   :language: text
 
 - Note that the first column in the report shows the word-address -- multiply
   by 8 to get the byte-address.

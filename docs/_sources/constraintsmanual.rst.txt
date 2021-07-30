@@ -17,6 +17,7 @@ The main constraints available from the SmartHLS IDE are:
  * Set test bench module: :ref:`set_custom_test_bench_module`
  * Set test bench file: :ref:`set_custom_test_bench_file`
  * Set FPGA synthesis top-level module: :ref:`set_synthesis_top_module`
+ * Set FPGA synthesis top-level file: :ref:`set_synthesis_top_module_file`
  * Set resource constraint: :ref:`set_resource_constraint`
  * Set operation latency: :ref:`set_operation_latency`
 .. * Pipeline loop: :ref:`loop_pipeline`  
@@ -59,6 +60,7 @@ A few debugging constraints are available from the SmartHLS IDE:
 .. include:: constraint_docs/set_custom_test_bench_module.rst
 .. include:: constraint_docs/set_custom_test_bench_file.rst
 .. include:: constraint_docs/set_synthesis_top_module.rst
+.. include:: constraint_docs/set_synthesis_top_module_file.rst
 .. include:: constraint_docs/set_resource_constraint.rst
 .. include:: constraint_docs/set_operation_latency.rst
 .. .. include:: constraint_docs/ENABLE_OPENMP.rst

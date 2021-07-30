@@ -935,6 +935,9 @@ smaller memories or into its individual elements allows for more accesses per cy
 
 There are two flavors of memory partitioning, access-based partitioning and user-specified partitioning.
 
+Access-Based Memory Partitioning
+~~~~~~~~~~~~~~~~~~~~~~
+
 Access-based partitioning is automatically applied to all memories except for those at the top-level interfaces (:ref:`io_memory`).
 This flavor of memory partitioning will analyze the ranges of all accesses to a memory and create partitions based on
 these accesses. After analyzing all memory accesses, independent partitions will be implemented in independent memories. 
@@ -948,19 +951,7 @@ Access-based partitioning is done automatically without needing any memory parti
 .. SmartHLS generates a memory partition for each access range, and if there are overlapping access ranges (e.g., one load instruction accesses some of the same elements as another load instruction),
 .. the corresponding partitions will be merged.
 
-User-specified partitioning can be achieved with the ``HLS memory partition`` pragma (see :ref:`pragma_memory_partition_argument` and :ref:`pragma_memory_partition_argument`).
-User-specified partitioning partitions memories based on a user-specified dimension. Memories are then partitioned completely on the specified dimension,
-which means the memory is partitioned into individual elements of the specified array dimension. More information on the pragmas can be found in the
-pragma references linked above. Unaccessed sections of the original memory are also discarded.
-
-.. NOTE::
-
-    Accessing memory outside of an array dimension is not supported by memory partitioning and may cause
-    incorrect circuit behavior. An example of this is casting a 2-d array to a pointer (1-d) and iterating through the entire array as 1-d.
-
-
-An Access-Based Memory Partitioning Example
-~~~~~~~~~~~~~~~~~~~~~~
+**Example**
 
 Access-based partitioning is automatically applied to all memories by SmartHLS except for interface memories (top-level function arguments and global variables accessed by both software testbench and hardware functions) to the
 top-level function. Interface memories need to be partitioned with the memory partition pragma.
@@ -1015,11 +1006,30 @@ Limitations:
 
 Please refer to the :ref:`optimizationguide` for more examples and details.
 
-A User-Specified Memory Partitioning Example
+
+
+User-Specified Memory Partitioning
 ~~~~~~~~~~~~~~~~~~~~~~
 
-User-specified partitioning is where the user explicitly specifies a memory to be partitioned via the ``memory partition`` pragma (#pragma HLS memory partition variable, #pragma HLS memory partition argument). 
+User-specified partitioning can be achieved with the ``HLS memory partition`` pragma .
+User-specified partitioning is where the user explicitly specifies a memory to be partitioned via the ``memory partition`` pragma (#pragma HLS memory partition variable, #pragma HLS memory partition argument). See :ref:`_pragma_memory_partition_argument` and :ref:`pragma_memory_partition_variable` for more details. 
 User-specified partitioning also analyzes accesses but partitions based on a predefined structure and array dimension.
+There are two user-specified partitioning types supported by SmartHLS: `Complete` and `Struct-fields`.
+
+Complete Partitioning
++++++++++
+
+Complete partitioning partitions memories based on a user-specified dimension. Memories are then partitioned completely on the specified dimension,
+which means the memory is partitioned into individual elements of the specified array dimension. More information on the pragmas can be found in the
+pragma references linked above. Unaccessed sections of the original memory are also discarded.
+
+.. NOTE::
+
+    Accessing memory outside of an array dimension is not supported by memory partitioning and may cause
+    incorrect circuit behavior. An example of this is casting a 2-d array to a pointer (1-d) and iterating through the entire array as 1-d.
+
+
+**Example**
 
 .. code-block:: c
 
@@ -1089,10 +1099,66 @@ Limitations:
 
 Please refer to the :ref:`optimizationguide` for more examples and details. 
 
-SmartHLS C++ Library
+Struct-Fields Partitioning
++++++++++
+
+Struct-fields partitioning partitions a (array of) struct argument / variable into its individual fields such that each field is a partition.
+Unlike complete partitioning, if a field in the partitioned struct is an aggregate type (struct or array), the field is not further partitioned to its elements.
+Note that applying Struct-fields partitining to  an array-of-struct creates an array for each field in the struct.
+Unaccessed paritions (fields) are discarded, but the Unaccessed elements in an aggreagte partition (field) are not be discarded.
+
+**Example**
+
+.. code-block:: c
+
+    struct Ty {
+        struct SubTy { int a; int b; };
+        char x;
+        short y[2];
+        SubTy z;
+    };
+
+    int sum(Ty array[8]) {
+    #pragma HLS function top
+    #pragma HLS memory partition argument(array) type(struct_fields)
+        int result = 0;
+        for (int i = 0; i < 8; i++) {
+            result += array[i].x + array[i].y[0] + array[i].z.a;
+        }
+        return result;
+    }
+
+
+The example above shows an array of struct `array` that is array of struct of type `Ty` that is
+partitioned using Struct-fields partitioning.
+With the user-specified partitioning, SmartHLS outputs messages to the console stating that the argument
+set to be partitioned and how many partitions are created.
+
+.. code-block:: text
+
+    Info: Found partition interface: array.
+    Info: Partitioning memory: array into 3 partitions.
+
+
+The summary report from SmartHLS lists the 3 partitions created from the fields of the struct.
+Note that the array field `Ty.y` has one partition, and similarly the struct field `Ty.z`.
+
+.. code-block:: text
+
+    +---------------------------------------------------------------------------+
+    | I/O Memories                                                              |
+    +---------+-----------------------+------+-------------+------------+-------+
+    | Name    | Accessing Function(s) | Type | Size [Bits] | Data Width | Depth |
+    +---------+-----------------------+------+-------------+------------+-------+
+    | array_x | sum                   | ROM  | 0           | 8          | 0     |
+    | array_y | sum                   | ROM  | 0           | 16         | 0     |
+    | array_z | sum                   | ROM  | 0           | 64         | 0     |
+    +---------+-----------------------+------+-------------+------------+-------+
+
+SmartHLS C/C++ Library
 ----------------
 
-SmartHLS includes a number of C++ libraries that allow creation of efficient hardware.
+SmartHLS includes a number of C/C++ libraries that allow creation of efficient hardware.
 
 .. _streaming_lib:
 
@@ -1145,7 +1211,7 @@ Class Method                                        Description
 ``T read()``                                        Read an element from the FIFO.                                                         
 ``bool empty()``                                    Returns 1 if the FIFO is empty.                                                       
 ``bool full()``                                     Returns 1 if the FIFO is full.                                                        
-``unsigned get_usedw()``                            Returns the number of elements in the FIFO.                                          
+.. ``unsigned get_usedw()``                            Returns the number of elements in the FIFO.
 ``void setDepth(unsigned depth)``                   Set the FIFO's depth.                                                                  
 .. ``void setType(hls::FIFOType type)``              Set the FIFO's implementation type (only for Xilinx).                                 
 ==================================================  =====================================================                                 
@@ -1167,12 +1233,13 @@ An example code for using the streaming library is shown below.
     bool is_empty = my_fifo.empty();
     // check if the fifo is full
     bool is_full = my_fifo.full();    
-    // get the number of words stored in the fifo
-    unsigned numWords = my_fifo.get_usedw();
 
     // declare a 32-bit wide fifo with a depth of 10
     hls::FIFO<unsigned> my_fifo_depth_10(10);
 
+
+..  // get the number of words stored in the fifo
+..  unsigned numWords = my_fifo.get_usedw();
 
 As shown above, there are two ways of creating a FIFO (``hls::FIFO<unsigned> my_fifo`` and ``hls::FIFO<unsigned> my_fifo_depth_10(10)``).
 The width of the FIFO is determined based on the templated data type of the FIFO. 
@@ -1343,8 +1410,8 @@ Non-blocking FIFO read and write can be achieved as shown below.
 
 C++ Arbitrary Precision Data Types Library
 ~~~~~~~~~~~~~~~~~~~~~~
-The C++ Arbitrary Precision Data Types Library provides numeric types ``ap_[u]int`` and ``ap_[u]fixpt`` which can be used to specify data types of arbitrary bitwidths (i.e., ap_int<9> for a 9-bit integer data) in software, 
-which is efficiently translated to create hardware for that exact width. It also provides bit selection and concatenation utilities for bit-level access to data.
+The C++ Arbitrary Precision Data Types Library provides numeric types ``ap_[u]int`` and ``ap_[u]fixpt``, which can be used to specify data types of arbitrary bitwidths in software (e.g., ap_int<9> for a 9-bit integer variable).
+These data types will be efficiently translated to create hardware with the exact widths. The data types also come with bit manipulation utilities, such as bit range selection and concatenation.
 
 C++ Arbitrary Precision Integer Library
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -2179,192 +2246,6 @@ contain out-of-bound pixels at certain sliding locations.
 For more details about when/why to use the ``LineBuffer`` class, see
 :ref:`line_buffer_opt_guide` in the :ref:`optimizationguide`.
    
-
-SmartHLS C Library
-----------------
-
-SmartHLS also provides a number of C libraries for user convenience.
-For bit-level operations, we strongly recommend using our :ref:`ap_lib` instead, but we provide
-this C bit-level operation library for user convenience, which can be used when the user does want to convert native C data types in an existing code to our C++ arbitrary precision data types. 
-Note that using the C++ arbitrary precision data types may lead to more optimized hardware than using this C bit-level operation library. 
-SmartHLS also provides support for some functions from the :ref:`c_numerics_library`.
-
-.. _bit_level_operation_library:
-
-C Bit-Level Operation Library
-~~~~~~~~~~~~~~~~~~~~~~~
-
-SmartHLS provides a library to perform bit-level operations in hardware.
-These are functions that are easy to use and will lead to a more efficient hardware implementation than implementing the same operation in software. 
-All of these functions can be compiled and correctly executed in software. 
-You can use SmartHLS's bit-level operation library by including the following header file:
-
-.. code-block:: c
-
-		#include "hls/bit_level_operations.h"
-
-This library defines a number of C functions that perform common bit-level operations.
-The software implementation of the library matches to that of the generated hardware.
-Users can simulate the low-level bit operations accurately in software prior to generating its hardware.
-
-.. NOTE::
-
-  The index and width arguments *must* be constant integers and *must* be
-  within the bit range of the variable being selected or updated.
-
-
-Selecting A Range of Bits
-+++++++++++++++++++++++++
-
-.. code-block:: c
-
-    unsigned long long hls_bit_select(unsigned long long v, unsigned char msb_index, unsigned char lsb_index);
-
-This function selects a range of bits, from the ``msb_index`` bit down to the ``lsb_index`` bit (where the bit index starts from 0), from the input variable, ``v``, and returns it.
-The lower ``(msb_index - lsb_index + 1)`` bits of the return value are set to
-the specified range of ``v``, and the rest of the upper bits of the return value are set to 0.
-
-The equivalent Verilog statement will be:
-
-.. code-block:: Verilog
-
-    return_val[63:0] = { (64 - (msb_index - lsb_index + 1)){1'b0}, // Upper bits set to 0.
-                         v[msb_index : lsb_index]                  // Selected bits of v.
-                       };
-
-
-Updating A Range of Bits
-+++++++++++++++++++++++++
-
-.. code-block:: c
-
-    unsigned long long hls_bit_update(unsigned long long v, unsigned char msb_index, unsigned char lsb_index, unsigned long long value);
-
-This function updates a range of bits, from the ``msb_index`` bit down to the ``lsb_index`` bit (where the bit index starts from 0), of the input variable, ``v``, with the given value, ``value``, and returns the updated value.
-
-The equivalent Verilog statement will be:
-
-.. code-block:: Verilog
-
-    return_val[63:0] = v[63:0];
-    return_val[msb_index : lsb_index]       // Update selected range of bits.
-        = value[msb_index - lsb_index : 0]; // The lower (msb_index - lsb_index) bits of value.
-
-
-.. Comment out negation, which is redundant. It is equivalent to "~hls_bit_select(v, lsb_index, width)"
-  Negation
-  +++++++++++++++++++++++++
-
-  .. code-block:: c
-
-      uint64 hls_bit_negate(uint64 v, uint6 lsb_index, uint6 width);
-
-  The functions returns the bitwise negation of a range of bits of the input variable.
-  The lower ``width`` bits of return value are set to the negation of the range of bits of the input variable, starting from the bit index ``lsb_index`` (index starts from 0), for ``width`` bits to the left.
-  The rest of the return value's upper bits are set to 0.
-
-  The equivalent Verilog statement will be:
-
-  .. code-block:: Verilog
-
-      return_val[63:0] = { (64 - width){1'b0},     // Upper bits set to 0.
-                           ~v[lsb_index +: width]  // Negation of the selected bits of v.
-                         };
-
-
-Concatenation
-+++++++++++++++++++++++++
-
-.. code-block:: c
-
-    unsigned long long hls_bit_concat_2(unsigned long long v_0, unsigned char width_0, unsigned long long v_1, unsigned char width_1);
-
-This function returns the bit-level concatenation of the two input variables, ``v_0``, and ``v_1``.
-The lower ``width_0`` bits of ``v_0`` are concatenated with the lower ``width_1`` bits of ``v_1``, with the ``v_0`` bits being the upper bits of the ``v_1`` bits. 
-The concatenated values are stored in the lower ``(width_0 + width_1)`` bits of the return value, hence if the bit-width of the return value is bigger than ``(width_0 + width_1)``, the rest of the upper bits of the return value are set to 0. 
-
-The equivalent Verilog statement will be:
-
-.. code-block:: Verilog
-
-    return_val[63:0] = { (64 - width_0 - width_1){1'b0},  // Upper bits set to 0.
-                         v_0[width_0 - 1 : 0],            // Lower width_0 bits of v_0.
-                         v_1[width_1 - 1 : 0]             // Lower width_1 bits of v_1.
-                       };
-
-Similarly, the following functions concatenate three, four, five, up to eight variables respectively.
-
-.. code-block:: c
-
-    unsigned long long hls_bit_concat_3(unsigned long long v_0, unsigned char width_0, unsigned long long v_1, unsigned char width_1,
-                              unsigned long long v_2, unsigned char width_2);
-
-    unsigned long long hls_bit_concat_4(unsigned long long v_0, unsigned char width_0, unsigned long long v_1, unsigned char width_1,
-                              unsigned long long v_2, unsigned char width_2, unsigned long long v_3, unsigned char width_3);
-
-    unsigned long long hls_bit_concat_5(unsigned long long v_0, unsigned char width_0, unsigned long long v_1, unsigned char width_1,
-                              unsigned long long v_2, unsigned char width_2, unsigned long long v_3, unsigned char width_3,
-                              unsigned long long v_4, unsigned char width_4);
-
-    unsigned long long hls_bit_concat_6(unsigned long long v_0, unsigned char width_0, v_1, unsigned char width_1,
-                              unsigned long long v_2, unsigned char width_2, unsigned long long v_3, unsigned char width_3,
-                              unsigned long long v_4, unsigned char width_4, unsigned long long v_5, unsigned char width_5);
-
-    unsigned long long hls_bit_concat_7(unsigned long long v_0, unsigned char width_0, unsigned long long v_1, unsigned char width_1,
-                              unsigned long long v_2, unsigned char width_2, unsigned long long v_3, unsigned char width_3,
-                              unsigned long long v_4, unsigned char width_4, unsigned long long v_5, unsigned char width_5,
-                              unsigned long long v_6, unsigned char width_6);
-
-    unsigned long long hls_bit_concat_8(unsigned long long v_0, unsigned char width_0, unsigned long long v_1, unsigned char width_1,
-                              unsigned long long v_2, unsigned char width_2, unsigned long long v_3, unsigned char width_3,
-                              unsigned long long v_4, unsigned char width_4, unsigned long long v_5, unsigned char width_5,
-                              unsigned long long v_6, unsigned char width_6, unsigned long long v_7, unsigned char width_7);
-
-
-Bit Reduction Operations
-+++++++++++++++++++++++++
-
-The functions shown below perform bitwise reduction operations on the input variable, ``v``.
-All of these functions return a one bit value.
-
-Bit Reduction AND:
-  | ``unsigned char hls_bit_reduce_and(unsigned long long v, unsigned char msb_index, unsigned char lsb_index);``
-  |   Applies the `AND` operation on the range of bits of ``v``, starting from the upper bit index, ``msb_index`` (index starts from 0), to the lower bit index, ``lsb_index``.
-  |   Returns 0 if any bit in the specified range of ``v`` is 0, returns 1 otherwise.
-  |   The equivalent Verilog statement is: ``&(v[msb_index : lsb_index])``.
-
-Bit Reduction OR:
-  | ``unsigned char hls_bit_reduce_or(unsigned long long v, unsigned char msb_index, unsigned char lsb_index);``
-  |   Applies the `OR` operation on the range of bits of ``v``, starting from the upper bit index, ``msb_index`` (index starts from 0), to the lower bit index, ``lsb_index``.
-  |   Returns 1 if any bit in the specified range of ``v`` is 1, returns 0 otherwise.
-  |   The equivalent Verilog statement is: ``|(v[msb_index : lsb_index])``.
-
-Bit Reduction XOR:
-  | ``unsigned char hls_bit_reduce_xor(unsigned long long v, unsigned char msb_index, unsigned char lsb_index);``
-  |   Applies the `XOR` operation on the range of bits of ``v``, starting from the upper bit index, ``msb_index`` (index starts from 0), to the lower bit index, ``lsb_index``.
-  |   Returns 1 if there is an odd number of bits being 1 in the specified range of ``v``, returns 0 otherwise.
-  |   The equivalent Verilog statement is: ``^(v[msb_index : lsb_index])``.
-
-Bit Reduction NAND:
-  | ``unsigned char hls_bit_reduce_nand(unsigned long long v, unsigned char msb_index, unsigned char lsb_index);``
-  |   Applies the `NAND` operation on the range of bits of ``v``, starting from the upper bit index, ``msb_index`` (index starts from 0), to the lower bit index, ``lsb_index``.
-  |   Returns 1 if any bit in the specified range of ``v`` is 0, returns 0 otherwise.
-  |   Equivalent to ``!hls_bit_reduce_and(v, msb_index, lsb_index)``
-  |   The equivalent Verilog statement is: ``~&(v[msb_index : lsb_index])``.
-
-Bit Reduction NOR:
-  | ``unsigned char hls_bit_reduce_nor(unsigned long long v, unsigned char msb_index, unsigned char lsb_index);``
-  |   Applies the `NOR` operation on the range of bits of ``v``, starting from the upper bit index, ``msb_index`` (index starts from 0), to the lower bit index, ``lsb_index``.
-  |   Returns 0 if any bit in the specified range of ``v`` is 1, returns 1 otherwise.
-  |   Equivalent to ``!hls_bit_reduce_or(v, msb_index, lsb_index)``
-  |   The equivalent Verilog statement is: ``~|(v[msb_index : lsb_index])``.
-
-Bit Reduction XNOR:
-  | ``unsigned char hls_bit_reduce_xnor(unsigned long long v, unsigned char msb_index, unsigned char lsb_index);``
-  |   Applies the `XNOR` operation on the range of bits of ``v``, starting from the upper bit index, ``msb_index`` (index starts from 0), to the lower bit index, ``lsb_index``.
-  |   Returns 1 if there is an even number of bits being 1 in the specified range of ``v``, returns 0 otherwise.
-  |   Equivalent to ``!hls_bit_reduce_xor(v, msb_index, lsb_index)``
-  |   The equivalent Verilog statement is: ``~^(v[msb_index : lsb_index])``.
 
 
 .. Comment out pure software flow:

@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -13,7 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Schedule Viewer &mdash; SmartHLS 2021.1.2 documentation</title>
+  <title>Schedule Viewer &mdash; SmartHLS 2021.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -517,7 +518,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.1.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2  </span>
 
 										  </h1>
 								
@@ -566,11 +567,17 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">1. SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">2. Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">3. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">3. Setup Smart HLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">4. Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs">Main (2021.2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/2021.1.2">2021.1.2</a></li>
 </ul>
 
             
@@ -634,7 +641,7 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="schedule-viewer">
+  <section id="schedule-viewer">
 <h1>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h1>
 <p>The Schedule Viewer shows information on how the top-level function was scheduled in hardware by SmartHLS.
 This includes information on the flow of control between different functions and blocks of execution,
@@ -651,7 +658,7 @@ The Call Graph contains the directed graph of which software functions are calle
 The Control Flow Graph shows the control flow of execution between the blocks within each function for if/else conditionals and loops.
 The Schedule Chart and Pipeline Viewer shows the scheduling of instructions within a block or a pipeline on a cycle-by-cycle basis.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer.png"><img alt="_images/Schedule_Viewer.png" class="align-center" src="_images/Schedule_Viewer.png" style="width: 698.5999999999999px; height: 445.2px;" /></a>
-<div class="section" id="background-llvm-internal-representation-used-by-smarthls">
+<section id="background-llvm-internal-representation-used-by-smarthls">
 <h2>Background: LLVM Internal Representation used by SmartHLS<a class="headerlink" href="#background-llvm-internal-representation-used-by-smarthls" title="Permalink to this headline">¶</a></h2>
 <p>The instructions displayed in the Schedule Viewer are from the LLVM compiler that SmartHLS is built on.
 These assembly-like instructions are called <a class="reference external" href="https://llvm.org/docs/LangRef.html">LLVM intermediate representation (IR)</a>.
@@ -681,8 +688,8 @@ Control flow occurs between basic blocks.</p>
 </pre></div>
 </div>
 <p>All of the basic blocks and instructions shown in the Scheduler Viewer are directly from the LLVM IR optimized by SmartHLS before being compiled into Verilog.</p>
-</div>
-<div class="section" id="call-graph">
+</section>
+<section id="call-graph">
 <h2>Call Graph<a class="headerlink" href="#call-graph" title="Permalink to this headline">¶</a></h2>
 <p>When you open the Scheduler Viewer, the default view is of the Call Graph.
 You can also click on the “Call Graph” tab at the top.
@@ -716,8 +723,8 @@ main function body, making sure we can see them in the Call Graph.</p>
 <p>This will generate the Call Graph shown below.
 The Call Graph shows that <code class="docutils literal notranslate"><span class="pre">main</span></code> calls <code class="docutils literal notranslate"><span class="pre">top_level</span></code>, which in turn calls <code class="docutils literal notranslate"><span class="pre">helper_func_0</span></code> and <code class="docutils literal notranslate"><span class="pre">helper_function_1</span></code>.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Call_Graph.png"><img alt="_images/Schedule_Viewer_Call_Graph.png" class="align-center" src="_images/Schedule_Viewer_Call_Graph.png" style="width: 698.5999999999999px; height: 445.2px;" /></a>
-</div>
-<div class="section" id="control-flow-graph">
+</section>
+<section id="control-flow-graph">
 <h2>Control Flow Graph<a class="headerlink" href="#control-flow-graph" title="Permalink to this headline">¶</a></h2>
 <p>The Control Flow Graph can be brought up by clicking on any function in the Explorer tab.
 The Control Flow Graph shows the connections between basic blocks and shows which basic blocks can branch to which other basic blocks.</p>
@@ -736,8 +743,8 @@ This has multiple code blocks and branches to different sections of the code.</p
 <p>This Control Flow Graph shows the two paths of the if statement on the right and the else statement on the left, and the for-loop in the left middle bubbles.
 Control flow is represented by an arrow, where a basic block will only branch into another basic block that it points to.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Control_Flow_Graph.png"><img alt="_images/Schedule_Viewer_Control_Flow_Graph.png" class="align-center" src="_images/Schedule_Viewer_Control_Flow_Graph.png" style="width: 698.5999999999999px; height: 443.79999999999995px;" /></a>
-</div>
-<div class="section" id="schedule-chart">
+</section>
+<section id="schedule-chart">
 <h2>Schedule Chart<a class="headerlink" href="#schedule-chart" title="Permalink to this headline">¶</a></h2>
 <p>If you click on a non-pipelined block, the Schedule Chart will open.
 This shows the scheduling of instructions within a block on a cycle-by-cycle basis.</p>
@@ -753,8 +760,8 @@ You can mouse over the scheduled instructions in the Schedule Chart and the sele
 Instructions that the highlighted instruction depend on will be outlined in red and the instructions that depend on the highlighted instruction will be outlined in orange.
 Here the add depends on the two multiplies highlighted in red. The store highlighted in orange depends on this add.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Schedule_Chart.png"><img alt="_images/Schedule_Viewer_Schedule_Chart.png" class="align-center" src="_images/Schedule_Viewer_Schedule_Chart.png" style="width: 699.3px; height: 444.5px;" /></a>
-</div>
-<div class="section" id="pipeline-viewer">
+</section>
+<section id="pipeline-viewer">
 <h2>Pipeline Viewer<a class="headerlink" href="#pipeline-viewer" title="Permalink to this headline">¶</a></h2>
 <p>If you click on a pipelined block, the Pipeline Viewer will open.
 This shows the scheduling of instructions within a pipelined block on a cycle-by-cycle basis.</p>
@@ -774,8 +781,8 @@ If you hold your mouse over an instruction you will see more details about the o
 In the pipeline viewer, the right-most column highlighted in a thick black box shows the behavior of the pipeline in steady state.
 The last row shown in the pipeline viewer (Iteration 1) is the first iteration of the pipeline in steady state.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Pipeline_Viewer.png"><img alt="_images/Schedule_Viewer_Pipeline_Viewer.png" class="align-center" src="_images/Schedule_Viewer_Pipeline_Viewer.png" style="width: 697.9px; height: 444.5px;" /></a>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

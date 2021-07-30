@@ -30,6 +30,7 @@ The documentation is comprised of the following sections:
     * :ref:`hwarch`: Synthesized hardware architecture
     * :ref:`pragmas`: Pragmas manual
     * :ref:`constraints`: Constraints manual
+    * :ref:`license_setup`: How to obtain a free license for Smart HLS
     * :ref:`FAQ`: Frequently asked questions
     * :ref:`release`: New features and known problems with each release
 
@@ -69,6 +70,7 @@ For support, please contact smarthls@microchip.com.
    
    pragmas
    constraintsmanual
+   license_setup
    faq
 
 .. toctree::
@@ -77,7 +79,14 @@ For support, please contact smarthls@microchip.com.
    
    GitHub Examples <https://github.com/MicrochipTech/fpga-hls-examples>   
    
+.. toctree::
+   :caption: Versions   
+   :hidden:
    
+   Main (2021.2) <https://microchiptech.github.io/fpga-hls-docs>
+   2021.1.2 <https://microchiptech.github.io/fpga-hls-docs/2021.1.2>  
+
+
 .. restrictions
 
 .. Comment out:

@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -13,7 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>1. Getting Started &mdash; SmartHLS 2021.1.2 documentation</title>
+  <title>1. Getting Started &mdash; SmartHLS 2021.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -508,7 +509,7 @@ display:none;
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. Release Notes" href="releasenotes.html" />
-    <link rel="prev" title="SmartHLS 2021.1.2 Documentation" href="index.html" /> 
+    <link rel="prev" title="SmartHLS 2021.2 Documentation" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -519,7 +520,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.1.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2  </span>
 
 										  </h1>
 								
@@ -580,11 +581,17 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">1. SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">2. Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">3. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">3. Setup Smart HLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">4. Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs">Main (2021.2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/2021.1.2">2021.1.2</a></li>
 </ul>
 
             
@@ -648,7 +655,7 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="getting-started">
+  <section id="getting-started">
 <span id="getstarted"></span><h1><span class="section-number">1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>Microchip is running an Early Access Program (EAP) for the SmartHLS compiler
 software. This program enables you to evaluate a beta version of SmartHLS
@@ -656,31 +663,31 @@ software and provide us with valuable feedback. To participate in EAP and downlo
 SmartHLS, please fill out the
 <a class="reference external" href="https://www.microsemi.com/product-directory/fpga-design-tools/5590-hls#software-download">SmartHLS software request form here</a>
 and we will contact you to support your evaluation.</p>
-<div class="section" id="installation">
+<section id="installation">
 <h2><span class="section-number">1.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS supports Windows 10 and Linux (CentOS 7).</p>
-<div class="section" id="windows">
+<section id="windows">
 <h3><span class="section-number">1.1.1. </span>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
-<p>Run the Windows installer program, <code class="docutils literal notranslate"><span class="pre">SmartHLS-2021.1.2-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
-</div>
-<div class="section" id="linux">
+<p>Run the Windows installer program, <code class="docutils literal notranslate"><span class="pre">SmartHLS-2021.2-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
+</section>
+<section id="linux">
 <h3><span class="section-number">1.1.2. </span>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="centos">
+<section id="centos">
 <h4><span class="section-number">1.1.2.1. </span>CentOS<a class="headerlink" href="#centos" title="Permalink to this headline">¶</a></h4>
 <p>The CentOS installer is packaged as a self-extracting shell script that can be installed to a local
 directory. To run the installer:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>
-sh /path/to/smarthls-2021.1.2-centos-installer.run
+sh /path/to/smarthls-2021.2-centos-installer.run
 </pre></div>
 </div>
 <p>This will install SmartHLS into the INSTALLATION_DIRECTORY.  After the
 installation is completed, please add the SmartHLS bin directory to your path:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/smarthls-2021.1.2/smarthls/bin:<span class="nv">$PATH</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/smarthls-2021.2/smarthls/bin:<span class="nv">$PATH</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="libero-and-modelsim">
+</section>
+</section>
+<section id="libero-and-modelsim">
 <h3><span class="section-number">1.1.3. </span>Libero and ModelSim<a class="headerlink" href="#libero-and-modelsim" title="Permalink to this headline">¶</a></h3>
 <p>You will need to install the <a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1750-libero-soc">Libero SoC software</a>
 to synthesize the generated hardware for Microchip FPGAs.
@@ -691,13 +698,13 @@ After installing Libero, please make sure to download all of new IP cores (open 
 <p>Libero also comes with ModelSim which is used by SmartHLS to simulate the
 generated Verilog.
 Please note that the first time you simulate a generated hardware block with a fresh install of SmartHLS, ModelSim will compile our IP libraries, which may take some time.</p>
-</div>
-</div>
-<div class="section" id="quick-start-tutorial">
+</section>
+</section>
+<section id="quick-start-tutorial">
 <span id="quick-start"></span><h2><span class="section-number">1.2. </span>Quick Start Tutorial<a class="headerlink" href="#quick-start-tutorial" title="Permalink to this headline">¶</a></h2>
 <p>Please refer to our <cite>SmartHLS Tutorial for Microsemi PolarFire: Sobel Filtering for Image Edge Detection &lt;https://www.microsemi.com/document-portal/doc_download/1245532-legup-hls-tutorial&gt;</cite> on how to use some of the major features and optimization techniques of SmartHLS.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

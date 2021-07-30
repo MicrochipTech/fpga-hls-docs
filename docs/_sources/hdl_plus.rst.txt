@@ -12,7 +12,7 @@ You will see the log message in the console which includes the full path to the 
 
 .. code-block:: text
 
-  Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.1.2\workspace\sobel_part3\create_hdl_plus.tcl. 
+  Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.2\workspace\sobel_part3\create_hdl_plus.tcl. 
 
 Now we can use Libero to open a Libero project, create a new SmartDesign, and give the newly created SmartDesign a suitable name.
 Alternatively, we can also open an existing SmartDesign.

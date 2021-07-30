@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -13,7 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Report Files &mdash; SmartHLS 2021.1.2 documentation</title>
+  <title>Report Files &mdash; SmartHLS 2021.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -517,7 +518,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.1.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2  </span>
 
 										  </h1>
 								
@@ -566,11 +567,17 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">1. SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">2. Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">3. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">3. Setup Smart HLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">4. Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs">Main (2021.2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/2021.1.2">2021.1.2</a></li>
 </ul>
 
             
@@ -634,16 +641,16 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="report-files">
+  <section id="report-files">
 <h1>Report Files<a class="headerlink" href="#report-files" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="smarthls-report">
+<section id="smarthls-report">
 <h2>SmartHLS Report<a class="headerlink" href="#smarthls-report" title="Permalink to this headline">¶</a></h2>
 <p>After compiling software to hardware, SmartHLS generates a summary report file
 (<code class="docutils literal notranslate"><span class="pre">reports/summary.hls.rpt</span></code>) to show some insights about the generated RTL
 circuit, such as the top-level module interface, scheduling information, memory
 usage and etc.
 The following will explain each section of the report file.</p>
-<div class="section" id="rtl-interface-section">
+<section id="rtl-interface-section">
 <h3>RTL Interface Section<a class="headerlink" href="#rtl-interface-section" title="Permalink to this headline">¶</a></h3>
 <p>The RTL Interface section shows the interfaces used by the top-level module.
 Below is an example of the RTL interface report table:</p>
@@ -682,8 +689,8 @@ data, with associated valid and ready signals.</p></li>
 is always used by any SmartHLS-generated module, and hence there is no C++ name
 attached to it.
 For more details about the RTL interface, please refer to <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>.</p>
-</div>
-<div class="section" id="scheduling-result">
+</section>
+<section id="scheduling-result">
 <h3>Scheduling Result<a class="headerlink" href="#scheduling-result" title="Permalink to this headline">¶</a></h3>
 <p>The scheduling result section primarily shows the cycle latency of each basic
 block inside each function.
@@ -709,8 +716,8 @@ Below is an example table:</p>
 </div>
 <p>SmartHLS’s <cite>Schedule Viewer</cite> is more helpful in this case to visualize the
 scheduling and the control-flow between basic blocks.</p>
-</div>
-<div class="section" id="pipeline-result">
+</section>
+<section id="pipeline-result">
 <h3>Pipeline Result<a class="headerlink" href="#pipeline-result" title="Permalink to this headline">¶</a></h3>
 <p>The pipeline result section reports the initiation interval, pipeline length, iteration count, and latency for each pipelined loop or function.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+--------------------+----------------------------+-------------+--------------------------------+---------------------+-----------------+-----------------+---------+
@@ -725,8 +732,8 @@ scheduling and the control-flow between basic blocks.</p>
 <p>The iteration count and latency may not be available for a pipelined function or a pipelined loop with non-deterministic loop bound.
 Please refer to <a class="reference internal" href="userguide.html#loop-pipelining"><span class="std std-ref">Loop Pipelining</span></a> and <a class="reference internal" href="userguide.html#function-pipelining"><span class="std std-ref">Function Pipelining</span></a> for more details.
 SmartHLS’s <cite>Schedule Viewer</cite> also gives more details about how individual instructions are scheduled inside each pipeline.</p>
-</div>
-<div class="section" id="memory-usage">
+</section>
+<section id="memory-usage">
 <h3>Memory Usage<a class="headerlink" href="#memory-usage" title="Permalink to this headline">¶</a></h3>
 <p>The memory usage section lists the memories used by the generated circuit, grouped by the type of memory architecture.
 Please refer to <a class="reference internal" href="hwarchitecture.html#mem-arch"><span class="std std-ref">Memory Architecture</span></a> section for more details about the memory architecture used by SmartHLS.</p>
@@ -785,9 +792,9 @@ Please refer to <a class="reference internal" href="hwarchitecture.html#mem-arch
 So you can see which memories are aliasing and being put behind the same memory controller to support aliased memory accesses.</p></li>
 </ul>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="simulation-and-rtl-synthesis-place-route-report">
+</section>
+</section>
+<section id="simulation-and-rtl-synthesis-place-route-report">
 <h2>Simulation and RTL Synthesis, Place &amp; Route Report<a class="headerlink" href="#simulation-and-rtl-synthesis-place-route-report" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS also generates a summary report (<code class="docutils literal notranslate"><span class="pre">reports/summary.results.rpt</span></code>) to show
 the results of simulation and RTL synthesis + Place &amp; Route.
@@ -843,8 +850,8 @@ Libero’s report files after running RTL Synthesis and Place &amp; Route.
 The target period is what you set in <a class="reference internal" href="userguide.html#smarthls-constraints"><span class="std std-ref">SmartHLS Constraints</span></a>. If the <cite>Clock
 Period</cite> is not set, SmartHLS uses a default clock period for the target FPGA
 family (see the table in <a class="reference internal" href="userguide.html#smarthls-constraints"><span class="std std-ref">SmartHLS Constraints</span></a>).</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

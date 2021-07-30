@@ -3,7 +3,56 @@
 Release Notes
 ===============
 
-Smart HLS EAP 2021.1.2 Release Notes
+SmartHLS 2021.2 Release Notes
+---------------------------------
+
+Release date: August 6, 2021
+
+ * SmartHLS is now installed by default with Libero 2021.2 for general release.
+ * Free licenses are provided for SmartHLS, please refer to the instructions here to :ref:`license_setup`.
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ * Improved optimizations to minimize signal bit-width to reduce resource usage.
+ * Improved multiplier area for wide multipliers (>64-bits).
+ * Added a ``struct_fields`` type to the memory partition pragma (see :ref:`struct_fields_memory_partitioning`), which is to specify the intention to partition a struct into its individual elements.
+ * Added a new "Synthesize Hardware to FPGA" feature that only runs RTL synthesis without place-and-route to obtain accurate FPGA resource usage faster.
+ * Deprecated the ``scalar_memory`` type from the interface pragma. Please instead use a ``complete`` type memory partition pragma on the top-level pointer argument to achieve the same effect (see :ref:`complete_memory_partitioning`).
+ * Deprecated the C arbitrary bitwidth library (``hls/types.h``) and C bit-level operations library (``hls/bit_level_operations.h``). Please use the :ref:`ap_lib` instead for better quality of result of the generated hardware.
+ * Windows installation no longer adds system environment variables and Windows IDE no longer uses system environment variables.
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-198:   ap_uint<24> slices of width 8 is generating wider multipliers than necessary
+ * HLS-220:   MBW pass did not optimize for legup_select/concat primitives
+ * HLS-233:   Fix Tcl constraint name of floating point cores
+ * HLS-234:   Add Libero license check
+ * HLS-259:   Remove LEGUP_CYGWIN_BIN environment variable
+ * HLS-261:   Memory Partition partitions an unsupported case.
+ * HLS-302:   Integrate with Libero installer
+ * HLS-353:   Pass-in-by-value class argument not detected properly
+ * HLS-354:   cosim_cwrapper_insert.pl breaks in a corner case of comment position
+ * HLS-355:   AXI slave address map: change the printing order of fields in the same word
+ * HLS-356:   Add a GUI button and a make target to only run synthesis (no P&R) for resource results
+ * HLS-364:   UG: add documentation about "set_synthesis_top_module_file" after "set_synthesis_top_module"
+ * HLS-366:   Mem-partition fails to split a FIFO of struct
+ * HLS-372:   MBW: forward prop of OR operantion is wrong with extendFrom
+ * HLS-373:   MBW-related: signed comparison between sign/length-mismatched values was wrong in printed RTL
+ * HLS-374:   Differentiate AShr and LShr in generated Verilog
+ * HLS-376:   Multiply between two different sign operands is implemented incorrectly
+ * HLS-377:   Split-mult operand port widths mismatch.
+ * HLS-379:   Remind user to "Recompile Simulation Libraries" when Modelsim version changes
+ * HLS-390:   Update SmartHLS EULA to match Libero EULA
+ * HLS-394:   Returning AP Type by-value uses ap_num in CoSim
+ * HLS-395:   External global memory got incorrectly optimized by LLVM
+ * HLS-396:   hls::thread Pointer Arguments Coerced to Int for 64-Bit Target
+
+
+SmartHLS EAP 2021.1.2 Release Notes
 ---------------------------------
 
 Release date: June 14, 2021

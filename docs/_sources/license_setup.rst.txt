@@ -1,0 +1,17 @@
+.. :tocdepth: 3
+
+.. _license_setup:
+
+Setup Smart HLS License
+==================================
+
+Please follow the below instructions to generate and install SmartHLS tool license:
+
+#.  Log into the Microsemi Customer Portal (http://soc.microsemi.com/portal) and click on the "License and Registration" link.
+#.  Click on "Request Free License" option.
+#.  Click on "SmartHLS one-year Disk ID License for Windows" or "SmartHLS one-year Floating License for Windows or Linux Server".
+#.  On the next page, enter the hard Disk ID or MAC ID of the machine based on the selected license option and click on the "Submit" button. You will then be emailed a new ``license.dat`` file enabling you to use SmartHLS. 
+#.  Open the SmartHLS ``license.dat`` file, copy the content and add it to your existing Libero software license file with the similar Libero license option (Disk ID or MAC ID). For example, if you generated a node locked license for the SmartHLS tool, you need to add the SmartHLS license file content to the Libero node locked license.
+    
+Note: If you have not yet installed Libero Design Suite Software and the license, refer to https://www.microsemi.com/product-directory/design-resources/1711-licensing or your Libero license file email for instructions on how to download and install your Libero license and software.
+

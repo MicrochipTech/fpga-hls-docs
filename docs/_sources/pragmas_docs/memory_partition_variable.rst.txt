@@ -7,23 +7,23 @@ Partition Memory
 
 **Syntax**
 
-``#pragma HLS memory partition variable`(<arg_name>) type(complete|none) dim(<int>)``
+``#pragma HLS memory partition variable`(<var_name>) type(complete|none) dim(<int>)``
 
 **Description**
 
-This pragma specifies a variable to be partitioned. Dimension 0 corresponds to the right-most dimension of an array and higher dimensions correspond to leftward dimensions.
+This pragma specifies a variable to be partitioned. Dimension 0 corresponds to the right-most dimension of an array and higher dimensions correspond to leftward dimensions. The ``dim`` parameter is only applicable for ``complete`` partitioning.
 
 **Parameters**
 
-+--------------+--------------------+----------+--------------+---------------------+
-|  Parameter   |       Value        | Optional |   Default    |     Description     |
-+==============+====================+==========+==============+=====================+
-| ``variable`` | String             | No       |              | Variable name       |
-+--------------+--------------------+----------+--------------+---------------------+
-| ``type``     | ``complete|none``  | Yes      | ``complete`` | Partition type      |
-+--------------+--------------------+----------+--------------+---------------------+
-| ``dim``      | Integer            | Yes      | 0            | Partition dimension |
-+--------------+--------------------+----------+--------------+---------------------+
++--------------+---------------------------------+----------+--------------+---------------------+
+|  Parameter   |              Value              | Optional |   Default    |     Description     |
++==============+=================================+==========+==============+=====================+
+| ``variable`` | String                          | No       |              | Variable name       |
++--------------+---------------------------------+----------+--------------+---------------------+
+| ``type``     | ``complete,struct_fields,none`` | Yes      | ``complete`` | Partition type      |
++--------------+---------------------------------+----------+--------------+---------------------+
+| ``dim``      | Integer                         | Yes      | 0            | Partition dimension |
++--------------+---------------------------------+----------+--------------+---------------------+
 
 **Position**
 

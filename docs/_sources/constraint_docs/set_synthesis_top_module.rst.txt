@@ -15,7 +15,7 @@ Libero
 
 **Value Type**
 
-string
+String
 
 **Dependencies**
 
