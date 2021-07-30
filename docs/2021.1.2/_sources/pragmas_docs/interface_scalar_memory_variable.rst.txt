@@ -1,0 +1,43 @@
+.. highlight:: c
+
+.. _pragma_interface_memory_variable:
+
+Configure Global Variable as Scalar Memory Interface
+------------------------------------------
+
+**Syntax**
+
+
+``#pragma HLS interface variable(<var_name>) type(scalar_memory)``
+
+**Description**
+
+
+This pragma specifies the scalar memory interface for a shared global variable.
+The scalar memory interface is used by SmartHLS module to access external memory
+that has only one element. More details in :ref:`rtl_interface` section.
+
+**Parameters**
+
++--------------+-------------------+----------+---------+----------------+
+|  Parameter   |       Type        | Optional | Default |  Description   |
++==============+===================+==========+=========+================+
+| ``variable`` | String            | No       |         | Variable name  |
++--------------+-------------------+----------+---------+----------------+
+| ``type``     | ``scalar_memory`` | No       |         | Interface type |
++--------------+-------------------+----------+---------+----------------+
+
+**Position**
+
+Before the global variable declaration.
+
+**Examples**
+
+
+.. code-block:: c
+
+  #pragma HLS interface variable(b) type(scalar_memory)
+  int b[SIZE];
+
+--------------------------------------------------------------------------------
+

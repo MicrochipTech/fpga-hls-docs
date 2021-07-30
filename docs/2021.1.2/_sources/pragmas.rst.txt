@@ -1,0 +1,80 @@
+
+.. :tocdepth: 3
+
+.. _pragmas:
+
+SmartHLS Pragmas Manual
+==================================
+
+SmartHLS accepts pragma directives in the source code to guide the hardware generation.
+This reference section explains all of the pragmas available for SmartHLS.
+
+The pragmas follow the following syntax:
+
+``#pragma HLS <category> <feature> <parameter>(<value>)``
+
+The category refers to the general usage class of the pragma. Each pragma has one of the following categories: 
+
+ * ``function``: configure a hardware function. 
+ * ``loop``: configure loop optimizations. 
+ * ``interface``: configure hardware interfaces (arguments / global variables). 
+ * ``memory``: configure hardware memory implementation.
+.. * ``soc_interface``: configure an accelerator interface (argument / global variables).
+
+Each category can have different configurable features.
+Some categories / features have parameters to passed to the pragma. 
+A parameter can be optional with a default behaviour if not specified.
+
+The value of a parameter can be either integer, boolean (``true|false``),
+name (variable / argument), or a set of pre-specified values. 
+
+.. Note::
+  For integer parameters, the user is allowed to use constants
+  (or expressions of constants) defined using `#define` directive.
+  For example, this is allowed:
+
+  .. code-block:: c
+
+    #define N 10
+    void fun() {
+      #pragma HLS loop unroll factor(N+1)
+      for (int i = 0; i < 100; i++)
+        ...
+    }
+
+
+The pragma position is not arbitrary and placing the pragma in an incorrect position
+will cause an error. Each pragma can has one of the following positions:
+
+  * At the beginning of function definition block before any other statements.
+  * Before global / local variable declaration.
+  * Before loop block.
+
+
+--------------------------------------------------------------------------------
+
+
+.. include:: pragmas_docs/function_top.rst
+.. .. include:: pragmas_docs/function_soc_top.rst
+.. include:: pragmas_docs/function_pipeline.rst
+.. include:: pragmas_docs/function_inline.rst
+.. include:: pragmas_docs/function_noinline.rst
+.. include:: pragmas_docs/function_flatten.rst
+.. include:: pragmas_docs/function_replicate.rst
+
+.. include:: pragmas_docs/loop_pipeline.rst
+.. include:: pragmas_docs/loop_unroll.rst
+
+
+.. include:: pragmas_docs/interface_scalar_argument.rst
+.. include:: pragmas_docs/interface_memory_argument.rst
+.. include:: pragmas_docs/interface_memory_variable.rst
+.. include:: pragmas_docs/interface_scalar_memory_argument.rst
+.. include:: pragmas_docs/interface_scalar_memory_variable.rst
+.. include:: pragmas_docs/interface_axi_slave_variable.rst
+
+.. .. include:: pragmas_docs/soc_interface.rst
+
+.. include:: pragmas_docs/memory_partition_variable.rst
+.. include:: pragmas_docs/memory_partition_argument.rst
+.. include:: pragmas_docs/memory_contention_free.rst

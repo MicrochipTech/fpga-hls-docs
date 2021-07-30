@@ -1,0 +1,32 @@
+.. highlight:: c
+
+.. _pragma_function_flatten:
+
+Flatten Function
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS function flatten``
+
+**Description**
+
+This pragma unrolls all loops and inlines all subfunctions for a given function.
+
+
+**Position**
+
+At the beginning of the function definition block.
+
+
+**Examples**
+
+.. code-block:: c
+
+  int sum(int *a) {
+  #pragma HLS function flatten
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

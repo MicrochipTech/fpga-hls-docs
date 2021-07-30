@@ -1,0 +1,52 @@
+.. _set_top_level_argument_num_elements:
+
+set_top_level_argument_num_elements
+----------------------------
+
+
+This TCL command specifies the number of elements for a top-level function's argument.
+This is needed for SW/HW Co-Simulation when an argument passed into the top-level function
+is a dynamically allocated array (with malloc). Statically allocated arrays 
+do not need to be specified but for any dynamically allocated arrays, their 
+number of elements must be specified for the Co-Simulation flow to work. 
+The name of the argument needs to be specified as a string and the number of
+elements of the argument needs to be specified as an unsigned integer.
+When using the GUI, choose `Set top-level argument number of elements` as the 
+`Constraint Type` and type in both the argument name and the number of elements 
+in the `Constraint Value` box. 
+
+For the Co-Simulation flow, the user must also specify the top-level function 
+with :ref:`set_custom_top_level_module`.
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
+argument name as string, number of elements as an unsigned integer
+
+Dependencies
++++++++++++++
+
+NONE
+
+Applicable Flows
++++++++++++++++++
+
+All devices and flows
+
+Test Status
+++++++++++++
+
+Actively in-use
+
+Examples
++++++++++
+
+    ``set_top_level_argument_num_elements array_in 20``
+
+--------------------------------------------------------------------------------
+

@@ -1,0 +1,745 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Header information-->
+    <meta name="Language" content="en">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  <title>set_operation_latency &mdash; SmartHLS 2021.1.2 documentation</title>
+  
+<!-- Header information-->
+<style type="text/css">svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.225em;
+}
+.svg-inline--fa.fa-w-1 {
+  width: 0.0625em;
+}
+.svg-inline--fa.fa-w-2 {
+  width: 0.125em;
+}
+.svg-inline--fa.fa-w-3 {
+  width: 0.1875em;
+}
+.svg-inline--fa.fa-w-4 {
+  width: 0.25em;
+}
+.svg-inline--fa.fa-w-5 {
+  width: 0.3125em;
+}
+.svg-inline--fa.fa-w-6 {
+  width: 0.375em;
+}
+.svg-inline--fa.fa-w-7 {
+  width: 0.4375em;
+}
+.svg-inline--fa.fa-w-8 {
+  width: 0.5em;
+}
+.svg-inline--fa.fa-w-9 {
+  width: 0.5625em;
+}
+.svg-inline--fa.fa-w-10 {
+  width: 0.625em;
+}
+.svg-inline--fa.fa-w-11 {
+  width: 0.6875em;
+}
+.svg-inline--fa.fa-w-12 {
+  width: 0.75em;
+}
+.svg-inline--fa.fa-w-13 {
+  width: 0.8125em;
+}
+.svg-inline--fa.fa-w-14 {
+  width: 0.875em;
+}
+.svg-inline--fa.fa-w-15 {
+  width: 0.9375em;
+}
+.svg-inline--fa.fa-w-16 {
+  width: 1em;
+}
+.svg-inline--fa.fa-w-17 {
+  width: 1.0625em;
+}
+.svg-inline--fa.fa-w-18 {
+  width: 1.125em;
+}
+.svg-inline--fa.fa-w-19 {
+  width: 1.1875em;
+}
+.svg-inline--fa.fa-w-20 {
+  width: 1.25em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-border {
+  height: 1.5em;
+}
+.svg-inline--fa.fa-li {
+  width: 2em;
+}
+.svg-inline--fa.fa-fw {
+  width: 1.25em;
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: #ff253a;
+  border-radius: 1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  height: 1.5em;
+  line-height: 1;
+  max-width: 5em;
+  min-width: 1.5em;
+  overflow: hidden;
+  padding: 0.25em;
+  right: 0;
+  text-overflow: ellipsis;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: 0;
+  right: 0;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  right: 0;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: 0;
+  right: auto;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -0.0667em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+}
+
+.fa-border {
+  border: solid 0.08em #eee;
+  border-radius: 0.1em;
+  padding: 0.2em 0.25em 0.15em;
+}
+
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left,
+.fas.fa-pull-left,
+.far.fa-pull-left,
+.fal.fa-pull-left,
+.fab.fa-pull-left {
+  margin-right: 0.3em;
+}
+.fa.fa-pull-right,
+.fas.fa-pull-right,
+.far.fa-pull-right,
+.fal.fa-pull-right,
+.fab.fa-pull-right {
+  margin-left: 0.3em;
+}
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+          animation: fa-spin 2s infinite linear;
+}
+
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+          animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
+}
+
+.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
+}
+
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical,
+:root .fa-flip-both {
+  -webkit-filter: none;
+          filter: none;
+}
+
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse {
+  color: #fff;
+}
+
+@media screen and (max-width: 768px)
+.booktitle #booktitle{
+display:none;
+}
+</style>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/common-ui-all.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/header-footer.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/pro.min.css" media="all" />
+<link rel="stylesheet" href="../_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+		<div class="mchp-ghp"/>
+		<div class="root responsivegrid">
+								<noindex>
+								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
+"><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="../_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
+								          
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.1.2  </span>
+
+										  </h1>
+								
+								</div></div></div><section _ngcontent-hes-c23="" class="separator"></section></header>	
+								</noindex>		
+
+		</div>
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+		
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+         
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releasenotes.html">2. Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userguide.html">1. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimizationguide.html">2. Optimization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hwarchitecture.html">3. Hardware Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pragmas.html">1. SmartHLS Pragmas Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constraintsmanual.html">2. Constraints Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">3. Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SmartHLS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>set_operation_latency</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="set-operation-latency">
+<span id="id1"></span><h1>set_operation_latency<a class="headerlink" href="#set-operation-latency" title="Permalink to this headline">¶</a></h1>
+<p>This Tcl command sets the latency of a given operation.
+Latency refers to the number of clock cycles required to complete the computation; an operation with latency one requires one cycle, while zero-latency operations are completely combinational, meaning multiple such operations can be chained together in a single clock cycle.
+This command is used to schedule each type operation to take the specified number of cycles.</p>
+<p>This Tcl command should only be used by advanced SmartHLS users.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>set_operation_latency &lt;operation&gt; &lt;constraint&gt;
+&lt;operation&gt; is a string
+&lt;constraint&gt; is an integer</p>
+<p><strong>Valid Values</strong></p>
+<p>See Default and Examples
+Note: operator name should match the operation database file:
+boards/PolarFire/PolarFire.tcl or boards/set_operation_latency.tcl</p>
+<p><strong>Default Values</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fp_add</span> <span class="mi">14</span>
+<span class="n">fp_subtract</span> <span class="mi">14</span>
+<span class="n">fp_multiply</span> <span class="mi">11</span>
+<span class="n">fp_divide_32</span> <span class="mi">33</span>
+<span class="n">fp_divide_64</span> <span class="mi">61</span>
+<span class="n">fp_truncate_64</span> <span class="mi">3</span>
+<span class="n">fp_extend_32</span> <span class="mi">2</span>
+<span class="n">fp_fptosi</span> <span class="mi">6</span>
+<span class="n">fp_sitofp</span> <span class="mi">6</span>
+<span class="n">signed_comp_o</span> <span class="mi">1</span>
+<span class="n">signed_comp_u</span> <span class="mi">1</span>
+<span class="n">reg</span> <span class="mi">2</span>
+<span class="n">memory_port</span> <span class="mi">2</span>
+<span class="n">local_memory_port</span> <span class="mi">1</span>
+<span class="n">multiply</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<p>// set memory operations to take 3 cycles
+<code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">memory_port</span> <span class="pre">3</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When implementing an integer multiply operation, SmartHLS’s default behaviour is
+to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
+When a multiply operation is wider than the DSP can support, SmartHLS splits the
+multiply into multiple DSPs and automatically inserts registers to help RTL
+synthesis tool to utilize registers in DSPs better, and hence achieve better
+timing.</p>
+<p>However, this split-multiply feature does not support a user-configurable
+latency.
+When <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is specified by user, SmartHLS will
+turn off the split-multiply feature and use a generic multiplier that will
+adapt to user-specified latency.
+SmartHLS will also print a warnign as follows,
+<em>Warning: Detected set_operation_latency setting for integer multiplier.  However, configurable latency is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.</em></p>
+<p>Similarly, <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
+behaviour because the split-multiply does not support sharing the
+multipliers.</p>
+</div>
+<hr class="docutils" />
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+<!-- Amandeep.Talwar: Moved the footer code to layout.html to resolve conflict with the Microchip template -->
+</footer>
+
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+  
+<footer _ngcontent-hes-c23=""><div _ngcontent-hes-c23="" class="social-icons">
+<a _ngcontent-hes-c23="" href="https://github.com/MicrochipTech/" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="fa-github-square" class="svg-inline--fa fa-github-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path
+     fill="currentColor"
+     d="m 151.375,357.33334 q 1.16667,-2 -0.875,-4.33334 -2.625,-2.33334 -4.08333,-0.66666 -1.16667,2 0.875,4.33332 2.625,2.33334 4.08333,0.66668 z m -8.16667,-13.66668 q -1.45833,-2.33332 -3.5,-1.33332 -1.75,1.33332 0,4 2.04167,2.66666 3.5,1.66666 1.75,-1.33334 0,-4.33334 z M 131.25,330.33334 Q 131.83333,329 129.79167,327.66666 127.75,327 127.45833,328.33334 126.58333,330 128.625,331 q 2.33333,0.66666 2.625,-0.66666 z M 137.375,338 q 0.58333,-0.33334 0.4375,-1.5 -0.14583,-1.16666 -1.02083,-1.83334 -1.75,-2.33332 -2.91667,-1 -1.16667,1.33334 0.29167,3.66668 1.75,2 3.20833,0.66666 z m 25.08333,25 q 0.58334,-2.33334 -2.625,-3.66666 -2.625,-1 -3.79166,1.33332 -0.58334,2.33334 2.625,3.66668 2.625,1 3.79166,-1.33334 z m 12.25,1 q 0,-2.66666 -3.5,-2.66666 -2.91666,0 -2.91666,2.66666 0,2.66666 3.20833,2.66666 3.20833,0 3.20833,-2.66666 z m 11.375,-2.33334 Q 185.5,359.33334 182.29167,360 q -3.20834,0.66666 -2.625,3 0.58333,2.66666 3.5,2 2.91666,-0.66666 2.91666,-3.33334 z M 373.33333,256 q 0,-70.66666 -43.75,-120.66666 Q 285.83333,85.333334 224,85.333334 q -61.83333,0 -105.58333,50.000006 -43.750003,50 -43.750003,120.66666 0,55.66666 28.583333,100.16666 28.58333,44.5 73.5,61.83334 5.25,1 7.72917,-1.66666 2.47916,-2.66668 2.47916,-6.66668 0,-17.33332 -0.29166,-31.66666 -1.75,0.33334 -4.52084,0.83334 -2.77083,0.5 -10.35416,0.66666 -7.58334,0.16666 -14,-1.33334 -6.41667,-1.5 -12.6875,-6.66666 Q 138.83333,366.33334 136.5,357.66666 129.79167,338 119.875,333 q -0.58333,-0.33334 -1.3125,-1.16666 L 116.22917,329.16666 114.1875,326 l 1.16667,-2.5 5.6875,-1.16666 q 1.75,0 4.375,0.66666 2.625,0.66666 8.75,5.16666 6.125,4.5 9.625,11.83334 4.66666,9.33334 10.9375,14 6.27083,4.66666 12.6875,4.66666 6.41666,0 11.08333,-1.16666 4.66667,-1.16666 8.75,-3.16666 2.04167,-15.66668 9.625,-23 -14.29167,-2 -25.08333,-6.16668 Q 161,321 150.5,312.16666 140,303.33334 134.3125,286.83334 128.625,270.33334 128.625,247 q 0,-26.33334 15.45833,-45.66666 -7,-20.66668 1.45834,-45.33334 5.54166,-2 15.89583,2.5 10.35417,4.5 17.64583,9.83334 l 7.58334,5.33332 Q 203.58333,168 224,168 q 20.41667,0 37.33333,5.66666 3.20834,-2.33332 8.3125,-6 Q 274.75,164 285.83333,159 q 11.08334,-5 16.625,-3 8.45834,24.66666 1.45834,45.33334 Q 319.375,220.66666 319.375,247 q 0,19 -4.08333,33.5 -4.08334,14.5 -10.35417,23.33334 -6.27083,8.83332 -15.60417,14.83332 -9.33333,6 -18.22916,8.66668 -8.89584,2.66666 -19.97917,4 10.20833,10.33332 10.20833,31.66666 0,13.33334 -0.14583,29.66666 -0.14583,16.33334 -0.14583,17 0,4 2.47916,6.66668 Q 266,419 271.25,418 316.16667,400.66666 344.75,356.16666 373.33333,311.66666 373.33333,256 Z M 448,96 v 320 q 0,39.66666 -24.64583,67.83334 Q 398.70833,512 364,512 H 84 Q 49.291667,512 24.645833,483.83334 0,455.66666 0,416 V 96 Q 0,56.333334 24.645833,28.166666 49.291667,0 84,0 H 364 Q 398.70833,0 423.35417,28.166666 448,56.333334 448,96 Z"/></svg></fa-icon></div>
+</a>
+
+
+
+<a _ngcontent-hes-c23="" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg></fa-icon></div></a>
+<a _ngcontent-hes-c23="" href="https://google.com/+MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="google"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square" class="svg-inline--fa fa-google-plus-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.linkedin.com/company/microchip-technology" target="_top"><div _ngcontent-hes-c23="" class="linkedin"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://twitter.com/MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="twitter"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square" class="svg-inline--fa fa-twitter-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.youtube.com/user/MicrochipTechnology" target="_top"><div _ngcontent-hes-c23="" class="youtube"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube-square" class="svg-inline--fa fa-youtube-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.microchip.com/rss/" target="_top"><div _ngcontent-hes-c23="" class="rss"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss-square" class="svg-inline--fa fa-rss-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM112 416c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm157.533 0h-34.335c-6.011 0-11.051-4.636-11.442-10.634-5.214-80.05-69.243-143.92-149.123-149.123-5.997-.39-10.633-5.431-10.633-11.441v-34.335c0-6.535 5.468-11.777 11.994-11.425 110.546 5.974 198.997 94.536 204.964 204.964.352 6.526-4.89 11.994-11.425 11.994zm103.027 0h-34.334c-6.161 0-11.175-4.882-11.427-11.038-5.598-136.535-115.204-246.161-251.76-251.76C68.882 152.949 64 147.935 64 141.774V107.44c0-6.454 5.338-11.664 11.787-11.432 167.83 6.025 302.21 141.191 308.205 308.205.232 6.449-4.978 11.787-11.432 11.787z"></path></svg></fa-icon></div></a></div><div _ngcontent-hes-c23="" id="mchip-overlay" onclick="off()" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; background-color: rgba(0,0,0,.3); display: none;"><div _ngcontent-hes-c23="" style="position: relative; width: 100%; height: 100%;"></div></div><div _ngcontent-hes-c23="" class="links"><nav _ngcontent-hes-c23=""><a _ngcontent-hes-c23="" href="https://www.microchip.com/products/" target="_top">Products</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Applications</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Design</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/training/" target="_top">Training</a><a _ngcontent-hes-c23="" href="https://www.microchipdirect.com/" target="_top">Sample</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/aboutus/" target="_top">About</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/contactus/" target="_top">Contact</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/legal/" target="_top">Legal</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/about-us/legal-information/privacy-policy" target="_top">Privacy Policy</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/investors/" target="_top">Investors</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/careers/" target="_top">Careers</a><a _ngcontent-hes-c23="" href="https://support.microchip.com/" target="_top">Support</a></nav><p _ngcontent-hes-c23="" class="links">©Copyright 2021 Microchip Technology Inc. All rights reserved.</p></div></footer>
+</body>
+</html>

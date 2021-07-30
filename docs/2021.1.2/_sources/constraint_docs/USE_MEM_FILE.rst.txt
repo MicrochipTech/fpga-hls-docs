@@ -1,0 +1,54 @@
+.. _USE_MEM_FILE:
+
+USE_MEM_FILE
+-------------
+
+This parameter enables using .mem files for memory initialization.
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
+Integer 
+
+Valid Values
++++++++++++++
+
+0,1
+
+Default Value
+++++++++++++++
+
+0
+
+Location Where Default is Specified
++++++++++++++++++++++++++++++++++++
+
+``examples/legup.tcl``
+
+Dependencies
++++++++++++++
+
+None
+
+Applicable Flows
++++++++++++++++++
+
+All devices and flows
+
+Test Status
+++++++++++++
+
+Actively in-use
+
+Examples
++++++++++
+
+``USE_MEM_FILE 1``
+
+--------------------------------------------------------------------------------
+

@@ -1,0 +1,53 @@
+.. _flatten_function:
+
+flatten_function
+-------------
+
+This parameter unrolls all loops and inlines all subfunctions for a given function.
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
++--------------------+------------+
+| Parameter          | Value Type |
++====================+============+
+| flatten_function   | String     |
++--------------------+------------+
+
+Valid Values
++++++++++++++
+
+See Examples
+
+Default Value
+++++++++++++++
+
+N/A
+
+Dependencies
++++++++++++++
+
+None
+
+Applicable Flows
++++++++++++++++++
+
+All devices and flows
+
+Test Status
+++++++++++++
+
+Actively in-use
+
+Examples
++++++++++
+
+``flatten_function "add"``
+
+--------------------------------------------------------------------------------
+
