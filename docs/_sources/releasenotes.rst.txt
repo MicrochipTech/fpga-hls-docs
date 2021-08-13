@@ -1,18 +1,22 @@
 .. _release:
 
+***********************
 Release Notes
-===============
+***********************
 
-SmartHLS 2021.2 Release Notes
----------------------------------
+Current version (|version|)
+============================
 
-Release date: August 6, 2021
+Release Date: August 06, 2021
+
+What's New
+-----------
 
  * SmartHLS is now installed by default with Libero 2021.2 for general release.
  * Free licenses are provided for SmartHLS, please refer to the instructions here to :ref:`license_setup`.
 
 Software Features and Enhancements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 
  * Improved optimizations to minimize signal bit-width to reduce resource usage.
  * Improved multiplier area for wide multipliers (>64-bits).
@@ -23,7 +27,7 @@ Software Features and Enhancements
  * Windows installation no longer adds system environment variables and Windows IDE no longer uses system environment variables.
 
 Resolved Issues
-~~~~~~~~~~~~~~~~
+----------------
 
 The following defects and enhancement requests were resolved:
 
@@ -52,8 +56,11 @@ The following defects and enhancement requests were resolved:
  * HLS-396:   hls::thread Pointer Arguments Coerced to Int for 64-Bit Target
 
 
-SmartHLS EAP 2021.1.2 Release Notes
----------------------------------
+Previous versions 
+==================
+ 
+SmartHLS EAP 2021.1.2
+---------------------
 
 Release date: June 14, 2021
 

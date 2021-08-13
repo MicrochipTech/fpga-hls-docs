@@ -1,0 +1,11 @@
+.. _versions:
+
+Previous Versions
+==================
+
+Documentation for previous releases and the current version can be found at:
+
+ - `Latest Release <https://microchiptech.github.io/fpga-hls-docs/>`__
+ - `2021.1.2 <https://microchiptech.github.io/fpga-hls-docs/2021.1.2/index.html>`__
+
+ 

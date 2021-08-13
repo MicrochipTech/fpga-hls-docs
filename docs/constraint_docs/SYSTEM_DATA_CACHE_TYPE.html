@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -552,32 +551,32 @@ display:none;
               
             
             
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">1. Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../releasenotes.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releasenotes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../userguide.html">1. User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../optimizationguide.html">2. Optimization Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hwarchitecture.html">3. Hardware Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimizationguide.html">Optimization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Additional References</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../pragmas.html">1. SmartHLS Pragmas Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../constraintsmanual.html">2. Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license_setup.html">3. Setup Smart HLS License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../faq.html">4. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pragmas.html">SmartHLS Pragmas Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constraintsmanual.html">Constraints Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license_setup.html">Setup Smart HLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Versions</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs">Main (2021.2)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/2021.1.2">2021.1.2</a></li>
 </ul>
 
             
@@ -641,48 +640,48 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="system-data-cache-type">
+  <div class="section" id="system-data-cache-type">
 <span id="id1"></span><h1>SYSTEM_DATA_CACHE_TYPE<a class="headerlink" href="#system-data-cache-type" title="Permalink to this headline">¶</a></h1>
 <p>This parameter specifies the type of cache used in the QSys system.</p>
-<section id="category">
+<div class="section" id="category">
 <h2>Category<a class="headerlink" href="#category" title="Permalink to this headline">¶</a></h2>
 <p>Board and Device Specification</p>
-</section>
-<section id="value-type">
+</div>
+<div class="section" id="value-type">
 <h2>Value Type<a class="headerlink" href="#value-type" title="Permalink to this headline">¶</a></h2>
 <p>String</p>
-</section>
-<section id="valid-values">
+</div>
+<div class="section" id="valid-values">
 <h2>Valid Values<a class="headerlink" href="#valid-values" title="Permalink to this headline">¶</a></h2>
 <p>Any QSys component that functions as a cache.</p>
-</section>
-<section id="default-value">
+</div>
+<div class="section" id="default-value">
 <h2>Default Value<a class="headerlink" href="#default-value" title="Permalink to this headline">¶</a></h2>
 <p>N/A</p>
-</section>
-<section id="location-where-default-is-specified">
+</div>
+<div class="section" id="location-where-default-is-specified">
 <h2>Location Where Default is Specified<a class="headerlink" href="#location-where-default-is-specified" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">boards/&lt;device_family&gt;/&lt;board&gt;/&lt;system&gt;/legup.tcl</span></code></p>
 <p>e.g. <code class="docutils literal notranslate"><span class="pre">boards/CycloneV/DE1-SoC/Tiger_SDRAM/legup.tcl</span></code></p>
-</section>
-<section id="dependencies">
+</div>
+<div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <p>None</p>
-</section>
-<section id="applicable-flows">
+</div>
+<div class="section" id="applicable-flows">
 <h2>Applicable Flows<a class="headerlink" href="#applicable-flows" title="Permalink to this headline">¶</a></h2>
 <p>Software and hybrid flows</p>
-</section>
-<section id="test-status">
+</div>
+<div class="section" id="test-status">
 <h2>Test Status<a class="headerlink" href="#test-status" title="Permalink to this headline">¶</a></h2>
 <p>Actively in-use</p>
-</section>
-<section id="examples">
+</div>
+<div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SYSTEM_DATA_CACHE_TYPE</span> <span class="pre">smarthls_dm_wt_cache</span></code></p>
 <hr class="docutils" />
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

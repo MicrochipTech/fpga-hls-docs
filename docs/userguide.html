@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -14,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>1. User Guide &mdash; SmartHLS 2021.2 documentation</title>
+  <title>User Guide &mdash; SmartHLS 2021.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -508,8 +507,8 @@ display:none;
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Optimization Guide" href="optimizationguide.html" />
-    <link rel="prev" title="2. Release Notes" href="releasenotes.html" /> 
+    <link rel="next" title="Optimization Guide" href="optimizationguide.html" />
+    <link rel="prev" title="Getting Started" href="gettingstarted.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -554,138 +553,138 @@ display:none;
               
             
             
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">1. Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction-to-high-level-synthesis">1.1. Introduction to High-Level Synthesis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#instruction-level-parallelism">1.1.1. Instruction-level Parallelism</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#loop-level-parallelism">1.1.2. Loop-level Parallelism</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#thread-level-parallelism">1.1.3. Thread-level Parallelism</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-flow-streaming-parallelism">1.1.4. Data Flow (Streaming) Parallelism</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-high-level-synthesis">Introduction to High-Level Synthesis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instruction-level-parallelism">Instruction-level Parallelism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-level-parallelism">Loop-level Parallelism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-level-parallelism">Thread-level Parallelism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-flow-streaming-parallelism">Data Flow (Streaming) Parallelism</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#smarthls-overview">1.2. SmartHLS Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#smarthls-pragmas">1.3. SmartHLS Pragmas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#smarthls-constraints">1.4. SmartHLS Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#specifying-the-top-level-function">1.5. Specifying the Top-level Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sw-hw-co-simulation">1.6. SW/HW Co-Simulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#loop-pipelining">1.7. Loop Pipelining</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#multi-threading-with-smarthls-threads">1.8. Multi-threading with SmartHLS Threads</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#supported-smarthls-thread-apis">1.9. Supported SmartHLS Thread APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data-flow-parallelism-with-smarthls-threads">1.10. Data Flow Parallelism with SmartHLS Threads</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#further-throughput-enhancement-with-loop-pipelining">1.10.1. Further Throughput Enhancement with Loop Pipelining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smarthls-overview">SmartHLS Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smarthls-pragmas">SmartHLS Pragmas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smarthls-constraints">SmartHLS Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-the-top-level-function">Specifying the Top-level Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sw-hw-co-simulation">SW/HW Co-Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loop-pipelining">Loop Pipelining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-threading-with-smarthls-threads">Multi-threading with SmartHLS Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-smarthls-thread-apis">Supported SmartHLS Thread APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-flow-parallelism-with-smarthls-threads">Data Flow Parallelism with SmartHLS Threads</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#further-throughput-enhancement-with-loop-pipelining">Further Throughput Enhancement with Loop Pipelining</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#function-pipelining">1.11. Function Pipelining</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#memory-partitioning">1.12. Memory Partitioning</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#access-based-memory-partitioning">1.12.1. Access-Based Memory Partitioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-specified-memory-partitioning">1.12.2. User-Specified Memory Partitioning</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#complete-partitioning">1.12.2.1. Complete Partitioning</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#struct-fields-partitioning">1.12.2.2. Struct-Fields Partitioning</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#smarthls-c-c-library">1.13. SmartHLS C/C++ Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#streaming-library">1.13.1. Streaming Library</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#streaming-library-blocking-behaviour">1.13.1.1. Streaming Library - Blocking Behaviour</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#streaming-library-non-blocking-behaviour">1.13.1.2. Streaming Library - Non-Blocking Behaviour</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#c-arbitrary-precision-data-types-library">1.13.2. C++ Arbitrary Precision Data Types Library</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#c-arbitrary-precision-integer-library">1.13.3. C++ Arbitrary Precision Integer Library</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#printing-arbitrary-precision-integers">1.13.3.1. Printing Arbitrary Precision integers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#initializing-arbitrary-precision-integers">1.13.3.2. Initializing Arbitrary Precision integers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c-arbitrary-precision-integer-arithmetic">1.13.3.3. C++ Arbitrary Precision Integer Arithmetic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c-arbitrary-precision-integer-explicit-conversions">1.13.3.4. C++ Arbitrary Precision Integer Explicit Conversions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#c-arbitrary-precision-bit-level-operations">1.13.4. C++ Arbitrary Precision Bit-level Operations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#selecting-and-assigning-to-a-range-of-bits">1.13.4.1. Selecting and Assigning to a Range of Bits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#bit-concatenation">1.13.4.2. Bit Concatenation</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#c-arbitrary-precision-fixed-point-library">1.13.5. C++ Arbitrary Precision Fixed Point Library</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#printing-ap-u-fixpt-types">1.13.5.1. Printing ap_[u]fixpt Types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#initializing-ap-u-fixpt-types">1.13.5.2. Initializing ap_[u]fixpt Types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#arithmetic-with-ap-u-fixpt-types">1.13.5.3. Arithmetic With ap_[u]fixpt Types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#explicit-conversions-of-ap-u-fixpt">1.13.5.4. Explicit Conversions of ap_[u]fixpt</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#supported-operations-in-ap-u-int-ap-u-fixpt-and-floating-point">1.13.6. Supported Operations in ap_[u]int, ap_[u]fixpt, and floating-point</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#image-processing-library">1.13.7. Image Processing Library</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#line-buffer">1.13.7.1. Line Buffer</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#c-numerics-library-math-h-in-c-cmath-in-c">1.13.8. C Numerics Library (math.h in C / &lt;cmath&gt; in C++)</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#top-level-rtl-interface">1.14. Top-Level RTL Interface</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-control-interface">1.14.1. Module Control Interface</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#timing-diagram-no-pipeline-functions">1.14.1.1. Timing Diagram (No Pipeline Functions)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#timing-diagram-pipeline-functions">1.14.1.2. Timing Diagram (Pipeline Functions)</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#scalar-argument">1.14.2. Scalar Argument</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pointer-argument-and-shared-global-variable">1.14.3. Pointer Argument and Shared Global Variable</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#memory-type">1.14.3.1. Memory Type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#axi4-slave-type">1.14.3.2. AXI4 Slave Type</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#hls-fifo-argument">1.14.4. hls::FIFO Argument</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#implementing-a-custom-axi4-master-slave-using-hls-fifo">1.14.4.1. Implementing A Custom AXI4 Master/Slave Using hls::FIFO</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c-library-for-custom-axi-master-interface">1.14.4.2. C++ Library for Custom AXI Master Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-pipelining">Function Pipelining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-partitioning">Memory Partitioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#access-based-memory-partitioning">Access-Based Memory Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-specified-memory-partitioning">User-Specified Memory Partitioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#complete-partitioning">Complete Partitioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#struct-fields-partitioning">Struct-Fields Partitioning</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#specifying-a-custom-test-bench">1.15. Specifying a Custom Test Bench</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#report-files">1.16. Report Files</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#smarthls-report">1.16.1. SmartHLS Report</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rtl-interface-section">1.16.1.1. RTL Interface Section</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#scheduling-result">1.16.1.2. Scheduling Result</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pipeline-result">1.16.1.3. Pipeline Result</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#memory-usage">1.16.1.4. Memory Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smarthls-c-c-library">SmartHLS C/C++ Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#streaming-library">Streaming Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#streaming-library-blocking-behaviour">Streaming Library - Blocking Behaviour</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#streaming-library-non-blocking-behaviour">Streaming Library - Non-Blocking Behaviour</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#simulation-and-rtl-synthesis-place-route-report">1.16.2. Simulation and RTL Synthesis, Place &amp; Route Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-arbitrary-precision-data-types-library">C++ Arbitrary Precision Data Types Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-arbitrary-precision-integer-library">C++ Arbitrary Precision Integer Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#printing-arbitrary-precision-integers">Printing Arbitrary Precision integers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initializing-arbitrary-precision-integers">Initializing Arbitrary Precision integers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-arbitrary-precision-integer-arithmetic">C++ Arbitrary Precision Integer Arithmetic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-arbitrary-precision-integer-explicit-conversions">C++ Arbitrary Precision Integer Explicit Conversions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#schedule-viewer">1.17. Schedule Viewer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#background-llvm-internal-representation-used-by-smarthls">1.17.1. Background: LLVM Internal Representation used by SmartHLS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#call-graph">1.17.2. Call Graph</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#control-flow-graph">1.17.3. Control Flow Graph</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#schedule-chart">1.17.4. Schedule Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pipeline-viewer">1.17.5. Pipeline Viewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-arbitrary-precision-bit-level-operations">C++ Arbitrary Precision Bit-level Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#selecting-and-assigning-to-a-range-of-bits">Selecting and Assigning to a Range of Bits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bit-concatenation">Bit Concatenation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#instantiating-smarthls-ip-core-in-libero-smartdesign">1.18. Instantiating SmartHLS IP Core in Libero SmartDesign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#smarthls-command-line-interface">1.19. SmartHLS Command Line Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-arbitrary-precision-fixed-point-library">C++ Arbitrary Precision Fixed Point Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#printing-ap-u-fixpt-types">Printing ap_[u]fixpt Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initializing-ap-u-fixpt-types">Initializing ap_[u]fixpt Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arithmetic-with-ap-u-fixpt-types">Arithmetic With ap_[u]fixpt Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#explicit-conversions-of-ap-u-fixpt">Explicit Conversions of ap_[u]fixpt</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">2. Optimization Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">3. Hardware Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-operations-in-ap-u-int-ap-u-fixpt-and-floating-point">Supported Operations in ap_[u]int, ap_[u]fixpt, and floating-point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#image-processing-library">Image Processing Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#line-buffer">Line Buffer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#c-numerics-library-math-h-in-c-cmath-in-c">C Numerics Library (math.h in C / &lt;cmath&gt; in C++)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#top-level-rtl-interface">Top-Level RTL Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-control-interface">Module Control Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#timing-diagram-no-pipeline-functions">Timing Diagram (No Pipeline Functions)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timing-diagram-pipeline-functions">Timing Diagram (Pipeline Functions)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#scalar-argument">Scalar Argument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pointer-argument-and-shared-global-variable">Pointer Argument and Shared Global Variable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#memory-type">Memory Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#axi4-slave-type">AXI4 Slave Type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hls-fifo-argument">hls::FIFO Argument</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#implementing-a-custom-axi4-master-slave-using-hls-fifo">Implementing A Custom AXI4 Master/Slave Using hls::FIFO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-library-for-custom-axi-master-interface">C++ Library for Custom AXI Master Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-a-custom-test-bench">Specifying a Custom Test Bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#report-files">Report Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-report">SmartHLS Report</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rtl-interface-section">RTL Interface Section</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduling-result">Scheduling Result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline-result">Pipeline Result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-usage">Memory Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#simulation-and-rtl-synthesis-place-route-report">Simulation and RTL Synthesis, Place &amp; Route Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#schedule-viewer">Schedule Viewer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#background-llvm-internal-representation-used-by-smarthls">Background: LLVM Internal Representation used by SmartHLS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#call-graph">Call Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-flow-graph">Control Flow Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule-chart">Schedule Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pipeline-viewer">Pipeline Viewer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instantiating-smarthls-ip-core-in-libero-smartdesign">Instantiating SmartHLS IP Core in Libero SmartDesign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smarthls-command-line-interface">SmartHLS Command Line Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Additional References</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pragmas.html">1. SmartHLS Pragmas Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">2. Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license_setup.html">3. Setup Smart HLS License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">4. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup Smart HLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Versions</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs">Main (2021.2)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/2021.1.2">2021.1.2</a></li>
 </ul>
 
             
@@ -732,7 +731,7 @@ display:none;
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">1. </span>User Guide</li>
+      <li>User Guide</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -749,10 +748,10 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="user-guide">
-<span id="userguide"></span><h1><span class="section-number">1. </span>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
-<section id="introduction-to-high-level-synthesis">
-<h2><span class="section-number">1.1. </span>Introduction to High-Level Synthesis<a class="headerlink" href="#introduction-to-high-level-synthesis" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="user-guide">
+<span id="userguide"></span><h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-high-level-synthesis">
+<h2>Introduction to High-Level Synthesis<a class="headerlink" href="#introduction-to-high-level-synthesis" title="Permalink to this headline">¶</a></h2>
 <p>High-level synthesis (HLS) refers to the synthesis of a hardware circuit from a software program specified in a high-level language, where the hardware circuit performs the same functionality as the software program.  For SmartHLS, the input is a C/C++-language program, and the output is a circuit specification in the Verilog hardware description language.  The SmartHLS-generated Verilog can be given to Libero to be programmed on a Microchip FPGA. The underlying motivation for HLS is to raise the level of abstraction for hardware design, by allowing software methodologies to be used to design hardware.  This can help to shorten design cycles, improve design productivity and reduce time-to-market.</p>
 <p>While a detailed knowledge of HLS is not required to use SmartHLS, it is worthwhile to highlight the key steps involved in converting software to hardware. The four main steps involved in HLS are allocation, scheduling, binding, and RTL generation, which runs one after another (i.e., binding runs after scheduling is done).</p>
 <ul class="simple">
@@ -762,8 +761,8 @@ display:none;
 <li><p>RTL generation: Using the analysis from the previous steps, the final step of HLS is to generate a description of the circuit in a hardware description language (Verilog).</p></li>
 </ul>
 <p>Executing computations in hardware brings speed and energy advantages over performing the same computations in software running on a processor.  The underlying reason for this is that the hardware is dedicated to the computational work being performed, whereas a processor is generic and has the inherent overheads of fetching/decoding instructions, loading/storing from/to memory, etc.  Further acceleration is possible by exploiting hardware parallelism, where computations can concurrently.  With SmartHLS, one can exploit four styles of hardware parallelism, which are instruction-level, loop-level, thread-level, and function-level parallelism.</p>
-<section id="instruction-level-parallelism">
-<h3><span class="section-number">1.1.1. </span>Instruction-level Parallelism<a class="headerlink" href="#instruction-level-parallelism" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="instruction-level-parallelism">
+<h3>Instruction-level Parallelism<a class="headerlink" href="#instruction-level-parallelism" title="Permalink to this headline">¶</a></h3>
 <p>Instruction-level parallelism refers to the ability to concurrently execute computations for instructions concurrently by analyzing data dependencies.  Computations that do not depend on each other can be executed at the same time.  Consider the following code snippet which performs three addition operations.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">z</span> <span class="o">=</span> a + b<span class="p">;</span>
 <span class="nv">x</span> <span class="o">=</span> c + d<span class="p">;</span>
@@ -772,25 +771,25 @@ display:none;
 </pre></div>
 </div>
 <p>Observe that the first and second additions do not depend on one another.  These additions can therefore be executed concurrently, as long as there are two adder units available in the hardware.  SmartHLS automatically analyzes the dependencies between computations in the software to exploit instruction-level parallelism in the generated hardware. The user does not need to do anything. In the above example, the third addition operation depends on the results of the first two, and hence, its execution cannot be done in parallel with the others. Instruction-level parallelism is referred to as fine-grained parallelism, as concurrency is achieved at a fine-grained level (instruction-level) of granularity.</p>
-</section>
-<section id="loop-level-parallelism">
-<h3><span class="section-number">1.1.2. </span>Loop-level Parallelism<a class="headerlink" href="#loop-level-parallelism" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="loop-level-parallelism">
+<h3>Loop-level Parallelism<a class="headerlink" href="#loop-level-parallelism" title="Permalink to this headline">¶</a></h3>
 <p>In software, the majority of runtime can be spent on loops, where loop iterations execute sequentially.  That is, loop iteration <em>i</em> needs to finish before iteration <em>i + 1</em> can start. With SmartHLS, it is possible to overlap the execution of a loop iteration with another iterations using a technique called <em>loop pipelining</em> (see <a class="reference internal" href="#loop-pipelining"><span class="std std-ref">Loop Pipelining</span></a>). Now, imagine a loop with <em>N</em> iterations, where each iteration takes 100 clock cycles to complete.  In software, this loop would take <em>100N</em> clock cycles to execute. With loop pipelining in hardware, the idea is to execute a portion of a loop iteration <em>i</em> and then commence executing iteration <em>i + 1</em> even before iteration <em>i</em> is complete. If loop pipelining can commence a new loop iteration <em>every</em> clock cycles, then the total number of clock cycles required to execute the entire loop be <em>N + (N-1)</em> cycles – a significant reduction relative to <em>100N</em>. The (N-1) cycles is because each successive loop iteration start 1 cycle after the previous iteration, hence the last loop starts after (N-1) cycles.</p>
 <p>A user can specify a loop to be pipelined with the use of the loop pipeline pragma. By default, a loop is not pipelined automatically.</p>
-</section>
-<section id="thread-level-parallelism">
-<h3><span class="section-number">1.1.3. </span>Thread-level Parallelism<a class="headerlink" href="#thread-level-parallelism" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="thread-level-parallelism">
+<h3>Thread-level Parallelism<a class="headerlink" href="#thread-level-parallelism" title="Permalink to this headline">¶</a></h3>
 <p>Modern CPUs have multiple cores that can be used to concurrently execute multiple threads in software. Threads are widely used in C/C++, where, parallelism is realized at the granularity of entire C/C++ functions.  Hence thread-level parallelism is referred to as coarse-grained parallelism since one or more functions execute in parallel.  SmartHLS supports hardware synthesis of <code class="docutils literal notranslate"><span class="pre">hls::threads</span></code>, where concurrently executing threads in software are synthesized into concurrently executing hardware units (see <a class="reference internal" href="#pthreads-multithreading"><span class="std std-ref">Multi-threading with SmartHLS Threads</span></a>).  This allows a software developer to take advantage of spatial parallelism in hardware using a familiar parallel programming paradigm in software.  Moreover, the parallel execution behaviour of threads can be debugged in software, it is considerably easier than debugging in hardware.</p>
 <p>In a multi-threaded software program, synchronization between the threads can be important, with the most commonly used synchronization constructs being mutexes and barriers. SmartHLS supports the synthesis of mutexes and barriers into hardware.</p>
-</section>
-<section id="data-flow-streaming-parallelism">
-<h3><span class="section-number">1.1.4. </span>Data Flow (Streaming) Parallelism<a class="headerlink" href="#data-flow-streaming-parallelism" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="data-flow-streaming-parallelism">
+<h3>Data Flow (Streaming) Parallelism<a class="headerlink" href="#data-flow-streaming-parallelism" title="Permalink to this headline">¶</a></h3>
 <p>The second style of coarse-grained parallelism is referred to as <em>data flow</em> parallelism.  This form of parallelism arises frequently in <em>streaming</em> applications, and are commonly used for video/audio processing, machine learning, and computational finance.  In such applications, there is a stream of input data that is fed into the application at regular intervals.  For example, in an audio processing application, a digital audio sample may be given to the circuit every clock cycle.  In streaming applications, a succession of computational tasks is executed on the stream of input data, producing a stream of output data.  For example, the first task may be to filter the input audio to remove high-frequency components.  Subsequently, a second task may receive the filtered audio, and boost the bass low-frequency components.  Observe that, in such a scenario, the two tasks may be overlapped with one another.  Input samples are continuously received by the first task and given to the second task.</p>
 <p>SmartHLS provides a way for a developer to specify data flow parallelism through the use of function pipelining (see <a class="reference internal" href="#function-pipelining"><span class="std std-ref">Function Pipelining</span></a>) and/or threads (see <a class="reference internal" href="#data-flow-parallelism-with-pthreads"><span class="std std-ref">Data Flow Parallelism with SmartHLS Threads</span></a>) with SmartHLS’s FIFO library (see <a class="reference internal" href="#streaming-lib"><span class="std std-ref">Streaming Library</span></a>) used to connect the streaming modules.</p>
-</section>
-</section>
-<section id="smarthls-overview">
-<h2><span class="section-number">1.2. </span>SmartHLS Overview<a class="headerlink" href="#smarthls-overview" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="smarthls-overview">
+<h2>SmartHLS Overview<a class="headerlink" href="#smarthls-overview" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS accepts a C/C++ software program as input and automatically generates hardware described in Verilog HDL (hardware description language) that can be programmed onto a Microchip FPGA.
 The generated hardware can be imported as an HDL+ component into SmartDesign with a Tcl script that is also generated by SmartHLS.</p>
 <img alt="_images/smarthls_flow.png" src="_images/smarthls_flow.png" />
@@ -800,22 +799,22 @@ The generated hardware can be imported as an HDL+ component into SmartDesign wit
 <p>This will compile the top-level function and all of its descendant functions into hardware.
 The rest of the program (outside the top-level function) is considered as the software testbench, to give inputs into the top-level function and verify outputs from the top-level function (and its descendants).
 The software testbench is used to automatically generate the RTL testbench and stimulus for <a class="reference internal" href="#sw-hw-co-simulation">SW/HW Co-Simulation</a>.</p>
-</section>
-<section id="smarthls-pragmas">
-<span id="id1"></span><h2><span class="section-number">1.3. </span>SmartHLS Pragmas<a class="headerlink" href="#smarthls-pragmas" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="smarthls-pragmas">
+<span id="id1"></span><h2>SmartHLS Pragmas<a class="headerlink" href="#smarthls-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>Pragmas can be applied to the software code by the user to apply HLS optimization techniques and/or guide the compiler for hardware generation.
 They are applied directly on the applicable software construct (i.e., function, loop, argument, array) to specify a certain optimization for them. For example, to apply pipelining on a loop:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
 <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>For more details on the supported pragmas, please refer to <a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a>.
 For more details on loop pipelining, please refer to <a class="reference internal" href="#loop-pipelining"><span class="std std-ref">Loop Pipelining</span></a>.</p>
-</section>
-<section id="smarthls-constraints">
-<span id="id2"></span><h2><span class="section-number">1.4. </span>SmartHLS Constraints<a class="headerlink" href="#smarthls-constraints" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="smarthls-constraints">
+<span id="id2"></span><h2>SmartHLS Constraints<a class="headerlink" href="#smarthls-constraints" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS also supports user constraints to guide hardware generation.
 Whereas pragmas are applied directly on the source code for optimizations that are specific and local to the software construct that it is being applied on (function, loop, memory, argument, etc),
 constraints are used for settings that will be globally applied to the entire program (i.e., setting the target FPGA, target clock period).
@@ -858,9 +857,9 @@ When this constraint is not given, SmartHLS uses the default clock period for ea
 </tbody>
 </table>
 <p>Details of all SmartHLS constraints are given in the <a class="reference internal" href="constraintsmanual.html#constraints"><span class="std std-ref">Constraints Manual</span></a>.</p>
-</section>
-<section id="specifying-the-top-level-function">
-<span id="custom-top-level"></span><h2><span class="section-number">1.5. </span>Specifying the Top-level Function<a class="headerlink" href="#specifying-the-top-level-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="specifying-the-top-level-function">
+<span id="custom-top-level"></span><h2>Specifying the Top-level Function<a class="headerlink" href="#specifying-the-top-level-function" title="Permalink to this headline">¶</a></h2>
 <p>When compiling software to hardware with SmartHLS, you must specify the top-level function for your program.
 Then SmartHLS will compile the specified top-level function and all of its descendant functions to hardware.
 The remainder of the program (i.e., parent functions of the top-level function, typically the <code class="docutils literal notranslate"><span class="pre">main</span></code> function)
@@ -891,9 +890,9 @@ The first way is to specify it during project creation in the SmartHLS IDE, as s
 If you have specified the top-level function during project creation, you should not specify it again with the pragma.
 If you want to use the pragma, you should leave the <cite>Top-Level Function</cite> box empty during project creation or remove the specified top-level function in the HLS Constraints window.</p>
 </div>
-</section>
-<section id="sw-hw-co-simulation">
-<span id="sw-hw-cosimulation"></span><h2><span class="section-number">1.6. </span>SW/HW Co-Simulation<a class="headerlink" href="#sw-hw-co-simulation" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="sw-hw-co-simulation">
+<span id="sw-hw-cosimulation"></span><h2>SW/HW Co-Simulation<a class="headerlink" href="#sw-hw-co-simulation" title="Permalink to this headline">¶</a></h2>
 <p>The circuit generated by SmartHLS should be functionally equivalent to the input software.
 Users should not modify the generated Verilog, as it is overwritten every time SmartHLS runs.</p>
 <p>SW/HW co-simulation can be used to verify that the generated hardware produces the same outputs for the same inputs as software.
@@ -949,16 +948,16 @@ the threads are forked.  Free-running threads (that are continuously running
 and never joined) are not supported by SW/HW Co-Simulation.</p></li>
 </ul>
 </div>
-</section>
-<section id="loop-pipelining">
-<span id="id3"></span><h2><span class="section-number">1.7. </span>Loop Pipelining<a class="headerlink" href="#loop-pipelining" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="loop-pipelining">
+<span id="id3"></span><h2>Loop Pipelining<a class="headerlink" href="#loop-pipelining" title="Permalink to this headline">¶</a></h2>
 <p>Loop pipelining is an optimization that can automatically extract
 loop-level parallelism to create an efficient hardware pipeline.
 It allows executing multiple loop iterations concurrently on the same pipelined hardware.</p>
 <p>To use loop pipelining, the user needs to specify the loop pipeline pragma above the applicable loop:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
 <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -973,9 +972,9 @@ However, this is not possible in some cases due to resource constraints or
 cross-iteration dependencies. Please refer to <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a> on more examples and details on loop pipelining.
 When II=1 cannot be met, SmartHLS’s pipeline scheduling algorithm will try to find the smallest possible II
 that satisfies the constraints and dependencies.</p>
-</section>
-<section id="multi-threading-with-smarthls-threads">
-<span id="pthreads-multithreading"></span><h2><span class="section-number">1.8. </span>Multi-threading with SmartHLS Threads<a class="headerlink" href="#multi-threading-with-smarthls-threads" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="multi-threading-with-smarthls-threads">
+<span id="pthreads-multithreading"></span><h2>Multi-threading with SmartHLS Threads<a class="headerlink" href="#multi-threading-with-smarthls-threads" title="Permalink to this headline">¶</a></h2>
 <p>In an FPGA hardware system, the same module can be instantiated multiple times to exploit spatial parallelism, where all module instances execute in parallel to achieve higher throughput.
 SmartHLS allows easily inferring such parallelism with the use of SmartHLS Threads which is a simplified API of <code class="docutils literal notranslate"><span class="pre">std::thread</span></code> commonly used in software.
 Parallelism described in software with SmartHLS threads is automatically compiled to parallel hardware with SmartHLS.
@@ -994,9 +993,9 @@ SmartHLS also supports mutex and barrier APIs so that synchronization between th
 <a class="reference internal" href="#supported-parallel-apis"><span class="std std-ref">Supported SmartHLS Thread APIs</span></a>.</p>
 <p>Note that for a <code class="docutils literal notranslate"><span class="pre">hls::thread</span></code> kernel, SmartHLS will automatically inline any of its descendant functions.
 The inlining cannot be overridden with the <code class="docutils literal notranslate"><span class="pre">noinline</span></code> pragma (see <a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a>).</p>
-</section>
-<section id="supported-smarthls-thread-apis">
-<span id="supported-parallel-apis"></span><h2><span class="section-number">1.9. </span>Supported SmartHLS Thread APIs<a class="headerlink" href="#supported-smarthls-thread-apis" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="supported-smarthls-thread-apis">
+<span id="supported-parallel-apis"></span><h2>Supported SmartHLS Thread APIs<a class="headerlink" href="#supported-smarthls-thread-apis" title="Permalink to this headline">¶</a></h2>
 <p>You can use SmartHLS thread library by including the header file:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;hls/thread.hpp&quot;</span><span class="cp"></span>
 </pre></div>
@@ -1088,9 +1087,9 @@ But the threaded function can continue executing.</p></li>
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="data-flow-parallelism-with-smarthls-threads">
-<span id="data-flow-parallelism-with-pthreads"></span><h2><span class="section-number">1.10. </span>Data Flow Parallelism with SmartHLS Threads<a class="headerlink" href="#data-flow-parallelism-with-smarthls-threads" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="data-flow-parallelism-with-smarthls-threads">
+<span id="data-flow-parallelism-with-pthreads"></span><h2>Data Flow Parallelism with SmartHLS Threads<a class="headerlink" href="#data-flow-parallelism-with-smarthls-threads" title="Permalink to this headline">¶</a></h2>
 <p>Data flow parallelism is another commonly used technique to improve hardware throughput, where a succession of computational tasks that process
 continuous streams of data can execute in parallel.
 The concurrent execution of computational tasks can also be accurately described in software using <code class="docutils literal notranslate"><span class="pre">hls::thread</span></code> APIs.
@@ -1112,9 +1111,9 @@ In the example, the <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <p>The corresponding hardware is illustrated in the figure below.</p>
-<figure class="align-center">
+<div class="figure align-center">
 <a class="reference internal image-reference" href="_images/FIR_Pthreads_schematic.png"><img alt="_images/FIR_Pthreads_schematic.png" src="_images/FIR_Pthreads_schematic.png" style="width: 408.8px; height: 57.6px;" /></a>
-</figure>
+</div>
 <p>The two hls::FIFO&lt;int&gt;s in the C++ code corresponds to the creation of the two FIFOs, where the bit-width is set according to the type shown in the constructor argument &lt;int&gt;.
 The three <code class="docutils literal notranslate"><span class="pre">hls::thread&lt;void&gt;</span></code> calls initiate and parallelize the executions of three computational tasks, where each task is passed in a FIFO (or a pointer to a struct containing more than one FIFO pointers) as its argument.</p>
 <p>The FIFO connections and data flow directions are implied by the uses of FIFO <code class="docutils literal notranslate"><span class="pre">read()</span></code> and <code class="docutils literal notranslate"><span class="pre">write()</span></code> APIs.
@@ -1159,8 +1158,8 @@ This closely matches the <em>always running</em> behaviour of streaming hardware
 </div>
 <p>In the code shown in the example project, you will notice that all three threading functions contain a loop, which repeatedly reads and/or writes data from/to FIFOs to perform processing.
 In SmartHLS, this is how one can specify that functions are continuously processing data streams that are flowing through FIFOs.</p>
-<section id="further-throughput-enhancement-with-loop-pipelining">
-<h3><span class="section-number">1.10.1. </span>Further Throughput Enhancement with Loop Pipelining<a class="headerlink" href="#further-throughput-enhancement-with-loop-pipelining" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="further-throughput-enhancement-with-loop-pipelining">
+<h3>Further Throughput Enhancement with Loop Pipelining<a class="headerlink" href="#further-throughput-enhancement-with-loop-pipelining" title="Permalink to this headline">¶</a></h3>
 <p>In this example, the throughput of the streaming circuit will be limited by how frequently the functions can start processing new data (i.e., how frequently the new loop iterations can be started).
 For instance, if the slowest function among the three functions can only start a new loop iteration every 4 cycles, then the throughput of the entire streaming circuit will be limited to processing one piece of data every 4 cycles.
 Therefore, as you may have guessed, we can further improve the circuit throughput by pipelining the loops in the three functions.
@@ -1168,10 +1167,10 @@ If you run SmartHLS synthesis for the example (<code class="docutils literal not
 That means all functions can start a new iteration every clock cycle, and hence the entire streaming circuit can process one piece of data every clock cycle.
 Now run the simulation (<code class="docutils literal notranslate"><span class="pre">Simulate</span> <span class="pre">Hardware</span></code>) to confirm our expected throughput. The reported cycle latency should be just slightly more than the number of data samples to be processed
 (<code class="docutils literal notranslate"><span class="pre">INPUTSIZE</span></code> is set to 128; the extra cycles are spent on activating the parallel accelerators, flushing out the pipelines, and verifying the results).</p>
-</section>
-</section>
-<section id="function-pipelining">
-<span id="id4"></span><h2><span class="section-number">1.11. </span>Function Pipelining<a class="headerlink" href="#function-pipelining" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="function-pipelining">
+<span id="id4"></span><h2>Function Pipelining<a class="headerlink" href="#function-pipelining" title="Permalink to this headline">¶</a></h2>
 <p>You have just seen how an efficient streaming circuit can be described in software by using loop pipelining with SmartHLS threads.
 An alternative way to describe such a streaming circuit is to use <code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">Pipelining</span></code>.
 When a function is marked to be pipelined (by using the <code class="docutils literal notranslate"><span class="pre">Pipeline</span> <span class="pre">Function</span></code> constraint), SmartHLS will implement the function as a pipelined circuit that can start a new invocation every <code class="docutils literal notranslate"><span class="pre">II</span></code> cycles.
@@ -1214,16 +1213,16 @@ This example showcases the synthesis of a streaming circuit that consists of a s
 <p>In the generated Verilog for a function pipelined hardware, the <code class="docutils literal notranslate"><span class="pre">start</span></code> input port serves as an enable signal to the circuit.
 The circuit stops running when the <code class="docutils literal notranslate"><span class="pre">start</span></code> signal is de-asserted. To have the circuit running continuously, the <code class="docutils literal notranslate"><span class="pre">start</span></code> input port should be kept high.</p>
 </div>
-</section>
-<section id="memory-partitioning">
-<span id="id5"></span><h2><span class="section-number">1.12. </span>Memory Partitioning<a class="headerlink" href="#memory-partitioning" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="memory-partitioning">
+<span id="id5"></span><h2>Memory Partitioning<a class="headerlink" href="#memory-partitioning" title="Permalink to this headline">¶</a></h2>
 <p>Memory Partitioning is an optimization where aggregate types such as arrays and structs are partitioned into smaller pieces
 allowing for a greater number of reads and writes (accesses) per cycle. SmartHLS instantiates a RAM for each aggregate
 type where each RAM has up to two ports (allowing up to two reads/writes per cycle). Partitioning aggregate types into
 smaller memories or into its individual elements allows for more accesses per cycle and improves memory bandwidth.</p>
 <p>There are two flavors of memory partitioning, access-based partitioning and user-specified partitioning.</p>
-<section id="access-based-memory-partitioning">
-<h3><span class="section-number">1.12.1. </span>Access-Based Memory Partitioning<a class="headerlink" href="#access-based-memory-partitioning" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="access-based-memory-partitioning">
+<h3>Access-Based Memory Partitioning<a class="headerlink" href="#access-based-memory-partitioning" title="Permalink to this headline">¶</a></h3>
 <p>Access-based partitioning is automatically applied to all memories except for those at the top-level interfaces (<a class="reference internal" href="hwarchitecture.html#io-memory"><span class="std std-ref">I/O Memory</span></a>).
 This flavor of memory partitioning will analyze the ranges of all accesses to a memory and create partitions based on
 these accesses. After analyzing all memory accesses, independent partitions will be implemented in independent memories.
@@ -1269,15 +1268,15 @@ to multiple memories based on a condition) are not supported in memory
 partitioning. The aliased memories will not be partitioned.</p></li>
 </ul>
 <p>Please refer to the <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a> for more examples and details.</p>
-</section>
-<section id="user-specified-memory-partitioning">
-<h3><span class="section-number">1.12.2. </span>User-Specified Memory Partitioning<a class="headerlink" href="#user-specified-memory-partitioning" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="user-specified-memory-partitioning">
+<h3>User-Specified Memory Partitioning<a class="headerlink" href="#user-specified-memory-partitioning" title="Permalink to this headline">¶</a></h3>
 <p>User-specified partitioning can be achieved with the <code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span></code> pragma .
 User-specified partitioning is where the user explicitly specifies a memory to be partitioned via the <code class="docutils literal notranslate"><span class="pre">memory</span> <span class="pre">partition</span></code> pragma (#pragma HLS memory partition variable, #pragma HLS memory partition argument). See <span class="xref std std-ref">_pragma_memory_partition_argument</span> and <a class="reference internal" href="pragmas_docs/memory_partition_variable.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> for more details.
 User-specified partitioning also analyzes accesses but partitions based on a predefined structure and array dimension.
 There are two user-specified partitioning types supported by SmartHLS: <cite>Complete</cite> and <cite>Struct-fields</cite>.</p>
-<section id="complete-partitioning">
-<h4><span class="section-number">1.12.2.1. </span>Complete Partitioning<a class="headerlink" href="#complete-partitioning" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="complete-partitioning">
+<h4>Complete Partitioning<a class="headerlink" href="#complete-partitioning" title="Permalink to this headline">¶</a></h4>
 <p>Complete partitioning partitions memories based on a user-specified dimension. Memories are then partitioned completely on the specified dimension,
 which means the memory is partitioned into individual elements of the specified array dimension. More information on the pragmas can be found in the
 pragma references linked above. Unaccessed sections of the original memory are also discarded.</p>
@@ -1340,16 +1339,16 @@ to this is that functions that get called with different pointers are handled pr
 partitioning.</p></li>
 </ul>
 <p>Please refer to the <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a> for more examples and details.</p>
-</section>
-<section id="struct-fields-partitioning">
-<h4><span class="section-number">1.12.2.2. </span>Struct-Fields Partitioning<a class="headerlink" href="#struct-fields-partitioning" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="struct-fields-partitioning">
+<h4>Struct-Fields Partitioning<a class="headerlink" href="#struct-fields-partitioning" title="Permalink to this headline">¶</a></h4>
 <p>Struct-fields partitioning partitions a (array of) struct argument / variable into its individual fields such that each field is a partition.
 Unlike complete partitioning, if a field in the partitioned struct is an aggregate type (struct or array), the field is not further partitioned to its elements.
 Note that applying Struct-fields partitining to  an array-of-struct creates an array for each field in the struct.
 Unaccessed paritions (fields) are discarded, but the Unaccessed elements in an aggreagte partition (field) are not be discarded.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ty</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="nc">SubTy</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span> <span class="kt">int</span> <span class="n">b</span><span class="p">;</span> <span class="p">};</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Ty</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">SubTy</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span> <span class="kt">int</span> <span class="n">b</span><span class="p">;</span> <span class="p">};</span>
     <span class="kt">char</span> <span class="n">x</span><span class="p">;</span>
     <span class="kt">short</span> <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
     <span class="n">SubTy</span> <span class="n">z</span><span class="p">;</span>
@@ -1387,21 +1386,21 @@ Note that the array field <cite>Ty.y</cite> has one partition, and similarly the
 +---------+-----------------------+------+-------------+------------+-------+
 </pre></div>
 </div>
-</section>
-</section>
-</section>
-<section id="smarthls-c-c-library">
-<h2><span class="section-number">1.13. </span>SmartHLS C/C++ Library<a class="headerlink" href="#smarthls-c-c-library" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="section" id="smarthls-c-c-library">
+<h2>SmartHLS C/C++ Library<a class="headerlink" href="#smarthls-c-c-library" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS includes a number of C/C++ libraries that allow creation of efficient hardware.</p>
-<section id="streaming-library">
-<span id="streaming-lib"></span><h3><span class="section-number">1.13.1. </span>Streaming Library<a class="headerlink" href="#streaming-library" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="streaming-library">
+<span id="streaming-lib"></span><h3>Streaming Library<a class="headerlink" href="#streaming-library" title="Permalink to this headline">¶</a></h3>
 <p>The streaming library includes the FIFO (first-in first-out) data structure along with its associated API functions.
 The library can be compiled in software to run on the host machine (e.g., x86).
 Each FIFO instance in software is implemented as a First Word Fall Through (FWFT) FIFO in hardware.</p>
 <p>The FIFO library is provided as a C++ template class.
 The FIFO data type can be flexibly defined and specified as a template argument of the FIFO object.
 For example, the FIFO data type could be defined as a struct containing multiple integers:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">AxisWord</span> <span class="p">{</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span> <span class="n">data</span><span class="p">;</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span> <span class="n">keep</span><span class="p">;</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">last</span><span class="p">;</span> <span class="p">};</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">AxisWord</span> <span class="p">{</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span> <span class="n">data</span><span class="p">;</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span> <span class="n">keep</span><span class="p">;</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">last</span><span class="p">;</span> <span class="p">};</span>
 
 <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="n">AxisWord</span><span class="o">&gt;</span> <span class="n">my_axi_stream_interface_fifo</span><span class="p">;</span>
 </pre></div>
@@ -1456,8 +1455,8 @@ An array or a struct of FIFOs is supported.</p>
 when the FIFO is declared, or it can also be set afterwards with the <code class="docutils literal notranslate"><span class="pre">setDepth(unsigned</span> <span class="pre">depth)</span></code> function.
 If the depth is not provided by the user, SmartHLS uses a default FIFO depth of 2.
 The depth of a FIFO can also be set to 0, in which case SmartHLS will create direct ready/valid/data wire connections (without a FIFO) between the source and the sink.</p>
-<section id="streaming-library-blocking-behaviour">
-<h4><span class="section-number">1.13.1.1. </span>Streaming Library - Blocking Behaviour<a class="headerlink" href="#streaming-library-blocking-behaviour" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="streaming-library-blocking-behaviour">
+<h4>Streaming Library - Blocking Behaviour<a class="headerlink" href="#streaming-library-blocking-behaviour" title="Permalink to this headline">¶</a></h4>
 <p>Note that the fifo <code class="docutils literal notranslate"><span class="pre">read()</span></code> and <code class="docutils literal notranslate"><span class="pre">write()</span></code> calls are blocking.
 Hence if a module attempts to read from a FIFO that is empty, it will be stalled.
 Similarly, if it attempts to write to a FIFO that is full, it will be stalled.
@@ -1484,9 +1483,9 @@ depth of the FIFOs.</p>
 <p class="admonition-title">Note</p>
 <p>We recommend the minimum depth of a FIFO to be 2, as a depth of 1 FIFO can cause excessive stalls.</p>
 </div>
-</section>
-<section id="streaming-library-non-blocking-behaviour">
-<span id="streaming-lib-non-blocking"></span><h4><span class="section-number">1.13.1.2. </span>Streaming Library - Non-Blocking Behaviour<a class="headerlink" href="#streaming-library-non-blocking-behaviour" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="streaming-library-non-blocking-behaviour">
+<span id="streaming-lib-non-blocking"></span><h4>Streaming Library - Non-Blocking Behaviour<a class="headerlink" href="#streaming-library-non-blocking-behaviour" title="Permalink to this headline">¶</a></h4>
 <p>As mentioned above, non-blocking FIFO behaviour can be created with the use of <code class="docutils literal notranslate"><span class="pre">empty()</span></code> and <code class="docutils literal notranslate"><span class="pre">full()</span></code> functions.
 Non-blocking FIFO read and write can be achieved as shown below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">(</span>!fifo_a.empty<span class="o">())</span>
@@ -1500,15 +1499,15 @@ Non-blocking FIFO read and write can be achieved as shown below.</p>
 <p class="admonition-title">Note</p>
 <p>A deadlock may occur if a fifo with a depth of 0 uses non-blocking write on its source and non-block read on its sink.</p>
 </div>
-</section>
-</section>
-<section id="c-arbitrary-precision-data-types-library">
-<span id="ap-lib"></span><h3><span class="section-number">1.13.2. </span>C++ Arbitrary Precision Data Types Library<a class="headerlink" href="#c-arbitrary-precision-data-types-library" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="c-arbitrary-precision-data-types-library">
+<span id="ap-lib"></span><h3>C++ Arbitrary Precision Data Types Library<a class="headerlink" href="#c-arbitrary-precision-data-types-library" title="Permalink to this headline">¶</a></h3>
 <p>The C++ Arbitrary Precision Data Types Library provides numeric types <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> and <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code>, which can be used to specify data types of arbitrary bitwidths in software (e.g., ap_int&lt;9&gt; for a 9-bit integer variable).
 These data types will be efficiently translated to create hardware with the exact widths. The data types also come with bit manipulation utilities, such as bit range selection and concatenation.</p>
-</section>
-<section id="c-arbitrary-precision-integer-library">
-<h3><span class="section-number">1.13.3. </span>C++ Arbitrary Precision Integer Library<a class="headerlink" href="#c-arbitrary-precision-integer-library" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="c-arbitrary-precision-integer-library">
+<h3>C++ Arbitrary Precision Integer Library<a class="headerlink" href="#c-arbitrary-precision-integer-library" title="Permalink to this headline">¶</a></h3>
 <p>The C++ <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> type allows specifying signed and unsigned data types of any bitwidth.
 They can be used for arithmetic, concatenation, and bit level operations. You can use the <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> type
 by including the following header file.</p>
@@ -1547,8 +1546,8 @@ allowing for wider types than the existing C arbitrary bit-width library.</p>
 <p>In the above code we iterate through a 128 bit unsigned integer in four bit segments,
 and track the difference between how many segments are above and below 7.
 All variables have been reduced to their specified minimum widths.</p>
-<section id="printing-arbitrary-precision-integers">
-<h4><span class="section-number">1.13.3.1. </span>Printing Arbitrary Precision integers<a class="headerlink" href="#printing-arbitrary-precision-integers" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="printing-arbitrary-precision-integers">
+<h4>Printing Arbitrary Precision integers<a class="headerlink" href="#printing-arbitrary-precision-integers" title="Permalink to this headline">¶</a></h4>
 <p>The C++ Arbitrary Precision Integer Library provides some utilities for printing <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> types. The <code class="docutils literal notranslate"><span class="pre">to_string(base,</span> <span class="pre">signedness)</span></code> function
 takes an optional base argument (one of 2, 10, and 16) which defaults to 16, as well as an optional signedness argument which determines if the data
 should be printed as signed or unsigned, which defaults to false. The output stream operator <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> is also overloaded to put arbitrary precision integer
@@ -1564,7 +1563,7 @@ types in the output stream as if they were called with the default <code class="
 <span class="p">...</span>
 
 <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span> <span class="n">ap_u</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
-<span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span> <span class="n">ap</span> <span class="o">=</span> <span class="mi">-22</span><span class="p">;</span>
+<span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span> <span class="n">ap</span> <span class="o">=</span> <span class="o">-</span><span class="mi">22</span><span class="p">;</span>
 
 <span class="c1">// prints: 0x15</span>
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;0x&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">ap_u</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
@@ -1579,9 +1578,9 @@ types in the output stream as if they were called with the default <code class="
 <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ap_u</span><span class="p">.</span><span class="n">to_string</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span>
 </pre></div>
 </div>
-</section>
-<section id="initializing-arbitrary-precision-integers">
-<h4><span class="section-number">1.13.3.2. </span>Initializing Arbitrary Precision integers<a class="headerlink" href="#initializing-arbitrary-precision-integers" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="initializing-arbitrary-precision-integers">
+<h4>Initializing Arbitrary Precision integers<a class="headerlink" href="#initializing-arbitrary-precision-integers" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> types can be constructed and assigned to from other arbitrary precision integers, C++ integral
 types, <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> types, as well as concatenations and bit selections. They can also be initialized from a hexadecimal
 string describing the exact bits.</p>
@@ -1594,7 +1593,7 @@ string describing the exact bits.</p>
 <span class="p">...</span>
 
 <span class="c1">// Initialized to -7</span>
-<span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span> <span class="n">int1</span> <span class="o">=</span> <span class="mi">-7</span><span class="p">;</span>
+<span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span> <span class="n">int1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span><span class="p">;</span>
 
 <span class="c1">// Initialized to 15</span>
 <span class="c1">// The bits below the decimal are truncated.</span>
@@ -1619,9 +1618,9 @@ string describing the exact bits.</p>
 <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">12</span><span class="o">&gt;</span> <span class="n">int6</span> <span class="o">=</span> <span class="mi">4098</span><span class="p">;</span>
 </pre></div>
 </div>
-</section>
-<section id="c-arbitrary-precision-integer-arithmetic">
-<h4><span class="section-number">1.13.3.3. </span>C++ Arbitrary Precision Integer Arithmetic<a class="headerlink" href="#c-arbitrary-precision-integer-arithmetic" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="c-arbitrary-precision-integer-arithmetic">
+<h4>C++ Arbitrary Precision Integer Arithmetic<a class="headerlink" href="#c-arbitrary-precision-integer-arithmetic" title="Permalink to this headline">¶</a></h4>
 <p>The C++ Arbitrary Precision Integer library supports all standard arithmetic, logical bitwise, shifts, and comparison operations.
 Note that for shifting that &gt;&gt; and &lt;&lt; are logical, and the .ashr(x) function implements arithmetic right shift.
 The output types of an operation are wider than their operands as necessary to hold the result. Operands of ap_int, and ap_uint type,
@@ -1652,12 +1651,12 @@ the resulting type will always be ap_int. Some of this behaviour is demonstrated
 <span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">9</span><span class="o">&gt;</span> <span class="n">g</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
 
 <span class="c1">// ap_(u)int types can be mixed freely with integral types</span>
-<span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">33</span><span class="o">&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">-1</span> <span class="o">-</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">33</span><span class="o">&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">;</span>
 </pre></div>
 </div>
-</section>
-<section id="c-arbitrary-precision-integer-explicit-conversions">
-<h4><span class="section-number">1.13.3.4. </span>C++ Arbitrary Precision Integer Explicit Conversions<a class="headerlink" href="#c-arbitrary-precision-integer-explicit-conversions" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="c-arbitrary-precision-integer-explicit-conversions">
+<h4>C++ Arbitrary Precision Integer Explicit Conversions<a class="headerlink" href="#c-arbitrary-precision-integer-explicit-conversions" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> types support several explicit conversion functions which allow the value to be interpreted in different ways.
 The <code class="docutils literal notranslate"><span class="pre">to_uint64()</span></code> function will return a 64 bit <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code> with the same bits as the original <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code>, zero extending
 and wrapping as necessary. Assigning an <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> wider than 64 bits to an <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code> would also wrap to match widths,
@@ -1673,7 +1672,7 @@ For more on the <code class="docutils literal notranslate"><span class="pre">ap_
 <span class="p">...</span>
 
 <span class="c1">// zero extend 16 bit -32768 to 64 bit 32768</span>
-<span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">A</span> <span class="o">=</span> <span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">16</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">-32768</span><span class="p">).</span><span class="n">to_uint64</span><span class="p">();</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">A</span> <span class="o">=</span> <span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">16</span><span class="o">&gt;</span><span class="p">(</span><span class="o">-</span><span class="mi">32768</span><span class="p">).</span><span class="n">to_uint64</span><span class="p">();</span>
 
 <span class="c1">// wrap from 65 bit 2**64 + 1 to 64 bit 1</span>
 <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">B</span> <span class="o">=</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">65</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;10000000000000001&quot;</span><span class="p">).</span><span class="n">to_uint64</span><span class="p">();</span>
@@ -1684,23 +1683,23 @@ For more on the <code class="docutils literal notranslate"><span class="pre">ap_
 
 <span class="c1">// interpret 4 bit int as 4 bit fixpt with leading bit 8 bits above decimal</span>
 <span class="c1">// by value -8 becomes -128 (== -8 * 2**4)</span>
-<span class="n">ap_fixpt</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="o">&gt;</span> <span class="n">D</span> <span class="o">=</span> <span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">-8</span><span class="p">).</span><span class="n">to_fixpt</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">ap_fixpt</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="o">&gt;</span> <span class="n">D</span> <span class="o">=</span> <span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">).</span><span class="n">to_fixpt</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span><span class="p">();</span>
 
 <span class="c1">// interpret 6 bit int as 6 bit ufixpt with 6 bits above decimal</span>
 <span class="c1">// by value 8 becomes 8</span>
 <span class="n">ap_ufixpt</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="o">&gt;</span> <span class="n">E</span> <span class="o">=</span> <span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">8</span><span class="p">).</span><span class="n">to_ufixpt</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="p">();</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="c-arbitrary-precision-bit-level-operations">
-<h3><span class="section-number">1.13.4. </span>C++ Arbitrary Precision Bit-level Operations<a class="headerlink" href="#c-arbitrary-precision-bit-level-operations" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="c-arbitrary-precision-bit-level-operations">
+<h3>C++ Arbitrary Precision Bit-level Operations<a class="headerlink" href="#c-arbitrary-precision-bit-level-operations" title="Permalink to this headline">¶</a></h3>
 <p>The C++ Arbitrary Precision Library provides utilities to select, and update ranges of arbitrary precision data,
 as well as perform concatenation.</p>
 <p>Bit selection and updating is defined for all C++ arbitrary precision numeric types. Concatenation is defined on all
 C++ Arbitrary Precision Library constructs including arbitrary precision numeric types, as well as bit selections, and other concatenations.</p>
-<section id="selecting-and-assigning-to-a-range-of-bits">
-<h4><span class="section-number">1.13.4.1. </span>Selecting and Assigning to a Range of Bits<a class="headerlink" href="#selecting-and-assigning-to-a-range-of-bits" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="selecting-and-assigning-to-a-range-of-bits">
+<h4>Selecting and Assigning to a Range of Bits<a class="headerlink" href="#selecting-and-assigning-to-a-range-of-bits" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;hls/ap_int.hpp&quot;</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">hls</span><span class="p">;</span>
@@ -1717,9 +1716,9 @@ C++ Arbitrary Precision Library constructs including arbitrary precision numeric
 <p>On C++ arbitrary precision types <code class="docutils literal notranslate"><span class="pre">num(a,</span> <span class="pre">b)</span></code> (or <code class="docutils literal notranslate"><span class="pre">num.range(a,</span> <span class="pre">b)</span></code>) will select and create a reference to the underlying arbitrary precision value.
 The operator <code class="docutils literal notranslate"><span class="pre">num[a]</span></code> selects and creates a reference to a single bit.
 This reference can be assigned to, and used to access the underlying data.</p>
-</section>
-<section id="bit-concatenation">
-<h4><span class="section-number">1.13.4.2. </span>Bit Concatenation<a class="headerlink" href="#bit-concatenation" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="bit-concatenation">
+<h4>Bit Concatenation<a class="headerlink" href="#bit-concatenation" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;hls/ap_int.hpp&quot;</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">hls</span><span class="p">;</span>
@@ -1734,10 +1733,10 @@ This reference can be assigned to, and used to access the underlying data.</p>
 </div>
 <p>Putting any C++ arbitrary precision types in a comma separated list will generate a concatenation.
 The concatenation can currently be used to create arbitrary precision types (zero extending or truncating to match widths), but can not be assigned to.</p>
-</section>
-</section>
-<section id="c-arbitrary-precision-fixed-point-library">
-<span id="fixed-point-library"></span><h3><span class="section-number">1.13.5. </span>C++ Arbitrary Precision Fixed Point Library<a class="headerlink" href="#c-arbitrary-precision-fixed-point-library" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="c-arbitrary-precision-fixed-point-library">
+<span id="fixed-point-library"></span><h3>C++ Arbitrary Precision Fixed Point Library<a class="headerlink" href="#c-arbitrary-precision-fixed-point-library" title="Permalink to this headline">¶</a></h3>
 <p>The C++ Arbitrary Precision Fixed Point library provides fast bit accurate software simulation, and efficient equivalent
 hardware generation. The C++ <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> types allow specifying signed and unsigned fixed point numbers of arbitrary width,
 and arbitrary fixed position relative to the decimal. They can be used
@@ -1931,7 +1930,7 @@ This information is described in the following table. Q here represents the quan
     <span class="n">fixpt_t</span> <span class="n">in</span> <span class="o">=</span> <span class="n">input_fifo</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
 
     <span class="k">static</span> <span class="n">fixpt_t</span> <span class="n">previous</span><span class="p">[</span><span class="n">TAPS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-    <span class="k">const</span> <span class="n">fixpt_s_t</span> <span class="n">coefficients</span><span class="p">[</span><span class="n">TAPS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">-2</span><span class="p">,</span> <span class="mf">-1.5</span><span class="p">,</span> <span class="mi">-1</span><span class="p">,</span> <span class="mf">-0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span>
+    <span class="k">const</span> <span class="n">fixpt_s_t</span> <span class="n">coefficients</span><span class="p">[</span><span class="n">TAPS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span>
 
     <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">TAPS</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">previous</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">previous</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
@@ -1967,8 +1966,8 @@ fashion, such that there are only log(TAPS) = 3 saturating operations that depen
 accumulated in a single variable in one loop then there would be TAPS = 8 saturating operations depending on each other.
 Having more saturating operations in a row is slower because at each step overflow needs to be checked before the next
 operation can occur.</p>
-<section id="printing-ap-u-fixpt-types">
-<h4><span class="section-number">1.13.5.1. </span>Printing ap_[u]fixpt Types<a class="headerlink" href="#printing-ap-u-fixpt-types" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="printing-ap-u-fixpt-types">
+<h4>Printing ap_[u]fixpt Types<a class="headerlink" href="#printing-ap-u-fixpt-types" title="Permalink to this headline">¶</a></h4>
 <p>The Arbitrary Precision Fixed Point Library provides some utilities for printing <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> types in software, demonstrated below.
 The <code class="docutils literal notranslate"><span class="pre">to_fixpt_string(base,</span> <span class="pre">signedness)</span></code> function takes an optional base argument which is one of 2, 10, or 16, and defaults to 10,
 as well as an optional signedness argument which determines if the data should be treated as signed or unsigned. The signedness argument defaults to false
@@ -2007,9 +2006,9 @@ in hardware, but this is expensive, and should be avoided when possible.</p>
 <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">s_fixed</span><span class="p">.</span><span class="n">to_double</span><span class="p">());</span>
 </pre></div>
 </div>
-</section>
-<section id="initializing-ap-u-fixpt-types">
-<h4><span class="section-number">1.13.5.2. </span>Initializing ap_[u]fixpt Types<a class="headerlink" href="#initializing-ap-u-fixpt-types" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="initializing-ap-u-fixpt-types">
+<h4>Initializing ap_[u]fixpt Types<a class="headerlink" href="#initializing-ap-u-fixpt-types" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> types can be constructed and assigned from other fixed points, the <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> types, C++ integer and floating
 point types, as well as concatenations and bit selections. They can also be initialized from a hexadecimal string describing the exact
 bits. Note that construction and assignment will always trigger the quantization and overflow handling of the <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> being constructed or assigned to,
@@ -2029,7 +2028,7 @@ the <code class="docutils literal notranslate"><span class="pre">from_raw_bits</
 <span class="p">...</span>
 
 <span class="c1">// Initialized to -13.75</span>
-<span class="n">ap_fixpt</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;</span> <span class="n">fixed1</span> <span class="o">=</span> <span class="mf">-13.75</span><span class="p">;</span>
+<span class="n">ap_fixpt</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;</span> <span class="n">fixed1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">13.75</span><span class="p">;</span>
 
 <span class="c1">// Initialized to 135</span>
 <span class="n">ap_ufixpt</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="o">&gt;</span> <span class="n">fixed2</span> <span class="o">=</span> <span class="mi">135</span><span class="p">;</span>
@@ -2043,7 +2042,7 @@ the <code class="docutils literal notranslate"><span class="pre">from_raw_bits</
 <span class="n">ap_ufixpt</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;</span> <span class="n">fixed4</span> <span class="o">=</span> <span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">16</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
 
 <span class="c1">// Initialized to -1 (AP_SAT triggered)</span>
-<span class="n">ap_fixpt</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">AP_TRN</span><span class="p">,</span> <span class="n">AP_SAT</span><span class="o">&gt;</span> <span class="n">fixed5</span> <span class="o">=</span> <span class="mi">-4</span><span class="p">;</span>
+<span class="n">ap_fixpt</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">AP_TRN</span><span class="p">,</span> <span class="n">AP_SAT</span><span class="o">&gt;</span> <span class="n">fixed5</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="p">;</span>
 
 <span class="c1">// Initialized to 1.5 (AP_RND triggered)</span>
 <span class="n">ap_ufixpt</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">AP_RND</span><span class="o">&gt;</span> <span class="n">fixed6</span> <span class="o">=</span> <span class="mf">1.25</span><span class="p">;</span>
@@ -2071,9 +2070,9 @@ the <code class="docutils literal notranslate"><span class="pre">from_raw_bits</
 <span class="n">ap_ufixpt</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">&gt;</span> <span class="n">fixed11</span> <span class="o">=</span> <span class="n">ap_int</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;8&quot;</span><span class="p">).</span><span class="n">to_ufixpt</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="p">();</span>
 </pre></div>
 </div>
-</section>
-<section id="arithmetic-with-ap-u-fixpt-types">
-<h4><span class="section-number">1.13.5.3. </span>Arithmetic With ap_[u]fixpt Types<a class="headerlink" href="#arithmetic-with-ap-u-fixpt-types" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="arithmetic-with-ap-u-fixpt-types">
+<h4>Arithmetic With ap_[u]fixpt Types<a class="headerlink" href="#arithmetic-with-ap-u-fixpt-types" title="Permalink to this headline">¶</a></h4>
 <p>The Arbitrary Precision Fixed Point library supports all standard arithmetic, logical bitwise, shifts, and comparison
 operations. During arithmetic intermediate results are kept in a wide enough type to hold all of the possible resulting values. Operands
 are shifted to line up decimal points, and sign or zero extended to match widths before an operation is performed. For fixed
@@ -2109,7 +2108,7 @@ type being compared against, with the AP_TRN and AP_WRAP modes on.</p>
 
 <span class="n">ap_ufixpt</span><span class="o">&lt;</span><span class="mi">65</span><span class="p">,</span> <span class="mi">14</span><span class="o">&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">32.5714285713620483875274658203125</span><span class="p">;</span>
 <span class="n">ap_ufixpt</span><span class="o">&lt;</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
-<span class="n">ap_fixpt</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">-3.125</span><span class="p">;</span>
+<span class="n">ap_fixpt</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.125</span><span class="p">;</span>
 
 <span class="c1">// the resulting type is wide enough to hold all</span>
 <span class="c1">// 51 fractional bits of a, and 15 integer bits of b</span>
@@ -2133,9 +2132,9 @@ type being compared against, with the AP_TRN and AP_WRAP modes on.</p>
 <span class="n">ap_ufixpt</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">AP_TRN</span><span class="p">,</span> <span class="n">AP_SAT</span><span class="o">&gt;</span> <span class="n">g</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">d</span><span class="p">;</span> <span class="c1">// 0</span>
 </pre></div>
 </div>
-</section>
-<section id="explicit-conversions-of-ap-u-fixpt">
-<h4><span class="section-number">1.13.5.4. </span>Explicit Conversions of ap_[u]fixpt<a class="headerlink" href="#explicit-conversions-of-ap-u-fixpt" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="explicit-conversions-of-ap-u-fixpt">
+<h4>Explicit Conversions of ap_[u]fixpt<a class="headerlink" href="#explicit-conversions-of-ap-u-fixpt" title="Permalink to this headline">¶</a></h4>
 <p>There are several functions to explicitly convert <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> types into other types, besides value based assignments. The <code class="docutils literal notranslate"><span class="pre">raw_bits</span></code> function produces a uint of
 the same width as the ap_[u]fixpt with the same raw data, and to_double returns a double representing the value of the ap_[u]fixpt. Note that
 for wide enough ap_[u]fixpt to_double can lose precision, and can be inefficient in hardware. These are demonstrated in the
@@ -2152,13 +2151,13 @@ following code snippet.</p>
 <span class="n">logical_fixed</span> <span class="o">==</span> <span class="mh">0x898</span><span class="p">;</span> <span class="c1">// true</span>
 
 <span class="kt">double</span> <span class="n">double_fixed</span> <span class="o">=</span> <span class="n">fixed</span><span class="p">.</span><span class="n">to_double</span><span class="p">();</span>
-<span class="n">double_fixed</span> <span class="o">==</span> <span class="mf">-14.8125</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="n">double_fixed</span> <span class="o">==</span> <span class="o">-</span><span class="mf">14.8125</span><span class="p">;</span> <span class="c1">// true</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="supported-operations-in-ap-u-int-ap-u-fixpt-and-floating-point">
-<h3><span class="section-number">1.13.6. </span>Supported Operations in ap_[u]int, ap_[u]fixpt, and floating-point<a class="headerlink" href="#supported-operations-in-ap-u-int-ap-u-fixpt-and-floating-point" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="supported-operations-in-ap-u-int-ap-u-fixpt-and-floating-point">
+<h3>Supported Operations in ap_[u]int, ap_[u]fixpt, and floating-point<a class="headerlink" href="#supported-operations-in-ap-u-int-ap-u-fixpt-and-floating-point" title="Permalink to this headline">¶</a></h3>
 <p>The table below shows all the standard arithmetic operations that are supported in
 our Arbitrary Precision Integer and Fixed Point Libraries as well as for
 floating-point data types. It also shows some useful APIs that can be used to
@@ -2491,17 +2490,17 @@ the float type. For double, the inputs to the core will be cast down to float,
 and the result will be cast back to double. This can result in a loss of precision,
 or incorrect results when the double input is not representable in the range of float.</p>
 </div>
-</section>
-<section id="image-processing-library">
-<h3><span class="section-number">1.13.7. </span>Image Processing Library<a class="headerlink" href="#image-processing-library" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="image-processing-library">
+<h3>Image Processing Library<a class="headerlink" href="#image-processing-library" title="Permalink to this headline">¶</a></h3>
 <p>The SmartHLS image processing library provides C++ class/function APIs for a
 number of commonly used image processing operations.
 You can use these class/function APIs by including the following header file,</p>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;hls/image_processing.hpp&quot;</span><span class="cp"></span>
 </pre></div>
 </div>
-<section id="line-buffer">
-<span id="line-buffer-user-guide"></span><h4><span class="section-number">1.13.7.1. </span>Line Buffer<a class="headerlink" href="#line-buffer" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="line-buffer">
+<span id="line-buffer-user-guide"></span><h4>Line Buffer<a class="headerlink" href="#line-buffer" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> class implements the line buffer structure that is commonly
 seen in image convolution (filtering) operations, where a filter kernel is
 “slided” over an input image and is applied on a local window (e.g., a square)
@@ -2510,7 +2509,7 @@ the line buffer is fed with a new pixel at every new sliding location while
 retaining the pixels of the previous image rows that can be covered for the
 sliding window.
 The public interface of the <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> class is shown below,</p>
-<div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">PixelType</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">ImageWidth</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">WindowSize</span><span class="o">&gt;</span>
+<div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PixelType</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">ImageWidth</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">WindowSize</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">LineBuffer</span> <span class="p">{</span>
   <span class="k">public</span><span class="o">:</span>
     <span class="n">PixelType</span> <span class="n">window</span><span class="p">[</span><span class="n">WindowSize</span><span class="p">][</span><span class="n">WindowSize</span><span class="p">];</span>
@@ -2548,10 +2547,10 @@ contain out-of-bound pixels at certain sliding locations.</p>
 <a class="reference internal image-reference" href="_images/LineBufferClass.png"><img alt="_images/LineBufferClass.png" class="align-center" src="_images/LineBufferClass.png" style="width: 765.0px; height: 1044.0px;" /></a>
 <p>For more details about when/why to use the <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> class, see
 <a class="reference internal" href="optimizationguide.html#line-buffer-opt-guide"><span class="std std-ref">Inferring a Line Buffer</span></a> in the <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a>.</p>
-</section>
-</section>
-<section id="c-numerics-library-math-h-in-c-cmath-in-c">
-<span id="c-numerics-library"></span><h3><span class="section-number">1.13.8. </span>C Numerics Library (math.h in C / &lt;cmath&gt; in C++)<a class="headerlink" href="#c-numerics-library-math-h-in-c-cmath-in-c" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="c-numerics-library-math-h-in-c-cmath-in-c">
+<span id="c-numerics-library"></span><h3>C Numerics Library (math.h in C / &lt;cmath&gt; in C++)<a class="headerlink" href="#c-numerics-library-math-h-in-c-cmath-in-c" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS supports a subset of the C Numerics Library. These functions are supported for functionality, however, may not lead to an efficient hardware implementation.
 If you require high performance, we recommend restructuring your software code to not call these math functions.
 The table below shows supported math functions.</p>
@@ -2604,17 +2603,17 @@ and as functions in C++</p></td>
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section id="top-level-rtl-interface">
-<span id="rtl-interface"></span><h2><span class="section-number">1.14. </span>Top-Level RTL Interface<a class="headerlink" href="#top-level-rtl-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="top-level-rtl-interface">
+<span id="rtl-interface"></span><h2>Top-Level RTL Interface<a class="headerlink" href="#top-level-rtl-interface" title="Permalink to this headline">¶</a></h2>
 <p>The SmartHLS-generated top-level RTL module can be instantiated and integrated with other HDL blocks, by following the protocols used by the SmartHLS’s
 RTL interface.
 This section describes the types of interfaces that are supported by SmartHLS, the
 default interface for each data type in C/C++, and how to customize the
 interface.</p>
-<section id="module-control-interface">
-<h3><span class="section-number">1.14.1. </span>Module Control Interface<a class="headerlink" href="#module-control-interface" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-control-interface">
+<h3>Module Control Interface<a class="headerlink" href="#module-control-interface" title="Permalink to this headline">¶</a></h3>
 <p>The top-level Verilog module generated by SmartHLS is always associated with a
 module control interface.  The table below shows the interface ports of the
 control interface.</p>
@@ -2676,8 +2675,8 @@ asserted when the last invocation has finish.</p></li>
 the same time when the <cite>start</cite> signal is set to high.</p></li>
 </ul>
 </div>
-<section id="timing-diagram-no-pipeline-functions">
-<h4><span class="section-number">1.14.1.1. </span>Timing Diagram (No Pipeline Functions)<a class="headerlink" href="#timing-diagram-no-pipeline-functions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="timing-diagram-no-pipeline-functions">
+<h4>Timing Diagram (No Pipeline Functions)<a class="headerlink" href="#timing-diagram-no-pipeline-functions" title="Permalink to this headline">¶</a></h4>
 <img alt="_images/control_intf.png" class="align-center" src="_images/control_intf.png" />
 <p>The timing diagram above illustrates the behaviour of the module control
 interface when the generated circuit contains no pipelined circuits.</p>
@@ -2708,9 +2707,9 @@ value of the top-level function is available on the <cite>return_val</cite> port
 finishes (label 3). A new handshaking with <cite>start</cite> occurs (label 3 &amp; c), then
 the top-level function starts the second invocation and finishes at label y.</p></li>
 </ul>
-</section>
-<section id="timing-diagram-pipeline-functions">
-<h4><span class="section-number">1.14.1.2. </span>Timing Diagram (Pipeline Functions)<a class="headerlink" href="#timing-diagram-pipeline-functions" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="timing-diagram-pipeline-functions">
+<h4>Timing Diagram (Pipeline Functions)<a class="headerlink" href="#timing-diagram-pipeline-functions" title="Permalink to this headline">¶</a></h4>
 <img alt="_images/control_intf_func_pipeline.png" class="align-center" src="_images/control_intf_func_pipeline.png" />
 <p>The timing diagram above illustrates the module control interface when the
 generated circuit contains pipelined function(s).  In this case, the SmartHLS
@@ -2740,10 +2739,10 @@ delay the start of a new invocation, as shown in the cycle before label d.</p></
 That is, the handshakings at label 0 &amp; a, 1 &amp; b, 2 &amp; c, 3 &amp; d, 4 &amp; e,
 are corresponding to the completion at label o, p, q, r, s, respectively.</p></li>
 </ul>
-</section>
-</section>
-<section id="scalar-argument">
-<h3><span class="section-number">1.14.2. </span>Scalar Argument<a class="headerlink" href="#scalar-argument" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="scalar-argument">
+<h3>Scalar Argument<a class="headerlink" href="#scalar-argument" title="Permalink to this headline">¶</a></h3>
 <p>Each scalar argument of the top-level function (e.g., void foo(<strong>int
 scalar_arg</strong>);) becomes an input port of the top-level RTL module. Valid
 argument values should be provided on these input ports when the <cite>start</cite> signal
@@ -2780,9 +2779,9 @@ of the top-level module,</p>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="pointer-argument-and-shared-global-variable">
-<h3><span class="section-number">1.14.3. </span>Pointer Argument and Shared Global Variable<a class="headerlink" href="#pointer-argument-and-shared-global-variable" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="pointer-argument-and-shared-global-variable">
+<h3>Pointer Argument and Shared Global Variable<a class="headerlink" href="#pointer-argument-and-shared-global-variable" title="Permalink to this headline">¶</a></h3>
 <p>Pointer argument and global variables are considered as “memories” that
 maintain states in the circuit.  The “memories” may be implemented inside or
 outside of the SmartHLS-generated circuit, depending on the specified interface
@@ -2825,8 +2824,8 @@ sections below.</p>
 </tr>
 </tbody>
 </table>
-<section id="memory-type">
-<h4><span class="section-number">1.14.3.1. </span>Memory Type<a class="headerlink" href="#memory-type" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="memory-type">
+<h4>Memory Type<a class="headerlink" href="#memory-type" title="Permalink to this headline">¶</a></h4>
 <p>The memory interface can be used for array/struct arguments or shared global
 array/struct. The generated RTL interface can be connected to an external RAM
 module that stores the corresponding data.
@@ -2855,8 +2854,8 @@ of the combined number of elements of all inner dimensions (except the
 outermost dimension).  Meaning only the outermost dimension’s size can be
 overrided.</p>
 </div>
-<section id="aggregate-memory-type-array-struct-or-class">
-<h5><span class="section-number">1.14.3.1.1. </span>Aggregate Memory Type (array, struct, or class)<a class="headerlink" href="#aggregate-memory-type-array-struct-or-class" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="aggregate-memory-type-array-struct-or-class">
+<h5>Aggregate Memory Type (array, struct, or class)<a class="headerlink" href="#aggregate-memory-type-array-struct-or-class" title="Permalink to this headline">¶</a></h5>
 <p>When the memory has more than 1 elements (not a scalar type memory), SmartHLS
 creates an interface with two RAM ports. Each RAM port can do both read and
 write to the external RAM. A one cycle read latency is expected.
@@ -2925,9 +2924,9 @@ high.  SmartHLS module expects the read data “D0” to be available on the
 cycle, the top-level module reads from address “A1” at Cycle e, and expects to
 receive “D1” at the right next cycle at Cycle f.</p></li>
 </ul>
-</section>
-<section id="scalar-memory-type">
-<h5><span class="section-number">1.14.3.1.2. </span>Scalar Memory Type<a class="headerlink" href="#scalar-memory-type" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="scalar-memory-type">
+<h5>Scalar Memory Type<a class="headerlink" href="#scalar-memory-type" title="Permalink to this headline">¶</a></h5>
 <p>The scalar memory interface is used by SmartHLS module to access an external
 memory that has only one element, and can be thought of as a special memory
 interface that has no address port and expects a 0-cycle read latency.</p>
@@ -3011,10 +3010,10 @@ such case.</p>
 <p>Similarly, the <cite>arg_write_data</cite> can be connected to an output that needs to be
 updated in real-time.  In this case, the pointer argument is normally only
 written to by the SmartHLS circuit (with no read access).</p>
-</section>
-</section>
-<section id="axi4-slave-type">
-<h4><span class="section-number">1.14.3.2. </span>AXI4 Slave Type<a class="headerlink" href="#axi4-slave-type" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="axi4-slave-type">
+<h4>AXI4 Slave Type<a class="headerlink" href="#axi4-slave-type" title="Permalink to this headline">¶</a></h4>
 <p>In contrast to the memory and scalar memory interfaces, when the AXI4 slave
 interface is used, the “memories” for storing the data is inside the
 SmartHLS-generated RTL module rather than outside.  The logic outside of SmartHLS
@@ -3040,7 +3039,7 @@ Here is an example struct and its corresponding memory map,</p>
 <span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
 
 <span class="c1">// Define the AXI slave memory layout as a struct in a header file.</span>
-<span class="k">struct</span> <span class="nc">SlaveLayout</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="n">SlaveLayout</span> <span class="p">{</span>
     <span class="kt">uint16_t</span> <span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
     <span class="kt">uint32_t</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
     <span class="kt">uint64_t</span> <span class="n">sum_result</span><span class="p">;</span>
@@ -3137,10 +3136,10 @@ pipelined.</p></li>
 return type.</p></li>
 </ul>
 </div>
-</section>
-</section>
-<section id="hls-fifo-argument">
-<h3><span class="section-number">1.14.4. </span>hls::FIFO Argument<a class="headerlink" href="#hls-fifo-argument" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="hls-fifo-argument">
+<h3>hls::FIFO Argument<a class="headerlink" href="#hls-fifo-argument" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS provides a <a class="reference internal" href="#streaming-lib"><span class="std std-ref">Streaming Library</span></a> which includes a FIFO
 template class for inferring the AXI4-stream like, ready-valid-data (RVD)
 interface.  When a <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code> type argument is used by the top-level
@@ -3225,8 +3224,8 @@ to define custom bit-width integers.</p>
 <p>If you are familiar with the AXI4-stream interface, you may already notice that
 the struct example (non-pack case) yields an AXI4-stream interface.
 Indeed, this is how to infer AXI4-stream interface using <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code> library.</p>
-<section id="implementing-a-custom-axi4-master-slave-using-hls-fifo">
-<h4><span class="section-number">1.14.4.1. </span>Implementing A Custom AXI4 Master/Slave Using hls::FIFO<a class="headerlink" href="#implementing-a-custom-axi4-master-slave-using-hls-fifo" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="implementing-a-custom-axi4-master-slave-using-hls-fifo">
+<h4>Implementing A Custom AXI4 Master/Slave Using hls::FIFO<a class="headerlink" href="#implementing-a-custom-axi4-master-slave-using-hls-fifo" title="Permalink to this headline">¶</a></h4>
 <p>In addition to inferring an AXI4-stream interface as shown in the example
 above, <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code> can also be used to implement a custom AXI4 slave or
 AXI4 master.
@@ -3236,7 +3235,7 @@ AXI4 stream interface and can be described in C++ as a <code class="docutils lit
 For example, the read address channel has an address signal and a length
 signal.  The AXI4 channel can be implemented as following in C++ to get the
 corresponding AR channel in the RTL interface.</p>
-<div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">RdAddrSignals</span> <span class="p">{</span> <span class="kt">uint32_t</span> <span class="n">addr</span><span class="p">;</span>  <span class="kt">uint8_t</span> <span class="n">len</span><span class="p">;</span> <span class="p">};</span>
+<div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">RdAddrSignals</span> <span class="p">{</span> <span class="kt">uint32_t</span> <span class="n">addr</span><span class="p">;</span>  <span class="kt">uint8_t</span> <span class="n">len</span><span class="p">;</span> <span class="p">};</span>
 
 <span class="kt">void</span> <span class="nf">MyTopFunctoin</span> <span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="n">RdAddrSignals</span><span class="o">&gt;</span> <span class="n">ar</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">RdAddrSignals</span> <span class="n">ar_sig</span><span class="p">;</span>
@@ -3256,9 +3255,9 @@ corresponding AR channel in the RTL interface.</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-</section>
-<section id="c-library-for-custom-axi-master-interface">
-<h4><span class="section-number">1.14.4.2. </span>C++ Library for Custom AXI Master Interface<a class="headerlink" href="#c-library-for-custom-axi-master-interface" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="c-library-for-custom-axi-master-interface">
+<h4>C++ Library for Custom AXI Master Interface<a class="headerlink" href="#c-library-for-custom-axi-master-interface" title="Permalink to this headline">¶</a></h4>
 <p>SmartHLS provides a C++ library for implementing the AXI4 master interfaces. The
 library defines the AXI4 master interface in C++ and provides several API
 functions for typical operations. For advanced users hoping to have more
@@ -3424,11 +3423,11 @@ example of an AXI4 master interface tested with CoSim is shown below.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-</section>
-</section>
-<section id="specifying-a-custom-test-bench">
-<span id="custom-testbench"></span><h2><span class="section-number">1.15. </span>Specifying a Custom Test Bench<a class="headerlink" href="#specifying-a-custom-test-bench" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="section" id="specifying-a-custom-test-bench">
+<span id="custom-testbench"></span><h2>Specifying a Custom Test Bench<a class="headerlink" href="#specifying-a-custom-test-bench" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS allows one to use a custom test bench to simulate the hardware generated by SmartHLS.
 When a custom top-level function is specified by the user, there are two options for simulation:</p>
 <ul class="simple">
@@ -3444,18 +3443,18 @@ It can also be specified directly in the <code class="docutils literal notransla
 </pre></div>
 </div>
 <p>This constraint is also described in <a class="reference internal" href="constraintsmanual.html#set-custom-test-bench-module"><span class="std std-ref">set_custom_test_bench_module</span></a> and <a class="reference internal" href="constraintsmanual.html#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a>.</p>
-</section>
-<section id="report-files">
-<h2><span class="section-number">1.16. </span>Report Files<a class="headerlink" href="#report-files" title="Permalink to this headline">¶</a></h2>
-<section id="smarthls-report">
-<h3><span class="section-number">1.16.1. </span>SmartHLS Report<a class="headerlink" href="#smarthls-report" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="report-files">
+<h2>Report Files<a class="headerlink" href="#report-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smarthls-report">
+<h3>SmartHLS Report<a class="headerlink" href="#smarthls-report" title="Permalink to this headline">¶</a></h3>
 <p>After compiling software to hardware, SmartHLS generates a summary report file
 (<code class="docutils literal notranslate"><span class="pre">reports/summary.hls.rpt</span></code>) to show some insights about the generated RTL
 circuit, such as the top-level module interface, scheduling information, memory
 usage and etc.
 The following will explain each section of the report file.</p>
-<section id="rtl-interface-section">
-<h4><span class="section-number">1.16.1.1. </span>RTL Interface Section<a class="headerlink" href="#rtl-interface-section" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="rtl-interface-section">
+<h4>RTL Interface Section<a class="headerlink" href="#rtl-interface-section" title="Permalink to this headline">¶</a></h4>
 <p>The RTL Interface section shows the interfaces used by the top-level module.
 Below is an example of the RTL interface report table:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+---------------------------------------------------------------------------------------------+
@@ -3493,9 +3492,9 @@ data, with associated valid and ready signals.</p></li>
 is always used by any SmartHLS-generated module, and hence there is no C++ name
 attached to it.
 For more details about the RTL interface, please refer to <a class="reference internal" href="#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>.</p>
-</section>
-<section id="scheduling-result">
-<h4><span class="section-number">1.16.1.2. </span>Scheduling Result<a class="headerlink" href="#scheduling-result" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="scheduling-result">
+<h4>Scheduling Result<a class="headerlink" href="#scheduling-result" title="Permalink to this headline">¶</a></h4>
 <p>The scheduling result section primarily shows the cycle latency of each basic
 block inside each function.
 A basic block is a collection of instructions that always run together.
@@ -3520,9 +3519,9 @@ Below is an example table:</p>
 </div>
 <p>SmartHLS’s <cite>Schedule Viewer</cite> is more helpful in this case to visualize the
 scheduling and the control-flow between basic blocks.</p>
-</section>
-<section id="pipeline-result">
-<h4><span class="section-number">1.16.1.3. </span>Pipeline Result<a class="headerlink" href="#pipeline-result" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="pipeline-result">
+<h4>Pipeline Result<a class="headerlink" href="#pipeline-result" title="Permalink to this headline">¶</a></h4>
 <p>The pipeline result section reports the initiation interval, pipeline length, iteration count, and latency for each pipelined loop or function.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+--------------------+----------------------------+-------------+--------------------------------+---------------------+-----------------+-----------------+---------+
 | Label              | Function                   | Basic Block | Location in Source Code        | Initiation Interval | Pipeline Length | Iteration Count | Latency |
@@ -3536,9 +3535,9 @@ scheduling and the control-flow between basic blocks.</p>
 <p>The iteration count and latency may not be available for a pipelined function or a pipelined loop with non-deterministic loop bound.
 Please refer to <a class="reference internal" href="#loop-pipelining"><span class="std std-ref">Loop Pipelining</span></a> and <a class="reference internal" href="#function-pipelining"><span class="std std-ref">Function Pipelining</span></a> for more details.
 SmartHLS’s <cite>Schedule Viewer</cite> also gives more details about how individual instructions are scheduled inside each pipeline.</p>
-</section>
-<section id="memory-usage">
-<h4><span class="section-number">1.16.1.4. </span>Memory Usage<a class="headerlink" href="#memory-usage" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="memory-usage">
+<h4>Memory Usage<a class="headerlink" href="#memory-usage" title="Permalink to this headline">¶</a></h4>
 <p>The memory usage section lists the memories used by the generated circuit, grouped by the type of memory architecture.
 Please refer to <a class="reference internal" href="hwarchitecture.html#mem-arch"><span class="std std-ref">Memory Architecture</span></a> section for more details about the memory architecture used by SmartHLS.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-------------------------------------------------------------------------+
@@ -3596,10 +3595,10 @@ Please refer to <a class="reference internal" href="hwarchitecture.html#mem-arch
 So you can see which memories are aliasing and being put behind the same memory controller to support aliased memory accesses.</p></li>
 </ul>
 </div></blockquote>
-</section>
-</section>
-<section id="simulation-and-rtl-synthesis-place-route-report">
-<h3><span class="section-number">1.16.2. </span>Simulation and RTL Synthesis, Place &amp; Route Report<a class="headerlink" href="#simulation-and-rtl-synthesis-place-route-report" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="simulation-and-rtl-synthesis-place-route-report">
+<h3>Simulation and RTL Synthesis, Place &amp; Route Report<a class="headerlink" href="#simulation-and-rtl-synthesis-place-route-report" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS also generates a summary report (<code class="docutils literal notranslate"><span class="pre">reports/summary.results.rpt</span></code>) to show
 the results of simulation and RTL synthesis + Place &amp; Route.
 Below is an example report:</p>
@@ -3654,10 +3653,10 @@ Libero’s report files after running RTL Synthesis and Place &amp; Route.
 The target period is what you set in <a class="reference internal" href="#smarthls-constraints"><span class="std std-ref">SmartHLS Constraints</span></a>. If the <cite>Clock
 Period</cite> is not set, SmartHLS uses a default clock period for the target FPGA
 family (see the table in <a class="reference internal" href="#smarthls-constraints"><span class="std std-ref">SmartHLS Constraints</span></a>).</p>
-</section>
-</section>
-<section id="schedule-viewer">
-<h2><span class="section-number">1.17. </span>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="schedule-viewer">
+<h2>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h2>
 <p>The Schedule Viewer shows information on how the top-level function was scheduled in hardware by SmartHLS.
 This includes information on the flow of control between different functions and blocks of execution,
 as well as the cycle by cycle schedule of the operations in hardware.</p>
@@ -3673,8 +3672,8 @@ The Call Graph contains the directed graph of which software functions are calle
 The Control Flow Graph shows the control flow of execution between the blocks within each function for if/else conditionals and loops.
 The Schedule Chart and Pipeline Viewer shows the scheduling of instructions within a block or a pipeline on a cycle-by-cycle basis.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer.png"><img alt="_images/Schedule_Viewer.png" class="align-center" src="_images/Schedule_Viewer.png" style="width: 698.5999999999999px; height: 445.2px;" /></a>
-<section id="background-llvm-internal-representation-used-by-smarthls">
-<h3><span class="section-number">1.17.1. </span>Background: LLVM Internal Representation used by SmartHLS<a class="headerlink" href="#background-llvm-internal-representation-used-by-smarthls" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="background-llvm-internal-representation-used-by-smarthls">
+<h3>Background: LLVM Internal Representation used by SmartHLS<a class="headerlink" href="#background-llvm-internal-representation-used-by-smarthls" title="Permalink to this headline">¶</a></h3>
 <p>The instructions displayed in the Schedule Viewer are from the LLVM compiler that SmartHLS is built on.
 These assembly-like instructions are called <a class="reference external" href="https://llvm.org/docs/LangRef.html">LLVM intermediate representation (IR)</a>.
 Some understanding of the LLVM IR is beneficial when using the Schedule Viewer.</p>
@@ -3703,9 +3702,9 @@ Control flow occurs between basic blocks.</p>
 </pre></div>
 </div>
 <p>All of the basic blocks and instructions shown in the Scheduler Viewer are directly from the LLVM IR optimized by SmartHLS before being compiled into Verilog.</p>
-</section>
-<section id="call-graph">
-<h3><span class="section-number">1.17.2. </span>Call Graph<a class="headerlink" href="#call-graph" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="call-graph">
+<h3>Call Graph<a class="headerlink" href="#call-graph" title="Permalink to this headline">¶</a></h3>
 <p>When you open the Scheduler Viewer, the default view is of the Call Graph.
 You can also click on the “Call Graph” tab at the top.
 The Call Graph shows the top-level function and all of the sub-functions that are called.</p>
@@ -3738,9 +3737,9 @@ main function body, making sure we can see them in the Call Graph.</p>
 <p>This will generate the Call Graph shown below.
 The Call Graph shows that <code class="docutils literal notranslate"><span class="pre">main</span></code> calls <code class="docutils literal notranslate"><span class="pre">top_level</span></code>, which in turn calls <code class="docutils literal notranslate"><span class="pre">helper_func_0</span></code> and <code class="docutils literal notranslate"><span class="pre">helper_function_1</span></code>.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Call_Graph.png"><img alt="_images/Schedule_Viewer_Call_Graph.png" class="align-center" src="_images/Schedule_Viewer_Call_Graph.png" style="width: 698.5999999999999px; height: 445.2px;" /></a>
-</section>
-<section id="control-flow-graph">
-<h3><span class="section-number">1.17.3. </span>Control Flow Graph<a class="headerlink" href="#control-flow-graph" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="control-flow-graph">
+<h3>Control Flow Graph<a class="headerlink" href="#control-flow-graph" title="Permalink to this headline">¶</a></h3>
 <p>The Control Flow Graph can be brought up by clicking on any function in the Explorer tab.
 The Control Flow Graph shows the connections between basic blocks and shows which basic blocks can branch to which other basic blocks.</p>
 <p>For example the following code has an if/else statement and then a for-loop in the else body.
@@ -3758,9 +3757,9 @@ This has multiple code blocks and branches to different sections of the code.</p
 <p>This Control Flow Graph shows the two paths of the if statement on the right and the else statement on the left, and the for-loop in the left middle bubbles.
 Control flow is represented by an arrow, where a basic block will only branch into another basic block that it points to.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Control_Flow_Graph.png"><img alt="_images/Schedule_Viewer_Control_Flow_Graph.png" class="align-center" src="_images/Schedule_Viewer_Control_Flow_Graph.png" style="width: 698.5999999999999px; height: 443.79999999999995px;" /></a>
-</section>
-<section id="schedule-chart">
-<h3><span class="section-number">1.17.4. </span>Schedule Chart<a class="headerlink" href="#schedule-chart" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="schedule-chart">
+<h3>Schedule Chart<a class="headerlink" href="#schedule-chart" title="Permalink to this headline">¶</a></h3>
 <p>If you click on a non-pipelined block, the Schedule Chart will open.
 This shows the scheduling of instructions within a block on a cycle-by-cycle basis.</p>
 <p>For the following example, two multiplies are made then added and stored to a variable.</p>
@@ -3775,9 +3774,9 @@ You can mouse over the scheduled instructions in the Schedule Chart and the sele
 Instructions that the highlighted instruction depend on will be outlined in red and the instructions that depend on the highlighted instruction will be outlined in orange.
 Here the add depends on the two multiplies highlighted in red. The store highlighted in orange depends on this add.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Schedule_Chart.png"><img alt="_images/Schedule_Viewer_Schedule_Chart.png" class="align-center" src="_images/Schedule_Viewer_Schedule_Chart.png" style="width: 699.3px; height: 444.5px;" /></a>
-</section>
-<section id="pipeline-viewer">
-<h3><span class="section-number">1.17.5. </span>Pipeline Viewer<a class="headerlink" href="#pipeline-viewer" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="pipeline-viewer">
+<h3>Pipeline Viewer<a class="headerlink" href="#pipeline-viewer" title="Permalink to this headline">¶</a></h3>
 <p>If you click on a pipelined block, the Pipeline Viewer will open.
 This shows the scheduling of instructions within a pipelined block on a cycle-by-cycle basis.</p>
 <p>For the following example a value is loaded an array, added to a value, then it is stored back into the array.
@@ -3796,10 +3795,10 @@ If you hold your mouse over an instruction you will see more details about the o
 In the pipeline viewer, the right-most column highlighted in a thick black box shows the behavior of the pipeline in steady state.
 The last row shown in the pipeline viewer (Iteration 1) is the first iteration of the pipeline in steady state.</p>
 <a class="reference internal image-reference" href="_images/Schedule_Viewer_Pipeline_Viewer.png"><img alt="_images/Schedule_Viewer_Pipeline_Viewer.png" class="align-center" src="_images/Schedule_Viewer_Pipeline_Viewer.png" style="width: 697.9px; height: 444.5px;" /></a>
-</section>
-</section>
-<section id="instantiating-smarthls-ip-core-in-libero-smartdesign">
-<span id="smartdesign"></span><h2><span class="section-number">1.18. </span>Instantiating SmartHLS IP Core in Libero SmartDesign<a class="headerlink" href="#instantiating-smarthls-ip-core-in-libero-smartdesign" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="instantiating-smarthls-ip-core-in-libero-smartdesign">
+<span id="smartdesign"></span><h2>Instantiating SmartHLS IP Core in Libero SmartDesign<a class="headerlink" href="#instantiating-smarthls-ip-core-in-libero-smartdesign" title="Permalink to this headline">¶</a></h2>
 <p>After we use SmartHLS to design a hardware IP component, we will want to instantiate
 the component into Libero SmartDesign and integrate this core into our larger system.
 When SmartHLS generates the hardware, SmartHLS will also generate a <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code>
@@ -3834,9 +3833,9 @@ as an input, and <code class="docutils literal notranslate"><span class="pre">ou
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals1.png"><img alt="_images/AXI4_Stream_subsignals1.png" class="align-center" src="_images/AXI4_Stream_subsignals1.png" style="width: 241.0px; height: 173.0px;" /></a>
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals2.png"><img alt="_images/AXI4_Stream_subsignals2.png" class="align-center" src="_images/AXI4_Stream_subsignals2.png" style="width: 190.0px; height: 159.0px;" /></a>
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals3.png"><img alt="_images/AXI4_Stream_subsignals3.png" class="align-center" src="_images/AXI4_Stream_subsignals3.png" style="width: 202.0px; height: 115.0px;" /></a>
-</section>
-<section id="smarthls-command-line-interface">
-<h2><span class="section-number">1.19. </span>SmartHLS Command Line Interface<a class="headerlink" href="#smarthls-command-line-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="smarthls-command-line-interface">
+<h2>SmartHLS Command Line Interface<a class="headerlink" href="#smarthls-command-line-interface" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS can run in command line with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>shls <span class="o">[</span>-h<span class="o">]</span> &lt;cmd&gt;
 </pre></div>
@@ -3853,8 +3852,8 @@ as an input, and <code class="docutils literal notranslate"><span class="pre">ou
 </ul>
 </dd>
 </dl>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

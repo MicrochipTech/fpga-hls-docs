@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -14,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>1. SmartHLS Pragmas Manual &mdash; SmartHLS 2021.2 documentation</title>
+  <title>SmartHLS Pragmas Manual &mdash; SmartHLS 2021.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -508,8 +507,8 @@ display:none;
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Constraints Manual" href="constraintsmanual.html" />
-    <link rel="prev" title="3. Hardware Architecture" href="hwarchitecture.html" /> 
+    <link rel="next" title="Constraints Manual" href="constraintsmanual.html" />
+    <link rel="prev" title="Hardware Architecture" href="hwarchitecture.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -554,51 +553,51 @@ display:none;
               
             
             
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">1. Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="userguide.html">1. User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">2. Optimization Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">3. Hardware Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Additional References</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. SmartHLS Pragmas Manual</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#set-custom-top-level-function">1.1. Set Custom Top-Level Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pipeline-function">1.2. Pipeline Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inline-function">1.3. Inline Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#noinline-function">1.4. Noinline Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#flatten-function">1.5. Flatten Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#replicate-function">1.6. Replicate Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pipeline-loop">1.7. Pipeline Loop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#unroll-loop">1.8. Unroll Loop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-scalar-argument-interface">1.9. Configure Scalar Argument Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-argument-as-memory-interface">1.10. Configure Argument as Memory Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-global-variable-as-memory-interface">1.11. Configure Global Variable as Memory Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-argument-as-scalar-memory-interface">1.12. Configure Argument as Scalar Memory Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-global-variable-as-scalar-memory-interface">1.13. Configure Global Variable as Scalar Memory Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-global-as-axi4-interface">1.14. Configure Global as AXI4 Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#partition-memory">1.15. Partition Memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#partition-top-level-interface">1.16. Partition Top-Level Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#contention-free-memory-access">1.17. Contention-Free Memory Access</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SmartHLS Pragmas Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#set-custom-top-level-function">Set Custom Top-Level Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pipeline-function">Pipeline Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inline-function">Inline Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#noinline-function">Noinline Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flatten-function">Flatten Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#replicate-function">Replicate Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pipeline-loop">Pipeline Loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unroll-loop">Unroll Loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-scalar-argument-interface">Configure Scalar Argument Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-argument-as-memory-interface">Configure Argument as Memory Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-global-variable-as-memory-interface">Configure Global Variable as Memory Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-argument-as-scalar-memory-interface">Configure Argument as Scalar Memory Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-global-variable-as-scalar-memory-interface">Configure Global Variable as Scalar Memory Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-global-as-axi4-interface">Configure Global as AXI4 Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#partition-memory">Partition Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#partition-top-level-interface">Partition Top-Level Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contention-free-memory-access">Contention-Free Memory Access</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">2. Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license_setup.html">3. Setup Smart HLS License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">4. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup Smart HLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Versions</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs">Main (2021.2)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/2021.1.2">2021.1.2</a></li>
 </ul>
 
             
@@ -645,7 +644,7 @@ display:none;
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">1. </span>SmartHLS Pragmas Manual</li>
+      <li>SmartHLS Pragmas Manual</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -662,8 +661,8 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="smarthls-pragmas-manual">
-<span id="pragmas"></span><h1><span class="section-number">1. </span>SmartHLS Pragmas Manual<a class="headerlink" href="#smarthls-pragmas-manual" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="smarthls-pragmas-manual">
+<span id="pragmas"></span><h1>SmartHLS Pragmas Manual<a class="headerlink" href="#smarthls-pragmas-manual" title="Permalink to this headline">¶</a></h1>
 <p>SmartHLS accepts pragma directives in the source code to guide the hardware generation.
 This reference section explains all of the pragmas available for SmartHLS.</p>
 <p>The pragmas follow the following syntax:</p>
@@ -706,8 +705,8 @@ will cause an error. Each pragma can has one of the following positions:</p>
 </ul>
 </div></blockquote>
 <hr class="docutils" />
-<section id="set-custom-top-level-function">
-<span id="pragma-function-top"></span><h2><span class="section-number">1.1. </span>Set Custom Top-Level Function<a class="headerlink" href="#set-custom-top-level-function" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="set-custom-top-level-function">
+<span id="pragma-function-top"></span><h2>Set Custom Top-Level Function<a class="headerlink" href="#set-custom-top-level-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">top</span></code></p>
 <p><strong>Description</strong></p>
@@ -723,9 +722,9 @@ The top-level function and all of its descendant functions will be compiled to h
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="pipeline-function">
-<span id="pragma-function-pipeline"></span><h2><span class="section-number">1.2. </span>Pipeline Function<a class="headerlink" href="#pipeline-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="pipeline-function">
+<span id="pragma-function-pipeline"></span><h2>Pipeline Function<a class="headerlink" href="#pipeline-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">pipeline</span> <span class="pre">II(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
@@ -774,9 +773,9 @@ Optional arguments:</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="inline-function">
-<span id="pragma-function-inline"></span><h2><span class="section-number">1.3. </span>Inline Function<a class="headerlink" href="#inline-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="inline-function">
+<span id="pragma-function-inline"></span><h2>Inline Function<a class="headerlink" href="#inline-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">inline</span></code></p>
 <p><strong>Description</strong></p>
@@ -791,9 +790,9 @@ Optional arguments:</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="noinline-function">
-<span id="pragma-function-noinline"></span><h2><span class="section-number">1.4. </span>Noinline Function<a class="headerlink" href="#noinline-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="noinline-function">
+<span id="pragma-function-noinline"></span><h2>Noinline Function<a class="headerlink" href="#noinline-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">noinline</span></code></p>
 <p><strong>Description</strong></p>
@@ -808,9 +807,9 @@ Optional arguments:</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="flatten-function">
-<span id="pragma-function-flatten"></span><h2><span class="section-number">1.5. </span>Flatten Function<a class="headerlink" href="#flatten-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="flatten-function">
+<span id="pragma-function-flatten"></span><h2>Flatten Function<a class="headerlink" href="#flatten-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">flatten</span></code></p>
 <p><strong>Description</strong></p>
@@ -825,9 +824,9 @@ Optional arguments:</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="replicate-function">
-<span id="pragma-function-replicate"></span><h2><span class="section-number">1.6. </span>Replicate Function<a class="headerlink" href="#replicate-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="replicate-function">
+<span id="pragma-function-replicate"></span><h2>Replicate Function<a class="headerlink" href="#replicate-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">replicate</span></code></p>
 <p><strong>Description</strong></p>
@@ -844,9 +843,9 @@ When using this pragma on the function, SmartHLS will create a new instance of t
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="pipeline-loop">
-<span id="pragma-loop-pipeline"></span><h2><span class="section-number">1.7. </span>Pipeline Loop<a class="headerlink" href="#pipeline-loop" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="pipeline-loop">
+<span id="pragma-loop-pipeline"></span><h2>Pipeline Loop<a class="headerlink" href="#pipeline-loop" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">pipeline</span> <span class="pre">II(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
@@ -899,9 +898,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="unroll-loop">
-<span id="pragma-loop-unroll"></span><h2><span class="section-number">1.8. </span>Unroll Loop<a class="headerlink" href="#unroll-loop" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="unroll-loop">
+<span id="pragma-loop-unroll"></span><h2>Unroll Loop<a class="headerlink" href="#unroll-loop" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
@@ -966,9 +965,9 @@ If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="configure-scalar-argument-interface">
-<span id="pragma-interface-scalar-argument"></span><h2><span class="section-number">1.9. </span>Configure Scalar Argument Interface<a class="headerlink" href="#configure-scalar-argument-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="configure-scalar-argument-interface">
+<span id="pragma-interface-scalar-argument"></span><h2>Configure Scalar Argument Interface<a class="headerlink" href="#configure-scalar-argument-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(simple)</span> <span class="pre">stable(&lt;false|true&gt;)</span></code></p>
 <p><strong>Description</strong></p>
@@ -1028,9 +1027,9 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="configure-argument-as-memory-interface">
-<span id="pragma-interface-memory-argument"></span><h2><span class="section-number">1.10. </span>Configure Argument as Memory Interface<a class="headerlink" href="#configure-argument-as-memory-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="configure-argument-as-memory-interface">
+<span id="pragma-interface-memory-argument"></span><h2>Configure Argument as Memory Interface<a class="headerlink" href="#configure-argument-as-memory-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
@@ -1086,9 +1085,9 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="configure-global-variable-as-memory-interface">
-<span id="pragma-interface-memory-variable"></span><h2><span class="section-number">1.11. </span>Configure Global Variable as Memory Interface<a class="headerlink" href="#configure-global-variable-as-memory-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="configure-global-variable-as-memory-interface">
+<span id="pragma-interface-memory-variable"></span><h2>Configure Global Variable as Memory Interface<a class="headerlink" href="#configure-global-variable-as-memory-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
@@ -1145,9 +1144,9 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="configure-argument-as-scalar-memory-interface">
-<span id="pragma-interface-scalar-memory-argument"></span><h2><span class="section-number">1.12. </span>Configure Argument as Scalar Memory Interface<a class="headerlink" href="#configure-argument-as-scalar-memory-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="configure-argument-as-scalar-memory-interface">
+<span id="pragma-interface-scalar-memory-argument"></span><h2>Configure Argument as Scalar Memory Interface<a class="headerlink" href="#configure-argument-as-scalar-memory-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
@@ -1202,9 +1201,9 @@ that has only one element. More details in <a class="reference internal" href="u
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="configure-global-variable-as-scalar-memory-interface">
-<span id="id1"></span><h2><span class="section-number">1.13. </span>Configure Global Variable as Scalar Memory Interface<a class="headerlink" href="#configure-global-variable-as-scalar-memory-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="configure-global-variable-as-scalar-memory-interface">
+<span id="id1"></span><h2>Configure Global Variable as Scalar Memory Interface<a class="headerlink" href="#configure-global-variable-as-scalar-memory-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(scalar_memory)</span></code></p>
 <p><strong>Description</strong></p>
@@ -1251,9 +1250,9 @@ that has only one element. More details in <a class="reference internal" href="u
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="configure-global-as-axi4-interface">
-<span id="id2"></span><h2><span class="section-number">1.14. </span>Configure Global as AXI4 Interface<a class="headerlink" href="#configure-global-as-axi4-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="configure-global-as-axi4-interface">
+<span id="id2"></span><h2>Configure Global as AXI4 Interface<a class="headerlink" href="#configure-global-as-axi4-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(axi_slave)</span> <span class="pre">concurrent_access(true|false)</span></code></p>
 <p><strong>Description</strong></p>
@@ -1309,9 +1308,9 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="partition-memory">
-<span id="pragma-memory-partition-variable"></span><h2><span class="section-number">1.15. </span>Partition Memory<a class="headerlink" href="#partition-memory" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="partition-memory">
+<span id="pragma-memory-partition-variable"></span><h2>Partition Memory<a class="headerlink" href="#partition-memory" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">variable`(&lt;var_name&gt;)</span> <span class="pre">type(complete|none)</span> <span class="pre">dim(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
@@ -1369,9 +1368,9 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="partition-top-level-interface">
-<span id="pragma-memory-partition-argument"></span><h2><span class="section-number">1.16. </span>Partition Top-Level Interface<a class="headerlink" href="#partition-top-level-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="partition-top-level-interface">
+<span id="pragma-memory-partition-argument"></span><h2>Partition Top-Level Interface<a class="headerlink" href="#partition-top-level-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(complete|struct_fields|none)</span> <span class="pre">dim(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
@@ -1426,9 +1425,9 @@ Note that this only applies to top level functions.</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-<section id="contention-free-memory-access">
-<span id="pragma-memory-impl-contention-free"></span><h2><span class="section-number">1.17. </span>Contention-Free Memory Access<a class="headerlink" href="#contention-free-memory-access" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="contention-free-memory-access">
+<span id="pragma-memory-impl-contention-free"></span><h2>Contention-Free Memory Access<a class="headerlink" href="#contention-free-memory-access" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">impl</span> <span class="pre">variable(&lt;arg_name&gt;)</span> <span class="pre">contention_free(true|false)</span></code></p>
 <p><strong>Description</strong></p>
@@ -1478,8 +1477,8 @@ SmartHLS creates arbiters for variables that are accessed by parallel functions.
 </pre></div>
 </div>
 <hr class="docutils" />
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

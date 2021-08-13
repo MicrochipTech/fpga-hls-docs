@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -14,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>2. Constraints Manual &mdash; SmartHLS 2021.2 documentation</title>
+  <title>Constraints Manual &mdash; SmartHLS 2021.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -508,8 +507,8 @@ display:none;
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Setup Smart HLS License" href="license_setup.html" />
-    <link rel="prev" title="1. SmartHLS Pragmas Manual" href="pragmas.html" /> 
+    <link rel="next" title="Setup Smart HLS License" href="license_setup.html" />
+    <link rel="prev" title="SmartHLS Pragmas Manual" href="pragmas.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -554,50 +553,50 @@ display:none;
               
             
             
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">1. Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="userguide.html">1. User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">2. Optimization Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">3. Hardware Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Additional References</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="pragmas.html">1. SmartHLS Pragmas Manual</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Constraints Manual</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#clock-period">2.1. CLOCK_PERIOD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-custom-top-level-module">2.2. set_custom_top_level_module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-custom-test-bench-module">2.3. set_custom_test_bench_module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-custom-test-bench-file">2.4. set_custom_test_bench_file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-synthesis-top-module">2.5. set_synthesis_top_module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-synthesis-top-module-file">2.6. set_synthesis_top_module_file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-resource-constraint">2.7. set_resource_constraint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-operation-latency">2.8. set_operation_latency</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#keep-signals-with-no-fanout">2.9. KEEP_SIGNALS_WITH_NO_FANOUT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#vsim-assert">2.10. VSIM_ASSERT</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#advanced-constraints">2.10.1. Advanced Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Constraints Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#clock-period">CLOCK_PERIOD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-custom-top-level-module">set_custom_top_level_module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-custom-test-bench-module">set_custom_test_bench_module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-custom-test-bench-file">set_custom_test_bench_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-synthesis-top-module">set_synthesis_top_module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-synthesis-top-module-file">set_synthesis_top_module_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-resource-constraint">set_resource_constraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-operation-latency">set_operation_latency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keep-signals-with-no-fanout">KEEP_SIGNALS_WITH_NO_FANOUT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vsim-assert">VSIM_ASSERT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-constraints">Advanced Constraints</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#strength-reduction">2.11. STRENGTH_REDUCTION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#strength-reduction-adders-allowed-per-multiplier">2.12. STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#use-fifo-for-pipeline-reg">2.13. USE_FIFO_FOR_PIPELINE_REG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#strength-reduction">STRENGTH_REDUCTION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#strength-reduction-adders-allowed-per-multiplier">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-fifo-for-pipeline-reg">USE_FIFO_FOR_PIPELINE_REG</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="license_setup.html">3. Setup Smart HLS License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">4. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup Smart HLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Versions</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs">Main (2021.2)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/2021.1.2">2021.1.2</a></li>
 </ul>
 
             
@@ -644,7 +643,7 @@ display:none;
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">2. </span>Constraints Manual</li>
+      <li>Constraints Manual</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -661,8 +660,8 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="constraints-manual">
-<span id="constraints"></span><h1><span class="section-number">2. </span>Constraints Manual<a class="headerlink" href="#constraints-manual" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="constraints-manual">
+<span id="constraints"></span><h1>Constraints Manual<a class="headerlink" href="#constraints-manual" title="Permalink to this headline">¶</a></h1>
 <p>SmartHLS accepts user-provided constraints that impact the automatically generated
 hardware.  These constraints can be specified using the SmartHLS IDE and are
 stored in the Tcl configuration file <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> in your project directory.
@@ -688,8 +687,8 @@ This reference section explains the constraints available for SmartHLS.</p>
 </ul>
 </div></blockquote>
 <hr class="docutils" />
-<section id="clock-period">
-<span id="id1"></span><h2><span class="section-number">2.1. </span>CLOCK_PERIOD<a class="headerlink" href="#clock-period" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="clock-period">
+<span id="id1"></span><h2>CLOCK_PERIOD<a class="headerlink" href="#clock-period" title="Permalink to this headline">¶</a></h2>
 <p>This is a widely used constraint that allows the user to set the
 target clock period for a design.  The clock period is specified in
 nanoseconds.</p>
@@ -718,9 +717,9 @@ supported (see table in <a class="reference internal" href="userguide.html#smart
 <div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">CLOCK_PERIOD</span> <span class="pre">15</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-<section id="set-custom-top-level-module">
-<span id="id2"></span><h2><span class="section-number">2.2. </span>set_custom_top_level_module<a class="headerlink" href="#set-custom-top-level-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="set-custom-top-level-module">
+<span id="id2"></span><h2>set_custom_top_level_module<a class="headerlink" href="#set-custom-top-level-module" title="Permalink to this headline">¶</a></h2>
 <p>This Tcl command specifies the top-level C/C++ function.
 The top-level function and all of its descendant functions will be compiled to hardware.
 The top-level function can also be specified using a pragma (see <a class="reference internal" href="pragmas_docs/function_top.html#pragma-function-top"><span class="std std-ref">Set Custom Top-Level Function</span></a>),
@@ -740,9 +739,9 @@ but it cannot be specified using both the Tcl command and the pragma.</p>
 <div><p><code class="docutils literal notranslate"><span class="pre">set_custom_top_level_module</span> <span class="pre">&quot;foo&quot;</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-<section id="set-custom-test-bench-module">
-<span id="id3"></span><h2><span class="section-number">2.3. </span>set_custom_test_bench_module<a class="headerlink" href="#set-custom-test-bench-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="set-custom-test-bench-module">
+<span id="id3"></span><h2>set_custom_test_bench_module<a class="headerlink" href="#set-custom-test-bench-module" title="Permalink to this headline">¶</a></h2>
 <p>This TCL command is to specify the name of the user-provided testbench module
 to be using for RTL simulation. The testbench file must also be specified with
 <a class="reference internal" href="#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a>.</p>
@@ -761,9 +760,9 @@ to be using for RTL simulation. The testbench file must also be specified with
 <div><p><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span> <span class="pre">&quot;user_tb&quot;</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-<section id="set-custom-test-bench-file">
-<span id="id4"></span><h2><span class="section-number">2.4. </span>set_custom_test_bench_file<a class="headerlink" href="#set-custom-test-bench-file" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="set-custom-test-bench-file">
+<span id="id4"></span><h2>set_custom_test_bench_file<a class="headerlink" href="#set-custom-test-bench-file" title="Permalink to this headline">¶</a></h2>
 <p>This TCL command is to specify the user-provided custom testbench file
 that defines the custom testbench module, which is set via <code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span></code>.
 This is not needed for SW/HW co-simulation.</p>
@@ -782,9 +781,9 @@ This is not needed for SW/HW co-simulation.</p>
 <div><p><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_file</span> <span class="pre">user_tb.v</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-<section id="set-synthesis-top-module">
-<span id="id5"></span><h2><span class="section-number">2.5. </span>set_synthesis_top_module<a class="headerlink" href="#set-synthesis-top-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="set-synthesis-top-module">
+<span id="id5"></span><h2>set_synthesis_top_module<a class="headerlink" href="#set-synthesis-top-module" title="Permalink to this headline">¶</a></h2>
 <p>This TCL command specifies the name of the Verilog module that will be set as
 the top-level module when creating a Libero project for synthesis, place and route.
 By default, the top-level function (see <a class="reference internal" href="userguide.html#custom-top-level"><span class="std std-ref">Specifying the Top-level Function</span></a>) is set as the top-level module for the Libero project, however user may want to provide wrapper HDL module that instantiates the SmartHLS-generate top-level module.
@@ -804,9 +803,9 @@ In this case, this Tcl command can be used to give the name of the wrapper modul
 <div><p><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span> <span class="pre">&quot;wrapper_top&quot;</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-<section id="set-synthesis-top-module-file">
-<span id="id6"></span><h2><span class="section-number">2.6. </span>set_synthesis_top_module_file<a class="headerlink" href="#set-synthesis-top-module-file" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="set-synthesis-top-module-file">
+<span id="id6"></span><h2>set_synthesis_top_module_file<a class="headerlink" href="#set-synthesis-top-module-file" title="Permalink to this headline">¶</a></h2>
 <p>When <code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span></code> is used to set a different wrapper module as
 the top-level for synthesis, place &amp; route, use this command to specify the
 file that defines the wrapper module.</p>
@@ -825,9 +824,9 @@ file that defines the wrapper module.</p>
 <div><p><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module_file</span> <span class="pre">custom_synthesis_top.v</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-<section id="set-resource-constraint">
-<span id="id7"></span><h2><span class="section-number">2.7. </span>set_resource_constraint<a class="headerlink" href="#set-resource-constraint" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="set-resource-constraint">
+<span id="id7"></span><h2>set_resource_constraint<a class="headerlink" href="#set-resource-constraint" title="Permalink to this headline">¶</a></h2>
 <p>This Tcl command constrains the resource allocated by SmartHLS.
 For instance, to only have a single divider in the entire circuit, user can specify: <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code>.
 This makes SmartHLS instantiate a maximum of 1 divider in the circuit, and if there are multiple division operations required, they will share the same divider.</p>
@@ -900,9 +899,9 @@ behaviour because the split-multiply does not support user-configured
 multiply latency.</p>
 </div>
 <hr class="docutils" />
-</section>
-<section id="set-operation-latency">
-<span id="id8"></span><h2><span class="section-number">2.8. </span>set_operation_latency<a class="headerlink" href="#set-operation-latency" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="set-operation-latency">
+<span id="id8"></span><h2>set_operation_latency<a class="headerlink" href="#set-operation-latency" title="Permalink to this headline">¶</a></h2>
 <p>This Tcl command sets the latency of a given operation.
 Latency refers to the number of clock cycles required to complete the computation; an operation with latency one requires one cycle, while zero-latency operations are completely combinational, meaning multiple such operations can be chained together in a single clock cycle.
 This command is used to schedule each type operation to take the specified number of cycles.</p>
@@ -966,9 +965,9 @@ behaviour because the split-multiply does not support sharing the
 multipliers.</p>
 </div>
 <hr class="docutils" />
-</section>
-<section id="keep-signals-with-no-fanout">
-<span id="id9"></span><h2><span class="section-number">2.9. </span>KEEP_SIGNALS_WITH_NO_FANOUT<a class="headerlink" href="#keep-signals-with-no-fanout" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="keep-signals-with-no-fanout">
+<span id="id9"></span><h2>KEEP_SIGNALS_WITH_NO_FANOUT<a class="headerlink" href="#keep-signals-with-no-fanout" title="Permalink to this headline">¶</a></h2>
 <p>If this parameter is enabled, all signals will be printed to the output Verilog
 file, even if they don’t drive any outputs.</p>
 <p><strong>Category</strong></p>
@@ -992,9 +991,9 @@ file, even if they don’t drive any outputs.</p>
 <div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">KEEP_SIGNALS_WITH_NO_FANOUT</span> <span class="pre">1</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-<section id="vsim-assert">
-<span id="id10"></span><h2><span class="section-number">2.10. </span>VSIM_ASSERT<a class="headerlink" href="#vsim-assert" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vsim-assert">
+<span id="id10"></span><h2>VSIM_ASSERT<a class="headerlink" href="#vsim-assert" title="Permalink to this headline">¶</a></h2>
 <p>When set to 1, this constraint causes assertions to be inserted in the Verilog
 produced by SmartHLS. This is useful for debugging the circuit to see where invalid
 values (X’s) are being assigned.</p>
@@ -1019,13 +1018,13 @@ values (X’s) are being assigned.</p>
 <div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">VSIM_ASSERT</span> <span class="pre">1</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-<section id="advanced-constraints">
-<h3><span class="section-number">2.10.1. </span>Advanced Constraints<a class="headerlink" href="#advanced-constraints" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="advanced-constraints">
+<h3>Advanced Constraints<a class="headerlink" href="#advanced-constraints" title="Permalink to this headline">¶</a></h3>
 <p>These are not available from the SmartHLS GUI.</p>
-</section>
-</section>
-<section id="strength-reduction">
-<span id="id11"></span><h2><span class="section-number">2.11. </span>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="strength-reduction">
+<span id="id11"></span><h2>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction" title="Permalink to this headline">¶</a></h2>
 <p>Strength reduction is an optimization that
 converts multiply-by-constant into shifts and additions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
@@ -1064,9 +1063,9 @@ converts multiply-by-constant into shifts and additions:</p>
 <div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION</span> <span class="pre">1</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-<section id="strength-reduction-adders-allowed-per-multiplier">
-<span id="id12"></span><h2><span class="section-number">2.12. </span>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER<a class="headerlink" href="#strength-reduction-adders-allowed-per-multiplier" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="strength-reduction-adders-allowed-per-multiplier">
+<span id="id12"></span><h2>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER<a class="headerlink" href="#strength-reduction-adders-allowed-per-multiplier" title="Permalink to this headline">¶</a></h2>
 <p>Strength reduction is an optimization that
 converts multiply-by-constant into shifts and additions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
@@ -1105,9 +1104,9 @@ meaning strength reduction will not occur and SmartHLS will keep the multiplier.
 <div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</span> <span class="pre">3</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-<section id="use-fifo-for-pipeline-reg">
-<span id="id13"></span><h2><span class="section-number">2.13. </span>USE_FIFO_FOR_PIPELINE_REG<a class="headerlink" href="#use-fifo-for-pipeline-reg" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="use-fifo-for-pipeline-reg">
+<span id="id13"></span><h2>USE_FIFO_FOR_PIPELINE_REG<a class="headerlink" href="#use-fifo-for-pipeline-reg" title="Permalink to this headline">¶</a></h2>
 <p>In a pipeline circuit where multiple stages of the circuit are concurrently
 active and processing different loop iterations (or function calls), <em>pipeline
 registers</em> are used to retain and propagate a variable value from the
@@ -1140,8 +1139,8 @@ to be more resource-efficient.</p>
 <div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">USE_FIFO_FOR_PIPELINE_REG</span> <span class="pre">1</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
