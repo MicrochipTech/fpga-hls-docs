@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -664,10 +663,10 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="hardware-architecture">
+  <div class="section" id="hardware-architecture">
 <span id="hwarch"></span><h1>Hardware Architecture<a class="headerlink" href="#hardware-architecture" title="Permalink to this headline">¶</a></h1>
 <p>This section describes the hardware architecture produced by SmartHLS.</p>
-<section id="circuit-topology">
+<div class="section" id="circuit-topology">
 <h2>Circuit Topology<a class="headerlink" href="#circuit-topology" title="Permalink to this headline">¶</a></h2>
 <p>Each C/C++ function corresponds to a hardware module in Verilog.
 For instance, if we have a software program with the following call graph:</p>
@@ -693,15 +692,15 @@ to be shared between different modules.</p>
 Any inlined function is included as part of its parent function, so there will not be a separate module in the Verilog for the inlined function.
 Thus you may not find all the software functions in the generated hardware.</p>
 </div>
-<section id="threaded-hardware-modules">
+<div class="section" id="threaded-hardware-modules">
 <h3>Threaded Hardware Modules<a class="headerlink" href="#threaded-hardware-modules" title="Permalink to this headline">¶</a></h3>
 <p>When threads are used in software, SmartHLS automatically compiles them to concurrently executing modules.
 This is synonymous to how multiple threads are compiled to execute on multiple processor cores in software.
 By default, each thread in software becomes an independent hardware module.
 For example, forking three threads of function <code class="docutils literal notranslate"><span class="pre">a</span></code> in software creates three concurrently executing instances of module <code class="docutils literal notranslate"><span class="pre">a</span></code> in hardware.</p>
-</section>
-</section>
-<section id="memory-architecture">
+</div>
+</div>
+<div class="section" id="memory-architecture">
 <span id="mem-arch"></span><h2>Memory Architecture<a class="headerlink" href="#memory-architecture" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS stores any arrays (local or global) and global variables in a memory.
 We describe below what type of memories they are, as well as where the
@@ -709,15 +708,15 @@ memories are stored.</p>
 <p>In SmartHLS, there exists four hierarchies of memories: 1) Local memory, 2) shared-local memory, 3) aliased memory, and 4) I/O memory.
 Local, shared-local, and aliased memories exist in the generated hardware.
 I/O memories are data that are inputs/output to/from the generated hardware. They exist outside of the generated hardware (SmartHLS does not instantiate memories for them), where top-level memory interfaces are created for them.</p>
-<section id="local-memory">
+<div class="section" id="local-memory">
 <h3>Local Memory<a class="headerlink" href="#local-memory" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS uses points-to analysis to determine which memories are used by which
 functions. If a memory is determined to be used by a single function, where the function
 is to be compiled to hardware, that array is implemented as a local memory. A
 local memory is created and connected directly inside the module that accesses it.</p>
 <p>Local memories have a latency of 1 clock cycle by default. The local memory latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
-</section>
-<section id="shared-local-memory">
+</div>
+<div class="section" id="shared-local-memory">
 <h3>Shared-Local Memory<a class="headerlink" href="#shared-local-memory" title="Permalink to this headline">¶</a></h3>
 <p>If a memory is accessed by multiple functions, where all the functions that access it are
 to be compiled to hardware, the memory is designated as a shared-local memory. A shared-local memory is
@@ -729,8 +728,8 @@ access the memory are executing sequentially, a simple <code class="docutils lit
 (which consumes only a small amount of area), but if the accessing modules are
 executing concurrently (with the use of <code class="docutils literal notranslate"><span class="pre">hls::thread</span></code>), a round-robin arbiter is automatically created to handle contention.</p>
 <p>Shared-local memories have a latency of 1 clock cycle. The shared-local memory latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
-</section>
-<section id="aliased-memory">
+</div>
+<div class="section" id="aliased-memory">
 <h3>Aliased Memory<a class="headerlink" href="#aliased-memory" title="Permalink to this headline">¶</a></h3>
 <p>There can be cases where a pointer can point to multiple arrays, causing pointer aliasing.
 These pointers need to be resolved at runtime. We designate the memories that such a pointer can refer to as
@@ -739,7 +738,7 @@ A memory controller contains all memories that can alias to each other, and
 allows memory accesses to be steered to the correct memory at runtime.
 There can be multiple memory controllers in a system, each containing a set of memories that alias to each other.</p>
 <p>Aliased memories have a latency of 2 clock cycles. The aliased memory latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
-<section id="memory-controller">
+<div class="section" id="memory-controller">
 <h4>Memory Controller<a class="headerlink" href="#memory-controller" title="Permalink to this headline">¶</a></h4>
 <p>The purpose of the memory controller is to automatically resolve pointer
 ambiguity at runtime.
@@ -752,16 +751,16 @@ are dual-ported by default, unless only a single memory access is needed per cyc
 The memory controller steers memory accesses to the correct RAM, by using a tag,
 which is assigned to each aliased memory by SmartHLS. At runtime, the tag is used to determine which memory block to enable,
 with all other memory blocks disabled. The same tag is used to select the correct output data between all memory blocks.</p>
-</section>
-</section>
-<section id="i-o-memory">
+</div>
+</div>
+<div class="section" id="i-o-memory">
 <span id="io-memory"></span><h3>I/O Memory<a class="headerlink" href="#i-o-memory" title="Permalink to this headline">¶</a></h3>
 <p>Any memory that is accessed by both the software testbench (parent functions of the top-level function) and hardware functions (the top-level functions and its descendants)
 becomes an I/O memory. These are any non-constant arguments for top-level function or global variables that are accessed by both the software testbench and hardware functions.
 I/O memories become memory interfaces of the top-level module for the generated hardware, where no actual memories are instantiated within the generated hardware for them.
 For more information on interfaces, please refer to <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>.</p>
-</section>
-<section id="memory-implementation">
+</div>
+<div class="section" id="memory-implementation">
 <h3>Memory Implementation<a class="headerlink" href="#memory-implementation" title="Permalink to this headline">¶</a></h3>
 <p>By default, each local, shared-local, and aliased memories are stored in a separate dual-ported on-chip RAM, where each RAM allows two accesses per clock cycle.
 All local memories can be accessed in parallel. All shared-local memories can be
@@ -769,7 +768,7 @@ accessed concurrently when there are no accesses to same memory in the same cloc
 If there are concurrent accesses to the same RAM, arbitration logic handles the contention automatically and stalls the appropriate modules.
 All independent memory controllers can also be accessed in parallel, but aliased memories which
 belong to the same memory controller will be accessed sequentially.</p>
-<section id="memory-optimizations">
+<div class="section" id="memory-optimizations">
 <h4>Memory Optimizations<a class="headerlink" href="#memory-optimizations" title="Permalink to this headline">¶</a></h4>
 <p>SmartHLS automatically stores each single-element global variable (non-array) in a set of registers, rather than a block RAM,
 to reduce memory usage and improve performance.
@@ -781,14 +780,14 @@ If an array is accessed in a loop, and the loop is unrolled, SmartHLS also may d
 <p>If only up to a single memory accessed is needed per cycle for a memory, SmartHLS will instantiate a single-ported RAM, otherwise a dual-ported RAM will be used.
 If a memory is only ever read from, SmartHLS will convert the memory to a read-only memory (ROM), even if the corresponding array is not declared as a constant in software.
 If a memory is not accessed at all, SmartHLS will automatically optimize away the memory.</p>
-</section>
-</section>
-</section>
-<section id="interfaces">
+</div>
+</div>
+</div>
+<div class="section" id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h2>
 <p>Please refer to the <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> section for a detailed description on the interfaces that are created by SmartHLS.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

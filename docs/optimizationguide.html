@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -657,10 +656,10 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="optimization-guide">
+  <div class="section" id="optimization-guide">
 <span id="optimizationguide"></span><h1>Optimization Guide<a class="headerlink" href="#optimization-guide" title="Permalink to this headline">¶</a></h1>
 <p>This chapter describes how to optimize the generated hardware through software code changes and SmartHLS pragmas/constraints.</p>
-<section id="loop-pipelining">
+<div class="section" id="loop-pipelining">
 <h2>Loop Pipelining<a class="headerlink" href="#loop-pipelining" title="Permalink to this headline">¶</a></h2>
 <p>Loop pipelining is a performance optimization in high-level synthesis (HLS), which extracts loop-level parallelism by executing multiple loop iterations concurrently using the same hardware.
 The key performance metric when loop pipelining is the time interval between starting successive loop iterations, called the <em>initiation interval</em> (II).
@@ -746,12 +745,12 @@ If there are many descendant functions and loops, this can increase the area sig
 We recommend the user to examine the program for such cases before pipelining a loop.</p>
 </div>
 <p>Lets look at an image filtering example:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">HEIGHT</span><span class="mi">-1</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">HEIGHT</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="cp">#pragma HLS loop pipeline</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">WIDTH</span><span class="mi">-1</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">out</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span>  <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="mi">-1</span><span class="p">][</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="mi">-1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="mi">-1</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
-                   <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span>  <span class="p">][</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span>  <span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span>  <span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
-                   <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">WIDTH</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span>  <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+                   <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span>  <span class="p">][</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span>  <span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span>  <span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+                   <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -778,12 +777,12 @@ Info: Done pipelining the loop on line 22 of kernel.c with label &quot;loop&quot
 For loops where the II is constrained by memory accesses to an array, you can improve the II by manually splitting the array into several smaller C arrays.
 Each array can be accessed independently, which reduces resource contention.
 In this case, we can split the image into rows of pixels, where each row is stored in a separate array (<code class="docutils literal notranslate"><span class="pre">in_0</span></code>, <code class="docutils literal notranslate"><span class="pre">in_1</span></code>, and <code class="docutils literal notranslate"><span class="pre">in_2</span></code>).</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">HEIGHT</span><span class="mi">-1</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">HEIGHT</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="cp">#pragma HLS loop pipeline</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">WIDTH</span><span class="mi">-1</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">out</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span>  <span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
-                   <span class="o">+</span> <span class="n">in_1</span><span class="p">[</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_1</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_1</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
-                   <span class="o">+</span> <span class="n">in_2</span><span class="p">[</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_2</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_2</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">WIDTH</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span>  <span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+                   <span class="o">+</span> <span class="n">in_1</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_1</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_1</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+                   <span class="o">+</span> <span class="n">in_2</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_2</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">in_2</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -944,8 +943,8 @@ With an II of 1 (hence the maximum allowed latency of 1), if the clock period is
 <p>You can see that SmartHLS was now able to generate a circuit with an II of 1.</p>
 <p>Loop pipelining is a great technique for achieving high performance, and in order to achieve the maximum performance, users should be mindful
 of the circuit resource constraints and the recurrences that exist in the loop.</p>
-</section>
-<section id="loop-unrolling">
+</div>
+<div class="section" id="loop-unrolling">
 <h2>Loop Unrolling<a class="headerlink" href="#loop-unrolling" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS allows the user to specify a loop to be unrolled through the use of a pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span></code> (see <a class="reference internal" href="pragmas_docs/loop_unroll.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a>).</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll</span>
@@ -972,8 +971,8 @@ If the loop is completely unrolled, the loop disappears, hence you cannot pipeli
 </pre></div>
 </div>
 <p>This prevents the loop from being unrolled.</p>
-</section>
-<section id="function-pipelining">
+</div>
+<div class="section" id="function-pipelining">
 <h2>Function Pipelining<a class="headerlink" href="#function-pipelining" title="Permalink to this headline">¶</a></h2>
 <p>Similar to loop pipelining, when a function is specified to be pipelined, SmartHLS will automatically inline all of its descendant functions, and unroll all loops (in the specified function as well as in all of its descendant functions).
 This is done to create a high-performance pipelined hardware.
@@ -996,8 +995,8 @@ For instance, in the call graph shown above, if <code class="docutils literal no
 There will be two copies of <code class="docutils literal notranslate"><span class="pre">c</span></code>, as the function is called from two different places.
 As there is also a loop in <code class="docutils literal notranslate"><span class="pre">c</span></code> that will be completely unrolled (in each copy of <code class="docutils literal notranslate"><span class="pre">c</span></code>), this can increase the area significantly.
 Hence for function pipelining, one should examine the program before pipelining a function that has many descendant functions or loops.</p>
-</section>
-<section id="memory-partitioning">
+</div>
+<div class="section" id="memory-partitioning">
 <h2>Memory Partitioning<a class="headerlink" href="#memory-partitioning" title="Permalink to this headline">¶</a></h2>
 <p>Memory Partitioning is an optimization where aggregate types such as arrays and structs are partitioned into smaller pieces
 allowing for a greater number of reads and writes (accesses) per cycle. SmartHLS instantiates a RAM for each aggregate
@@ -1010,7 +1009,7 @@ smaller memories or into its individual elements allows for more memory accesses
 <span class="p">...</span>
 
 <span class="cp">#pragma HLS loop pipeline</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iter</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">MAX_ITER</span><span class="mi">-3</span><span class="p">);</span> <span class="n">iter</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iter</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">MAX_ITER</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">iter</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">long</span> <span class="kt">long</span> <span class="n">x0</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="p">];</span>
     <span class="kt">long</span> <span class="kt">long</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
     <span class="kt">long</span> <span class="kt">long</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span>
@@ -1034,7 +1033,7 @@ contention, allowing the pipeline to achieve an II of 1.</p>
 <span class="p">...</span>
 
 <span class="cp">#pragma HLS loop pipeline</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iter</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">MAX_ITER</span><span class="mi">-3</span><span class="p">);</span> <span class="n">iter</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iter</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">MAX_ITER</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">iter</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">long</span> <span class="kt">long</span> <span class="n">x0</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="p">];</span>
     <span class="kt">long</span> <span class="kt">long</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
     <span class="kt">long</span> <span class="kt">long</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span>
@@ -1052,14 +1051,14 @@ For user-specified partitioning, the accesses will be modified to be access the 
 on the index at runtime.</p>
 <p>When applied to memories with high memory contention in deep pipelines, memory partition has the potential
 to greatly impact circuit performance by reducing pipeline II.</p>
-<section id="advanced-memory-partitioning">
+<div class="section" id="advanced-memory-partitioning">
 <h3>Advanced Memory Partitioning<a class="headerlink" href="#advanced-memory-partitioning" title="Permalink to this headline">¶</a></h3>
 <p>Memory partitioning can also be used to partition structs.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">point</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">point</span> <span class="p">{</span>
     <span class="kt">char</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">zero</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">zero</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
 
 <span class="cp">#pragma HLS loop unroll factor(1)</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
@@ -1077,16 +1076,16 @@ Because the <code class="docutils literal notranslate"><span class="pre">x</span
 further partitioned into two partitions. Therefore, SmartHLS will partition the array <code class="docutils literal notranslate"><span class="pre">zero</span></code> into 6
 partitions, one for each non-overlapping access range into the array of structs. This results in the
 equivalent code below.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">point</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">point</span> <span class="p">{</span>
     <span class="kt">char</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">zero_a0_a0_a0_x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">zero_a0_a0_a0_y</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">zero_a0_a1_a0_x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">zero_a0_a1_a0_y</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">zero_a0_a2_a0_x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">zero_a0_a2_a0_7</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">zero_a0_a0_a0_x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">zero_a0_a0_a0_y</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">zero_a0_a1_a0_x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">zero_a0_a1_a0_y</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">zero_a0_a2_a0_x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">zero_a0_a2_a0_7</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
 
 <span class="cp">#pragma HLS loop unroll factor(1)</span>
 <span class="cp">#pragma HLS loop pipeline</span>
@@ -1108,7 +1107,7 @@ array dimension specified, therefore, if higher dimensions are specified the ele
 SmartHLS will not partition the lower dimensions. When dimension 0 is specified for an array, the element type will be struct type and
 SmartHLS will partition the array completely and then automatically partition the struct elements. When partitioning structs or array
 elements that are structs, user-specified partitioning will also automatically partition any nested aggregate types.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">point</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">point</span> <span class="p">{</span>
     <span class="kt">char</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
 <span class="p">};</span>
@@ -1117,24 +1116,24 @@ elements that are structs, user-specified partitioning will also automatically p
 <span class="c1">// with array &quot;a&quot; also being partitioned into its elements</span>
 <span class="cp">#pragma HLS memory partition variable(zero) dim(0)</span>
 <span class="c1">// can also not specify dim(0) as it is 0 by default</span>
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">zero</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">zero</span><span class="p">;</span>
 
 <span class="c1">// &quot;one&quot; will be partitioned into 4 structs</span>
 <span class="c1">// and each struct will be partitioned into its elements</span>
 <span class="c1">// with array &quot;a&quot; also being partitioned into its elements</span>
 <span class="cp">#pragma HLS memory partition variable(zero) dim(0)</span>
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">one</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">one</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
 
 <span class="c1">// &quot;two&quot; will be partitioned into 8 structs</span>
 <span class="c1">// and each struct will be partitioned into its elements</span>
 <span class="c1">// with array &quot;a&quot; also being partitioned into its elements</span>
 <span class="cp">#pragma HLS memory partition variable(zero) dim(0)</span>
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">two</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">two</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
 
 <span class="c1">// &quot;three&quot; will be partitioned into 2 struct point[4] arrays</span>
 <span class="c1">// the struct and its elements will not be partitioned</span>
 <span class="cp">#pragma HLS memory partition variable(zero) dim(1)</span>
-<span class="k">struct</span> <span class="nc">point</span> <span class="n">three</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">point</span> <span class="n">three</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>When memory partitioning fails to partition a struct, it will print the following warning.</p>
@@ -1154,8 +1153,8 @@ To better partition the FIFO memory please try moving the FIFOs into a simpler
 data structures or manually partitioning the FIFOs into individual variables.
 </pre></div>
 </div>
-</section>
-<section id="limitations-and-workarounds">
+</div>
+<div class="section" id="limitations-and-workarounds">
 <h3>Limitations and Workarounds<a class="headerlink" href="#limitations-and-workarounds" title="Permalink to this headline">¶</a></h3>
 <p>Access-based partitioning will not create new accessing instructions and therefore can only modify existing ones.
 This limits partitions to be the same shape as the range of accesses, with overlapping ranges merged into the same
@@ -1242,9 +1241,9 @@ analysis.</p>
 <p>In general, avoid aliasing memories if you want to use memory partitioning on a memory.</p>
 <p>Avoid comparisons and other non-arithmetic operators on pointers as they are not supported by memory partitioning and
 will prevent partitioning.</p>
-</section>
-</section>
-<section id="force-register">
+</div>
+</div>
+<div class="section" id="force-register">
 <h2>Force Register<a class="headerlink" href="#force-register" title="Permalink to this headline">¶</a></h2>
 <p>The SmartHLS Scheduler will attempt to find the best approach to schedule the circuit based on the information it has at that time.
 Usually, this is enough to generate a hardware with good performance.
@@ -1294,8 +1293,8 @@ unpacked_data.b = 2;</p>
 </ul>
 <p>We will improve and stablize this feature in the later releases. Please contact <a class="reference external" href="mailto:smarthls&#37;&#52;&#48;microchip&#46;com">smarthls<span>&#64;</span>microchip<span>&#46;</span>com</a> if you require more details about this feature.</p>
 </div></blockquote>
-</section>
-<section id="inferring-a-shift-register">
+</div>
+<div class="section" id="inferring-a-shift-register">
 <h2>Inferring a Shift Register<a class="headerlink" href="#inferring-a-shift-register" title="Permalink to this headline">¶</a></h2>
 <p>A shift register is an efficient hardware unit that is composed of a chain of registers that are connected from one to the next.
 It allows data to be continuously shifted from one register to its adjacent register.
@@ -1303,7 +1302,7 @@ It is useful in applications where data is continuously coming in in a streaming
 A shift register is different from a memory, in that all elements stored in a shift register can be accessed at the same time.</p>
 <p>For example, in a FIR filter, time-shifted versions of the input data, commonly referred to as taps, are needed to compute the output.
 A FIR filter can be expressed with the following equation:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">b0</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">b1</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="mi">-1</span><span class="p">]</span> <span class="o">+</span> <span class="p">..</span> <span class="o">+</span> <span class="n">bN</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">N</span><span class="p">]</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">b0</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">b1</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">..</span> <span class="o">+</span> <span class="n">bN</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">N</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>where y[n] is the output, x[n] is the input, N indicates the filter order, and b0 to bN are filter coefficients.
@@ -1339,8 +1338,8 @@ where each element is stored in a register, hence creating the shift register.
 Without the unroll pragma, the <code class="docutils literal notranslate"><span class="pre">shift_register</span></code> array is stored in a memory (RAM), which only allows up to 2 memory accesses per cycle.</p>
 <p>Note that if the <code class="docutils literal notranslate"><span class="pre">FIRFilter</span></code> function is specified to be pipelined, or if the shift register loop is contained within another loop that is specified to be pipelined,
 the shift register loop will automatically be unrolled and the unroll pragma is not required.</p>
-</section>
-<section id="inferring-a-line-buffer">
+</div>
+<div class="section" id="inferring-a-line-buffer">
 <span id="line-buffer-opt-guide"></span><h2>Inferring a Line Buffer<a class="headerlink" href="#inferring-a-line-buffer" title="Permalink to this headline">¶</a></h2>
 <p>A line buffer is used to buffer a line of pixels of an image or a video frame, in order to keep data around and reduce the overall required memory bandwidth.
 It is useful for image/video processing applications, where an image/video pixel is continuously streamed in and processed.</p>
@@ -1365,8 +1364,8 @@ An example C code for the Sobel filter is shown below.</p>
     <span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">WIDTH</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">notinbounds</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span> <span class="k">continue</span><span class="p">;</span>
         <span class="n">xdir</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ydir</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">xOffset</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span> <span class="n">xOffset</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">xOffset</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">for</span> <span class="p">(</span><span class="n">yOffset</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span> <span class="n">yOffset</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">yOffset</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">xOffset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">xOffset</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">xOffset</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">yOffset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">yOffset</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">yOffset</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
                 <span class="n">pixel</span> <span class="o">=</span> <span class="n">input_image</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="n">yOffset</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="n">xOffset</span><span class="p">];</span>
                 <span class="n">xdir</span> <span class="o">+=</span> <span class="n">pixel</span> <span class="o">*</span> <span class="n">Gx</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span><span class="n">xOffset</span><span class="p">][</span><span class="mi">1</span><span class="o">+</span><span class="n">yOffset</span><span class="p">];</span>
                 <span class="n">ydir</span> <span class="o">+=</span> <span class="n">pixel</span> <span class="o">*</span> <span class="n">Gy</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span><span class="n">xOffset</span><span class="p">][</span><span class="mi">1</span><span class="o">+</span><span class="n">yOffset</span><span class="p">];</span>
@@ -1400,7 +1399,7 @@ This also drastically reduces the amount of memory required to just two rows of 
 By storing the line buffers in on-chip memory, its data can be accessed very quickly (with 1 cycle latency).
 Techniques such as this allow efficient real-time video processing on FPGAs.</p>
 <p>To give more insight to SmartHLS’s <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> class, the code snippet below illustrates the <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> template class implementation when it is instantiated with an 3x3 <code class="docutils literal notranslate"><span class="pre">WindowSize</span></code>.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">PixelType</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">ImageWidth</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PixelType</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">ImageWidth</span>
           <span class="cm">/* WindowSize == 3 for illustration purpose */</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">LineBuffer</span> <span class="p">{</span>
   <span class="k">private</span><span class="o">:</span>
@@ -1447,8 +1446,8 @@ and the pixels labelled “1” are stored in the second line buffer (e.g., <cod
 When the <code class="docutils literal notranslate"><span class="pre">ShiftInPixel</span></code> method is called to shift in a new pixel, you can see the 3x3 window is shifted to left and covers the new pixel.
 The line buffers are also updated — <code class="docutils literal notranslate"><span class="pre">prev_rows[0]</span></code> takes in the new pixel and retires its oldest pixel, which is taken in by the second line buffer <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code>; <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code> also retires its oldest pixel, labelled with “x”.</p>
 <a class="reference internal image-reference" href="_images/LineBufferOptGuideAnimation.png"><img alt="_images/LineBufferOptGuideAnimation.png" class="align-center" src="_images/LineBufferOptGuideAnimation.png" style="width: 748.8000000000001px; height: 864.9px;" /></a>
-</section>
-<section id="inferring-streaming-hardware-via-producer-consumer-pattern-with-threads">
+</div>
+<div class="section" id="inferring-streaming-hardware-via-producer-consumer-pattern-with-threads">
 <h2>Inferring Streaming Hardware via Producer-Consumer Pattern with Threads<a class="headerlink" href="#inferring-streaming-hardware-via-producer-consumer-pattern-with-threads" title="Permalink to this headline">¶</a></h2>
 <p>The producer-consumer pattern is a well-known concurrent programming paradigm.
 It typically comprises a finite-size buffer and two classes of threads, a producer and a
@@ -1603,8 +1602,8 @@ connect multiple concurrently executing streaming modules.</p>
 directly from standard software.
 As this is a purely standard software solution, without requiring any tool specific pragmas, the concurrent
 execution behaviour of the replicated kernels can be modeled from software.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
