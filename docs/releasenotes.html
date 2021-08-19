@@ -553,17 +553,18 @@ display:none;
               
             
             
-              <p class="caption"><span class="caption-text">Versions</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#current-version-version">Current version (2021.2)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-s-new">What’s New</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#software-features-and-enhancements">Software Features and Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known Issues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#resolved-issues">Resolved Issues</a></li>
 </ul>
 </li>
@@ -595,20 +596,20 @@ display:none;
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Additional References</span></p>
+<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup Smart HLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
-<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -700,6 +701,23 @@ display:none;
 <li><p>Deprecated the C arbitrary bitwidth library (<code class="docutils literal notranslate"><span class="pre">hls/types.h</span></code>) and C bit-level operations library (<code class="docutils literal notranslate"><span class="pre">hls/bit_level_operations.h</span></code>). Please use the <a class="reference internal" href="userguide.html#ap-lib"><span class="std std-ref">C++ Arbitrary Precision Data Types Library</span></a> instead for better quality of result of the generated hardware.</p></li>
 <li><p>Windows installation no longer adds system environment variables and Windows IDE no longer uses system environment variables.</p></li>
 </ul>
+</div></blockquote>
+</div>
+<div class="section" id="known-issues">
+<h3>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
+The issue will be fixed in the next release.
+For the current release, here is the workaround to disable packing pipeline registers into FIFO to avoid the issue:</p></li>
+</ul>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">Constraints</span></code> dialog, choose <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">custom</span> <span class="pre">config</span> <span class="pre">file</span></code> constraint type and put in a file name (e.g., <code class="docutils literal notranslate"><span class="pre">custom_config.tcl</span></code>) for the constraint value, click “Add” then “OK”</p></li>
+<li><p>Create a new custom config file in the project folder with the same filename as above (e.g., <code class="docutils literal notranslate"><span class="pre">custom_config.tcl</span></code>).</p></li>
+<li><p>Put the following line in the custom config file: <code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">USE_FIFO_FOR_PIPELINE_REG</span> <span class="pre">0</span></code></p></li>
+</ol>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="resolved-issues">

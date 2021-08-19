@@ -553,23 +553,23 @@ display:none;
               
             
             
-              <p class="caption"><span class="caption-text">Versions</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Additional References</span></p>
+<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SmartHLS Pragmas Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#set-custom-top-level-function">Set Custom Top-Level Function</a></li>
@@ -595,7 +595,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup Smart HLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
-<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -687,11 +687,11 @@ name (variable / argument), or a set of pre-specified values.</p>
 (or expressions of constants) defined using <cite>#define</cite> directive.
 For example, this is allowed:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define N 10</span>
-<span class="kt">void</span> <span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
-  <span class="cp">#pragma HLS loop unroll factor(N+1)</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">...</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">fun</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma HLS loop unroll factor(N+1)</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -715,10 +715,10 @@ The top-level function and all of its descendant functions will be compiled to h
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -760,16 +760,16 @@ Optional arguments:</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function pipeline</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">conv</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[])</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">conv</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function pipeline II(3)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -783,10 +783,10 @@ Optional arguments:</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function inline</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -800,10 +800,10 @@ Optional arguments:</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function noinline</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -817,10 +817,10 @@ Optional arguments:</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function flatten</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -836,10 +836,10 @@ When using this pragma on the function, SmartHLS will create a new instance of t
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function replicate</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -885,16 +885,16 @@ If specified on the outer loop of a nested loop, the outer loop will be pipeline
 If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline II(2)</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span><span class="w"></span>
 <span class="cp">#pragma HLS loop pipeline</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -944,24 +944,24 @@ If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
 <p><strong>Examples</strong></p>
 <p>Fully unroll a loop.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Unroll the loop by 2 times only.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span><span class="w"></span>
 <span class="cp">#pragma HLS loop unroll factor(2)</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Small loops may be unrolled even without the unroll pragma. Make sure the loop is not unrolled.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(1)</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1020,10 +1020,10 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS interface argument(a) type(simple) stable(true)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1077,11 +1077,11 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[])</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS interface argument(a) type(memory) num_elements(100)</span>
 <span class="cp">#pragma HLS interface argument(b) type(memory)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1136,11 +1136,11 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 <p>Before the global variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(b) type(memory) num_elements(100)</span>
-<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1194,10 +1194,10 @@ that has only one element. More details in <a class="reference internal" href="u
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[])</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS interface argument(b) type(scalar_memory) num_elements(100)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1246,7 +1246,7 @@ that has only one element. More details in <a class="reference internal" href="u
 <p>Before the global variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(b) type(scalar_memory)</span>
-<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1304,7 +1304,7 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 <p>Before the global variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(b) type(axi_slave) concurrent_access(true)</span>
-<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1357,14 +1357,14 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 <p>Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(b) type(none)</span>
-<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-  <span class="cp">#pragma HLS memory partition variable(c) dim(1)</span>
-  <span class="kt">int</span> <span class="n">c</span><span class="p">[</span><span class="mi">100</span><span class="p">][</span><span class="mi">100</span><span class="p">];</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma HLS memory partition variable(c) dim(1)</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">100</span><span class="p">][</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1417,11 +1417,11 @@ Note that this only applies to top level functions.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS memory partition argument(a) type(none)</span>
 <span class="cp">#pragma HLS memory partition argument(b)</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1473,7 +1473,7 @@ SmartHLS creates arbiters for variables that are accessed by parallel functions.
 <p>Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory impl variable(b) contention_free(true)</span>
-<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />

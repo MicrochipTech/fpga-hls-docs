@@ -26,6 +26,16 @@ Software Features and Enhancements
  * Deprecated the C arbitrary bitwidth library (``hls/types.h``) and C bit-level operations library (``hls/bit_level_operations.h``). Please use the :ref:`ap_lib` instead for better quality of result of the generated hardware.
  * Windows installation no longer adds system environment variables and Windows IDE no longer uses system environment variables.
 
+Known Issues
+-----------------------------------
+
+ * Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
+   The issue will be fixed in the next release.
+   For the current release, here is the workaround to disable packing pipeline registers into FIFO to avoid the issue:
+  1. Open the ``HLS Constraints`` dialog, choose ``Set custom config file`` constraint type and put in a file name (e.g., ``custom_config.tcl``) for the constraint value, click "Add" then "OK"
+  2. Create a new custom config file in the project folder with the same filename as above (e.g., ``custom_config.tcl``).
+  3. Put the following line in the custom config file: ``set_parameter USE_FIFO_FOR_PIPELINE_REG 0``
+
 Resolved Issues
 ----------------
 
