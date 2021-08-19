@@ -551,30 +551,30 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+              <p class="caption"><span class="caption-text">Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup Smart HLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -680,10 +680,10 @@ A basic block is a group of instructions that always run together with a single 
 A basic block in LLVM IR always has a label at the beginning and a branching instruction at the end (<code class="docutils literal notranslate"><span class="pre">br</span></code>, <code class="docutils literal notranslate"><span class="pre">ret</span></code>, etc.).
 Control flow occurs between basic blocks.</p>
 <p>Here the <code class="docutils literal notranslate"><span class="pre">body.0</span></code> basic block performs some operations and then branches unconditionally to another basic block labeled <code class="docutils literal notranslate"><span class="pre">body.1</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">body</span><span class="mf">.0</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">body</span><span class="o">.</span><span class="mi">0</span><span class="p">:</span>
   <span class="o">%</span><span class="mi">0</span> <span class="o">=</span> <span class="n">add</span> <span class="n">i32</span> <span class="o">%</span><span class="n">a</span><span class="p">,</span> <span class="o">%</span><span class="n">b</span>
   <span class="o">%</span><span class="n">result</span> <span class="o">=</span> <span class="n">sub</span> <span class="n">i32</span> <span class="o">%</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span>
-  <span class="n">br</span> <span class="n">label</span> <span class="o">%</span><span class="n">body</span><span class="mf">.1</span>
+  <span class="n">br</span> <span class="n">label</span> <span class="o">%</span><span class="n">body</span><span class="o">.</span><span class="mi">1</span>
 </pre></div>
 </div>
 <p>All of the basic blocks and instructions shown in the Scheduler Viewer are directly from the LLVM IR optimized by SmartHLS before being compiled into Verilog.</p>
@@ -697,26 +697,26 @@ The Call Graph shows the top-level function and all of the sub-functions that ar
 <code class="docutils literal notranslate"><span class="pre">helper_func_0</span></code> and <code class="docutils literal notranslate"><span class="pre">helper_func_1</span></code>.
 The <code class="docutils literal notranslate"><span class="pre">noinline</span></code> attributes makes sure that SmartHLS does not inline these small functions into the
 main function body, making sure we can see them in the Call Graph.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="n">helper_func_0</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">gv</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span>
+<span class="kt">void</span> <span class="n">helper_func_0</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">gv</span> <span class="o">+=</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="n">helper_func_1</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">gv</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span>
+<span class="kt">void</span> <span class="n">helper_func_1</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">gv</span> <span class="o">-=</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="n">top_level</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">helper_func_0</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">helper_func_1</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span>
+<span class="kt">void</span> <span class="n">top_level</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">helper_func_0</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">helper_func_1</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">top_level</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">top_level</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>This will generate the Call Graph shown below.
@@ -729,14 +729,14 @@ The Call Graph shows that <code class="docutils literal notranslate"><span class
 The Control Flow Graph shows the connections between basic blocks and shows which basic blocks can branch to which other basic blocks.</p>
 <p>For example the following code has an if/else statement and then a for-loop in the else body.
 This has multiple code blocks and branches to different sections of the code.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">       </span><span class="n">gv</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">gv</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">gv</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>This Control Flow Graph shows the two paths of the if statement on the right and the else statement on the left, and the for-loop in the left middle bubbles.
@@ -748,9 +748,9 @@ Control flow is represented by an arrow, where a basic block will only branch in
 <p>If you click on a non-pipelined block, the Schedule Chart will open.
 This shows the scheduling of instructions within a block on a cycle-by-cycle basis.</p>
 <p>For the following example, two multiplies are made then added and stored to a variable.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">mult1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coeff1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">coeff1</span><span class="p">;</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">mult2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coeff2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">coeff2</span><span class="p">;</span><span class="w"></span>
-<span class="n">gv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mult1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mult2</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">mult1</span> <span class="o">=</span> <span class="n">coeff1</span> <span class="o">*</span> <span class="n">coeff1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">mult2</span> <span class="o">=</span> <span class="n">coeff2</span> <span class="o">*</span> <span class="n">coeff2</span><span class="p">;</span>
+<span class="n">gv</span> <span class="o">=</span> <span class="n">mult1</span> <span class="o">+</span> <span class="n">mult2</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>In the Schedule Chart, we can see the instructions that these lines of code turn into and the cycles they are scheduled for.
@@ -767,9 +767,9 @@ This shows the scheduling of instructions within a pipelined block on a cycle-by
 <p>For the following example a value is loaded an array, added to a value, then it is stored back into the array.
 This is done repeatedly in a loop and the loop is pipelined.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">coeff1</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">coeff1</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>In the Pipeline Viewer, we find the name and initiation interval (II) for the pipeline at the top.
