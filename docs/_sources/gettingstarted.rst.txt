@@ -5,13 +5,7 @@
 Getting Started
 ==================
 
-Microchip is running an Early Access Program (EAP) for the SmartHLS compiler
-software. This program enables you to evaluate a beta version of SmartHLS
-software and provide us with valuable feedback. To participate in EAP and download
-SmartHLS, please fill out the
-`SmartHLS software request form here
-<https://www.microsemi.com/product-directory/fpga-design-tools/5590-hls#software-download>`_
-and we will contact you to support your evaluation.
+First, you will need to :ref:`license_setup`.
 
 Installation
 ------------

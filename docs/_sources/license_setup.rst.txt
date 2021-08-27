@@ -2,7 +2,7 @@
 
 .. _license_setup:
 
-Setup Smart HLS License
+Setup SmartHLS License
 ==================================
 
 Please follow the below instructions to generate and install SmartHLS tool license:
