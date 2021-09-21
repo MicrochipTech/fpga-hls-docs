@@ -4,7 +4,7 @@
 Release Notes
 ***********************
 
-Current version (|version|)
+Latest Release (|version|)
 ============================
 
 .. When moving the Current version to Prevoius versions, remember to
@@ -46,7 +46,7 @@ The following defects and enhancement requests were resolved:
  * HLS-53: Removed the internal primitive operations from scheduleviewer.
 
 
-Previous versions
+Previous Releases
 ==================
 
 Release Date: August 06, 2021
