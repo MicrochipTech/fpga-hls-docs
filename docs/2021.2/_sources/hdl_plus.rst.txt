@@ -1,0 +1,70 @@
+.. _smartdesign:
+
+Instantiating SmartHLS IP Core in Libero SmartDesign 
+-------------------------------------------------
+
+After we use SmartHLS to design a hardware IP component, we will want to instantiate
+the component into Libero SmartDesign and integrate this core into our larger system.
+When SmartHLS generates the hardware, SmartHLS will also generate a ``create_hdl_plus.tcl``
+script to easily instantiate the SmartHLS-generated IP core into Libero SmartDesign.
+
+You will see the log message in the console which includes the full path to the script like this: 
+
+.. code-block:: text
+
+  Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.2\workspace\sobel_part3\create_hdl_plus.tcl. 
+
+Now we can use Libero to open a Libero project, create a new SmartDesign, and give the newly created SmartDesign a suitable name.
+Alternatively, we can also open an existing SmartDesign.
+
+.. image:: /images/create_SmartDesign_in_Libero.png
+        :scale: 100 %
+        :align: center
+
+We now go to the Libero ``Project`` menu and select ``Execute Script`` and give the path to
+the generated ``create_hdl_plus.tcl`` script as shown in the figures below. Then click ``Run``.
+Running the Tcl script will add the SmartHLS-generated HDL+ component (``sobel_filter_top`` in this example),
+all required Verilog files, memory initialization files, and other dependencies to the Libero project.
+
+.. image:: /images/projects_execute_script.png
+        :scale: 100 %
+        :align: center
+
+.. image:: /images/execute_script.png
+        :scale: 100 %
+        :align: center
+
+As shown in the figures below, we can now instantiate the component in SmartDesign by right-clicking on the HDL+ component
+(``sobel_filter_top`` in this example) in the ``Design Hiearchy`` panel on the left and selecting ``Instantiate in system``.
+In the SmartDesign system we will now see the new IP component (``sobel_filter_top_0`` in this example).
+
+.. image:: /images/instantiate_in_system.png
+        :scale: 100 %
+        :align: center
+
+.. image:: /images/new_IP_component.png
+        :scale: 100 %
+        :align: center
+
+The generated ``create_hdl_plus.tcl`` script will automatically group ports as AXI4-Master, AXI4-Slave or AXI4-Stream
+interfaces if they match the corresponding AXI4 specifications. In this example, since the ``sobel_filter_top`` IP component
+used SmartHLS FIFOs as top-level arguments and they match AXI4-Stream specifications, SmartHLS has automatically grouped
+the ``output_fifo`` and ``input_fifo`` data/ready/valid ports as AXI4-Stream interfaces.
+
+We also have the option to expose the sub-signals under the AXI4-Stream bus. This will allow us to connect individual
+ports instead of the entire bus. To do this, right click on the AXI4-Stream bus on the SmartHLS-generated IP component
+and choose Show/Hide BIF Pins. Then choose the sub-signals as appropriate. For example, in the figures below, if we
+choose all 3 sub-signals and press OK, we will see the 3 corresponding ports in the IP component: ``output_fifo_ready``
+as an input, and ``output_fifo[7:0]`` and ``output_fifo_axi4stream`` as the outputs.
+
+.. image:: /images/AXI4_Stream_subsignals1.png
+        :scale: 100 %
+        :align: center
+
+.. image:: /images/AXI4_Stream_subsignals2.png
+        :scale: 100 %
+        :align: center
+
+.. image:: /images/AXI4_Stream_subsignals3.png
+        :scale: 100 %
+        :align: center

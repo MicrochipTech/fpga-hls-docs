@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Release Notes &mdash; SmartHLS 2021.2 documentation</title>
+  <title>Release Notes &mdash; SmartHLS 2021.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2.1  </span>
 
 										  </h1>
 								
@@ -553,41 +553,47 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Releases</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#current-version-version">Current version (2021.2)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#current-version-version">Current version (2021.2.1)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-s-new">What’s New</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#software-features-and-enhancements">Software Features and Enhancements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known Issues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#resolved-issues">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#previous-versions">Previous versions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-2">SmartHLS 2021.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Resolved Issues</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-eap-2021-1-2">SmartHLS EAP 2021.1.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#legup-hls-is-now-rebranded-to-smart-hls">LegUp HLS is now rebranded to Smart HLS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-2021-1-release-notes">LegUp HLS EAP 2021.1 Release Notes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-2-1-release-notes">LegUp HLS EAP 9.2.1 Release Notes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-1-release-notes">LegUp HLS EAP 9.1 Release Notes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id7">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Resolved Issues</a></li>
 </ul>
 </li>
 </ul>
@@ -678,19 +684,63 @@ display:none;
   <div class="section" id="release-notes">
 <span id="release"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="current-version-version">
-<h2>Current version (2021.2)<a class="headerlink" href="#current-version-version" title="Permalink to this headline">¶</a></h2>
-<p>Release Date: August 06, 2021</p>
+<h2>Current version (2021.2.1)<a class="headerlink" href="#current-version-version" title="Permalink to this headline">¶</a></h2>
+<p>Release Date: Sept 24, 2021</p>
 <div class="section" id="what-s-new">
 <h3>What’s New<a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>SmartHLS is now installed by default with Libero 2021.2 for general release.</p></li>
-<li><p>Free licenses are provided for SmartHLS, please refer to the instructions here to <a class="reference internal" href="license_setup.html#license-setup"><span class="std std-ref">Setup SmartHLS License</span></a>.</p></li>
+<li><p>SmartHLS now supports IGLOO2 device family.</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="software-features-and-enhancements">
 <h3>Software Features and Enhancements<a class="headerlink" href="#software-features-and-enhancements" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>A new <strong>branchless</strong> <a class="reference internal" href="pragmas_docs/function_flatten.html#pragma-function-flatten"><span class="std std-ref">Flatten Function</span></a> feature to improve parallelism between operations.</p></li>
+<li><p>A new <a class="reference internal" href="pragmas_docs/replicate_rom.html#pragma-replicate-rom"><span class="std std-ref">Replicate ROM</span></a> pragma to enable and control the replication of designated read-only arrays for achieving better circuit throughput.</p></li>
+<li><p>Support for packing interfaces and memories with struct types into a wide scalar using the new pack pragma (see <a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</p></li>
+<li><p>Support struct as a return type for the top-level HLS function (see <a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</p></li>
+<li><p>Support for constant static struct members in SW/HW CoSimulation.</p></li>
+<li><p>Disable automatic unrolling of pipelined loops that could increase the design size without noticeable improvement in performance.</p></li>
+<li><p>Updated the user guide section on <a class="reference internal" href="userguide.html#cmdline"><span class="std std-ref">SmartHLS Command Line Interface</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="resolved-issues">
+<h3>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HLS-461: Fixed the initialization of global array of ap_fixpt type.</p></li>
+<li><p>HLS-419: Some of the generated AXI4 slave controllers have IIs greater than 1.</p></li>
+<li><p>HLS-420: Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.</p></li>
+<li><p>HLS-443: Partition pragma is overridden by default partitioning.</p></li>
+<li><p>HLS-446: Incorrect mapping of completely partitioned array of struct.</p></li>
+<li><p>HLS-475: Nested struct definitions order in co-simulation wrapper.</p></li>
+<li><p>HLS-456: Loops containing inner pipelined loops are unrolled resulting in significant increase in resources.</p></li>
+<li><p>HLS-53: Removed the internal primitive operations from scheduleviewer.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="previous-versions">
+<h2>Previous versions<a class="headerlink" href="#previous-versions" title="Permalink to this headline">¶</a></h2>
+<p>Release Date: August 06, 2021</p>
+<div class="section" id="smarthls-2021-2">
+<h3>SmartHLS 2021.2<a class="headerlink" href="#smarthls-2021-2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>What’s New<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>SmartHLS is now installed by default with Libero 2021.2.1 for general release.</p></li>
+<li><p>Free licenses are provided for SmartHLS, please refer to the instructions here to <a class="reference internal" href="license_setup.html#license-setup"><span class="std std-ref">Setup SmartHLS License</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>Improved optimizations to minimize signal bit-width to reduce resource usage.</p></li>
@@ -704,12 +754,12 @@ display:none;
 </div></blockquote>
 </div>
 <div class="section" id="known-issues">
-<h3>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
+<h4>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
-The issue will be fixed in the next release.
-For the current release, here is the workaround to disable packing pipeline registers into FIFO to avoid the issue:</p></li>
+The issue has been fixed in the 2021.2.1 release.
+For the 2021.2 release, here is the workaround to disable packing pipeline registers into FIFO to avoid the issue:</p></li>
 </ul>
 <blockquote>
 <div><ol class="arabic simple">
@@ -720,8 +770,8 @@ For the current release, here is the workaround to disable packing pipeline regi
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="resolved-issues">
-<h3>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h4>Resolved Issues<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -752,8 +802,6 @@ For the current release, here is the workaround to disable packing pipeline regi
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="previous-versions">
-<h2>Previous versions<a class="headerlink" href="#previous-versions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="smarthls-eap-2021-1-2">
 <h3>SmartHLS EAP 2021.1.2<a class="headerlink" href="#smarthls-eap-2021-1-2" title="Permalink to this headline">¶</a></h3>
 <p>Release date: June 14, 2021</p>
@@ -769,8 +817,8 @@ will be needed in the source code:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id1">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>Extended AXI4 master interface with AxSIZE and AxBURST support.</p></li>
@@ -780,8 +828,8 @@ will be needed in the source code:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id2">
-<h4>Resolved Issues<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4>Resolved Issues<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -804,8 +852,8 @@ will be needed in the source code:</p>
 <div class="section" id="legup-hls-eap-2021-1-release-notes">
 <h3>LegUp HLS EAP 2021.1 Release Notes<a class="headerlink" href="#legup-hls-eap-2021-1-release-notes" title="Permalink to this headline">¶</a></h3>
 <p>Release date: April 23, 2021</p>
-<div class="section" id="id3">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>Full support for complex software testbenches.</p></li>
@@ -818,8 +866,8 @@ will be needed in the source code:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h4>Resolved Issues<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id7">
+<h4>Resolved Issues<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -842,16 +890,16 @@ will be needed in the source code:</p>
 <div class="section" id="legup-hls-eap-9-2-1-release-notes">
 <h3>LegUp HLS EAP 9.2.1 Release Notes<a class="headerlink" href="#legup-hls-eap-9-2-1-release-notes" title="Permalink to this headline">¶</a></h3>
 <p>Release date: March 3, 2021</p>
-<div class="section" id="id5">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id8">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>Added support for new <code class="docutils literal notranslate"><span class="pre">legup::thread</span></code> multi-threading API (see <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading with SmartHLS Threads</span></a>)</p></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h4>Resolved Issues<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>Resolved Issues<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -882,8 +930,8 @@ will be needed in the source code:</p>
 <div class="section" id="legup-hls-eap-9-1-release-notes">
 <h3>LegUp HLS EAP 9.1 Release Notes<a class="headerlink" href="#legup-hls-eap-9-1-release-notes" title="Permalink to this headline">¶</a></h3>
 <p>Release date: Jan 4, 2021</p>
-<div class="section" id="id7">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id10">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>Only support targeting Microchip PolarFire FPGAs</p></li>
@@ -897,8 +945,8 @@ will be needed in the source code:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id8">
-<h4>Resolved Issues<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>Resolved Issues<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">

@@ -1,0 +1,50 @@
+.. _partition_top_level_argument:
+
+partition_top_level_argument
+----------------------------
+
+This parameter specifies a top-level array argument to be partitioned to individual elements, creating a top-level interface for each partitioned element. 
+
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
++--------------------+------------+
+| Parameter          | Value Type |
++====================+============+
+| argument_name      | String     |
++--------------------+------------+
+
+Valid Values
++++++++++++++
+
+See Examples
+
+Dependencies
++++++++++++++
+
+Require top-level function to be set via ``set_custom_top_level_module``. 
+
+Applicable Flows
++++++++++++++++++
+
+All devices for pure hardware flow
+
+Test Status
+++++++++++++
+
+Actively in-use
+
+Examples
++++++++++
+
+    ``partition_top_level_argument data_in``
+data_in is a pointer that points to an array that is passed into the top-level function. The data_in array will be partitioned into individual elements. An interface will be created for each partitioned element. 
+
+--------------------------------------------------------------------------------
+

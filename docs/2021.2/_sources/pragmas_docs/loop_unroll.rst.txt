@@ -1,0 +1,69 @@
+.. highlight:: c
+
+.. _pragma_loop_unroll:
+
+Unroll Loop
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS loop unroll factor(<int>)``
+
+**Description**
+
+Specifies a loop to be unrolled.
+
+**Parameters**
+
+The factor indicates how many times to unroll the loop. 
+If it is not specified, or specified as N (the total number of loop iterations), the loop will be fully unrolled. 
+If it is specified as 2, the loop will be unrolled 2 times, where the number of loop iterations will be halved and the loop body will be replicated twice. 
+If it is specified as 1, the loop will *NOT* be unrolled.
+
++------------+---------+----------+------------------+--------------+
+| Parameter  |  Value  | Optional | Default          | Description  |
++============+=========+==========+==================+==============+
+| ``factor`` | Integer | Yes      | N (fully unroll) | Unroll count |
++------------+---------+----------+------------------+--------------+
+
+**Position**
+
+Before the beginning of the loop.
+
+.. Note::
+
+  If there is a loop label, the pragma should be placed after the label.
+
+
+**Examples**
+
+Fully unroll a loop.
+
+.. code-block:: c
+
+  #pragma HLS loop unroll
+  for (int i = 0; i < 10; i++) {
+    ...
+  }
+
+Unroll the loop by 2 times only.
+
+.. code-block:: c
+
+  LOOP_LABEL:
+  #pragma HLS loop unroll factor(2)
+  while (i < 10) {
+    ...
+  }
+
+Small loops may be unrolled even without the unroll pragma. Make sure the loop is not unrolled. 
+
+.. code-block:: c
+
+  #pragma HLS loop unroll factor(1)
+  for (int i = 0; i < 10; i++) {
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

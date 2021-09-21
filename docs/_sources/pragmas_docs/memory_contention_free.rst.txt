@@ -26,7 +26,7 @@ SmartHLS creates arbiters for variables that are accessed by parallel functions.
 +=====================+===================+==========+===========+=====================================+
 | ``variable``        | String            | No       |           | Variable name                       |
 +---------------------+-------------------+----------+-----------+-------------------------------------+
-| ``contention_free`` | ``true -  false`` | Yes      | ``false`` | ``true`` for contention-free access |
+| ``contention_free`` | ``true|false``    | Yes      | ``false`` | ``true`` for contention-free access |
 +---------------------+-------------------+----------+-----------+-------------------------------------+
 
 **Position**

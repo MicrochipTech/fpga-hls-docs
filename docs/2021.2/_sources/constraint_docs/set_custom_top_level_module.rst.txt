@@ -1,0 +1,37 @@
+.. _set_custom_top_level_module:
+
+set_custom_top_level_module
+----------------------------
+
+This Tcl command specifies the top-level C/C++ function.
+The top-level function and all of its descendant functions will be compiled to hardware.
+The top-level function can also be specified using a pragma (see :ref:`pragma_function_top`), 
+but it cannot be specified using both the Tcl command and the pragma.
+
+
+**Category**
+
+HLS Constraints
+
+**Value Type**
+
+string
+
+**Dependencies**
+
+NONE
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+    ``set_custom_top_level_module "foo"``
+
+--------------------------------------------------------------------------------
+

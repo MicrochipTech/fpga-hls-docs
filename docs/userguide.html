@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>User Guide &mdash; SmartHLS 2021.2 documentation</title>
+  <title>User Guide &mdash; SmartHLS 2021.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2.1  </span>
 
 										  </h1>
 								
@@ -553,10 +553,10 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Releases</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
@@ -593,6 +593,14 @@ display:none;
 <li class="toctree-l4"><a class="reference internal" href="#struct-fields-partitioning">Struct-Fields Partitioning</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#struct-support">Struct Support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#struct-packing">Struct Packing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#struct-partitioning">Struct Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#return-struct-by-value">Return Struct By Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-struct-modes">Default Struct Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations">Limitations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#smarthls-c-c-library">SmartHLS C/C++ Library</a><ul>
@@ -928,7 +936,7 @@ software execution will also be printed during hardware simulation. This
 allows easy verification of the correctness of the hardware circuit.  Verilog
 <code class="docutils literal notranslate"><span class="pre">$write</span></code> statements are unsynthesizable and will not affect the final FPGA
 hardware.</p>
-<p>To specify the arguements to be passed to the software testbench (i.e., <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code>), a Makefile argument <code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span></code> can be defined in a <code class="docutils literal notranslate"><span class="pre">makefile.user</span></code> file (you need to create the file in the SmartHLS project folder).
+<p>To specify the arguments to be passed to the software testbench (i.e., <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code>), a Makefile argument <code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span></code> can be defined in a <code class="docutils literal notranslate"><span class="pre">makefile.user</span></code> file (you need to create the file in the SmartHLS project folder).
 For example, if a software testbench takes in two arguments, an input BMP file and a golden output BMP file, you would specify the following in the <code class="docutils literal notranslate"><span class="pre">makefile.user</span></code> file,</p>
 <blockquote>
 <div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">MAIN_INPUT_ARGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_file</span><span class="p">.</span><span class="n">bmp</span><span class="w"> </span><span class="n">golden_output_file</span><span class="p">.</span><span class="n">bmp</span><span class="w"></span>
@@ -1386,6 +1394,374 @@ Note that the array field <cite>Ty.y</cite> has one partition, and similarly the
 +---------+-----------------------+------+-------------+------------+-------+
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="struct-support">
+<span id="id6"></span><h2>Struct Support<a class="headerlink" href="#struct-support" title="Permalink to this headline">¶</a></h2>
+<p>A C++ <code class="docutils literal notranslate"><span class="pre">struct</span></code> is a user-defined data type that is used to group several fields, possibly with different data types.
+Using <code class="docutils literal notranslate"><span class="pre">struct</span></code> allows passing a set of variables around the design together while retaining the readability and accessibility of each of these variables.
+In this section, we will discuss how interfaces and memories with <code class="docutils literal notranslate"><span class="pre">struct</span></code> types are handled in SmartHLS including partitioning, packing, and returning by value.</p>
+<p><strong>Example</strong></p>
+<p>This example will be used in the following sub-sections to show the different interfaces.  There are three <code class="docutils literal notranslate"><span class="pre">struct</span></code> types in the code below:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Account</span></code>: represents a bank account with checking and savings balances.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Client</span></code>: represents a bank client with an ID <code class="docutils literal notranslate"><span class="pre">id</span></code> and an account <code class="docutils literal notranslate"><span class="pre">acc</span></code> . Note that <code class="docutils literal notranslate"><span class="pre">id</span></code> has a 6-bit unsigned integer type to demonstrate <code class="docutils literal notranslate"><span class="pre">struct</span></code> packing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UpdateResult</span></code>: used as a return type for the top-level function <code class="docutils literal notranslate"><span class="pre">update</span></code>  to report if the update was completed and the final account balance.</p></li>
+</ul>
+<p>The top-level function <code class="docutils literal notranslate"><span class="pre">update</span></code>  of the example takes a clients’ list <code class="docutils literal notranslate"><span class="pre">clients</span></code> , an ID <code class="docutils literal notranslate"><span class="pre">id</span></code> and an account balance <code class="docutils literal notranslate"><span class="pre">acc</span></code>  to be added to the client’s balance.
+It returns <code class="docutils literal notranslate"><span class="pre">UpdateResult</span></code> with <code class="docutils literal notranslate"><span class="pre">updated</span> <span class="pre">=</span> <span class="pre">1</span></code> and the final balance <code class="docutils literal notranslate"><span class="pre">acc</span></code>  if an account with ID <code class="docutils literal notranslate"><span class="pre">id</span></code> is found in the client’s list <code class="docutils literal notranslate"><span class="pre">clients</span></code> , otherwise it returns <code class="docutils literal notranslate"><span class="pre">updated</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p>
+<p>To demonstrate another advantage of using <code class="docutils literal notranslate"><span class="pre">struct</span></code>, <code class="docutils literal notranslate"><span class="pre">Account</span></code> has a member function <code class="docutils literal notranslate"><span class="pre">add</span></code> that is used to update the balances which makes the code more readable in <code class="docutils literal notranslate"><span class="pre">update</span></code>  function.</p>
+<p>Another function <code class="docutils literal notranslate"><span class="pre">find</span></code> is used to search for an account with ID <code class="docutils literal notranslate"><span class="pre">id</span></code> in the clients’ list. Notice that this function has <code class="docutils literal notranslate"><span class="pre">noinline</span></code> attribute. This is intended to demonstrate how <code class="docutils literal notranslate"><span class="pre">struct</span></code> types are passed through RTL modules after synthesizing the design.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;hls/ap_int.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define N 4</span>
+
+<span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">hls</span><span class="p">;</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">Account</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">checking</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">savings</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="o">&amp;</span><span class="n">acc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">checking</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">acc</span><span class="p">.</span><span class="n">checking</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">savings</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">acc</span><span class="p">.</span><span class="n">savings</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span> <span class="nc">Client</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Account</span><span class="w"> </span><span class="n">acc</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span> <span class="nc">UpdateResult</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">updated</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Account</span><span class="w"> </span><span class="n">acc</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">clients</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">UpdateResult</span><span class="w"> </span><span class="n">update</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="w">    </span><span class="n">UpdateResult</span><span class="w"> </span><span class="n">ret</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">clients</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">idx</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">clients</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">acc</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">acc</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">ret</span><span class="p">.</span><span class="n">acc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">acc</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">ret</span><span class="p">.</span><span class="n">updated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="section" id="struct-packing">
+<h3>Struct Packing<a class="headerlink" href="#struct-packing" title="Permalink to this headline">¶</a></h3>
+<p>Packing a <code class="docutils literal notranslate"><span class="pre">struct</span></code> creates a single scalar with a wide word width.
+All the <code class="docutils literal notranslate"><span class="pre">struct</span></code> members are placed in the scalar with their order in the <code class="docutils literal notranslate"><span class="pre">struct</span></code> definition such that the first element is the least significant part of the vector and the last element is the most significant part of the vector.
+Packing allows all the <code class="docutils literal notranslate"><span class="pre">struct</span></code> elements to be read and written simultaneously.
+There are two packing options in SmartHLS: bit-packing and byte-packing. A pragma is specified for the argument / variable to be packed with the packing option.
+Note that packing an array of <code class="docutils literal notranslate"><span class="pre">struct</span></code> results in an array with each element as a wide-vector representing the packed <code class="docutils literal notranslate"><span class="pre">struct</span></code>.</p>
+<p><strong>Bit-Packing</strong></p>
+<p>Bit-packing uses the bit-width of each of element of the <code class="docutils literal notranslate"><span class="pre">struct</span></code>. In our example, <code class="docutils literal notranslate"><span class="pre">clients</span></code> argument can be bit-packed as following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS memory impl argument(clients) pack(bit)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">UpdateResult</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS memory impl argument(clients) pack(bit)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this example, the <code class="docutils literal notranslate"><span class="pre">clients</span></code> argument of the top-level function <code class="docutils literal notranslate"><span class="pre">update</span></code> is also passed to the sub-function <code class="docutils literal notranslate"><span class="pre">find</span></code>.
+This implies that in the resulting RTL design, the corresponding module of <code class="docutils literal notranslate"><span class="pre">find</span></code> also needs to access the <code class="docutils literal notranslate"><span class="pre">clients</span></code> top-level interface.
+Therefore, to make the packed interface signals consistent throughout the design, we require the <code class="docutils literal notranslate"><span class="pre">pack</span></code> pragma to be added to all functions that access the packed top-level argument.
+That is, the <code class="docutils literal notranslate"><span class="pre">pack</span></code> pragma needs to be added to both the <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">update</span></code> functions in this example.
+If the <code class="docutils literal notranslate"><span class="pre">pack</span></code> pragma is not consistently added to all accessing functions, the packing may fail and a warning message will be displayed.</p>
+</div>
+<p>In the HLS summary report, the interface for <code class="docutils literal notranslate"><span class="pre">clients</span></code> has a data width of 134, which is the sum of the <code class="docutils literal notranslate"><span class="pre">id</span></code> (6-bits), <code class="docutils literal notranslate"><span class="pre">acc.checking</span></code> (64-bits), and <code class="docutils literal notranslate"><span class="pre">acc.savings</span></code> (64-bits). The following layout of packed <code class="docutils literal notranslate"><span class="pre">struct</span></code> follows the order of the fields such that the first field is the least significant part of the layout.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>|133 .......... 70|69 .......... 6|5 .. 0|
+|-----------------|---------------|------|
+|   acc.savings   |  acc.checking |  id  |
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-----------------------------------------------------------------------------------------+
+| RTL Interface Generated by SmartHLS                                                     |
++----------+-----------------+----------------------+------------------+------------------+
+| C++ Name | Interface Type  | Signal Name          | Signal Bit-width | Signal Direction |
++----------+-----------------+----------------------+------------------+------------------+
+| clients  | Memory          | clients_address_a    | 2                | output           |
+|          |                 | clients_address_b    | 2                | output           |
+|          |                 | clients_clken        | 1                | output           |
+|          |                 | clients_read_data_a  | 134              | input            |
+|          |                 | clients_read_data_b  | 134              | input            |
+|          |                 | clients_read_en_a    | 1                | output           |
+|          |                 | clients_read_en_b    | 1                | output           |
+|          |                 | clients_write_data_a | 134              | output           |
+|          |                 | clients_write_data_b | 134              | output           |
+|          |                 | clients_write_en_a   | 1                | output           |
+|          |                 | clients_write_en_b   | 1                | output           |
++----------+-----------------+----------------------+------------------+------------------+
+</pre></div>
+</div>
+<p><strong>Byte-Packing</strong></p>
+<p>Byte-packing is similar to bit-packing except that each element of the <code class="docutils literal notranslate"><span class="pre">struct</span></code> is aligned to 8-bits. In our example, <code class="docutils literal notranslate"><span class="pre">clients</span></code> can be byte-packed as following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS memory impl argument(clients) pack(byte)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">UpdateResult</span><span class="w"> </span><span class="n">update</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS memory impl argument(clients) pack(byte)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the HLS summary report, the interface for <code class="docutils literal notranslate"><span class="pre">clients</span></code> has a data width of 136, which is the sum of the <code class="docutils literal notranslate"><span class="pre">id</span></code> (8-bits), <code class="docutils literal notranslate"><span class="pre">acc.checking</span></code> (64-bits), and <code class="docutils literal notranslate"><span class="pre">acc.savings</span></code> (64-bits). The following layout of packed <code class="docutils literal notranslate"><span class="pre">struct</span></code> follows the order of the fields such that the first field is the least significant part of the layout.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>|135 .......... 72|71 .......... 8|7 .. 0|
+|-----------------|---------------|------|
+|   acc.savings   |  acc.checking |  id  |
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-----------------------------------------------------------------------------------------+
+| RTL Interface Generated by SmartHLS                                                     |
++----------+-----------------+----------------------+------------------+------------------+
+| C++ Name | Interface Type  | Signal Name          | Signal Bit-width | Signal Direction |
++----------+-----------------+----------------------+------------------+------------------+
+| clients  | Memory          | clients_address_a    | 2                | output           |
+|          |                 | clients_address_b    | 2                | output           |
+|          |                 | clients_clken        | 1                | output           |
+|          |                 | clients_read_data_a  | 136              | input            |
+|          |                 | clients_read_data_b  | 136              | input            |
+|          |                 | clients_read_en_a    | 1                | output           |
+|          |                 | clients_read_en_b    | 1                | output           |
+|          |                 | clients_write_data_a | 136              | output           |
+|          |                 | clients_write_data_b | 136              | output           |
+|          |                 | clients_write_en_a   | 1                | output           |
+|          |                 | clients_write_en_b   | 1                | output           |
++----------+-----------------+----------------------+------------------+------------------+
+</pre></div>
+</div>
+<p>For byte-packing, the interface can either use byte-enable to write individual fields or it can be a wide scalar as shown before.
+To use byte-enable signals, <code class="docutils literal notranslate"><span class="pre">byte_enable</span></code> parameter should be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> in the packing pragma:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS memory impl argument(clients) pack(byte) byte_enable(true)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">UpdateResult</span><span class="w"> </span><span class="n">update</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS memory impl argument(clients) pack(byte) byte_enable(true)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The HLS summary report will show <code class="docutils literal notranslate"><span class="pre">clients_byte_en_a</span></code> and <code class="docutils literal notranslate"><span class="pre">clients_byte_en_b</span></code> signals that are added to the interface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">byte_enable</span></code> parameter is default to <code class="docutils literal notranslate"><span class="pre">false</span></code> and can only be specified with <code class="docutils literal notranslate"><span class="pre">pack(byte)</span></code>, i.e. using it with <code class="docutils literal notranslate"><span class="pre">pack(bit)</span></code> will error during compilation.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-----------------------------------------------------------------------------------------+
+| RTL Interface Generated by SmartHLS                                                     |
++----------+-----------------+----------------------+------------------+------------------+
+| C++ Name | Interface Type  | Signal Name          | Signal Bit-width | Signal Direction |
++----------+-----------------+----------------------+------------------+------------------+
+| clients  | Memory          | clients_address_a    | 2                | output           |
+|          |                 | clients_address_b    | 2                | output           |
+|          |                 | clients_byte_en_a    | 17               | output           |
+|          |                 | clients_byte_en_b    | 17               | output           |
+|          |                 | clients_clken        | 1                | output           |
+|          |                 | clients_read_data_a  | 136              | input            |
+|          |                 | clients_read_data_b  | 136              | input            |
+|          |                 | clients_read_en_a    | 1                | output           |
+|          |                 | clients_read_en_b    | 1                | output           |
+|          |                 | clients_write_data_a | 136              | output           |
+|          |                 | clients_write_data_b | 136              | output           |
+|          |                 | clients_write_en_a   | 1                | output           |
+|          |                 | clients_write_en_b   | 1                | output           |
++----------+-----------------+----------------------+------------------+------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="struct-partitioning">
+<h3>Struct Partitioning<a class="headerlink" href="#struct-partitioning" title="Permalink to this headline">¶</a></h3>
+<p>Partitioning a <code class="docutils literal notranslate"><span class="pre">struct</span></code> creates a separate interface / memory for each field in the <code class="docutils literal notranslate"><span class="pre">struct</span></code>. Two partitioning types are supported for <code class="docutils literal notranslate"><span class="pre">struct</span></code> types: fields and complete.</p>
+<p><strong>Fields Partitioning</strong></p>
+<p>Fields partitioning acts on 1-level of nested <code class="docutils literal notranslate"><span class="pre">struct</span></code> types, i.e. only the fields in the top <code class="docutils literal notranslate"><span class="pre">struct</span></code> type are disaggregated.
+In our example, to partition <code class="docutils literal notranslate"><span class="pre">clients</span></code> into its fields, <code class="docutils literal notranslate"><span class="pre">partition</span></code> pragma with <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> type is used:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">UpdateResult</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS memory partition argument(clients) type(struct_fields)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the HLS summary report, <code class="docutils literal notranslate"><span class="pre">clients</span></code> result in 2 memory interfaces <code class="docutils literal notranslate"><span class="pre">acc</span></code>  and <code class="docutils literal notranslate"><span class="pre">id</span></code>. Notice that the inner <code class="docutils literal notranslate"><span class="pre">struct</span></code> member <code class="docutils literal notranslate"><span class="pre">acc</span></code>  is not partitioned into its members and kept as a single interface.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+---------------------------------------------------------------------------------------------+
+| RTL Interface Generated by SmartHLS                                                         |
++----------+-----------------+--------------------------+------------------+------------------+
+| C++ Name | Interface Type  | Signal Name              | Signal Bit-width | Signal Direction |
++----------+-----------------+--------------------------+------------------+------------------+
+| clients  | Memory          | clients_acc_address_a    | 2                | output           |
+|          |                 | clients_acc_address_b    | 2                | output           |
+|          |                 | clients_acc_clken        | 1                | output           |
+|          |                 | clients_acc_read_data_a  | 128              | input            |
+|          |                 | clients_acc_read_data_b  | 128              | input            |
+|          |                 | clients_acc_read_en_a    | 1                | output           |
+|          |                 | clients_acc_read_en_b    | 1                | output           |
+|          |                 | clients_acc_write_data_a | 128              | output           |
+|          |                 | clients_acc_write_data_b | 128              | output           |
+|          |                 | clients_acc_write_en_a   | 1                | output           |
+|          |                 | clients_acc_write_en_b   | 1                | output           |
+|          |                 | clients_id_address_a     | 2                | output           |
+|          |                 | clients_id_address_b     | 2                | output           |
+|          |                 | clients_id_clken         | 1                | output           |
+|          |                 | clients_id_read_data_a   | 6                | input            |
+|          |                 | clients_id_read_data_b   | 6                | input            |
+|          |                 | clients_id_read_en_a     | 1                | output           |
+|          |                 | clients_id_read_en_b     | 1                | output           |
++----------+-----------------+--------------------------+------------------+------------------+
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Fields partitioning keeps the inner aggregate types (arrays and structs) without partitioning.</p></li>
+<li><p>Fields partitioning an array of <code class="docutils literal notranslate"><span class="pre">struct</span></code> results in an array for each field in the <code class="docutils literal notranslate"><span class="pre">struct</span></code>.</p></li>
+</ul>
+</div>
+<p><strong>Complete Partitioning</strong></p>
+<p>Complete partitioning of a <code class="docutils literal notranslate"><span class="pre">struct</span></code> type creates a separate interface / memory for each primitive element in the <code class="docutils literal notranslate"><span class="pre">struct</span></code>. This implies that partitioning is applied recursively on the <code class="docutils literal notranslate"><span class="pre">struct</span></code> or a array of <code class="docutils literal notranslate"><span class="pre">struct</span></code>.
+In our example, to partition <code class="docutils literal notranslate"><span class="pre">clients</span></code> into its fields, <code class="docutils literal notranslate"><span class="pre">partition</span></code> pragma with <code class="docutils literal notranslate"><span class="pre">complete</span></code> type is used:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">UpdateResult</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS memory partition argument(clients) type(complete)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the HLS summary report, <code class="docutils literal notranslate"><span class="pre">clients</span></code> result in 12 interfaces which is 4 array elements with 3 fields for each element.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-------------------------------------------------------------------------------------------------------+
+| RTL Interface Generated by SmartHLS                                                                   |
++----------+-----------------+------------------------------------+------------------+------------------+
+| C++ Name | Interface Type  | Signal Name                        | Signal Bit-width | Signal Direction |
++----------+-----------------+------------------------------------+------------------+------------------+
+| clients  | Scalar Memory   | clients_a0_acc_checking_read_data  | 64               | input            |
+|          |                 | clients_a0_acc_checking_write_data | 64               | output           |
+|          |                 | clients_a0_acc_checking_write_en   | 1                | output           |
+|          |                 | clients_a0_acc_savings_read_data   | 64               | input            |
+|          |                 | clients_a0_acc_savings_write_data  | 64               | output           |
+|          |                 | clients_a0_acc_savings_write_en    | 1                | output           |
+|          |                 | clients_a0_id_read_data            | 6                | input            |
+|          |                 | clients_a1_acc_checking_read_data  | 64               | input            |
+|          |                 | clients_a1_acc_checking_write_data | 64               | output           |
+|          |                 | clients_a1_acc_checking_write_en   | 1                | output           |
+|          |                 | clients_a1_acc_savings_read_data   | 64               | input            |
+|          |                 | clients_a1_acc_savings_write_data  | 64               | output           |
+|          |                 | clients_a1_acc_savings_write_en    | 1                | output           |
+|          |                 | clients_a1_id_read_data            | 6                | input            |
+|          |                 | clients_a2_acc_checking_read_data  | 64               | input            |
+|          |                 | clients_a2_acc_checking_write_data | 64               | output           |
+|          |                 | clients_a2_acc_checking_write_en   | 1                | output           |
+|          |                 | clients_a2_acc_savings_read_data   | 64               | input            |
+|          |                 | clients_a2_acc_savings_write_data  | 64               | output           |
+|          |                 | clients_a2_acc_savings_write_en    | 1                | output           |
+|          |                 | clients_a2_id_read_data            | 6                | input            |
+|          |                 | clients_a3_acc_checking_read_data  | 64               | input            |
+|          |                 | clients_a3_acc_checking_write_data | 64               | output           |
+|          |                 | clients_a3_acc_checking_write_en   | 1                | output           |
+|          |                 | clients_a3_acc_savings_read_data   | 64               | input            |
+|          |                 | clients_a3_acc_savings_write_data  | 64               | output           |
+|          |                 | clients_a3_acc_savings_write_en    | 1                | output           |
+|          |                 | clients_a3_id_read_data            | 6                | input            |
++----------+-----------------+------------------------------------+------------------+------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="return-struct-by-value">
+<h3>Return Struct By Value<a class="headerlink" href="#return-struct-by-value" title="Permalink to this headline">¶</a></h3>
+<p>SmartHLS supports returning a <code class="docutils literal notranslate"><span class="pre">struct</span></code> by value from the top-level function. In this case, the return value is always bit-packed resulting in a scalar interface.
+In our example, the RTL module will have a <code class="docutils literal notranslate"><span class="pre">return_val</span></code> port with 129 bit width (<code class="docutils literal notranslate"><span class="pre">updated</span></code> = 1-bit, <code class="docutils literal notranslate"><span class="pre">acc</span></code> = 128-bits):</p>
+<div class="highlight-Verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">update_top</span>
+<span class="p">(</span>
+        <span class="n">clk</span><span class="p">,</span>
+        <span class="n">reset</span><span class="p">,</span>
+        <span class="n">start</span><span class="p">,</span>
+        <span class="n">ready</span><span class="p">,</span>
+        <span class="n">finish</span><span class="p">,</span>
+        <span class="n">return_val</span><span class="p">,</span>
+        <span class="p">...</span>
+<span class="p">)</span>
+
+<span class="k">input</span>  <span class="n">clk</span><span class="p">;</span>
+<span class="k">input</span>  <span class="n">reset</span><span class="p">;</span>
+<span class="k">input</span>  <span class="n">start</span><span class="p">;</span>
+<span class="k">output</span> <span class="kt">reg</span>  <span class="n">ready</span><span class="p">;</span>
+<span class="k">output</span> <span class="kt">reg</span>  <span class="n">finish</span><span class="p">;</span>
+<span class="k">output</span> <span class="kt">reg</span> <span class="p">[</span><span class="mh">128</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">return_val</span><span class="p">;</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="default-struct-modes">
+<h3>Default Struct Modes<a class="headerlink" href="#default-struct-modes" title="Permalink to this headline">¶</a></h3>
+<p>The default <code class="docutils literal notranslate"><span class="pre">struct</span></code> mode in SmartHLS is applied when no pragma is specified for the argument / variable. The default mode differs between interfaces and local memories:</p>
+<ul class="simple">
+<li><p>For interfaces (top-level argument / global variable interface), bit-packing is the default.</p></li>
+<li><p>For local memories, automatic partitioning is applied to optimize the design. If partitioning is not possible, bit-packing is applied.</p></li>
+</ul>
+</div>
+<div class="section" id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
+<p>There are some limitations for <code class="docutils literal notranslate"><span class="pre">struct</span></code> support that can prevent partitioning / packing. The unsupported cases are generally not used in HLS designs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">struct</span></code> interfaces with pointer fields.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">S</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Casting a <code class="docutils literal notranslate"><span class="pre">struct</span></code> to another type.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">S</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">S</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Storing the address of a <code class="docutils literal notranslate"><span class="pre">struct</span></code> field.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">S</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">S</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">.</span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+<span class="n">foo</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -3804,7 +4180,7 @@ the component into Libero SmartDesign and integrate this core into our larger sy
 When SmartHLS generates the hardware, SmartHLS will also generate a <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code>
 script to easily instantiate the SmartHLS-generated IP core into Libero SmartDesign.</p>
 <p>You will see the log message in the console which includes the full path to the script like this:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.2\workspace\sobel_part3\create_hdl_plus.tcl.
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.2.1\workspace\sobel_part3\create_hdl_plus.tcl.
 </pre></div>
 </div>
 <p>Now we can use Libero to open a Libero project, create a new SmartDesign, and give the newly created SmartDesign a suitable name.
@@ -3835,23 +4211,58 @@ as an input, and <code class="docutils literal notranslate"><span class="pre">ou
 <a class="reference internal image-reference" href="_images/AXI4_Stream_subsignals3.png"><img alt="_images/AXI4_Stream_subsignals3.png" class="align-center" src="_images/AXI4_Stream_subsignals3.png" style="width: 202.0px; height: 115.0px;" /></a>
 </div>
 <div class="section" id="smarthls-command-line-interface">
-<h2>SmartHLS Command Line Interface<a class="headerlink" href="#smarthls-command-line-interface" title="Permalink to this headline">¶</a></h2>
+<span id="cmdline"></span><h2>SmartHLS Command Line Interface<a class="headerlink" href="#smarthls-command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p>To run SmartHLS in command line, your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable should contain the following paths to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shls</span></code>: &lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/bin.</p></li>
+<li><p>ModelSim (for simulation and SW/HW co-simulation): the path to the <code class="docutils literal notranslate"><span class="pre">vsim</span></code> executable.</p></li>
+<li><p>Libero (for FPGA synthesis, place and route): the path to the <code class="docutils literal notranslate"><span class="pre">libero</span></code> executable.</p></li>
+</ul>
+</div></blockquote>
 <p>SmartHLS can run in command line with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>shls <span class="o">[</span>-h<span class="o">]</span> &lt;cmd&gt;
 </pre></div>
 </div>
-<dl class="simple">
-<dt>Where <code class="docutils literal notranslate"><span class="pre">&lt;cmd&gt;</span></code> can be one of:</dt><dd><ul class="simple">
-<li><p><strong>hw</strong> (default): Run the hardware-only flow.</p></li>
-<li><p><strong>sw</strong> : Compile and run the program in software on host machine.</p></li>
-<li><p><strong>sim</strong>: Simulate the SmartHLS-generated circuit in ModelSim (only for hardware flow).</p></li>
-<li><p><strong>cosim</strong>: Verify the SmartHLS-generated circuit using C test bench (only for hardware flow).</p></li>
-<li><p><strong>fpga</strong>: Fully synthesize design for target FPGA.</p></li>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;cmd&gt;</span></code> can be one of:</p>
+<ul class="simple">
+<li><p><strong>init</strong>: create a new SmartHLS project by generating a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and a <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Makefile</span></code>:</p>
+<ul>
+<li><p>Source files: the <code class="docutils literal notranslate"><span class="pre">SRCS</span></code> variable in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> should list all the source files (<code class="docutils literal notranslate"><span class="pre">.cpp</span></code> or <code class="docutils literal notranslate"><span class="pre">.c</span></code>). Header files should not be added to <code class="docutils literal notranslate"><span class="pre">SRCS</span></code>, but should be properly included by the source files.
+<code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">init</span></code> will automatically add the file names for the existing source files in the current directory.  If source files are created after <code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">init</span></code>, please update <code class="docutils literal notranslate"><span class="pre">SRCS</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">SRCS</span> <span class="pre">=</span> <span class="pre">foo.cpp</span> <span class="pre">bar.cpp</span></code>).</p></li>
+<li><p>Project name: the <code class="docutils literal notranslate"><span class="pre">NAME</span></code> variable stands for the project name, e.g., <code class="docutils literal notranslate"><span class="pre">NAME</span> <span class="pre">=</span> <span class="pre">MY_PROJECT</span></code>.  The default project name is the current directory name when <code class="docutils literal notranslate"><span class="pre">NAME</span></code> is not specified in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p></li>
+<li><p>main() function arguments: <code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span></code> can be used to specify the arguments of the software testbench (i.e., <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code>). Here is an example: <code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span> <span class="pre">=</span> <span class="pre">input_file.bmp</span> <span class="pre">golden_output_file.bmp</span></code>. More details can be found in <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a>.</p></li>
+<li><p><strong>NOTE</strong>: the above variables should be specified before the last line in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>: <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">$(LEVEL)/Makefile.common</span></code>.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> contains the project’s configuration settings. Project parameters and constraints can be specified in this file as necessary. Please refer to the <a class="reference internal" href="constraintsmanual.html#constraints"><span class="std std-ref">Constraints Manual</span></a> page.</p></li>
+</ul>
+</li>
+<li><p><strong>sw</strong>: compile and run the program in software on your host machine.  The compilation step is skipped if no change is detected in source/header files, <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</p>
+<ul>
+<li><p><strong>sw_compile</strong>: compile the program in software, the output is an executable file (<code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;.sw_binary</span></code>).</p></li>
+<li><p><strong>sw_run</strong>: run the compiled executable (<code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;.sw_binary</span></code>) on your host machine.</p></li>
+</ul>
+</li>
+<li><p><strong>hw</strong> (default): compile the software to hardware, the output is a Verilog HDL file (<code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;.v</span></code>).</p></li>
+<li><p><strong>cosim</strong>: run <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> to verify the generated circuit.</p>
+<ul>
+<li><p><strong>cosim_wave</strong>: same as above but with ModelSim waveform.</p></li>
+</ul>
+</li>
+<li><p><strong>sim</strong>: simulate the generated hardware in ModelSim (for an input software that has no top-level function specified, which is uncommon).</p>
+<ul>
+<li><p><strong>wave</strong>: same as above but with ModelSim waveform.</p></li>
+</ul>
+</li>
+<li><p><strong>fpga</strong>: synthesize the generated hardware to target FPGA. This runs RTL synthesis and place-and-route for resource and timing results.</p></li>
+<li><p><strong>rtl_synth</strong>: run RTL synthesis for resource results. This will take less time than <strong>fpga</strong>.</p></li>
 <li><p><strong>scheduleviewer</strong>: Show the scheduler viewer.</p></li>
 <li><p><strong>clean</strong>: Delete files generated by SmartHLS.</p></li>
+<li><p><strong>precompile_modelsim_libs</strong>: Recompile ModelSim libraries. This command only needs to be run once from any SmartHLS project directory after you change the ModelSim version.</p></li>
 </ul>
-</dd>
-</dl>
 </div>
 </div>
 

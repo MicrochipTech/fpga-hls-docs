@@ -1,0 +1,35 @@
+.. _set_synthesis_top_module_file:
+
+set_synthesis_top_module_file
+-------------
+
+When ``set_synthesis_top_module`` is used to set a different wrapper module as
+the top-level for synthesis, place & route, use this command to specify the
+file that defines the wrapper module.
+
+**Category**
+
+Libero
+
+**Value Type**
+
+String
+
+**Dependencies**
+
+``set_synthesis_top_module "wrapper_top"``
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+    ``set_synthesis_top_module_file custom_synthesis_top.v``
+
+--------------------------------------------------------------------------------
+

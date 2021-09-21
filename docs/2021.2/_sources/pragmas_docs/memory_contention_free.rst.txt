@@ -1,0 +1,45 @@
+.. highlight:: c
+
+.. _pragma_memory_impl_contention_free:
+
+Contention-Free Memory Access 
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS memory impl variable(<arg_name>) contention_free(true|false)``
+
+**Description**
+
+The pragma is to be used for variables accessed by parallel functions (``hls::thread``)
+so that SmartHLS does not create arbiters for the specified variable.
+The specified variable can still be accessed by multiple concurrently running functions, but without contention.
+It will be the users’ responsibility to ensure at most one function may access the shared
+variable in a clock cycle. If not specified, by default,
+SmartHLS creates arbiters for variables that are accessed by parallel functions.
+
+
+**Parameters**
+
++---------------------+-------------------+----------+-----------+-------------------------------------+
+|      Parameter      |       Value       | Optional |  Default  |             Description             |
++=====================+===================+==========+===========+=====================================+
+| ``variable``        | String            | No       |           | Variable name                       |
++---------------------+-------------------+----------+-----------+-------------------------------------+
+| ``contention_free`` | ``true -  false`` | Yes      | ``false`` | ``true`` for contention-free access |
++---------------------+-------------------+----------+-----------+-------------------------------------+
+
+**Position**
+
+Before the global / local variable declaration.
+
+
+**Examples**
+
+.. code-block:: c
+
+  #pragma HLS memory impl variable(b) contention_free(true)
+  int b[100];
+
+--------------------------------------------------------------------------------
+

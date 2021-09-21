@@ -1,0 +1,50 @@
+.. highlight:: c
+
+.. _pragma_interface_memory_argument:
+
+Configure Argument as Memory Interface
+--------------------------------------
+
+**Syntax**
+
+
+``#pragma HLS interface argument(<arg_name>) type(memory) num_elements(<int>)``
+
+**Description**
+
+
+This pragma specifies the memory interface type for an array/struct argument.
+The array size can be specified or overridden (over the declared size in C++) by specifying the ``num_elements`` option.
+More details in :ref:`rtl_interface` section.
+
+**Parameters**
+
+
++---------------------+------------+----------+---------+------------------------------------------------------------------------------------------------------+
+|  Parameter          |    Type    | Optional | Default |       Description                                                                                    |
++=====================+============+==========+=========+======================================================================================================+
+| ``argument``        | String     | No       |         | Argument name                                                                                        |
++---------------------+------------+----------+---------+------------------------------------------------------------------------------------------------------+
+| ``type``            | ``memory`` | No       |         | Interface type                                                                                       |
++---------------------+------------+----------+---------+------------------------------------------------------------------------------------------------------+
+| ``num_elements``    | Integer    | Yes      |         | Specifies the number of elements of the argument array. Can override the array size in the argument. |
++---------------------+------------+----------+---------+------------------------------------------------------------------------------------------------------+
+
+**Position**
+
+At the beginning of the function definition block.
+
+
+**Examples**
+
+
+.. code-block:: c
+
+  int fun(int a[], int b[]) {
+  #pragma HLS interface argument(a) type(memory) num_elements(100)
+  #pragma HLS interface argument(b) type(memory)
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

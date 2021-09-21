@@ -77,4 +77,7 @@ will cause an error. Each pragma can has one of the following positions:
 
 .. include:: pragmas_docs/memory_partition_variable.rst
 .. include:: pragmas_docs/memory_partition_argument.rst
+.. include:: pragmas_docs/memory_pack_variable.rst
+.. include:: pragmas_docs/memory_pack_argument.rst
+.. include:: pragmas_docs/replicate_rom.rst
 .. include:: pragmas_docs/memory_contention_free.rst

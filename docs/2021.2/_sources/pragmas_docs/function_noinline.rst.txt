@@ -1,0 +1,30 @@
+.. highlight:: c
+
+.. _pragma_function_noinline:
+
+Noinline Function
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS function noinline``
+
+**Description**
+
+This pragma prevents a given function from being inlined. 
+
+**Position**
+
+At the beginning of the function definition block.
+
+**Examples**
+
+.. code-block:: c
+
+  int sum(int *a) {
+  #pragma HLS function noinline
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

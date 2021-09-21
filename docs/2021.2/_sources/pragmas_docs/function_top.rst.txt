@@ -1,0 +1,33 @@
+.. highlight:: c
+
+.. _pragma_function_top:
+
+Set Custom Top-Level Function
+-------------------------------
+
+**Syntax**
+
+
+``#pragma HLS function top``
+
+**Description**
+
+This pragma specifies the top-level C/C++ function.
+The top-level function and all of its descendant functions will be compiled to hardware. 
+
+**Position**
+
+At the beginning of the function definition block.
+
+**Examples**
+
+
+.. code-block:: c
+
+  int sum(int *a) {
+  #pragma HLS function top
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

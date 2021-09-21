@@ -1,0 +1,47 @@
+.. _VSIM_ASSERT:
+
+VSIM_ASSERT
+-------------
+
+When set to 1, this constraint causes assertions to be inserted in the Verilog 
+produced by SmartHLS. This is useful for debugging the circuit to see where invalid
+values (X's) are being assigned.
+
+**Category**
+
+Simulation
+
+**Value Type**
+
+Integer
+
+**Valid Values**
+
+0, 1
+
+**Default Value**
+
+0
+
+**Location Where Default is Specified**
+
+``examples/legup.tcl``
+
+**Dependencies**
+
+None
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+    ``set_parameter VSIM_ASSERT 1``
+
+--------------------------------------------------------------------------------
+

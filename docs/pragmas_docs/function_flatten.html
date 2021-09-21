@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Flatten Function &mdash; SmartHLS 2021.2 documentation</title>
+  <title>Flatten Function &mdash; SmartHLS 2021.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -517,7 +517,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="../_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2.1  </span>
 
 										  </h1>
 								
@@ -551,10 +551,10 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Releases</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
@@ -643,14 +643,44 @@ display:none;
   <div class="section" id="flatten-function">
 <span id="pragma-function-flatten"></span><h1>Flatten Function<a class="headerlink" href="#flatten-function" title="Permalink to this headline">¶</a></h1>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">flatten</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">flatten</span> <span class="pre">branchless(true|false)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma unrolls all loops and inlines all subfunctions for a given function.</p>
+<p>This pragma unrolls all loops and inlines all subfunctions for a given function.
+If the <code class="docutils literal notranslate"><span class="pre">branchless</span></code> option is set to true, all branches (e.g., if-else,
+switch) in the specified function will also be flatten to allow more
+parallelism between operations, specifically between the operations that are
+under different-yet-independent conditions.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 10%" />
+<col style="width: 12%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Optional</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">branchless</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> to flatten branch statements</p></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="cp">#pragma HLS function flatten</span>
+<span class="cp">#pragma HLS function flatten branchless(true)</span>
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>

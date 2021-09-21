@@ -1,0 +1,54 @@
+.. highlight:: c
+
+.. _pragma_interface_scalar_argument:
+
+Configure Scalar Argument Interface
+-----------------------------------
+
+**Syntax**
+
+
+``#pragma HLS interface argument(<arg_name>) type(simple) stable(<false|true>)``
+
+**Description**
+
+
+This pragma configures the scalar input port.
+The ``stable`` option informs SmartHLS that the port can be held valid and unchanged throughout the whole
+iteration of the execution and potentially can save register usage in the
+generated module.
+Note that the ``type`` option is not configurable in the current release but
+still needs to be specified if you wish to add the stable option.
+If 'stable' is false, the pragma is not necessary because SmartHLS assumes not stable by default.
+More details in :ref:`rtl_interface` section.
+
+**Parameters**
+
+
++--------------+----------------+----------+-----------+------------------------------------+
+|  Parameter   |      Type      | Optional |  Default  |            Description             |
++==============+================+==========+===========+====================================+
+| ``argument`` | String         | No       |           | Argument name                      |
++--------------+----------------+----------+-----------+------------------------------------+
+| ``type``     | ``simple``     | No       |           | Interface type                     |
++--------------+----------------+----------+-----------+------------------------------------+
+| ``stable``   | ``true|false`` | Yes      | ``false`` | ``true`` if the argument is stable |
++--------------+----------------+----------+-----------+------------------------------------+
+
+**Position**
+
+At the beginning of the function definition block.
+
+
+**Examples**
+
+
+.. code-block:: c
+
+  int fun(int a) {
+  #pragma HLS interface argument(a) type(simple) stable(true)
+    ...
+  }
+
+--------------------------------------------------------------------------------
+
