@@ -156,7 +156,7 @@ The following defects and enhancement requests were resolved:
 
 
 
-LegUp HLS EAP 2021.1 Release Notes
+LegUp HLS EAP 2021.1
 ---------------------------------
 
 Release date: April 23, 2021
@@ -191,7 +191,7 @@ The following defects and enhancement requests were resolved:
  * HLS-280:    Interface Report: byte-enable signal is not properly recognized for non-struct yet byte-enabled RAMs
 
 
-LegUp HLS EAP 9.2.1 Release Notes
+LegUp HLS EAP 9.2.1
 ---------------------------------
 
 Release date: March 3, 2021
@@ -226,7 +226,7 @@ The following defects and enhancement requests were resolved:
  * HLS-203: ScheduleViewer does not work when LegUp installation and workspace are in different drives.
  * HLS-206: Red-line in Eclipse complaining about legup::thread/ref.
 
-LegUp HLS EAP 9.1 Release Notes
+LegUp HLS EAP 9.1
 ---------------------------------
 
 Release date: Jan 4, 2021
