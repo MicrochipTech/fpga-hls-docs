@@ -27,7 +27,7 @@ Software Features and Enhancements
  * Support for packing interfaces and memories with struct types into a wide scalar using the new pack pragma (see :ref:`struct_support`).
  * Support struct as a return type for the top-level HLS function (see :ref:`struct_support`).
  * Support for constant static struct members in SW/HW CoSimulation.
- * Disable automatic unrolling of pipelined loops that could increase the design size without noticeable improvement in performance.
+ * Disabled automatic unrolling of pipelined loops and their outer loops. Disabling automatic unrolling saves design size without noticeable loss in performance. A pipelined loop can still be explicitly unrolled with a :ref:`pragma_loop_unroll` pragma.
  * Updated the user guide section on :ref:`cmdline`.
 
 
@@ -39,10 +39,10 @@ The following defects and enhancement requests were resolved:
  * HLS-461: Fixed the initialization of global array of ap_fixpt type.
  * HLS-419: Some of the generated AXI4 slave controllers have IIs greater than 1.
  * HLS-420: Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
- * HLS-443: Partition pragma is overridden by default partitioning.
+ * HLS-443: Partition pragma is incorrectly overridden by default partitioning.
  * HLS-446: Incorrect mapping of completely partitioned array of struct.
- * HLS-475: Nested struct definitions order in co-simulation wrapper.
- * HLS-456: Loops containing inner pipelined loops are unrolled resulting in significant increase in resources.
+ * HLS-475: Nested struct definitions may have an incorrect order in Co-Simulation.
+ * HLS-456: Loops containing inner pipelined loops are automatically unrolled, leading to a significant increase in resources.
  * HLS-53: Removed the internal primitive operations from scheduleviewer.
 
 

@@ -5676,3 +5676,10 @@ table.dataTable tbody tr.selected a,table.dataTable tbody th.selected a,table.da
 .mchp-bs3 .CoveoResult .associated-files ul li:last-of-type:after{content:""}
 .coveo-modal-container{z-index:2999}
 .coveo-modal-container .coveo-modal-body .coveo-logo svg{display:none}
+
+:target::before {
+    content: "";
+    display: block;
+    height: 80px;
+    margin: -80px 0 0;
+}

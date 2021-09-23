@@ -62,7 +62,7 @@ repository.
 Technical support is available through the website at: `www.microchip.com/support <http://www.microchip.com/support>`__	 
 	 
 .. toctree::
-   :caption: User Guide Versions  
+   :caption: User Guide Versions
    :hidden: 
    
    Latest Release <https://microchiptech.github.io/fpga-hls-docs/>
