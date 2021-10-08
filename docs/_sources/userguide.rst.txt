@@ -1416,6 +1416,8 @@ C++ Arbitrary Precision Data Types Library
 The C++ Arbitrary Precision Data Types Library provides numeric types ``ap_[u]int`` and ``ap_[u]fixpt``, which can be used to specify data types of arbitrary bitwidths in software (e.g., ap_int<9> for a 9-bit integer variable).
 These data types will be efficiently translated to create hardware with the exact widths. The data types also come with bit manipulation utilities, such as bit range selection and concatenation.
 
+.. _ap_int:
+
 C++ Arbitrary Precision Integer Library
 ~~~~~~~~~~~~~~~~~~~~~~
 The C++ ``ap_[u]int`` type allows specifying signed and unsigned data types of any bitwidth. 
@@ -1665,7 +1667,7 @@ Putting any C++ arbitrary precision types in a comma separated list will generat
 The concatenation can currently be used to create arbitrary precision types (zero extending or truncating to match widths), but can not be assigned to.
 
 
-.. _fixed_point_library:
+.. _ap_fixpt:
 
 C++ Arbitrary Precision Fixed Point Library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2271,11 +2273,12 @@ For more details about when/why to use the ``LineBuffer`` class, see
 .. end SW Flow
 
 
-.. _c_numerics_library:
+.. _c_math_library:
 
-C Numerics Library (math.h in C / <cmath> in C++)
+Math Library (math.h)
 ~~~~~~~~~~~~~~~~~~~~~~
-SmartHLS supports a subset of the C Numerics Library. These functions are supported for functionality, however, may not lead to an efficient hardware implementation.
+
+SmartHLS supports a subset of the C Math Library. These functions are supported for functionality, however, may not lead to an efficient hardware implementation.
 If you require high performance, we recommend restructuring your software code to not call these math functions. 
 The table below shows supported math functions.
 

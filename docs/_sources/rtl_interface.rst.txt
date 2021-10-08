@@ -453,6 +453,8 @@ The corresponding address map report
   - When AXI4 slave interface is used, the top-level function must use void
     return type.
 
+.. _rtl_interface_fifo_argument:
+
 hls::FIFO Argument
 ~~~~~~~~~~~~~~~~~~~~~~
 

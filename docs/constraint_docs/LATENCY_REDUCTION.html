@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Configure Argument as Scalar Memory Interface &mdash; SmartHLS 2021.2.1 documentation</title>
+  <title>LATENCY_REDUCTION &mdash; SmartHLS 2021.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -573,6 +573,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="../constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license_setup.html">Setup SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vhls_to_shls.html">Migration Guide From Vitis/Vivado HLS to SmartHLS</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -623,7 +624,7 @@ display:none;
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Configure Argument as Scalar Memory Interface</li>
+      <li>LATENCY_REDUCTION</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -640,61 +641,79 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="configure-argument-as-scalar-memory-interface">
-<span id="pragma-interface-scalar-memory-argument"></span><h1>Configure Argument as Scalar Memory Interface<a class="headerlink" href="#configure-argument-as-scalar-memory-interface" title="Permalink to this headline">¶</a></h1>
-<p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
-<p><strong>Description</strong></p>
-<p>This pragma specifies the scalar memory interface for an argument.
-The scalar memory interface is used by SmartHLS module to access external memory
-that has only one element. More details in <a class="reference internal" href="../userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> section.</p>
-<p><strong>Parameters</strong></p>
+  <div class="section" id="latency-reduction">
+<span id="id1"></span><h1>LATENCY_REDUCTION<a class="headerlink" href="#latency-reduction" title="Permalink to this headline">¶</a></h1>
+<p>The LATENCY_REDUCTION settings control the SmartHLS’ expression balancing
+optimization, of which the objective is to reduce the circuit latency.
+Below are the related settings,</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 6%" />
-<col style="width: 6%" />
-<col style="width: 63%" />
+<col style="width: 19%" />
+<col style="width: 7%" />
+<col style="width: 73%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parameter Name</p></th>
+<th class="head"><p>Default Value</p></th>
+<th class="head"></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">argument</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Argument name</p></td>
+<tr class="row-even"><td><p>LATENCY_REDUCTION</p></td>
+<td><p>1</p></td>
+<td><p>The main switch that enables or disables expression balancing. Setting to 0 disables all expression balancing optimizations.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">scalar_memory</span></code></p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Interface type</p></td>
+<tr class="row-odd"><td><p>LATENCY_REDUCTION_ALLOW_FP_REORDERING</p></td>
+<td><p>0</p></td>
+<td><div class="line-block">
+<div class="line">By default expression balancing does not re-order floating-point operations to prevent loss of precisions.</div>
+<div class="line">Setting to 1 allows to re-order floating-point operations if the circuit latency can be reduced.</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td></td>
-<td><p>Specifies the number of elements of the argument array. Can override the array size in the argument.</p></td>
+<tr class="row-even"><td><p>LATENCY_REDUCTION_REDUCE_FP_CONVERSIONS</p></td>
+<td><p>0</p></td>
+<td><div class="line-block">
+<div class="line">Setting to 1 will allow SmartHLS to cancel out back-and-forth conversion between floating-point and integer, with potential variations in numerical values.</div>
+<div class="line">For example, the following conversions can be cancelled when this setting is 1.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">int</span>&#160;&#160; <span class="pre">a</span> <span class="pre">=</span> <span class="pre">(int)(float)(3);</span>&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">a</span> <span class="pre">==</span> <span class="pre">3.</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">(float)(int)(1.2);</span>&#160; <span class="pre">//</span> <span class="pre">b</span> <span class="pre">==</span> <span class="pre">1.2</span> <span class="pre">instead</span> <span class="pre">of</span> <span class="pre">1.</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>LATENCY_REDUCTION_BALANCE_MULTI_USE_NODE</p></td>
+<td><p>0</p></td>
+<td><div class="line-block">
+<div class="line">By default expression balancing does not optimize the intermediate operations that have multiple uses, to avoid potential increase of resource usage.</div>
+<div class="line">Setting to 1 allows to re-order intermediate operations that have multiple uses and more latency reduction could be achieved.</div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Position</strong></p>
-<p>At the beginning of the function definition block.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Integer</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>As listed in the table above.</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="cp">#pragma HLS interface argument(b) type(scalar_memory) num_elements(100)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LATENCY_REDUCTION</span> <span class="pre">1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LATENCY_REDUCTION_ALLOW_FP_REORDERING</span> <span class="pre">0</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LATENCY_REDUCTION_REDUCE_FP_CONVERSIONS</span> <span class="pre">0</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LATENCY_REDUCTION_BALANCE_MULTI_USE_NODE</span> <span class="pre">0</span></code></p>
+</div></blockquote>
 <hr class="docutils" />
 </div>
 

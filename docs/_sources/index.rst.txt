@@ -51,6 +51,8 @@ The following table describes each document shipped with SmartHLS.
    * - :ref:`license_setup`
      - How to obtain a free license for SmartHLS
    * - :ref:`FAQ`
+     - Migration Guide From Vivado HLS to SmartHLS
+   * - :ref:`vhls_to_shls`
      - Frequently asked questions
    * - :ref:`release`
      - New features and known problems with each release	 
@@ -96,6 +98,7 @@ Technical support is available through the website at: `www.microchip.com/suppor
    constraintsmanual
    license_setup
    faq
+   vhls_to_shls
 
 .. toctree::
    :caption: SmartHLS Examples   

@@ -573,6 +573,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">Migration Guide From Vitis/Vivado HLS to SmartHLS</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -1174,7 +1175,7 @@ return type.</p></li>
 </div>
 </div>
 <div class="section" id="hls-fifo-argument">
-<h2>hls::FIFO Argument<a class="headerlink" href="#hls-fifo-argument" title="Permalink to this headline">¶</a></h2>
+<span id="rtl-interface-fifo-argument"></span><h2>hls::FIFO Argument<a class="headerlink" href="#hls-fifo-argument" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS provides a <a class="reference internal" href="userguide.html#streaming-lib"><span class="std std-ref">Streaming Library</span></a> which includes a FIFO
 template class for inferring the AXI4-stream like, ready-valid-data (RVD)
 interface.  When a <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code> type argument is used by the top-level

@@ -51,8 +51,8 @@ A few debugging constraints are available from the SmartHLS IDE:
 
 --------------------------------------------------------------------------------
 
-.. Commonly Used Constraints
-.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Commonly Used Constraints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. include:: constraint_docs/CLOCK_PERIOD.rst
@@ -74,8 +74,8 @@ A few debugging constraints are available from the SmartHLS IDE:
 .. .. include:: constraint_docs/MB_MINIMIZE_HW.rst
 .. .. include:: constraint_docs/REPLICATE_ROMS.rst
 
-.. Debugging Constraints
-.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Debugging Constraints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. include:: constraint_docs/KEEP_SIGNALS_WITH_NO_FANOUT.rst
 .. include:: constraint_docs/VSIM_ASSERT.rst
 
@@ -85,6 +85,7 @@ Advanced Constraints
 
 These are not available from the SmartHLS GUI.
 
+.. include:: constraint_docs/LATENCY_REDUCTION.rst
 .. include:: constraint_docs/STRENGTH_REDUCTION.rst
 .. include:: constraint_docs/STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER.rst
 .. include:: constraint_docs/USE_FIFO_FOR_PIPELINE_REG.rst

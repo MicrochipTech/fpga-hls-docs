@@ -5683,3 +5683,8 @@ table.dataTable tbody tr.selected a,table.dataTable tbody th.selected a,table.da
     height: 80px;
     margin: -80px 0 0;
 }
+
+/* override table no-wrap */
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: normal !important;
+}

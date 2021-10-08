@@ -634,7 +634,7 @@ display:none;
 <li class="toctree-l4"><a class="reference internal" href="#line-buffer">Line Buffer</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#c-numerics-library-math-h-in-c-cmath-in-c">C Numerics Library (math.h in C / &lt;cmath&gt; in C++)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#math-library-math-h">Math Library (math.h)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#top-level-rtl-interface">Top-Level RTL Interface</a><ul>
@@ -689,6 +689,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">Migration Guide From Vitis/Vivado HLS to SmartHLS</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -1883,7 +1884,7 @@ Non-blocking FIFO read and write can be achieved as shown below.</p>
 These data types will be efficiently translated to create hardware with the exact widths. The data types also come with bit manipulation utilities, such as bit range selection and concatenation.</p>
 </div>
 <div class="section" id="c-arbitrary-precision-integer-library">
-<h3>C++ Arbitrary Precision Integer Library<a class="headerlink" href="#c-arbitrary-precision-integer-library" title="Permalink to this headline">¶</a></h3>
+<span id="ap-int"></span><h3>C++ Arbitrary Precision Integer Library<a class="headerlink" href="#c-arbitrary-precision-integer-library" title="Permalink to this headline">¶</a></h3>
 <p>The C++ <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> type allows specifying signed and unsigned data types of any bitwidth.
 They can be used for arithmetic, concatenation, and bit level operations. You can use the <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> type
 by including the following header file.</p>
@@ -2038,7 +2039,7 @@ The <code class="docutils literal notranslate"><span class="pre">to_uint64()</sp
 and wrapping as necessary. Assigning an <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> wider than 64 bits to an <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code> would also wrap to match widths,
 without needing to call <code class="docutils literal notranslate"><span class="pre">to_uint64()</span></code>. The <code class="docutils literal notranslate"><span class="pre">to_int64()</span></code> function will return a 64 bit <code class="docutils literal notranslate"><span class="pre">signed</span> <span class="pre">long</span> <span class="pre">long</span></code> and will sign extend as necessary.</p>
 <p>An arbitrary precision integer data type can be casted to an arbitrary precision fixed-point data type with the <code class="docutils literal notranslate"><span class="pre">to_fixpt&lt;I_W&gt;()</span></code> and <code class="docutils literal notranslate"><span class="pre">to_ufixpt&lt;I_W&gt;()</span></code> functions (returns <code class="docutils literal notranslate"><span class="pre">ap_fixpt&lt;W,</span> <span class="pre">I_W&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">ap_ufixpt&lt;W,</span> <span class="pre">I_W&gt;</span></code> types respectively), with the same bits as the original <code class="docutils literal notranslate"><span class="pre">ap_[u]int&lt;W&gt;</span></code>.
-For more on the <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> template, please refer to the <a class="reference internal" href="#fixed-point-library"><span class="std std-ref">C++ Arbitrary Precision Fixed Point Library</span></a> section.</p>
+For more on the <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> template, please refer to the <span class="xref std std-ref">fixed_point_library</span> section.</p>
 <p>An example demonstrating these functions is shown below.</p>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hls/ap_int.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hls/ap_fixpt.hpp&quot;</span><span class="cp"></span>
@@ -2112,7 +2113,7 @@ The concatenation can currently be used to create arbitrary precision types (zer
 </div>
 </div>
 <div class="section" id="c-arbitrary-precision-fixed-point-library">
-<span id="fixed-point-library"></span><h3>C++ Arbitrary Precision Fixed Point Library<a class="headerlink" href="#c-arbitrary-precision-fixed-point-library" title="Permalink to this headline">¶</a></h3>
+<span id="ap-fixpt"></span><h3>C++ Arbitrary Precision Fixed Point Library<a class="headerlink" href="#c-arbitrary-precision-fixed-point-library" title="Permalink to this headline">¶</a></h3>
 <p>The C++ Arbitrary Precision Fixed Point library provides fast bit accurate software simulation, and efficient equivalent
 hardware generation. The C++ <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> types allow specifying signed and unsigned fixed point numbers of arbitrary width,
 and arbitrary fixed position relative to the decimal. They can be used
@@ -2925,9 +2926,9 @@ contain out-of-bound pixels at certain sliding locations.</p>
 <a class="reference internal" href="optimizationguide.html#line-buffer-opt-guide"><span class="std std-ref">Inferring a Line Buffer</span></a> in the <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a>.</p>
 </div>
 </div>
-<div class="section" id="c-numerics-library-math-h-in-c-cmath-in-c">
-<span id="c-numerics-library"></span><h3>C Numerics Library (math.h in C / &lt;cmath&gt; in C++)<a class="headerlink" href="#c-numerics-library-math-h-in-c-cmath-in-c" title="Permalink to this headline">¶</a></h3>
-<p>SmartHLS supports a subset of the C Numerics Library. These functions are supported for functionality, however, may not lead to an efficient hardware implementation.
+<div class="section" id="math-library-math-h">
+<span id="c-math-library"></span><h3>Math Library (math.h)<a class="headerlink" href="#math-library-math-h" title="Permalink to this headline">¶</a></h3>
+<p>SmartHLS supports a subset of the C Math Library. These functions are supported for functionality, however, may not lead to an efficient hardware implementation.
 If you require high performance, we recommend restructuring your software code to not call these math functions.
 The table below shows supported math functions.</p>
 <table class="docutils align-default">
@@ -3515,7 +3516,7 @@ return type.</p></li>
 </div>
 </div>
 <div class="section" id="hls-fifo-argument">
-<h3>hls::FIFO Argument<a class="headerlink" href="#hls-fifo-argument" title="Permalink to this headline">¶</a></h3>
+<span id="rtl-interface-fifo-argument"></span><h3>hls::FIFO Argument<a class="headerlink" href="#hls-fifo-argument" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS provides a <a class="reference internal" href="#streaming-lib"><span class="std std-ref">Streaming Library</span></a> which includes a FIFO
 template class for inferring the AXI4-stream like, ready-valid-data (RVD)
 interface.  When a <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code> type argument is used by the top-level

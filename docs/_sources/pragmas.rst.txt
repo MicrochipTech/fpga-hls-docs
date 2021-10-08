@@ -69,8 +69,6 @@ will cause an error. Each pragma can has one of the following positions:
 .. include:: pragmas_docs/interface_scalar_argument.rst
 .. include:: pragmas_docs/interface_memory_argument.rst
 .. include:: pragmas_docs/interface_memory_variable.rst
-.. include:: pragmas_docs/interface_scalar_memory_argument.rst
-.. include:: pragmas_docs/interface_scalar_memory_variable.rst
 .. include:: pragmas_docs/interface_axi_slave_variable.rst
 
 .. .. include:: pragmas_docs/soc_interface.rst
