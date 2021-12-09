@@ -766,6 +766,6 @@ example of an AXI4 master interface tested with CoSim is shown below.
 .. * The interface always uses 32-bit address and 64-bit data width.
 .. * SW/HW Co-Simulation is only supported if the top level function is not pipelined. 
 .. 
-.. We will improve and stablize this feature in the later releases. Please contact support@legupcomputing.com if you require more details about this feature. 
+.. We will improve and stablize this feature in the later releases. Please contact us if you require more details about this feature.
 
 

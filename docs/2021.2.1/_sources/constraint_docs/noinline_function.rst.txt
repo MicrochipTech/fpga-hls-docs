@@ -1,0 +1,53 @@
+.. _noinline_function:
+
+noinline_function
+-------------
+
+This parameter prevents a given function from being inlined. 
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
++--------------------+------------+
+| Parameter          | Value Type |
++====================+============+
+| noinline_function  | String     |
++--------------------+------------+
+
+Valid Values
++++++++++++++
+
+See Examples
+
+Default Value
+++++++++++++++
+
+N/A
+
+Dependencies
++++++++++++++
+
+None
+
+Applicable Flows
++++++++++++++++++
+
+All devices and flows
+
+Test Status
+++++++++++++
+
+Actively in-use
+
+Examples
++++++++++
+
+``noinline_function "add"``
+
+--------------------------------------------------------------------------------
+

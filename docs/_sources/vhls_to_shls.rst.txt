@@ -1,13 +1,19 @@
 .. _vhls_to_shls:
 
-Migration Guide From Vitis/Vivado HLS to SmartHLS
+SmartHLS Migration Guide
 ==================================
+
+This section describes how existing Vitis HLS / Vivado HLS designs can be
+easily migrated to SmartHLS.
+When migrating an existing C++ design from Vitis HLS / Vivado HLS, the pragmas
+and libraries used in the source code should be changed to the equivalent ones
+in SmartHLS.
 
 Pragmas
 --------------------------------------
 
 =======================  ==============================
-Vitis/Vivado HLS             SmartHLS                  
+Vitis HLS / Vivado HLS   SmartHLS
 =======================  ==============================
 aggregate, data_pack      See the :ref:`pragma_memory_impl_pack_argument` and :ref:`pragma_memory_impl_pack_variable` pragmas.
 allocation                | A global constraint of operation resources can be set via :ref:`set_resource_constraint`;
@@ -56,6 +62,16 @@ Math Library
 SmartHLS supports a subset of functions in the :ref:`c_math_library`, but does
 not yet have a math function library that is optimized for hardware
 implementation with customizable arbitrary precisions.
+
+Other Libraries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Other libraries such as OpenCV, FFT, FIR, DDS, and SRL libraries are not yet
+supported by SmartHLS. We are actively developing libraries, such as the
+computer vision IPs.
+If you are interested in having support of certain IPs, please email us at
+SmartHLS@microchip.com. Your feedback is valuable to us and will help to
+prioritize our production plan.
 
 .. IP Library
 .. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

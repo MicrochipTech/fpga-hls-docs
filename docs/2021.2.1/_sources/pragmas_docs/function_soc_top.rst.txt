@@ -1,0 +1,32 @@
+.. highlight:: c
+
+.. _pragma_function_soc_top:
+
+Set Accelerator Function (Hybrid Flow)
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS function soc_top``
+
+**Description**
+
+This pragma sets the C function to be accelerated to HW in the hybrid flow. 
+It can be used on one or more functions. 
+
+**Position**
+
+At the beginning of the function definition block.
+
+
+**Examples**
+
+.. code-block:: c
+
+  int sum(int *a) {
+  #pragma HLS function soc_top
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

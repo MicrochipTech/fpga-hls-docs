@@ -51,7 +51,7 @@ The following table describes each document shipped with SmartHLS.
    * - :ref:`license_setup`
      - How to obtain a free license for SmartHLS
    * - :ref:`FAQ`
-     - Migration Guide From Vivado HLS to SmartHLS
+     - SmartHLS Migration Guide
    * - :ref:`vhls_to_shls`
      - Frequently asked questions
    * - :ref:`release`
@@ -68,7 +68,7 @@ Technical support is available through the website at: `www.microchip.com/suppor
    :hidden: 
    
    Latest Release <https://microchiptech.github.io/fpga-hls-docs/>
-   Previous Releases <https://microchiptech.github.io/fpga-hls-docs/versions.html>
+   versions
 
 	 
 .. toctree::

@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Optimization Guide &mdash; SmartHLS 2021.2.1 documentation</title>
+  <title>Optimization Guide &mdash; SmartHLS 2021.3 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3  </span>
 
 										  </h1>
 								
@@ -553,12 +553,7 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Releases</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
@@ -589,7 +584,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">Migration Guide From Vitis/Vivado HLS to SmartHLS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -1258,42 +1253,7 @@ SmartHLS does provide the flexibility to force a register at specific location.<
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">val_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hls_reg</span><span class="p">(</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This will force SmartHLS to register the value, <code class="docutils literal notranslate"><span class="pre">val</span></code>, and any operations that depend on <code class="docutils literal notranslate"><span class="pre">val</span></code> will be scheduled accordingly, taking into the account the 1-cycle latency required to register the value.
-.. comment</p>
-<blockquote>
-<div><p>In software, a group of related data is usually decribed as a struct.
-And all structs will be automatically splitted up into individual elements by default in SmartHLS.</p>
-<p>But sometime, it’s beneficial to keep the struct as a whole to ensure the alignment of operations between elements or to reduce the overhead of control logic.
-If this is the case, users can take advantage of the datapack feature to pack the struct into a single integer by concatenating elements together.</p>
-<p>To utilize the datapack feature, you need to include the header file:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>#include “hls/data_pack.hpp”</p>
-<p>The implicit conversion functions between the original struct type and the packed type are provided.
-So you can perform the pack and unpack operations implicitly by using the <code class="docutils literal notranslate"><span class="pre">operator=</span></code>.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<dl class="simple">
-<dt>struct ABC {</dt><dd><p>int a;
-char b;
-short c;</p>
-</dd>
-</dl>
-<p>};</p>
-<p>hls::DataPack&lt;ABC&gt; packed_data;</p>
-<p>struct ABC unpacked_data = packed_data;
-unpacked_data.a = 1;
-unpacked_data.b = 2;</p>
-<p>packed_data = unpacked_data;</p>
-<p>There are several limitations for the datapack feature support:</p>
-<ul class="simple">
-<li><p>Only primitive types can be used inside the struct that are datapacked. Arbitrary bit-width data types are not allowed.</p></li>
-<li><p>SW/HW Co-Simulation is not supported for SmartHLS project that uses datapack for top-level arguments.</p></li>
-</ul>
-<p>We will improve and stablize this feature in the later releases. Please contact <a class="reference external" href="mailto:smarthls&#37;&#52;&#48;microchip&#46;com">smarthls<span>&#64;</span>microchip<span>&#46;</span>com</a> if you require more details about this feature.</p>
-</div></blockquote>
+<p>This will force SmartHLS to register the value, <code class="docutils literal notranslate"><span class="pre">val</span></code>, and any operations that depend on <code class="docutils literal notranslate"><span class="pre">val</span></code> will be scheduled accordingly, taking into the account the 1-cycle latency required to register the value.</p>
 </div>
 <div class="section" id="inferring-a-shift-register">
 <h2>Inferring a Shift Register<a class="headerlink" href="#inferring-a-shift-register" title="Permalink to this headline">¶</a></h2>

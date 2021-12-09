@@ -1,0 +1,43 @@
+.. highlight:: c
+
+.. _pragma_memory_impl_pack_variable:
+
+Struct Variable Packing 
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS memory impl variable(<var_name>) pack(bit|byte) byte_enable(true|false)``
+
+**Description**
+
+The pragma is to be used to pack an global interface / local memory variable with `struct` type. 
+There are two packing modes: `bit` / `byte` where `bit` packing packs the `struct` fields using the exact bit-width and `byte` mode packs the fields with 8-bit alignment. 
+`byte_enable` option creates an interface / memory with byte enable signals to write individual fields when set to `true`. Note that `byte_enable` is only valid with `byte` packing.
+
+**Parameters**
+
++-----------------+------------------+----------+-----------+------------------------------------------+
+| Parameter       | Value            | Optional | Default   | Description                              |
++=================+==================+==========+===========+==========================================+
+| ``variable``    | String           | No       |           | Variable name                            |
++-----------------+------------------+----------+-----------+------------------------------------------+
+| ``pack``        | ``bit - byte``   | No       |           | Packing Mode                             |
++-----------------+------------------+----------+-----------+------------------------------------------+
+| ``byte_enable`` | ``true - false`` | Yes      | ``false`` | Use byte-enable to write `struct fields` |
++-----------------+------------------+----------+-----------+------------------------------------------+
+
+**Position**
+
+Before the global / local variable declaration.
+
+
+**Examples**
+
+.. code-block:: c
+
+  #pragma HLS memory impl variable(b) pack(bit)
+  struct S s[100];
+
+--------------------------------------------------------------------------------
+

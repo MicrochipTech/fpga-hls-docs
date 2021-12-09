@@ -715,7 +715,9 @@ and call the function ``hls_reg`` for the data you want to register as below:
     val_reg = hls_reg(val);
 
 This will force SmartHLS to register the value, ``val``, and any operations that depend on ``val`` will be scheduled accordingly, taking into the account the 1-cycle latency required to register the value.
+
 .. comment
+
     Data Packing (Beta)
     ------------
 
@@ -755,7 +757,7 @@ This will force SmartHLS to register the value, ``val``, and any operations that
     * Only primitive types can be used inside the struct that are datapacked. Arbitrary bit-width data types are not allowed.
     * SW/HW Co-Simulation is not supported for SmartHLS project that uses datapack for top-level arguments.
 
-    We will improve and stablize this feature in the later releases. Please contact smarthls@microchip.com if you require more details about this feature.
+    We will improve and stablize this feature in the later releases. Please contact us if you require more details about this feature.
 
 Inferring a Shift Register
 ------------

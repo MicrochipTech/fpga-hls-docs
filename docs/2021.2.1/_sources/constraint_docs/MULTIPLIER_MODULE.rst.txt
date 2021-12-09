@@ -1,0 +1,68 @@
+.. _MULTIPLIER_MODULE:
+
+MULTIPLIER_MODULE
+-------------
+
+This parameter controls what type of multiplier is instantiated by SmartHLS when
+a multiplication operation is used in the program. 
+When the "inline" parameter is used, SmartHLS will print out the "*" operator in 
+Verilog. 
+When the "generic" parameter is used, SmartHLS will instantiate a generic multiplier
+module that is parameterized for input/output bitwidths and the number of pipeline
+stages. 
+
+Caveat 1: When the "inline" parameter is used, and the multiplication operation
+is set to take 1 or more cycles (with the set_operation_latency multiply parameter), 
+some FPGA synthesis tools may not be able to utilize the internal registers of a
+DSP block, which can negatively affect the resulting Fmax. 
+
+Caveat 2: The generic multiplier module does not yet support stalls.
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
+String
+
+Valid Values
++++++++++++++
+
+inline, generic
+
+Default Value
+++++++++++++++
+
+inline
+
+Location Where Default is Specified
++++++++++++++++++++++++++++++++++++
+
+``examples/legup.tcl``
+
+Dependencies
++++++++++++++
+
+None
+
+Applicable Flows
++++++++++++++++++
+
+All devices and flows
+
+Test Status
+++++++++++++
+
+Actively in-use 
+
+Examples
++++++++++
+
+    ``set_parameter MULTIPLIER_MODULE "inline"``
+    ``set_parameter MULTIPLIER_MODULE "generic"``
+
+--------------------------------------------------------------------------------
+

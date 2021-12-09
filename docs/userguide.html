@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>User Guide &mdash; SmartHLS 2021.2.1 documentation</title>
+  <title>User Guide &mdash; SmartHLS 2021.3 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3  </span>
 
 										  </h1>
 								
@@ -553,12 +553,7 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Releases</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
@@ -678,6 +673,7 @@ display:none;
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#instantiating-smarthls-ip-core-in-libero-smartdesign">Instantiating SmartHLS IP Core in Libero SmartDesign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#smarthls-command-line-interface">SmartHLS Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synthesis-macro"><strong>__SYNTHESIS__</strong> Macro</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
@@ -689,7 +685,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">Migration Guide From Vitis/Vivado HLS to SmartHLS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -1914,7 +1910,7 @@ allowing for wider types than the existing C arbitrary bit-width library.</p>
 <span class="w">    </span><span class="c1">// iostream doesn&#39;t synthesize to hardware, so only include this</span>
 <span class="w">    </span><span class="c1">// line in software compilation. Any block surrounded by this ifdef</span>
 <span class="w">    </span><span class="c1">// will be ignored when compiling to hardware.</span>
-<span class="w">    </span><span class="cp">#ifdef SMARTHLS_SW</span>
+<span class="w">    </span><span class="cp">#ifndef __SYNTHESIS__</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="cp">#endif</span>
 <span class="p">}</span><span class="w"></span>
@@ -2144,15 +2140,15 @@ left hand side of an assignment, or of the value being constructed.</p>
 <td colspan="2"><p>The width of the word in bits.</p></td>
 </tr>
 <tr class="row-odd"><td><p>I_W</p></td>
-<td colspan="2"><p>How far the most significant bit is above the decimal. I_W
-can be negative. I_W &gt; 0 implies the MSB is above the
+<td colspan="2"><p>How far the most significant bit is above the decimal.
+I_W can be negative. I_W &gt; 0 implies the MSB is above the
 decimal. I_W &lt;= 0 implies the MSB is below the decimal.</p>
-<p>If W &gt;= I_W &gt;= 0 then I_W is the number of bits used for
+<p>If W &gt;= I_W &gt;= 0, then I_W is the number of bits used for
 the integer portion.</p>
 </td>
 </tr>
 <tr class="row-even"><td rowspan="8"><p>Q_M</p></td>
-<td colspan="2"><p>The Quantization (rounding) mode used when a result has
+<td colspan="2"><p>The Quantization(rounding) mode used when a result has
 precision below the least significant bit.</p>
 <p>Defaults to AP_TRN.</p>
 </td>
@@ -4181,7 +4177,7 @@ the component into Libero SmartDesign and integrate this core into our larger sy
 When SmartHLS generates the hardware, SmartHLS will also generate a <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code>
 script to easily instantiate the SmartHLS-generated IP core into Libero SmartDesign.</p>
 <p>You will see the log message in the console which includes the full path to the script like this:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.2.1\workspace\sobel_part3\create_hdl_plus.tcl.
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.3\workspace\sobel_part3\create_hdl_plus.tcl.
 </pre></div>
 </div>
 <p>Now we can use Libero to open a Libero project, create a new SmartDesign, and give the newly created SmartDesign a suitable name.
@@ -4264,6 +4260,29 @@ as an input, and <code class="docutils literal notranslate"><span class="pre">ou
 <li><p><strong>clean</strong>: Delete files generated by SmartHLS.</p></li>
 <li><p><strong>precompile_modelsim_libs</strong>: Recompile ModelSim libraries. This command only needs to be run once from any SmartHLS project directory after you change the ModelSim version.</p></li>
 </ul>
+</div>
+<div class="section" id="synthesis-macro">
+<h2><strong>__SYNTHESIS__</strong> Macro<a class="headerlink" href="#synthesis-macro" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>__SYNTHESIS__</strong> macro is defined in SmartHLS during synthesis. This provides a convenient way to exclude non-synthesizable code without removing/commenting the code itself. In the folling example, the assertion header and statement are ignored during synthesis:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __SYNTHESIS__</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+
+<span class="cp">#ifndef __SYNTHESIS__</span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="cp">#endif</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">N</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While the <strong>__SYNTHESIS__</strong> macro is useful to exclude debugging and system calls, it can change the results between the software and the synthesized Verilog if the excluded code changes the functionality. This can introduce errors or unexpected behaviour in simulation / co-simulation. Use the <strong>__SYNTHESIS__</strong> macro carefully and make sure it does not change the functionality.</p>
+</div>
 </div>
 </div>
 

@@ -1,0 +1,54 @@
+.. _inline_function:
+
+inline_function
+-------------
+
+This parameter forces a given function to be inlined. 
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
++--------------------+------------+
+| Parameter          | Value Type |
++====================+============+
+| inline_function    | String     |
++--------------------+------------+
+
+Valid Values
++++++++++++++
+
+See Examples
+
+Default Value
+++++++++++++++
+
+N/A
+
+Dependencies
++++++++++++++
+
+None
+
+Applicable Flows
++++++++++++++++++
+
+All devices and flows
+
+Test Status
+++++++++++++
+
+Actively in-use
+
+Examples
++++++++++
+
+``inline_function "add"``
+
+--------------------------------------------------------------------------------
+
+

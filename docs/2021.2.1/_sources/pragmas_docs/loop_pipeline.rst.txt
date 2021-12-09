@@ -1,0 +1,54 @@
+.. highlight:: c
+
+.. _pragma_loop_pipeline:
+
+Pipeline Loop
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS loop pipeline II(<int>)``
+
+**Description**
+
+This pragma enables pipelining for a given loop in the code.
+Loop pipelining allows a new iteration of the loop to begin before the current one has completed, achieving higher throughput.
+It can be specified to pipeline a single loop or a nested loop. 
+If specified on a single loop or on a inner loop of a nested loop, that loop will be pipelined. 
+If specified on the outer loop of a nested loop, the outer loop will be pipelined and all of its inner loops will be automatically unrolled. 
+
+**Parameters**
+
++-----------+---------+----------+---------+------------------------------+
+| Parameter |  Value  | Optional | Default |         Description          |
++===========+=========+==========+=========+==============================+
+| ``II``    | Integer | Yes      | 1       | Pipeline initiation interval |
++-----------+---------+----------+---------+------------------------------+
+
+**Position**
+
+Before the beginning of the loop.
+If there is a loop label, the pragma should be placed after the label.
+
+.. Note::
+
+
+**Examples**
+
+.. code-block:: c
+
+  #pragma HLS loop pipeline II(2)
+  for (int i = 0; i < 10; i++) {
+    ...
+  }
+
+.. code-block:: c
+
+  LOOP_LABEL:
+  #pragma HLS loop pipeline
+  while (i < 10) {
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

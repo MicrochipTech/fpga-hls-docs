@@ -1,0 +1,71 @@
+.. _LATENCY_REDUCTION:
+
+LATENCY_REDUCTION
+-------------
+
+The LATENCY_REDUCTION settings control the SmartHLS' expression balancing
+optimization, of which the objective is to reduce the circuit latency.
+Below are the related settings,
+
+.. LATENCY_REDUCTION_FOR_PIPELINE_ONLY
+
+========================================= ================  ==========================================================
+Parameter Name                             Default Value 
+========================================= ================  ==========================================================
+LATENCY_REDUCTION                              1            The main switch that enables or disables expression balancing. Setting to 0 disables all expression balancing optimizations.
+LATENCY_REDUCTION_ALLOW_FP_REORDERING          0            | By default expression balancing does not re-order floating-point operations to prevent loss of precisions.
+                                                            | Setting to 1 allows to re-order floating-point operations if the circuit latency can be reduced. 
+LATENCY_REDUCTION_REDUCE_FP_CONVERSIONS        0            | Setting to 1 will allow SmartHLS to cancel out back-and-forth conversion between floating-point and integer, with potential variations in numerical values.
+                                                            | For example, the following conversions can be cancelled when this setting is 1.
+                                                            | ``int   a = (int)(float)(3);    // a == 3.``
+                                                            | ``float b = (float)(int)(1.2);  // b == 1.2 instead of 1.``
+LATENCY_REDUCTION_BALANCE_MULTI_USE_NODE       0            | By default expression balancing does not optimize the intermediate operations that have multiple uses, to avoid potential increase of resource usage.
+                                                            | Setting to 1 allows to re-order intermediate operations that have multiple uses and more latency reduction could be achieved.
+========================================= ================  ==========================================================
+
+
+
+**Category**
+
+HLS Constraints
+
+**Value Type**
+
+Integer
+
+**Valid Values**
+
+0, 1
+
+**Default Value**
+
+As listed in the table above.
+
+**Location Where Default is Specified**
+
+``examples/legup.tcl``
+
+**Dependencies**
+
+None
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+    ``set_parameter LATENCY_REDUCTION 1``
+
+    ``set_parameter LATENCY_REDUCTION_ALLOW_FP_REORDERING 0``
+
+    ``set_parameter LATENCY_REDUCTION_REDUCE_FP_CONVERSIONS 0``
+
+    ``set_parameter LATENCY_REDUCTION_BALANCE_MULTI_USE_NODE 0``
+
+--------------------------------------------------------------------------------
+

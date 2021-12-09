@@ -57,7 +57,7 @@ SmartHLS 2021.2
 What's New
 ~~~~~~~~~~~
 
- * SmartHLS is now installed by default with Libero 2021.2.1 for general release.
+ * SmartHLS is now installed by default with Libero 2021.3 for general release.
  * Free licenses are provided for SmartHLS, please refer to the instructions here to :ref:`license_setup`.
 
 Software Features and Enhancements
@@ -75,7 +75,7 @@ Known Issues
 ~~~~~~~~~~~~~~
 
  * Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
-   The issue has been fixed in the 2021.2.1 release.
+   The issue has been fixed in the 2021.3 release.
    For the 2021.2 release, here is the workaround to disable packing pipeline registers into FIFO to avoid the issue:
   1. Open the ``HLS Constraints`` dialog, choose ``Set custom config file`` constraint type and put in a file name (e.g., ``custom_config.tcl``) for the constraint value, click "Add" then "OK"
   2. Create a new custom config file in the project folder with the same filename as above (e.g., ``custom_config.tcl``).

@@ -49,7 +49,6 @@ A few debugging constraints are available from the SmartHLS IDE:
         by the project ``config.tcl`` file. 
 
 
---------------------------------------------------------------------------------
 
 Commonly Used Constraints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

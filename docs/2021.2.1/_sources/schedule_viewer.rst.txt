@@ -1,0 +1,191 @@
+Schedule Viewer
+---------------
+
+The Schedule Viewer shows information on how the top-level function was scheduled in hardware by SmartHLS.
+This includes information on the flow of control between different functions and blocks of execution,
+as well as the cycle by cycle schedule of the operations in hardware.
+
+The Schedule Viewer can be launched by clicking the "Launch Schedule Viewer" button in the SmartHLS IDE.
+
+.. image:: /images/Schedule_Viewer_Toolbar.png
+        :scale: 100 %
+        :align: center
+
+Alternatively, if using the Linux commandline, you can run the Schedule Viewer command.
+
+.. code-block:: text
+
+    $ shls scheduleviewer
+
+The Schedule Viewer has the Explorer tab and four views: the Call Graph, Control Flow Graph, Schedule Chart and Pipeline Viewer.
+The Explorer tab lets you navigate between the functions and blocks within the design.
+The Call Graph contains the directed graph of which software functions are called by which other software functions within the top-level function.
+The Control Flow Graph shows the control flow of execution between the blocks within each function for if/else conditionals and loops.
+The Schedule Chart and Pipeline Viewer shows the scheduling of instructions within a block or a pipeline on a cycle-by-cycle basis.
+
+.. image:: /images/Schedule_Viewer.png
+        :scale: 70 %
+        :align: center
+
+Background: LLVM Internal Representation used by SmartHLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The instructions displayed in the Schedule Viewer are from the LLVM compiler that SmartHLS is built on.
+These assembly-like instructions are called `LLVM intermediate representation (IR) <https://llvm.org/docs/LangRef.html>`_.
+Some understanding of the LLVM IR is beneficial when using the Schedule Viewer.
+
+For example, given the 32-bit code:
+
+.. code-block:: c
+
+    result = a + b – 5
+
+This C++ code could be represented as instructions in LLVM IR as:
+
+.. code-block::
+
+    %0 = add i32 %a, %b
+    %result = sub i32 %0, 5
+
+In LLVM IR, intermediate variables are prefixed with a “%”.
+Each operation (add/sub) includes the bitwidth “i32” indicating 32-bit integer.
+The add operands are %a + %b and the result is stored in a temporary 32-bit variable %0.
+The subtract operands are %0 – 5 and the result is stored in the variable %result.
+
+Basic blocks are also important concepts in LLVM IR.
+A basic block is a group of instructions that always run together with a single entry point at the beginning and a single exit point at the end.
+A basic block in LLVM IR always has a label at the beginning and a branching instruction at the end (``br``, ``ret``, etc.).
+Control flow occurs between basic blocks.
+
+Here the ``body.0`` basic block performs some operations and then branches unconditionally to another basic block labeled ``body.1``.
+
+.. code-block::
+
+    body.0:
+      %0 = add i32 %a, %b
+      %result = sub i32 %0, 5
+      br label %body.1
+
+All of the basic blocks and instructions shown in the Scheduler Viewer are directly from the LLVM IR optimized by SmartHLS before being compiled into Verilog.
+
+Call Graph
+~~~~~~~~~~
+
+When you open the Scheduler Viewer, the default view is of the Call Graph.
+You can also click on the “Call Graph” tab at the top.
+The Call Graph shows the top-level function and all of the sub-functions that are called.
+
+For example the following code has a function ``main`` which calls ``top_level`` which in turn calls
+``helper_func_0`` and ``helper_func_1``.
+The ``noinline`` attributes makes sure that SmartHLS does not inline these small functions into the
+main function body, making sure we can see them in the Call Graph.
+
+.. code-block:: c
+
+    __attribute__((noinline))
+    void helper_func_0(int a) {
+    	gv += a;
+    }
+    
+    __attribute__((noinline))
+    void helper_func_1(int a) {
+    	gv -= a;
+    }
+    
+    __attribute__((noinline))
+    void top_level() {
+    	helper_func_0(10);
+    	helper_func_1(5);
+    }
+    
+    int main() {
+    	top_level();
+    	return 0;
+    }
+
+This will generate the Call Graph shown below.
+The Call Graph shows that ``main`` calls ``top_level``, which in turn calls ``helper_func_0`` and ``helper_function_1``.
+
+.. image:: /images/Schedule_Viewer_Call_Graph.png
+        :scale: 70 %
+        :align: center
+
+Control Flow Graph
+~~~~~~~~~~~~~~~~~~
+
+The Control Flow Graph can be brought up by clicking on any function in the Explorer tab.
+The Control Flow Graph shows the connections between basic blocks and shows which basic blocks can branch to which other basic blocks.
+
+For example the following code has an if/else statement and then a for-loop in the else body.
+This has multiple code blocks and branches to different sections of the code.
+
+.. code-block:: c
+
+    if (gv) {
+        return 0;
+    } else {
+        for (int i = 0; i < N; i++) {
+           gv++;
+        }
+        return 0;
+    }
+
+This Control Flow Graph shows the two paths of the if statement on the right and the else statement on the left, and the for-loop in the left middle bubbles.
+Control flow is represented by an arrow, where a basic block will only branch into another basic block that it points to.
+
+.. image:: /images/Schedule_Viewer_Control_Flow_Graph.png
+        :scale: 70 %
+        :align: center
+
+Schedule Chart
+~~~~~~~~~~~~~~
+
+If you click on a non-pipelined block, the Schedule Chart will open.
+This shows the scheduling of instructions within a block on a cycle-by-cycle basis.
+
+For the following example, two multiplies are made then added and stored to a variable.
+
+.. code-block:: c
+
+    int mult1 = coeff1 * coeff1;
+    int mult2 = coeff2 * coeff2;
+    gv = mult1 + mult2;
+
+In the Schedule Chart, we can see the instructions that these lines of code turn into and the cycles they are scheduled for.
+For example, we can see the add is scheduled for cycle 4 and takes 1 cycle.
+You can mouse over the scheduled instructions in the Schedule Chart and the selected instruction will be highlighted in yellow.
+Instructions that the highlighted instruction depend on will be outlined in red and the instructions that depend on the highlighted instruction will be outlined in orange.
+Here the add depends on the two multiplies highlighted in red. The store highlighted in orange depends on this add.
+
+.. image:: /images/Schedule_Viewer_Schedule_Chart.png
+        :scale: 70 %
+        :align: center
+
+Pipeline Viewer
+~~~~~~~~~~~~~~~
+
+If you click on a pipelined block, the Pipeline Viewer will open.
+This shows the scheduling of instructions within a pipelined block on a cycle-by-cycle basis.
+
+For the following example a value is loaded an array, added to a value, then it is stored back into the array.
+This is done repeatedly in a loop and the loop is pipelined.
+
+.. code-block:: c
+
+    #pragma HLS loop pipeline
+    for (int i = 0; i < N; i++) {
+        array[i] = array[i] + coeff1;
+    }
+
+In the Pipeline Viewer, we find the name and initiation interval (II) for the pipeline at the top.
+The column headings in the first row show the clock cycle and pipeline stages for each column.
+The remaining rows show the instructions that run in the pipeline at each stage.
+The left-most column indicates the loop iteration for the instructions in the row starting from Iteration 0. For function pipelines, Iteration 0 corresponds to the first input.
+If you hold your mouse over an instruction you will see more details about the operation type.
+In the pipeline viewer, the right-most column highlighted in a thick black box shows the behavior of the pipeline in steady state.
+The last row shown in the pipeline viewer (Iteration 1) is the first iteration of the pipeline in steady state.
+
+.. image:: /images/Schedule_Viewer_Pipeline_Viewer.png
+        :scale: 70 %
+        :align: center
+

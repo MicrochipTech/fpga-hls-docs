@@ -1,0 +1,38 @@
+.. _set_synthesis_top_module:
+
+set_synthesis_top_module
+----------------------------
+
+This TCL command specifies the name of the Verilog module that will be set as
+the top-level module when creating a Libero project for synthesis, place and route. 
+By default, the top-level function (see :ref:`custom_top_level`) is set as the top-level module for the Libero project, however user may want to provide wrapper HDL module that instantiates the SmartHLS-generate top-level module. 
+In this case, this Tcl command can be used to give the name of the wrapper module. 
+
+
+**Category**
+
+Libero
+
+**Value Type**
+
+String
+
+**Dependencies**
+
+NONE
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+    ``set_synthesis_top_module "wrapper_top"``
+
+--------------------------------------------------------------------------------
+
+

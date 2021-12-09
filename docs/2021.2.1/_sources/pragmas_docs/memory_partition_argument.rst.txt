@@ -1,0 +1,45 @@
+.. highlight:: c
+
+.. _pragma_memory_partition_argument:
+
+Partition Top-Level Interface
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS memory partition argument(<arg_name>) type(complete|struct_fields|none) dim(<int>)``
+
+**Description**
+
+This pragma specifies a top-level argument to be partitioned. Dimension 0 corresponds to the right-most dimension of an array and higher dimensions correspond to leftward dimensions. The ``dim`` parameter is only applicable for ``complete`` partitioning.
+Note that this only applies to top level functions.
+
+**Parameters**
+
++--------------+---------------------------------+----------+--------------+---------------------+
+|  Parameter   |              Value              | Optional |   Default    |     Description     |
++==============+=================================+==========+==============+=====================+
+| ``argument`` | String                          | No       |              | Argument name       |
++--------------+---------------------------------+----------+--------------+---------------------+
+| ``type``     | ``complete|struct_fields|none`` | Yes      | ``complete`` | Partition type      |
++--------------+---------------------------------+----------+--------------+---------------------+
+| ``dim``      | Integer                         | Yes      | 0            | Partition dimension |
++--------------+---------------------------------+----------+--------------+---------------------+
+
+**Position**
+
+At the beginning of the function definition block.
+
+
+**Examples**
+
+.. code-block:: c
+
+  int sum(int *a, int *b) {
+  #pragma HLS function top
+  #pragma HLS memory partition argument(a) type(none)
+  #pragma HLS memory partition argument(b)
+  }
+
+--------------------------------------------------------------------------------
+

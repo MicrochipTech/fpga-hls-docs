@@ -1,0 +1,46 @@
+.. highlight:: c
+
+.. _pragma_memory_impl_pack_argument:
+
+Struct Argument Packing 
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS memory impl argument(<arg_name>) pack(bit|byte) byte_enable(true|false)``
+
+**Description**
+
+The pragma is to be used to pack a local memory variable with `struct` type. 
+There are two packing modes: `bit` / `byte` where `bit` packing packs the `struct` fields using the exact bit-width and `byte` mode packs the fields with 8-bit alignment. 
+`byte_enable` option creates an interface with byte enable signals to write individual fields when set to `true`. Note that `byte_enable` is only valid with `byte` packing.
+
+**Parameters**
+
++-----------------+------------------+----------+-----------+------------------------------------------+
+| Parameter       | Value            | Optional | Default   | Description                              |
++=================+==================+==========+===========+==========================================+
+| ``argument``    | String           | No       |           | Argument name                            |
++-----------------+------------------+----------+-----------+------------------------------------------+
+| ``pack``        | ``bit - byte``   | No       |           | Packing Mode                             |
++-----------------+------------------+----------+-----------+------------------------------------------+
+| ``byte_enable`` | ``true - false`` | Yes      | ``false`` | Use byte-enable to write `struct fields` |
++-----------------+------------------+----------+-----------+------------------------------------------+
+
+**Position**
+
+At the beginning of the function definition block.
+
+
+**Examples**
+
+.. code-block:: c
+
+  int sum(struct S &s) {
+  #pragma HLS function top
+  #pragma HLS memory impl argument(s) pack(btye) byte_enable(true)
+   ...
+  }  
+
+--------------------------------------------------------------------------------
+

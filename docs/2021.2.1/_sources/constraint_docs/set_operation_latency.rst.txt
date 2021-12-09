@@ -1,0 +1,90 @@
+.. _set_operation_latency:
+
+set_operation_latency
+---------------------
+
+This Tcl command sets the latency of a given operation. 
+Latency refers to the number of clock cycles required to complete the computation; an operation with latency one requires one cycle, while zero-latency operations are completely combinational, meaning multiple such operations can be chained together in a single clock cycle.
+This command is used to schedule each type operation to take the specified number of cycles. 
+
+This Tcl command should only be used by advanced SmartHLS users. 
+
+**Category**
+
+HLS Constraints
+
+**Value Type**
+
+set_operation_latency <operation> <constraint>
+<operation> is a string 
+<constraint> is an integer 
+
+**Valid Values**
+
+See Default and Examples
+Note: operator name should match the operation database file:
+boards/PolarFire/PolarFire.tcl or boards/set_operation_latency.tcl
+
+**Default Values**
+
+::
+
+    fp_add 14
+    fp_subtract 14
+    fp_multiply 11
+    fp_divide_32 33
+    fp_divide_64 61
+    fp_truncate_64 3
+    fp_extend_32 2
+    fp_fptosi 6
+    fp_sitofp 6
+    signed_comp_o 1
+    signed_comp_u 1
+    reg 2
+    memory_port 2
+    local_memory_port 1
+    multiply 1
+
+**Location Where Default is Specified**
+
+``examples/legup.tcl``
+
+**Dependencies**
+
+None
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+// set memory operations to take 3 cycles
+``set_operation_latency memory_port 3``
+
+.. NOTE::
+  When implementing an integer multiply operation, SmartHLS's default behaviour is
+  to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
+  When a multiply operation is wider than the DSP can support, SmartHLS splits the
+  multiply into multiple DSPs and automatically inserts registers to help RTL
+  synthesis tool to utilize registers in DSPs better, and hence achieve better
+  timing.
+
+  However, this split-multiply feature does not support a user-configurable
+  latency.
+  When ``set_operation_latency multiply X`` is specified by user, SmartHLS will
+  turn off the split-multiply feature and use a generic multiplier that will
+  adapt to user-specified latency.
+  SmartHLS will also print a warnign as follows,
+  *Warning: Detected set_operation_latency setting for integer multiplier.  However, configurable latency is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.*
+
+  Similarly, ``set_resource_constraint multiply X`` will trigger the same
+  behaviour because the split-multiply does not support sharing the
+  multipliers.
+
+--------------------------------------------------------------------------------
+

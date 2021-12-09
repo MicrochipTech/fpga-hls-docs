@@ -1,0 +1,59 @@
+.. highlight:: bash
+
+.. _getstarted:
+
+Getting Started
+==================
+
+First, you will need to :ref:`license_setup`.
+
+Installation
+------------
+
+SmartHLS supports Windows 10 and Linux (CentOS 7).
+
+Windows
+++++++++++++++++++++++++++++++++++++
+
+Run the Windows installer program, ``SmartHLS-2021.2.1-Win64-Setup.exe``, and go through the steps in the installer.
+
+Linux
++++++++++++++++++++++
+
+CentOS
+******
+
+The CentOS installer is packaged as a self-extracting shell script that can be installed to a local
+directory. To run the installer::
+
+    cd $(INSTALLATION_DIRECTORY)
+    sh /path/to/smarthls-2021.2.1-centos-installer.run
+
+This will install SmartHLS into the INSTALLATION_DIRECTORY.  After the
+installation is completed, please add the SmartHLS bin directory to your path::
+
+    export PATH=$(INSTALLATION_DIRECTORY)/smarthls-2021.2.1/smarthls/bin:$PATH
+
+Libero and ModelSim 
++++++++++++++++++++++
+
+You will need to install the `Libero SoC software
+<https://www.microsemi.com/product-directory/design-resources/1750-libero-soc>`_
+to synthesize the generated hardware for Microchip FPGAs.
+After installing Libero, please make sure to download all of new IP cores (open a Libero project, go to the Catalog pane, and click on "Download them now!", as shown below), as some IPs may be needed for SmartHLS. 
+
+   .. image:: /images/libero_ip_download.png
+        :scale: 80 %
+        :align: center
+
+
+Libero also comes with ModelSim which is used by SmartHLS to simulate the
+generated Verilog. 
+Please note that the first time you simulate a generated hardware block with a fresh install of SmartHLS, ModelSim will compile our IP libraries, which may take some time.
+
+.. _quick_start:
+
+Quick Start Tutorial
+-----------------------
+
+Please refer to our `SmartHLS Tutorial for Microsemi PolarFire: Sobel Filtering for Image Edge Detection <https://www.microsemi.com/document-portal/doc_download/1245532-legup-hls-tutorial>` on how to use some of the major features and optimization techniques of SmartHLS. 

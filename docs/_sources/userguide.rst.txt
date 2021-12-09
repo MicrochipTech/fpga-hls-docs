@@ -1455,7 +1455,7 @@ An example using the C++ library is shown below.
         // iostream doesn't synthesize to hardware, so only include this
         // line in software compilation. Any block surrounded by this ifdef
         // will be ignored when compiling to hardware.
-        #ifdef SMARTHLS_SW
+        #ifndef __SYNTHESIS__
         std::cout << res << std::endl;
         #endif
     }
@@ -1695,14 +1695,14 @@ The template ``ap_[u]fixpt<W, I_W, Q_M, O_M>`` is described in the following tab
 +==========+=============================================================+
 | W        | The width of the word in bits.                              |
 +----------+-------------------------------------------------------------+
-| I_W      | How far the most significant bit is above the decimal. I_W  |
-|          | can be negative. I_W > 0 implies the MSB is above the       |
+| I_W      | How far the most significant bit is above the decimal.      |
+|          | I_W can be negative. I_W > 0 implies the MSB is above the   |
 |          | decimal. I_W <= 0 implies the MSB is below the decimal.     |
 |          |                                                             |
-|          | If W >= I_W >= 0 then I_W is the number of bits used for    |
+|          | If W >= I_W >= 0, then I_W is the number of bits used for   |
 |          | the integer portion.                                        |
 +----------+-------------------------------------------------------------+
-| Q_M      | The Quantization (rounding) mode used when a result has     |
+| Q_M      | The Quantization(rounding) mode used when a result has      |
 |          | precision below the least significant bit.                  |
 |          |                                                             |
 |          | Defaults to AP_TRN.                                         |
@@ -2533,3 +2533,27 @@ Where ``<cmd>`` can be one of:
 ..  * **make swsim**: run the software only flow and simulate the MIPS processor executing the software with ModelSim
 ..  * **make emul**: simulate MIPS assembly on GXemul MIPS emulator
 
+
+**__SYNTHESIS__** Macro
+-----------------------------
+The **__SYNTHESIS__** macro is defined in SmartHLS during synthesis. This provides a convenient way to exclude non-synthesizable code without removing/commenting the code itself. In the folling example, the assertion header and statement are ignored during synthesis:
+
+.. code-block:: c
+
+  #ifndef __SYNTHESIS__
+  #include <assert.h>
+  #endif
+
+  void func(int A[10], int N) {
+  #pragma HLS function top
+
+  #ifndef __SYNTHESIS__
+    assert(N < 10);
+  #endif
+
+    return A[N];
+  }
+
+.. Note::
+
+  While the **__SYNTHESIS__** macro is useful to exclude debugging and system calls, it can change the results between the software and the synthesized Verilog if the excluded code changes the functionality. This can introduce errors or unexpected behaviour in simulation / co-simulation. Use the **__SYNTHESIS__** macro carefully and make sure it does not change the functionality.

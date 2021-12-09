@@ -1,0 +1,51 @@
+.. highlight:: c
+
+.. _pragma_replicate_rom:
+
+Replicate ROM
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS memory replicate_rom variable(<rom_var_name>) max_replicas(<int>)``
+
+**Description**
+
+This pragma can be used to replicate constant memory (i.e., arrays) to achieve
+better throughput (shorter cycle latency) at the expense of extra resource
+(e.g., block RAM).  Typically when an array is implemented in block RAMs, there
+are up-to-two RAM ports to allow a maximum of two reads per clock cycle.
+To allow more parallel read accesses in each clock cycle, constant read-only
+memories (ROM) can be replicated by using this pragma.
+
+The optional ``max_replicas`` can be used to control the maximum number of replicas.
+If a ``max_replicas`` of `N` is specified, SmartHLS will make sure to use no
+more than `N` replicas of the ROM in the generated circuit; the generated
+circuit may use less than `N` replicas when the throughput cannot be further
+improved with more replicas. 
+When ``max_replicas`` is unspecified or set to 0, the number of
+replicas is unlimited and SmartHLS will use as many replicas as it needs to
+maximize throughput.
+A ``max_replicas`` of 1 means only one copy is allowed,
+hence no replication, equivalent to not having the pragma.
+
+**Parameters**
+
++-------------------+----------------+----------+------------+----------------------------------------+
+| Parameter         |  Value         | Optional | Default    |         Description                    |
++===================+================+==========+============+========================================+
+| ``max_replicas``  | ``<int>``      | Yes      | ``0``      | The maximum number of replicas allowed |
++-------------------+----------------+----------+------------+----------------------------------------+
+
+**Position**
+
+Before the global / local variable declaration.
+
+
+**Examples**
+
+
+.. code-block:: c
+
+  #pragma HLS memory replicate_rom variable(my_rom) max_replicas(10)
+  const int my_rom[100];

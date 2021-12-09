@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Migration Guide From Vitis/Vivado HLS to SmartHLS &mdash; SmartHLS 2021.2.1 documentation</title>
+  <title>SmartHLS Migration Guide &mdash; SmartHLS 2021.3 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -518,7 +518,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.2.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3  </span>
 
 										  </h1>
 								
@@ -552,12 +552,7 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/versions.html">Previous Releases</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
@@ -574,12 +569,13 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Migration Guide From Vitis/Vivado HLS to SmartHLS</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SmartHLS Migration Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pragmas">Pragmas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#libraries">Libraries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#arbitrary-precision-data-types">Arbitrary Precision Data Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#streaming-library">Streaming Library</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#math-library">Math Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-libraries">Other Libraries</a></li>
 </ul>
 </li>
 </ul>
@@ -634,7 +630,7 @@ display:none;
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Migration Guide From Vitis/Vivado HLS to SmartHLS</li>
+      <li>SmartHLS Migration Guide</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -651,8 +647,13 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="migration-guide-from-vitis-vivado-hls-to-smarthls">
-<span id="vhls-to-shls"></span><h1>Migration Guide From Vitis/Vivado HLS to SmartHLS<a class="headerlink" href="#migration-guide-from-vitis-vivado-hls-to-smarthls" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="smarthls-migration-guide">
+<span id="vhls-to-shls"></span><h1>SmartHLS Migration Guide<a class="headerlink" href="#smarthls-migration-guide" title="Permalink to this headline">¶</a></h1>
+<p>This section describes how existing Vitis HLS / Vivado HLS designs can be
+easily migrated to SmartHLS.
+When migrating an existing C++ design from Vitis HLS / Vivado HLS, the pragmas
+and libraries used in the source code should be changed to the equivalent ones
+in SmartHLS.</p>
 <div class="section" id="pragmas">
 <h2>Pragmas<a class="headerlink" href="#pragmas" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
@@ -661,7 +662,7 @@ display:none;
 <col style="width: 88%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Vitis/Vivado HLS</p></th>
+<tr class="row-odd"><th class="head"><p>Vitis HLS / Vivado HLS</p></th>
 <th class="head"><p>SmartHLS</p></th>
 </tr>
 </thead>
@@ -740,6 +741,15 @@ provides a <code class="docutils literal notranslate"><span class="pre">hls::fif
 <p>SmartHLS supports a subset of functions in the <a class="reference internal" href="userguide.html#c-math-library"><span class="std std-ref">Math Library (math.h)</span></a>, but does
 not yet have a math function library that is optimized for hardware
 implementation with customizable arbitrary precisions.</p>
+</div>
+<div class="section" id="other-libraries">
+<h3>Other Libraries<a class="headerlink" href="#other-libraries" title="Permalink to this headline">¶</a></h3>
+<p>Other libraries such as OpenCV, FFT, FIR, DDS, and SRL libraries are not yet
+supported by SmartHLS. We are actively developing libraries, such as the
+computer vision IPs.
+If you are interested in having support of certain IPs, please email us at
+<a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a>. Your feedback is valuable to us and will help to
+prioritize our production plan.</p>
 <p>.</p>
 </div>
 </div>
