@@ -4034,7 +4034,7 @@ family (see the table in <a class="reference internal" href="#smarthls-constrain
 </div>
 </div>
 <div class="section" id="schedule-viewer">
-<h2>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h2>
 <p>The Schedule Viewer shows information on how the top-level function was scheduled in hardware by SmartHLS.
 This includes information on the flow of control between different functions and blocks of execution,
 as well as the cycle by cycle schedule of the operations in hardware.</p>
@@ -4049,7 +4049,7 @@ The Explorer tab lets you navigate between the functions and blocks within the d
 The Call Graph contains the directed graph of which software functions are called by which other software functions within the top-level function.
 The Control Flow Graph shows the control flow of execution between the blocks within each function for if/else conditionals and loops.
 The Schedule Chart and Pipeline Viewer shows the scheduling of instructions within a block or a pipeline on a cycle-by-cycle basis.</p>
-<a class="reference internal image-reference" href="_images/Schedule_Viewer.png"><img alt="_images/Schedule_Viewer.png" class="align-center" src="_images/Schedule_Viewer.png" style="width: 698.5999999999999px; height: 445.2px;" /></a>
+<a class="reference internal image-reference" href="_images/Schedule_Viewer.png"><img alt="_images/Schedule_Viewer.png" class="align-center" src="_images/Schedule_Viewer.png" style="width: 681.6px; height: 520.8000000000001px;" /></a>
 <div class="section" id="background-llvm-internal-representation-used-by-smarthls">
 <h3>Background: LLVM Internal Representation used by SmartHLS<a class="headerlink" href="#background-llvm-internal-representation-used-by-smarthls" title="Permalink to this headline">¶</a></h3>
 <p>The instructions displayed in the Schedule Viewer are from the LLVM compiler that SmartHLS is built on.
@@ -4114,27 +4114,34 @@ main function body, making sure we can see them in the Call Graph.</p>
 </div>
 <p>This will generate the Call Graph shown below.
 The Call Graph shows that <code class="docutils literal notranslate"><span class="pre">main</span></code> calls <code class="docutils literal notranslate"><span class="pre">top_level</span></code>, which in turn calls <code class="docutils literal notranslate"><span class="pre">helper_func_0</span></code> and <code class="docutils literal notranslate"><span class="pre">helper_function_1</span></code>.</p>
-<a class="reference internal image-reference" href="_images/Schedule_Viewer_Call_Graph.png"><img alt="_images/Schedule_Viewer_Call_Graph.png" class="align-center" src="_images/Schedule_Viewer_Call_Graph.png" style="width: 698.5999999999999px; height: 445.2px;" /></a>
+<a class="reference internal image-reference" href="_images/Schedule_Viewer_Call_Graph.png"><img alt="_images/Schedule_Viewer_Call_Graph.png" class="align-center" src="_images/Schedule_Viewer_Call_Graph.png" style="width: 681.6px; height: 520.8000000000001px;" /></a>
 </div>
 <div class="section" id="control-flow-graph">
 <h3>Control Flow Graph<a class="headerlink" href="#control-flow-graph" title="Permalink to this headline">¶</a></h3>
 <p>The Control Flow Graph can be brought up by clicking on any function in the Explorer tab.
-The Control Flow Graph shows the connections between basic blocks and shows which basic blocks can branch to which other basic blocks.</p>
+The Control Flow Graph shows the connections between basic blocks and shows which basic blocks can branch to which other basic blocks.
+Each basic block in graph is showed with the corresponding source location consists of the filename and line numbers.
+The cycle latency of the basic block is also showed in the graph.</p>
 <p>For example the following code has an if/else statement and then a for-loop in the else body.
 This has multiple code blocks and branches to different sections of the code.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">       </span><span class="n">gv</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">gv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="cp">#define N 1000</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">            </span><span class="n">gv</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">13</span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This Control Flow Graph shows the two paths of the if statement on the right and the else statement on the left, and the for-loop in the left middle bubbles.
 Control flow is represented by an arrow, where a basic block will only branch into another basic block that it points to.</p>
-<a class="reference internal image-reference" href="_images/Schedule_Viewer_Control_Flow_Graph.png"><img alt="_images/Schedule_Viewer_Control_Flow_Graph.png" class="align-center" src="_images/Schedule_Viewer_Control_Flow_Graph.png" style="width: 698.5999999999999px; height: 443.79999999999995px;" /></a>
+<a class="reference internal image-reference" href="_images/Schedule_Viewer_Control_Flow_Graph.png"><img alt="_images/Schedule_Viewer_Control_Flow_Graph.png" class="align-center" src="_images/Schedule_Viewer_Control_Flow_Graph.png" style="width: 777.6px; height: 602.4px;" /></a>
 </div>
 <div class="section" id="schedule-chart">
 <h3>Schedule Chart<a class="headerlink" href="#schedule-chart" title="Permalink to this headline">¶</a></h3>

@@ -1,3 +1,5 @@
+.. _schedule_viewer:
+
 Schedule Viewer
 ---------------
 
@@ -24,7 +26,7 @@ The Control Flow Graph shows the control flow of execution between the blocks wi
 The Schedule Chart and Pipeline Viewer shows the scheduling of instructions within a block or a pipeline on a cycle-by-cycle basis.
 
 .. image:: /images/Schedule_Viewer.png
-        :scale: 70 %
+        :scale: 80 %
         :align: center
 
 Background: LLVM Internal Representation used by SmartHLS
@@ -107,7 +109,7 @@ This will generate the Call Graph shown below.
 The Call Graph shows that ``main`` calls ``top_level``, which in turn calls ``helper_func_0`` and ``helper_function_1``.
 
 .. image:: /images/Schedule_Viewer_Call_Graph.png
-        :scale: 70 %
+        :scale: 80 %
         :align: center
 
 Control Flow Graph
@@ -115,26 +117,34 @@ Control Flow Graph
 
 The Control Flow Graph can be brought up by clicking on any function in the Explorer tab.
 The Control Flow Graph shows the connections between basic blocks and shows which basic blocks can branch to which other basic blocks.
+Each basic block in graph is showed with the corresponding source location consists of the filename and line numbers.
+The cycle latency of the basic block is also showed in the graph.
 
 For example the following code has an if/else statement and then a for-loop in the else body.
 This has multiple code blocks and branches to different sections of the code.
 
 .. code-block:: c
+  :linenos:
 
-    if (gv) {
-        return 0;
-    } else {
-        for (int i = 0; i < N; i++) {
-           gv++;
-        }
-        return 0;
-    }
+  volatile int gv = 1;
+  #define N 1000
+  
+  int main() {
+      if (gv) {
+          return 0;
+      } else {
+          for (int i = 0; i < N; i++) {
+              gv++;
+          }
+          return 0;
+      }
+  }
 
 This Control Flow Graph shows the two paths of the if statement on the right and the else statement on the left, and the for-loop in the left middle bubbles.
 Control flow is represented by an arrow, where a basic block will only branch into another basic block that it points to.
 
 .. image:: /images/Schedule_Viewer_Control_Flow_Graph.png
-        :scale: 70 %
+        :scale: 80 %
         :align: center
 
 Schedule Chart

@@ -12,15 +12,51 @@ Latest Release (|version|)
 .. 2) the sections (e.g., Software Features and Enhancements) should have the
 ..    "---------" title indication line changed to "~~~~~~~~".
 
-Release Date: Sept 24, 2021
+Release Date: Nov 26, 2021
 
 What's New
 --------------
 
- * SmartHLS now supports IGLOO2 device family.
+ * A :ref:`vhls_to_shls` on how to migrate designs from other HLS tool to SmartHLS.
 
 Software Features and Enhancements
 --------------
+
+ * Enhanced Co-Simulation flow to support more sophisticated software testbenches, specifically those use high-level C++ features such as templates, classes, inheritance, namespaces, nested types and typedef.
+ * Improved expression balancing optimization to reduce cycle latency of generated hardware (see :ref:`LATENCY_REDUCTION` settings).
+ * Improved support of AXI4 target (slave) interface in a pipelined function.
+ * Added support for floating-point ordered/unordered operations.
+ * Added support of packed FIFOs (see :ref:`rtl_interface_fifo_argument`) in Co-Simulation.
+ * Added full lists of supported device options in the IDE's device selection menu.
+ * The :ref:`schedule_viewer` now shows the latency and source code location in the control flow graph to ease latency analysis.
+ * Improved error checking for invalid constraint settings.
+
+
+Resolved Issues
+----------------
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-506: Fixed an issue related to pipelined functions using external memory.
+ * HLS-532: JRE version update to include the latest security fixes and enhancements.
+ * HLS-484: Fixed the re-initialization of aliased global variables after a reset is triggered.
+ * HLS-48: Bug fix in bit-width minimization optimization.
+
+Previous Releases
+==================
+
+SmartHLS 2021.2.1
+---------------------
+
+Release Date: Sept 24, 2021
+
+What's New
+~~~~~~~~~~~~~~
+
+ * SmartHLS now supports IGLOO2 device family.
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~
 
  * A new **branchless** :ref:`pragma_function_flatten` feature to improve parallelism between operations.
  * A new :ref:`pragma_replicate_rom` pragma to enable and control the replication of designated read-only arrays for achieving better circuit throughput.
@@ -32,7 +68,7 @@ Software Features and Enhancements
 
 
 Resolved Issues
-----------------
+~~~~~~~~~~~~~~
 
 The following defects and enhancement requests were resolved:
 
@@ -46,13 +82,11 @@ The following defects and enhancement requests were resolved:
  * HLS-53: Removed the internal primitive operations from scheduleviewer.
 
 
-Previous Releases
-==================
-
-Release Date: August 06, 2021
 
 SmartHLS 2021.2
 ---------------------
+
+Release Date: August 06, 2021
 
 What's New
 ~~~~~~~~~~~
