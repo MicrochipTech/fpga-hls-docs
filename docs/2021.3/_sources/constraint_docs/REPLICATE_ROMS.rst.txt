@@ -1,0 +1,53 @@
+.. _REPLICATE_ROMS:
+
+REPLICATE_ROMS
+-------------
+
+This parameter replicates read-only memories (ROMs) to instantiate them in each 
+of its accessing module. When the accessing modules execute concurrently, 
+replicate the ROMs can reduce memory contention and increase performance, at the 
+expense of more memory usage. It can also help to reduce LUTs, by reducing the 
+arbitration/multiplexing logic that is required when the ROM is shared. 
+
+Category
++++++++++
+
+HLS Constraints
+
+Value Type
++++++++++++
+
+Integer
+
+Valid Values
++++++++++++++
+
+0, 1
+
+Default Value
+++++++++++++++
+
+0
+
+Location Where Default is Specified
++++++++++++++++++++++++++++++++++++
+
+``examples/legup.tcl``
+
+Dependencies
++++++++++++++
+
+None
+
+Applicable Flows
++++++++++++++++++
+
+All devices and flows
+
+Examples
++++++++++
+
+    ``set_parameter REPLICATE_ROMS 1``
+
+--------------------------------------------------------------------------------
+

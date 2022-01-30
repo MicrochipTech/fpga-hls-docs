@@ -15,7 +15,7 @@ SmartHLS supports Windows 10 and Linux (CentOS 7).
 Windows
 ++++++++++++++++++++++++++++++++++++
 
-Run the Windows installer program, ``SmartHLS-2021.3-Win64-Setup.exe``, and go through the steps in the installer.
+Run the Windows installer program, ``SmartHLS-2021.3.1-Win64-Setup.exe``, and go through the steps in the installer.
 
 Linux
 +++++++++++++++++++++
@@ -27,12 +27,12 @@ The CentOS installer is packaged as a self-extracting shell script that can be i
 directory. To run the installer::
 
     cd $(INSTALLATION_DIRECTORY)
-    sh /path/to/smarthls-2021.3-centos-installer.run
+    sh /path/to/smarthls-2021.3.1-centos-installer.run
 
 This will install SmartHLS into the INSTALLATION_DIRECTORY.  After the
 installation is completed, please add the SmartHLS bin directory to your path::
 
-    export PATH=$(INSTALLATION_DIRECTORY)/smarthls-2021.3/smarthls/bin:$PATH
+    export PATH=$(INSTALLATION_DIRECTORY)/smarthls-2021.3.1/smarthls/bin:$PATH
 
 Libero and ModelSim 
 +++++++++++++++++++++

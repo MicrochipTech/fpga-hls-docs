@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Top-Level RTL Interface &mdash; SmartHLS 2021.3 documentation</title>
+  <title>Top-Level RTL Interface &mdash; SmartHLS 2021.3.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -517,7 +517,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3.1  </span>
 
 										  </h1>
 								
@@ -1066,7 +1066,7 @@ external logic can read/write the AXI4 slave interface while the SmartHLS module
 running.  The concurrent access will however reduce the SmartHLS module’s
 throughput to access the memory.</p>
 <p>After compilation, SmartHLS will generate a report file
-(<code class="docutils literal notranslate"><span class="pre">reports/axi_slave_memory_map.hls.rpt</span></code>) to specify the address map for
+(<code class="docutils literal notranslate"><span class="pre">hls_output/reports/axi_slave_memory_map.hls.rpt</span></code>) to specify the address map for
 each struct element.
 Here is an example struct and its corresponding memory map,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ifndef __SLAVE_LAYOUT_H__</span>
@@ -1092,7 +1092,7 @@ Here is an example struct and its corresponding memory map,</p>
 </pre></div>
 </div>
 <p>The corresponding address map report
-(<code class="docutils literal notranslate"><span class="pre">reports/axi_slave_memory_map.hls.rpt</span></code>) is shown below.</p>
+(<code class="docutils literal notranslate"><span class="pre">hls_output/reports/axi_slave_memory_map.hls.rpt</span></code>) is shown below.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Address Map for AXI Slave Interface: global_var
 
 +--------------+-----------+-------------------+----------+

@@ -1,0 +1,409 @@
+
+.. :tocdepth: 4
+
+.. _struct_support:
+
+Struct Support
+---------------
+
+A C++ ``struct`` is a user-defined data type that is used to group several fields, possibly with different data types.
+Using ``struct`` allows passing a set of variables around the design together while retaining the readability and accessibility of each of these variables.
+In this section, we will discuss how interfaces and memories with ``struct`` types are handled in SmartHLS including partitioning, packing, and returning by value.
+
+**Example**
+
+This example will be used in the following sub-sections to show the different interfaces.  There are three ``struct`` types in the code below:
+
+* ``Account``: represents a bank account with checking and savings balances.
+* ``Client``: represents a bank client with an ID ``id`` and an account ``acc`` . Note that ``id`` has a 6-bit unsigned integer type to demonstrate ``struct`` packing.
+* ``UpdateResult``: used as a return type for the top-level function ``update``  to report if the update was completed and the final account balance.
+
+The top-level function ``update``  of the example takes a clients' list ``clients`` , an ID ``id`` and an account balance ``acc``  to be added to the client's balance.
+It returns ``UpdateResult`` with ``updated = 1`` and the final balance ``acc``  if an account with ID ``id`` is found in the client's list ``clients`` , otherwise it returns ``updated = 0``.
+
+To demonstrate another advantage of using ``struct``, ``Account`` has a member function ``add`` that is used to update the balances which makes the code more readable in ``update``  function.
+
+Another function ``find`` is used to search for an account with ID ``id`` in the clients' list. Notice that this function has ``noinline`` attribute. This is intended to demonstrate how ``struct`` types are passed through RTL modules after synthesizing the design.
+
+.. code-block:: c
+
+  #include <hls/ap_int.hpp>
+  #include <stdint.h>
+  #include <stdio.h>
+  #include <string.h>
+
+  #define N 4 
+
+  using namespace hls;
+  struct Account {
+    uint64_t checking;
+    uint64_t savings;
+
+    void add(const Account &acc) {
+      checking += acc.checking;
+      savings += acc.savings;
+    }
+  };
+
+  struct Client {
+    ap_uint<6> id;
+    Account acc;
+  };
+
+  struct UpdateResult {
+      ap_uint<1> updated;
+      Account acc;
+  };
+
+  __attribute__((noinline)) int find(Client clients[N], ap_uint<6> id) {
+      for (int i = 0; i < N; i++)
+          if (clients[i].id == id)
+              return i;
+      return -1;
+  }
+
+  UpdateResult update(Client clients[N], ap_uint<6> id, Account acc) {
+  #pragma HLS function top
+      UpdateResult ret{};
+      int idx = find(clients, id);
+      if (idx != -1) {
+          clients[idx].acc.add(acc);
+          ret.acc = clients[idx].acc;
+          ret.updated = 1;
+      }
+      return ret;
+  }
+
+
+Struct Packing
+~~~~~~~~~~~~~~~
+
+Packing a ``struct`` creates a single scalar with a wide word width. 
+All the ``struct`` members are placed in the scalar with their order in the ``struct`` definition such that the first element is the least significant part of the vector and the last element is the most significant part of the vector. 
+Packing allows all the ``struct`` elements to be read and written simultaneously.
+There are two packing options in SmartHLS: bit-packing and byte-packing. A pragma is specified for the argument / variable to be packed with the packing option.
+Note that packing an array of ``struct`` results in an array with each element as a wide-vector representing the packed ``struct``.
+
+**Bit-Packing**
+
+Bit-packing uses the bit-width of each of element of the ``struct``. In our example, ``clients`` argument can be bit-packed as following:
+
+.. code-block:: c
+
+  int find(Client clients[N], ap_uint<6> id) {
+  #pragma HLS memory impl argument(clients) pack(bit)
+    ...
+  }
+
+  UpdateResult update(Client clients[N], ap_uint<6> id, Account acc) {
+  #pragma HLS function top
+  #pragma HLS memory impl argument(clients) pack(bit)
+    ...
+  }
+
+.. Note::
+
+  In this example, the ``clients`` argument of the top-level function ``update`` is also passed to the sub-function ``find``.
+  This implies that in the resulting RTL design, the corresponding module of ``find`` also needs to access the ``clients`` top-level interface.
+  Therefore, to make the packed interface signals consistent throughout the design, we require the ``pack`` pragma to be added to all functions that access the packed top-level argument.
+  That is, the ``pack`` pragma needs to be added to both the ``find`` and ``update`` functions in this example.
+  If the ``pack`` pragma is not consistently added to all accessing functions, the packing may fail and a warning message will be displayed.
+
+In the HLS summary report, the interface for ``clients`` has a data width of 134, which is the sum of the ``id`` (6-bits), ``acc.checking`` (64-bits), and ``acc.savings`` (64-bits). The following layout of packed ``struct`` follows the order of the fields such that the first field is the least significant part of the layout.
+
+.. code-block:: text
+
+  |133 .......... 70|69 .......... 6|5 .. 0|
+  |-----------------|---------------|------|
+  |   acc.savings   |  acc.checking |  id  |                      
+
+
+.. code-block:: text
+
+  +-----------------------------------------------------------------------------------------+
+  | RTL Interface Generated by SmartHLS                                                     |
+  +----------+-----------------+----------------------+------------------+------------------+
+  | C++ Name | Interface Type  | Signal Name          | Signal Bit-width | Signal Direction |
+  +----------+-----------------+----------------------+------------------+------------------+
+  | clients  | Memory          | clients_address_a    | 2                | output           |
+  |          |                 | clients_address_b    | 2                | output           |
+  |          |                 | clients_clken        | 1                | output           |
+  |          |                 | clients_read_data_a  | 134              | input            |
+  |          |                 | clients_read_data_b  | 134              | input            |
+  |          |                 | clients_read_en_a    | 1                | output           |
+  |          |                 | clients_read_en_b    | 1                | output           |
+  |          |                 | clients_write_data_a | 134              | output           |
+  |          |                 | clients_write_data_b | 134              | output           |
+  |          |                 | clients_write_en_a   | 1                | output           |
+  |          |                 | clients_write_en_b   | 1                | output           |
+  +----------+-----------------+----------------------+------------------+------------------+
+
+
+**Byte-Packing**
+
+Byte-packing is similar to bit-packing except that each element of the ``struct`` is aligned to 8-bits. In our example, ``clients`` can be byte-packed as following:
+
+
+.. code-block:: c
+
+  __attribute__((noinline)) int find(Client clients[N], ap_uint<6> id) {
+  #pragma HLS memory impl argument(clients) pack(byte)
+    ...
+  }
+
+  UpdateResult update(Client clients[N], ap_uint<6> id, Account acc) {
+  #pragma HLS function top
+  #pragma HLS memory impl argument(clients) pack(byte)
+    ...
+  }
+
+In the HLS summary report, the interface for ``clients`` has a data width of 136, which is the sum of the ``id`` (8-bits), ``acc.checking`` (64-bits), and ``acc.savings`` (64-bits). The following layout of packed ``struct`` follows the order of the fields such that the first field is the least significant part of the layout.
+
+.. code-block:: text
+
+  |135 .......... 72|71 .......... 8|7 .. 0|
+  |-----------------|---------------|------|
+  |   acc.savings   |  acc.checking |  id  |                      
+
+.. code-block:: text
+
+  +-----------------------------------------------------------------------------------------+
+  | RTL Interface Generated by SmartHLS                                                     |
+  +----------+-----------------+----------------------+------------------+------------------+
+  | C++ Name | Interface Type  | Signal Name          | Signal Bit-width | Signal Direction |
+  +----------+-----------------+----------------------+------------------+------------------+
+  | clients  | Memory          | clients_address_a    | 2                | output           |
+  |          |                 | clients_address_b    | 2                | output           |
+  |          |                 | clients_clken        | 1                | output           |
+  |          |                 | clients_read_data_a  | 136              | input            |
+  |          |                 | clients_read_data_b  | 136              | input            |
+  |          |                 | clients_read_en_a    | 1                | output           |
+  |          |                 | clients_read_en_b    | 1                | output           |
+  |          |                 | clients_write_data_a | 136              | output           |
+  |          |                 | clients_write_data_b | 136              | output           |
+  |          |                 | clients_write_en_a   | 1                | output           |
+  |          |                 | clients_write_en_b   | 1                | output           |
+  +----------+-----------------+----------------------+------------------+------------------+
+
+For byte-packing, the interface can either use byte-enable to write individual fields or it can be a wide scalar as shown before.
+To use byte-enable signals, ``byte_enable`` parameter should be set to ``true`` in the packing pragma:
+
+.. code-block:: c
+
+  __attribute__((noinline)) int find(Client clients[N], ap_uint<6> id) {
+  #pragma HLS memory impl argument(clients) pack(byte) byte_enable(true)
+    ...
+  }
+
+  UpdateResult update(Client clients[N], ap_uint<6> id, Account acc) {
+  #pragma HLS function top
+  #pragma HLS memory impl argument(clients) pack(byte) byte_enable(true)
+    ...
+  }
+
+The HLS summary report will show ``clients_byte_en_a`` and ``clients_byte_en_b`` signals that are added to the interface.
+
+.. Note::
+
+  ``byte_enable`` parameter is default to ``false`` and can only be specified with ``pack(byte)``, i.e. using it with ``pack(bit)`` will error during compilation.
+
+.. code-block:: text
+
+  +-----------------------------------------------------------------------------------------+
+  | RTL Interface Generated by SmartHLS                                                     |
+  +----------+-----------------+----------------------+------------------+------------------+
+  | C++ Name | Interface Type  | Signal Name          | Signal Bit-width | Signal Direction |
+  +----------+-----------------+----------------------+------------------+------------------+
+  | clients  | Memory          | clients_address_a    | 2                | output           |
+  |          |                 | clients_address_b    | 2                | output           |
+  |          |                 | clients_byte_en_a    | 17               | output           |
+  |          |                 | clients_byte_en_b    | 17               | output           |
+  |          |                 | clients_clken        | 1                | output           |
+  |          |                 | clients_read_data_a  | 136              | input            |
+  |          |                 | clients_read_data_b  | 136              | input            |
+  |          |                 | clients_read_en_a    | 1                | output           |
+  |          |                 | clients_read_en_b    | 1                | output           |
+  |          |                 | clients_write_data_a | 136              | output           |
+  |          |                 | clients_write_data_b | 136              | output           |
+  |          |                 | clients_write_en_a   | 1                | output           |
+  |          |                 | clients_write_en_b   | 1                | output           |
+  +----------+-----------------+----------------------+------------------+------------------+
+
+Struct Partitioning
+~~~~~~~~~~~~~~~~~~~
+
+Partitioning a ``struct`` creates a separate interface / memory for each field in the ``struct``. Two partitioning types are supported for ``struct`` types: fields and complete.
+
+**Fields Partitioning**
+
+Fields partitioning acts on 1-level of nested ``struct`` types, i.e. only the fields in the top ``struct`` type are disaggregated.
+In our example, to partition ``clients`` into its fields, ``partition`` pragma with ``struct_fields`` type is used:
+
+.. code-block:: c
+
+  UpdateResult update(Client clients[N], ap_uint<6> id, Account acc) {
+  #pragma HLS function top
+  #pragma HLS memory partition argument(clients) type(struct_fields)
+    ...
+  }
+
+In the HLS summary report, ``clients`` result in 2 memory interfaces ``acc``  and ``id``. Notice that the inner ``struct`` member ``acc``  is not partitioned into its members and kept as a single interface.
+
+ .. code-block:: text
+
+  +---------------------------------------------------------------------------------------------+
+  | RTL Interface Generated by SmartHLS                                                         |
+  +----------+-----------------+--------------------------+------------------+------------------+
+  | C++ Name | Interface Type  | Signal Name              | Signal Bit-width | Signal Direction |
+  +----------+-----------------+--------------------------+------------------+------------------+
+  | clients  | Memory          | clients_acc_address_a    | 2                | output           |
+  |          |                 | clients_acc_address_b    | 2                | output           |
+  |          |                 | clients_acc_clken        | 1                | output           |
+  |          |                 | clients_acc_read_data_a  | 128              | input            |
+  |          |                 | clients_acc_read_data_b  | 128              | input            |
+  |          |                 | clients_acc_read_en_a    | 1                | output           |
+  |          |                 | clients_acc_read_en_b    | 1                | output           |
+  |          |                 | clients_acc_write_data_a | 128              | output           |
+  |          |                 | clients_acc_write_data_b | 128              | output           |
+  |          |                 | clients_acc_write_en_a   | 1                | output           |
+  |          |                 | clients_acc_write_en_b   | 1                | output           |
+  |          |                 | clients_id_address_a     | 2                | output           |
+  |          |                 | clients_id_address_b     | 2                | output           |
+  |          |                 | clients_id_clken         | 1                | output           |
+  |          |                 | clients_id_read_data_a   | 6                | input            |
+  |          |                 | clients_id_read_data_b   | 6                | input            |
+  |          |                 | clients_id_read_en_a     | 1                | output           |
+  |          |                 | clients_id_read_en_b     | 1                | output           |
+  +----------+-----------------+--------------------------+------------------+------------------+
+
+.. Note::
+
+  * Fields partitioning keeps the inner aggregate types (arrays and structs) without partitioning.
+  * Fields partitioning an array of ``struct`` results in an array for each field in the ``struct``.
+
+**Complete Partitioning**
+
+Complete partitioning of a ``struct`` type creates a separate interface / memory for each primitive element in the ``struct``. This implies that partitioning is applied recursively on the ``struct`` or a array of ``struct``.
+In our example, to partition ``clients`` into its fields, ``partition`` pragma with ``complete`` type is used:
+
+.. code-block:: c
+
+  UpdateResult update(Client clients[N], ap_uint<6> id, Account acc) {
+  #pragma HLS function top
+  #pragma HLS memory partition argument(clients) type(complete)
+    ...
+  }
+
+In the HLS summary report, ``clients`` result in 12 interfaces which is 4 array elements with 3 fields for each element. 
+
+.. code-block:: text
+
+  +-------------------------------------------------------------------------------------------------------+
+  | RTL Interface Generated by SmartHLS                                                                   |
+  +----------+-----------------+------------------------------------+------------------+------------------+
+  | C++ Name | Interface Type  | Signal Name                        | Signal Bit-width | Signal Direction |
+  +----------+-----------------+------------------------------------+------------------+------------------+
+  | clients  | Scalar Memory   | clients_a0_acc_checking_read_data  | 64               | input            |
+  |          |                 | clients_a0_acc_checking_write_data | 64               | output           |
+  |          |                 | clients_a0_acc_checking_write_en   | 1                | output           |
+  |          |                 | clients_a0_acc_savings_read_data   | 64               | input            |
+  |          |                 | clients_a0_acc_savings_write_data  | 64               | output           |
+  |          |                 | clients_a0_acc_savings_write_en    | 1                | output           |
+  |          |                 | clients_a0_id_read_data            | 6                | input            |
+  |          |                 | clients_a1_acc_checking_read_data  | 64               | input            |
+  |          |                 | clients_a1_acc_checking_write_data | 64               | output           |
+  |          |                 | clients_a1_acc_checking_write_en   | 1                | output           |
+  |          |                 | clients_a1_acc_savings_read_data   | 64               | input            |
+  |          |                 | clients_a1_acc_savings_write_data  | 64               | output           |
+  |          |                 | clients_a1_acc_savings_write_en    | 1                | output           |
+  |          |                 | clients_a1_id_read_data            | 6                | input            |
+  |          |                 | clients_a2_acc_checking_read_data  | 64               | input            |
+  |          |                 | clients_a2_acc_checking_write_data | 64               | output           |
+  |          |                 | clients_a2_acc_checking_write_en   | 1                | output           |
+  |          |                 | clients_a2_acc_savings_read_data   | 64               | input            |
+  |          |                 | clients_a2_acc_savings_write_data  | 64               | output           |
+  |          |                 | clients_a2_acc_savings_write_en    | 1                | output           |
+  |          |                 | clients_a2_id_read_data            | 6                | input            |
+  |          |                 | clients_a3_acc_checking_read_data  | 64               | input            |
+  |          |                 | clients_a3_acc_checking_write_data | 64               | output           |
+  |          |                 | clients_a3_acc_checking_write_en   | 1                | output           |
+  |          |                 | clients_a3_acc_savings_read_data   | 64               | input            |
+  |          |                 | clients_a3_acc_savings_write_data  | 64               | output           |
+  |          |                 | clients_a3_acc_savings_write_en    | 1                | output           |
+  |          |                 | clients_a3_id_read_data            | 6                | input            |
+  +----------+-----------------+------------------------------------+------------------+------------------+
+
+Return Struct By Value
+~~~~~~~~~~~~~~~~~~~~~~
+
+SmartHLS supports returning a ``struct`` by value from the top-level function. In this case, the return value is always bit-packed resulting in a scalar interface.
+In our example, the RTL module will have a ``return_val`` port with 129 bit width (``updated`` = 1-bit, ``acc`` = 128-bits):
+
+.. code-block:: Verilog
+
+  module update_top
+  (
+          clk,  
+          reset,
+          start,
+          ready, 
+          finish,    
+          return_val,
+          ...
+  )
+
+  input  clk;
+  input  reset;
+  input  start;
+  output reg  ready;
+  output reg  finish;
+  output reg [128:0] return_val;
+  ...
+
+Default Struct Modes
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The default ``struct`` mode in SmartHLS is applied when no pragma is specified for the argument / variable. The default mode differs between interfaces and local memories:
+
+* For interfaces (top-level argument / global variable interface), bit-packing is the default.
+* For local memories, automatic partitioning is applied to optimize the design. If partitioning is not possible, bit-packing is applied. 
+
+Limitations
+~~~~~~~~~~~
+
+There are some limitations for ``struct`` support that can prevent partitioning / packing. The unsupported cases are generally not used in HLS designs:
+
+* ``struct`` interfaces with pointer fields.
+
+.. code-block:: c
+
+  struct S {
+    int a;
+    char *b;
+  };
+
+* Casting a ``struct`` to another type.
+
+.. code-block:: c
+
+  struct S {
+    char a;
+    int b;
+  };
+
+  S s;
+  char *t = (char *)(&s);
+  char c = t[0];
+
+* Storing the address of a ``struct`` field.
+
+.. code-block:: c
+
+  struct S {
+    char a;
+    int b;
+  };
+
+  S s;
+  int *t = (int *)(&s.b);
+  foo(t);

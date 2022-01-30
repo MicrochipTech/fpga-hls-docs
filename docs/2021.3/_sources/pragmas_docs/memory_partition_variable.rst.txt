@@ -1,0 +1,48 @@
+.. highlight:: c
+
+.. _pragma_memory_partition_variable:
+
+Partition Memory
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS memory partition variable`(<var_name>) type(complete|none) dim(<int>)``
+
+**Description**
+
+This pragma specifies a variable to be partitioned. Dimension 0 corresponds to the right-most dimension of an array and higher dimensions correspond to leftward dimensions. The ``dim`` parameter is only applicable for ``complete`` partitioning.
+
+**Parameters**
+
++--------------+---------------------------------+----------+--------------+---------------------+
+|  Parameter   |              Value              | Optional |   Default    |     Description     |
++==============+=================================+==========+==============+=====================+
+| ``variable`` | String                          | No       |              | Variable name       |
++--------------+---------------------------------+----------+--------------+---------------------+
+| ``type``     | ``complete,struct_fields,none`` | Yes      | ``complete`` | Partition type      |
++--------------+---------------------------------+----------+--------------+---------------------+
+| ``dim``      | Integer                         | Yes      | 0            | Partition dimension |
++--------------+---------------------------------+----------+--------------+---------------------+
+
+**Position**
+
+Before the global / local variable declaration.
+
+
+**Examples**
+
+.. code-block:: c
+
+  #pragma HLS memory partition variable(b) type(none)
+  int b[100];
+
+  int fun(int *a) {
+    ...
+    #pragma HLS memory partition variable(c) dim(1)
+    int c[100][100];
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

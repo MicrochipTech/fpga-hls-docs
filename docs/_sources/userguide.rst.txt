@@ -183,7 +183,7 @@ The software testbench is used to automatically generate the RTL testbench and s
 ..         [-transfer_type <cpu_driven|copy|direct>]
 .. 
 .. After running ``shls hybrid`` command to generate the complete SoC system,
-.. users can find a summary table from ``reports/summary.hls.rpt`` like below::
+.. users can find a summary table from ``hls_output/reports/summary.hls.rpt`` like below::
 .. 
 ..   ====== 4. Accelerator Information ======
 .. 
@@ -2487,11 +2487,11 @@ Where ``<cmd>`` can be one of:
 
 * **sw**: compile and run the program in software on your host machine.  The compilation step is skipped if no change is detected in source/header files, ``Makefile`` and ``config.tcl``.
 
-  * **sw_compile**: compile the program in software, the output is an executable file (``<NAME>.sw_binary``).
+  * **sw_compile**: compile the program in software, the output is an executable file (``hls_output/.hls/<NAME>.sw_binary``).
 
-  * **sw_run**: run the compiled executable (``<NAME>.sw_binary``) on your host machine.
+  * **sw_run**: run the compiled executable (``hls_output/.hls/<NAME>.sw_binary``) on your host machine.
 
-* **hw** (default): compile the software to hardware, the output is a Verilog HDL file (``<NAME>.v``).
+* **hw** (default): compile the software to hardware, the output is a set of Verilog HDL file (the HLS-generated IP core is in ``hls_output/rtl/<NAME>.v``, with additional RTL IP sub-modules named ``hls_output/rtl/<NAME>_*.v``).
 
 * **cosim**: run :ref:`sw_hw_cosimulation` to verify the generated circuit.
 
@@ -2534,9 +2534,11 @@ Where ``<cmd>`` can be one of:
 ..  * **make emul**: simulate MIPS assembly on GXemul MIPS emulator
 
 
-**__SYNTHESIS__** Macro
+.. _synthesis_macro:
+
+``__SYNTHESIS__`` Macro
 -----------------------------
-The **__SYNTHESIS__** macro is defined in SmartHLS during synthesis. This provides a convenient way to exclude non-synthesizable code without removing/commenting the code itself. In the folling example, the assertion header and statement are ignored during synthesis:
+The ``__SYNTHESIS__`` macro is defined in SmartHLS during synthesis. This provides a convenient way to exclude non-synthesizable code without removing/commenting the code itself. In the folling example, the assertion header and statement are ignored during synthesis:
 
 .. code-block:: c
 
@@ -2556,4 +2558,4 @@ The **__SYNTHESIS__** macro is defined in SmartHLS during synthesis. This provid
 
 .. Note::
 
-  While the **__SYNTHESIS__** macro is useful to exclude debugging and system calls, it can change the results between the software and the synthesized Verilog if the excluded code changes the functionality. This can introduce errors or unexpected behaviour in simulation / co-simulation. Use the **__SYNTHESIS__** macro carefully and make sure it does not change the functionality.
+  While the ``__SYNTHESIS__`` macro is useful to exclude debugging and system calls, it can change the results between the software and the synthesized Verilog if the excluded code changes the functionality. This can introduce errors or unexpected behaviour in simulation / co-simulation. Use the ``__SYNTHESIS__`` macro carefully and make sure it does not change the functionality.

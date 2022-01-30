@@ -1,0 +1,1052 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Header information-->
+    <meta name="Language" content="en">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  <title>Release Notes &mdash; SmartHLS 2021.3 documentation</title>
+  
+<!-- Header information-->
+<style type="text/css">svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.225em;
+}
+.svg-inline--fa.fa-w-1 {
+  width: 0.0625em;
+}
+.svg-inline--fa.fa-w-2 {
+  width: 0.125em;
+}
+.svg-inline--fa.fa-w-3 {
+  width: 0.1875em;
+}
+.svg-inline--fa.fa-w-4 {
+  width: 0.25em;
+}
+.svg-inline--fa.fa-w-5 {
+  width: 0.3125em;
+}
+.svg-inline--fa.fa-w-6 {
+  width: 0.375em;
+}
+.svg-inline--fa.fa-w-7 {
+  width: 0.4375em;
+}
+.svg-inline--fa.fa-w-8 {
+  width: 0.5em;
+}
+.svg-inline--fa.fa-w-9 {
+  width: 0.5625em;
+}
+.svg-inline--fa.fa-w-10 {
+  width: 0.625em;
+}
+.svg-inline--fa.fa-w-11 {
+  width: 0.6875em;
+}
+.svg-inline--fa.fa-w-12 {
+  width: 0.75em;
+}
+.svg-inline--fa.fa-w-13 {
+  width: 0.8125em;
+}
+.svg-inline--fa.fa-w-14 {
+  width: 0.875em;
+}
+.svg-inline--fa.fa-w-15 {
+  width: 0.9375em;
+}
+.svg-inline--fa.fa-w-16 {
+  width: 1em;
+}
+.svg-inline--fa.fa-w-17 {
+  width: 1.0625em;
+}
+.svg-inline--fa.fa-w-18 {
+  width: 1.125em;
+}
+.svg-inline--fa.fa-w-19 {
+  width: 1.1875em;
+}
+.svg-inline--fa.fa-w-20 {
+  width: 1.25em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-border {
+  height: 1.5em;
+}
+.svg-inline--fa.fa-li {
+  width: 2em;
+}
+.svg-inline--fa.fa-fw {
+  width: 1.25em;
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: #ff253a;
+  border-radius: 1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  height: 1.5em;
+  line-height: 1;
+  max-width: 5em;
+  min-width: 1.5em;
+  overflow: hidden;
+  padding: 0.25em;
+  right: 0;
+  text-overflow: ellipsis;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: 0;
+  right: 0;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  right: 0;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: 0;
+  right: auto;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -0.0667em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+}
+
+.fa-border {
+  border: solid 0.08em #eee;
+  border-radius: 0.1em;
+  padding: 0.2em 0.25em 0.15em;
+}
+
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left,
+.fas.fa-pull-left,
+.far.fa-pull-left,
+.fal.fa-pull-left,
+.fab.fa-pull-left {
+  margin-right: 0.3em;
+}
+.fa.fa-pull-right,
+.fas.fa-pull-right,
+.far.fa-pull-right,
+.fal.fa-pull-right,
+.fab.fa-pull-right {
+  margin-left: 0.3em;
+}
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+          animation: fa-spin 2s infinite linear;
+}
+
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+          animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
+}
+
+.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
+}
+
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical,
+:root .fa-flip-both {
+  -webkit-filter: none;
+          filter: none;
+}
+
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse {
+  color: #fff;
+}
+
+@media screen and (max-width: 768px)
+.booktitle #booktitle{
+display:none;
+}
+</style>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/common-ui-all.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
+<link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="gettingstarted.html" />
+    <link rel="prev" title="Previous Releases" href="versions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+		<div class="mchp-ghp"/>
+		<div class="root responsivegrid">
+								<noindex>
+								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
+"><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
+								          
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3  </span>
+
+										  </h1>
+								
+								</div></div></div><section _ngcontent-hes-c23="" class="separator"></section></header>	
+								</noindex>		
+
+		</div>
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+		
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+         
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#latest-release-version">Latest Release (2021.3)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-new">What’s New</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-features-and-enhancements">Software Features and Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resolved-issues">Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#previous-releases">Previous Releases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-2-1">SmartHLS 2021.2.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-2">SmartHLS 2021.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-eap-2021-1-2">SmartHLS EAP 2021.1.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#legup-hls-is-now-rebranded-to-smart-hls">LegUp HLS is now rebranded to Smart HLS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-2021-1">LegUp HLS EAP 2021.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-2-1">LegUp HLS EAP 9.2.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-1">LegUp HLS EAP 9.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Resolved Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SmartHLS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Release Notes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="release-notes">
+<span id="release"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="latest-release-version">
+<h2>Latest Release (2021.3)<a class="headerlink" href="#latest-release-version" title="Permalink to this headline">¶</a></h2>
+<p>Release Date: Nov 26, 2021</p>
+<div class="section" id="what-s-new">
+<h3>What’s New<a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>A <a class="reference internal" href="vhls_to_shls.html#vhls-to-shls"><span class="std std-ref">SmartHLS Migration Guide</span></a> on how to migrate designs from other HLS tool to SmartHLS.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="software-features-and-enhancements">
+<h3>Software Features and Enhancements<a class="headerlink" href="#software-features-and-enhancements" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Enhanced Co-Simulation flow to support more sophisticated software testbenches, specifically those use high-level C++ features such as templates, classes, inheritance, namespaces, nested types and typedef.</p></li>
+<li><p>Improved expression balancing optimization to reduce cycle latency of generated hardware (see <a class="reference internal" href="constraintsmanual.html#latency-reduction"><span class="std std-ref">LATENCY_REDUCTION</span></a> settings).</p></li>
+<li><p>Improved support of AXI4 target (slave) interface in a pipelined function.</p></li>
+<li><p>Added support for floating-point ordered/unordered operations.</p></li>
+<li><p>Added support of packed FIFOs (see <a class="reference internal" href="userguide.html#rtl-interface-fifo-argument"><span class="std std-ref">hls::FIFO Argument</span></a>) in Co-Simulation.</p></li>
+<li><p>Added full lists of supported device options in the IDE’s device selection menu.</p></li>
+<li><p>The <a class="reference internal" href="userguide.html#schedule-viewer"><span class="std std-ref">Schedule Viewer</span></a> now shows the latency and source code location in the control flow graph to ease latency analysis.</p></li>
+<li><p>Improved error checking for invalid constraint settings.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="resolved-issues">
+<h3>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HLS-506: Fixed an issue related to pipelined functions using external memory.</p></li>
+<li><p>HLS-532: JRE version update to include the latest security fixes and enhancements.</p></li>
+<li><p>HLS-484: Fixed the re-initialization of aliased global variables after a reset is triggered.</p></li>
+<li><p>HLS-48: Bug fix in bit-width minimization optimization.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="previous-releases">
+<h2>Previous Releases<a class="headerlink" href="#previous-releases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smarthls-2021-2-1">
+<h3>SmartHLS 2021.2.1<a class="headerlink" href="#smarthls-2021-2-1" title="Permalink to this headline">¶</a></h3>
+<p>Release Date: Sept 24, 2021</p>
+<div class="section" id="id1">
+<h4>What’s New<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>SmartHLS now supports IGLOO2 device family.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>A new <strong>branchless</strong> <a class="reference internal" href="pragmas_docs/function_flatten.html#pragma-function-flatten"><span class="std std-ref">Flatten Function</span></a> feature to improve parallelism between operations.</p></li>
+<li><p>A new <a class="reference internal" href="pragmas_docs/replicate_rom.html#pragma-replicate-rom"><span class="std std-ref">Replicate ROM</span></a> pragma to enable and control the replication of designated read-only arrays for achieving better circuit throughput.</p></li>
+<li><p>Support for packing interfaces and memories with struct types into a wide scalar using the new pack pragma (see <a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</p></li>
+<li><p>Support struct as a return type for the top-level HLS function (see <a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</p></li>
+<li><p>Support for constant static struct members in SW/HW CoSimulation.</p></li>
+<li><p>Disabled automatic unrolling of pipelined loops and their outer loops. Disabling automatic unrolling saves design size without noticeable loss in performance. A pipelined loop can still be explicitly unrolled with a <a class="reference internal" href="pragmas_docs/loop_unroll.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a> pragma.</p></li>
+<li><p>Updated the user guide section on <a class="reference internal" href="userguide.html#cmdline"><span class="std std-ref">SmartHLS Command Line Interface</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h4>Resolved Issues<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HLS-461: Fixed the initialization of global array of ap_fixpt type.</p></li>
+<li><p>HLS-419: Some of the generated AXI4 slave controllers have IIs greater than 1.</p></li>
+<li><p>HLS-420: Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.</p></li>
+<li><p>HLS-443: Partition pragma is incorrectly overridden by default partitioning.</p></li>
+<li><p>HLS-446: Incorrect mapping of completely partitioned array of struct.</p></li>
+<li><p>HLS-475: Nested struct definitions may have an incorrect order in Co-Simulation.</p></li>
+<li><p>HLS-456: Loops containing inner pipelined loops are automatically unrolled, leading to a significant increase in resources.</p></li>
+<li><p>HLS-53: Removed the internal primitive operations from scheduleviewer.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="smarthls-2021-2">
+<h3>SmartHLS 2021.2<a class="headerlink" href="#smarthls-2021-2" title="Permalink to this headline">¶</a></h3>
+<p>Release Date: August 06, 2021</p>
+<div class="section" id="id4">
+<h4>What’s New<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>SmartHLS is now installed by default with Libero 2021.3 for general release.</p></li>
+<li><p>Free licenses are provided for SmartHLS, please refer to the instructions here to <a class="reference internal" href="license_setup.html#license-setup"><span class="std std-ref">Setup SmartHLS License</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>Improved optimizations to minimize signal bit-width to reduce resource usage.</p></li>
+<li><p>Improved multiplier area for wide multipliers (&gt;64-bits).</p></li>
+<li><p>Added a <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> type to the memory partition pragma (see <span class="xref std std-ref">struct_fields_memory_partitioning</span>), which is to specify the intention to partition a struct into its individual elements.</p></li>
+<li><p>Added a new “Synthesize Hardware to FPGA” feature that only runs RTL synthesis without place-and-route to obtain accurate FPGA resource usage faster.</p></li>
+<li><p>Deprecated the <code class="docutils literal notranslate"><span class="pre">scalar_memory</span></code> type from the interface pragma. Please instead use a <code class="docutils literal notranslate"><span class="pre">complete</span></code> type memory partition pragma on the top-level pointer argument to achieve the same effect (see <span class="xref std std-ref">complete_memory_partitioning</span>).</p></li>
+<li><p>Deprecated the C arbitrary bitwidth library (<code class="docutils literal notranslate"><span class="pre">hls/types.h</span></code>) and C bit-level operations library (<code class="docutils literal notranslate"><span class="pre">hls/bit_level_operations.h</span></code>). Please use the <a class="reference internal" href="userguide.html#ap-lib"><span class="std std-ref">C++ Arbitrary Precision Data Types Library</span></a> instead for better quality of result of the generated hardware.</p></li>
+<li><p>Windows installation no longer adds system environment variables and Windows IDE no longer uses system environment variables.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="known-issues">
+<h4>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
+The issue has been fixed in the 2021.3 release.
+For the 2021.2 release, here is the workaround to disable packing pipeline registers into FIFO to avoid the issue:</p></li>
+</ul>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">Constraints</span></code> dialog, choose <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">custom</span> <span class="pre">config</span> <span class="pre">file</span></code> constraint type and put in a file name (e.g., <code class="docutils literal notranslate"><span class="pre">custom_config.tcl</span></code>) for the constraint value, click “Add” then “OK”</p></li>
+<li><p>Create a new custom config file in the project folder with the same filename as above (e.g., <code class="docutils literal notranslate"><span class="pre">custom_config.tcl</span></code>).</p></li>
+<li><p>Put the following line in the custom config file: <code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">USE_FIFO_FOR_PIPELINE_REG</span> <span class="pre">0</span></code></p></li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h4>Resolved Issues<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HLS-198:   ap_uint&lt;24&gt; slices of width 8 is generating wider multipliers than necessary</p></li>
+<li><p>HLS-220:   MBW pass did not optimize for legup_select/concat primitives</p></li>
+<li><p>HLS-233:   Fix Tcl constraint name of floating point cores</p></li>
+<li><p>HLS-234:   Add Libero license check</p></li>
+<li><p>HLS-259:   Remove LEGUP_CYGWIN_BIN environment variable</p></li>
+<li><p>HLS-261:   Memory Partition partitions an unsupported case.</p></li>
+<li><p>HLS-302:   Integrate with Libero installer</p></li>
+<li><p>HLS-353:   Pass-in-by-value class argument not detected properly</p></li>
+<li><p>HLS-354:   cosim_cwrapper_insert.pl breaks in a corner case of comment position</p></li>
+<li><p>HLS-355:   AXI slave address map: change the printing order of fields in the same word</p></li>
+<li><p>HLS-356:   Add a GUI button and a make target to only run synthesis (no P&amp;R) for resource results</p></li>
+<li><p>HLS-364:   UG: add documentation about “set_synthesis_top_module_file” after “set_synthesis_top_module”</p></li>
+<li><p>HLS-366:   Mem-partition fails to split a FIFO of struct</p></li>
+<li><p>HLS-372:   MBW: forward prop of OR operantion is wrong with extendFrom</p></li>
+<li><p>HLS-373:   MBW-related: signed comparison between sign/length-mismatched values was wrong in printed RTL</p></li>
+<li><p>HLS-374:   Differentiate AShr and LShr in generated Verilog</p></li>
+<li><p>HLS-376:   Multiply between two different sign operands is implemented incorrectly</p></li>
+<li><p>HLS-377:   Split-mult operand port widths mismatch.</p></li>
+<li><p>HLS-379:   Remind user to “Recompile Simulation Libraries” when Modelsim version changes</p></li>
+<li><p>HLS-390:   Update SmartHLS EULA to match Libero EULA</p></li>
+<li><p>HLS-394:   Returning AP Type by-value uses ap_num in CoSim</p></li>
+<li><p>HLS-395:   External global memory got incorrectly optimized by LLVM</p></li>
+<li><p>HLS-396:   hls::thread Pointer Arguments Coerced to Int for 64-Bit Target</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="smarthls-eap-2021-1-2">
+<h3>SmartHLS EAP 2021.1.2<a class="headerlink" href="#smarthls-eap-2021-1-2" title="Permalink to this headline">¶</a></h3>
+<p>Release date: June 14, 2021</p>
+<div class="section" id="legup-hls-is-now-rebranded-to-smart-hls">
+<h4>LegUp HLS is now rebranded to Smart HLS<a class="headerlink" href="#legup-hls-is-now-rebranded-to-smart-hls" title="Permalink to this headline">¶</a></h4>
+<p>To port your existing LegUp HLS projects to Smart HLS, the following changes
+will be needed in the source code:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The include path of HLS library: change <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;legup/...&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;hls/...&quot;</span></code></p></li>
+<li><p>All <code class="docutils literal notranslate"><span class="pre">legup</span></code> namespace is renamed to <code class="docutils literal notranslate"><span class="pre">hls</span></code>; e.g., <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span> <span class="pre">hls;</span></code> or <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">LEGUP</span> <span class="pre">...</span></code> should be changed to <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">...</span></code></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>Extended AXI4 master interface with AxSIZE and AxBURST support.</p></li>
+<li><p>Improved FIFO depth modeling in software, and full-ness detection in software and RTL simulation.</p></li>
+<li><p>Enhanced bit-width reduction to support very wide integer types (e.g., ap_uint&lt;1024&gt;).</p></li>
+<li><p>Added support for unpartitioned structs (and nested structs) in CoSimulation.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h4>Resolved Issues<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HLS-282:   Rename “LegUp HLS” to “Smart HLS”</p></li>
+<li><p>HLS-335:   AP width memory controller gets “Warning: Invalid bitwidth ‘256’ for instr.”</p></li>
+<li><p>HLS-330:   VectorBlox design not finish when in multithreading with axi_read loops unmerged</p></li>
+<li><p>HLS-328:   Loop pipeline fails with ap_int type induction variable</p></li>
+<li><p>HLS-327:   Fix bug in software emulation of certain ap_int wide multiply operations</p></li>
+<li><p>HLS-324:   Legality check and error message about the one-to-one connection between FIFO and function’s FIFO argument</p></li>
+<li><p>HLS-303:   If Conversion Pass - DFS never exits with a &gt;40,000 basic block size loop</p></li>
+<li><p>HLS-296:   If conversion pass errored out while trying to pipeline a loop</p></li>
+<li><p>HLS-260:   Segfault due to struct of ap_int top-level argument</p></li>
+<li><p>HLS-158:   Crashes at visitLocalMemoryInst – a struct argument containing ap_uint</p></li>
+<li><p>HLS-147:   Incorrect Transformation by if-conv</p></li>
+<li><p>HLS-112:   Add volatile support in extractArgs/cosim for parsing debug info for volatile</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="legup-hls-eap-2021-1">
+<h3>LegUp HLS EAP 2021.1<a class="headerlink" href="#legup-hls-eap-2021-1" title="Permalink to this headline">¶</a></h3>
+<p>Release date: April 23, 2021</p>
+<div class="section" id="id9">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>Full support for complex software testbenches.</p></li>
+<li><p>Automatically trigger re-compilation if needed to generate the software binary or Verilog when the C++ source code, Makefile, or TCL config files changed.</p></li>
+<li><p>Added limited SW/HW Co-Simulation support for multi-threading when all threads are joined in the function where the threads are forked.</p></li>
+<li><p>Added support for user-specified arguments of the main() function in software testbench.</p></li>
+<li><p>Added AP_RND_ZERO quantization mode to the ap_fixpt C++ library.</p></li>
+<li><p>Added a range() method to ap_int and ap_fixpt C++ libraries.</p></li>
+<li><p>Added a simulation with waves feature to LegUp IDE for custom testbench.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h4>Resolved Issues<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HLS-59:     RTL Interface: fix memory port names</p></li>
+<li><p>HLS-174:    Spaces in LegUp workspace path makes synthesis fail. Add user error message to avoid spaces.</p></li>
+<li><p>HLS-177:    Change the header files on Windows</p></li>
+<li><p>HLS-199:    Add documentation comment to LegUp Library classes like ap_int similar to ap_fixpt so the user can mouse over the type in Eclipse and get the usage information</p></li>
+<li><p>HLS-225:    create_hdl_plus.tcl does not properly import mem_init files</p></li>
+<li><p>HLS-232:    Update windows installer link to LegUp getting started guide</p></li>
+<li><p>HLS-255:    After project import LegUp IDE does not save HLS constraints changes when closing</p></li>
+<li><p>HLS-269:    Missing legup_array_depth=1 for struct pass-in-by-reference</p></li>
+<li><p>HLS-277:    Automatically add array-depth attribute to pass-in-by-value structs.</p></li>
+<li><p>HLS-278:    Hardware functions are incorrectly removed by PreprocessThreadLib pass</p></li>
+<li><p>HLS-279:    Interface Report: Struct type IORam is incorrectly considered as scalar memory</p></li>
+<li><p>HLS-280:    Interface Report: byte-enable signal is not properly recognized for non-struct yet byte-enabled RAMs</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="legup-hls-eap-9-2-1">
+<h3>LegUp HLS EAP 9.2.1<a class="headerlink" href="#legup-hls-eap-9-2-1" title="Permalink to this headline">¶</a></h3>
+<p>Release date: March 3, 2021</p>
+<div class="section" id="id11">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added support for new <code class="docutils literal notranslate"><span class="pre">legup::thread</span></code> multi-threading API (see <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading with SmartHLS Threads</span></a>)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h4>Resolved Issues<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HLS-42: Libero 12.6 complains about set_option -rom_map_logic.</p></li>
+<li><p>HLS-50: Sobel tutorial part 3 to match the syntax as part 1 &amp; 2.</p></li>
+<li><p>HLS-59: Fix the memory port names to a more understandable convention.</p></li>
+<li><p>HLS-60: Give a proper error when there are multiple top-level functions specified.</p></li>
+<li><p>HLS-63: Sefault if the top-level function pragma is removed from Sobel tutorial part 1.</p></li>
+<li><p>HLS-78: Loop pipeline support for variable loop bounds.</p></li>
+<li><p>HLS-97: Fmax improvements for customer design.</p></li>
+<li><p>HLS-121: Cannot access AXI4 slave without starting the accelerator (in concurrent_access mode).</p></li>
+<li><p>HLS-129: Loop unrolling crashes some designs.</p></li>
+<li><p>HLS-142: Running Libero synthesis, P&amp;R from LegUp will fail with Libero 12.5 or before on Windows.</p></li>
+<li><p>HLS-149: LLVM’s loop-unswitch performs an unwanted loop replication.</p></li>
+<li><p>HLS-156: CoSim: wrong values for ap_uint type being fed to the DUT.</p></li>
+<li><p>HLS-162: Verilog name conflict in generated Verilog between a RAM instance and a register.</p></li>
+<li><p>HLS-164: Cannot expand grouped AXI4stream ports in SmartDesign for HDL+ block.</p></li>
+<li><p>HLS-165: Some memory interfaces are not showing in the interface report.</p></li>
+<li><p>HLS-168: Clang errors out with none type memory partition pragma.</p></li>
+<li><p>HLS-200: Can’t set multiply latency when split mult is enabled.</p></li>
+<li><p>HLS-201: Execute create_hdl_plus.tcl from Libero got LEGUP_ROOT_DIR not set error.</p></li>
+<li><p>HLS-203: ScheduleViewer does not work when LegUp installation and workspace are in different drives.</p></li>
+<li><p>HLS-206: Red-line in Eclipse complaining about legup::thread/ref.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="legup-hls-eap-9-1">
+<h3>LegUp HLS EAP 9.1<a class="headerlink" href="#legup-hls-eap-9-1" title="Permalink to this headline">¶</a></h3>
+<p>Release date: Jan 4, 2021</p>
+<div class="section" id="id13">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>Only support targeting Microchip PolarFire FPGAs</p></li>
+<li><p>Support for Libero 12.6</p></li>
+<li><p>Libero SmartDesign integration (see <a class="reference internal" href="userguide.html#smartdesign"><span class="std std-ref">Instantiating SmartHLS IP Core in Libero SmartDesign</span></a>)</p></li>
+<li><p>Added support for pragmas (see <a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a>) in the source code to specify LegUp user constraints instead of using Tcl commands.</p></li>
+<li><p>Support for math.h functions (see <span class="xref std std-ref">c_numerics_library</span>)</p></li>
+<li><p>Documentation of top-level RTL interfaces (see <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>)</p></li>
+<li><p>Improvements to memory partitioning (see <a class="reference internal" href="userguide.html#memory-partitioning"><span class="std std-ref">Memory Partitioning</span></a>)</p></li>
+<li><p>Added Microchip software end-user license agreement (EULA)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id14">
+<h4>Resolved Issues<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Synthesize with Libero block flow to avoid limited number of top-level I/O pins</p></li>
+<li><p>Fixes for RAM initialization and reset logic</p></li>
+<li><p>Fix LegUp IDE cancel button on Windows</p></li>
+<li><p>Fix Libero FMax parsing</p></li>
+<li><p>Better error messages for unsupported C++ features (vector, map, etc.) and unsupported co-simulation cases</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+<!-- Amandeep.Talwar: Moved the footer code to layout.html to resolve conflict with the Microchip template -->
+</footer>
+
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+  
+<footer _ngcontent-hes-c23=""><div _ngcontent-hes-c23="" class="social-icons">
+<a _ngcontent-hes-c23="" href="https://github.com/MicrochipTech/" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="fa-github-square" class="svg-inline--fa fa-github-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path
+     fill="currentColor"
+     d="m 151.375,357.33334 q 1.16667,-2 -0.875,-4.33334 -2.625,-2.33334 -4.08333,-0.66666 -1.16667,2 0.875,4.33332 2.625,2.33334 4.08333,0.66668 z m -8.16667,-13.66668 q -1.45833,-2.33332 -3.5,-1.33332 -1.75,1.33332 0,4 2.04167,2.66666 3.5,1.66666 1.75,-1.33334 0,-4.33334 z M 131.25,330.33334 Q 131.83333,329 129.79167,327.66666 127.75,327 127.45833,328.33334 126.58333,330 128.625,331 q 2.33333,0.66666 2.625,-0.66666 z M 137.375,338 q 0.58333,-0.33334 0.4375,-1.5 -0.14583,-1.16666 -1.02083,-1.83334 -1.75,-2.33332 -2.91667,-1 -1.16667,1.33334 0.29167,3.66668 1.75,2 3.20833,0.66666 z m 25.08333,25 q 0.58334,-2.33334 -2.625,-3.66666 -2.625,-1 -3.79166,1.33332 -0.58334,2.33334 2.625,3.66668 2.625,1 3.79166,-1.33334 z m 12.25,1 q 0,-2.66666 -3.5,-2.66666 -2.91666,0 -2.91666,2.66666 0,2.66666 3.20833,2.66666 3.20833,0 3.20833,-2.66666 z m 11.375,-2.33334 Q 185.5,359.33334 182.29167,360 q -3.20834,0.66666 -2.625,3 0.58333,2.66666 3.5,2 2.91666,-0.66666 2.91666,-3.33334 z M 373.33333,256 q 0,-70.66666 -43.75,-120.66666 Q 285.83333,85.333334 224,85.333334 q -61.83333,0 -105.58333,50.000006 -43.750003,50 -43.750003,120.66666 0,55.66666 28.583333,100.16666 28.58333,44.5 73.5,61.83334 5.25,1 7.72917,-1.66666 2.47916,-2.66668 2.47916,-6.66668 0,-17.33332 -0.29166,-31.66666 -1.75,0.33334 -4.52084,0.83334 -2.77083,0.5 -10.35416,0.66666 -7.58334,0.16666 -14,-1.33334 -6.41667,-1.5 -12.6875,-6.66666 Q 138.83333,366.33334 136.5,357.66666 129.79167,338 119.875,333 q -0.58333,-0.33334 -1.3125,-1.16666 L 116.22917,329.16666 114.1875,326 l 1.16667,-2.5 5.6875,-1.16666 q 1.75,0 4.375,0.66666 2.625,0.66666 8.75,5.16666 6.125,4.5 9.625,11.83334 4.66666,9.33334 10.9375,14 6.27083,4.66666 12.6875,4.66666 6.41666,0 11.08333,-1.16666 4.66667,-1.16666 8.75,-3.16666 2.04167,-15.66668 9.625,-23 -14.29167,-2 -25.08333,-6.16668 Q 161,321 150.5,312.16666 140,303.33334 134.3125,286.83334 128.625,270.33334 128.625,247 q 0,-26.33334 15.45833,-45.66666 -7,-20.66668 1.45834,-45.33334 5.54166,-2 15.89583,2.5 10.35417,4.5 17.64583,9.83334 l 7.58334,5.33332 Q 203.58333,168 224,168 q 20.41667,0 37.33333,5.66666 3.20834,-2.33332 8.3125,-6 Q 274.75,164 285.83333,159 q 11.08334,-5 16.625,-3 8.45834,24.66666 1.45834,45.33334 Q 319.375,220.66666 319.375,247 q 0,19 -4.08333,33.5 -4.08334,14.5 -10.35417,23.33334 -6.27083,8.83332 -15.60417,14.83332 -9.33333,6 -18.22916,8.66668 -8.89584,2.66666 -19.97917,4 10.20833,10.33332 10.20833,31.66666 0,13.33334 -0.14583,29.66666 -0.14583,16.33334 -0.14583,17 0,4 2.47916,6.66668 Q 266,419 271.25,418 316.16667,400.66666 344.75,356.16666 373.33333,311.66666 373.33333,256 Z M 448,96 v 320 q 0,39.66666 -24.64583,67.83334 Q 398.70833,512 364,512 H 84 Q 49.291667,512 24.645833,483.83334 0,455.66666 0,416 V 96 Q 0,56.333334 24.645833,28.166666 49.291667,0 84,0 H 364 Q 398.70833,0 423.35417,28.166666 448,56.333334 448,96 Z"/></svg></fa-icon></div>
+</a>
+
+
+
+<a _ngcontent-hes-c23="" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg></fa-icon></div></a>
+<a _ngcontent-hes-c23="" href="https://google.com/+MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="google"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square" class="svg-inline--fa fa-google-plus-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.linkedin.com/company/microchip-technology" target="_top"><div _ngcontent-hes-c23="" class="linkedin"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://twitter.com/MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="twitter"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square" class="svg-inline--fa fa-twitter-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.youtube.com/user/MicrochipTechnology" target="_top"><div _ngcontent-hes-c23="" class="youtube"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube-square" class="svg-inline--fa fa-youtube-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.microchip.com/rss/" target="_top"><div _ngcontent-hes-c23="" class="rss"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss-square" class="svg-inline--fa fa-rss-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM112 416c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm157.533 0h-34.335c-6.011 0-11.051-4.636-11.442-10.634-5.214-80.05-69.243-143.92-149.123-149.123-5.997-.39-10.633-5.431-10.633-11.441v-34.335c0-6.535 5.468-11.777 11.994-11.425 110.546 5.974 198.997 94.536 204.964 204.964.352 6.526-4.89 11.994-11.425 11.994zm103.027 0h-34.334c-6.161 0-11.175-4.882-11.427-11.038-5.598-136.535-115.204-246.161-251.76-251.76C68.882 152.949 64 147.935 64 141.774V107.44c0-6.454 5.338-11.664 11.787-11.432 167.83 6.025 302.21 141.191 308.205 308.205.232 6.449-4.978 11.787-11.432 11.787z"></path></svg></fa-icon></div></a></div><div _ngcontent-hes-c23="" id="mchip-overlay" onclick="off()" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; background-color: rgba(0,0,0,.3); display: none;"><div _ngcontent-hes-c23="" style="position: relative; width: 100%; height: 100%;"></div></div><div _ngcontent-hes-c23="" class="links"><nav _ngcontent-hes-c23=""><a _ngcontent-hes-c23="" href="https://www.microchip.com/products/" target="_top">Products</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Applications</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Design</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/training/" target="_top">Training</a><a _ngcontent-hes-c23="" href="https://www.microchipdirect.com/" target="_top">Sample</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/aboutus/" target="_top">About</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/contactus/" target="_top">Contact</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/legal/" target="_top">Legal</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/about-us/legal-information/privacy-policy" target="_top">Privacy Policy</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/investors/" target="_top">Investors</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/careers/" target="_top">Careers</a><a _ngcontent-hes-c23="" href="https://support.microchip.com/" target="_top">Support</a></nav><p _ngcontent-hes-c23="" class="links">©Copyright 2021 Microchip Technology Inc. All rights reserved.</p></div></footer>
+</body>
+</html>

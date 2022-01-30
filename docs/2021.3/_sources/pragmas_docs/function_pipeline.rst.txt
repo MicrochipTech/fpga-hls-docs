@@ -1,0 +1,48 @@
+.. highlight:: c
+
+.. _pragma_function_pipeline:
+
+Pipeline Function
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS function pipeline II(<int>)``
+
+**Description**
+
+This pragma enables pipelining for a given function in the code.
+Function pipelining allows a new invocation of a function to begin before the current one has completed, achieving higher throughput.
+Optional arguments:
+
+**Parameters**
+
++-----------+---------+----------+---------+------------------------------+
+| Parameter |  Value  | Optional | Default |         Description          |
++===========+=========+==========+=========+==============================+
+| ``II``    | Integer | Yes      | 1       | Pipeline initiation interval |
++-----------+---------+----------+---------+------------------------------+
+
+**Position**
+
+At the beginning of the function definition block.
+
+
+**Examples**
+
+.. code-block:: c
+
+  int sum(int *a) {
+  #pragma HLS function pipeline
+    ...
+  }
+
+.. code-block:: c
+
+  int conv(int a[], int b[]) {
+  #pragma HLS function pipeline II(3)
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

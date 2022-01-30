@@ -5,7 +5,7 @@ SmartHLS Report
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After compiling software to hardware, SmartHLS generates a summary report file
-(``reports/summary.hls.rpt``) to show some insights about the generated RTL
+(``hls_output/reports/summary.hls.rpt``) to show some insights about the generated RTL
 circuit, such as the top-level module interface, scheduling information, memory
 usage and etc.
 The following will explain each section of the report file.
@@ -163,7 +163,7 @@ The example tables above show the accessing functions and the hardware implement
 Simulation and RTL Synthesis, Place & Route Report
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SmartHLS also generates a summary report (``reports/summary.results.rpt``) to show
+SmartHLS also generates a summary report (``hls_output/reports/summary.results.rpt``) to show
 the results of simulation and RTL synthesis + Place & Route.
 Below is an example report:
 

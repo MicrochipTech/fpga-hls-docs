@@ -1,0 +1,32 @@
+.. highlight:: c
+
+.. _pragma_function_inline:
+
+Inline Function
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS function inline``
+
+**Description**
+
+This pragma forces a given function to be inlined. 
+
+
+**Position**
+
+At the beginning of the function definition block.
+
+
+**Examples**
+
+.. code-block:: c
+
+  int sum(int *a) {
+  #pragma HLS function inline
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

@@ -1,0 +1,99 @@
+.. _set_resource_constraint:
+
+set_resource_constraint
+-----------------------
+
+This Tcl command constrains the resource allocated by SmartHLS.
+For instance, to only have a single divider in the entire circuit, user can specify: ``set_resource_constraint divide 1``.
+This makes SmartHLS instantiate a maximum of 1 divider in the circuit, and if there are multiple division operations required, they will share the same divider. 
+ 
+Note: A constraint on "divide" will apply to:
+  - signed_divide_8
+  - signed_divide_16
+  - signed_divide_32
+  - signed_divide_64
+  - unsigned_divide_8
+  - unsigned_divide_16
+  - unsigned_divide_32
+  - unsigned_divide_64
+
+It can also be used to constrain the number of memory ports. To make all memories single-ported: ``set_resource_constraint memory_port 1``
+For memory ports, only 1 and 2 are valid values, as FPGA RAMs have up to 2 ports. 
+
+This Tcl command should only be used by advanced SmartHLS users. 
+
+**Category**
+
+HLS Constraints
+
+**Value Type**
+
+set_resource_constraint <operation> <constraint>
+<operation> is a string 
+<constraint> is an integer 
+
+**Valid Values**
+
+See Default and Examples
+Note: operator name should match the device family operation database file:
+boards/PolarFire/PolarFire.tcl
+
+**Default Values**
+
+::
+
+    memory_port 2
+    divide 1
+    modulus 1
+    multiply 2
+    fp_add 1
+    fp_subtract 1
+    fp_multiply 1
+    fp_divide 1
+    fp 1
+
+**Location Where Default is Specified**
+
+``examples/legup.tcl``
+
+**Dependencies**
+
+None
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+``set_resource_constraint signed_divide_16 3``
+
+``set_resource_constraint signed_divide 2``
+
+``set_resource_constraint divide 1``
+
+.. NOTE::
+  When implementing an integer multiply operation, SmartHLS's default behaviour is
+  to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
+  When a multiply operation is wider than the DSP can support, SmartHLS splits the
+  multiply into multiple DSPs and automatically inserts registers to help RTL
+  synthesis tool to utilize registers in DSPs better, and hence achieve better
+  timing.
+
+  However, this split-multiply feature cannot support sharing multipliers.
+  When ``set_resource_constraint multiply X`` is specified by user, SmartHLS will
+  turn off the split-multiply feature and use a generic multiplier that can be
+  shared by more than one multiply operations.
+  SmartHLS will also print a warning as follows,
+  *Warning: Detected set_resource_constraint setting for integer multiplier.  However, multiplier sharing is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.*
+
+  Similarly, ``set_operation_latency multiply X`` will trigger the same
+  behaviour because the split-multiply does not support user-configured
+  multiply latency.
+
+--------------------------------------------------------------------------------
+

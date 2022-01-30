@@ -385,7 +385,7 @@ running.  The concurrent access will however reduce the SmartHLS module's
 throughput to access the memory.
 
 After compilation, SmartHLS will generate a report file
-(``reports/axi_slave_memory_map.hls.rpt``) to specify the address map for
+(``hls_output/reports/axi_slave_memory_map.hls.rpt``) to specify the address map for
 each struct element.
 Here is an example struct and its corresponding memory map,
 
@@ -393,7 +393,7 @@ Here is an example struct and its corresponding memory map,
 .. literalinclude:: ../examples/axi_interface/simple_slave_LinkedByUG/global_var_LinkedByUG.cpp
 
 The corresponding address map report
-(``reports/axi_slave_memory_map.hls.rpt``) is shown below. 
+(``hls_output/reports/axi_slave_memory_map.hls.rpt``) is shown below. 
 
 .. literalinclude:: ../examples/axi_interface/simple_slave_LinkedByUG/axi_slave_memory_map.hls.rpt.LinkedByUG
    :language: text

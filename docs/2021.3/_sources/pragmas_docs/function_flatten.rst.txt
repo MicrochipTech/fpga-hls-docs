@@ -1,0 +1,43 @@
+.. highlight:: c
+
+.. _pragma_function_flatten:
+
+Flatten Function
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS function flatten branchless(true|false)``
+
+**Description**
+
+This pragma unrolls all loops and inlines all subfunctions for a given function.
+If the ``branchless`` option is set to true, all branches (e.g., if-else,
+switch) in the specified function will also be flatten to allow more
+parallelism between operations, specifically between the operations that are
+under different-yet-independent conditions.
+
+**Parameters**
+
++-------------------+----------------+----------+------------+----------------------------------------+
+| Parameter         |  Value         | Optional | Default    |         Description                    |
++===================+================+==========+============+========================================+
+| ``branchless``    | ``true|false`` | Yes      | ``false``  | ``true`` to flatten branch statements  |
++-------------------+----------------+----------+------------+----------------------------------------+
+
+**Position**
+
+At the beginning of the function definition block.
+
+
+**Examples**
+
+.. code-block:: c
+
+  int sum(int *a) {
+  #pragma HLS function flatten branchless(true)
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

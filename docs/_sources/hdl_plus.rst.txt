@@ -6,13 +6,14 @@ Instantiating SmartHLS IP Core in Libero SmartDesign
 After we use SmartHLS to design a hardware IP component, we will want to instantiate
 the component into Libero SmartDesign and integrate this core into our larger system.
 When SmartHLS generates the hardware, SmartHLS will also generate a ``create_hdl_plus.tcl``
-script to easily instantiate the SmartHLS-generated IP core into Libero SmartDesign.
+script (under ``hls_output/scripts`` directory) to easily instantiate the
+SmartHLS-generated IP core into Libero SmartDesign.
 
 You will see the log message in the console which includes the full path to the script like this: 
 
 .. code-block:: text
 
-  Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.3\workspace\sobel_part3\create_hdl_plus.tcl. 
+  Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.3.1\workspace\sobel_part3\create_hdl_plus.tcl. 
 
 Now we can use Libero to open a Libero project, create a new SmartDesign, and give the newly created SmartDesign a suitable name.
 Alternatively, we can also open an existing SmartDesign.

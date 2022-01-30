@@ -1,0 +1,33 @@
+.. highlight:: c
+
+.. _pragma_function_replicate:
+
+Replicate Function
+-------------------------------
+
+**Syntax**
+
+``#pragma HLS function replicate``
+
+**Description**
+
+This pragma specifies a function to be replicated every time it is called. 
+By default, when the circuit is not pipelined, SmartHLS creates a single instance for each function which is shared across multiple calls to the function. 
+When using this pragma on the function, SmartHLS will create a new instance of the function for every function call.
+
+
+**Position**
+
+At the beginning of the function definition block.
+
+**Examples**
+
+.. code-block:: c
+
+  int sum(int *a) {
+  #pragma HLS function replicate
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

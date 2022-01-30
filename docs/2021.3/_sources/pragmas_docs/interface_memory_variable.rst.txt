@@ -1,0 +1,50 @@
+.. highlight:: c
+
+.. _pragma_interface_memory_variable:
+
+Configure Global Variable as Memory Interface
+------------------------------------
+
+**Syntax**
+
+
+``#pragma HLS interface variable(<var_name>) type(memory) num_elements(<int>)``
+
+**Description**
+
+
+This pragma specifies the memory interface type for a shared array/struct global variable.
+The array size can be specified or overridden (over the declared size in C++) by specifying the ``num_elements`` option.
+More details in :ref:`rtl_interface` section.
+
+**Parameters**
+
+
++---------------------+------------+----------+---------+------------------------------------------------------------------------------------------------------+
+|  Parameter          |    Type    | Optional | Default |       Description                                                                                    |
++=====================+============+==========+=========+======================================================================================================+
+| ``varaible``        | String     | No       |         | Variable name                                                                                        |
++---------------------+------------+----------+---------+------------------------------------------------------------------------------------------------------+
+| ``type``            | ``memory`` | No       |         | Interface type                                                                                       |
++---------------------+------------+----------+---------+------------------------------------------------------------------------------------------------------+
+| ``num_elements``    | Integer    | Yes      |         | Specifies the number of elements of the variable array. Can override the array size of the variable. |
++---------------------+------------+----------+---------+------------------------------------------------------------------------------------------------------+
+
+**Position**
+
+Before the global variable declaration.
+
+**Examples**
+
+
+.. code-block:: c
+
+  #pragma HLS interface variable(b) type(memory) num_elements(100)
+  int b[100];
+
+  int fun() {
+    ...
+  }
+
+--------------------------------------------------------------------------------
+

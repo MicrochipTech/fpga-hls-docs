@@ -1,0 +1,61 @@
+.. _STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER:
+
+STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER
+---------------------------------------------------
+
+Strength reduction is an optimization that
+converts multiply-by-constant into shifts and additions::
+
+    Info: StrengthReduction: Replacing multiply by constant (i26 33038) with 3 adders:
+            - (1 << 1) + (1 << 4) + (1 << 8) + (1 << 15)
+
+The STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER constraint allows you to
+tune the number of adders allowed per multiplier (default is 3).
+Strength reduction for multiply-by-constants will not be performed if this requires
+more adders than allowed::
+
+    i26 16828 is composed of 4 adders:
+    - (1 << 2) + (1 << 6) + (1 << 7) + (1 << 8) + (1 << 14)
+    Skipping conversion otherwise would need too many additions.
+
+In this example, we would need 4 adders which is more than the default of 3,
+meaning strength reduction will not occur and SmartHLS will keep the multiplier.
+
+**Category**
+
+HLS Constraints
+
+**Value Type**
+
+Integer
+
+**Valid Values**
+
+Positive Integer
+
+**Default Value**
+
+3
+
+**Location Where Default is Specified**
+
+``examples/legup.tcl``
+
+**Dependencies**
+
+:ref:`STRENGTH_REDUCTION` must be on
+
+**Applicable Flows**
+
+All devices and flows
+
+**Test Status**
+
+Actively in-use
+
+**Examples**
+
+    ``set_parameter STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER 3``
+
+--------------------------------------------------------------------------------
+

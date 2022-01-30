@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>User Guide &mdash; SmartHLS 2021.3 documentation</title>
+  <title>User Guide &mdash; SmartHLS 2021.3.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3.1  </span>
 
 										  </h1>
 								
@@ -678,7 +678,7 @@ display:none;
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#instantiating-smarthls-ip-core-in-libero-smartdesign">Instantiating SmartHLS IP Core in Libero SmartDesign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#smarthls-command-line-interface">SmartHLS Command Line Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#synthesis-macro"><strong>__SYNTHESIS__</strong> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synthesis-macro"><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
@@ -3408,7 +3408,7 @@ external logic can read/write the AXI4 slave interface while the SmartHLS module
 running.  The concurrent access will however reduce the SmartHLS module’s
 throughput to access the memory.</p>
 <p>After compilation, SmartHLS will generate a report file
-(<code class="docutils literal notranslate"><span class="pre">reports/axi_slave_memory_map.hls.rpt</span></code>) to specify the address map for
+(<code class="docutils literal notranslate"><span class="pre">hls_output/reports/axi_slave_memory_map.hls.rpt</span></code>) to specify the address map for
 each struct element.
 Here is an example struct and its corresponding memory map,</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __SLAVE_LAYOUT_H__</span>
@@ -3434,7 +3434,7 @@ Here is an example struct and its corresponding memory map,</p>
 </pre></div>
 </div>
 <p>The corresponding address map report
-(<code class="docutils literal notranslate"><span class="pre">reports/axi_slave_memory_map.hls.rpt</span></code>) is shown below.</p>
+(<code class="docutils literal notranslate"><span class="pre">hls_output/reports/axi_slave_memory_map.hls.rpt</span></code>) is shown below.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Address Map for AXI Slave Interface: global_var
 
 +--------------+-----------+-------------------+----------+
@@ -3827,7 +3827,7 @@ It can also be specified directly in the <code class="docutils literal notransla
 <div class="section" id="smarthls-report">
 <h3>SmartHLS Report<a class="headerlink" href="#smarthls-report" title="Permalink to this headline">¶</a></h3>
 <p>After compiling software to hardware, SmartHLS generates a summary report file
-(<code class="docutils literal notranslate"><span class="pre">reports/summary.hls.rpt</span></code>) to show some insights about the generated RTL
+(<code class="docutils literal notranslate"><span class="pre">hls_output/reports/summary.hls.rpt</span></code>) to show some insights about the generated RTL
 circuit, such as the top-level module interface, scheduling information, memory
 usage and etc.
 The following will explain each section of the report file.</p>
@@ -3977,7 +3977,7 @@ So you can see which memories are aliasing and being put behind the same memory 
 </div>
 <div class="section" id="simulation-and-rtl-synthesis-place-route-report">
 <h3>Simulation and RTL Synthesis, Place &amp; Route Report<a class="headerlink" href="#simulation-and-rtl-synthesis-place-route-report" title="Permalink to this headline">¶</a></h3>
-<p>SmartHLS also generates a summary report (<code class="docutils literal notranslate"><span class="pre">reports/summary.results.rpt</span></code>) to show
+<p>SmartHLS also generates a summary report (<code class="docutils literal notranslate"><span class="pre">hls_output/reports/summary.results.rpt</span></code>) to show
 the results of simulation and RTL synthesis + Place &amp; Route.
 Below is an example report:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>====== 1. Simulation Cycle Latency ======
@@ -4187,9 +4187,10 @@ The last row shown in the pipeline viewer (Iteration 1) is the first iteration o
 <p>After we use SmartHLS to design a hardware IP component, we will want to instantiate
 the component into Libero SmartDesign and integrate this core into our larger system.
 When SmartHLS generates the hardware, SmartHLS will also generate a <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code>
-script to easily instantiate the SmartHLS-generated IP core into Libero SmartDesign.</p>
+script (under <code class="docutils literal notranslate"><span class="pre">hls_output/scripts</span></code> directory) to easily instantiate the
+SmartHLS-generated IP core into Libero SmartDesign.</p>
 <p>You will see the log message in the console which includes the full path to the script like this:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.3\workspace\sobel_part3\create_hdl_plus.tcl.
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.3.1\workspace\sobel_part3\create_hdl_plus.tcl.
 </pre></div>
 </div>
 <p>Now we can use Libero to open a Libero project, create a new SmartDesign, and give the newly created SmartDesign a suitable name.
@@ -4251,11 +4252,11 @@ as an input, and <code class="docutils literal notranslate"><span class="pre">ou
 </li>
 <li><p><strong>sw</strong>: compile and run the program in software on your host machine.  The compilation step is skipped if no change is detected in source/header files, <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</p>
 <ul>
-<li><p><strong>sw_compile</strong>: compile the program in software, the output is an executable file (<code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;.sw_binary</span></code>).</p></li>
-<li><p><strong>sw_run</strong>: run the compiled executable (<code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;.sw_binary</span></code>) on your host machine.</p></li>
+<li><p><strong>sw_compile</strong>: compile the program in software, the output is an executable file (<code class="docutils literal notranslate"><span class="pre">hls_output/.hls/&lt;NAME&gt;.sw_binary</span></code>).</p></li>
+<li><p><strong>sw_run</strong>: run the compiled executable (<code class="docutils literal notranslate"><span class="pre">hls_output/.hls/&lt;NAME&gt;.sw_binary</span></code>) on your host machine.</p></li>
 </ul>
 </li>
-<li><p><strong>hw</strong> (default): compile the software to hardware, the output is a Verilog HDL file (<code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;.v</span></code>).</p></li>
+<li><p><strong>hw</strong> (default): compile the software to hardware, the output is a set of Verilog HDL file (the HLS-generated IP core is in <code class="docutils literal notranslate"><span class="pre">hls_output/rtl/&lt;NAME&gt;.v</span></code>, with additional RTL IP sub-modules named <code class="docutils literal notranslate"><span class="pre">hls_output/rtl/&lt;NAME&gt;_*.v</span></code>).</p></li>
 <li><p><strong>cosim</strong>: run <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> to verify the generated circuit.</p>
 <ul>
 <li><p><strong>cosim_wave</strong>: same as above but with ModelSim waveform.</p></li>
@@ -4274,8 +4275,8 @@ as an input, and <code class="docutils literal notranslate"><span class="pre">ou
 </ul>
 </div>
 <div class="section" id="synthesis-macro">
-<h2><strong>__SYNTHESIS__</strong> Macro<a class="headerlink" href="#synthesis-macro" title="Permalink to this headline">¶</a></h2>
-<p>The <strong>__SYNTHESIS__</strong> macro is defined in SmartHLS during synthesis. This provides a convenient way to exclude non-synthesizable code without removing/commenting the code itself. In the folling example, the assertion header and statement are ignored during synthesis:</p>
+<span id="id8"></span><h2><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro<a class="headerlink" href="#synthesis-macro" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro is defined in SmartHLS during synthesis. This provides a convenient way to exclude non-synthesizable code without removing/commenting the code itself. In the folling example, the assertion header and statement are ignored during synthesis:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __SYNTHESIS__</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
 <span class="cp">#endif</span>
@@ -4293,7 +4294,7 @@ as an input, and <code class="docutils literal notranslate"><span class="pre">ou
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>While the <strong>__SYNTHESIS__</strong> macro is useful to exclude debugging and system calls, it can change the results between the software and the synthesized Verilog if the excluded code changes the functionality. This can introduce errors or unexpected behaviour in simulation / co-simulation. Use the <strong>__SYNTHESIS__</strong> macro carefully and make sure it does not change the functionality.</p>
+<p>While the <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro is useful to exclude debugging and system calls, it can change the results between the software and the synthesized Verilog if the excluded code changes the functionality. This can introduce errors or unexpected behaviour in simulation / co-simulation. Use the <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro carefully and make sure it does not change the functionality.</p>
 </div>
 </div>
 </div>
