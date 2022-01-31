@@ -5,6 +5,9 @@
 Getting Started
 ==================
 
+License Setup
+--------------
+
 First, you will need to :ref:`license_setup`.
 
 Installation

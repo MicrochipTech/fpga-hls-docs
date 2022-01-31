@@ -12,7 +12,7 @@ Latest Release (|version|)
 .. 2) the sections (e.g., Software Features and Enhancements) should have the
 ..    "---------" title indication line changed to "~~~~~~~~".
 
-Release Date: Feb 4, 2022
+Release Date: Jan 31, 2022
 
 What's New
 --------------
@@ -313,7 +313,7 @@ Software Features and Enhancements
  * Support for Libero 12.6
  * Libero SmartDesign integration (see :ref:`smartdesign`)
  * Added support for pragmas (see :ref:`pragmas`) in the source code to specify LegUp user constraints instead of using Tcl commands.
- * Support for math.h functions (see :ref:`c_numerics_library`)
+ * Support for math.h functions (see :ref:`c_math_library`)
  * Documentation of top-level RTL interfaces (see :ref:`rtl_interface`)
  * Improvements to memory partitioning (see :ref:`memory_partitioning`)
  * Added Microchip software end-user license agreement (EULA)

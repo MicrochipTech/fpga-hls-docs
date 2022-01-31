@@ -677,7 +677,11 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#instantiating-smarthls-ip-core-in-libero-smartdesign">Instantiating SmartHLS IP Core in Libero SmartDesign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#smarthls-command-line-interface">SmartHLS Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smarthls-command-line-interface">SmartHLS Command Line Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#synthesis-macro"><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro</a></li>
 </ul>
 </li>
@@ -689,6 +693,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 </ul>
@@ -4222,57 +4227,90 @@ as an input, and <code class="docutils literal notranslate"><span class="pre">ou
 </div>
 <div class="section" id="smarthls-command-line-interface">
 <span id="cmdline"></span><h2>SmartHLS Command Line Interface<a class="headerlink" href="#smarthls-command-line-interface" title="Permalink to this headline">¶</a></h2>
-<p>To run SmartHLS in command line, your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable should contain the following paths to:</p>
+<p>In addition to the SmartHLS IDE, there is also a command line tool (<code class="docutils literal notranslate"><span class="pre">shls</span></code>) available to call
+SmartHLS from a terminal, or from a user script for the purposes of automation.</p>
+<div class="section" id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<p>To run SmartHLS from the command line, your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable should contain the paths to:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">shls</span></code>: &lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/bin.</p></li>
-<li><p>ModelSim (for simulation and SW/HW co-simulation): the path to the <code class="docutils literal notranslate"><span class="pre">vsim</span></code> executable.</p></li>
-<li><p>Libero (for FPGA synthesis, place and route): the path to the <code class="docutils literal notranslate"><span class="pre">libero</span></code> executable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shls</span></code>: SmartHLS executable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vsim</span></code>: Modelsim’s executable for HW simulation and SW/HW co-simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libero</span></code>: Libero’s executable for synthesis and Place &amp; Route.</p></li>
 </ul>
 </div></blockquote>
-<p>SmartHLS can run in command line with the following command:</p>
+<p>Here’s an example that you can adapt to your system:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>&lt;LIBERO_SOC_INSTALLATION_DIR&gt;/ModelSimPro/modeltech/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>&lt;LIBERO_SOC_INSTALLATION_DIR&gt;/Libero/bin:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>SmartHLS comes with a bash script to provide autocompletion when using the command line on a Linux terminal.
+It can be sourced like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> &lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/examples/scripts/utils/bash_autocomplete.sh
+</pre></div>
+</div>
+<p>After that you can start typing <code class="docutils literal notranslate"><span class="pre">shls</span></code> plus a space, then hit the <code class="docutils literal notranslate"><span class="pre">&lt;TAB&gt;</span></code> key and a list of available commands
+will be displayed. If you continue typing the command and hit the <code class="docutils literal notranslate"><span class="pre">&lt;TAB&gt;</span></code> key again the command will be autocompleted.</p>
+</div>
+<div class="section" id="commands">
+<h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+<p>Here is the list of available commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>shls <span class="o">[</span>-h<span class="o">]</span> &lt;cmd&gt;
 </pre></div>
 </div>
 <p>Where <code class="docutils literal notranslate"><span class="pre">&lt;cmd&gt;</span></code> can be one of:</p>
-<ul class="simple">
-<li><p><strong>init</strong>: create a new SmartHLS project by generating a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and a <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</p>
+<dl>
+<dt>init</dt><dd><p>Create a new SmartHLS project by generating a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and a <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> file.</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Makefile</span></code>:</p>
-<ul>
-<li><p>Source files: the <code class="docutils literal notranslate"><span class="pre">SRCS</span></code> variable in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> should list all the source files (<code class="docutils literal notranslate"><span class="pre">.cpp</span></code> or <code class="docutils literal notranslate"><span class="pre">.c</span></code>). Header files should not be added to <code class="docutils literal notranslate"><span class="pre">SRCS</span></code>, but should be properly included by the source files.
-<code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">init</span></code> will automatically add the file names for the existing source files in the current directory.  If source files are created after <code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">init</span></code>, please update <code class="docutils literal notranslate"><span class="pre">SRCS</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">SRCS</span> <span class="pre">=</span> <span class="pre">foo.cpp</span> <span class="pre">bar.cpp</span></code>).</p></li>
-<li><p>Project name: the <code class="docutils literal notranslate"><span class="pre">NAME</span></code> variable stands for the project name, e.g., <code class="docutils literal notranslate"><span class="pre">NAME</span> <span class="pre">=</span> <span class="pre">MY_PROJECT</span></code>.  The default project name is the current directory name when <code class="docutils literal notranslate"><span class="pre">NAME</span></code> is not specified in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p></li>
-<li><p>main() function arguments: <code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span></code> can be used to specify the arguments of the software testbench (i.e., <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code>). Here is an example: <code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span> <span class="pre">=</span> <span class="pre">input_file.bmp</span> <span class="pre">golden_output_file.bmp</span></code>. More details can be found in <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a>.</p></li>
-<li><p><strong>NOTE</strong>: the above variables should be specified before the last line in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>: <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">$(LEVEL)/Makefile.common</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Makefile</span></code> - this file has the following variables</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SRCS</span></code>: This variable should list all the source files (<code class="docutils literal notranslate"><span class="pre">.cpp</span></code> or <code class="docutils literal notranslate"><span class="pre">.c</span></code>).
+Header files should not be added to <code class="docutils literal notranslate"><span class="pre">SRCS</span></code>, but should be properly included by the source files.
+<code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">init</span></code> will automatically add the file names for the existing source files in the current directory.
+If source files are created after <code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">init</span></code>, please update <code class="docutils literal notranslate"><span class="pre">SRCS</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">SRCS</span> <span class="pre">=</span> <span class="pre">foo.cpp</span> <span class="pre">bar.cpp</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NAME</span></code>: This variable stands for the project name, e.g., <code class="docutils literal notranslate"><span class="pre">NAME</span> <span class="pre">=</span> <span class="pre">MY_PROJECT</span></code>.  The default
+project name is the current directory name when <code class="docutils literal notranslate"><span class="pre">NAME</span></code> is not specified in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span></code>: This variable can be used to specify the arguments for the main() function,
+which can be used for the software testbench (i.e., <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code>).
+Here is an example: <code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span> <span class="pre">=</span> <span class="pre">input_file.bmp</span> <span class="pre">golden_output_file.bmp</span></code>.
+More details can be found in <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a>.</p></li>
 </ul>
+<p><strong>NOTE</strong>: the above variables should be specified before the last line in <code class="docutils literal notranslate"><span class="pre">Makefile:</span> <span class="pre">include</span> <span class="pre">$(LEVEL)/Makefile.common</span></code>.</p>
+</div></blockquote>
 </li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> contains the project’s configuration settings. Project parameters and constraints can be specified in this file as necessary. Please refer to the <a class="reference internal" href="constraintsmanual.html#constraints"><span class="std std-ref">Constraints Manual</span></a> page.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> - this file contains the project’s configuration settings. Project parameters and constraints can be specified in this file as necessary. Please refer to the <a class="reference internal" href="constraintsmanual.html#constraints"><span class="std std-ref">Constraints Manual</span></a> page.</p></li>
 </ul>
-</li>
-<li><p><strong>sw</strong>: compile and run the program in software on your host machine.  The compilation step is skipped if no change is detected in source/header files, <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</p>
-<ul>
-<li><p><strong>sw_compile</strong>: compile the program in software, the output is an executable file (<code class="docutils literal notranslate"><span class="pre">hls_output/.hls/&lt;NAME&gt;.sw_binary</span></code>).</p></li>
-<li><p><strong>sw_run</strong>: run the compiled executable (<code class="docutils literal notranslate"><span class="pre">hls_output/.hls/&lt;NAME&gt;.sw_binary</span></code>) on your host machine.</p></li>
-</ul>
-</li>
-<li><p><strong>hw</strong> (default): compile the software to hardware, the output is a set of Verilog HDL file (the HLS-generated IP core is in <code class="docutils literal notranslate"><span class="pre">hls_output/rtl/&lt;NAME&gt;.v</span></code>, with additional RTL IP sub-modules named <code class="docutils literal notranslate"><span class="pre">hls_output/rtl/&lt;NAME&gt;_*.v</span></code>).</p></li>
-<li><p><strong>cosim</strong>: run <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> to verify the generated circuit.</p>
-<ul>
-<li><p><strong>cosim_wave</strong>: same as above but with ModelSim waveform.</p></li>
-</ul>
-</li>
-<li><p><strong>sim</strong>: simulate the generated hardware in ModelSim (for an input software that has no top-level function specified, which is uncommon).</p>
-<ul>
-<li><p><strong>wave</strong>: same as above but with ModelSim waveform.</p></li>
-</ul>
-</li>
-<li><p><strong>fpga</strong>: synthesize the generated hardware to target FPGA. This runs RTL synthesis and place-and-route for resource and timing results.</p></li>
-<li><p><strong>rtl_synth</strong>: run RTL synthesis for resource results. This will take less time than <strong>fpga</strong>.</p></li>
-<li><p><strong>scheduleviewer</strong>: Show the scheduler viewer.</p></li>
-<li><p><strong>clean</strong>: Delete files generated by SmartHLS.</p></li>
-<li><p><strong>precompile_modelsim_libs</strong>: Recompile ModelSim libraries. This command only needs to be run once from any SmartHLS project directory after you change the ModelSim version.</p></li>
-</ul>
+</dd>
+<dt>sw</dt><dd><p>Compile and run the program in software on your host machine.  The compilation step is skipped if no change is detected in source/header files, <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</p>
+</dd>
+<dt>sw_compile</dt><dd><p>Compile the program in software, the output is an executable file (<code class="docutils literal notranslate"><span class="pre">hls_output/.hls/&lt;NAME&gt;.sw_binary</span></code>).</p>
+</dd>
+<dt>sw_run</dt><dd><p>Run the compiled executable (<code class="docutils literal notranslate"><span class="pre">hls_output/.hls/&lt;NAME&gt;.sw_binary</span></code>) on your host machine.</p>
+</dd>
+<dt>hw (default)</dt><dd><p>Compile the software to hardware, the output is a set of Verilog HDL file (the HLS-generated IP core is in <code class="docutils literal notranslate"><span class="pre">hls_output/rtl/&lt;NAME&gt;.v</span></code>, with additional RTL IP sub-modules named <code class="docutils literal notranslate"><span class="pre">hls_output/rtl/&lt;NAME&gt;_*.v</span></code>).</p>
+</dd>
+<dt>cosim</dt><dd><p>Run <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> to verify the generated circuit.</p>
+</dd>
+<dt>cosim_wave</dt><dd><p>Same as <code class="docutils literal notranslate"><span class="pre">cosim</span></code> but with ModelSim waveform.</p>
+</dd>
+<dt>sim</dt><dd><p>Simulate the generated hardware in ModelSim (for an input software that has no top-level function specified, which is uncommon).</p>
+</dd>
+<dt>wave</dt><dd><p>Same as above but with ModelSim waveform.</p>
+</dd>
+<dt>fpga</dt><dd><p>Synthesize the generated hardware to target FPGA. This runs RTL synthesis and place-and-route for resource and timing results.</p>
+</dd>
+<dt>rtl_synth</dt><dd><p>Run RTL synthesis for resource results. This will take less time than <strong>fpga</strong>.</p>
+</dd>
+<dt>scheduleviewer</dt><dd><p>Show the scheduler viewer.</p>
+</dd>
+<dt>clean</dt><dd><p>Delete files generated by SmartHLS.</p>
+</dd>
+<dt>precompile_modelsim_libs</dt><dd><p>Recompile ModelSim libraries. This command only needs to be run once from any SmartHLS project directory after you change the ModelSim version.</p>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="synthesis-macro">
 <span id="id8"></span><h2><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro<a class="headerlink" href="#synthesis-macro" title="Permalink to this headline">¶</a></h2>

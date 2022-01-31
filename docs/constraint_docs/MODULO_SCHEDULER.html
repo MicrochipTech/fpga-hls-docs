@@ -572,6 +572,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="../pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license_setup.html">Setup SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 </ul>
@@ -643,8 +644,8 @@ display:none;
             
   <div class="section" id="modulo-scheduler">
 <span id="id1"></span><h1>MODULO_SCHEDULER<a class="headerlink" href="#modulo-scheduler" title="Permalink to this headline">¶</a></h1>
-<p>This parameter specifies the type of modulo scheduler to use for loop pipelining. There are
-three options:</p>
+<p>This parameter specifies the type of modulo scheduler to use for loop
+pipelining. There are two options:</p>
 <blockquote>
 <div><dl class="simple">
 <dt>SDC_BACKTRACKING</dt><dd><p>Default. Used SDC modulo scheduling with a backtracking mechanism to
@@ -653,9 +654,6 @@ resolve conflicting resource and recurrence constraints</p>
 <dt>SDC_GREEDY</dt><dd><p>SDC modulo scheduling using a greedy approach to resolving resource
 constraints. This method may not achieve minimum II II for loops with
 resource constraints and cross-iteration dependencies.</p>
-</dd>
-<dt>ITERATIVE</dt><dd><p>Classic iterative modulo scheduler approach using a list scheduler (no
-operator chaining support)</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -669,7 +667,7 @@ operator chaining support)</p>
 </div>
 <div class="section" id="valid-values">
 <h2>Valid Values<a class="headerlink" href="#valid-values" title="Permalink to this headline">¶</a></h2>
-<p>SDC_BACKTRACKING, SDC_GREEDY, ITERATIVE</p>
+<p>SDC_BACKTRACKING, SDC_GREEDY</p>
 </div>
 <div class="section" id="default-value">
 <h2>Default Value<a class="headerlink" href="#default-value" title="Permalink to this headline">¶</a></h2>
@@ -695,8 +693,7 @@ operator chaining support)</p>
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MODULO_SCHEDULER</span> <span class="pre">SDC_BACKTRACKING</span></code>
-<code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MODULO_SCHEDULER</span> <span class="pre">SDC_GREEDY</span></code>
-<code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MODULO_SCHEDULER</span> <span class="pre">ITERATIVE</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MODULO_SCHEDULER</span> <span class="pre">SDC_GREEDY</span></code></p>
 </div></blockquote>
 <hr class="docutils" />
 </div>

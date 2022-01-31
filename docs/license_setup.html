@@ -507,7 +507,7 @@ display:none;
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="next" title="Supported FPGA Devices" href="devices.html" />
     <link rel="prev" title="Constraints Manual" href="constraintsmanual.html" /> 
 </head>
 
@@ -574,6 +574,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Setup SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 </ul>
@@ -647,13 +648,35 @@ display:none;
 <span id="license-setup"></span><h1>Setup SmartHLS License<a class="headerlink" href="#setup-smarthls-license" title="Permalink to this headline">¶</a></h1>
 <p>Please follow the below instructions to generate and install SmartHLS tool license:</p>
 <ol class="arabic simple">
-<li><p>Log into the Microsemi Customer Portal (<a class="reference external" href="http://soc.microsemi.com/portal">http://soc.microsemi.com/portal</a>) and click on the “License and Registration” link.</p></li>
-<li><p>Click on “Request Free License” option.</p></li>
-<li><p>Click on “SmartHLS one-year Disk ID License for Windows” or “SmartHLS one-year Floating License for Windows or Linux Server”.</p></li>
-<li><p>On the next page, enter the hard Disk ID or MAC ID of the machine based on the selected license option and click on the “Submit” button. You will then be emailed a new <code class="docutils literal notranslate"><span class="pre">license.dat</span></code> file enabling you to use SmartHLS.</p></li>
-<li><p>Open the SmartHLS <code class="docutils literal notranslate"><span class="pre">license.dat</span></code> file, copy the content and add it to your existing Libero software license file with the similar Libero license option (Disk ID or MAC ID). For example, if you generated a node locked license for the SmartHLS tool, you need to add the SmartHLS license file content to the Libero node locked license.</p></li>
+<li><p>Log into <a class="reference external" href="https://www.microchipdirect.com/fpga-software-products?_ga=2.64389999.1724603044.1642798569-550376685.1606760895">Microchip Direct &gt; FPGA Software and IP Core Products</a>.</p></li>
+<li><p>Click on the “Request Free License” button on the right.</p></li>
 </ol>
-<p>Note: If you have not yet installed Libero Design Suite Software and the license, refer to <a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1711-licensing">https://www.microsemi.com/product-directory/design-resources/1711-licensing</a> or your Libero license file email for instructions on how to download and install your Libero license and software.</p>
+<blockquote>
+<div><img alt="_images/license_screenshot_request.png" class="align-center" src="_images/license_screenshot_request.png" />
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Click “Register” beside either the “SmartHLS 1 Year Node Locked License for
+Windows” or “SmartHLS 1 Year Floating License for Windows or Linux Server”.</p></li>
+</ol>
+<blockquote>
+<div><img alt="_images/license_screenshot_register.png" class="align-center" src="_images/license_screenshot_register.png" />
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>On the next page, enter the hard Disk ID (for node locked license) or MAC ID (for
+floating license) of the machine based on the selected license option and click on
+the “Submit” button. You will then be emailed a new <code class="docutils literal notranslate"><span class="pre">license.dat</span></code> license
+file enabling you to use SmartHLS.</p></li>
+<li><p>Open the SmartHLS <code class="docutils literal notranslate"><span class="pre">license.dat</span></code> file and copy the contents into your
+existing Libero software license file with the same Libero license option
+(Disk ID or MAC ID). For example, if you generated a node locked license for
+the SmartHLS tool, you need to add the SmartHLS license file contents into the
+Libero node locked license file.</p></li>
+<li><p>Double check that your <code class="docutils literal notranslate"><span class="pre">LM_LICENSE_FILE</span></code> environment variable is set correctly.</p></li>
+</ol>
+<p>Note: If you have not yet installed the license for the Libero Design Suite Software, refer to
+<a class="reference external" href="https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/licensing">https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/licensing</a> or
+your Libero license file email for instructions on how to download and install
+your Libero license and software.</p>
 </div>
 
 

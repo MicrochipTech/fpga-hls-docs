@@ -26,7 +26,7 @@ Frequently Asked Questions
 
 **What is the input software language to SmartHLS?**
 
-    The input language to SmartHLS is C/C++. For compiling to hardware, SmartHLS supports most of C/C++, but does not support recursive functions or dynamic memory (malloc, calloc, new, etc). Also we do not support the STL C++ library (vector, map, set, etc.) and only support a subset of the C math library (see :ref:`c_numerics_library`).
+    The input language to SmartHLS is C/C++. For compiling to hardware, SmartHLS supports most of C/C++, but does not support recursive functions or dynamic memory (malloc, calloc, new, etc). Also we do not support the STL C++ library (vector, map, set, etc.) and only support a subset of the C math library (see :ref:`c_math_library`).
     These unsupported software constructs can be in the software testbench portion of the code, outside of the top-level function to be compiled to hardware (see :ref:`custom_top_level`).
 
 ..
@@ -38,7 +38,7 @@ Frequently Asked Questions
 
 **Which FPGAs do you support?**
 
-  SmartHLS supports Microchip PolarFire FPGAs.
+  See: :ref:`devices`
 
 **How can I get support?**
 

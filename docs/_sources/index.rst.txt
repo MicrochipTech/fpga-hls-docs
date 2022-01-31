@@ -50,6 +50,8 @@ The following table describes each document shipped with SmartHLS.
      - Constraints manual
    * - :ref:`license_setup`
      - How to obtain a free license for SmartHLS
+   * - :ref:`devices`
+     - Supported FPGA devices
    * - :ref:`FAQ`
      - SmartHLS Migration Guide
    * - :ref:`vhls_to_shls`
@@ -97,6 +99,7 @@ Technical support is available through the website at: `www.microchip.com/suppor
    pragmas
    constraintsmanual
    license_setup
+   devices
    faq
    vhls_to_shls
 

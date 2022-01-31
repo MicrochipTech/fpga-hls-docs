@@ -2459,13 +2459,40 @@ This constraint is also described in :ref:`set_custom_test_bench_module` and :re
 SmartHLS Command Line Interface
 -----------------------------
 
-To run SmartHLS in command line, your ``PATH`` environment variable should contain the following paths to:
+In addition to the SmartHLS IDE, there is also a command line tool (``shls``) available to call 
+SmartHLS from a terminal, or from a user script for the purposes of automation. 
 
- * ``shls``: <SMARTHLS_INSTALLATION_DIR>/SmartHLS/bin.
- * ModelSim (for simulation and SW/HW co-simulation): the path to the ``vsim`` executable.
- * Libero (for FPGA synthesis, place and route): the path to the ``libero`` executable.
+Setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SmartHLS can run in command line with the following command:
+To run SmartHLS from the command line, your ``PATH`` environment variable should contain the paths to:
+
+  * ``shls``: SmartHLS executable.
+  * ``vsim``: Modelsim's executable for HW simulation and SW/HW co-simulation.
+  * ``libero``: Libero's executable for synthesis and Place & Route.  
+  
+Here's an example that you can adapt to your system:
+
+.. code-block:: bash
+
+  export PATH=<SMARTHLS_INSTALLATION_DIR>/SmartHLS/bin:$PATH
+  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/ModelSimPro/modeltech/bin:$PATH
+  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/Libero/bin:$PATH
+
+SmartHLS comes with a bash script to provide autocompletion when using the command line on a Linux terminal.
+It can be sourced like this:
+
+.. code-block:: bash
+
+  source <SMARTHLS_INSTALLATION_DIR>/SmartHLS/examples/scripts/utils/bash_autocomplete.sh
+
+After that you can start typing ``shls`` plus a space, then hit the ``<TAB>`` key and a list of available commands 
+will be displayed. If you continue typing the command and hit the ``<TAB>`` key again the command will be autocompleted.
+
+Commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here is the list of available commands:
 
 .. code-block:: bash
 
@@ -2473,43 +2500,64 @@ SmartHLS can run in command line with the following command:
 
 Where ``<cmd>`` can be one of:
 
-* **init**: create a new SmartHLS project by generating a ``Makefile`` and a ``config.tcl``.
+init
+  Create a new SmartHLS project by generating a ``Makefile`` and a ``config.tcl`` file.
 
-  * ``Makefile``:
+  * ``Makefile`` - this file has the following variables
 
-    * Source files: the ``SRCS`` variable in ``Makefile`` should list all the source files (``.cpp`` or ``.c``). Header files should not be added to ``SRCS``, but should be properly included by the source files.
-      ``shls init`` will automatically add the file names for the existing source files in the current directory.  If source files are created after ``shls init``, please update ``SRCS`` (e.g., ``SRCS = foo.cpp bar.cpp``).
-    * Project name: the ``NAME`` variable stands for the project name, e.g., ``NAME = MY_PROJECT``.  The default project name is the current directory name when ``NAME`` is not specified in ``Makefile``.
-    * main() function arguments: ``MAIN_INPUT_ARGS`` can be used to specify the arguments of the software testbench (i.e., ``int main(int argc, char *argv[])``). Here is an example: ``MAIN_INPUT_ARGS = input_file.bmp golden_output_file.bmp``. More details can be found in :ref:`sw_hw_cosimulation`.
-    * **NOTE**: the above variables should be specified before the last line in ``Makefile``: ``include $(LEVEL)/Makefile.common``.
+      * ``SRCS``: This variable should list all the source files (``.cpp`` or ``.c``). 
+        Header files should not be added to ``SRCS``, but should be properly included by the source files.
+        ``shls init`` will automatically add the file names for the existing source files in the current directory.  
+        If source files are created after ``shls init``, please update ``SRCS`` (e.g., ``SRCS = foo.cpp bar.cpp``).
+      * ``NAME``: This variable stands for the project name, e.g., ``NAME = MY_PROJECT``.  The default 
+        project name is the current directory name when ``NAME`` is not specified in ``Makefile``.
+      * ``MAIN_INPUT_ARGS``: This variable can be used to specify the arguments for the main() function, 
+        which can be used for the software testbench (i.e., ``int main(int argc, char *argv[])``). 
+        Here is an example: ``MAIN_INPUT_ARGS = input_file.bmp golden_output_file.bmp``. 
+        More details can be found in :ref:`sw_hw_cosimulation`.
+    
+      **NOTE**: the above variables should be specified before the last line in ``Makefile: include $(LEVEL)/Makefile.common``.
 
-  * The ``config.tcl`` contains the project's configuration settings. Project parameters and constraints can be specified in this file as necessary. Please refer to the :ref:`constraints` page.
+  * ``config.tcl`` - this file contains the project's configuration settings. Project parameters and constraints can be specified in this file as necessary. Please refer to the :ref:`constraints` page.
 
-* **sw**: compile and run the program in software on your host machine.  The compilation step is skipped if no change is detected in source/header files, ``Makefile`` and ``config.tcl``.
+sw
+  Compile and run the program in software on your host machine.  The compilation step is skipped if no change is detected in source/header files, ``Makefile`` and ``config.tcl``.
 
-  * **sw_compile**: compile the program in software, the output is an executable file (``hls_output/.hls/<NAME>.sw_binary``).
+sw_compile
+  Compile the program in software, the output is an executable file (``hls_output/.hls/<NAME>.sw_binary``).
 
-  * **sw_run**: run the compiled executable (``hls_output/.hls/<NAME>.sw_binary``) on your host machine.
+sw_run
+  Run the compiled executable (``hls_output/.hls/<NAME>.sw_binary``) on your host machine.
 
-* **hw** (default): compile the software to hardware, the output is a set of Verilog HDL file (the HLS-generated IP core is in ``hls_output/rtl/<NAME>.v``, with additional RTL IP sub-modules named ``hls_output/rtl/<NAME>_*.v``).
+hw (default)
+  Compile the software to hardware, the output is a set of Verilog HDL file (the HLS-generated IP core is in ``hls_output/rtl/<NAME>.v``, with additional RTL IP sub-modules named ``hls_output/rtl/<NAME>_*.v``).
 
-* **cosim**: run :ref:`sw_hw_cosimulation` to verify the generated circuit.
+cosim
+  Run :ref:`sw_hw_cosimulation` to verify the generated circuit.
 
-  * **cosim_wave**: same as above but with ModelSim waveform.
+cosim_wave
+  Same as ``cosim`` but with ModelSim waveform.
 
-* **sim**: simulate the generated hardware in ModelSim (for an input software that has no top-level function specified, which is uncommon).
+sim
+  Simulate the generated hardware in ModelSim (for an input software that has no top-level function specified, which is uncommon).
 
-  * **wave**: same as above but with ModelSim waveform.
+wave
+  Same as above but with ModelSim waveform.
 
-* **fpga**: synthesize the generated hardware to target FPGA. This runs RTL synthesis and place-and-route for resource and timing results.
+fpga
+  Synthesize the generated hardware to target FPGA. This runs RTL synthesis and place-and-route for resource and timing results.
 
-* **rtl_synth**: run RTL synthesis for resource results. This will take less time than **fpga**.
+rtl_synth
+  Run RTL synthesis for resource results. This will take less time than **fpga**.
 
-* **scheduleviewer**: Show the scheduler viewer.
+scheduleviewer
+  Show the scheduler viewer.
 
-* **clean**: Delete files generated by SmartHLS.
+clean
+  Delete files generated by SmartHLS.
 
-* **precompile_modelsim_libs**: Recompile ModelSim libraries. This command only needs to be run once from any SmartHLS project directory after you change the ModelSim version.
+precompile_modelsim_libs
+  Recompile ModelSim libraries. This command only needs to be run once from any SmartHLS project directory after you change the ModelSim version.
 
 .. Commands for the hybrid flow:
 ..   * **hybrid**: Run the hybrid flow.

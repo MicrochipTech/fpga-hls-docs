@@ -572,6 +572,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="../pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license_setup.html">Setup SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 </ul>
@@ -644,6 +645,12 @@ display:none;
   <div class="section" id="set-project">
 <span id="id1"></span><h1>set_project<a class="headerlink" href="#set-project" title="Permalink to this headline">¶</a></h1>
 <p>This parameter sets the default target project, or device, used. Changing the project also updates the associated family and board parameters.</p>
+<p>This parameter has 3 arguments:</p>
+<ul class="simple">
+<li><p>FPGA Family (e.g. PolarFire).</p></li>
+<li><p>FPGA Device: This can either be the board name (e.g. MPF300), or the device number (e.g. MPF300TS-1FCG1152I).</p></li>
+<li><p>Flow: Right now, only <code class="docutils literal notranslate"><span class="pre">hw_only</span></code> is supported.</p></li>
+</ul>
 <div class="section" id="category">
 <h2>Category<a class="headerlink" href="#category" title="Permalink to this headline">¶</a></h2>
 <p>Board and Device Specification</p>
@@ -658,7 +665,7 @@ display:none;
 </div>
 <div class="section" id="default-value">
 <h2>Default Value<a class="headerlink" href="#default-value" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">CycloneV</span> <span class="pre">DE1-SoC</span> <span class="pre">Tiger_SDRAM</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
 </div>
 <div class="section" id="location-where-default-is-specified">
 <h2>Location Where Default is Specified<a class="headerlink" href="#location-where-default-is-specified" title="Permalink to this headline">¶</a></h2>
@@ -678,15 +685,11 @@ display:none;
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">CycloneV</span> <span class="pre">DE1-SoC</span> <span class="pre">Tiger_SDRAM</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">CycloneV</span> <span class="pre">DE1-SoC</span> <span class="pre">ARM_Simple_Hybrid_System</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">CycloneV</span> <span class="pre">SoCKit</span> <span class="pre">ARM_Simple_Hybrid_System</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">CycloneIV</span> <span class="pre">DE2-115</span> <span class="pre">Tiger_SDRAM</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">CycloneII</span> <span class="pre">DE2</span> <span class="pre">Tiger_SDRAM</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">CycloneII</span> <span class="pre">CycloneIIAuto</span> <span class="pre">Tiger_SDRAM</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">StratixV</span> <span class="pre">DE5-Net</span> <span class="pre">Tiger_DDR3</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">StratixIV</span> <span class="pre">DE4-230</span> <span class="pre">Tiger_DDR2</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">StratixIV</span> <span class="pre">DE4-530</span> <span class="pre">Tiger_DDR2</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300T-1FCG1152I</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">FUTUREM2SF</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">M2S025T-FG484I</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">IGLOO2</span> <span class="pre">M2GL005-1FG484</span> <span class="pre">hw_only</span></code></p>
 <hr class="docutils" />
 </div>
 </div>

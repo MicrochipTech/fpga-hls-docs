@@ -5,6 +5,12 @@ set_project
 
 This parameter sets the default target project, or device, used. Changing the project also updates the associated family and board parameters.
 
+This parameter has 3 arguments:
+
+* FPGA Family (e.g. PolarFire).
+* FPGA Device: This can either be the board name (e.g. MPF300), or the device number (e.g. MPF300TS-1FCG1152I).
+* Flow: Right now, only ``hw_only`` is supported.
+
 Category
 +++++++++
 
@@ -23,7 +29,7 @@ See Examples
 Default Value
 ++++++++++++++
 
-``CycloneV DE1-SoC Tiger_SDRAM``
+``PolarFire MPF300 hw_only``
 
 Location Where Default is Specified
 +++++++++++++++++++++++++++++++++++
@@ -48,23 +54,15 @@ Actively in-use
 Examples
 +++++++++
 
-``set_project CycloneV DE1-SoC Tiger_SDRAM``
+``set_project PolarFire MPF300 hw_only``
 
-``set_project CycloneV DE1-SoC ARM_Simple_Hybrid_System``
+``set_project PolarFire MPF300T-1FCG1152I hw_only``
 
-``set_project CycloneV SoCKit ARM_Simple_Hybrid_System``
+``set_project SmartFusion2 FUTUREM2SF hw_only``
 
-``set_project CycloneIV DE2-115 Tiger_SDRAM``
+``set_project SmartFusion2 M2S025T-FG484I hw_only``
 
-``set_project CycloneII DE2 Tiger_SDRAM``
-
-``set_project CycloneII CycloneIIAuto Tiger_SDRAM``
-
-``set_project StratixV DE5-Net Tiger_DDR3``
-
-``set_project StratixIV DE4-230 Tiger_DDR2``
-
-``set_project StratixIV DE4-530 Tiger_DDR2``
+``set_project IGLOO2 M2GL005-1FG484 hw_only``
 
 --------------------------------------------------------------------------------
 
