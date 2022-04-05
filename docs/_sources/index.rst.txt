@@ -58,13 +58,13 @@ The following table describes each document shipped with SmartHLS.
      - Frequently asked questions
    * - :ref:`release`
      - New features and known problems with each release	 
+   * - :ref:`techsupport`
+     - How to create tech support cases and post to our forum
 
 	 
-For example applications using SmartHLS, see our `GitHub <https://github.com/MicrochipTech/fpga-hls-examples>`__ 
+For detailed trainings on using SmartHLS and example applications, see our `GitHub Examples <https://github.com/MicrochipTech/fpga-hls-examples>`__ 
 repository.
 
-Technical support is available through the website at: `www.microchip.com/support <http://www.microchip.com/support>`__	 
-	 
 .. toctree::
    :caption: User Guide Versions
    :hidden: 
@@ -80,6 +80,7 @@ Technical support is available through the website at: `www.microchip.com/suppor
 
    releasenotes   
    gettingstarted
+   techsupport
 
 
 .. toctree::

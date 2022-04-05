@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Getting Started &mdash; SmartHLS 2021.3.1 documentation</title>
+  <title>Getting Started &mdash; SmartHLS 2022.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -479,6 +479,8 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
   
   
 
@@ -507,7 +509,7 @@ display:none;
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="User Guide" href="userguide.html" />
+    <link rel="next" title="Technical Support" href="techsupport.html" />
     <link rel="prev" title="Release Notes" href="releasenotes.html" /> 
 </head>
 
@@ -519,7 +521,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1  </span>
 
 										  </h1>
 								
@@ -575,6 +577,7 @@ display:none;
 <li class="toctree-l2"><a class="reference internal" href="#quick-start-tutorial">Quick Start Tutorial</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
@@ -586,7 +589,7 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
@@ -661,14 +664,14 @@ display:none;
 <span id="getstarted"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="license-setup">
 <h2>License Setup<a class="headerlink" href="#license-setup" title="Permalink to this headline">¶</a></h2>
-<p>First, you will need to <a class="reference internal" href="license_setup.html#license-setup"><span class="std std-ref">Setup SmartHLS License</span></a>.</p>
+<p>First, you will need to setup <a class="reference internal" href="license_setup.html#license-setup"><span class="std std-ref">SmartHLS License</span></a>.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS supports Windows 10 and Linux (CentOS 7).</p>
 <div class="section" id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
-<p>Run the Windows installer program, <code class="docutils literal notranslate"><span class="pre">SmartHLS-2021.3.1-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
+<p>Run the Windows installer program, <code class="docutils literal notranslate"><span class="pre">SmartHLS-2022.1-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
 </div>
 <div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
@@ -677,12 +680,12 @@ display:none;
 <p>The CentOS installer is packaged as a self-extracting shell script that can be installed to a local
 directory. To run the installer:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>
-sh /path/to/smarthls-2021.3.1-centos-installer.run
+sh /path/to/smarthls-2022.1-centos-installer.run
 </pre></div>
 </div>
 <p>This will install SmartHLS into the INSTALLATION_DIRECTORY.  After the
 installation is completed, please add the SmartHLS bin directory to your path:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/smarthls-2021.3.1/smarthls/bin:<span class="nv">$PATH</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/smarthls-2022.1/smarthls/bin:<span class="nv">$PATH</span>
 </pre></div>
 </div>
 </div>
@@ -702,7 +705,7 @@ Please note that the first time you simulate a generated hardware block with a f
 </div>
 <div class="section" id="quick-start-tutorial">
 <span id="quick-start"></span><h2>Quick Start Tutorial<a class="headerlink" href="#quick-start-tutorial" title="Permalink to this headline">¶</a></h2>
-<p>Please refer to our <cite>SmartHLS Tutorial for Microsemi PolarFire: Sobel Filtering for Image Edge Detection &lt;https://www.microsemi.com/document-portal/doc_download/1245532-legup-hls-tutorial&gt;</cite> on how to use some of the major features and optimization techniques of SmartHLS.</p>
+<p>Please refer to our <a class="reference external" href="https://www.microsemi.com/document-portal/doc_download/1245532-legup-hls-tutorial">SmartHLS Tutorial for Microsemi PolarFire: Sobel Filtering for Image Edge Detection</a> on how to use some of the major features and optimization techniques of SmartHLS.</p>
 </div>
 </div>
 

@@ -1,0 +1,378 @@
+.. highlight:: c
+
+.. _hwarch:
+
+Hardware Architecture
+======================
+
+This section describes the hardware architecture produced by SmartHLS.
+
+Circuit Topology
+----------------
+
+Each C/C++ function corresponds to a hardware module in Verilog.
+For instance, if we have a software program with the following call graph:
+
+.. image:: /images/hwarch_callgraph.*
+        :scale: 50 %
+        :align: center
+
+where ``main`` calls ``a``, ``b``, and ``d``, each of which calls ``c``, ``c``, and ``e``, respectively.
+Notice that function ``c`` is called by both ``a`` and ``b``.
+One way to create this system in hardware is to instantiate one module within
+another module, in a nested hierarchy, following how the functions are called in software:
+
+.. image:: /images/circuit_arch_nested.*
+        :scale: 75 %
+        :align: center
+
+This architecture is employed by some of the other HLS tools, but it can create an unnecessary
+replication of hardware. Notice how module ``c`` has to be created twice, since the function ``c`` is called from different parent functions.
+In SmartHLS, we instantiate all modules at the same level of hierarchy, and automatically create the necessary interconnect
+to connect them together.
+
+.. image:: /images/circuit_arch_flat.*
+        :align: center
+
+This prevents modules from being unnecessarily replicated, saving area.
+The hardware system may also use a functional unit (denoted as ``FU`` in the figure),
+such as a floating-point unit, which is also created at the same level.
+This architecture also allows such units, which typically consume a lot of area,
+to be shared between different modules.
+
+.. NOTE::
+
+        For a small function, or for a function that is only called once in software, SmartHLS may decide to ``inline`` the function into its parent function to improve performance.
+        Any inlined function is included as part of its parent function, so there will not be a separate module in the Verilog for the inlined function.
+        Thus you may not find all the software functions in the generated hardware.
+
+
+Threaded Hardware Modules
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When threads are used in software, SmartHLS automatically compiles them to concurrently executing modules.
+This is synonymous to how multiple threads are compiled to execute on multiple processor cores in software.
+By default, each thread in software becomes an independent hardware module.
+For example, forking three threads of function ``a`` in software creates three concurrently executing instances of module ``a`` in hardware.
+
+.. _mem_arch:
+
+Memory Architecture
+--------------------
+
+SmartHLS stores any arrays (local or global) and global variables in a memory.
+We describe below what type of memories they are, as well as where the
+memories are stored.
+
+.. In SmartHLS, there exists four hierarchies of memories: 1) Local memory, 2) shared-local memory, 3) aliased memory, and 4) processor memory.
+In SmartHLS, there exists four hierarchies of memories: 1) Local memory, 2) shared-local memory, 3) aliased memory, and 4) I/O memory.
+Local, shared-local, and aliased memories exist in the generated hardware.
+I/O memories are data that are inputs/output to/from the generated hardware. They exist outside of the generated hardware (SmartHLS does not instantiate memories for them), where top-level memory interfaces are created for them.
+
+.. Any data that is only accessed by an accelerator is stored on the accelerator side.
+.. Any data that is only accessed by the processor, or is shared between multiple accelerators,
+.. or is shared between an accelerator and the processor, is stored in processor memory.
+.. The processor memory consists of an off-chip memory and on-chip cache.
+.. The processor and all hardware accelerators have access to the on-chip cache.
+.. For the processor-accelerator hybrid architecture, see the `ARM Processor-Accelerator Hybrid Architecture`_ section below.
+
+
+Local Memory
+^^^^^^^^^^^^^^^^^
+
+SmartHLS uses points-to analysis to determine which memories are used by which
+functions. If a memory is determined to be used by a single function, where the function
+is to be compiled to hardware, that array is implemented as a local memory. A
+local memory is created and connected directly inside the module that accesses it.
+
+Local memories have a latency of 1 clock cycle by default. The local memory latency can be changed with the :ref:`set_operation_latency` Tcl parameter.
+
+Shared-Local Memory
+^^^^^^^^^^^^^^^^^^^
+
+If a memory is accessed by multiple functions, where all the functions that access it are
+to be compiled to hardware, the memory is designated as a shared-local memory. A shared-local memory is
+instantiated outside the modules (at the same level of hierarchy as the modules themselves, as shown for functions and FU in the diagram above),
+and memory ports are created for the modules to connect to the memory. Arbitration
+is automatically created to handle contention for a shared-local memory.
+SmartHLS automatically optimizes the arbitration logic, so that if the modules that
+access the memory are executing sequentially, a simple ``OR`` gate is used for arbitration
+(which consumes only a small amount of area), but if the accessing modules are
+executing concurrently (with the use of ``hls::thread``), a round-robin arbiter is automatically created to handle contention.
+
+Shared-local memories have a latency of 1 clock cycle. The shared-local memory latency can be changed with the :ref:`set_operation_latency` Tcl parameter.
+
+Aliased Memory
+^^^^^^^^^^^^^^^^^
+
+There can be cases where a pointer can point to multiple arrays, causing pointer aliasing.
+These pointers need to be resolved at runtime. We designate the memories that such a pointer can refer to as
+aliased memories, which are stored in a memory controller (described below).
+A memory controller contains all memories that can alias to each other, and
+allows memory accesses to be steered to the correct memory at runtime.
+There can be multiple memory controllers in a system, each containing a set of memories that alias to each other.
+
+Aliased memories have a latency of 2 clock cycles. The aliased memory latency can be changed with the :ref:`set_operation_latency` Tcl parameter.
+
+Memory Controller
+~~~~~~~~~~~~~~~~~
+
+The purpose of the memory controller is to automatically resolve pointer
+ambiguity at runtime.
+The memory controller is only created if there are aliased memories.
+The architecture of the memory controller is shown below:
+
+.. image:: /images/memory_controller.*
+        :align: center
+
+For clarity, some of the signals are combined together in the figure.
+Even though the figure depicts a single-ported memory, all memories
+are dual-ported by default, unless only a single memory access is needed per cycle, in which case it will be single-ported memory.
+The memory controller steers memory accesses to the correct RAM, by using a tag,
+which is assigned to each aliased memory by SmartHLS. At runtime, the tag is used to determine which memory block to enable,
+with all other memory blocks disabled. The same tag is used to select the correct output data between all memory blocks.
+
+.. Processor Memory
+.. ^^^^^^^^^^^^^^^^^
+
+    The processor memory consists of the on-chip cache and off-chip memory in the processor-accelerator hybrid flow.
+    Any memories which are accessed by functions running on the processor are stored
+    in off-chip memory and can be brought into the on-chip cache during program execution.
+    Memories that are shared between multiple accelerators are also stored in this shared memory space.
+    In case of aliased memories, if a pointer that aliases points to a memory that is accessed by the processor, then all of the memories that the pointer
+    aliases to are stored in this shared memory space.
+
+
+.. _io_memory:
+
+I/O Memory
+^^^^^^^^^^^^^^^^^
+Any memory that is accessed by both the software testbench (parent functions of the top-level function) and hardware functions (the top-level functions and its descendants)
+becomes an I/O memory. These are any non-constant arguments for top-level function or global variables that are accessed by both the software testbench and hardware functions.
+I/O memories become memory interfaces of the top-level module for the generated hardware, where no actual memories are instantiated within the generated hardware for them.
+For more information on interfaces, please refer to :ref:`rtl_interface`.
+
+
+Memory Implementation
+^^^^^^^^^^^^^^^^^
+
+By default, each local, shared-local, and aliased memories are stored in a separate dual-ported on-chip RAM, where each RAM allows two accesses per clock cycle.
+All local memories can be accessed in parallel. All shared-local memories can be
+accessed concurrently when there are no accesses to same memory in the same clock cycle.
+If there are concurrent accesses to the same RAM, arbitration logic handles the contention automatically and stalls the appropriate modules.
+All independent memory controllers can also be accessed in parallel, but aliased memories which
+belong to the same memory controller will be accessed sequentially.
+
+Memory Optimizations
+~~~~~~~~~~~~~~~~~~~~
+
+SmartHLS automatically stores each single-element global variable (non-array) in a set of registers, rather than a block RAM,
+to reduce memory usage and improve performance.
+A block RAM has a minimum read latency of 1 clock cycle, where a register
+can be read in the same clock cycle (0 cycle latency).
+For small arrays, SmartHLS may decide to split them up and store individual elements in separate registers.
+This allows all elements to be accessed at the same time.
+If an array is accessed in a loop, and the loop is unrolled, SmartHLS also may decide to split up the array.
+
+If only up to a single memory accessed is needed per cycle for a memory, SmartHLS will instantiate a single-ported RAM, otherwise a dual-ported RAM will be used.
+If a memory is only ever read from, SmartHLS will convert the memory to a read-only memory (ROM), even if the corresponding array is not declared as a constant in software.
+If a memory is not accessed at all, SmartHLS will automatically optimize away the memory.
+
+.. For constant arrays, which are stored in read-only memories (ROM), the user can choose to
+    replicate them for each function that accesses them.
+    This can be beneficial when the constant array is accessed frequently by multiple threads (in ``hls::thread``/OpenMP).
+    By creating a dedicated memory for each thread, it localizes the
+    memory to each thread, making the constant array a local memory of each threaded module.
+    This can improve performance by reducing stalls due to contention, and also save the resource of
+    arbitration logic. This feature can be enabled with the ``Replicate ROM to each accessing module`` constraint in SmartHLS.
+
+    The figure below shows an example architecture with ``hls::thread`` modules and all of the memories that we have described for a hardware-only system.
+    The ``main`` function forks two threads of function ``d``, hence two instances of ``d`` are created.
+    ``main``, ``d0``, and ``d`` all execute in parallel, and they share the
+    memory controller, shared-local memories 0 and 1, a register
+    module, as well as a hardware lock module. The hardware lock module is automatically created when a mutex is used in software.
+    All arbitration logic shown are round-robin arbiters, as all of the modules execute in parallel.
+    A local memory that is used only by ``main`` is instantiated inside the module, and ``d0`` and ``d1`` have replicated constant memories instantiated inside.
+
+
+    .. image:: /images/architecture_with_all_memories.*
+        :align: center
+
+
+
+
+Interfaces
+-----------
+
+Please refer to the :ref:`rtl_interface` section for a detailed description on the interfaces that are created by SmartHLS.
+
+.. comment
+    SmartHLS generates a number different interfaces for functions and memories.
+    For instance, if we have the following C prototypes::
+
+    int FunctionA(int a, int *mem, hls<int>FIFO &fifo);
+    void FunctionB(FIFO<char> &fifo);
+
+    where FunctionA calls FunctionB, with a FIFO being written to in FunctionA and read from in FunctionB,
+    SmartHLS can generate the following module interfaces.
+
+    .. code-block:: v
+
+    module FunctionA (
+        // default interface
+        input clk,
+        input reset,
+        input start,
+        output reg finish,
+        input memory_controller_waitrequest,
+
+        // for return value
+        output reg [31:0] return_val,
+
+        // for argument
+        input [31:0] arg_a,
+
+        // for calling FunctionB
+        output FunctionB_start,
+        input FunctionB_finish,
+
+        // for accessing mem pointer
+        output reg [7:0] mem_address_a,
+        output reg  mem_enable_a,
+        output reg  mem_write_enable_a,
+        output reg [31:0] mem_in_a,
+        input [31:0] mem_out_a,
+        output reg [7:0] mem_address_b,
+        output reg  mem_enable_b,
+        output reg  mem_write_enable_b,
+        output reg [31:0] mem_in_b,
+        input [31:0] mem_out_b,
+
+        // for writing to fifo
+        input fifo_ready_from_sink,
+        output fifo_valid_to_sink,
+        output [31:0] fifo_data_to_sink
+    )
+
+    module FunctionB (
+        // default interface
+        input clk,
+        input reset,
+        input start,
+        output reg finish,
+        input memory_controller_waitrequest,
+
+        // for reading from fifo
+        input fifo_ready_to_source,
+        output fifo_valid_from_source,
+        output [31:0] fifo_data_from_source
+    )
+
+    As seen above, each module contains a number of default interface signals, ``clk``, ``reset``, ``start,`` and ``finish``.
+    The start/reset signals are used by the first state of the state machine:
+
+    .. image:: /images/first_state.*
+        :align: center
+
+    The finish signal is kept low until the last state of the state machine, where
+    finish is set to 1. The ``memory_controller_waitrequest`` signal is the stall signal for the module, which when asserted,
+    stalls the entire module.
+
+    Since FunctionA has a return type of ``int``, it has a 32-bit ``return_val`` output.
+
+    Each scalar argument becomes an input to the module. The ``int a`` argument creates the 32-bit ``arg_a`` input.
+
+    In the C program, FunctionA calls FunctionB, hence SmartHLS creates handshaking signals between the two modules.
+    When the output signal ``FunctionB_start`` is asserted, FunctionB starts executing. FunctionA then waits until
+    the input signal ``FunctionB_finish`` is asserted. This is in line with the sequential executing behavior of software.
+    However, when threads are used, the caller module continues to execute after forking its threaded modules.
+
+    In FunctionA, memory signals for the ``mem`` pointer argument are also shown. In this case,
+    mem is designated as a shared-local memory and created outside the module, hence memory ports are created to access the memory.
+    Two ports are created for the memory to allow two accesses per clock cycle.
+    Note that if a pointer is passed into a function, but SmartHLS determines that the array the pointer refers to is only accessed
+    by the function, the memory will be designated as a local memory and be instantiated within the module (removing the need for memory ports).
+
+    The following memory signals are shown:
+
+    ==================  =============================
+    Memory Signal Type  Description
+    ==================  =============================
+    address             Address of memory.
+    enable              1 if reading or writing in this clock cycle
+    write_enable        1 for write, 0 for read
+    in                  Data being read from memory
+    out                 Data being written to memory
+    ==================  =============================
+
+    The width of the address bus is determined by the depth of the memory.
+
+    The ``fifo`` argument is given to both FunctionA and FunctionB, where FunctionA writes to the FIFO and FunctionB reads from the FIFO.
+    SmartHLS currently does not allow the same function to both write to and read from the same FIFO.
+    In this case, the sink (reader) is FunctionB and the source (writer) is FunctionA.
+
+    ==================  =============================
+    FIFO Signal Type    Description
+    ==================  =============================
+    ready               Indicates whether the sink is ready to receive data
+    valid               Indicates whether this data is valid
+    data                Data being sent
+    ==================  =============================
+
+    Register Interface
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    If a memory is a single element (a single-element global variable or an array with a single element), SmartHLS will simply the memory interface to a register interface.
+    A register interface has the following signals:
+
+    ====================  =============================
+    Register Signal Type  Description
+    ====================  =============================
+    write_enable          1 for write
+    readdata              Data being read
+    writedata             Data being written
+    ====================  =============================
+
+    If the single-element memory is only ever read from (read-only), SmartHLS will further simply the interface by default to the following:
+
+    ====================  =============================
+    Register Signal Type  Description
+    ====================  =============================
+    readdata              Data being read
+    ====================  =============================
+
+    If the single-element memory is only ever written to (write-only), SmartHLS will simply the interface by default to the following:
+
+    ====================  =============================
+    Register Signal Type  Description
+    ====================  =============================
+    write_enable          1 for write
+    writedata             Data being written
+    ====================  =============================
+
+    If the single-element memory is only ever written to (write-only),
+    and the user only wants the writedata port at the top-level, user can use ``set_argument_interface_type <arg_name> wire -always_valid`` Tcl command. This will create the following port at the top-level:
+
+    ====================  =============================
+    Register Signal Type  Description
+    ====================  =============================
+    writedata             Data being written
+    ====================  =============================
+
+    User may want the written data to be stored and held constant when written to the top-level interface.
+    If the single-element memory is only ever written to (write-only), user can use ``set_argument_interface_type <arg_name> register`` Tcl command.
+    This will instantiate a register inside the top-level module where the single-element will be written to and stored, and the output of the register will be connected to the top-level interface, so that the data outputted is held constant.
+    The top-level will only have the following port:
+
+    ====================  =============================
+    Register Signal Type  Description
+    ====================  =============================
+    writedata             Data being written
+    ====================  =============================
+
+
+    AXI Slave Interface (Beta)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    SmartHLS currently provides Beta support for AXI Slave Interface. Please refer to the user guide for more details.
+
+
+

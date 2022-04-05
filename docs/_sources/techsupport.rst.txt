@@ -1,0 +1,40 @@
+.. :tocdepth: 3
+
+.. _techsupport:
+
+Technical Support
+==================================
+
+Create a Tech Support Case
+-----------------------------------
+
+.. note::
+
+   You will need to have an active myMicrochip account to submit a technical support case in Microchip’s technical
+   support system.  If you are new to myMicrochip please sign up at: https://www.microchip.com/wwwregister/RegisterStep1.aspx.
+
+If you encounter a SmartHLS bug or issue, please follow the steps below to create a SmartHLS customer tech support case:
+
+#. Navigate to http://www.microchip.com/support.
+#. Click **Log In**. You will be redirected to microchip.com to verify your username and password.
+#. Upon successful validation, you will be directed back to the support site. Click **My Cases**.
+#. Click **New Case** on the **My Cases** page.
+#. Select **Development Tools**.
+#. Click **Next**.
+#. Select **FPGA SW Tools** from the **Category** drop-down list.
+#. Select **FPGA HLS SW** from the **Sub-Category** drop-down list.
+#. Please put SmartHLS in your **Subject** and provide other relevant details such as the **Primary Target Device**.
+#. Click **Next**.
+#. Provide additional description of your issue. Click **Next**.
+#. Let us know the stage of your project and how urgent this issue is to you. This will help us prioritize your case.
+#. Click **Submit** to finish case creation.
+#. Please upload your SmartHLS project files or C++ code. We highly recommend
+   that you provide us with a SmartHLS code snippet to help us reproduce your
+   issue. Then click **Done** to attach the files to your case. Otherwise, if you have
+   no more info to provide to us, click **Skip**.
+
+SmartHLS Forum
+---------------
+
+You can post questions or issues publicly to our community on the `Microchip SmartHLS Forum <https://www.microchip.com/forums/f559.aspx>`_.
+The SmartHLS team actively monitors the forum.

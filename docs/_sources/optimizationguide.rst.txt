@@ -3,7 +3,7 @@
 .. _optimizationguide:
 
 Optimization Guide
-=================
+==================
 
 This chapter describes how to optimize the generated hardware through software code changes and SmartHLS pragmas/constraints.
 
@@ -379,7 +379,7 @@ If the loop is completely unrolled, the loop disappears, hence you cannot pipeli
 This prevents the loop from being unrolled.
 
 Function Pipelining
-----------------
+---------------------
 
 Similar to loop pipelining, when a function is specified to be pipelined, SmartHLS will automatically inline all of its descendant functions, and unroll all loops (in the specified function as well as in all of its descendant functions).
 This is done to create a high-performance pipelined hardware.
@@ -412,7 +412,7 @@ As there is also a loop in ``c`` that will be completely unrolled (in each copy 
 Hence for function pipelining, one should examine the program before pipelining a function that has many descendant functions or loops.
 
 Memory Partitioning
-----------------
+---------------------
 
 Memory Partitioning is an optimization where aggregate types such as arrays and structs are partitioned into smaller pieces
 allowing for a greater number of reads and writes (accesses) per cycle. SmartHLS instantiates a RAM for each aggregate
@@ -760,7 +760,7 @@ This will force SmartHLS to register the value, ``val``, and any operations that
     We will improve and stablize this feature in the later releases. Please contact us if you require more details about this feature.
 
 Inferring a Shift Register
-------------
+---------------------------
 
 A shift register is an efficient hardware unit that is composed of a chain of registers that are connected from one to the next.
 It allows data to be continuously shifted from one register to its adjacent register.
@@ -815,7 +815,7 @@ the shift register loop will automatically be unrolled and the unroll pragma is 
 .. _line_buffer_opt_guide:
 
 Inferring a Line Buffer
-------------
+---------------------------
 
 A line buffer is used to buffer a line of pixels of an image or a video frame, in order to keep data around and reduce the overall required memory bandwidth.
 It is useful for image/video processing applications, where an image/video pixel is continuously streamed in and processed.
@@ -955,7 +955,7 @@ The line buffers are also updated --- ``prev_rows[0]`` takes in the new pixel an
 
 
 Inferring Streaming Hardware via Producer-Consumer Pattern with Threads
-----------------------------------------------------------------
+--------------------------------------------------------------------------
 
 The producer-consumer pattern is a well-known concurrent programming paradigm.
 It typically comprises a finite-size buffer and two classes of threads, a producer and a

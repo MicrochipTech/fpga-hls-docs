@@ -40,7 +40,7 @@ Frequently Asked Questions
 
   See: :ref:`devices`
 
-**How can I get support?**
+**How can I get technical support?**
 
-  Please create a tech support case at `microchipsupport.force.com/s/ <https://microchipsupport.force.com/s/>`_
-  or post a question on the Microchip forum at `www.microchip.com/forums/f559.aspx <https://www.microchip.com/forums/f559.aspx>`_.
+  See: :ref:`techsupport`
+

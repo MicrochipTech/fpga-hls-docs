@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Setup SmartHLS License &mdash; SmartHLS 2021.3.1 documentation</title>
+  <title>SmartHLS License &mdash; SmartHLS 2022.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -479,6 +479,8 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
   
   
 
@@ -519,7 +521,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1  </span>
 
 										  </h1>
 								
@@ -562,6 +564,7 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
@@ -573,7 +576,11 @@ display:none;
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup SmartHLS License</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SmartHLS License</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#when-is-the-license-checked">When is the License Checked?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
@@ -627,7 +634,7 @@ display:none;
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Setup SmartHLS License</li>
+      <li>SmartHLS License</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -644,8 +651,10 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="setup-smarthls-license">
-<span id="license-setup"></span><h1>Setup SmartHLS License<a class="headerlink" href="#setup-smarthls-license" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="smarthls-license">
+<span id="license-setup"></span><h1>SmartHLS License<a class="headerlink" href="#smarthls-license" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <p>Please follow the below instructions to generate and install SmartHLS tool license:</p>
 <ol class="arabic simple">
 <li><p>Log into <a class="reference external" href="https://www.microchipdirect.com/fpga-software-products?_ga=2.64389999.1724603044.1642798569-550376685.1606760895">Microchip Direct &gt; FPGA Software and IP Core Products</a>.</p></li>
@@ -673,10 +682,21 @@ the SmartHLS tool, you need to add the SmartHLS license file contents into the
 Libero node locked license file.</p></li>
 <li><p>Double check that your <code class="docutils literal notranslate"><span class="pre">LM_LICENSE_FILE</span></code> environment variable is set correctly.</p></li>
 </ol>
-<p>Note: If you have not yet installed the license for the Libero Design Suite Software, refer to
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have not yet installed the license for the Libero Design Suite Software, refer to
 <a class="reference external" href="https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/licensing">https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/licensing</a> or
 your Libero license file email for instructions on how to download and install
 your Libero license and software.</p>
+</div>
+</div>
+<div class="section" id="when-is-the-license-checked">
+<h2>When is the License Checked?<a class="headerlink" href="#when-is-the-license-checked" title="Permalink to this headline">¶</a></h2>
+<p>SmartHLS does not check the license when opening the SmartHLS IDE or when running the standard software flow (compiling/debugging/execution).</p>
+<p>SmartHLS will check for a valid license when <code class="docutils literal notranslate"><span class="pre">Compile</span> <span class="pre">Software</span> <span class="pre">to</span> <span class="pre">Hardware</span></code> is clicked to compile software to hardware:</p>
+<img alt="_images/icon_hardware_flow.png" class="align-center" src="_images/icon_hardware_flow.png" />
+<p>SmartHLS will also check for a valid license whenever running <cite>shls</cite> commands from the <a class="reference internal" href="userguide.html#cmdline"><span class="std std-ref">SmartHLS Command Line Interface</span></a>.</p>
+</div>
 </div>
 
 

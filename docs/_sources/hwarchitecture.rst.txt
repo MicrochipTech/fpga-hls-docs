@@ -65,6 +65,7 @@ We describe below what type of memories they are, as well as where the
 memories are stored.
 
 .. In SmartHLS, there exists four hierarchies of memories: 1) Local memory, 2) shared-local memory, 3) aliased memory, and 4) processor memory.
+
 In SmartHLS, there exists four hierarchies of memories: 1) Local memory, 2) shared-local memory, 3) aliased memory, and 4) I/O memory.
 Local, shared-local, and aliased memories exist in the generated hardware.
 I/O memories are data that are inputs/output to/from the generated hardware. They exist outside of the generated hardware (SmartHLS does not instantiate memories for them), where top-level memory interfaces are created for them.
@@ -154,7 +155,7 @@ For more information on interfaces, please refer to :ref:`rtl_interface`.
 
 
 Memory Implementation
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 By default, each local, shared-local, and aliased memories are stored in a separate dual-ported on-chip RAM, where each RAM allows two accesses per clock cycle.
 All local memories can be accessed in parallel. All shared-local memories can be

@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>User Guide &mdash; SmartHLS 2021.3.1 documentation</title>
+  <title>User Guide &mdash; SmartHLS 2022.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -479,6 +479,8 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
   
   
 
@@ -508,7 +510,7 @@ display:none;
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Optimization Guide" href="optimizationguide.html" />
-    <link rel="prev" title="Getting Started" href="gettingstarted.html" /> 
+    <link rel="prev" title="Technical Support" href="techsupport.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -519,7 +521,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1  </span>
 
 										  </h1>
 								
@@ -562,6 +564,7 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
 <ul class="current">
@@ -657,6 +660,7 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#specifying-a-custom-test-bench">Specifying a Custom Test Bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synthesize-hardware-to-fpga">Synthesize Hardware to FPGA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#report-files">Report Files</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-report">SmartHLS Report</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rtl-interface-section">RTL Interface Section</a></li>
@@ -666,6 +670,7 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#simulation-and-rtl-synthesis-place-route-report">Simulation and RTL Synthesis, Place &amp; Route Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logic-level-distribution">Logic Level Distribution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#schedule-viewer">Schedule Viewer</a><ul>
@@ -683,6 +688,7 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#synthesis-macro"><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#makefile-variables">Makefile Variables</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
@@ -692,7 +698,7 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
@@ -807,10 +813,10 @@ display:none;
 <h2>SmartHLS Overview<a class="headerlink" href="#smarthls-overview" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS accepts a C/C++ software program as input and automatically generates hardware described in Verilog HDL (hardware description language) that can be programmed onto a Microchip FPGA.
 The generated hardware can be imported as an HDL+ component into SmartDesign with a Tcl script that is also generated by SmartHLS.</p>
-<img alt="_images/smarthls_flow.png" src="_images/smarthls_flow.png" />
+<img alt="_images/smarthls_flow.png" class="align-center" src="_images/smarthls_flow.png" />
 <p>In a software program, user first needs to specify a top-level function (during project creation in the SmartHLS IDE or in the source code with our pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">top</span> <span class="pre">&lt;function_name&gt;</span></code> ). Please refer to the <a class="reference internal" href="#custom-top-level"><span class="std std-ref">Specifying the Top-level Function</span></a> section for more details specifying the top-level function.</p>
 <p>Then the following button, <code class="docutils literal notranslate"><span class="pre">Compile</span> <span class="pre">Software</span> <span class="pre">to</span> <span class="pre">Hardware</span></code> can be clicked to compile software to hardware:</p>
-<a class="reference internal image-reference" href="_images/icon_hardware_flow.png"><img alt="_images/icon_hardware_flow.png" class="align-center" src="_images/icon_hardware_flow.png" style="width: 195.0px; height: 39.0px;" /></a>
+<img alt="_images/icon_hardware_flow.png" class="align-center" src="_images/icon_hardware_flow.png" />
 <p>This will compile the top-level function and all of its descendant functions into hardware.
 The rest of the program (outside the top-level function) is considered as the software testbench, to give inputs into the top-level function and verify outputs from the top-level function (and its descendants).
 The software testbench is used to automatically generate the RTL testbench and stimulus for <a class="reference internal" href="#sw-hw-co-simulation">SW/HW Co-Simulation</a>.</p>
@@ -835,7 +841,7 @@ Whereas pragmas are applied directly on the source code for optimizations that a
 constraints are used for settings that will be globally applied to the entire program (i.e., setting the target FPGA, target clock period).
 Each project specifies its constraints in the <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> file in the project directory.
 This file is automatically generated by the SmartHLS IDE. To modify the constraints, click the <code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">Constraints</span></code> button:</p>
-<a class="reference internal image-reference" href="_images/icon_constraints.png"><img alt="_images/icon_constraints.png" class="align-center" src="_images/icon_constraints.png" style="width: 174.75px; height: 48.0px;" /></a>
+<img alt="_images/icon_constraints.png" class="align-center" src="_images/icon_constraints.png" />
 <p>The following window will open:</p>
 <a class="reference internal image-reference" href="_images/empty_constraint_setting_window.png"><img alt="_images/empty_constraint_setting_window.png" class="align-center" src="_images/empty_constraint_setting_window.png" style="width: 600.0px; height: 380.25px;" /></a>
 <p>You can add, edit, or remove constraints from this window.
@@ -884,11 +890,11 @@ desired functions.
 There are two ways to specify the top-level function.
 The first way is to specify it during project creation in the SmartHLS IDE, as shown below.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="_images/top_level_project_creation.png"><img alt="_images/top_level_project_creation.png" class="align-center" src="_images/top_level_project_creation.png" style="width: 408.8px; height: 394.40000000000003px;" /></a>
+<div><img alt="_images/top_level_project_creation.png" class="align-center" src="_images/top_level_project_creation.png" />
 </div></blockquote>
 <p>This will save the top-level function constraint into the <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>. After creating the project, if you open up the <code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">Constraints</span></code> window, the top-level function should show there.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="_images/top_level_constraints_dialog.png"><img alt="_images/top_level_constraints_dialog.png" class="align-center" src="_images/top_level_constraints_dialog.png" style="width: 707.4px; height: 442.8px;" /></a>
+<div><img alt="_images/top_level_constraints_dialog.png" class="align-center" src="_images/top_level_constraints_dialog.png" />
 </div></blockquote>
 <p>You can edit or remove the function from this window.</p>
 <p>Alternatively, the top-level function can also be specified with the pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">top</span></code>, directly on the source code, below the function prototype, as shown below:</p>
@@ -936,17 +942,17 @@ Arguments into the top-level function can be constants, pointers, arrays, and FI
 The top-level function can also have a return value.
 Please refer to the included example in the SmartHLS IDE, <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">Canny</span> <span class="pre">Edge</span> <span class="pre">Detection</span> <span class="pre">(SW/HW</span> <span class="pre">Co-Simulation)</span></code>, as a reference.</p>
 <p>If a top-level argument is coming from a dynamically allocated array (e.g., malloc), the size of the array (in bytes) must be specified with our <code class="docutils literal notranslate"><span class="pre">interface</span></code> pragma (e.g., <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">depth(&lt;int&gt;)</span></code>).
-Please see the <a class="reference internal" href="pragmas_docs/interface_memory_argument.html#pragma-interface-memory-argument"><span class="std std-ref">Configure Argument as Memory Interface</span></a> for more details. The sizes of arrays that are statically allocated do not need to be specified with the pragma, as SmartHLS will automatically determine them.</p>
+Please see the <a class="reference internal" href="pragmas.html#pragma-interface-memory-argument"><span class="std std-ref">Configure Argument as Memory Interface</span></a> for more details. The sizes of arrays that are statically allocated do not need to be specified with the pragma, as SmartHLS will automatically determine them.</p>
 <p>For debugging purposes, SmartHLS converts any C <code class="docutils literal notranslate"><span class="pre">printf</span></code>
 statements into Verilog <code class="docutils literal notranslate"><span class="pre">$write</span></code> statements so that values printed during
 software execution will also be printed during hardware simulation. This
 allows easy verification of the correctness of the hardware circuit.  Verilog
 <code class="docutils literal notranslate"><span class="pre">$write</span></code> statements are unsynthesizable and will not affect the final FPGA
 hardware.</p>
-<p>To specify the arguments to be passed to the software testbench (i.e., <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code>), a Makefile argument <code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span></code> can be defined in a <code class="docutils literal notranslate"><span class="pre">makefile.user</span></code> file (you need to create the file in the SmartHLS project folder).
+<p>To specify the arguments to be passed to the software testbench (i.e., <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code>), a Makefile argument <code class="docutils literal notranslate"><span class="pre">PROGRAM_ARGUMENTS</span></code> can be defined in a <code class="docutils literal notranslate"><span class="pre">makefile.user</span></code> file (you need to create the file in the SmartHLS project folder).
 For example, if a software testbench takes in two arguments, an input BMP file and a golden output BMP file, you would specify the following in the <code class="docutils literal notranslate"><span class="pre">makefile.user</span></code> file,</p>
 <blockquote>
-<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">MAIN_INPUT_ARGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_file</span><span class="p">.</span><span class="n">bmp</span><span class="w"> </span><span class="n">golden_output_file</span><span class="p">.</span><span class="n">bmp</span><span class="w"></span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PROGRAM_ARGUMENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_file</span><span class="p">.</span><span class="n">bmp</span><span class="w"> </span><span class="n">golden_output_file</span><span class="p">.</span><span class="n">bmp</span><span class="w"></span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -1127,7 +1133,7 @@ In the example, the <code class="docutils literal notranslate"><span class="pre"
 </div>
 <p>The corresponding hardware is illustrated in the figure below.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="_images/FIR_Pthreads_schematic.png"><img alt="_images/FIR_Pthreads_schematic.png" src="_images/FIR_Pthreads_schematic.png" style="width: 408.8px; height: 57.6px;" /></a>
+<img alt="_images/FIR_Pthreads_schematic.png" src="_images/FIR_Pthreads_schematic.png" />
 </div>
 <p>The two hls::FIFO&lt;int&gt;s in the C++ code corresponds to the creation of the two FIFOs, where the bit-width is set according to the type shown in the constructor argument &lt;int&gt;.
 The three <code class="docutils literal notranslate"><span class="pre">hls::thread&lt;void&gt;</span></code> calls initiate and parallelize the executions of three computational tasks, where each task is passed in a FIFO (or a pointer to a struct containing more than one FIFO pointers) as its argument.</p>
@@ -1237,7 +1243,7 @@ type where each RAM has up to two ports (allowing up to two reads/writes per cyc
 smaller memories or into its individual elements allows for more accesses per cycle and improves memory bandwidth.</p>
 <p>There are two flavors of memory partitioning, access-based partitioning and user-specified partitioning.</p>
 <div class="section" id="access-based-memory-partitioning">
-<h3>Access-Based Memory Partitioning<a class="headerlink" href="#access-based-memory-partitioning" title="Permalink to this headline">¶</a></h3>
+<span id="access-based-partitioning"></span><h3>Access-Based Memory Partitioning<a class="headerlink" href="#access-based-memory-partitioning" title="Permalink to this headline">¶</a></h3>
 <p>Access-based partitioning is automatically applied to all memories except for those at the top-level interfaces (<a class="reference internal" href="hwarchitecture.html#io-memory"><span class="std std-ref">I/O Memory</span></a>).
 This flavor of memory partitioning will analyze the ranges of all accesses to a memory and create partitions based on
 these accesses. After analyzing all memory accesses, independent partitions will be implemented in independent memories.
@@ -1287,11 +1293,11 @@ partitioning. The aliased memories will not be partitioned.</p></li>
 <div class="section" id="user-specified-memory-partitioning">
 <h3>User-Specified Memory Partitioning<a class="headerlink" href="#user-specified-memory-partitioning" title="Permalink to this headline">¶</a></h3>
 <p>User-specified partitioning can be achieved with the <code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span></code> pragma .
-User-specified partitioning is where the user explicitly specifies a memory to be partitioned via the <code class="docutils literal notranslate"><span class="pre">memory</span> <span class="pre">partition</span></code> pragma (#pragma HLS memory partition variable, #pragma HLS memory partition argument). See <span class="xref std std-ref">_pragma_memory_partition_argument</span> and <a class="reference internal" href="pragmas_docs/memory_partition_variable.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> for more details.
+User-specified partitioning is where the user explicitly specifies a memory to be partitioned via the <code class="docutils literal notranslate"><span class="pre">memory</span> <span class="pre">partition</span></code> pragma (#pragma HLS memory partition variable, #pragma HLS memory partition argument). See <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> for more details.
 User-specified partitioning also analyzes accesses but partitions based on a predefined structure and array dimension.
 There are two user-specified partitioning types supported by SmartHLS: <cite>Complete</cite> and <cite>Struct-fields</cite>.</p>
 <div class="section" id="complete-partitioning">
-<h4>Complete Partitioning<a class="headerlink" href="#complete-partitioning" title="Permalink to this headline">¶</a></h4>
+<span id="complete-memory-partitioning"></span><h4>Complete Partitioning<a class="headerlink" href="#complete-partitioning" title="Permalink to this headline">¶</a></h4>
 <p>Complete partitioning partitions memories based on a user-specified dimension. Memories are then partitioned completely on the specified dimension,
 which means the memory is partitioned into individual elements of the specified array dimension. More information on the pragmas can be found in the
 pragma references linked above. Unaccessed sections of the original memory are also discarded.</p>
@@ -1356,11 +1362,11 @@ partitioning.</p></li>
 <p>Please refer to the <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a> for more examples and details.</p>
 </div>
 <div class="section" id="struct-fields-partitioning">
-<h4>Struct-Fields Partitioning<a class="headerlink" href="#struct-fields-partitioning" title="Permalink to this headline">¶</a></h4>
+<span id="struct-fields-memory-partitioning"></span><h4>Struct-Fields Partitioning<a class="headerlink" href="#struct-fields-partitioning" title="Permalink to this headline">¶</a></h4>
 <p>Struct-fields partitioning partitions a (array of) struct argument / variable into its individual fields such that each field is a partition.
 Unlike complete partitioning, if a field in the partitioned struct is an aggregate type (struct or array), the field is not further partitioned to its elements.
-Note that applying Struct-fields partitining to  an array-of-struct creates an array for each field in the struct.
-Unaccessed paritions (fields) are discarded, but the Unaccessed elements in an aggreagte partition (field) are not be discarded.</p>
+Note that applying Struct-fields partitioning to  an array-of-struct creates an array for each field in the struct.
+Unaccessed partitions (fields) are discarded, but the Unaccessed elements in an aggreagte partition (field) are not be discarded.</p>
 <p><strong>Example</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ty</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">struct</span> <span class="nc">SubTy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
@@ -1469,16 +1475,32 @@ It returns <code class="docutils literal notranslate"><span class="pre">UpdateRe
 </pre></div>
 </div>
 <div class="section" id="struct-packing">
-<h3>Struct Packing<a class="headerlink" href="#struct-packing" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h3>Struct Packing<a class="headerlink" href="#struct-packing" title="Permalink to this headline">¶</a></h3>
 <p>Packing a <code class="docutils literal notranslate"><span class="pre">struct</span></code> creates a single scalar with a wide word width.
 All the <code class="docutils literal notranslate"><span class="pre">struct</span></code> members are placed in the scalar with their order in the <code class="docutils literal notranslate"><span class="pre">struct</span></code> definition such that the first element is the least significant part of the vector and the last element is the most significant part of the vector.
 Packing allows all the <code class="docutils literal notranslate"><span class="pre">struct</span></code> elements to be read and written simultaneously.
 There are two packing options in SmartHLS: bit-packing and byte-packing. A pragma is specified for the argument / variable to be packed with the packing option.
 Note that packing an array of <code class="docutils literal notranslate"><span class="pre">struct</span></code> results in an array with each element as a wide-vector representing the packed <code class="docutils literal notranslate"><span class="pre">struct</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Struct packing supports casting a <code class="docutils literal notranslate"><span class="pre">struct</span></code> to another type only if the packed type is the same as the cast type.
+For example, the following code shows a supproted cast for <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">s</span></code> because packing the two <code class="docutils literal notranslate"><span class="pre">uint8_t</span></code> members is the same as <code class="docutils literal notranslate"><span class="pre">uint16_t</span></code>:</p>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">S</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="cp">#pragma HLS memory impl variable(s) pack(bit)</span>
+<span class="n">S</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="kt">uint16_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 <p><strong>Bit-Packing</strong></p>
 <p>Bit-packing uses the bit-width of each of element of the <code class="docutils literal notranslate"><span class="pre">struct</span></code>. In our example, <code class="docutils literal notranslate"><span class="pre">clients</span></code> argument can be bit-packed as following:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="cp">#pragma HLS memory impl argument(clients) pack(bit)</span>
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -1488,14 +1510,6 @@ Note that packing an array of <code class="docutils literal notranslate"><span c
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In this example, the <code class="docutils literal notranslate"><span class="pre">clients</span></code> argument of the top-level function <code class="docutils literal notranslate"><span class="pre">update</span></code> is also passed to the sub-function <code class="docutils literal notranslate"><span class="pre">find</span></code>.
-This implies that in the resulting RTL design, the corresponding module of <code class="docutils literal notranslate"><span class="pre">find</span></code> also needs to access the <code class="docutils literal notranslate"><span class="pre">clients</span></code> top-level interface.
-Therefore, to make the packed interface signals consistent throughout the design, we require the <code class="docutils literal notranslate"><span class="pre">pack</span></code> pragma to be added to all functions that access the packed top-level argument.
-That is, the <code class="docutils literal notranslate"><span class="pre">pack</span></code> pragma needs to be added to both the <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">update</span></code> functions in this example.
-If the <code class="docutils literal notranslate"><span class="pre">pack</span></code> pragma is not consistently added to all accessing functions, the packing may fail and a warning message will be displayed.</p>
 </div>
 <p>In the HLS summary report, the interface for <code class="docutils literal notranslate"><span class="pre">clients</span></code> has a data width of 134, which is the sum of the <code class="docutils literal notranslate"><span class="pre">id</span></code> (6-bits), <code class="docutils literal notranslate"><span class="pre">acc.checking</span></code> (64-bits), and <code class="docutils literal notranslate"><span class="pre">acc.savings</span></code> (64-bits). The following layout of packed <code class="docutils literal notranslate"><span class="pre">struct</span></code> follows the order of the fields such that the first field is the least significant part of the layout.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>|133 .......... 70|69 .......... 6|5 .. 0|
@@ -1525,7 +1539,6 @@ If the <code class="docutils literal notranslate"><span class="pre">pack</span><
 <p><strong>Byte-Packing</strong></p>
 <p>Byte-packing is similar to bit-packing except that each element of the <code class="docutils literal notranslate"><span class="pre">struct</span></code> is aligned to 8-bits. In our example, <code class="docutils literal notranslate"><span class="pre">clients</span></code> can be byte-packed as following:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="cp">#pragma HLS memory impl argument(clients) pack(byte)</span>
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -1564,7 +1577,6 @@ If the <code class="docutils literal notranslate"><span class="pre">pack</span><
 <p>For byte-packing, the interface can either use byte-enable to write individual fields or it can be a wide scalar as shown before.
 To use byte-enable signals, <code class="docutils literal notranslate"><span class="pre">byte_enable</span></code> parameter should be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> in the packing pragma:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">Client</span><span class="w"> </span><span class="n">clients</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">ap_uint</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="cp">#pragma HLS memory impl argument(clients) pack(byte) byte_enable(true)</span>
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -1808,6 +1820,52 @@ handshaking signals and the names will overlap.</p>
 <p class="admonition-title">Note</p>
 <p>Users should always use the APIs below to create and access FIFOs. Any other uses of FIFOs are not supported in SmartHLS.</p>
 </div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Class Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FIFO&lt;T&gt;</span> <span class="pre">()</span></code></p></td>
+<td><p>Create a new FIFO.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FIFO&lt;T&gt;</span> <span class="pre">(unsigned</span> <span class="pre">depth)</span></code></p></td>
+<td><p>Create a new FIFO with the specified depth.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Create a new FIFO with the specified depth and implementation type (only for Xilinx).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FIFO&lt;T&gt;</span> <span class="pre">(unsigned</span> <span class="pre">depth)</span></code></p></td>
+<td><p>Create a new FIFO with the specified depth and implementation type.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">write(T</span> <span class="pre">data)</span></code></p></td>
+<td><p>Write <code class="docutils literal notranslate"><span class="pre">data</span></code> to the FIFO.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">read()</span></code></p></td>
+<td><p>Read an element from the FIFO.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">empty()</span></code></p></td>
+<td><p>Returns 1 if the FIFO is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">full()</span></code></p></td>
+<td><p>Returns 1 if the FIFO is full.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Returns the number of elements in the FIFO.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">setDepth(unsigned</span> <span class="pre">depth)</span></code></p></td>
+<td><p>Set the FIFO’s depth.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Set the FIFO’s implementation type (only for Xilinx).</p></td>
+</tr>
+</tbody>
+</table>
 <p>An example code for using the streaming library is shown below.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// declare a 32-bit wide fifo</span>
 <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="o">&gt;</span><span class="w"> </span><span class="n">my_fifo</span><span class="p">;</span><span class="w"></span>
@@ -2045,7 +2103,7 @@ The <code class="docutils literal notranslate"><span class="pre">to_uint64()</sp
 and wrapping as necessary. Assigning an <code class="docutils literal notranslate"><span class="pre">ap_[u]int</span></code> wider than 64 bits to an <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code> would also wrap to match widths,
 without needing to call <code class="docutils literal notranslate"><span class="pre">to_uint64()</span></code>. The <code class="docutils literal notranslate"><span class="pre">to_int64()</span></code> function will return a 64 bit <code class="docutils literal notranslate"><span class="pre">signed</span> <span class="pre">long</span> <span class="pre">long</span></code> and will sign extend as necessary.</p>
 <p>An arbitrary precision integer data type can be casted to an arbitrary precision fixed-point data type with the <code class="docutils literal notranslate"><span class="pre">to_fixpt&lt;I_W&gt;()</span></code> and <code class="docutils literal notranslate"><span class="pre">to_ufixpt&lt;I_W&gt;()</span></code> functions (returns <code class="docutils literal notranslate"><span class="pre">ap_fixpt&lt;W,</span> <span class="pre">I_W&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">ap_ufixpt&lt;W,</span> <span class="pre">I_W&gt;</span></code> types respectively), with the same bits as the original <code class="docutils literal notranslate"><span class="pre">ap_[u]int&lt;W&gt;</span></code>.
-For more on the <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> template, please refer to the <span class="xref std std-ref">fixed_point_library</span> section.</p>
+For more on the <code class="docutils literal notranslate"><span class="pre">ap_[u]fixpt</span></code> template, please refer to the <a class="reference internal" href="#ap-fixpt"><span class="std std-ref">C++ Arbitrary Precision Fixed Point Library</span></a> section.</p>
 <p>An example demonstrating these functions is shown below.</p>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hls/ap_int.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hls/ap_fixpt.hpp&quot;</span><span class="cp"></span>
@@ -3316,7 +3374,7 @@ interface that has no address port and expects a 0-cycle read latency.</p>
 <p>The scalar memory interface is used by default for scalar pointer arguments and
 shared scalar global variables.
 Note that specifying an array / struct data type to be partitioned into individual
-elements using <cite>#pragma HLS memory partition</cite> (See <span class="xref std std-ref">_memory_partitioning</span> for details) can create scalar interfaces.
+elements using <cite>#pragma HLS memory partition</cite> (See <a class="reference internal" href="#memory-partitioning"><span class="std std-ref">Memory Partitioning</span></a> for details) can create scalar interfaces.
 The following example has an array interface <cite>array</cite> that is partitioned completely into 10 elements, each element is
 a scalar memory.</p>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">kernel</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -3827,6 +3885,34 @@ It can also be specified directly in the <code class="docutils literal notransla
 </div>
 <p>This constraint is also described in <a class="reference internal" href="constraintsmanual.html#set-custom-test-bench-module"><span class="std std-ref">set_custom_test_bench_module</span></a> and <a class="reference internal" href="constraintsmanual.html#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a>.</p>
 </div>
+<div class="section" id="synthesize-hardware-to-fpga">
+<h2>Synthesize Hardware to FPGA<a class="headerlink" href="#synthesize-hardware-to-fpga" title="Permalink to this headline">¶</a></h2>
+<p>SmartHLS can run Libero to report FPGA resource and timing information.
+There are two options for <code class="docutils literal notranslate"><span class="pre">Synthesize</span> <span class="pre">Hardware</span> <span class="pre">to</span> <span class="pre">FPGA</span></code>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>RTL synthesis only for resource results (faster runtime).</p></li>
+<li><p>RTL synthesis, place and route, for resource and timing results (slower runtime).</p></li>
+</ol>
+</div></blockquote>
+<p>The following synthesis settings are used by SmartHLS:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Enable Retiming: Yes</p></li>
+<li><p>Map ROM components to: RAM</p></li>
+<li><p>Additional options for Synplify: set_option -maxfan 30</p></li>
+</ul>
+</div></blockquote>
+<p>The following place and route settings are used by SmartHLS:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>High effort layout: Yes</p></li>
+</ul>
+</div></blockquote>
+<p>The Libero project will use block flow (-block_mode 1) to compile the generated IP core in isolation.</p>
+<p>For more details, see the following Tcl script that SmartHLS uses to run Libero synthesis, place and route:
+<code class="docutils literal notranslate"><span class="pre">C:\Microsemi\SmartHLS-2022.1\SmartHLS\examples\synthesize_microsemi.tcl</span></code></p>
+</div>
 <div class="section" id="report-files">
 <h2>Report Files<a class="headerlink" href="#report-files" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="smarthls-report">
@@ -4031,6 +4117,45 @@ call being close to the reported initiation interval of the pipelined function.
 For instance, the example report above is from a pipelined function with an
 initiation interval of 1, and we can see that the average cycle per call is
 very close to 1 (6,134/6,105).</p>
+</div>
+<div class="section" id="logic-level-distribution">
+<span id="id8"></span><h3>Logic Level Distribution<a class="headerlink" href="#logic-level-distribution" title="Permalink to this headline">¶</a></h3>
+<p>The number of levels of logic (or logic levels) in a design is an indication of
+how much combinatorial logic (e.g. LUTs, carry-chains) there is between registers
+(Flip-Flops). The more pipelined the design is, the lower the number of logic
+levels will be and higher frequencies may be achieved. However, more registers
+will be required. In general, having lower logic levels is a good practice
+specially when a design needs to run at higher frequencies.</p>
+<p>Different algorithm implementations, HLS #pragmas or even project settings will
+impact the number of logic levels differently. A logic level distribution plot
+can help you visualize the impact of those options and assess any tradeoffs.
+Considering the number of levels of logic early in the design flow allows easier
+modifications upfront rather than in later stages of the design during the more
+time-consuming place &amp; route and timing closure processes.</p>
+<p>The logic level distribution histogram can easily be generated from the command
+line by typing this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>shls rtl_synth
+shls logic_level_histogram
+</pre></div>
+</div>
+<p>The first command runs RTL synthesis, which is required before generating the
+logic level histogram. The second command will generate a timing analysis report
+from which the logic levels are extracted. As an example, for Part1 of the
+<a class="reference external" href="https://www.microsemi.com/document-portal/doc_download/1245532-legup-hls-tutorial">SmartHLS Sobel Tutorial</a>
+the histogram looks like this:</p>
+<a class="reference internal image-reference" href="_images/sobel_part1_logic_level_histogram.png"><img alt="_images/sobel_part1_logic_level_histogram.png" class="align-center" src="_images/sobel_part1_logic_level_histogram.png" style="width: 628.0px; height: 476.0px;" /></a>
+<dl class="simple">
+<dt>Two files are generated under the <code class="docutils literal notranslate"><span class="pre">hls_output/reports/</span></code> directory:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">logic_level_hist.ta.hist</span></code> - it is a plain text file that contains the raw
+histogram data. First column is the logic level, the second column is the
+number of paths in that level.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logic_level_hist.ta.png</span></code> - the plot file in <code class="docutils literal notranslate"><span class="pre">.png</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The plot shows a gradient from green (left) to red (right) indicating that it
+would be better for Place &amp; Route and timing purposes to have as many paths
+towards the left much as possible and minimize those with higher logic levels.</p>
 <p>The next two sections show the timing and resource usage results, parsed from
 Libero’s report files after running RTL Synthesis and Place &amp; Route.
 The target period is what you set in <a class="reference internal" href="#smarthls-constraints"><span class="std std-ref">SmartHLS Constraints</span></a>. If the <cite>Clock
@@ -4039,7 +4164,7 @@ family (see the table in <a class="reference internal" href="#smarthls-constrain
 </div>
 </div>
 <div class="section" id="schedule-viewer">
-<span id="id7"></span><h2>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h2>
 <p>The Schedule Viewer shows information on how the top-level function was scheduled in hardware by SmartHLS.
 This includes information on the flow of control between different functions and blocks of execution,
 as well as the cycle by cycle schedule of the operations in hardware.</p>
@@ -4061,12 +4186,12 @@ The Schedule Chart and Pipeline Viewer shows the scheduling of instructions with
 These assembly-like instructions are called <a class="reference external" href="https://llvm.org/docs/LangRef.html">LLVM intermediate representation (IR)</a>.
 Some understanding of the LLVM IR is beneficial when using the Schedule Viewer.</p>
 <p>For example, given the 32-bit code:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>result = a + b – 5
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This C++ code could be represented as instructions in LLVM IR as:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="mi">0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="o">%</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">%</span><span class="n">b</span><span class="w"></span>
-<span class="o">%</span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="o">%</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<div class="highlight-llvm notranslate"><div class="highlight"><pre><span></span><span class="nv nv-Anonymous">%0</span> <span class="p">=</span> <span class="k">add</span> <span class="kt">i32</span> <span class="nv">%a</span><span class="p">,</span> <span class="nv">%b</span>
+<span class="nv">%result</span> <span class="p">=</span> <span class="k">sub</span> <span class="kt">i32</span> <span class="nv nv-Anonymous">%0</span><span class="p">,</span> <span class="m">5</span>
 </pre></div>
 </div>
 <p>In LLVM IR, intermediate variables are prefixed with a “%”.
@@ -4078,10 +4203,10 @@ A basic block is a group of instructions that always run together with a single 
 A basic block in LLVM IR always has a label at the beginning and a branching instruction at the end (<code class="docutils literal notranslate"><span class="pre">br</span></code>, <code class="docutils literal notranslate"><span class="pre">ret</span></code>, etc.).
 Control flow occurs between basic blocks.</p>
 <p>Here the <code class="docutils literal notranslate"><span class="pre">body.0</span></code> basic block performs some operations and then branches unconditionally to another basic block labeled <code class="docutils literal notranslate"><span class="pre">body.1</span></code>.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">body</span><span class="mf">.0</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="o">%</span><span class="mi">0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="o">%</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">%</span><span class="n">b</span><span class="w"></span>
-<span class="w">  </span><span class="o">%</span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="o">%</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
-<span class="w">  </span><span class="n">br</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">%</span><span class="n">body</span><span class="mf">.1</span><span class="w"></span>
+<div class="highlight-llvm notranslate"><div class="highlight"><pre><span></span><span class="nl">body.0:</span>
+  <span class="nv nv-Anonymous">%0</span> <span class="p">=</span> <span class="k">add</span> <span class="kt">i32</span> <span class="nv">%a</span><span class="p">,</span> <span class="nv">%b</span>
+  <span class="nv">%result</span> <span class="p">=</span> <span class="k">sub</span> <span class="kt">i32</span> <span class="nv nv-Anonymous">%0</span><span class="p">,</span> <span class="m">5</span>
+  <span class="k">br</span> <span class="kt">label</span> <span class="nv">%body.1</span>
 </pre></div>
 </div>
 <p>All of the basic blocks and instructions shown in the Scheduler Viewer are directly from the LLVM IR optimized by SmartHLS before being compiled into Verilog.</p>
@@ -4195,7 +4320,7 @@ When SmartHLS generates the hardware, SmartHLS will also generate a <code class=
 script (under <code class="docutils literal notranslate"><span class="pre">hls_output/scripts</span></code> directory) to easily instantiate the
 SmartHLS-generated IP core into Libero SmartDesign.</p>
 <p>You will see the log message in the console which includes the full path to the script like this:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2021.3.1\workspace\sobel_part3\create_hdl_plus.tcl.
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating HDL+ Tcl script to be imported in SmartDesign: C:\SmartHLS-2022.1\workspace\sobel_part3\create_hdl_plus.tcl.
 </pre></div>
 </div>
 <p>Now we can use Libero to open a Libero project, create a new SmartDesign, and give the newly created SmartDesign a suitable name.
@@ -4205,7 +4330,7 @@ Alternatively, we can also open an existing SmartDesign.</p>
 the generated <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code> script as shown in the figures below. Then click <code class="docutils literal notranslate"><span class="pre">Run</span></code>.
 Running the Tcl script will add the SmartHLS-generated HDL+ component (<code class="docutils literal notranslate"><span class="pre">sobel_filter_top</span></code> in this example),
 all required Verilog files, memory initialization files, and other dependencies to the Libero project.</p>
-<a class="reference internal image-reference" href="_images/projects_execute_script.png"><img alt="_images/projects_execute_script.png" class="align-center" src="_images/projects_execute_script.png" style="width: 166.0px; height: 272.0px;" /></a>
+<a class="reference internal image-reference" href="_images/projects_execute_script.png"><img alt="_images/projects_execute_script.png" class="align-center" src="_images/projects_execute_script.png" style="width: 260.0px; height: 325.0px;" /></a>
 <a class="reference internal image-reference" href="_images/execute_script.png"><img alt="_images/execute_script.png" class="align-center" src="_images/execute_script.png" style="width: 385.0px; height: 142.0px;" /></a>
 <p>As shown in the figures below, we can now instantiate the component in SmartDesign by right-clicking on the HDL+ component
 (<code class="docutils literal notranslate"><span class="pre">sobel_filter_top</span></code> in this example) in the <code class="docutils literal notranslate"><span class="pre">Design</span> <span class="pre">Hiearchy</span></code> panel on the left and selecting <code class="docutils literal notranslate"><span class="pre">Instantiate</span> <span class="pre">in</span> <span class="pre">system</span></code>.
@@ -4247,7 +4372,7 @@ SmartHLS from a terminal, or from a user script for the purposes of automation.<
 </div>
 <p>SmartHLS comes with a bash script to provide autocompletion when using the command line on a Linux terminal.
 It can be sourced like this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> &lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/examples/scripts/utils/bash_autocomplete.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> &lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/examples/scripts/utils/autocomplete/bash_autocomplete.sh
 </pre></div>
 </div>
 <p>After that you can start typing <code class="docutils literal notranslate"><span class="pre">shls</span></code> plus a space, then hit the <code class="docutils literal notranslate"><span class="pre">&lt;TAB&gt;</span></code> key and a list of available commands
@@ -4272,9 +4397,9 @@ Header files should not be added to <code class="docutils literal notranslate"><
 If source files are created after <code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">init</span></code>, please update <code class="docutils literal notranslate"><span class="pre">SRCS</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">SRCS</span> <span class="pre">=</span> <span class="pre">foo.cpp</span> <span class="pre">bar.cpp</span></code>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NAME</span></code>: This variable stands for the project name, e.g., <code class="docutils literal notranslate"><span class="pre">NAME</span> <span class="pre">=</span> <span class="pre">MY_PROJECT</span></code>.  The default
 project name is the current directory name when <code class="docutils literal notranslate"><span class="pre">NAME</span></code> is not specified in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span></code>: This variable can be used to specify the arguments for the main() function,
+<li><p><code class="docutils literal notranslate"><span class="pre">PROGRAM_ARGUMENTS</span></code>: This variable can be used to specify the arguments for the main() function,
 which can be used for the software testbench (i.e., <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code>).
-Here is an example: <code class="docutils literal notranslate"><span class="pre">MAIN_INPUT_ARGS</span> <span class="pre">=</span> <span class="pre">input_file.bmp</span> <span class="pre">golden_output_file.bmp</span></code>.
+Here is an example: <code class="docutils literal notranslate"><span class="pre">PROGRAM_ARGUMENTS</span> <span class="pre">=</span> <span class="pre">input_file.bmp</span> <span class="pre">golden_output_file.bmp</span></code>.
 More details can be found in <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a>.</p></li>
 </ul>
 <p><strong>NOTE</strong>: the above variables should be specified before the last line in <code class="docutils literal notranslate"><span class="pre">Makefile:</span> <span class="pre">include</span> <span class="pre">$(LEVEL)/Makefile.common</span></code>.</p>
@@ -4313,7 +4438,7 @@ More details can be found in <a class="reference internal" href="#sw-hw-cosimula
 </div>
 </div>
 <div class="section" id="synthesis-macro">
-<span id="id8"></span><h2><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro<a class="headerlink" href="#synthesis-macro" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro<a class="headerlink" href="#synthesis-macro" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro is defined in SmartHLS during synthesis. This provides a convenient way to exclude non-synthesizable code without removing/commenting the code itself. In the folling example, the assertion header and statement are ignored during synthesis:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __SYNTHESIS__</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
@@ -4334,6 +4459,213 @@ More details can be found in <a class="reference internal" href="#sw-hw-cosimula
 <p class="admonition-title">Note</p>
 <p>While the <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro is useful to exclude debugging and system calls, it can change the results between the software and the synthesized Verilog if the excluded code changes the functionality. This can introduce errors or unexpected behaviour in simulation / co-simulation. Use the <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro carefully and make sure it does not change the functionality.</p>
 </div>
+</div>
+<div class="section" id="makefile-variables">
+<span id="makefile"></span><h2>Makefile Variables<a class="headerlink" href="#makefile-variables" title="Permalink to this headline">¶</a></h2>
+<p>There are several Makefile variables that the compiler flow uses to compile the program. The description of each of them are listed below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><div class="line-block">
+<div class="line">Variable</div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Description</div>
+<div class="line"><br /></div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">SRCS</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">SRCS</span></code> variable in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> should list all the source files (<code class="docutils literal notranslate"><span class="pre">.cpp</span></code> or <code class="docutils literal notranslate"><span class="pre">.c</span></code>).</div>
+<div class="line">Header files should not be added to <code class="docutils literal notranslate"><span class="pre">SRCS</span></code>, but should be properly included by the source files.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">init</span></code> will automatically add the file names for the existing source files in the current directory.</div>
+<div class="line">If source files are created after <code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">init</span></code>, please update <code class="docutils literal notranslate"><span class="pre">SRCS</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">SRCS</span> <span class="pre">=</span> <span class="pre">foo.cpp</span> <span class="pre">bar.cpp</span></code>).</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">NAME</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">NAME</span></code> variable stands for the project name, e.g., <code class="docutils literal notranslate"><span class="pre">NAME</span> <span class="pre">=</span> <span class="pre">MY_PROJECT</span></code>.</div>
+<div class="line">The default project name is the current directory name when <code class="docutils literal notranslate"><span class="pre">NAME</span></code> is not specified in <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">PROGRAM_ARGUMENTS</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">PROGRAM_ARGUMENTS</span></code> can be used to specify the arguments of the software testbench (i.e., <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code>).</div>
+<div class="line">Here is an example: <code class="docutils literal notranslate"><span class="pre">PROGRAM_ARGUMENTS</span> <span class="pre">=</span> <span class="pre">input_file.bmp</span> <span class="pre">golden_output_file.bmp</span></code>. More details can be found in <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">NUM_LIBERO_PnR_PASSES</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Defines the maximum number of Place and Route passes to go through in order to meet the timing requirement.</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">INPUT_FILES_RISCV</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Specifies the input files to the program to be copied to the development board, separated by a space.</div>
+<div class="line">The path used for the files should be based on the path on the development local machine.</div>
+<div class="line">For example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">INPUT_FILES_RISCV</span> <span class="pre">=</span> <span class="pre">lane3.avi</span> <span class="pre">lane3_golden.txt`</span></code></div>
+<div class="line">This will copy <code class="docutils literal notranslate"><span class="pre">lane3.avi</span></code> and <code class="docutils literal notranslate"><span class="pre">lane3_golden.txt</span></code> from the project folder to the Icicle board before running the program on board.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">OUTPUT_FILES_RISCV</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Specifies the output files of the program ran on the development board, separated by a space.</div>
+<div class="line">The path used for the files should be based on the path on the development board.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">OUTPUT_FILES_RISCV</span> <span class="pre">=</span> <span class="pre">output.avi</span> <span class="pre">output.txt</span></code> will copy <code class="docutils literal notranslate"><span class="pre">output.avi</span></code> and <code class="docutils literal notranslate"><span class="pre">output.txt</span></code></div>
+<div class="line">This will copy <code class="docutils literal notranslate"><span class="pre">output.avi</span></code> and <code class="docutils literal notranslate"><span class="pre">output.txt</span></code> from the the Icicle board to the project folder after running the program on board.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">USER_CXX_FLAG</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Additional flags used for compilation such as <code class="docutils literal notranslate"><span class="pre">-I</span></code>.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">USER_CXX_FLAG</span> <span class="pre">=</span> <span class="pre">-I$(OPENCV_PATH)/include/opencv4</span></code></div>
+<div class="line">The above compiler option will be added to all the compile command to include the OpenCV include directory.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">USER_CXX_FLAG_RISCV</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Additional flags used for compilation such as <code class="docutils literal notranslate"><span class="pre">-I</span></code>.</div>
+<div class="line">USER_CXX_FLAG_RISCV is defaulted to USER_CXX_FLAG. Defining USER_CXX_FLAG_RISCV will override the default, including when it is defined but empty.</div>
+<div class="line">User can define this flag for adding specific flags for compiling the binary running on the on-board RISCV processor.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">USER_CXX_FLAG_RISCV</span> <span class="pre">=</span> <span class="pre">-I$(OPENCV_PATH)/include/opencv4</span></code></div>
+<div class="line">The above compiler option will added to all the compile command to include the OpenCV include directory.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">USER_LINK_FLAG</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Flags for linking dynamic libraries such as <code class="docutils literal notranslate"><span class="pre">-L</span></code> and <code class="docutils literal notranslate"><span class="pre">-l</span></code>.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">USER_LINK_FLAG</span> <span class="pre">=</span> <span class="pre">-L$(FFMPEG_PATH)/lib</span> <span class="pre">-lavcodec</span></code></div>
+<div class="line">The above compiler option will link FFMPEG’s avcodec library.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">USER_LINK_FLAG_RISCV</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Flags for linking dynamic libraries such as <code class="docutils literal notranslate"><span class="pre">-L</span></code> and <code class="docutils literal notranslate"><span class="pre">-l</span></code>.</div>
+<div class="line">USER_LINK_FLAG_RISCV is defaulted to USER_LINK_FLAG. Defining USER_LINK_FLAG_RISCV will override the default, including when it is defined but empty.</div>
+<div class="line">User can define this flag for adding specific flags for linking the binary running on the on-board RISCV processor.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">USER_LINK_FLAG_RISCV</span> <span class="pre">=</span> <span class="pre">-L$(FFMPEG_PATH)/lib</span> <span class="pre">-lavcodec</span></code></div>
+<div class="line">The above compiler option will link FFMPEG’s avcodec library for the RISCV processor.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">USER_ENV_VARS</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Set the enviromnent variable used for running the program on development host.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">USER_ENV_VARS</span> <span class="pre">=</span> <span class="pre">LD_LIBRARY_PATH=$(OPENCV_PATH)/lib</span></code></div>
+<div class="line">The above compiler option will set <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> to <code class="docutils literal notranslate"><span class="pre">$(OPENCV_PATH)/lib</span></code> when running the program.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">USER_ENV_VARS_RISCV</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Set the enviromnent variable used for running the program on RISCV on the development board.</div>
+<div class="line">USER_ENV_VARS_RISCV is defaulted to USER_ENV_VARS. Defining USER_ENV_VARS_RISCV will override the default, including when it is defined but empty.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">USER_ENV_VARS_RISCV</span> <span class="pre">=</span> <span class="pre">LD_LIBRARY_PATH=$(OPENCV_PATH)/lib</span></code></div>
+<div class="line">The above compiler option will set <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> to <code class="docutils literal notranslate"><span class="pre">$(OPENCV_PATH)/lib</span></code> when running the program.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

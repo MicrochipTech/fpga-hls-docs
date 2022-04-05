@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Constraints Manual &mdash; SmartHLS 2021.3.1 documentation</title>
+  <title>Constraints Manual &mdash; SmartHLS 2022.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -479,6 +479,8 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
   
   
 
@@ -507,7 +509,7 @@ display:none;
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Setup SmartHLS License" href="license_setup.html" />
+    <link rel="next" title="SmartHLS License" href="license_setup.html" />
     <link rel="prev" title="SmartHLS Pragmas Manual" href="pragmas.html" /> 
 </head>
 
@@ -519,7 +521,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1  </span>
 
 										  </h1>
 								
@@ -562,6 +564,7 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
@@ -582,6 +585,18 @@ display:none;
 <li class="toctree-l3"><a class="reference internal" href="#set-synthesis-top-module-file">set_synthesis_top_module_file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#set-resource-constraint">set_resource_constraint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#set-operation-latency">set_operation_latency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-project">set_project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#category">Category</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#value-type">Value Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valid-values">Valid Values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#default-value">Default Value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#location-where-default-is-specified">Location Where Default is Specified</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#applicable-flows">Applicable Flows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-status">Test Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#debugging-constraints">Debugging Constraints</a><ul>
@@ -598,7 +613,7 @@ display:none;
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
@@ -686,6 +701,7 @@ This reference section explains the constraints available for SmartHLS.</p>
 <li><p>Set FPGA synthesis top-level file: <a class="reference internal" href="#set-synthesis-top-module-file"><span class="std std-ref">set_synthesis_top_module_file</span></a></p></li>
 <li><p>Set resource constraint: <a class="reference internal" href="#set-resource-constraint"><span class="std std-ref">set_resource_constraint</span></a></p></li>
 <li><p>Set operation latency: <a class="reference internal" href="#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a></p></li>
+<li><p>Set FPGA family and device: <a class="reference internal" href="#set-project"><span class="std std-ref">set_project</span></a></p></li>
 </ul>
 </div></blockquote>
 <p>A few debugging constraints are available from the SmartHLS IDE:</p>
@@ -732,7 +748,7 @@ supported (see table in <a class="reference internal" href="userguide.html#smart
 <span id="id2"></span><h3>set_custom_top_level_module<a class="headerlink" href="#set-custom-top-level-module" title="Permalink to this headline">¶</a></h3>
 <p>This Tcl command specifies the top-level C/C++ function.
 The top-level function and all of its descendant functions will be compiled to hardware.
-The top-level function can also be specified using a pragma (see <a class="reference internal" href="pragmas_docs/function_top.html#pragma-function-top"><span class="std std-ref">Set Custom Top-Level Function</span></a>),
+The top-level function can also be specified using a pragma (see <a class="reference internal" href="pragmas.html#pragma-function-top"><span class="std std-ref">Set Custom Top-Level Function</span></a>),
 but it cannot be specified using both the Tcl command and the pragma.</p>
 <p><strong>Category</strong></p>
 <p>HLS Constraints</p>
@@ -976,11 +992,62 @@ multipliers.</p>
 </div>
 <hr class="docutils" />
 </div>
+<div class="section" id="set-project">
+<span id="id9"></span><h3>set_project<a class="headerlink" href="#set-project" title="Permalink to this headline">¶</a></h3>
+<p>This parameter sets the default target project, or device, used. Changing the project also updates the associated family and board parameters.</p>
+<p>This parameter has 3 arguments:</p>
+<ul class="simple">
+<li><p>FPGA Family (e.g. PolarFire).</p></li>
+<li><p>FPGA Device: This can either be the board name (e.g. MPF300), or the device number (e.g. MPF300TS-1FCG1152I).</p></li>
+<li><p>Flow: Right now, only <code class="docutils literal notranslate"><span class="pre">hw_only</span></code> is supported.</p></li>
+</ul>
+<div class="section" id="category">
+<h4>Category<a class="headerlink" href="#category" title="Permalink to this headline">¶</a></h4>
+<p>Board and Device Specification</p>
+</div>
+<div class="section" id="value-type">
+<h4>Value Type<a class="headerlink" href="#value-type" title="Permalink to this headline">¶</a></h4>
+<p>String</p>
+</div>
+<div class="section" id="valid-values">
+<h4>Valid Values<a class="headerlink" href="#valid-values" title="Permalink to this headline">¶</a></h4>
+<p>See Examples</p>
+</div>
+<div class="section" id="default-value">
+<h4>Default Value<a class="headerlink" href="#default-value" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
+</div>
+<div class="section" id="location-where-default-is-specified">
+<h4>Location Where Default is Specified<a class="headerlink" href="#location-where-default-is-specified" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+</div>
+<div class="section" id="dependencies">
+<h4>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h4>
+<p>None</p>
+</div>
+<div class="section" id="applicable-flows">
+<h4>Applicable Flows<a class="headerlink" href="#applicable-flows" title="Permalink to this headline">¶</a></h4>
+<p>All devices and flows</p>
+</div>
+<div class="section" id="test-status">
+<h4>Test Status<a class="headerlink" href="#test-status" title="Permalink to this headline">¶</a></h4>
+<p>Actively in-use</p>
+</div>
+<div class="section" id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300T-1FCG1152I</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">FUTUREM2SF</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">M2S025T-FG484I</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">IGLOO2</span> <span class="pre">M2GL005-1FG484</span> <span class="pre">hw_only</span></code></p>
+<hr class="docutils" />
+</div>
+</div>
 </div>
 <div class="section" id="debugging-constraints">
 <h2>Debugging Constraints<a class="headerlink" href="#debugging-constraints" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="keep-signals-with-no-fanout">
-<span id="id9"></span><h3>KEEP_SIGNALS_WITH_NO_FANOUT<a class="headerlink" href="#keep-signals-with-no-fanout" title="Permalink to this headline">¶</a></h3>
+<span id="id10"></span><h3>KEEP_SIGNALS_WITH_NO_FANOUT<a class="headerlink" href="#keep-signals-with-no-fanout" title="Permalink to this headline">¶</a></h3>
 <p>If this parameter is enabled, all signals will be printed to the output Verilog
 file, even if they don’t drive any outputs.</p>
 <p><strong>Category</strong></p>
@@ -1006,7 +1073,7 @@ file, even if they don’t drive any outputs.</p>
 <hr class="docutils" />
 </div>
 <div class="section" id="vsim-assert">
-<span id="id10"></span><h3>VSIM_ASSERT<a class="headerlink" href="#vsim-assert" title="Permalink to this headline">¶</a></h3>
+<span id="id11"></span><h3>VSIM_ASSERT<a class="headerlink" href="#vsim-assert" title="Permalink to this headline">¶</a></h3>
 <p>When set to 1, this constraint causes assertions to be inserted in the Verilog
 produced by SmartHLS. This is useful for debugging the circuit to see where invalid
 values (X’s) are being assigned.</p>
@@ -1037,7 +1104,7 @@ values (X’s) are being assigned.</p>
 <h2>Advanced Constraints<a class="headerlink" href="#advanced-constraints" title="Permalink to this headline">¶</a></h2>
 <p>These are not available from the SmartHLS GUI.</p>
 <div class="section" id="latency-reduction">
-<span id="id11"></span><h3>LATENCY_REDUCTION<a class="headerlink" href="#latency-reduction" title="Permalink to this headline">¶</a></h3>
+<span id="id12"></span><h3>LATENCY_REDUCTION<a class="headerlink" href="#latency-reduction" title="Permalink to this headline">¶</a></h3>
 <p>The LATENCY_REDUCTION settings control the SmartHLS’ expression balancing
 optimization, of which the objective is to reduce the circuit latency.
 Below are the related settings,</p>
@@ -1112,7 +1179,7 @@ Below are the related settings,</p>
 <hr class="docutils" />
 </div>
 <div class="section" id="strength-reduction">
-<span id="id12"></span><h3>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction" title="Permalink to this headline">¶</a></h3>
+<span id="id13"></span><h3>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction" title="Permalink to this headline">¶</a></h3>
 <p>Strength reduction is an optimization that
 converts multiply-by-constant into shifts and additions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
@@ -1153,7 +1220,7 @@ converts multiply-by-constant into shifts and additions:</p>
 <hr class="docutils" />
 </div>
 <div class="section" id="strength-reduction-adders-allowed-per-multiplier">
-<span id="id13"></span><h3>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER<a class="headerlink" href="#strength-reduction-adders-allowed-per-multiplier" title="Permalink to this headline">¶</a></h3>
+<span id="id14"></span><h3>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER<a class="headerlink" href="#strength-reduction-adders-allowed-per-multiplier" title="Permalink to this headline">¶</a></h3>
 <p>Strength reduction is an optimization that
 converts multiply-by-constant into shifts and additions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
@@ -1194,7 +1261,7 @@ meaning strength reduction will not occur and SmartHLS will keep the multiplier.
 <hr class="docutils" />
 </div>
 <div class="section" id="use-fifo-for-pipeline-reg">
-<span id="id14"></span><h3>USE_FIFO_FOR_PIPELINE_REG<a class="headerlink" href="#use-fifo-for-pipeline-reg" title="Permalink to this headline">¶</a></h3>
+<span id="id15"></span><h3>USE_FIFO_FOR_PIPELINE_REG<a class="headerlink" href="#use-fifo-for-pipeline-reg" title="Permalink to this headline">¶</a></h3>
 <p>In a pipeline circuit where multiple stages of the circuit are concurrently
 active and processing different loop iterations (or function calls), <em>pipeline
 registers</em> are used to retain and propagate a variable value from the

@@ -2,8 +2,11 @@
 
 .. _license_setup:
 
-Setup SmartHLS License
+SmartHLS License
 ==================================
+
+Setup
+------
 
 Please follow the below instructions to generate and install SmartHLS tool license:
 
@@ -31,8 +34,22 @@ Please follow the below instructions to generate and install SmartHLS tool licen
     Libero node locked license file.
 #.  Double check that your ``LM_LICENSE_FILE`` environment variable is set correctly.
     
-Note: If you have not yet installed the license for the Libero Design Suite Software, refer to
-https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/licensing or
-your Libero license file email for instructions on how to download and install
-your Libero license and software.
+.. note::
 
+    If you have not yet installed the license for the Libero Design Suite Software, refer to
+    https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/licensing or
+    your Libero license file email for instructions on how to download and install
+    your Libero license and software.
+
+When is the License Checked?
+-----------------------------
+
+SmartHLS does not check the license when opening the SmartHLS IDE or when running the standard software flow (compiling/debugging/execution).
+
+SmartHLS will check for a valid license when ``Compile Software to Hardware`` is clicked to compile software to hardware:
+
+.. image:: /images/icon_hardware_flow.png
+        :align: center
+
+
+SmartHLS will also check for a valid license whenever running `shls` commands from the :ref:`cmdline`.

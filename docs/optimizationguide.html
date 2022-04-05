@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Optimization Guide &mdash; SmartHLS 2021.3.1 documentation</title>
+  <title>Optimization Guide &mdash; SmartHLS 2022.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -479,6 +479,8 @@ display:none;
 	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
   
   
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
   
   
 
@@ -519,7 +521,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2021.3.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1  </span>
 
 										  </h1>
 								
@@ -562,6 +564,7 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
 <ul class="current">
@@ -587,7 +590,7 @@ display:none;
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license_setup.html">Setup SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
@@ -678,7 +681,7 @@ Although SmartHLS will always try to achieve an II of 1, sometimes this is not p
 </pre></div>
 </div>
 <p>This example shows a nested loop, which performs an element-wise multiplication of two 2-dimensional arrays and accumulates the sum.
-The inner loop is specified with the <a class="reference internal" href="pragmas_docs/loop_pipeline.html#pragma-loop-pipeline"><span class="std std-ref">Pipeline Loop</span></a> pragma. SmartHLS will show message as below when compiling this code:</p>
+The inner loop is specified with the <a class="reference internal" href="pragmas.html#pragma-loop-pipeline"><span class="std std-ref">Pipeline Loop</span></a> pragma. SmartHLS will show message as below when compiling this code:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 61 of loop.c with label &quot;loop&quot;.
 Info: Done pipelining the loop on line 61 of loop.c with label &quot;loop&quot;.
     Pipeline Initiation Interval (II) = 1.
@@ -948,7 +951,7 @@ of the circuit resource constraints and the recurrences that exist in the loop.<
 </div>
 <div class="section" id="loop-unrolling">
 <h2>Loop Unrolling<a class="headerlink" href="#loop-unrolling" title="Permalink to this headline">¶</a></h2>
-<p>SmartHLS allows the user to specify a loop to be unrolled through the use of a pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span></code> (see <a class="reference internal" href="pragmas_docs/loop_unroll.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a>).</p>
+<p>SmartHLS allows the user to specify a loop to be unrolled through the use of a pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span></code> (see <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a>).</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="p">...</span><span class="w"></span>
@@ -1046,7 +1049,7 @@ contention, allowing the pipeline to achieve an II of 1.</p>
 </div>
 <p>In the above snippet, the array <code class="docutils literal notranslate"><span class="pre">data</span></code> is specified to be completely partitioned. By default,
 the partition dimension is set to 0. This means the memory will be partitioned into individual elements
-along the right-most dimension. The partition dimension can be changed with the optional <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter (see <a class="reference internal" href="pragmas_docs/memory_partition_variable.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a>).
+along the right-most dimension. The partition dimension can be changed with the optional <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter (see <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a>).
 SmartHLS will analyze the ranges of each accessing instruction to the array and create partitions only for the accessed elements.
 Unaccessed partitions are discarded.
 For user-specified partitioning, the accesses will be modified to be access the correct partition based
