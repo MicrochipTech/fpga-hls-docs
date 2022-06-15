@@ -52,10 +52,12 @@ The following table describes each document shipped with SmartHLS.
      - How to obtain a free license for SmartHLS
    * - :ref:`devices`
      - Supported FPGA devices
+   * - :ref:`libero`
+     - Supported Libero version
    * - :ref:`FAQ`
-     - SmartHLS Migration Guide
-   * - :ref:`vhls_to_shls`
      - Frequently asked questions
+   * - :ref:`vhls_to_shls`
+     - SmartHLS Migration Guide
    * - :ref:`release`
      - New features and known problems with each release	 
    * - :ref:`techsupport`
@@ -101,8 +103,11 @@ repository.
    constraintsmanual
    license_setup
    devices
+   libero
    faq
    vhls_to_shls
+   precompiled_sw
+   icicle_setup
 
 .. toctree::
    :caption: SmartHLS Examples   

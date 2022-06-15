@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>SmartHLS Pragmas Manual &mdash; SmartHLS 2022.1 documentation</title>
+  <title>SmartHLS Pragmas Manual &mdash; SmartHLS 2022.1.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -521,7 +521,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1.1  </span>
 
 										  </h1>
 								
@@ -583,10 +583,14 @@ display:none;
 <li class="toctree-l2"><a class="reference internal" href="#replicate-function">Replicate Function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pipeline-loop">Pipeline Loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#unroll-loop">Unroll Loop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-scalar-argument-interface">Configure Scalar Argument Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-argument-as-memory-interface">Configure Argument as Memory Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-global-variable-as-memory-interface">Configure Global Variable as Memory Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-global-as-axi4-interface">Configure Global as AXI4 Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-control-interface">Module Control Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scalar-argument-interface">Scalar Argument Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-interface-for-pointer-argument">Memory Interface for Pointer Argument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-interface-for-global-variable">Memory Interface for Global Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#axi4-initiator-interface-for-pointer-argument">AXI4 Initiator Interface for Pointer Argument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#axi4-target-interface-for-pointer-argument">AXI4 Target Interface for Pointer Argument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#legacy-axi4-slave-interface-for-global-variable">Legacy AXI4 Slave Interface for Global Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#default-all-interface-to-use-axi4-target">Default All Interface to Use AXI4 Target</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#partition-memory">Partition Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#partition-top-level-interface">Partition Top-Level Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#struct-variable-packing">Struct Variable Packing</a></li>
@@ -598,8 +602,11 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libero.html">Supported Libero version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -1002,27 +1009,66 @@ If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
 </div>
 <hr class="docutils" />
 </div>
-<div class="section" id="configure-scalar-argument-interface">
-<span id="pragma-interface-scalar-argument"></span><h2>Configure Scalar Argument Interface<a class="headerlink" href="#configure-scalar-argument-interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-control-interface">
+<span id="pragma-interface-module-control"></span><h2>Module Control Interface<a class="headerlink" href="#module-control-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(simple)</span> <span class="pre">stable(&lt;false|true&gt;)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">control</span> <span class="pre">type(&lt;simple|axi_target&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma configures the scalar input port.
-The <code class="docutils literal notranslate"><span class="pre">stable</span></code> option informs SmartHLS that the port can be held valid and unchanged throughout the whole
-iteration of the execution and potentially can save register usage in the
-generated module.
-Note that the <code class="docutils literal notranslate"><span class="pre">type</span></code> option is not configurable in the current release but
-still needs to be specified if you wish to add the stable option.
-If ‘stable’ is false, the pragma is not necessary because SmartHLS assumes not stable by default.
-More details in <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> section.</p>
+<p>This pragma configures the <a class="reference internal" href="userguide.html#module-control-interface"><span class="std std-ref">Module Control Interface</span></a>.</p>
+<p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 18%" />
+<col style="width: 15%" />
+<col style="width: 24%" />
 <col style="width: 11%" />
 <col style="width: 13%" />
-<col style="width: 41%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Optional</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
+<td><p>Interface type</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Position</strong></p>
+<p>At the beginning of the function definition block.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS interface control type(simple)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="scalar-argument-interface">
+<span id="pragma-interface-scalar-argument"></span><h2>Scalar Argument Interface<a class="headerlink" href="#scalar-argument-interface" title="Permalink to this headline">¶</a></h2>
+<p><strong>Syntax</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(&lt;simple|axi_target&gt;)</span> <span class="pre">stable(&lt;false|true&gt;)</span></code></p>
+<p><strong>Description</strong></p>
+<p>This pragma configures the RTL interface for a <a class="reference internal" href="userguide.html#scalar-arg-interface"><span class="std std-ref">Scalar Argument</span></a>.</p>
+<p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 18%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 55%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -1040,16 +1086,16 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 <td><p>Argument name</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></p></td>
 <td><p>No</p></td>
-<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
 <td><p>Interface type</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
 <td><p>Yes</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the argument is stable</p></td>
+<td><p>Only available for <code class="docutils literal notranslate"><span class="pre">simple</span></code> type, <code class="docutils literal notranslate"><span class="pre">true</span></code> if the argument is stable.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1057,6 +1103,7 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(simple) stable(true)</span>
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -1064,14 +1111,14 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 </div>
 <hr class="docutils" />
 </div>
-<div class="section" id="configure-argument-as-memory-interface">
-<span id="pragma-interface-memory-argument"></span><h2>Configure Argument as Memory Interface<a class="headerlink" href="#configure-argument-as-memory-interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="memory-interface-for-pointer-argument">
+<span id="pragma-interface-memory-argument"></span><h2>Memory Interface for Pointer Argument<a class="headerlink" href="#memory-interface-for-pointer-argument" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the memory interface type for an array/struct argument.
-The array size can be specified or overridden (over the declared size in C++) by specifying the <code class="docutils literal notranslate"><span class="pre">num_elements</span></code> option.
-More details in <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> section.</p>
+<p>This pragma specifies the memory interface type for a pointer (including array, struct, class types) argument.
+More details in <a class="reference internal" href="userguide.html#memory-interface"><span class="std std-ref">Memory Interface</span></a> section.</p>
+<p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table class="docutils align-default">
 <colgroup>
@@ -1114,6 +1161,7 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(memory) num_elements(100)</span>
 <span class="cp">#pragma HLS interface argument(b) type(memory)</span>
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
@@ -1122,14 +1170,14 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 </div>
 <hr class="docutils" />
 </div>
-<div class="section" id="configure-global-variable-as-memory-interface">
-<span id="pragma-interface-memory-variable"></span><h2>Configure Global Variable as Memory Interface<a class="headerlink" href="#configure-global-variable-as-memory-interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="memory-interface-for-global-variable">
+<span id="pragma-interface-memory-variable"></span><h2>Memory Interface for Global Variable<a class="headerlink" href="#memory-interface-for-global-variable" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the memory interface type for a shared array/struct global variable.
-The array size can be specified or overridden (over the declared size in C++) by specifying the <code class="docutils literal notranslate"><span class="pre">num_elements</span></code> option.
-More details in <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> section.</p>
+<p>This pragma specifies the memory interface type for a shared global variable.
+More details in <a class="reference internal" href="userguide.html#memory-interface"><span class="std std-ref">Memory Interface</span></a> section.</p>
+<p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table class="docutils align-default">
 <colgroup>
@@ -1181,17 +1229,159 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 </div>
 <hr class="docutils" />
 </div>
-<div class="section" id="configure-global-as-axi4-interface">
-<span id="pragma-interface-axi-slave-variable"></span><h2>Configure Global as AXI4 Interface<a class="headerlink" href="#configure-global-as-axi4-interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="axi4-initiator-interface-for-pointer-argument">
+<span id="pragma-interface-axi-initiator-argument"></span><h2>AXI4 Initiator Interface for Pointer Argument<a class="headerlink" href="#axi4-initiator-interface-for-pointer-argument" title="Permalink to this headline">¶</a></h2>
+<p><strong>Syntax</strong></p>
+<div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface argument(&lt;arg_name&gt;) type(axi_initiator) \</span>
+<span class="cp">                      ptr_addr_interface(&lt;simple|axi_target&gt;) num_elements(&lt;int&gt;)</span>
+</pre></div>
+</div>
+<p><strong>Description</strong></p>
+<p>This pragma specifies the AXI4 initiator interface type for a pointer (including array, struct, class types) argument.
+More details in <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface</span></a> section.</p>
+<p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 9%" />
+<col style="width: 4%" />
+<col style="width: 6%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Optional</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">argument</span></code></p></td>
+<td><p>String</p></td>
+<td><p>No</p></td>
+<td></td>
+<td><p>Argument name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">axi_initiator</span></code></p></td>
+<td><p>No</p></td>
+<td></td>
+<td><p>Interface type</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ptr_addr_interface</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
+<td><p>Specifies the interface type for setting the base address of the accessing memory. The default type is <code class="docutils literal notranslate"><span class="pre">simple</span></code> but is changed to <code class="docutils literal notranslate"><span class="pre">axi_target</span></code> if <a class="reference internal" href="#pragma-interface-default"><span class="std std-ref">Default All Interface to Use AXI4 Target</span></a> is set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Yes</p></td>
+<td></td>
+<td><p>Specifies the number of elements of the argument array. Can override the array size in the argument. Only needed by the <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> feature and does not affect HLS-generated RTL.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Position</strong></p>
+<p>At the beginning of the function definition block.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS interface argument(a) type(axi_initiator) ptr_addr_interface(axi_target) num_elements(100)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="axi4-target-interface-for-pointer-argument">
+<span id="pragma-interface-axi-target-argument"></span><h2>AXI4 Target Interface for Pointer Argument<a class="headerlink" href="#axi4-target-interface-for-pointer-argument" title="Permalink to this headline">¶</a></h2>
+<p><strong>Syntax</strong></p>
+<div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface argument(&lt;arg_name&gt;) type(axi_target) \</span>
+<span class="cp">                      num_elements(&lt;int&gt;) dma(true|false) requires_copy_in(true|false)</span>
+</pre></div>
+</div>
+<p><strong>Description</strong></p>
+<p>This pragma specifies the AXI4 target interface type for a pointer (including array, struct, class types) argument.
+More details in <a class="reference internal" href="userguide.html#pointer-arg-axi-target"><span class="std std-ref">AXI4 Target Interface</span></a> section.</p>
+<p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 13%" />
+<col style="width: 6%" />
+<col style="width: 5%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Optional</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">argument</span></code></p></td>
+<td><p>String</p></td>
+<td><p>No</p></td>
+<td></td>
+<td><p>Argument name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">axi_target</span></code></p></td>
+<td><p>No</p></td>
+<td></td>
+<td><p>Interface type</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Yes</p></td>
+<td></td>
+<td><p>Specifies the number of elements of the argument array. Can override the array size in the argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dma</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p><cite>false</cite></p></td>
+<td rowspan="2"><p>Specifies the transfer method and copy-in behaviour in the top-level driver function.
+See <a class="reference internal" href="userguide.html#ptr-arg-pragma-options"><span class="std std-ref">Top-level Driver Options in Pointer Arguments’ AXI4 Target Interface Pragma</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">requries_copy_in</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Position</strong></p>
+<p>At the beginning of the function definition block.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">101</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS interface argument(a) type(axi_target) num_elements(100) dma(true) requires_copy_in(false)</span>
+<span class="cp">#pragma HLS interface argument(b) type(axi_target)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="legacy-axi4-slave-interface-for-global-variable">
+<span id="pragma-interface-axi-slave-variable"></span><h2>Legacy AXI4 Slave Interface for Global Variable<a class="headerlink" href="#legacy-axi4-slave-interface-for-global-variable" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(axi_slave)</span> <span class="pre">concurrent_access(true|false)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies an AXI4 slave interface.
-When the <cite>concurrent_access</cite> option is set to true (default to false), the
+<p>This pragma specifies the legacy AXI4 slave interface for a global struct.
+When the <code class="docutils literal notranslate"><span class="pre">concurrent_access</span></code> option is set to true (default to false), the
 external logic can read/write the AXI4 slave interface while the SmartHLS module is
 running.  The concurrent access will however reduce the SmartHLS module’s
 throughput to access the memory.
-More details in <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> section.</p>
+More details in <a class="reference internal" href="userguide.html#global-variable-axi-slave"><span class="std std-ref">Legacy AXI4 Slave Interface</span></a> section.</p>
+<p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table class="docutils align-default">
 <colgroup>
@@ -1235,6 +1425,68 @@ More details in <a class="reference internal" href="userguide.html#rtl-interface
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(b) type(axi_slave) concurrent_access(true)</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="default-all-interface-to-use-axi4-target">
+<span id="pragma-interface-default"></span><h2>Default All Interface to Use AXI4 Target<a class="headerlink" href="#default-all-interface-to-use-axi4-target" title="Permalink to this headline">¶</a></h2>
+<p><strong>Syntax</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">default</span> <span class="pre">type(axi_target)</span></code></p>
+<p><strong>Description</strong></p>
+<p>This pragma specifies the default interface to AXI4 target for all arguments and <a class="reference internal" href="userguide.html#module-control-interface"><span class="std std-ref">module control</span></a>.</p>
+<p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Optional</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">axi_target</span></code></p></td>
+<td><p>No</p></td>
+<td></td>
+<td><p>Interface type</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Position</strong></p>
+<p>At the beginning of the function definition block.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// The following two functions have the same interface configurations.</span>
+
+<span class="c1">// Without using default interface pragma:</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS interface control     type(axi_target)</span>
+<span class="cp">#pragma HLS interface argument(a) type(axi_target)</span>
+<span class="cp">#pragma HLS interface argument(b) type(axi_target)</span>
+<span class="cp">#pragma HLS interface argument(c) type(axi_target) dma(true)</span>
+<span class="cp">#pragma HLS interface argument(d) type(axi_initiator) ptr_addr_interface(axi_target)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Use default interface pragma:</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS interface default     type(axi_target)</span>
+<span class="cp">#pragma HLS interface argument(c) type(axi_target) dma(true)</span>
+<span class="c1">// Note that &#39;ptr_addr_interface(axi_target)&#39; can be omitted when default interface is set to axi_target.</span>
+<span class="cp">#pragma HLS interface argument(d) type(axi_initiator)</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />

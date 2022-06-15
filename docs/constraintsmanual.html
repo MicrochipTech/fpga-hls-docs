@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Constraints Manual &mdash; SmartHLS 2022.1 documentation</title>
+  <title>Constraints Manual &mdash; SmartHLS 2022.1.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -521,7 +521,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1.1  </span>
 
 										  </h1>
 								
@@ -597,6 +597,7 @@ display:none;
 <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#set-custom-config-file">set_custom_config_file</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#debugging-constraints">Debugging Constraints</a><ul>
@@ -615,8 +616,11 @@ display:none;
 </li>
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libero.html">Supported Libero version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -702,6 +706,7 @@ This reference section explains the constraints available for SmartHLS.</p>
 <li><p>Set resource constraint: <a class="reference internal" href="#set-resource-constraint"><span class="std std-ref">set_resource_constraint</span></a></p></li>
 <li><p>Set operation latency: <a class="reference internal" href="#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a></p></li>
 <li><p>Set FPGA family and device: <a class="reference internal" href="#set-project"><span class="std std-ref">set_project</span></a></p></li>
+<li><p>Set custom config file: <a class="reference internal" href="#set-custom-config-file"><span class="std std-ref">set_custom_config_file</span></a></p></li>
 </ul>
 </div></blockquote>
 <p>A few debugging constraints are available from the SmartHLS IDE:</p>
@@ -999,7 +1004,7 @@ multipliers.</p>
 <ul class="simple">
 <li><p>FPGA Family (e.g. PolarFire).</p></li>
 <li><p>FPGA Device: This can either be the board name (e.g. MPF300), or the device number (e.g. MPF300TS-1FCG1152I).</p></li>
-<li><p>Flow: Right now, only <code class="docutils literal notranslate"><span class="pre">hw_only</span></code> is supported.</p></li>
+<li><p>Flow: <code class="docutils literal notranslate"><span class="pre">hw_only</span></code> or <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code>.  <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code> is only available when targeting the PolarFire SoC Icicle kit device.</p></li>
 </ul>
 <div class="section" id="category">
 <h4>Category<a class="headerlink" href="#category" title="Permalink to this headline">¶</a></h4>
@@ -1043,11 +1048,24 @@ multipliers.</p>
 <hr class="docutils" />
 </div>
 </div>
+<div class="section" id="set-custom-config-file">
+<span id="id10"></span><h3>set_custom_config_file<a class="headerlink" href="#set-custom-config-file" title="Permalink to this headline">¶</a></h3>
+<p>If you want to add advanced SmartHLS Tcl constraints that are not listed in the SmartHLS IDE constraints dialog you need to use a custom config file. Be careful not to modify the config.tcl constraints file directly, since config.tcl will be overwritten whenever you make changes in the SmartHLS IDE constraints dialog.</p>
+<p>To add a custom config file, open the SmartHLS Constraints Menu. Select <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">custom</span> <span class="pre">config</span> <span class="pre">file</span></code> from the dropdown and enter the Constraint Value as “custom_config.tcl”. Then click <code class="docutils literal notranslate"><span class="pre">Add</span></code>:</p>
+<a class="reference internal image-reference" href="_images/SmartHLSCustomConfigDropdown.png"><img alt="_images/SmartHLSCustomConfigDropdown.png" class="align-center" src="_images/SmartHLSCustomConfigDropdown.png" style="width: 639.0px; height: 126.0px;" /></a>
+<p>Now click <code class="docutils literal notranslate"><span class="pre">OK</span></code>:</p>
+<a class="reference internal image-reference" href="_images/SmartHLSCustomConfigDropdown_AddFile.png"><img alt="_images/SmartHLSCustomConfigDropdown_AddFile.png" class="align-center" src="_images/SmartHLSCustomConfigDropdown_AddFile.png" style="width: 639.0px; height: 258.0px;" /></a>
+<p>Now in the Project Explorer, right click and select <code class="docutils literal notranslate"><span class="pre">New-&gt;File</span></code>:</p>
+<a class="reference internal image-reference" href="_images/ProjectExplorerNewFile.png"><img alt="_images/ProjectExplorerNewFile.png" class="align-center" src="_images/ProjectExplorerNewFile.png" style="width: 639.0px; height: 195.5px;" /></a>
+<p>Enter the name of “custom_config.tcl”. This should match the file name entered in the Set HLS Constraints previously. Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code>:</p>
+<a class="reference internal image-reference" href="_images/EnterFileNameCustomConfig.png"><img alt="_images/EnterFileNameCustomConfig.png" class="align-center" src="_images/EnterFileNameCustomConfig.png" style="width: 302.0px; height: 359.5px;" /></a>
+<hr class="docutils" />
+</div>
 </div>
 <div class="section" id="debugging-constraints">
 <h2>Debugging Constraints<a class="headerlink" href="#debugging-constraints" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="keep-signals-with-no-fanout">
-<span id="id10"></span><h3>KEEP_SIGNALS_WITH_NO_FANOUT<a class="headerlink" href="#keep-signals-with-no-fanout" title="Permalink to this headline">¶</a></h3>
+<span id="id11"></span><h3>KEEP_SIGNALS_WITH_NO_FANOUT<a class="headerlink" href="#keep-signals-with-no-fanout" title="Permalink to this headline">¶</a></h3>
 <p>If this parameter is enabled, all signals will be printed to the output Verilog
 file, even if they don’t drive any outputs.</p>
 <p><strong>Category</strong></p>
@@ -1073,7 +1091,7 @@ file, even if they don’t drive any outputs.</p>
 <hr class="docutils" />
 </div>
 <div class="section" id="vsim-assert">
-<span id="id11"></span><h3>VSIM_ASSERT<a class="headerlink" href="#vsim-assert" title="Permalink to this headline">¶</a></h3>
+<span id="id12"></span><h3>VSIM_ASSERT<a class="headerlink" href="#vsim-assert" title="Permalink to this headline">¶</a></h3>
 <p>When set to 1, this constraint causes assertions to be inserted in the Verilog
 produced by SmartHLS. This is useful for debugging the circuit to see where invalid
 values (X’s) are being assigned.</p>
@@ -1104,7 +1122,7 @@ values (X’s) are being assigned.</p>
 <h2>Advanced Constraints<a class="headerlink" href="#advanced-constraints" title="Permalink to this headline">¶</a></h2>
 <p>These are not available from the SmartHLS GUI.</p>
 <div class="section" id="latency-reduction">
-<span id="id12"></span><h3>LATENCY_REDUCTION<a class="headerlink" href="#latency-reduction" title="Permalink to this headline">¶</a></h3>
+<span id="id13"></span><h3>LATENCY_REDUCTION<a class="headerlink" href="#latency-reduction" title="Permalink to this headline">¶</a></h3>
 <p>The LATENCY_REDUCTION settings control the SmartHLS’ expression balancing
 optimization, of which the objective is to reduce the circuit latency.
 Below are the related settings,</p>
@@ -1179,7 +1197,7 @@ Below are the related settings,</p>
 <hr class="docutils" />
 </div>
 <div class="section" id="strength-reduction">
-<span id="id13"></span><h3>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction" title="Permalink to this headline">¶</a></h3>
+<span id="id14"></span><h3>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction" title="Permalink to this headline">¶</a></h3>
 <p>Strength reduction is an optimization that
 converts multiply-by-constant into shifts and additions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
@@ -1220,7 +1238,7 @@ converts multiply-by-constant into shifts and additions:</p>
 <hr class="docutils" />
 </div>
 <div class="section" id="strength-reduction-adders-allowed-per-multiplier">
-<span id="id14"></span><h3>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER<a class="headerlink" href="#strength-reduction-adders-allowed-per-multiplier" title="Permalink to this headline">¶</a></h3>
+<span id="id15"></span><h3>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER<a class="headerlink" href="#strength-reduction-adders-allowed-per-multiplier" title="Permalink to this headline">¶</a></h3>
 <p>Strength reduction is an optimization that
 converts multiply-by-constant into shifts and additions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
@@ -1261,7 +1279,7 @@ meaning strength reduction will not occur and SmartHLS will keep the multiplier.
 <hr class="docutils" />
 </div>
 <div class="section" id="use-fifo-for-pipeline-reg">
-<span id="id15"></span><h3>USE_FIFO_FOR_PIPELINE_REG<a class="headerlink" href="#use-fifo-for-pipeline-reg" title="Permalink to this headline">¶</a></h3>
+<span id="id16"></span><h3>USE_FIFO_FOR_PIPELINE_REG<a class="headerlink" href="#use-fifo-for-pipeline-reg" title="Permalink to this headline">¶</a></h3>
 <p>In a pipeline circuit where multiple stages of the circuit are concurrently
 active and processing different loop iterations (or function calls), <em>pipeline
 registers</em> are used to retain and propagate a variable value from the

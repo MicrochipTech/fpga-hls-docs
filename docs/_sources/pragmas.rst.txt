@@ -67,10 +67,14 @@ will cause an error. Each pragma can has one of the following positions:
 .. include:: pragmas_docs/loop_unroll.inc
 
 
+.. include:: pragmas_docs/interface_module_control.inc
 .. include:: pragmas_docs/interface_scalar_argument.inc
 .. include:: pragmas_docs/interface_memory_argument.inc
 .. include:: pragmas_docs/interface_memory_variable.inc
+.. include:: pragmas_docs/interface_axi_initiator_argument.inc
+.. include:: pragmas_docs/interface_axi_target_argument.inc
 .. include:: pragmas_docs/interface_axi_slave_variable.inc
+.. include:: pragmas_docs/interface_default.inc
 
 .. .. include:: pragmas_docs/soc_interface.inc
 

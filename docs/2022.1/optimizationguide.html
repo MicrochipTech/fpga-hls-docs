@@ -1,0 +1,1619 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Header information-->
+    <meta name="Language" content="en">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  <title>Optimization Guide &mdash; SmartHLS 2022.1 documentation</title>
+  
+<!-- Header information-->
+<style type="text/css">svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.225em;
+}
+.svg-inline--fa.fa-w-1 {
+  width: 0.0625em;
+}
+.svg-inline--fa.fa-w-2 {
+  width: 0.125em;
+}
+.svg-inline--fa.fa-w-3 {
+  width: 0.1875em;
+}
+.svg-inline--fa.fa-w-4 {
+  width: 0.25em;
+}
+.svg-inline--fa.fa-w-5 {
+  width: 0.3125em;
+}
+.svg-inline--fa.fa-w-6 {
+  width: 0.375em;
+}
+.svg-inline--fa.fa-w-7 {
+  width: 0.4375em;
+}
+.svg-inline--fa.fa-w-8 {
+  width: 0.5em;
+}
+.svg-inline--fa.fa-w-9 {
+  width: 0.5625em;
+}
+.svg-inline--fa.fa-w-10 {
+  width: 0.625em;
+}
+.svg-inline--fa.fa-w-11 {
+  width: 0.6875em;
+}
+.svg-inline--fa.fa-w-12 {
+  width: 0.75em;
+}
+.svg-inline--fa.fa-w-13 {
+  width: 0.8125em;
+}
+.svg-inline--fa.fa-w-14 {
+  width: 0.875em;
+}
+.svg-inline--fa.fa-w-15 {
+  width: 0.9375em;
+}
+.svg-inline--fa.fa-w-16 {
+  width: 1em;
+}
+.svg-inline--fa.fa-w-17 {
+  width: 1.0625em;
+}
+.svg-inline--fa.fa-w-18 {
+  width: 1.125em;
+}
+.svg-inline--fa.fa-w-19 {
+  width: 1.1875em;
+}
+.svg-inline--fa.fa-w-20 {
+  width: 1.25em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-border {
+  height: 1.5em;
+}
+.svg-inline--fa.fa-li {
+  width: 2em;
+}
+.svg-inline--fa.fa-fw {
+  width: 1.25em;
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: #ff253a;
+  border-radius: 1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  height: 1.5em;
+  line-height: 1;
+  max-width: 5em;
+  min-width: 1.5em;
+  overflow: hidden;
+  padding: 0.25em;
+  right: 0;
+  text-overflow: ellipsis;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: 0;
+  right: 0;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  right: 0;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: 0;
+  right: auto;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -0.0667em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+}
+
+.fa-border {
+  border: solid 0.08em #eee;
+  border-radius: 0.1em;
+  padding: 0.2em 0.25em 0.15em;
+}
+
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left,
+.fas.fa-pull-left,
+.far.fa-pull-left,
+.fal.fa-pull-left,
+.fab.fa-pull-left {
+  margin-right: 0.3em;
+}
+.fa.fa-pull-right,
+.fas.fa-pull-right,
+.far.fa-pull-right,
+.fal.fa-pull-right,
+.fab.fa-pull-right {
+  margin-left: 0.3em;
+}
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+          animation: fa-spin 2s infinite linear;
+}
+
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+          animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
+}
+
+.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
+}
+
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical,
+:root .fa-flip-both {
+  -webkit-filter: none;
+          filter: none;
+}
+
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse {
+  color: #fff;
+}
+
+@media screen and (max-width: 768px)
+.booktitle #booktitle{
+display:none;
+}
+</style>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/common-ui-all.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
+<link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hardware Architecture" href="hwarchitecture.html" />
+    <link rel="prev" title="User Guide" href="userguide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+		<div class="mchp-ghp"/>
+		<div class="root responsivegrid">
+								<noindex>
+								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
+"><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
+								          
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1  </span>
+
+										  </h1>
+								
+								</div></div></div><section _ngcontent-hes-c23="" class="separator"></section></header>	
+								</noindex>		
+
+		</div>
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+		
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+         
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Optimization Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#loop-pipelining">Loop Pipelining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loop-unrolling">Loop Unrolling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-pipelining">Function Pipelining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-partitioning">Memory Partitioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-memory-partitioning">Advanced Memory Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations-and-workarounds">Limitations and Workarounds</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#force-register">Force Register</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inferring-a-shift-register">Inferring a Shift Register</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inferring-a-line-buffer">Inferring a Line Buffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inferring-streaming-hardware-via-producer-consumer-pattern-with-threads">Inferring Streaming Hardware via Producer-Consumer Pattern with Threads</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SmartHLS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Optimization Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="optimization-guide">
+<span id="optimizationguide"></span><h1>Optimization Guide<a class="headerlink" href="#optimization-guide" title="Permalink to this headline">¶</a></h1>
+<p>This chapter describes how to optimize the generated hardware through software code changes and SmartHLS pragmas/constraints.</p>
+<div class="section" id="loop-pipelining">
+<h2>Loop Pipelining<a class="headerlink" href="#loop-pipelining" title="Permalink to this headline">¶</a></h2>
+<p>Loop pipelining is a performance optimization in high-level synthesis (HLS), which extracts loop-level parallelism by executing multiple loop iterations concurrently using the same hardware.
+The key performance metric when loop pipelining is the time interval between starting successive loop iterations, called the <em>initiation interval</em> (II).
+Ideally, the initiation interval should be one, meaning that we  can start a new loop iteration every clock cycle. This is the highest throughput that a pipelined loop can achieve without unrolling.
+Although SmartHLS will always try to achieve an II of 1, sometimes this is not possible, due to resource constraints, or due to cross-iteration dependencies (recurrences) in a loop.</p>
+<p>Consider the following example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma HLS loop pipeline</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This example shows a nested loop, which performs an element-wise multiplication of two 2-dimensional arrays and accumulates the sum.
+The inner loop is specified with the <a class="reference internal" href="pragmas.html#pragma-loop-pipeline"><span class="std std-ref">Pipeline Loop</span></a> pragma. SmartHLS will show message as below when compiling this code:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 61 of loop.c with label &quot;loop&quot;.
+Info: Done pipelining the loop on line 61 of loop.c with label &quot;loop&quot;.
+    Pipeline Initiation Interval (II) = 1.
+</pre></div>
+</div>
+<p>These info messages let us know that SmartHLS successfully pipelined the inner loop with an II of 1.
+Even though an II of 1 has been achieved, the hardware may not meet our desired performance requirements.
+In this case, we can choose to pipeline the outer loop by moving the pragma to the outer loop:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="cp">#pragma HLS loop pipeline</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When an outer loop is specified to be pipelined, SmartHLS will automatically unroll all of the inner loops.
+This can provide higher performance at the expense of higher circuit area.
+In this example, <code class="docutils literal notranslate"><span class="pre">N</span></code> is 25, and when the inner loop is unrolled, SmartHLS will create 25 multipliers and adder units working in parallel.
+However, this does not mean that the performance will be improved by 25x due to the resource constraints on memories <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code>.</p>
+<p>When SmartHLS runs, we will see the following messages:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Unrolling the entire loop nest on line 61 of loop.c.
+    This loop nest is inside a parent loop labelled &#39;loop&#39;, which is specified to be
+    pipelined.
+Info: Pipelining the loop on line 60 of loop.c with label &quot;loop&quot;.
+Info: Resource constraint limits initiation interval to 13
+      Resource &#39;A_local_memory_port&#39; has 25 uses per cycle but only 2 ports available.
+      +--------------------------------+-------------------+-----------+
+      | Operation                      | Location          | # of Uses |
+      +--------------------------------+-------------------+-----------+
+      | &#39;load&#39; operation for array &#39;A&#39; | line 60 of loop.c | 25        |
+      +--------------------------------+-------------------+-----------+
+      |                                | Total # of Uses   | 25        |
+      +--------------------------------+-------------------+-----------+
+
+Info: Resource constraint limits initiation interval to 13
+      Resource &#39;B_local_memory_port&#39; has 25 uses per cycle but only 2 ports available.
+      +--------------------------------+-------------------+-----------+
+      | Operation                      | Location          | # of Uses |
+      +--------------------------------+-------------------+-----------+
+      | &#39;load&#39; operation for array &#39;B&#39; | line 60 of loop.c | 25        |
+      +--------------------------------+-------------------+-----------+
+      |                                | Total # of Uses   | 25        |
+      +--------------------------------+-------------------+-----------+
+
+Info: Done pipelining the loop on line 60 of loop.c with label &quot;loop&quot;.
+    Pipeline Initiation Interval (II) = 13.
+</pre></div>
+</div>
+<p>The first info message indicates that the inner loop is being unrolled, since the outer loop is specified to be pipelined.
+Next, the info messages tell us there are 25 load operations that need to occur to both memory <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> every clock cycle if II is 1, but there are only two ports (which allows 2 loads per cycle) available for each memory.
+<code class="docutils literal notranslate"><span class="pre">Local_memory_port</span></code> indicates that this resource is a memory port of a local memory, which is described in <a class="reference internal" href="hwarchitecture.html#hwarch"><span class="std std-ref">Hardware Architecture</span></a>.
+Due to the limited available memory ports, SmartHLS must increase the loop pipeline II until we can meet the constraint of having 25 load operations to each memory.
+When the II is 13, meaning that each successive loop iteration is started every 13 cycles, we have enough time to allow 26 load operations, hence the constraint is met
+(each memory has 2 ports by default, which allows 2 memory accesses per cycle. In 13 cycles, we can perform 26 memory accesses in total).</p>
+<p>For this particular example, when the outer loop is pipelined, the performance is about 2x higher than when the inner loop is pipelined.
+However, the area has also increased by about 25x, due to having 25 multipliers and adders.
+Therefore, we must use care when pipelining outer loops due to the unrolling of its inner loops.
+In general, we recommend pipelining the innermost loop first, and if the performance requirement is not met, then try pipelining the outer loops.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the loop specified to be pipelined contains any function calls (in the loop or in any of the inner loops), the function calls will be inlined into the loop.
+Any descendants of the called functions will also be inlined, and all of their loops will also be unrolled automatically.
+If there are many descendant functions and loops, this can increase the area significantly (also described in <a class="reference internal" href="#function-pipelining">Function Pipelining</a>).
+We recommend the user to examine the program for such cases before pipelining a loop.</p>
+</div>
+<p>Lets look at an image filtering example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HEIGHT</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma HLS loop pipeline</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WIDTH</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">out</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="mi">-1</span><span class="p">][</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="mi">-1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="mi">-1</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<span class="w">                   </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="w">  </span><span class="p">][</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="w">  </span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="w">  </span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<span class="w">                   </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This example applies a 3 x 3 image kernel filter, array <code class="docutils literal notranslate"><span class="pre">k</span></code>, to an input image, array <code class="docutils literal notranslate"><span class="pre">in</span></code>, producing an output image, array <code class="docutils literal notranslate"><span class="pre">out</span></code>.
+When we turn on loop pipelining and run SmartHLS, we can see the following messages:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 22 of kernel.c with label &quot;loop&quot;.
+Info: Assigning new label to the loop on line 22 of kernel.c with label &quot;loop&quot;
+Info: Resource constraint limits initiation interval to 5.
+      Resource &#39;in_local_memory_port&#39; has 9 uses per cycle but only 2 units available.
+      +---------------------------------+---------------------+-----------+
+      | Operation                       | Location            | # of Uses |
+      +---------------------------------+---------------------+-----------+
+      | &#39;load&#39; operation for array &#39;in&#39; | line 23 of kernel.c | 9         |
+      +---------------------------------+---------------------+-----------+
+      |                                 | Total # of Uses     | 9         |
+      +---------------------------------+---------------------+-----------+
+
+Info: Done pipelining the loop on line 22 of kernel.c with label &quot;loop&quot;.
+      Pipeline Initiation Interval (II) = 5.
+</pre></div>
+</div>
+<p>The pipeline initiation interval is limited by the memory accesses to the input image (array <code class="docutils literal notranslate"><span class="pre">in</span></code>). There are 9 loads but only two memory ports, which forces the loop II to be 5, allowing up to 10 loads per iteration from array <code class="docutils literal notranslate"><span class="pre">in</span></code>.
+For loops where the II is constrained by memory accesses to an array, you can improve the II by manually splitting the array into several smaller C arrays.
+Each array can be accessed independently, which reduces resource contention.
+In this case, we can split the image into rows of pixels, where each row is stored in a separate array (<code class="docutils literal notranslate"><span class="pre">in_0</span></code>, <code class="docutils literal notranslate"><span class="pre">in_1</span></code>, and <code class="docutils literal notranslate"><span class="pre">in_2</span></code>).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HEIGHT</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma HLS loop pipeline</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WIDTH</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">out</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<span class="w">                   </span><span class="o">+</span><span class="w"> </span><span class="n">in_1</span><span class="p">[</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in_1</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in_1</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<span class="w">                   </span><span class="o">+</span><span class="w"> </span><span class="n">in_2</span><span class="p">[</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in_2</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in_2</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now when we run SmartHLS we will see:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 22 of kernel.c with label &quot;loop&quot;.
+Info: Resource constraint limits initiation interval to 2.
+      Resource &#39;in_0_local_memory_port&#39; has 3 uses per cycle but only 2 units available.
+      +-----------------------------------+---------------------+-----------+
+      | Operation                         | Location            | # of Uses |
+      +-----------------------------------+---------------------+-----------+
+      | &#39;load&#39; operation for array &#39;in_0&#39; | line 33 of kernel.c | 3         |
+      +-----------------------------------+---------------------+-----------+
+      |                                   | Total # of Uses     | 3         |
+      +-----------------------------------+---------------------+-----------+
+
+Info: Resource constraint limits initiation interval to 2.
+      Resource &#39;in_1_local_memory_port&#39; has 3 uses per cycle but only 2 units available.
+      +-----------------------------------+---------------------+-----------+
+      | Operation                         | Location            | # of Uses |
+      +-----------------------------------+---------------------+-----------+
+      | &#39;load&#39; operation for array &#39;in_1&#39; | line 33 of kernel.c | 3         |
+      +-----------------------------------+---------------------+-----------+
+      |                                   | Total # of Uses     | 3         |
+      +-----------------------------------+---------------------+-----------+
+
+Info: Resource constraint limits initiation interval to 2.
+      Resource &#39;in_2_local_memory_port&#39; has 3 uses per cycle but only 2 units available.
+      +-----------------------------------+---------------------+-----------+
+      | Operation                         | Location            | # of Uses |
+      +-----------------------------------+---------------------+-----------+
+      | &#39;load&#39; operation for array &#39;in_2&#39; | line 33 of kernel.c | 3         |
+      +-----------------------------------+---------------------+-----------+
+      |                                   | Total # of Uses     | 3         |
+      +-----------------------------------+---------------------+-----------+
+Info: Done pipelining the loop on line 22 of kernel.c with label &quot;loop&quot;.
+      Pipeline Initiation Interval (II) = 2.
+</pre></div>
+</div>
+<p>Now the initiation interval has improved from 5 to 2, which is a more than a 2x performance improvement just by manually partitioning the arrays.</p>
+<p>Consider another example below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop pipeline</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We have a loop where the value of <code class="docutils literal notranslate"><span class="pre">A</span></code> in the current iteration is dependent on the previous iteration. This is called a cross-iteration dependency or loop recurrence.
+In order to achieve an II of 1, the value of <code class="docutils literal notranslate"><span class="pre">A</span></code> is required every clock cycle.
+This means that the multiplication of <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B[i]</span></code> has to complete every clock cycle.
+Now, let’s consider a case where we would like to pipeline the multiplier more in order to get a higher Fmax (the maximum frequency of the circuit).
+This can be done by changing the multiplier latency to 2 (using the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> constraint in SmartHLS) from the default latency of 1.</p>
+<p>When SmartHLS runs, we will see the following messages:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 10 of loop_recurrence.c with label &quot;loop&quot;.
+Info: Cross-iteration dependency does not allow initiation interval of 1.
+    Dependency (distance = 1) from &#39;mul&#39; operation (at line 11 of loop_recurrence.c) to
+    &#39;phi&#39; operation (at line 11 of loop_recurrence.c)
+    Recurrence path:
+    +-----------------+------------------------------+---------------+
+    | Operation       | Location                     | Cycle Latency |
+    +-----------------+------------------------------+---------------+
+    | &#39;phi&#39; operation | line 11 of loop_recurrence.c | 0             |
+    | &#39;mul&#39; operation | line 11 of loop_recurrence.c | 2             |
+    +-----------------+------------------------------+---------------+
+    |                 | Total Required Latency       | 2             |
+    +-----------------+------------------------------+---------------+
+
+    Total required latency = 2. Maximum allowed latency = distance x II = 1 x 1 = 1.
+    Total required latency &gt; Maximum allowed latency, we must increase II
+Info: Done pipelining the loop on line 10 of loop_recurrence.c with label &quot;loop&quot;.
+    Pipeline Initiation Interval (II) = 2.
+</pre></div>
+</div>
+<p>The messages tell us that the II cannot be 1 due to a cross-iteration dependency, which is from the multiply operation of the current loop iteration to the phi operation of the next iteration.
+You can think of a phi as a select operation, which is need to represent the program’s intermediate representation in static single assignment form.
+In this particular case, the phi selects the value of <code class="docutils literal notranslate"><span class="pre">A</span></code> between the initial value of 1 (in the first iteration of the loop),
+and the computed value of <code class="docutils literal notranslate"><span class="pre">A</span></code> from within the loop (in the iterations after the first).
+The dependency distance of 1 means that the multiply value is used by the phi operation 1 loop iteration later. Or alternatively, the phi operation is dependent on the multiply value from one loop iteration ago.
+The <code class="docutils literal notranslate"><span class="pre">Recurrence</span> <span class="pre">path</span></code> table shows that the phi operation takes 0 cycles, but the multiply operation takes 2 cycles, hence the total required latency is 2 for the path.
+However, the maximum allowed latency, if the II were to be 1, is 1 (distance x II = 1 x 1 = 1).
+In this case, the next loop iteration should be starting after 1 clock cycle (II = 1) but we still have not finished calculating the result of the multiply which is needed by the phi operation in the next iteration.
+Since the total required latency is greater than the maximum allowed latency, the II has to be increased to 2.
+With the II being 2, the maximum allowed latency becomes 2, which satisfies the total required latency.
+In this case, the first iteration will start, we will wait two clock cycles for the multiply to finish (II = 2), then start the next loop iteration.</p>
+<p>In general, for pipelining, achieving a lower II is the highest priority for achieving the highest performance, even at the expense of slightly lower Fmax.
+For example, if we can reduce the II from 2 to 1 then we cut the clock cycles taken by the loop in half, but we are unlikely to double the Fmax by inserting one more pipeline stage (which changes an II of 1 to 2 in this case).</p>
+<p>If we use the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> constraint to reduce the multiplier latency from 2 to 1 and run SmartHLS, we will see the following messages, where we have achieved an II of 1:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 10 of loop_recurrence.c with label &quot;loop&quot;.
+Info: Done pipelining the loop on line 10 of loop_recurrence.c with label &quot;loop&quot;.
+    Pipeline Initiation Interval (II) = 1.
+</pre></div>
+</div>
+<p>The above example illustrated a case of II being increased due to the latency of operations in the presence of a loop recurrence.
+The II can also be increased due to the delay of operations in a loop with cross-iteration dependencies.</p>
+<p>Consider the following example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_ITER</span><span class="p">;</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">squared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">xtmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x_0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y_0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xtmp</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">filter</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">squared</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The code shows the main computations for the mandelbrot set, the algorithm details are not important.
+When we run SmartHLS on this code, we see the following messages:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 39 of mandelbrot.c with label &quot;loop&quot;.
+Info: Cross-iteration dependency does not allow initiation interval (II) of 1.
+    Dependency (distance = 1) from &#39;trunc&#39; operation (at line 42 of mandelbrot.c) to
+    &#39;phi&#39; operation (at line 42 of mandelbrot.c)
+    Recurrence path:
+    +-------------------+-------------------------+------------+
+    | Operation         | Location                | Delay [ns] |
+    +-------------------+-------------------------+------------+
+    | &#39;phi&#39; operation   | line 42 of mandelbrot.c | 0.00       |
+    | &#39;sext&#39; operation  | line 40 of mandelbrot.c | 0.00       |
+    | &#39;mul&#39; operation   | line 42 of mandelbrot.c | 8.00       |
+    | &#39;ashr&#39; operation  | line 42 of mandelbrot.c | 0.00       |
+    | &#39;shl&#39; operation   | line 42 of mandelbrot.c | 0.00       |
+    | &#39;add&#39; operation   | line 42 of mandelbrot.c | 6.40       |
+    | &#39;trunc&#39; operation | line 42 of mandelbrot.c | 0.00       |
+    +-------------------+-------------------------+------------+
+    |                   | Total Required Delay    | 14.40      |
+    +-------------------+-------------------------+------------+
+
+    Total required delay = 14.40 ns.
+    Maximum allowed latency = distance x II = 1.
+    Maximum allowed delay = Maximum allowed latency x clock period
+                          = 1 x 8.00 ns = 8.00 ns
+    Total required delay &gt; Maximum allowed delay, we must increase II.
+    Tip: Increase the clock period to be greater than the total required delay
+         to improve II.
+
+Info: Done pipelining the loop on line 39 of mandelbrot.c with label &quot;loop&quot;.
+    Pipeline Initiation Interval (II) = 2.
+</pre></div>
+</div>
+<p>The messages indicate that there is a cross-iteration dependency from the truncate operation to the phi operation,
+where the total required delay for the operation is 14.40 ns.
+On the other hand, the maximum allowed latency, if the II were to be 1, is 1, and
+the maximum allowed delay, based on the given clock period constraint (8 ns) and the maximum allowed latency (1), is 8 ns.
+Since the required delay of 14.4 ns for the path is greater than the maximum allowed delay of 8 ns, SmartHLS must increase the II to 2
+to satisfy the required delay.
+If the II is 2, the maximum allowed latency (distance x II = 1 x 2) becomes 2, hence the maximum allowed delay becomes 16 ns (maximum allowed latency x clock period = 2 x 8 ns),
+and the required delay can be met.</p>
+<p>As mentioned above, keeping the II low (and ideally 1) should generally be the priority for achieving the maximum performance.
+Another way to meet the required delay shown above, based on the equations shown as well as the described <code class="docutils literal notranslate"><span class="pre">Tip</span></code>, is to increase the clock period rather than increasing the II.
+With an II of 1 (hence the maximum allowed latency of 1), if the clock period is bigger than 14.4, the maximum allowed delay should be greater than the total required delay.</p>
+<p>Let’s set the clock period to 15 (with the <a class="reference internal" href="constraintsmanual.html#clock-period"><span class="std std-ref">CLOCK_PERIOD</span></a> constraint), and re-run SmartHLS:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating pipeline for loop on line 39 of mandelbrot.c with label &quot;loop&quot;.
+    Pipeline initiation interval = 1.
+</pre></div>
+</div>
+<p>You can see that SmartHLS was now able to generate a circuit with an II of 1.</p>
+<p>Loop pipelining is a great technique for achieving high performance, and in order to achieve the maximum performance, users should be mindful
+of the circuit resource constraints and the recurrences that exist in the loop.</p>
+</div>
+<div class="section" id="loop-unrolling">
+<h2>Loop Unrolling<a class="headerlink" href="#loop-unrolling" title="Permalink to this headline">¶</a></h2>
+<p>SmartHLS allows the user to specify a loop to be unrolled through the use of a pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span></code> (see <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a>).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This unrolls the loop completely. Unrolling a loop can improve performance as the hardware units for the loop body are replicated, but it also increases area.
+You may also specify a loop to be partially unrolled, to prevent the area from increasing too much.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(2)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This unrolls the loop two times (i.e., the number of loop iteration is halved and the loop body is doubled).
+You may also prevent a loop from being unrolled. SmartHLS automatically unrolls small loops, but you may not want the loop to be unrolled due to area constraints or to pipeline the loop.
+If the loop is completely unrolled, the loop disappears, hence you cannot pipeline the loop.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This prevents the loop from being unrolled.</p>
+</div>
+<div class="section" id="function-pipelining">
+<h2>Function Pipelining<a class="headerlink" href="#function-pipelining" title="Permalink to this headline">¶</a></h2>
+<p>Similar to loop pipelining, when a function is specified to be pipelined, SmartHLS will automatically inline all of its descendant functions, and unroll all loops (in the specified function as well as in all of its descendant functions).
+This is done to create a high-performance pipelined hardware.
+Consider the following call graph:</p>
+<a class="reference internal image-reference" href="_images/callgraph_new.png"><img alt="_images/callgraph_new.png" class="align-center" src="_images/callgraph_new.png" style="width: 117.0px; height: 121.5px;" /></a>
+<p>where function <code class="docutils literal notranslate"><span class="pre">c</span></code> contains a loop.
+If function <code class="docutils literal notranslate"><span class="pre">a</span></code> is specified as the top-level function and to be function pipelined, functions <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code>, which are descendant functions of <code class="docutils literal notranslate"><span class="pre">a</span></code> will be automatically inlined (<code class="docutils literal notranslate"><span class="pre">c</span></code> will not be inlined into <code class="docutils literal notranslate"><span class="pre">b</span></code>).</p>
+<p>When SmartHLS runs, it will print out the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Adding no_inline attribute to the user-specified function: a
+Info: Inlining function &#39;c&#39; into its parent function &#39;a&#39; for pipelining.
+Info: Inlining function &#39;d&#39; into its parent function &#39;a&#39; for pipelining.
+Info: Unrolling the entire loop nest on line 22 of function_pipeline.c.
+      This loop nest is inside function &#39;a&#39;, which is specified to be pipelined.
+Info: Pipelining function &#39;a&#39; on line 15 of function_pipeline.c.
+</pre></div>
+</div>
+<p>It shows that SmartHLS first adds the <code class="docutils literal notranslate"><span class="pre">no_inline</span></code> attribute to function <code class="docutils literal notranslate"><span class="pre">a</span></code> to prevent it from being inlined. Then it inlines its descendant functions and unrolls their loops.</p>
+<p>Care must be taken though, if the function designated to be pipelined has many descendant functions, which also has many loops, the hardware area can increase significantly (as was described above for <a class="reference internal" href="#loop-pipelining">Loop Pipelining</a>).
+For instance, in the call graph shown above, if <code class="docutils literal notranslate"><span class="pre">main</span></code> is specified to be pipelined, functions <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, and <code class="docutils literal notranslate"><span class="pre">d</span></code> will be automatically inlined.
+There will be two copies of <code class="docutils literal notranslate"><span class="pre">c</span></code>, as the function is called from two different places.
+As there is also a loop in <code class="docutils literal notranslate"><span class="pre">c</span></code> that will be completely unrolled (in each copy of <code class="docutils literal notranslate"><span class="pre">c</span></code>), this can increase the area significantly.
+Hence for function pipelining, one should examine the program before pipelining a function that has many descendant functions or loops.</p>
+</div>
+<div class="section" id="memory-partitioning">
+<h2>Memory Partitioning<a class="headerlink" href="#memory-partitioning" title="Permalink to this headline">¶</a></h2>
+<p>Memory Partitioning is an optimization where aggregate types such as arrays and structs are partitioned into smaller pieces
+allowing for a greater number of reads and writes (accesses) per cycle. SmartHLS instantiates a RAM for each aggregate
+type where each RAM has up to two ports (allowing up to two reads/writes per cycle). Partitioning aggregate types into
+smaller memories or into its individual elements allows for more memory accesses per cycle and improves memory bandwidth.</p>
+<p>More information about memory partitioning is described in <a class="reference internal" href="userguide.html#memory-partitioning"><span class="std std-ref">Memory Partitioning</span></a>.</p>
+<p>Memory partitioning can be used to gain performance when there are pipelines with high II due to memory contention.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">MAX_ITER</span><span class="p">];</span><span class="w"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop pipeline</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">MAX_ITER</span><span class="mi">-3</span><span class="p">);</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">y0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the pipelined code above, there are four accesses to the array <code class="docutils literal notranslate"><span class="pre">data</span></code> per cycle but only two ports are available for the memory.
+All four accesses of one iteration must finish before the next loop iteration can start. With two accesses possible
+per cycle and four accesses required per iteration, the II for the pipeline will be 2. For more information on pipelines and II, please refer
+to the <a class="reference internal" href="#loop-pipelining">Loop Pipelining</a> section.</p>
+<p>To help improve the memory bandwidth, SmartHLS automatically analyzes the access patterns of each memory
+and attempts to split the memory into separate partitions if possible. In the above example, automatic access-based
+partitioning will not be able to partition the <code class="docutils literal notranslate"><span class="pre">data</span></code> array as the four accesses in the loop overlap and span the
+entire memory. In this case, user-specified partitioning would be ideal to partition memories and eliminate memory
+contention, allowing the pipeline to achieve an II of 1.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(data)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">MAX_ITER</span><span class="p">];</span><span class="w"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop pipeline</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">MAX_ITER</span><span class="mi">-3</span><span class="p">);</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">y0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">iter</span><span class="o">+</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the above snippet, the array <code class="docutils literal notranslate"><span class="pre">data</span></code> is specified to be completely partitioned. By default,
+the partition dimension is set to 0. This means the memory will be partitioned into individual elements
+along the right-most dimension. The partition dimension can be changed with the optional <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter (see <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a>).
+SmartHLS will analyze the ranges of each accessing instruction to the array and create partitions only for the accessed elements.
+Unaccessed partitions are discarded.
+For user-specified partitioning, the accesses will be modified to be access the correct partition based
+on the index at runtime.</p>
+<p>When applied to memories with high memory contention in deep pipelines, memory partition has the potential
+to greatly impact circuit performance by reducing pipeline II.</p>
+<div class="section" id="advanced-memory-partitioning">
+<h3>Advanced Memory Partitioning<a class="headerlink" href="#advanced-memory-partitioning" title="Permalink to this headline">¶</a></h3>
+<p>Memory partitioning can also be used to partition structs.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">zero</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">zero</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">].</span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The code above shows a 3-level nested loop, where only the middle loop is fully unrolled.
+After the middle loop is unrolled, it creates three different memory accesses to non-overlapping regions of the
+array <code class="docutils literal notranslate"><span class="pre">zero</span></code>. This means the array can be automatically partitioned across the array dimension 1.
+Because the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> fields are accessed separately, each element of <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">point</span></code> can be
+further partitioned into two partitions. Therefore, SmartHLS will partition the array <code class="docutils literal notranslate"><span class="pre">zero</span></code> into 6
+partitions, one for each non-overlapping access range into the array of structs. This results in the
+equivalent code below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">zero_a0_a0_a0_x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">zero_a0_a0_a0_y</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">zero_a0_a1_a0_x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">zero_a0_a1_a0_y</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">zero_a0_a2_a0_x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">zero_a0_a2_a0_7</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="cp">#pragma HLS loop pipeline</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">zero_a0_a0_a0_x</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero_a0_a0_a0_y</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">zero_a0_a1_a0_x</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero_a0_a1_a0_y</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">zero_a0_a2_a0_x</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero_a0_a2_a0_y</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>For structs or arrays of structs that are specified to be partitioned with user-specified partitioning, the partition dimension must
+be specified to be 0 or the struct will not be partitioned into its elements. User-specified partitioning only partitions up to the
+array dimension specified, therefore, if higher dimensions are specified the element type of the array will not be struct type and
+SmartHLS will not partition the lower dimensions. When dimension 0 is specified for an array, the element type will be struct type and
+SmartHLS will partition the array completely and then automatically partition the struct elements. When partitioning structs or array
+elements that are structs, user-specified partitioning will also automatically partition any nested aggregate types.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// &quot;zero&quot; will be partitioned into its elements</span>
+<span class="c1">// with array &quot;a&quot; also being partitioned into its elements</span>
+<span class="cp">#pragma HLS memory partition variable(zero) dim(0)</span>
+<span class="c1">// can also not specify dim(0) as it is 0 by default</span>
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">zero</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// &quot;one&quot; will be partitioned into 4 structs</span>
+<span class="c1">// and each struct will be partitioned into its elements</span>
+<span class="c1">// with array &quot;a&quot; also being partitioned into its elements</span>
+<span class="cp">#pragma HLS memory partition variable(zero) dim(0)</span>
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">one</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+
+<span class="c1">// &quot;two&quot; will be partitioned into 8 structs</span>
+<span class="c1">// and each struct will be partitioned into its elements</span>
+<span class="c1">// with array &quot;a&quot; also being partitioned into its elements</span>
+<span class="cp">#pragma HLS memory partition variable(zero) dim(0)</span>
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">two</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+
+<span class="c1">// &quot;three&quot; will be partitioned into 2 struct point[4] arrays</span>
+<span class="c1">// the struct and its elements will not be partitioned</span>
+<span class="cp">#pragma HLS memory partition variable(zero) dim(1)</span>
+<span class="k">struct</span> <span class="nc">point</span><span class="w"> </span><span class="n">three</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When memory partitioning fails to partition a struct, it will print the following warning.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Warning: The struct, &quot;struct1&quot;, on line 168 of struct.c can result in inefficient
+memory accesses. We recommend splitting it up into individual elements.
+</pre></div>
+</div>
+<p>For any aggregate types that holds FIFOs, SmartHLS will automatically apply user-specified
+partitioning to try to fully partition the memory and make sure the FIFOs become individual
+variables. In the case that memory partitioning fails to do so, SmartHLS will error out as
+SmartHLS cannot handle unpartitioned FIFOs.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Found memory with FIFO(s): &quot;array_of_FIFOs&quot; on line 10 of fifos.c. Forcing
+partition type to be complete.
+Error: The FIFO(s) in memory &quot;array_of_FIFOs&quot; on line 10 of fifos.c was unable to
+be split into individual FIFOs by SmartHLS which will result in functional errors.
+To better partition the FIFO memory please try moving the FIFOs into a simpler
+data structures or manually partitioning the FIFOs into individual variables.
+</pre></div>
+</div>
+</div>
+<div class="section" id="limitations-and-workarounds">
+<h3>Limitations and Workarounds<a class="headerlink" href="#limitations-and-workarounds" title="Permalink to this headline">¶</a></h3>
+<p>Access-based partitioning will not create new accessing instructions and therefore can only modify existing ones.
+This limits partitions to be the same shape as the range of accesses, with overlapping ranges merged into the same
+partition. A side-effect of this is that if there are multiple overlapping ranges, the partition may become large
+and reduce performance gain.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the above snippet there are two accesses to an array in two loops. The range of accesses of the first loop is from
+element 0 to 4 of the array, the range of accesses of the second loop is from element 4 to 7 of the array. In this case
+the two accesses have element 4 overlapping. They will be merged and the generated partition will cover the entire
+array which results in the memory being left unpartitioned.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>To work around this, try unrolling the loops with pragmas or manually unrolling overlapping accesses, as shown in the code
+snippet above. This is done to create more non-overlapping access ranges and therefore more partitions. In the above
+code snippet, the loops are manually unrolled so that each access has a range that does not overlap with any other access.
+This allows access-based partitioning to partition the array into three partitions, one for each non-overlapping access.</p>
+<p>Indexing arrays outside of any array dimension, even when the resulting address is inside of the memory, is not supported
+by memory partitioning and may cause incorrect circuit behavior. An example of this is casting a 2-d array to a pointer
+or only using the lowest dimension index to iterate through the entire 2-d array.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(array)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="p">;</span><span class="w"></span>
+<span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="c1">// unsupported loop 1</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="c1">// unsupported loop 2</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the code snippet above, both styles of access to the array go past the end of the right-most dimension bound by incrementing
+the index from 0 to the size of the array. A supported access pattern would to be to access the array as a 2-d array in a nested for loop,
+with the index to each dimension never going outside of the dimension bound.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the same way, initializers, memcpy calls and other memory intrinsic calls are unsupported as they cast the pointer
+given to a byte pointer and accesses the number of bytes specified in a loop. In the access-based partitioning case,
+memory intrinsic calls will be detected and partitioning of the affected memories will be disabled. With user-specified
+partitioning, the memory intrinsic call will be handled to allow correct analysis of the out of bounds accesses. To avoid
+this in the access-based partitioning case, you can manually initialize memories in a nested for loop to ensure correct
+analysis.</p>
+<p>In general, avoid aliasing memories if you want to use memory partitioning on a memory.</p>
+<p>Avoid comparisons and other non-arithmetic operators on pointers as they are not supported by memory partitioning and
+will prevent partitioning.</p>
+</div>
+</div>
+<div class="section" id="force-register">
+<h2>Force Register<a class="headerlink" href="#force-register" title="Permalink to this headline">¶</a></h2>
+<p>The SmartHLS Scheduler will attempt to find the best approach to schedule the circuit based on the information it has at that time.
+Usually, this is enough to generate a hardware with good performance.
+However, sometimes users may want to have explicit control about certain location to insert the register.
+SmartHLS does provide the flexibility to force a register at specific location.</p>
+<p>To do so, you need to include the header file:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hls/utils.hpp&quot;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>and call the function <code class="docutils literal notranslate"><span class="pre">hls_reg</span></code> for the data you want to register as below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">val_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hls_reg</span><span class="p">(</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will force SmartHLS to register the value, <code class="docutils literal notranslate"><span class="pre">val</span></code>, and any operations that depend on <code class="docutils literal notranslate"><span class="pre">val</span></code> will be scheduled accordingly, taking into the account the 1-cycle latency required to register the value.</p>
+</div>
+<div class="section" id="inferring-a-shift-register">
+<h2>Inferring a Shift Register<a class="headerlink" href="#inferring-a-shift-register" title="Permalink to this headline">¶</a></h2>
+<p>A shift register is an efficient hardware unit that is composed of a chain of registers that are connected from one to the next.
+It allows data to be continuously shifted from one register to its adjacent register.
+It is useful in applications where data is continuously coming in in a streaming fashion, where some amount of data has to be kept around for processing.
+A shift register is different from a memory, in that all elements stored in a shift register can be accessed at the same time.</p>
+<p>For example, in a FIR filter, time-shifted versions of the input data, commonly referred to as taps, are needed to compute the output.
+A FIR filter can be expressed with the following equation:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b0</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b1</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="mi">-1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bN</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">N</span><span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>where y[n] is the output, x[n] is the input, N indicates the filter order, and b0 to bN are filter coefficients.
+As you can see in the equation, once an input is received, it is needed for N+1 computations of the output.
+This is the perfect application for a shift register.</p>
+<p>Let’s see how one can infer a shift register from software using SmartHLS.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">FIRFilter</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">shift_register</span><span class="p">[</span><span class="n">TAPS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="cp">#pragma HLS loop unroll</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TAPS</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">shift_register</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shift_register</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">shift_register</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">out</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We show the part of the <code class="docutils literal notranslate"><span class="pre">FIRFilter</span></code> function which pertains to the shift register (x[n] in the equation above).
+Each time the <code class="docutils literal notranslate"><span class="pre">FIRFilter</span></code> function is called, it receives one input and produces one output.
+First, the <code class="docutils literal notranslate"><span class="pre">shift_register</span></code> array is declared as <code class="docutils literal notranslate"><span class="pre">static</span></code>.
+This is needed since the data stored in the shift register (time shifted versions of the input data) needs to be kept around on the
+next invocation of the function.
+The loop shows each element of the array being stored to an array index of 1 greater than its current index,
+starting from the highest array index (TAPS - 1) all the way down to 1.
+This is effectively moving each element of the array up by one array index. Then the newest input is stored in the lowest array index (0).
+It is important to note the unroll pragma, which allows the loop to be unrolled. Unrolling the loop splits up the array into individual elements,
+where each element is stored in a register, hence creating the shift register.
+Without the unroll pragma, the <code class="docutils literal notranslate"><span class="pre">shift_register</span></code> array is stored in a memory (RAM), which only allows up to 2 memory accesses per cycle.</p>
+<p>Note that if the <code class="docutils literal notranslate"><span class="pre">FIRFilter</span></code> function is specified to be pipelined, or if the shift register loop is contained within another loop that is specified to be pipelined,
+the shift register loop will automatically be unrolled and the unroll pragma is not required.</p>
+</div>
+<div class="section" id="inferring-a-line-buffer">
+<span id="line-buffer-opt-guide"></span><h2>Inferring a Line Buffer<a class="headerlink" href="#inferring-a-line-buffer" title="Permalink to this headline">¶</a></h2>
+<p>A line buffer is used to buffer a line of pixels of an image or a video frame, in order to keep data around and reduce the overall required memory bandwidth.
+It is useful for image/video processing applications, where an image/video pixel is continuously streamed in and processed.</p>
+<p>SmartHLS provides a <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> C++ template class that can be used to conveniently infer a line buffer hardware structure.
+For usages about the <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> class, please refer to <a class="reference internal" href="userguide.html#line-buffer-user-guide"><span class="std std-ref">Line Buffer</span></a> in the <a class="reference internal" href="userguide.html#userguide"><span class="std std-ref">User Guide</span></a>.
+This section will give more details about the motivations of using a line buffer and its underlying implementation.</p>
+<p>A good example of using a line buffer is the Sobel filter, which is used as one of the key steps of edge detection –
+a widely used transformation that identifies the edges in an input image and produces an output image showing just those edges.
+At a high-level, Sobel filtering involves applying a pair of two 3×3 convolutional kernels (or filters), typically called Gx and Gy, to
+a 3x3 pixel stencil window. The stencil window slides over the entire image from left to right, and top to bottom, as shown below.
+The two kernels detect the edges in the image in the horizontal and vertical directions. At each
+position in the input image, the filters are applied separately and the computed values are combined together to produce a
+pixel value in the output image.</p>
+<a class="reference internal image-reference" href="_images/stencil.png"><img alt="_images/stencil.png" class="align-center" src="_images/stencil.png" style="width: 226.4px; height: 164.8px;" /></a>
+<p>At every position of the stencil, we calculate the
+edge value of the middle pixel e, using the adjacent pixels labeled from a to i, each of which is multiplied by the value at its corresponding position of Gx and Gy, and then summed.
+An example C code for the Sobel filter is shown below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define HEIGHT 512</span>
+<span class="cp">#define WIDTH 512</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HEIGHT</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WIDTH</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">notinbounds</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">xdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">ydir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">xOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">xOffset</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">xOffset</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">yOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">yOffset</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">yOffset</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">pixel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_image</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="n">yOffset</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="n">xOffset</span><span class="p">];</span><span class="w"></span>
+<span class="w">                </span><span class="n">xdir</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">pixel</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Gx</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span><span class="n">xOffset</span><span class="p">][</span><span class="mi">1</span><span class="o">+</span><span class="n">yOffset</span><span class="p">];</span><span class="w"></span>
+<span class="w">                </span><span class="n">ydir</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">pixel</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Gy</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span><span class="n">xOffset</span><span class="p">][</span><span class="mi">1</span><span class="o">+</span><span class="n">yOffset</span><span class="p">];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">edgeweight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bound</span><span class="p">(</span><span class="n">xdir</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bound</span><span class="p">(</span><span class="n">ydir</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">output_image</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">edgeweight</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The outer two loops ensure that we visit every pixel in the
+image, while ignoring image borders. The stencil gradient calculation is performed in the two inner loops.
+The x and y directions are bound to be between 0 and 255 and the final edge value is stored to the output image.</p>
+<p>Consider a case where each pixel in a 512x512 image is received every clock cycle.
+One approach to implementing this in hardware is to store the entire image in memory, then perform filtering on the image by loading it from memory.
+While this approach is certainly possible, it suffers from several weaknesses.
+First, if the input image is 512×512 pixels, with each pixel received every clock cycle, it would take 262,144 cycles to store the entire image. This represents a significant
+wait time before seeing any output. Second, we would need to store the entire input image in memory.
+Assuming 8-bit pixel values, this would require 262KB of memory. If the image is stored in off-chip memory, it would take a considerable
+amount of time to access each pixel, and the performance would suffer significantly.</p>
+<p>An alternative widely used approach is to use line buffers.</p>
+<a class="reference internal image-reference" href="_images/sobel.png"><img alt="_images/sobel.png" class="align-center" src="_images/sobel.png" style="width: 383.40000000000003px; height: 108.9px;" /></a>
+<p>The figure shows two buffers, each holding 512 pixels.
+Rather than storing the entire input image, we only need to store the previous two rows of the input image (as the 3x3 stencil window can cover 3 rows), along with a few
+pixels from the first row being covered by the stencil window. As new pixels are received, they are stored into the line buffers.
+Once the first two lines of the image (and the first three pixels of the third row) have been received, we can start computing the edges.
+From this point onwards, the stencil starts to move with every new pixel received. When the stencil moves to the next row, its previous two rows are always stored in the line buffers.</p>
+<p>With the line buffers, we can start computing the edges much earlier, as we do not have to wait for the entire image to be stored.
+This also drastically reduces the amount of memory required to just two rows of the input image.
+By storing the line buffers in on-chip memory, its data can be accessed very quickly (with 1 cycle latency).
+Techniques such as this allow efficient real-time video processing on FPGAs.</p>
+<p>To give more insight to SmartHLS’s <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> class, the code snippet below illustrates the <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> template class implementation when it is instantiated with an 3x3 <code class="docutils literal notranslate"><span class="pre">WindowSize</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">PixelType</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">ImageWidth</span><span class="w"></span>
+<span class="w">          </span><span class="cm">/* WindowSize == 3 for illustration purpose */</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">LineBuffer</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Two line buffers storing two rows of pixels.</span>
+<span class="w">    </span><span class="n">PixelType</span><span class="w"> </span><span class="n">prev_rows</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">ImageWidth</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Index to keep track of the current index in row (along x-axis).</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">prev_row_index</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// The 3x3 stencil window.</span>
+<span class="w">    </span><span class="n">PixelType</span><span class="w"> </span><span class="n">window</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ShiftInPixel</span><span class="p">(</span><span class="n">PixelType</span><span class="w"> </span><span class="n">input_pixel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Shift existing window to the left by one.</span>
+<span class="w">        </span><span class="n">window</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span><span class="w">   </span><span class="n">window</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">window</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span><span class="w">   </span><span class="n">window</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">window</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span><span class="w">   </span><span class="n">window</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Grab next column (the rightmost column of the sliding window).</span>
+<span class="w">        </span><span class="n">window</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev_rows</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">prev_row_index</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">window</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev_rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">prev_row_index</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">window</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_pixel</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Update the line buffers.</span>
+<span class="w">        </span><span class="n">prev_rows</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">prev_row_index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev_rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">prev_row_index</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">prev_rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">prev_row_index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_pixel</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">prev_row_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">prev_row_index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ImageWidth</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">prev_row_index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This class contains two internal line buffers using a private <cite>2xImageWidth</cite> <code class="docutils literal notranslate"><span class="pre">prev_rows</span></code> array, and an externally accessible 3x3 stencil <code class="docutils literal notranslate"><span class="pre">window</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">prev_row_index</span></code> variable keeps track of the position of the line buffer where its data needs to shifted out, and where new data needs to be shifted in.</p>
+<p>Each time when the <code class="docutils literal notranslate"><span class="pre">ShiftInPixel</span></code> method is called to shift in a new <code class="docutils literal notranslate"><span class="pre">input_pixel</span></code>, we shift each element in the 3x3 window to the left by one.
+The last elements of the line buffers are read out and stored into the rightmost column of the 3x3 window, along with the new input pixel.
+The new input pixel is also stored into the first line buffer, while the last element of the first line buffer is stored into the second line buffer.
+Then <code class="docutils literal notranslate"><span class="pre">prev_row_index</span></code> is updated, by incrementing it by one, unless it has gone through the entire row, in which case it is set to zero (indicating that we are moving onto a new row).</p>
+<p>To help visualizing how the window and line buffers are updated, the diagram below shows a 3x3 window sliding across a 10x10 input image.
+We declare a <cite>LineBuffer</cite> as <code class="docutils literal notranslate"><span class="pre">hls::LineBuffer&lt;PixelType,</span> <span class="pre">10,</span> <span class="pre">3&gt;</span> <span class="pre">lb;</span></code>.
+The outer box represents the 10x10 input image, and the 3x3 black box represents the sliding window.
+The pixels labelled “0” are stored in the first line buffer (e.g., <code class="docutils literal notranslate"><span class="pre">prev_rows[0]</span></code> in the code above),
+and the pixels labelled “1” are stored in the second line buffer (e.g., <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code>).
+When the <code class="docutils literal notranslate"><span class="pre">ShiftInPixel</span></code> method is called to shift in a new pixel, you can see the 3x3 window is shifted to left and covers the new pixel.
+The line buffers are also updated — <code class="docutils literal notranslate"><span class="pre">prev_rows[0]</span></code> takes in the new pixel and retires its oldest pixel, which is taken in by the second line buffer <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code>; <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code> also retires its oldest pixel, labelled with “x”.</p>
+<a class="reference internal image-reference" href="_images/LineBufferOptGuideAnimation.png"><img alt="_images/LineBufferOptGuideAnimation.png" class="align-center" src="_images/LineBufferOptGuideAnimation.png" style="width: 748.8000000000001px; height: 864.9px;" /></a>
+</div>
+<div class="section" id="inferring-streaming-hardware-via-producer-consumer-pattern-with-threads">
+<h2>Inferring Streaming Hardware via Producer-Consumer Pattern with Threads<a class="headerlink" href="#inferring-streaming-hardware-via-producer-consumer-pattern-with-threads" title="Permalink to this headline">¶</a></h2>
+<p>The producer-consumer pattern is a well-known concurrent programming paradigm.
+It typically comprises a finite-size buffer and two classes of threads, a producer and a
+consumer. The producer stores data into the buffer and the
+consumer takes data from the buffer to process. The producer must wait until the
+buffer has space before it can store new data, and the consumer
+must wait until the buffer is not empty before it can take data.
+The waiting is usually realized with the use of a semaphore.</p>
+<p>The pseudocode for a producer-consumer pattern with two threads is shown below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">producer_thread</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// produce data</span>
+<span class="w">    </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">produce</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// wait for an empty space in the buffer</span>
+<span class="w">    </span><span class="n">sem_wait</span><span class="p">(</span><span class="n">numEmpty</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// store item to buffer</span>
+<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">write_to_buffer</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// increment number of full spots in the buffer</span>
+<span class="w">    </span><span class="n">sem_post</span><span class="p">(</span><span class="n">numFull</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="n">consumer_thread</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// wait until buffer is not empty</span>
+<span class="w">    </span><span class="n">sem_wait</span><span class="p">(</span><span class="n">numFull</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// get data from buffer</span>
+<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">read_from_buffer</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// increment number of empty spots in the buffer</span>
+<span class="w">    </span><span class="n">sem_post</span><span class="p">(</span><span class="n">numEmpty</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// process data</span>
+<span class="w">    </span><span class="n">consume</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In a producer-consumer pattern, the independent producer
+and consumer threads are continuously running, thus they
+contain infinite loops. Semaphores are used to keep track of the
+number of spots available in the buffer and the number of items stored in the buffer.
+A mutex is also used to enforce mutual exclusion on accesses to the buffer.</p>
+<p>The producer-consumer pattern is an ideal <cite>software approach to describing
+streaming hardware</cite>. Streaming hardware is always running,
+just as the producer-consumer threads shown above. Different
+streaming hardware modules execute concurrently and independently, as with the producer-consumer threads.
+SmartHLS supports the use of threads, hence the producer-consumer pattern expressed with threads can be directly synthesized to streaming hardware.
+Our easy-to-use FIFO library provides the required buffer between a producer and a consumer, without the user having to
+specify the low-level intricacies of using semaphores and mutexes.</p>
+<p>An example pseudo code with three kernels, where function <code class="docutils literal notranslate"><span class="pre">A</span></code> is a producer to function <code class="docutils literal notranslate"><span class="pre">B</span></code> (<code class="docutils literal notranslate"><span class="pre">B</span></code> is a consumer to <code class="docutils literal notranslate"><span class="pre">A</span></code>),
+and function <code class="docutils literal notranslate"><span class="pre">B</span></code> is a producer to <code class="docutils literal notranslate"><span class="pre">C</span></code> (<code class="docutils literal notranslate"><span class="pre">C</span></code> is a consumer to <code class="docutils literal notranslate"><span class="pre">B</span></code>) is shown below.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">A</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">FIFO0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma HLS loop pipeline</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// do some work</span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// write to output FIFO</span>
+<span class="w">    </span><span class="n">FIFO0</span><span class="o">-&gt;</span><span class="n">write</span><span class="p">(</span><span class="n">out</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">B</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">FIFO0</span><span class="p">,</span><span class="w"> </span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">FIFO1</span><span class="p">,</span><span class="w"> </span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">FIFO2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma HLS loop pipeline</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// read from input FIFO</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FIFO0</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// do some work</span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// write to output FIFOs</span>
+<span class="w">    </span><span class="n">FIFO1</span><span class="o">-&gt;</span><span class="n">write</span><span class="p">(</span><span class="n">FIFO1</span><span class="p">,</span><span class="w"> </span><span class="n">data1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">FIFO2</span><span class="o">-&gt;</span><span class="n">write</span><span class="p">(</span><span class="n">FIFO2</span><span class="p">,</span><span class="w"> </span><span class="n">data2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">C</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">FIFO1</span><span class="p">,</span><span class="w"> </span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">FIFO2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma HLS loop pipeline</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// read from input FIFOs</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FIFO1</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FIFO2</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// do some work</span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">top</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FIFO0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FIFO1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FIFO2</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">hls</span><span class="o">::</span><span class="kr">thread</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">hls</span><span class="o">::</span><span class="kr">thread</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">hls</span><span class="o">::</span><span class="kr">thread</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO2</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Each kernel contains an infinite loop, which keeps
+the loop body continuously running.
+We pipeline this loop, to create a streaming circuit. The
+advantage of using loop pipelining, versus pipelining the entire
+function (with function pipelining), is that there can also be parts of the function that are
+not streaming (only executed once), such as for performing
+initializations.
+The top function forks a separate thread for each of the kernel functions.
+The user does not have to specify the number of times the functions
+are executed – the threads automatically start executing when
+there is data in their input FIFOs. This matches the always
+running behaviour of streaming hardware.
+The multi-threaded code above can be compiled, concurrently executed, and debugged using standard software tools (e.g., gcc, gdb).
+When compiled to hardware with SmartHLS, the following hardware architecture is created:</p>
+<a class="reference internal image-reference" href="_images/multiple_kernels.png"><img alt="_images/multiple_kernels.png" class="align-center" src="_images/multiple_kernels.png" style="width: 320.4px; height: 104.39999999999999px;" /></a>
+<p>Another advantage of using threads in SmartHLS is that one can also
+easily replicate streaming hardware. In SmartHLS, each thread is
+mapped to a hardware instance, hence forking multiple
+threads of the same function creates replicated hardware instances that execute concurrently.
+For instance, if the application shown above is
+completely parallelizable (i.e., data-parallel), one can exploit
+spatial hardware parallelism by forking two threads for each
+function, to create the architecture shown below. This
+methodology therefore allows exploiting both spatial (replication) and pipeline hardware parallelism all from software.</p>
+<a class="reference internal image-reference" href="_images/multiple_replicated_kernels.png"><img alt="_images/multiple_replicated_kernels.png" class="align-center" src="_images/multiple_replicated_kernels.png" style="width: 339.59999999999997px; height: 145.2px;" /></a>
+<p>For replication, some HLS tools may require the hardware
+designer to manually instantiate a synthesized core multiple
+times and also make the necessary connections in HDL. This
+is cumbersome for a hardware engineer and infeasible for a
+software engineer. Another approach is to use a system integration tool, which allow users to connect hardware modules
+via a schematic-like block design entry methodology.
+This, also, is a foreign concept in the software domain. Our methodology
+uses purely software concepts to automatically create and
+connect multiple concurrently executing streaming modules.</p>
+<p>To create the replicated architecture shown above, one simply has to change the
+<code class="docutils literal notranslate"><span class="pre">top</span></code> function as the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define NUM_THREADS 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">top</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FIFO0</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">],</span><span class="w"> </span><span class="n">FIFO1</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">],</span><span class="w"> </span><span class="n">FIFO2</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NUM_THREADS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">hls</span><span class="o">::</span><span class="kr">thread</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO0</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">hls</span><span class="o">::</span><span class="kr">thread</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO0</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">hls</span><span class="o">::</span><span class="kr">thread</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FIFO2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This simple, yet powerful technique allows creating multiple replicated streaming hardware modules
+directly from standard software.
+As this is a purely standard software solution, without requiring any tool specific pragmas, the concurrent
+execution behaviour of the replicated kernels can be modeled from software.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+<!-- Amandeep.Talwar: Moved the footer code to layout.html to resolve conflict with the Microchip template -->
+</footer>
+
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+  
+<footer _ngcontent-hes-c23=""><div _ngcontent-hes-c23="" class="social-icons">
+<a _ngcontent-hes-c23="" href="https://github.com/MicrochipTech/" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="fa-github-square" class="svg-inline--fa fa-github-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path
+     fill="currentColor"
+     d="m 151.375,357.33334 q 1.16667,-2 -0.875,-4.33334 -2.625,-2.33334 -4.08333,-0.66666 -1.16667,2 0.875,4.33332 2.625,2.33334 4.08333,0.66668 z m -8.16667,-13.66668 q -1.45833,-2.33332 -3.5,-1.33332 -1.75,1.33332 0,4 2.04167,2.66666 3.5,1.66666 1.75,-1.33334 0,-4.33334 z M 131.25,330.33334 Q 131.83333,329 129.79167,327.66666 127.75,327 127.45833,328.33334 126.58333,330 128.625,331 q 2.33333,0.66666 2.625,-0.66666 z M 137.375,338 q 0.58333,-0.33334 0.4375,-1.5 -0.14583,-1.16666 -1.02083,-1.83334 -1.75,-2.33332 -2.91667,-1 -1.16667,1.33334 0.29167,3.66668 1.75,2 3.20833,0.66666 z m 25.08333,25 q 0.58334,-2.33334 -2.625,-3.66666 -2.625,-1 -3.79166,1.33332 -0.58334,2.33334 2.625,3.66668 2.625,1 3.79166,-1.33334 z m 12.25,1 q 0,-2.66666 -3.5,-2.66666 -2.91666,0 -2.91666,2.66666 0,2.66666 3.20833,2.66666 3.20833,0 3.20833,-2.66666 z m 11.375,-2.33334 Q 185.5,359.33334 182.29167,360 q -3.20834,0.66666 -2.625,3 0.58333,2.66666 3.5,2 2.91666,-0.66666 2.91666,-3.33334 z M 373.33333,256 q 0,-70.66666 -43.75,-120.66666 Q 285.83333,85.333334 224,85.333334 q -61.83333,0 -105.58333,50.000006 -43.750003,50 -43.750003,120.66666 0,55.66666 28.583333,100.16666 28.58333,44.5 73.5,61.83334 5.25,1 7.72917,-1.66666 2.47916,-2.66668 2.47916,-6.66668 0,-17.33332 -0.29166,-31.66666 -1.75,0.33334 -4.52084,0.83334 -2.77083,0.5 -10.35416,0.66666 -7.58334,0.16666 -14,-1.33334 -6.41667,-1.5 -12.6875,-6.66666 Q 138.83333,366.33334 136.5,357.66666 129.79167,338 119.875,333 q -0.58333,-0.33334 -1.3125,-1.16666 L 116.22917,329.16666 114.1875,326 l 1.16667,-2.5 5.6875,-1.16666 q 1.75,0 4.375,0.66666 2.625,0.66666 8.75,5.16666 6.125,4.5 9.625,11.83334 4.66666,9.33334 10.9375,14 6.27083,4.66666 12.6875,4.66666 6.41666,0 11.08333,-1.16666 4.66667,-1.16666 8.75,-3.16666 2.04167,-15.66668 9.625,-23 -14.29167,-2 -25.08333,-6.16668 Q 161,321 150.5,312.16666 140,303.33334 134.3125,286.83334 128.625,270.33334 128.625,247 q 0,-26.33334 15.45833,-45.66666 -7,-20.66668 1.45834,-45.33334 5.54166,-2 15.89583,2.5 10.35417,4.5 17.64583,9.83334 l 7.58334,5.33332 Q 203.58333,168 224,168 q 20.41667,0 37.33333,5.66666 3.20834,-2.33332 8.3125,-6 Q 274.75,164 285.83333,159 q 11.08334,-5 16.625,-3 8.45834,24.66666 1.45834,45.33334 Q 319.375,220.66666 319.375,247 q 0,19 -4.08333,33.5 -4.08334,14.5 -10.35417,23.33334 -6.27083,8.83332 -15.60417,14.83332 -9.33333,6 -18.22916,8.66668 -8.89584,2.66666 -19.97917,4 10.20833,10.33332 10.20833,31.66666 0,13.33334 -0.14583,29.66666 -0.14583,16.33334 -0.14583,17 0,4 2.47916,6.66668 Q 266,419 271.25,418 316.16667,400.66666 344.75,356.16666 373.33333,311.66666 373.33333,256 Z M 448,96 v 320 q 0,39.66666 -24.64583,67.83334 Q 398.70833,512 364,512 H 84 Q 49.291667,512 24.645833,483.83334 0,455.66666 0,416 V 96 Q 0,56.333334 24.645833,28.166666 49.291667,0 84,0 H 364 Q 398.70833,0 423.35417,28.166666 448,56.333334 448,96 Z"/></svg></fa-icon></div>
+</a>
+
+
+
+<a _ngcontent-hes-c23="" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg></fa-icon></div></a>
+<a _ngcontent-hes-c23="" href="https://google.com/+MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="google"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square" class="svg-inline--fa fa-google-plus-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.linkedin.com/company/microchip-technology" target="_top"><div _ngcontent-hes-c23="" class="linkedin"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://twitter.com/MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="twitter"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square" class="svg-inline--fa fa-twitter-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.youtube.com/user/MicrochipTechnology" target="_top"><div _ngcontent-hes-c23="" class="youtube"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube-square" class="svg-inline--fa fa-youtube-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.microchip.com/rss/" target="_top"><div _ngcontent-hes-c23="" class="rss"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss-square" class="svg-inline--fa fa-rss-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM112 416c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm157.533 0h-34.335c-6.011 0-11.051-4.636-11.442-10.634-5.214-80.05-69.243-143.92-149.123-149.123-5.997-.39-10.633-5.431-10.633-11.441v-34.335c0-6.535 5.468-11.777 11.994-11.425 110.546 5.974 198.997 94.536 204.964 204.964.352 6.526-4.89 11.994-11.425 11.994zm103.027 0h-34.334c-6.161 0-11.175-4.882-11.427-11.038-5.598-136.535-115.204-246.161-251.76-251.76C68.882 152.949 64 147.935 64 141.774V107.44c0-6.454 5.338-11.664 11.787-11.432 167.83 6.025 302.21 141.191 308.205 308.205.232 6.449-4.978 11.787-11.432 11.787z"></path></svg></fa-icon></div></a></div><div _ngcontent-hes-c23="" id="mchip-overlay" onclick="off()" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; background-color: rgba(0,0,0,.3); display: none;"><div _ngcontent-hes-c23="" style="position: relative; width: 100%; height: 100%;"></div></div><div _ngcontent-hes-c23="" class="links"><nav _ngcontent-hes-c23=""><a _ngcontent-hes-c23="" href="https://www.microchip.com/products/" target="_top">Products</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Applications</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Design</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/training/" target="_top">Training</a><a _ngcontent-hes-c23="" href="https://www.microchipdirect.com/" target="_top">Sample</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/aboutus/" target="_top">About</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/contactus/" target="_top">Contact</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/legal/" target="_top">Legal</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/about-us/legal-information/privacy-policy" target="_top">Privacy Policy</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/investors/" target="_top">Investors</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/careers/" target="_top">Careers</a><a _ngcontent-hes-c23="" href="https://support.microchip.com/" target="_top">Support</a></nav><p _ngcontent-hes-c23="" class="links">©Copyright 2021 Microchip Technology Inc. All rights reserved.</p></div></footer>
+</body>
+</html>

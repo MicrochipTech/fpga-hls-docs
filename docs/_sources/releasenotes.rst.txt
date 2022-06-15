@@ -12,10 +12,54 @@ Latest Release (|version|)
 .. 2) the sections (e.g., Software Features and Enhancements) should have the
 ..    "---------" title indication line changed to "~~~~~~~~".
 
-Release Date: Apr 2022
+Release Date: June, 2022
+
+What's New
+-----------
+
+SoC features targeting PolarFire SoC FPGAs: only available through the SmartHLS SoC Early Access Program (EAP) and requires a separate SmartHLS SoC EAP license. If you are interested in participating in the EAP, please email SmartHLS@microchip.com.
+
+ * Generation of C++ accelerator drivers capable of controlling SmartHLS accelerators from software in an SoC design.
+ * Generation of a reference SoC design implementing user's code, targeting `PolarFire SoC Icicle Kit <https://www.microsemi.com/existing-parts/parts/152514>`_.
+ * Automatic programming of a generated SoC design (or a base SoC project) to an attached Icicle Kit, and capability to cross-compile user software (with or without hardware accelerators) to run on the Icicle kit.
 
 Software Features and Enhancements
 -----------------------------------
+
+ * Support for AXI4Target and AXI4Initiator interface types. See the updated section :ref:`rtl_interface`.
+ * Support for generating multiple, separate accelerator IPs in the same SmartHLS project by allowing multiple top-level functions. A separate accelerator IP will be generated for each function marked with ``#pragma HLS function top`` (see :ref:`pragma_function_top`).
+ * Support for linking external software libraries that can be used as part of the software testbench in :ref:`sw_hw_cosimulation` or host software running on RISC-V processor in the case of :ref:`SoC<soc_features>`. For information on including external libraries in SmartHLS projects, see :ref:`makefile`.
+ * Strength-reduction optimization for optimizing division/modulo operations with a constant divisor to multiplication and shift operations.
+ * When user invokes an action (e.g., compile, simulate, etc.), SmartHLS now prompts user to address outdated or missing prerequisite steps and give users the option to skip re-running outdated prerequisite.
+ * Support ``this`` as an argument to HLS pragmas used for class/struct methods.
+
+Resolved Issues
+----------------
+
+The following defects and enhancement requests were resolved:
+
+ * Fix incorrect optimization of global scalars that results in incorrect values for AXI read/write operations.
+
+Known Issues
+~~~~~~~~~~~~~
+
+ * As part of the newly released SoC features, SmartHLS can program an Icicle Kit using the FlashPro Express software. A known issue is that SPI flash memory initialization using an external FlashPro6 programmer and FlashPro Express does not work. For designs that require memory initialization (e.g., arrays inside the accelerated function that require initial values), it is recommended to use the Icicle Kit's embedded FlashPro6 programmer.
+
+   * If you try connecting the embedded programmer and get a warning about the embedded programmer needing an update, follow the steps from this guide (section 1.1): `<https://coredocs.s3.amazonaws.com/Libero/12_5_1/programming_debug_v12_5_1_release_notes.pdf>`_.
+
+ * On Windows, if you run the script ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS/examples/scripts/utils/download_libraries.sh`` on a Cygwin terminal as described in :ref:`ffmpeg_opencv` and uninstall SmartHLS some time after, some directories are known to remain in ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS/precompiled_libraries`` (``ffmpeg4.4-x86_64-cygwin/`` and ``opencv4.5.4-x86_64-cygwin/``). These leftover directories will cause any reinstallation of SmartHLS to the same ``<SMARTHLS_INSTALLATION_DIR>/`` as before to become incorrect. Therefore, we require you to manually delete the entire ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS`` after an uninstallation.
+
+
+Previous Releases
+==================
+
+SmartHLS 2022.1
+---------------------
+
+Release Date: Apr 2022
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * Generate :ref:`logic_level_distribution` histogram from the synthesis timing report (Linux only)
  * Improved SW/HW CoSimulation support for C++ class's private member variables in software testbench.
@@ -31,7 +75,7 @@ Software Features and Enhancements
    * Support ``struct`` packing when the packed type is the same as the cast type (see :ref:`struct_packing`).
 
 Resolved Issues
-----------------
+~~~~~~~~~~~~~~~~
 
 The following defects and enhancement requests were resolved:
 
@@ -40,10 +84,6 @@ The following defects and enhancement requests were resolved:
  * HLS-623: Removed struct member of an ``axi_slave`` interface variable was incorrectly reported as write-only memory.
  * HLS-592: Incorrect handling of %s with format specifier in printf
  * HLS-559: Fix automatic partitioning for ``struct`` types with ``FIFO`` members.
-
-
-Previous Releases
-==================
 
 SmartHLS 2021.3.1
 ---------------------

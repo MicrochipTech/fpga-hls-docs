@@ -3,8 +3,9 @@
 Supported FPGA Devices
 ==================================
 
-SmartHLS supports the following Microchip FGPA Devices:
+SmartHLS supports the following Microchip FPGA Devices:
 
+ * PolarFire SoC®
  * PolarFire®
  * SmartFusion® 2 and IGLOO® 2
 

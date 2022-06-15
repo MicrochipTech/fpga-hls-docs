@@ -21,6 +21,7 @@ The main constraints available from the SmartHLS IDE are:
  * Set resource constraint: :ref:`set_resource_constraint`
  * Set operation latency: :ref:`set_operation_latency`
  * Set FPGA family and device: :ref:`set_project`
+ * Set custom config file: :ref:`set_custom_config_file`
 
 .. * Pipeline loop: :ref:`loop_pipeline`  
  * Pipeline function: :ref:`function_pipeline`
@@ -65,6 +66,8 @@ Commonly Used Constraints
 .. include:: constraint_docs/set_resource_constraint.inc
 .. include:: constraint_docs/set_operation_latency.inc
 .. include:: constraint_docs/set_project.inc
+.. include:: constraint_docs/set_custom_config_file.inc
+
 .. .. include:: constraint_docs/ENABLE_OPENMP.inc
 .. .. include:: constraint_docs/loop_pipeline.inc
 .. .. include:: constraint_docs/function_pipeline.inc
