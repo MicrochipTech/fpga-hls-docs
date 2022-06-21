@@ -2336,8 +2336,11 @@ The table below shows supported math functions.
 
 Memory Allocation Library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For SoC designs on platforms running Linux, the SmartHLS Memory Allocation Library can be used to allocate memory in special areas outside of the areas normally used by the operating system. 
-These special memory areas are used for efficient memory transfers between DDR and components on the FPGA fabric. And example of how to use the library is shown below:
+For SoC designs on platforms running Linux, the SmartHLS Memory Allocation Library can be used to allocate memory in special areas outside of the areas normally used by the operating system.
+Memory in these areas is guaranteed to be physically contiguous and free from the virtual-physical mapping that is normally imposed by the operating system. 
+Having contiguous, physically pinned down memory is required for efficient memory transfers between DDR and components on the FPGA fabric, since it avoids issues such as paging and virtual-to-physical address translation.
+The SmartHLS memory allocation library should be used for any accelerator arguments that use DMA Copy or Accelerator Direct Access :ref:`soc_data_transfer_methods`.
+An Example of how to use the library is shown below:
 
 
 .. code-block:: CPP
@@ -2376,11 +2379,11 @@ The address and size of each region can be modified to fit other Linux images by
 +-------------------------+------------+--------------+------------------------------------------------------------------------------------------------------------------------+
 | Region                  | Address    | Size (bytes) | Description                                                                                                            |
 +=========================+============+==============+========================================================================================================================+
-| HLS_ALLOC_NONCACHED     | 0xc0000000 | 0x08000000   | Non-cached DDR.                                                                                                        |
-+-------------------------+------------+--------------+------------------------------------------------------------------------------------------------------------------------+
 | HLS_ALLOC_CACHED        | 0xae000000 | 0x02000000   | Cached DDR. Default if region unspecified. Recommended for best overall transfer times.                                |
 +-------------------------+------------+--------------+------------------------------------------------------------------------------------------------------------------------+
-| HLS_ALLOC_NONCACHED_WCB | 0xd8000000 | 0x08000000   | Non-cached DDR with write-combine buffer. Slightly better performance than cached DDR for writes, but worse for reads. |
+| HLS_ALLOC_NONCACHED_WCB | 0xd8000000 | 0x08000000   | Non-cached DDR with write-combine buffer. Slightly better performance than Cached DDR for writes, but worse for reads. |
++-------------------------+------------+--------------+------------------------------------------------------------------------------------------------------------------------+
+| HLS_ALLOC_NONCACHED     | 0xc0000000 | 0x08000000   | Non-cached DDR. Not recommended (lower performance than other options).                                                |
 +-------------------------+------------+--------------+------------------------------------------------------------------------------------------------------------------------+
 
 There are two extra arguments in ``hls_memcpy`` compared to the standard C ``memcpy``. The first extra argument is of type ``hls_alloc_direction_t``, and describes 

@@ -3112,7 +3112,10 @@ and as functions in C++</p></td>
 <div class="section" id="memory-allocation-library">
 <span id="allocation-library"></span><h3>Memory Allocation Library<a class="headerlink" href="#memory-allocation-library" title="Permalink to this headline">¶</a></h3>
 <p>For SoC designs on platforms running Linux, the SmartHLS Memory Allocation Library can be used to allocate memory in special areas outside of the areas normally used by the operating system.
-These special memory areas are used for efficient memory transfers between DDR and components on the FPGA fabric. And example of how to use the library is shown below:</p>
+Memory in these areas is guaranteed to be physically contiguous and free from the virtual-physical mapping that is normally imposed by the operating system.
+Having contiguous, physically pinned down memory is required for efficient memory transfers between DDR and components on the FPGA fabric, since it avoids issues such as paging and virtual-to-physical address translation.
+The SmartHLS memory allocation library should be used for any accelerator arguments that use DMA Copy or Accelerator Direct Access <a class="reference internal" href="#soc-data-transfer-methods"><span class="std std-ref">SoC Data Transfer Methods</span></a>.
+An Example of how to use the library is shown below:</p>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hls/hls_alloc.h&quot;</span><span class="cp"></span>
 
 <span class="c1">// Allocate enough memory for an array of 8 32-bit numbers in the default memory</span>
@@ -3158,20 +3161,20 @@ The address and size of each region can be modified to fit other Linux images by
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>HLS_ALLOC_NONCACHED</p></td>
-<td><p>0xc0000000</p></td>
-<td><p>0x08000000</p></td>
-<td><p>Non-cached DDR.</p></td>
-</tr>
-<tr class="row-odd"><td><p>HLS_ALLOC_CACHED</p></td>
+<tr class="row-even"><td><p>HLS_ALLOC_CACHED</p></td>
 <td><p>0xae000000</p></td>
 <td><p>0x02000000</p></td>
 <td><p>Cached DDR. Default if region unspecified. Recommended for best overall transfer times.</p></td>
 </tr>
-<tr class="row-even"><td><p>HLS_ALLOC_NONCACHED_WCB</p></td>
+<tr class="row-odd"><td><p>HLS_ALLOC_NONCACHED_WCB</p></td>
 <td><p>0xd8000000</p></td>
 <td><p>0x08000000</p></td>
-<td><p>Non-cached DDR with write-combine buffer. Slightly better performance than cached DDR for writes, but worse for reads.</p></td>
+<td><p>Non-cached DDR with write-combine buffer. Slightly better performance than Cached DDR for writes, but worse for reads.</p></td>
+</tr>
+<tr class="row-even"><td><p>HLS_ALLOC_NONCACHED</p></td>
+<td><p>0xc0000000</p></td>
+<td><p>0x08000000</p></td>
+<td><p>Non-cached DDR. Not recommended (lower performance than other options).</p></td>
 </tr>
 </tbody>
 </table>
@@ -4271,7 +4274,7 @@ Note that when the HLS project’s target flow is set to <code class="docutils l
 <a class="reference internal" href="constraintsmanual.html#set-project"><span class="std std-ref">set_project</span></a>), SmartHLS by default uses the harden platform DMA (PDMA)
 engine in the Microprocessor Sub-System (MSS).
 In this case, the DMA driver functions are expected to run on a Linux Operating
-System (see :ref:FIXME_MANUEL), and the processor memory referenced by the
+System (see <a class="reference internal" href="icicle_setup.html#icicle-linux-image"><span class="std std-ref">Step 5: Flashing the Linux Image to the Board</span></a>), and the processor memory referenced by the
 pointer argument (<code class="docutils literal notranslate"><span class="pre">MyPtrArg</span></code>) must be allocated by the <code class="docutils literal notranslate"><span class="pre">hls_malloc</span></code>
 function (see <a class="reference internal" href="#allocation-library"><span class="std std-ref">Memory Allocation Library</span></a>).
 On PolarFire SoC devices, it is recommended to use the PDMA engine for data
@@ -4303,7 +4306,7 @@ function below is generated for setting the pointer address:</p>
 </div>
 <p>Note that when the HLS project’s target flow is set to <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code> (see
 <a class="reference internal" href="constraintsmanual.html#set-project"><span class="std std-ref">set_project</span></a>), the driver is assumed to run on a Linux Operating System
-(see :ref:FIXME_MANUEL), and the processor memory referenced by the
+(see <a class="reference internal" href="icicle_setup.html#icicle-linux-image"><span class="std std-ref">Step 5: Flashing the Linux Image to the Board</span></a>), and the processor memory referenced by the
 pointer argument (<code class="docutils literal notranslate"><span class="pre">MyPtrArg</span></code>) must be allocated by the <code class="docutils literal notranslate"><span class="pre">hls_malloc</span></code>
 function (see <a class="reference internal" href="#allocation-library"><span class="std std-ref">Memory Allocation Library</span></a>).</p>
 </div>
@@ -5489,6 +5492,15 @@ towards the CPU’s memory.</p>
 when the SmartHLS IP modules act as AXI initiators.</p>
 <p>NOTE: the size is a hexadecimal value and the ‘0x’ prefix must be included.</p>
 </td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SOC_POLL_DELAY</p></td>
+<td><p>0</p></td>
+<td><p>Controls how often the hardware driver polls the
+modules to check for completion. The value is in microseconds.</p></td>
 </tr>
 </tbody>
 </table>
