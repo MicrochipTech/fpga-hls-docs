@@ -4274,7 +4274,7 @@ Note that when the HLS project’s target flow is set to <code class="docutils l
 <a class="reference internal" href="constraintsmanual.html#set-project"><span class="std std-ref">set_project</span></a>), SmartHLS by default uses the harden platform DMA (PDMA)
 engine in the Microprocessor Sub-System (MSS).
 In this case, the DMA driver functions are expected to run on a Linux Operating
-System (see <a class="reference internal" href="icicle_setup.html#icicle-linux-image"><span class="std std-ref">Step 5: Flashing the Linux Image to the Board</span></a>), and the processor memory referenced by the
+System (see :ref:FIXME_MANUEL), and the processor memory referenced by the
 pointer argument (<code class="docutils literal notranslate"><span class="pre">MyPtrArg</span></code>) must be allocated by the <code class="docutils literal notranslate"><span class="pre">hls_malloc</span></code>
 function (see <a class="reference internal" href="#allocation-library"><span class="std std-ref">Memory Allocation Library</span></a>).
 On PolarFire SoC devices, it is recommended to use the PDMA engine for data
@@ -4306,7 +4306,7 @@ function below is generated for setting the pointer address:</p>
 </div>
 <p>Note that when the HLS project’s target flow is set to <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code> (see
 <a class="reference internal" href="constraintsmanual.html#set-project"><span class="std std-ref">set_project</span></a>), the driver is assumed to run on a Linux Operating System
-(see <a class="reference internal" href="icicle_setup.html#icicle-linux-image"><span class="std std-ref">Step 5: Flashing the Linux Image to the Board</span></a>), and the processor memory referenced by the
+(see :ref:FIXME_MANUEL), and the processor memory referenced by the
 pointer argument (<code class="docutils literal notranslate"><span class="pre">MyPtrArg</span></code>) must be allocated by the <code class="docutils literal notranslate"><span class="pre">hls_malloc</span></code>
 function (see <a class="reference internal" href="#allocation-library"><span class="std std-ref">Memory Allocation Library</span></a>).</p>
 </div>
@@ -5492,15 +5492,6 @@ towards the CPU’s memory.</p>
 when the SmartHLS IP modules act as AXI initiators.</p>
 <p>NOTE: the size is a hexadecimal value and the ‘0x’ prefix must be included.</p>
 </td>
-</tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>SOC_POLL_DELAY</p></td>
-<td><p>0</p></td>
-<td><p>Controls how often the hardware driver polls the
-modules to check for completion. The value is in microseconds.</p></td>
 </tr>
 </tbody>
 </table>

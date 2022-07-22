@@ -5,6 +5,8 @@
 Technical Support
 ==================================
 
+.. _create_techsupport:
+
 Create a Tech Support Case
 -----------------------------------
 

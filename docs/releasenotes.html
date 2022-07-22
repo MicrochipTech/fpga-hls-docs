@@ -566,10 +566,8 @@ display:none;
 <li class="toctree-l2"><a class="reference internal" href="#latest-release-version">Latest Release (2022.1.1)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-s-new">What’s New</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#software-features-and-enhancements">Software Features and Enhancements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#resolved-issues">Resolved Issues</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#known-issues">Known Issues</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#resolved-issues">Resolved Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#previous-releases">Previous Releases</a><ul>
@@ -752,8 +750,9 @@ display:none;
 <li><p>Fix incorrect optimization of global scalars that results in incorrect values for AXI read/write operations.</p></li>
 </ul>
 </div></blockquote>
+</div>
 <div class="section" id="known-issues">
-<h4>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h4>
+<h3>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>As part of the newly released SoC features, SmartHLS can program an Icicle Kit using the FlashPro Express software. A known issue is that SPI flash memory initialization using an external FlashPro6 programmer and FlashPro Express does not work. For designs that require memory initialization (e.g., arrays inside the accelerated function that require initial values), it is recommended to use the Icicle Kit’s embedded FlashPro6 programmer.</p>
@@ -762,9 +761,10 @@ display:none;
 </ul>
 </li>
 <li><p>On Windows, if you run the script <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/examples/scripts/utils/download_libraries.sh</span></code> on a Cygwin terminal as described in <a class="reference internal" href="precompiled_sw.html#ffmpeg-opencv"><span class="std std-ref">FFmpeg 4.4 and OpenCV 4.5.4</span></a> and uninstall SmartHLS some time after, some directories are known to remain in <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/precompiled_libraries</span></code> (<code class="docutils literal notranslate"><span class="pre">ffmpeg4.4-x86_64-cygwin/</span></code> and <code class="docutils literal notranslate"><span class="pre">opencv4.5.4-x86_64-cygwin/</span></code>). These leftover directories will cause any reinstallation of SmartHLS to the same <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/</span></code> as before to become incorrect. Therefore, we require you to manually delete the entire <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS</span></code> after an uninstallation.</p></li>
+<li><p>(Update) In July 2022, version 1.0.205 of the PFSOC_INIT_MONITOR IP core was deprecated from Libero 2022.1.  Since SmartHLS’ reference SoC uses this deprecated version of the IP,  SmartHLS’ SoC Features stop working with Libero 2022.1.
+Please <a class="reference internal" href="techsupport.html#create-techsupport"><span class="std std-ref">Create a Tech Support Case</span></a> if you are impacted by this issue. This issue will be fixed in the SmartHLS v2022.2 release.</p></li>
 </ul>
 </div></blockquote>
-</div>
 </div>
 </div>
 <div class="section" id="previous-releases">

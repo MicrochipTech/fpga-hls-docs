@@ -41,14 +41,15 @@ The following defects and enhancement requests were resolved:
  * Fix incorrect optimization of global scalars that results in incorrect values for AXI read/write operations.
 
 Known Issues
-~~~~~~~~~~~~~
+-------------
 
  * As part of the newly released SoC features, SmartHLS can program an Icicle Kit using the FlashPro Express software. A known issue is that SPI flash memory initialization using an external FlashPro6 programmer and FlashPro Express does not work. For designs that require memory initialization (e.g., arrays inside the accelerated function that require initial values), it is recommended to use the Icicle Kit's embedded FlashPro6 programmer.
 
    * If you try connecting the embedded programmer and get a warning about the embedded programmer needing an update, follow the steps from this guide (section 1.1): `<https://coredocs.s3.amazonaws.com/Libero/12_5_1/programming_debug_v12_5_1_release_notes.pdf>`_.
 
  * On Windows, if you run the script ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS/examples/scripts/utils/download_libraries.sh`` on a Cygwin terminal as described in :ref:`ffmpeg_opencv` and uninstall SmartHLS some time after, some directories are known to remain in ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS/precompiled_libraries`` (``ffmpeg4.4-x86_64-cygwin/`` and ``opencv4.5.4-x86_64-cygwin/``). These leftover directories will cause any reinstallation of SmartHLS to the same ``<SMARTHLS_INSTALLATION_DIR>/`` as before to become incorrect. Therefore, we require you to manually delete the entire ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS`` after an uninstallation.
-
+ * (Update) In July 2022, version 1.0.205 of the PFSOC_INIT_MONITOR IP core was deprecated from Libero 2022.1.  Since SmartHLS' reference SoC uses this deprecated version of the IP,  SmartHLS' SoC Features stop working with Libero 2022.1.
+   Please :ref:`create_techsupport` if you are impacted by this issue. This issue will be fixed in the SmartHLS v2022.2 release.
 
 Previous Releases
 ==================
