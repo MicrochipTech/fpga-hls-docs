@@ -9,7 +9,7 @@
 Overview
 =========  
 
-`Smart high-level synthesis (SmartHLS) Compiler <https://www.microsemi.com/product-directory/fpga-design-tools/5590-hls>`__
+`Smart high-level synthesis (SmartHLS) Compiler <https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler>`__
 is an Eclipse-based integrated development environment that takes C++ software code as input and generates a SmartDesign IP component (Verilog HDL) as output. Hardware engineers can instantiate the generated SmartDesign IP component in the SmartDesign canvas available in Libero SoC design suite to build an FPGA system.
 
 

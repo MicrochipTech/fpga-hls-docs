@@ -13,7 +13,6 @@ This reference section explains the constraints available for SmartHLS.
 The main constraints available from the SmartHLS IDE are:
 
  * Set target clock period: :ref:`CLOCK_PERIOD`
- * Set top-level function: :ref:`set_custom_top_level_module`
  * Set test bench module: :ref:`set_custom_test_bench_module`
  * Set test bench file: :ref:`set_custom_test_bench_file`
  * Set FPGA synthesis top-level module: :ref:`set_synthesis_top_module`
@@ -22,6 +21,7 @@ The main constraints available from the SmartHLS IDE are:
  * Set operation latency: :ref:`set_operation_latency`
  * Set FPGA family and device: :ref:`set_project`
  * Set custom config file: :ref:`set_custom_config_file`
+ * Print the HDL output to a single output file: :ref:`SINGLE_HDL_OUTPUT_FILE`
 
 .. * Pipeline loop: :ref:`loop_pipeline`  
  * Pipeline function: :ref:`function_pipeline`
@@ -58,7 +58,6 @@ Commonly Used Constraints
 
 
 .. include:: constraint_docs/CLOCK_PERIOD.inc
-.. include:: constraint_docs/set_custom_top_level_module.inc
 .. include:: constraint_docs/set_custom_test_bench_module.inc
 .. include:: constraint_docs/set_custom_test_bench_file.inc
 .. include:: constraint_docs/set_synthesis_top_module.inc
@@ -67,6 +66,7 @@ Commonly Used Constraints
 .. include:: constraint_docs/set_operation_latency.inc
 .. include:: constraint_docs/set_project.inc
 .. include:: constraint_docs/set_custom_config_file.inc
+.. include:: constraint_docs/SINGLE_HDL_OUTPUT_FILE.inc
 
 .. .. include:: constraint_docs/ENABLE_OPENMP.inc
 .. .. include:: constraint_docs/loop_pipeline.inc

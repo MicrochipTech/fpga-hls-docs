@@ -15,7 +15,7 @@ RISC-V GNU Cross Compiler
 ----------------------------------
 
 SmartHLS uses RISC-V GNU Cross compiler to compile the binary running on the
-RISC-V Microprocessor Sub-System (MSS) processor of PolarFire®. You can find the
+RISC-V Microprocessor Sub-System (MSS) processor of PolarFire\ :sup:`®`\ . You can find the
 compiler at:
 
  * <SMARTHLS_INSTALLATION_DIR>/SmartHLS/swtools/binutils/riscv-gnu-toolchain/install/bin

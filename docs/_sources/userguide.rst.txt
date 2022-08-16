@@ -96,7 +96,7 @@ the software testbench and accelerator drivers for that reference SoC.
 SmartHLS SoC Flow
 ------------------
 
-SmartHLS can automatically generate a RISC-V processor/accelerator SoC for the PolarFire SoC device on the Icicle Kit. For more information on the SoC features, see `SoC Features`_.
+SmartHLS can automatically generate a RISC-V processor/accelerator SoC for the PolarFire\ :sup:`®`\  SoC device on the Icicle Kit. For more information on the SoC features, see `SoC Features`_.
 
 .. NOTE::
 
@@ -120,11 +120,11 @@ SmartHLS can automatically generate a RISC-V processor/accelerator SoC for the P
 .. Then run ``shls hybrid`` in command line, which generates the complete system.
 .. The architecture of a processor-accelerator hybrid system is described in :ref:`hwarch`.
 .. 
-.. Enhanced Data Transfer for Hybrid Systems Targetting Microsemi
+.. Enhanced Data Transfer for Hybrid Systems Targetting Microchip
 .. ~~~~~~~~~~~~~~~~~~~~~~
 .. 
 .. SmartHLS provides enhanced data transfer methods for the Hybrid Systems targeting
-.. Microsemi's PolarFireSoC FPGA.  Three data transfer methods are supported for
+.. Microchip's PolarFire\ :sup:`®`\  SoC FPGA.  Three data transfer methods are supported for
 .. the RISC-V processor to handoff or retrieve data to/from SmartHLS accelerators:
 .. 
 .. * ``cpu_driven``: the RISC-V processor is the 'master' of the data transfer and
@@ -288,8 +288,8 @@ When this constraint is not given, SmartHLS uses the default clock period for ea
 ============  ===========================  =================================  =============================
 FPGA Vendor       Device                      Default Clock Frequency (MHz)      Default Clock Period (ns)
 ============  ===========================  =================================  =============================
-Microsemi        PolarFire                       100                                10
-Microsemi        SmartFusion2                    100                                10
+Microchip        PolarFire                       100                                10
+Microchip        SmartFusion2                    100                                10
 ============  ===========================  =================================  =============================
 
 Details of all SmartHLS constraints are given in the :ref:`constraints`.
@@ -303,37 +303,17 @@ When compiling software to hardware with SmartHLS, you must specify the top-leve
 Then SmartHLS will compile the specified top-level function and all of its descendant functions to hardware.
 The remainder of the program (i.e., parent functions of the top-level function, typically the ``main`` function) 
 becomes a software testbench that is used for :ref:`sw_hw_cosimulation`.
-If there are multiple functions to be compiled to hardware, you should create a wrapper function that calls all of the
-desired functions. 
-There are two ways to specify the top-level function. 
-The first way is to specify it during project creation in the SmartHLS IDE, as shown below. 
-
-   .. image:: /images/top_level_project_creation.png
-        :align: center
-
-This will save the top-level function constraint into the ``config.tcl``. After creating the project, if you open up the ``HLS Constraints`` window, the top-level function should show there.
-
-   .. image:: /images/top_level_constraints_dialog.png
-        :align: center
-
-You can edit or remove the function from this window. 
-
-Alternatively, the top-level function can also be specified with the pragma, ``#pragma HLS function top``, directly on the source code, below the function prototype, as shown below:
+The top-level function is specified with the pragma, ``#pragma HLS function top``, directly on the source code, below the function prototype, as shown below:
        
 
 .. code-block:: c
 
-    void top(int a, int b) {
+    void hw_top(int a, int b) {
        #pragma HLS function top
        ...
        ...
     }
 
-
-.. NOTE::
-   Please note that you *cannot* specify the top-level function using both the pragma and in project creation/HLS Constraints window. 
-   If you have specified the top-level function during project creation, you should not specify it again with the pragma. 
-   If you want to use the pragma, you should leave the `Top-Level Function` box empty during project creation or remove the specified top-level function in the HLS Constraints window. 
 
 
 .. _sw_hw_cosimulation:
@@ -749,41 +729,15 @@ Similarly, ``hls::ref`` is used to wrap the passed-in by reference argument when
 SmartHLS thread library also supports ``mutex`` and ``barrier`` as synchronization primitives. 
 
 ``mutex`` can be used to protect shared data from being simultaneously accessed by multiple threads.
-``hls::mutex`` has ``lock()`` and ``unlock()`` methods. The example below shows how to create and use ``hls::mutex``:
-
-.. code-block:: c
-
-  hls::mutex m;
-
-  void f() {
-    m.lock();
-    ....
-    m.unlock();
-  }
+``hls::mutex`` has ``lock()`` and ``unlock()`` methods.
 
 ``barrier`` provides a thread-coordination mechanism that allows at most an expected number of threads to block until the expected number of threads arrive at the barrier.
-``hls::barrier`` has ``init()`` and ``wait()`` methods. The following example illustrates the use of ``hls::barrier``:
+``hls::barrier`` has ``init()`` and ``wait()`` methods. 
 
-.. code-block:: c
+The following example illustrates the use of ``hls::mutex`` and ``hls::barrier``:
 
-  hls::barrier bar;
-
-  void f1() {
-    ....
-    bar.wait();
-  }
-
-  void f2() {
-    ....
-    bar.wait();
-  }
-
-  int main() {
-    bar.init(2);
-    auto t1 = hls::thread<void>(f1);
-    auto t2 = hls::thread<void>(f2);
-    ....
-  }
+.. literalinclude:: ../examples/user_guide_examples/threads_api/threads_api.cpp
+	:language: cpp
 
 .. _data_flow_parallelism_with_pthreads:
 
@@ -979,33 +933,25 @@ Access-based partitioning is automatically applied to all memories by SmartHLS e
 top-level function. Interface memories need to be partitioned with the memory partition pragma.
 See the code snippet below that illustrate an example of accessed-based partitioning.
 
-.. code-block:: c
-
-    int array[8];
-    int result = 0;
-
-    ...
-
-    #pragma unroll
-    for (i = 0; i < 8; i++) {
-        result += array[i]
-    }
+.. literalinclude:: ../examples/user_guide_examples/memory_partitioning/memory_part_access/memory_partitioning.cpp
+	:language: cpp
+	:lines: 6-7,15,22-25
 
 In the example above, each iteration of the loop access an element of ``array`` and adds it to ``result``. The ``unroll`` pragma is applied to completely unroll the loop.
-Without partitioning, SmartHLS will implement this array in a RAM (with eight elements), where an FPGA RAM can have up to two read/write ports.
-In this case, the loop will take four cycles, as eight reads are needed from the RAM and up to two reads can be performed per cycle with a two ported memory.
+Without partitioning, SmartHLS will implement this array in a RAM (with 1000 elements), where an FPGA RAM can have up to two read/write ports.
+In this case, the loop will take 500 cycles, as 1000 reads are needed from the RAM and up to two reads can be performed per cycle with a two ported memory.
 
-With access-based partitioning, the accesses to the above array will be analyzed. With unrolling, there will be eight
+With access-based partitioning, the accesses to the above array will be analyzed. With unrolling, there will be 1000
 load instructions, each of which will access a single array element, with no overlaps in accesses between the load instructions (i.e., the accesses of each load instruction are independent).
-This creates 8 partitions, with one array element in each partition.
-After partitioning, all eight reads can occur in the same clock cycle, as each memory will only need one memory access. Hence the entire loop can finish in a single cycle.
+This creates 1000 partitions, with one array element in each partition.
+After partitioning, all 1000 reads can occur in the same clock cycle, as each memory will only need one memory access. Hence the entire loop can finish in a single cycle.
 With this example, we can see that memory partitioning can help to improve memory bandwidth and improve performance.
 
 With access-based partitioning, SmartHLS outputs messages to the console specifying which memory has been partitioned into how many partitions, as shown below:
 
-.. code-block:: text
-
-    Info: Partitioning memory: array into 8 partitions.
+.. literalinclude:: ../examples/user_guide_examples/memory_partitioning/memory_part_access/golden.hls.log
+	:language: text
+	:lines: 10
 
 Limitations:
 
@@ -1055,17 +1001,9 @@ pragma references linked above. Unaccessed sections of the original memory are a
 
 **Example**
 
-.. code-block:: c
-
-    #pragma HLS memory partition variable(array)
-    int array[8];
-    int result = 0;
-
-    ...
-
-    for (i = 0; i < 8; i++) {
-        result += array[i]
-    }
+.. literalinclude:: ../examples/user_guide_examples/memory_partitioning/memory_part_user/memory_partitioning.cpp
+	:language: cpp
+	:lines: 6-9,19-21
 
 The example above shows the same example that was shown for access-based partitioning, however, the loop is not unrolled in this case.
 Access-based partitioning will try to partition the array but will only find one load instruction in the loop that accesses the entire array.
@@ -1073,7 +1011,12 @@ This preventing access-based partitioning as all eight accesses come from the sa
 
 User-specified partitioning can be used to force partitioning of this array with a predefined structure. In the example above,
 the memory partition pragma specifies the array to be partitioned completely into individual elements. After partitioning,
-the array will be partitioned into eight individual elements just like with the access-based partitioning example above.
+the array will be partitioned into eight individual elements:
+
+.. literalinclude:: ../examples/user_guide_examples/memory_partitioning/memory_part_user/golden.hls.log
+        :language: text
+        :lines: 11
+
 The benefit in this case is that the loop does not have to be unrolled, which can be useful in cases like when the loop is
 pipelined and cannot be unrolled (see :ref:`loop_pipelining`).
 
@@ -1135,52 +1078,25 @@ Unaccessed partitions (fields) are discarded, but the Unaccessed elements in an 
 
 **Example**
 
-.. code-block:: c
-
-    struct Ty {
-        struct SubTy { int a; int b; };
-        char x;
-        short y[2];
-        SubTy z;
-    };
-
-    int sum(Ty array[8]) {
-    #pragma HLS function top
-    #pragma HLS memory partition argument(array) type(struct_fields)
-        int result = 0;
-        for (int i = 0; i < 8; i++) {
-            result += array[i].x + array[i].y[0] + array[i].z.a;
-        }
-        return result;
-    }
-
+.. literalinclude:: ../examples/user_guide_examples/struct_sum/struct_sum.cpp
+	:language: cpp
+	:lines: 3-12,15-23
 
 The example above shows an array of struct `array` that is array of struct of type `Ty` that is
 partitioned using Struct-fields partitioning.
 With the user-specified partitioning, SmartHLS outputs messages to the console stating that the argument
 set to be partitioned and how many partitions are created.
 
-.. code-block:: text
-
-    Info: Found partition interface: array.
-    Info: Partitioning memory: array into 3 partitions.
-
+.. literalinclude:: ../examples/user_guide_examples/struct_sum/golden.hls.log
+	:language: text
+	:lines: 10,11
 
 The summary report from SmartHLS lists the 3 partitions created from the fields of the struct.
 Note that the array field `Ty.y` has one partition, and similarly the struct field `Ty.z`.
 
-.. code-block:: text
-
-    +---------------------------------------------------------------------------+
-    | I/O Memories                                                              |
-    +---------+-----------------------+------+-------------+------------+-------+
-    | Name    | Accessing Function(s) | Type | Size [Bits] | Data Width | Depth |
-    +---------+-----------------------+------+-------------+------------+-------+
-    | array_x | sum                   | ROM  | 0           | 8          | 0     |
-    | array_y | sum                   | ROM  | 0           | 16         | 0     |
-    | array_z | sum                   | ROM  | 0           | 64         | 0     |
-    +---------+-----------------------+------+-------------+------------+-------+
-
+.. literalinclude:: ../examples/user_guide_examples/struct_sum/golden.summary.hls.sum.rpt
+	:language: text
+	:lines: 103-111
 
 .. include:: struct_support.inc
 
@@ -1245,28 +1161,8 @@ Class Method                                         Description
 
 An example code for using the streaming library is shown below.
 
-.. code-block:: cpp
-
-    // declare a 32-bit wide fifo 
-    hls::FIFO<unsigned> my_fifo;
-    // set the fifo's depth to 10
-    my_fifo.setDepth(10);
-    
-    // write to the fifo
-    my_fifo.write(data);    
-    // read from the fifo
-    MyStructT data = my_fifo.read();
-    // check if fifo is empty
-    bool is_empty = my_fifo.empty();
-    // check if the fifo is full
-    bool is_full = my_fifo.full();    
-
-    // declare a 32-bit wide fifo with a depth of 10
-    hls::FIFO<unsigned> my_fifo_depth_10(10);
-
-
-..  // get the number of words stored in the fifo
-..  unsigned numWords = my_fifo.get_usedw();
+.. literalinclude:: ../examples/user_guide_examples/fifo/fifo.cpp
+	:language: cpp
 
 As shown above, there are two ways of creating a FIFO (``hls::FIFO<unsigned> my_fifo`` and ``hls::FIFO<unsigned> my_fifo_depth_10(10)``).
 The width of the FIFO is determined based on the templated data type of the FIFO. 
@@ -1448,41 +1344,18 @@ The C++ ``ap_[u]int`` type allows specifying signed and unsigned data types of a
 They can be used for arithmetic, concatenation, and bit level operations. You can use the ``ap_[u]int`` type
 by including the following header file.
 
-.. code-block:: CPP
-
-    #include "hls/ap_int.hpp"
+.. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
+	:language: cpp
+	:lines: 2
 
 The desired width of the ``ap_[u]int`` can be specified as a template parameter, ``ap_[u]int<W>``,
 allowing for wider types than the existing C arbitrary bit-width library.
 
 An example using the C++ library is shown below.
 
-.. code-block:: CPP
-
-    #include "hls/ap_int.hpp"
-    #include <iostream>
-
-    using namespace hls;
-
-    int main() {
-        ap_uint<128> data("0123456789ABCDEF0123456789ABCDEF");
-        ap_int<4> res(0);
-
-        for (ap_uint<8> i = 0; i < data.length(); i += 4) {
-            // If this four bit range of data is <= 7
-            if (data(i + 3, i) <= 7) {
-                res -= 1;
-            } else {
-                res += 1;
-            }
-        }
-        // iostream doesn\'t synthesize to hardware, so only include this
-        // line in software compilation. Any block surrounded by this ifdef
-        // will be ignored when compiling to hardware.
-        #ifndef __SYNTHESIS__
-        std::cout << res << std::endl;
-        #endif
-    }
+.. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
+        :language: cpp
+        :lines: 2,3,6,134-153,156
 
 In the above code we iterate through a 128 bit unsigned integer in four bit segments, 
 and track the difference between how many segments are above and below 7. 
@@ -1497,31 +1370,9 @@ types in the output stream as if they were called with the default ``to_string``
 
 Some example code using these utilities is shown below.
 
-.. code-block:: CPP
-
-  #include "hls/ap_int.hpp"
-  #include <stdio.h>
-  #include <iostream>
-
-  using namespace hls;
-  using namespace std;
-
-  ...
-
-  ap_uint<8> ap_u = 21;
-  ap_int<8> ap = -22;
-
-  // prints: 0x15
-  cout << "0x" << ap_u << endl;
-
-  // prints: -22
-  cout << ap.to_string(10, true) << endl;
-
-  // prints: 234
-  cout << ap.to_string(10) << endl;
-
-  // prints 00010101
-  printf("%s\n", ap_u.to_string(2).c_str());
+.. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
+        :language: cpp
+        :lines: 2-6,10-25
 
 Initializing Arbitrary Precision integers
 ++++++++++++++++++++++++++++++++++++++++++++
@@ -1532,39 +1383,9 @@ string describing the exact bits.
 
 Some examples of initializing arbitrary precision integer types are show below.
 
-.. CODE:: CPP
-
-  #include "hls/ap_int.hpp"
-  #include "hls/ap_fixpt.hpp"
-
-  using namespace hls;
-
-  ...
-
-  // Initialized to -7
-  ap_int<4> int1 = -7;
-
-  // Initialized to 15
-  // The bits below the decimal are truncated.
-  ap_uint<4> int2 = ap_ufixpt<5, 4, AP_RND, AP_SAT>(15.5);
-
-  // Initialized to 132
-  // Could also write "0x84"
-  // The 0x is optional
-  ap_uint<8> int3("84");
-
-  // Initialized to 4
-  // Bit selections are zero extended to match widths
-  ap_int<4> int4 = int3(2, 0);
-
-  // Initialized to 128
-  // ap_uint types are zero extended to match widths
-  // ap_int types are sign extended to match widths
-  ap_int<16> int5 = ap_uint<8>("80");
-
-  // Initialized to 2
-  // The value 4098 (= 4096 + 2) is wrapped to 2
-  ap_uint<12> int6 = 4098;
+.. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
+        :language: cpp
+        :lines: 1-6,26-57
 
 C++ Arbitrary Precision Integer Arithmetic
 ++++++++++++++++++++++++++++++++++++++++++++
@@ -1576,32 +1397,9 @@ By default ap_int will be sign extended to the appropriate width for an operatio
 while ap_uint will be zero extended. When mixing ap_int and ap_uint in an arithmetic operation 
 the resulting type will always be ap_int. Some of this behaviour is demonstrated in the example below.
 
-.. code-block:: CPP
-
-  #include "hls/ap_int.hpp"
-
-  using namespace hls;
-
-  ...
-
-  ap_int<8> a = 7;
-  ap_int<12> b = 100;
-  ap_uint<7> c = 3;
-
-  // Multiply expands to the sum of a and b's width
-  ap_int<20> d = a * b;
-
-  // Add result in max of widths + 1
-  ap_int<13> e = a + b;
-
-  // Logical bitwise ops result in max of widths
-  ap_int<12> f = a & b;
-
-  // Mixing ap_int and ap_uint results in ap_int
-  ap_int<9> g = a + c;
-
-  // ap_(u)int types can be mixed freely with integral types
-  ap_int<33> h = -1 - a;
+.. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
+        :language: cpp
+        :lines: 1-6,58-82
 
 C++ Arbitrary Precision Integer Explicit Conversions
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1615,32 +1413,9 @@ For more on the ``ap_[u]fixpt`` template, please refer to the :ref:`ap_fixpt` se
 
 An example demonstrating these functions is shown below.
 
-.. code-block:: CPP
-
-    #include "hls/ap_int.hpp"
-    #include "hls/ap_fixpt.hpp"
-
-    using namespace hls;
-
-    ...
-
-    // zero extend 16 bit -32768 to 64 bit 32768
-    unsigned long long A = ap_int<16>(-32768).to_uint64();
-
-    // wrap from 65 bit 2**64 + 1 to 64 bit 1
-    unsigned long long B = ap_uint<65>("10000000000000001").to_uint64();
-
-    // interpret 8 bit uint as 8 bit ufixpt with four bits above decimal
-    // by value 248 becomes 15.5 (== 248 / 2**4)
-    ap_ufixpt<8, 4> C = ap_uint<8>(248).to_ufixpt<4>();
-
-    // interpret 4 bit int as 4 bit fixpt with leading bit 8 bits above decimal
-    // by value -8 becomes -128 (== -8 * 2**4)
-    ap_fixpt<4, 8> D = ap_int<4>(-8).to_fixpt<8>();
-
-    // interpret 6 bit int as 6 bit ufixpt with 6 bits above decimal
-    // by value 8 becomes 8
-    ap_ufixpt<6, 6> E = ap_int<6>(8).to_ufixpt<6>();
+.. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
+        :language: cpp
+        :lines: 2-6,83-106
 
 C++ Arbitrary Precision Bit-level Operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1653,19 +1428,9 @@ C++ Arbitrary Precision Library constructs including arbitrary precision numeric
 Selecting and Assigning to a Range of Bits
 ++++++++++++++++++++++++++++++++++++++++++++
 
-.. code-block:: CPP
-
-    #include "hls/ap_int.hpp"
-
-    using namespace hls;
-
-    ...
-
-    ap_uint<8> A(0xBC);
-    ap_int<4> B = A(7, 4); // B initialized as 0xB; "A(7, 4)" is equivalent to "A.range(7, 4)"
-    ap_int<4> C = A[2];    // C initialized as 0x1
-                           // A[2] is zero extended to match widths
-    A(3, 0) = 0xA;         // A becomes 0xBA; "A(3, 0)" is equivalent to "A.range(3, 0)"
+.. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
+        :language: cpp
+        :lines: 2-6,107-120
 
 On C++ arbitrary precision types ``num(a, b)`` (or ``num.range(a, b)``) will select and create a reference to the underlying arbitrary precision value.
 The operator ``num[a]`` selects and creates a reference to a single bit.
@@ -1674,18 +1439,9 @@ This reference can be assigned to, and used to access the underlying data.
 Bit Concatenation
 ++++++++++++++++++++++++
 
-.. code-block:: CPP
-
-    #include "hls/ap_int.hpp"
-
-    using namespace hls;
-
-    ...
-
-    ap_uint<4>  A(0xA);
-    ap_uint<8>  B(0xCB);
-    ap_uint<8>  AB( (A, B(3,0)) );                   // AB initialized as 0xAB
-    ap_uint<12> ABC( (A, ap_uint<4>(0xB), B(7,4)) ); // ABC initialized as 0xABC
+.. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
+        :language: cpp
+        :lines: 2-6,121-130
 
 Putting any C++ arbitrary precision types in a comma separated list will generate a concatenation. 
 The concatenation can currently be used to create arbitrary precision types (zero extending or truncating to match widths), but can not be assigned to.
@@ -1701,9 +1457,9 @@ and arbitrary fixed position relative to the decimal. They can be used
 for arithmetic, concatenation, and bit level operations. You can use the ``ap_[u]fixpt`` type by including the
 following header file.
 
-.. code-block:: CPP
-
-    #include "hls/ap_fixpt.hpp"
+.. literalinclude:: ../examples/user_guide_examples/fixed_arbitrary_precision/fixed_arbitrary_precision.cpp
+	:language: cpp
+	:lines: 2
 
 The ``ap_[u]fixpt`` template allows specifying the width of the type, how far the most significant bit is above the decimal,
 as well as several quantization and overflow modes. 
@@ -1816,53 +1572,9 @@ Some ``ap_[u]fixpt`` ranges are demonstrated in the following table.
 
 An example using ``ap_fixpt`` is show below.
 
-.. code-block:: CPP
-
-  #include "hls/ap_fixpt.hpp"
-  #include "hls/streaming.hpp"
-
-  #define TAPS 8
-
-  // A signed fixed point type with 10 integer bits and 6 fractional bits
-  // It employs convergent rounding for quantization, and saturation for overflow.
-  typedef hls::ap_fixpt<16, 10, hls::AP_RND_CONV, hls::AP_SAT> fixpt_t;
-
-  // A signed fixed point type with 3 integer bits and 1 fractional bit
-  // It uses the default truncation, and wrapping modes.
-  typedef hls::ap_fixpt<4, 3> fixpt_s_t;
-
-  // This function is marked function_pipeline in the config
-  void fir(hls::FIFO<fixpt_t> &input_fifo, 
-           hls::FIFO<fixpt_t> &output_fifo) {
-      fixpt_t in = input_fifo.read();
-
-      static fixpt_t previous[TAPS] = {0};
-      const fixpt_s_t coefficients[TAPS] = {-2, -1.5, -1, -0.5, 0.5, 1, 1.5, 2};
-
-      for (unsigned i = (TAPS - 1); i > 0; --i) {
-          previous[i] = previous[i - 1];
-      }
-
-      previous[0] = in;
-
-      fixpt_t accumulate[TAPS];
-      for (unsigned i = 0; i < TAPS; ++i) {
-          accumulate[i] = previous[i] * coefficients[i];
-      }
-
-      // Accumulate results, doing adds and saturation in
-      // a binary tree to reduce the number of serial saturation
-      // checks. This significantly improves pipelining results
-      // over serially adding results together when saturation
-      // is required.
-      for (unsigned i = TAPS >> 1; i > 0; i >>= 1) {
-          for (unsigned j = 0; j < i; ++j) {
-              accumulate[j] += accumulate[j + i];
-          }
-      }
-
-      output_fifo.write(accumulate[0]);
-  }
+.. literalinclude:: ../examples/user_guide_examples/ap_fixpt_example/ap_fixpt_example.cpp
+	:language: cpp
+	:lines: 1,2,4-14,19-50
 
 This example implements a streaming FIR filter with 8 taps. Using the minimum width ``ap_fixpt`` to represent
 the constant coefficients allows the multiply to happen at a smaller width than if they were the same (wider)
@@ -1887,36 +1599,9 @@ as if it were called with the default ``to_fixpt_string`` arguments.
 The ``to_double()`` function can be useful for printing, but it can lose precision over a wide fixed point. It can be used
 in hardware, but this is expensive, and should be avoided when possible.
 
-.. code-block:: CPP
-
-  #include "hls/ap_fixpt.hpp"
-  #include <stdio.h>
-  #include <iostream>
-
-  using namespace hls;
-  using namespace std;
-
-  ...
-
-  ap_ufixpt<8, 4> fixed = 12.75;
-  ap_fixpt<8, 4> s_fixed("CC");
-
-  // prints: -52 * 2^-4
-  // Read -52 * 0.0625 = -3.25
-  cout << s_fixed << endl;
-
-  // prints: 11001100 * 2^-4
-  // Read unsigned 11001100 * 2^-4 = 204 * 0.0625
-  // = 12.75
-  printf("%s\n", fixed.to_fixpt_string(2).c_str());
-
-  // prints: CC * 2^-4
-  // Read signed CC * 2^-4 = -52 * 0.0625
-  // = -3.25
-  cout << s_fixed.to_fixpt_string(16, false) << endl;
-
-  // prints: -3.25 
-  printf("%.2f\n", s_fixed.to_double());
+.. literalinclude:: ../examples/user_guide_examples/fixed_arbitrary_precision/fixed_arbitrary_precision.cpp
+	:language: cpp
+	:lines: 2-7,10-29
 
 Initializing ap_[u]fixpt Types
 +++++++++++++++++++++++++++++++
@@ -1934,57 +1619,9 @@ the ``from_raw_bits`` function, or the ``ap_[u]int`` ``to_fixpt<I_W>()`` functio
 
 Some examples of initializing fixed point types are shown in the following code snippet.
 
-.. CODE:: CPP
-
-  #include "hls/ap_fixpt.hpp"
-  #include "hls/ap_int.hpp"
-
-  using namespace hls;
-
-  ...
-
-  // Initialized to -13.75
-  ap_fixpt<8, 4> fixed1 = -13.75;
-
-  // Initialized to 135
-  ap_ufixpt<8, 8> fixed2 = 135;
-
-  // Initialized to -112
-  // Could also write "0x9"
-  // 0x is optional
-  ap_fixpt<4, 8> fixed3("9");
-
-  // Initialized to 14
-  ap_ufixpt<10, 4> fixed4 = ap_uint<16>(14);
-
-  // Initialized to -1 (AP_SAT triggered)
-  ap_fixpt<4, 1, AP_TRN, AP_SAT> fixed5 = -4;
-
-  // Initialized to 1.5 (AP_RND triggered)
-  ap_ufixpt<4, 3, AP_RND> fixed6 = 1.25;
-
-  // Initialized to 15.75 from a logical string of bits
-  ap_ufixpt<8, 4> fixed7;
-  fixed7(7, 0) = ap_uint<8>("FC");
- 
-  // Assign an existing ap_uint variable to an ap_ufixpt variable 
-  ap_ufixpt<8, 4> fixed8;
-  fixed8(7, 0) = ap_uint_var;
-
-  // Initialize to 13 from a logical string of bits
-  ap_fixpt<6, 5> fixed9;
-  fixed9.from_raw_bits(ap_uint<6>(26));
-
-  // Initialize to -32 from a logical string of bits
-  // (First convert ap_uint<4> to ap_fixpt<4, 6> logically,
-  // then perform fixed point assignment)
-  ap_fixpt<1, 6> fixed10 = ap_uint<4>("8").to_fixpt<6>();
-
-  // Initialize to 32 from a logical string of bits
-  // (First convert ap_int<4> to ap_ufixpt<4, 6> logically,
-  // then perform fixed point assignment)
-  ap_ufixpt<1, 6> fixed11 = ap_int<4>("8").to_ufixpt<6>();
-
+.. literalinclude:: ../examples/user_guide_examples/fixed_arbitrary_precision/fixed_arbitrary_precision.cpp
+	:language: cpp
+	:lines: 1-7,30-74
 
 Arithmetic With ap_[u]fixpt Types
 ++++++++++++++++++++++++++++++++++
@@ -2017,38 +1654,9 @@ with some caveats for floating point types.
 
 An example demonstrating some of this behaviour is show below.
 
-.. code:: CPP
-
-  #include "hls/ap_fixpt.hpp"
-
-  using namespace hls;
-
-  ...
-
-  ap_ufixpt<65, 14> a = 32.5714285713620483875274658203125;
-  ap_ufixpt<15, 15> b = 7;
-  ap_fixpt<8, 4> c = -3.125;
-
-  // the resulting type is wide enough to hold all
-  // 51 fractional bits of a, and 15 integer bits of b
-  // the width, and integer width are increased by 1 to hold
-  // all possible results of the addition
-  ap_ufixpt<67, 16> d = a + b; // 39.5714285713620483875274658203125
-
-  // the resulting type is a signed fixed point
-  // with width, and integer width that are the sum
-  // of the two operands' widths
-  ap_fixpt<23, 19> e = b * c; // -21.875
-
-  // Assignment triggers the AP_TRN_ZERO quantization mode
-  ap_fixpt<8, 7, AP_TRN_ZERO> f = e; // -21.5
-
-  // Mask out bits above the decimal
-  f &= 0xFF; // -22
-
-  // Assignment triggers the AP_SAT overflow mode,
-  // and saturates the negative result to 0
-  ap_ufixpt<8, 4, AP_TRN, AP_SAT> g = b * d; // 0
+.. literalinclude:: ../examples/user_guide_examples/fixed_arbitrary_precision/fixed_arbitrary_precision.cpp
+	:language: cpp
+	:lines: 2-7, 75-101
 
 Explicit Conversions of ap_[u]fixpt 
 ++++++++++++++++++++++++++++++++++++++++++++
@@ -2057,22 +1665,9 @@ the same width as the ap_[u]fixpt with the same raw data, and to_double returns 
 for wide enough ap_[u]fixpt to_double can lose precision, and can be inefficient in hardware. These are demonstrated in the
 following code snippet.
 
-.. code:: CPP
-
-  #include "hls/ap_fixpt.hpp"
-
-  using namespace hls;
-
-  ...
-
-  ap_fixpt<12, 5> fixed("898");
-
-  ap_uint<12> logical_fixed = fixed.raw_bits();
-  logical_fixed == 0x898; // true
-
-  double double_fixed = fixed.to_double();
-  double_fixed == -14.8125; // true
-
+.. literalinclude:: ../examples/user_guide_examples/fixed_arbitrary_precision/fixed_arbitrary_precision.cpp
+	:language: cpp
+	:lines: 2-7,102-110
 
 Supported Operations in ap_[u]int, ap_[u]fixpt, and floating-point
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2516,7 +2111,7 @@ Specifying a Custom Test Bench
 -------------------------------
 
 SmartHLS allows one to use a custom test bench to simulate the hardware generated by SmartHLS.
-When a custom top-level function is specified by the user, there are two options for simulation:
+When a top-level function other than ``main`` is specified by the user, there are two options for simulation:
 
 * Use :ref:`sw_hw_cosimulation`.
 * A custom test bench must be provided by the user.
@@ -2559,10 +2154,12 @@ The following place and route settings are used by SmartHLS:
 The Libero project will use block flow (-block_mode 1) to compile the generated IP core in isolation.
 
 For more details, see the following Tcl script that SmartHLS uses to run Libero synthesis, place and route:
-``C:\Microsemi\SmartHLS-2022.1.1\SmartHLS\examples\synthesize_microsemi.tcl``
+``<SMARTHLS_INSTALLATION_DIR>\SmartHLS\examples\synthesize_microsemi.tcl``
 
 
 .. include:: soc_features.inc
+
+.. include:: soc_profiler.inc
 
 .. include:: smarthls_report.inc
 
@@ -2590,7 +2187,7 @@ Launch Cygwin terminal on Windows
 Windows users can launch the terminal by opening ``<SMARTHLS_INSTALLATION_DIR>/cygwin64/Cygwin.bat``.
 Users can access their file directory on their computer by using ``/cygdrive/<drive letter>/<path>``
 as the prefix.
-For example, to go to ``C:\Microsemi\SmartHLS-2022.1.1``, enter ``cd /cygdrive/c/Microsemi/SmartHLS-2022.1.1``.
+For example, to go to ``C:\Microchip\SmartHLS-2022.2``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2022.2``.
 
 Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2683,12 +2280,12 @@ rtl_synth
 scheduleviewer
   Show the scheduler viewer.
 
+logic_level_histogram
+  Generates a plot of the logic levels distribution of the synthesized design based on the timing analysis report.
+  
 clean
   Delete files generated by SmartHLS.
 
-precompile_modelsim_libs
-  Recompile ModelSim libraries. This command only needs to be run once from any SmartHLS project directory after you change the ModelSim version.
-  
 soc_*
   SoC-specific commands are prefixed with "soc\_" and are outlined in the table below:
 
@@ -2698,7 +2295,7 @@ soc_*
 
 
 .. The soc_base_proj_generate target is internal and there is no button in GUI.
-.. | `soc_base_proj_generate`   | Generates a basic PolarFireSoC project in Libero/SmartDesign, containing an Icicle MSS component.
+.. | `soc_base_proj_generate`   | Generates a basic PolarFire SoC project in Libero/SmartDesign, containing an Icicle MSS component.
 
 +----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Command                    | Description                                                                                                                                                            |
@@ -2724,6 +2321,8 @@ soc_*
 +----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | `soc_accel_proj_run`       | Moves the RISC-V binary generated by `soc_sw_compile_accel` to an Icicle Kit on the network and runs the binary on the Icicle kit.                                     |
 |                            | Requires the BOARD_IP environment variable to be set.                                                                                                                  |
++----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `soc_profiler_view`        | Displays a runtime plot and prints a summary table of the profiling data gathered during runtime execution for each accelerator in the project.                        |
 +----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. Commands for the hybrid flow:

@@ -1,0 +1,403 @@
+.. _release:
+
+***********************
+Release Notes
+***********************
+
+Latest Release (|version|)
+============================
+
+.. When moving the Current version to Prevoius versions, remember to
+.. 1) add a "SmartHLS 202x.x.x" title with "-------" title indication line.
+.. 2) the sections (e.g., Software Features and Enhancements) should have the
+..    "---------" title indication line changed to "~~~~~~~~".
+
+Release Date: June, 2022
+
+What's New
+-----------
+
+SoC features targeting PolarFire SoC FPGAs: only available through the SmartHLS SoC Early Access Program (EAP) and requires a separate SmartHLS SoC EAP license. If you are interested in participating in the EAP, please email SmartHLS@microchip.com.
+
+ * Generation of C++ accelerator drivers capable of controlling SmartHLS accelerators from software in an SoC design.
+ * Generation of a reference SoC design implementing user's code, targeting `PolarFire SoC Icicle Kit <https://www.microsemi.com/existing-parts/parts/152514>`_.
+ * Automatic programming of a generated SoC design (or a base SoC project) to an attached Icicle Kit, and capability to cross-compile user software (with or without hardware accelerators) to run on the Icicle kit.
+
+Software Features and Enhancements
+-----------------------------------
+
+ * Support for AXI4Target and AXI4Initiator interface types. See the updated section :ref:`rtl_interface`.
+ * Support for generating multiple, separate accelerator IPs in the same SmartHLS project by allowing multiple top-level functions. A separate accelerator IP will be generated for each function marked with ``#pragma HLS function top`` (see :ref:`pragma_function_top`).
+ * Support for linking external software libraries that can be used as part of the software testbench in :ref:`sw_hw_cosimulation` or host software running on RISC-V processor in the case of :ref:`SoC<soc_features>`. For information on including external libraries in SmartHLS projects, see :ref:`makefile`.
+ * Strength-reduction optimization for optimizing division/modulo operations with a constant divisor to multiplication and shift operations.
+ * When user invokes an action (e.g., compile, simulate, etc.), SmartHLS now prompts user to address outdated or missing prerequisite steps and give users the option to skip re-running outdated prerequisite.
+ * Support ``this`` as an argument to HLS pragmas used for class/struct methods.
+
+Resolved Issues
+----------------
+
+The following defects and enhancement requests were resolved:
+
+ * Fix incorrect optimization of global scalars that results in incorrect values for AXI read/write operations.
+
+Known Issues
+-------------
+
+ * As part of the newly released SoC features, SmartHLS can program an Icicle Kit using the FlashPro Express software. A known issue is that SPI flash memory initialization using an external FlashPro6 programmer and FlashPro Express does not work. For designs that require memory initialization (e.g., arrays inside the accelerated function that require initial values), it is recommended to use the Icicle Kit's embedded FlashPro6 programmer.
+
+   * If you try connecting the embedded programmer and get a warning about the embedded programmer needing an update, follow the steps from this guide (section 1.1): `<https://coredocs.s3.amazonaws.com/Libero/12_5_1/programming_debug_v12_5_1_release_notes.pdf>`_.
+
+ * On Windows, if you run the script ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS/examples/scripts/utils/download_libraries.sh`` on a Cygwin terminal as described in :ref:`ffmpeg_opencv` and uninstall SmartHLS some time after, some directories are known to remain in ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS/precompiled_libraries`` (``ffmpeg4.4-x86_64-cygwin/`` and ``opencv4.5.4-x86_64-cygwin/``). These leftover directories will cause any reinstallation of SmartHLS to the same ``<SMARTHLS_INSTALLATION_DIR>/`` as before to become incorrect. Therefore, we require you to manually delete the entire ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS`` after an uninstallation.
+ * (Update) In July 2022, version 1.0.205 of the PFSOC_INIT_MONITOR IP core was deprecated from Libero 2022.1.  Since SmartHLS' reference SoC uses this deprecated version of the IP,  SmartHLS' SoC Features stop working with Libero 2022.1.
+   Please :ref:`create_techsupport` if you are impacted by this issue. This issue will be fixed in the SmartHLS v2022.2 release.
+
+Previous Releases
+==================
+
+SmartHLS 2022.1
+---------------------
+
+Release Date: Apr 2022
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ * Generate :ref:`logic_level_distribution` histogram from the synthesis timing report (Linux only)
+ * Improved SW/HW CoSimulation support for C++ class's private member variables in software testbench.
+ * Improved memory partitioning: 
+
+   * Improved automatic :ref:`access_based_partitioning`.
+   * Added an efficient implementation for :ref:`struct_fields_memory_partitioning`.
+
+ * Improved :ref:`struct_packing`: 
+
+   * Added comprehensive legality checks for ``struct`` packing.
+   * Support automatic packing for sub-functions, i.e., no need to specify pack pragma for sub-functions.
+   * Support ``struct`` packing when the packed type is the same as the cast type (see :ref:`struct_packing`).
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-616: Fix incorrect path to import HLS-generated Verilog when running SmartHLS' ``create_hdl_plus.tcl`` script.
+ * HLS-608: Fix RTL synthesis issue for training example: Training3/wide_mult_axi.
+ * HLS-623: Removed struct member of an ``axi_slave`` interface variable was incorrectly reported as write-only memory.
+ * HLS-592: Incorrect handling of %s with format specifier in printf
+ * HLS-559: Fix automatic partitioning for ``struct`` types with ``FIFO`` members.
+
+SmartHLS 2021.3.1
+---------------------
+
+Release Date: Jan 31, 2022
+
+What's New
+~~~~~~~~~~~~~~
+
+ * In December 2021, we made a webinar on "How Microchip FPGAs Can Improve Productivity in Motor Control Applications Using C++ With HLS".
+   The webinar is now available on-demand: https://event.on24.com/wcc/r/3504585/754DA52F256BFC4463D5751661C3037F
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ * All SmartHLS-generated output files are now put under the ``hls_output`` directory, except the auto-generated project configuration files ``makefile`` and ``config.tcl``.
+ * The SmartHLS-generated Verilog output is now self-contained, by including all Verilog sub-IPs in the `hls_output/rtl` directory.
+   * The Sub-IP module names are prefixed with the SmartHLS project name.
+ * Improve struct packing for array of structs (:ref:`struct_support`).
+ * Provide a ``__SYNTHESIS__`` macro to wrap around the code that should only be enabled for HLS synthesis (``#ifdef __SYNTHESIS__``), or to exclude non-synthesizable code (``#ifndef __SYNTHESIS__``). See more details in :ref:`synthesis_macro`.
+
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-568: Fix an incorrect optimization of uninitialized arrays.
+ * HLS-558: SW/HW CoSimulation to support struct argument that contains a typedef of FIFO.
+ * HLS-573: SW/HW CoSimulation fix about boolean return type from top-level function.
+ * HLS-576: Support boolean pragma fields for C programs.
+ * HLS-575: Support different return types of C function declaration and definition (C linker allows the declaration to use a different return type from the definition).
+ * HLS-572: Fix a corner case bug of indirect access of arrays.
+ * HLS-383: Fix int64_t or uint64_t mismatch behaviour in SW/HW CoSimulation.
+ * HLS-263: Fix the IP conflict issue between HLS cores generated by different versions of SmartHLS.
+ * HLS-235: Skip including unused Verilog IPs in create_hdl_plus.tcl to speed up 'Build Hierarchy' in Libero.
+ * HLS-542: Improve error messages for struct packing feature.
+ * HLS-534: Fix the Schedule Viewer's control-flow diagram on Windows.
+ * HLS-582: Fix the file import dialog in Eclipse IDE.
+
+
+SmartHLS 2021.3
+---------------------
+
+Release Date: Nov 26, 2021
+
+What's New
+~~~~~~~~~~~~~~
+
+ * A :ref:`vhls_to_shls` on how to migrate designs from other HLS tool to SmartHLS.
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ * Enhanced Co-Simulation flow to support more sophisticated software testbenches, specifically those use high-level C++ features such as templates, classes, inheritance, namespaces, nested types and typedef.
+ * Improved expression balancing optimization to reduce cycle latency of generated hardware (see :ref:`LATENCY_REDUCTION` settings).
+ * Improved support of AXI4 target (slave) interface in a pipelined function.
+ * Added support for floating-point ordered/unordered operations.
+ * Added support of packed FIFOs (see :ref:`rtl_interface_fifo_argument`) in Co-Simulation.
+ * Added full lists of supported device options in the IDE's device selection menu.
+ * The :ref:`schedule_viewer` now shows the latency and source code location in the control flow graph to ease latency analysis.
+ * Improved error checking for invalid constraint settings.
+
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-506: Fixed an issue related to pipelined functions using external memory.
+ * HLS-532: JRE version update to include the latest security fixes and enhancements.
+ * HLS-484: Fixed the re-initialization of aliased global variables after a reset is triggered.
+ * HLS-48: Bug fix in bit-width minimization optimization.
+
+
+SmartHLS 2021.2.1
+---------------------
+
+Release Date: Sept 24, 2021
+
+What's New
+~~~~~~~~~~~~~~
+
+ * SmartHLS now supports IGLOO2 device family.
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ * A new **branchless** :ref:`pragma_function_flatten` feature to improve parallelism between operations.
+ * A new :ref:`pragma_replicate_rom` pragma to enable and control the replication of designated read-only arrays for achieving better circuit throughput.
+ * Support for packing interfaces and memories with struct types into a wide scalar using the new pack pragma (see :ref:`struct_support`).
+ * Support struct as a return type for the top-level HLS function (see :ref:`struct_support`).
+ * Support for constant static struct members in SW/HW CoSimulation.
+ * Disabled automatic unrolling of pipelined loops and their outer loops. Disabling automatic unrolling saves design size without noticeable loss in performance. A pipelined loop can still be explicitly unrolled with a :ref:`pragma_loop_unroll` pragma.
+ * Updated the user guide section on :ref:`cmdline`.
+
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-461: Fixed the initialization of global array of ap_fixpt type.
+ * HLS-419: Some of the generated AXI4 slave controllers have IIs greater than 1.
+ * HLS-420: Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
+ * HLS-443: Partition pragma is incorrectly overridden by default partitioning.
+ * HLS-446: Incorrect mapping of completely partitioned array of struct.
+ * HLS-475: Nested struct definitions may have an incorrect order in Co-Simulation.
+ * HLS-456: Loops containing inner pipelined loops are automatically unrolled, leading to a significant increase in resources.
+ * HLS-53: Removed the internal primitive operations from scheduleviewer.
+
+
+
+SmartHLS 2021.2
+---------------------
+
+Release Date: August 06, 2021
+
+What's New
+~~~~~~~~~~~
+
+ * SmartHLS is now installed by default with Libero 2021.2 for general release.
+ * Free licenses are provided for SmartHLS, please refer to the instructions here to :ref:`license_setup`.
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ * Improved optimizations to minimize signal bit-width to reduce resource usage.
+ * Improved multiplier area for wide multipliers (>64-bits).
+ * Added a ``struct_fields`` type to the memory partition pragma (see :ref:`struct_fields_memory_partitioning`), which is to specify the intention to partition a struct into its individual elements.
+ * Added a new "Synthesize Hardware to FPGA" feature that only runs RTL synthesis without place-and-route to obtain accurate FPGA resource usage faster.
+ * Deprecated the ``scalar_memory`` type from the interface pragma. Please instead use a ``complete`` type memory partition pragma on the top-level pointer argument to achieve the same effect (see :ref:`complete_memory_partitioning`).
+ * Deprecated the C arbitrary bitwidth library (``hls/types.h``) and C bit-level operations library (``hls/bit_level_operations.h``). Please use the :ref:`ap_lib` instead for better quality of result of the generated hardware.
+ * Windows installation no longer adds system environment variables and Windows IDE no longer uses system environment variables.
+
+Known Issues
+~~~~~~~~~~~~~~
+
+ * Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
+   The issue has been fixed in the 2021.2.1 release.
+   For the 2021.2 release, here is the workaround to disable packing pipeline registers into FIFO to avoid the issue:
+
+  1. Open the ``HLS Constraints`` dialog, choose ``Set custom config file`` constraint type and put in a file name (e.g., ``custom_config.tcl``) for the constraint value, click "Add" then "OK"
+  2. Create a new custom config file in the project folder with the same filename as above (e.g., ``custom_config.tcl``).
+  3. Put the following line in the custom config file: ``set_parameter USE_FIFO_FOR_PIPELINE_REG 0``
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-198:   ap_uint<24> slices of width 8 is generating wider multipliers than necessary
+ * HLS-220:   MBW pass did not optimize for legup_select/concat primitives
+ * HLS-233:   Fix Tcl constraint name of floating point cores
+ * HLS-234:   Add Libero license check
+ * HLS-259:   Remove LEGUP_CYGWIN_BIN environment variable
+ * HLS-261:   Memory Partition partitions an unsupported case.
+ * HLS-302:   Integrate with Libero installer
+ * HLS-353:   Pass-in-by-value class argument not detected properly
+ * HLS-354:   cosim_cwrapper_insert.pl breaks in a corner case of comment position
+ * HLS-355:   AXI slave address map: change the printing order of fields in the same word
+ * HLS-356:   Add a GUI button and a make target to only run synthesis (no P&R) for resource results
+ * HLS-364:   UG: add documentation about "set_synthesis_top_module_file" after "set_synthesis_top_module"
+ * HLS-366:   Mem-partition fails to split a FIFO of struct
+ * HLS-372:   MBW: forward prop of OR operantion is wrong with extendFrom
+ * HLS-373:   MBW-related: signed comparison between sign/length-mismatched values was wrong in printed RTL
+ * HLS-374:   Differentiate AShr and LShr in generated Verilog
+ * HLS-376:   Multiply between two different sign operands is implemented incorrectly
+ * HLS-377:   Split-mult operand port widths mismatch.
+ * HLS-379:   Remind user to "Recompile Simulation Libraries" when Modelsim version changes
+ * HLS-390:   Update SmartHLS EULA to match Libero EULA
+ * HLS-394:   Returning AP Type by-value uses ap_num in CoSim
+ * HLS-395:   External global memory got incorrectly optimized by LLVM
+ * HLS-396:   hls::thread Pointer Arguments Coerced to Int for 64-Bit Target
+
+
+SmartHLS EAP 2021.1.2
+---------------------
+
+Release date: June 14, 2021
+
+LegUp HLS is now rebranded to Smart HLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To port your existing LegUp HLS projects to Smart HLS, the following changes
+will be needed in the source code:
+
+ * The include path of HLS library: change ``#include "legup/..."`` to ``#include "hls/..."``
+ * All ``legup`` namespace is renamed to ``hls``; e.g., ``using namespace hls;`` or ``hls::FIFO``
+ * ``#pragma LEGUP ...`` should be changed to ``#pragma HLS ...``
+
+
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ * Extended AXI4 master interface with AxSIZE and AxBURST support.
+ * Improved FIFO depth modeling in software, and full-ness detection in software and RTL simulation.
+ * Enhanced bit-width reduction to support very wide integer types (e.g., ap_uint<1024>).
+ * Added support for unpartitioned structs (and nested structs) in CoSimulation.
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-282:   Rename "LegUp HLS" to "Smart HLS"
+ * HLS-335:   AP width memory controller gets "Warning: Invalid bitwidth '256' for instr."
+ * HLS-330:   VectorBlox design not finish when in multithreading with axi_read loops unmerged
+ * HLS-328:   Loop pipeline fails with ap_int type induction variable
+ * HLS-327:   Fix bug in software emulation of certain ap_int wide multiply operations
+ * HLS-324:   Legality check and error message about the one-to-one connection between FIFO and function's FIFO argument
+ * HLS-303:   If Conversion Pass - DFS never exits with a >40,000 basic block size loop
+ * HLS-296:   If conversion pass errored out while trying to pipeline a loop
+ * HLS-260:   Segfault due to struct of ap_int top-level argument
+ * HLS-158:   Crashes at visitLocalMemoryInst -- a struct argument containing ap_uint
+ * HLS-147:   Incorrect Transformation by if-conv
+ * HLS-112:   Add volatile support in extractArgs/cosim for parsing debug info for volatile
+
+
+
+LegUp HLS EAP 2021.1
+---------------------------------
+
+Release date: April 23, 2021
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ * Full support for complex software testbenches.
+ * Automatically trigger re-compilation if needed to generate the software binary or Verilog when the C++ source code, Makefile, or TCL config files changed.
+ * Added limited SW/HW Co-Simulation support for multi-threading when all threads are joined in the function where the threads are forked.
+ * Added support for user-specified arguments of the main() function in software testbench.
+ * Added AP_RND_ZERO quantization mode to the ap_fixpt C++ library.
+ * Added a range() method to ap_int and ap_fixpt C++ libraries.
+ * Added a simulation with waves feature to LegUp IDE for custom testbench.
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-59:     RTL Interface: fix memory port names
+ * HLS-174:    Spaces in LegUp workspace path makes synthesis fail. Add user error message to avoid spaces.
+ * HLS-177:    Change the header files on Windows
+ * HLS-199:    Add documentation comment to LegUp Library classes like ap_int similar to ap_fixpt so the user can mouse over the type in Eclipse and get the usage information
+ * HLS-225:    create_hdl_plus.tcl does not properly import mem_init files
+ * HLS-232:    Update windows installer link to LegUp getting started guide
+ * HLS-255:    After project import LegUp IDE does not save HLS constraints changes when closing
+ * HLS-269:    Missing legup_array_depth=1 for struct pass-in-by-reference
+ * HLS-277:    Automatically add array-depth attribute to pass-in-by-value structs.
+ * HLS-278:    Hardware functions are incorrectly removed by PreprocessThreadLib pass
+ * HLS-279:    Interface Report: Struct type IORam is incorrectly considered as scalar memory
+ * HLS-280:    Interface Report: byte-enable signal is not properly recognized for non-struct yet byte-enabled RAMs
+
+
+LegUp HLS EAP 9.2.1
+---------------------------------
+
+Release date: March 3, 2021
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Added support for new ``legup::thread`` multi-threading API (see :ref:`pthreads_multithreading`)
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+
+The following defects and enhancement requests were resolved:
+
+ * HLS-42: Libero 12.6 complains about set_option -rom_map_logic.
+ * HLS-50: Sobel tutorial part 3 to match the syntax as part 1 & 2.
+ * HLS-59: Fix the memory port names to a more understandable convention.
+ * HLS-60: Give a proper error when there are multiple top-level functions specified.
+ * HLS-63: Sefault if the top-level function pragma is removed from Sobel tutorial part 1.
+ * HLS-78: Loop pipeline support for variable loop bounds.
+ * HLS-97: Fmax improvements for customer design.
+ * HLS-121: Cannot access AXI4 slave without starting the accelerator (in concurrent_access mode).
+ * HLS-129: Loop unrolling crashes some designs.
+ * HLS-142: Running Libero synthesis, P&R from LegUp will fail with Libero 12.5 or before on Windows.
+ * HLS-149: LLVM's loop-unswitch performs an unwanted loop replication.
+ * HLS-156: CoSim: wrong values for ap_uint type being fed to the DUT.
+ * HLS-162: Verilog name conflict in generated Verilog between a RAM instance and a register.
+ * HLS-164: Cannot expand grouped AXI4stream ports in SmartDesign for HDL+ block.
+ * HLS-165: Some memory interfaces are not showing in the interface report.
+ * HLS-168: Clang errors out with none type memory partition pragma.
+ * HLS-200: Can't set multiply latency when split mult is enabled.
+ * HLS-201: Execute create_hdl_plus.tcl from Libero got LEGUP_ROOT_DIR not set error.
+ * HLS-203: ScheduleViewer does not work when LegUp installation and workspace are in different drives.
+ * HLS-206: Red-line in Eclipse complaining about legup::thread/ref.
+
+LegUp HLS EAP 9.1
+---------------------------------
+
+Release date: Jan 4, 2021
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Only support targeting Microchip PolarFire FPGAs
+ * Support for Libero 12.6
+ * Libero SmartDesign integration (see :ref:`smartdesign`)
+ * Added support for pragmas (see :ref:`pragmas`) in the source code to specify LegUp user constraints instead of using Tcl commands.
+ * Support for math.h functions (see :ref:`c_math_library`)
+ * Documentation of top-level RTL interfaces (see :ref:`rtl_interface`)
+ * Improvements to memory partitioning (see :ref:`memory_partitioning`)
+ * Added Microchip software end-user license agreement (EULA)
+
+Resolved Issues
+~~~~~~~~~~~~~~~~
+The following defects and enhancement requests were resolved:
+
+ * Synthesize with Libero block flow to avoid limited number of top-level I/O pins
+ * Fixes for RAM initialization and reset logic
+ * Fix LegUp IDE cancel button on Windows
+ * Fix Libero FMax parsing
+ * Better error messages for unsupported C++ features (vector, map, etc.) and unsupported co-simulation cases

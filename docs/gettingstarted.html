@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Getting Started &mdash; SmartHLS 2022.1.1 documentation</title>
+  <title>Getting Started &mdash; SmartHLS 2022.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -521,7 +521,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.1.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2  </span>
 
 										  </h1>
 								
@@ -674,7 +674,7 @@ display:none;
 <p>SmartHLS supports Windows 10 and Linux (CentOS 7).</p>
 <div class="section" id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
-<p>Run the Windows installer program, <code class="docutils literal notranslate"><span class="pre">SmartHLS-2022.1.1-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
+<p>Run the Windows installer program, <code class="docutils literal notranslate"><span class="pre">SmartHLS-2022.2-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
 </div>
 <div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
@@ -683,19 +683,19 @@ display:none;
 <p>The CentOS installer is packaged as a self-extracting shell script that can be installed to a local
 directory. To run the installer:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>
-sh /path/to/smarthls-2022.1.1-centos-installer.run
+sh /path/to/smarthls-2022.2-centos-installer.run
 </pre></div>
 </div>
 <p>This will install SmartHLS into the INSTALLATION_DIRECTORY.  After the
 installation is completed, please add the SmartHLS bin directory to your path:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/smarthls-2022.1.1/smarthls/bin:<span class="nv">$PATH</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/smarthls-2022.2/smarthls/bin:<span class="nv">$PATH</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="libero-and-modelsim">
 <h3>Libero and ModelSim<a class="headerlink" href="#libero-and-modelsim" title="Permalink to this headline">¶</a></h3>
-<p>You will need to install the <a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1750-libero-soc">Libero SoC software</a>
+<p>You will need to install the <a class="reference external" href="https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions">Libero SoC software</a>
 to synthesize the generated hardware for Microchip FPGAs.
 After installing Libero, please make sure to download all of new IP cores (open a Libero project, go to the Catalog pane, and click on “Download them now!”, as shown below), as some IPs may be needed for SmartHLS.</p>
 <blockquote>
@@ -708,7 +708,7 @@ Please note that the first time you simulate a generated hardware block with a f
 </div>
 <div class="section" id="quick-start-tutorial">
 <span id="quick-start"></span><h2>Quick Start Tutorial<a class="headerlink" href="#quick-start-tutorial" title="Permalink to this headline">¶</a></h2>
-<p>Please refer to our <a class="reference external" href="https://www.microsemi.com/document-portal/doc_download/1245532-legup-hls-tutorial">SmartHLS Tutorial for Microsemi PolarFire: Sobel Filtering for Image Edge Detection</a> on how to use some of the major features and optimization techniques of SmartHLS.</p>
+<p>Please refer to our <a class="reference external" href="https://www.microsemi.com/document-portal/doc_download/1245532-legup-hls-tutorial">SmartHLS Tutorial for Microchip PolarFire: Sobel Filtering for Image Edge Detection</a> on how to use some of the major features and optimization techniques of SmartHLS.</p>
 </div>
 </div>
 
@@ -752,5 +752,51 @@ Please note that the first time you simulate a generated hardware block with a f
 <a _ngcontent-hes-c23="" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_top">
 <div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg></fa-icon></div></a>
 <a _ngcontent-hes-c23="" href="https://google.com/+MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="google"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square" class="svg-inline--fa fa-google-plus-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.linkedin.com/company/microchip-technology" target="_top"><div _ngcontent-hes-c23="" class="linkedin"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://twitter.com/MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="twitter"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square" class="svg-inline--fa fa-twitter-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.youtube.com/user/MicrochipTechnology" target="_top"><div _ngcontent-hes-c23="" class="youtube"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube-square" class="svg-inline--fa fa-youtube-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.microchip.com/rss/" target="_top"><div _ngcontent-hes-c23="" class="rss"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss-square" class="svg-inline--fa fa-rss-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM112 416c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm157.533 0h-34.335c-6.011 0-11.051-4.636-11.442-10.634-5.214-80.05-69.243-143.92-149.123-149.123-5.997-.39-10.633-5.431-10.633-11.441v-34.335c0-6.535 5.468-11.777 11.994-11.425 110.546 5.974 198.997 94.536 204.964 204.964.352 6.526-4.89 11.994-11.425 11.994zm103.027 0h-34.334c-6.161 0-11.175-4.882-11.427-11.038-5.598-136.535-115.204-246.161-251.76-251.76C68.882 152.949 64 147.935 64 141.774V107.44c0-6.454 5.338-11.664 11.787-11.432 167.83 6.025 302.21 141.191 308.205 308.205.232 6.449-4.978 11.787-11.432 11.787z"></path></svg></fa-icon></div></a></div><div _ngcontent-hes-c23="" id="mchip-overlay" onclick="off()" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; background-color: rgba(0,0,0,.3); display: none;"><div _ngcontent-hes-c23="" style="position: relative; width: 100%; height: 100%;"></div></div><div _ngcontent-hes-c23="" class="links"><nav _ngcontent-hes-c23=""><a _ngcontent-hes-c23="" href="https://www.microchip.com/products/" target="_top">Products</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Applications</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Design</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/training/" target="_top">Training</a><a _ngcontent-hes-c23="" href="https://www.microchipdirect.com/" target="_top">Sample</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/aboutus/" target="_top">About</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/contactus/" target="_top">Contact</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/legal/" target="_top">Legal</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/about-us/legal-information/privacy-policy" target="_top">Privacy Policy</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/investors/" target="_top">Investors</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/careers/" target="_top">Careers</a><a _ngcontent-hes-c23="" href="https://support.microchip.com/" target="_top">Support</a></nav><p _ngcontent-hes-c23="" class="links">©Copyright 2021 Microchip Technology Inc. All rights reserved.</p></div></footer>
+
+<!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
+<script>
+function link(headingTitle) {
+	var pageName = "gettingstarted.rst.txt".replace(/\.txt/g,'');
+	var title = document.title;
+	var source = encodeURIComponent(
+		window.location.href.split('#')[0]
+		+'#'+headingTitle.toLowerCase().replace(/ /g,'-'));
+	var newuri = "https://microchipsupport.force.com/s/newcase?\
+		pub_guid=SmartHLS-Documentation&\
+		pub_lang=en-US&\
+		pub_type=UserGuide&\
+		bu=fpga&\
+		tech_support_link=NA&\
+		source="+source+"&\
+		cover_title=SmartHLS 2022.2 documentation&\
+		pub_ver=2022.2&\
+		revision_letter=2022.2&\
+		title="+headingTitle+"&\
+		tpc_guid="+pageName;
+	return "&nbsp; <a class=\"reference external\" \
+		style=\"font-size:60%\" href=\"" + newuri + " \
+		\" target=_blank>Ask a question</a>";
+}
+
+$(document).ready(function(){
+	$("h1").each(function(i) {
+		<!-- id="booktitle" is ignored since the <h1> at the top of the page	-->
+		<!-- 	(currently "SmartHLS - v2022.2") does not need the link.	-->
+		<!-- Furthermore, appending the link to the "booktitle" header will	-->
+		<!--	cover up the search bar, rendering it unusuable.		-->
+		if (this.id != "booktitle") $(this).append(link($(this)[0].firstChild.textContent));
+	});
+	$("h2").each(function(i) {
+		$(this).append(link($(this)[0].firstChild.textContent));
+	});
+	$("h3").each(function(i) {
+		$(this).append(link($(this)[0].firstChild.textContent));
+	});
+	$("h4").each(function(i) {
+		$(this).append(link($(this)[0].firstChild.textContent));
+	});
+});
+</script>
+
 </body>
 </html>
