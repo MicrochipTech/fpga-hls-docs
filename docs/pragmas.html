@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>SmartHLS Pragmas Manual &mdash; SmartHLS 2022.2 documentation</title>
+  <title>SmartHLS Pragmas Manual &mdash; SmartHLS 2022.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -489,10 +489,10 @@ display:none;
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -505,8 +505,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Constraints Manual" href="constraintsmanual.html" />
@@ -521,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
 
 										  </h1>
 								
@@ -555,24 +553,24 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SmartHLS Pragmas Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#set-top-level-function">Set Top-Level Function</a></li>
@@ -608,7 +606,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -683,10 +681,10 @@ This reference section explains all of the pragmas available for SmartHLS.</p>
 <p>The category refers to the general usage class of the pragma. Each pragma has one of the following categories:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function</span></code>: configure a hardware function.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">loop</span></code>: configure loop optimizations.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">interface</span></code>: configure hardware interfaces (arguments / global variables).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">memory</span></code>: configure hardware memory implementation.</p></li>
+<li><code class="docutils literal notranslate"><span class="pre">function</span></code>: configure a hardware function.</li>
+<li><code class="docutils literal notranslate"><span class="pre">loop</span></code>: configure loop optimizations.</li>
+<li><code class="docutils literal notranslate"><span class="pre">interface</span></code>: configure hardware interfaces (arguments / global variables).</li>
+<li><code class="docutils literal notranslate"><span class="pre">memory</span></code>: configure hardware memory implementation.</li>
 </ul>
 </div></blockquote>
 <p>Each category can have different configurable features.
@@ -695,16 +693,16 @@ A parameter can be optional with a default behaviour if not specified.</p>
 <p>The value of a parameter can be either integer, boolean (<code class="docutils literal notranslate"><span class="pre">true|false</span></code>),
 name (variable / argument), or a set of pre-specified values.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="first admonition-title">Note</p>
 <p>For integer parameters, the user is allowed to use constants
 (or expressions of constants) defined using <cite>#define</cite> directive.
 For example, this is allowed:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define N 10</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">fun</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="cp">#pragma HLS loop unroll factor(N+1)</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define N 10</span>
+<span class="kt">void</span> <span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cp">#pragma HLS loop unroll factor(N+1)</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -712,9 +710,9 @@ For example, this is allowed:</p>
 will cause an error. Each pragma can has one of the following positions:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>At the beginning of function definition block before any other statements.</p></li>
-<li><p>Before global / local variable declaration.</p></li>
-<li><p>Before loop block.</p></li>
+<li>At the beginning of function definition block before any other statements.</li>
+<li>Before global / local variable declaration.</li>
+<li>Before loop block.</li>
 </ul>
 </div></blockquote>
 <hr class="docutils" />
@@ -728,10 +726,10 @@ The top-level function and all of its descendant functions will be compiled to h
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -745,44 +743,44 @@ The top-level function and all of its descendant functions will be compiled to h
 Function pipelining allows a new invocation of a function to begin before the current one has completed, achieving higher throughput.
 Optional arguments:</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 13%" />
-<col style="width: 14%" />
-<col style="width: 13%" />
-<col style="width: 43%" />
+<col width="16%" />
+<col width="13%" />
+<col width="14%" />
+<col width="13%" />
+<col width="43%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">II</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td><p>1</p></td>
-<td><p>Pipeline initiation interval</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">II</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>1</td>
+<td>Pipeline initiation interval</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function pipeline</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">conv</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">conv</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[])</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function pipeline II(3)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -796,10 +794,10 @@ Optional arguments:</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function inline</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -813,10 +811,10 @@ Optional arguments:</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function noinline</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -832,38 +830,38 @@ switch) in the specified function will also be flatten to allow more
 parallelism between operations, specifically between the operations that are
 under different-yet-independent conditions.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 16%" />
-<col style="width: 10%" />
-<col style="width: 12%" />
-<col style="width: 41%" />
+<col width="20%" />
+<col width="16%" />
+<col width="10%" />
+<col width="12%" />
+<col width="41%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">branchless</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> to flatten branch statements</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">branchless</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code> to flatten branch statements</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function flatten branchless(true)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -879,10 +877,10 @@ When using this pragma on the function, SmartHLS will create a new instance of t
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function replicate</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -898,28 +896,28 @@ It can be specified to pipeline a single loop or a nested loop.
 If specified on a single loop or on a inner loop of a nested loop, that loop will be pipelined.
 If specified on the outer loop of a nested loop, the outer loop will be pipelined and all of its inner loops will be automatically unrolled.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 13%" />
-<col style="width: 14%" />
-<col style="width: 13%" />
-<col style="width: 43%" />
+<col width="16%" />
+<col width="13%" />
+<col width="14%" />
+<col width="13%" />
+<col width="43%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">II</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td><p>1</p></td>
-<td><p>Pipeline initiation interval</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">II</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>1</td>
+<td>Pipeline initiation interval</td>
 </tr>
 </tbody>
 </table>
@@ -928,16 +926,16 @@ If specified on the outer loop of a nested loop, the outer loop will be pipeline
 If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline II(2)</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span>
 <span class="cp">#pragma HLS loop pipeline</span>
-<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -953,58 +951,58 @@ If there is a loop label, the pragma should be placed after the label.</p>
 If it is not specified, or specified as N (the total number of loop iterations), the loop will be fully unrolled.
 If it is specified as 2, the loop will be unrolled 2 times, where the number of loop iterations will be halved and the loop body will be replicated twice.
 If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 29%" />
-<col style="width: 22%" />
+<col width="19%" />
+<col width="14%" />
+<col width="16%" />
+<col width="29%" />
+<col width="22%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td><p>N (fully unroll)</p></td>
-<td><p>Unroll count</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">factor</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>N (fully unroll)</td>
+<td>Unroll count</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>Before the beginning of the loop.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If there is a loop label, the pragma should be placed after the label.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">If there is a loop label, the pragma should be placed after the label.</p>
 </div>
 <p><strong>Examples</strong></p>
 <p>Fully unroll a loop.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Unroll the loop by 2 times only.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span>
 <span class="cp">#pragma HLS loop unroll factor(2)</span>
-<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Small loops may be unrolled even without the unroll pragma. Make sure the loop is not unrolled.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(1)</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1017,39 +1015,39 @@ If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
 <p>This pragma configures the <a class="reference internal" href="userguide.html#module-control-interface"><span class="std std-ref">Module Control Interface</span></a>.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 24%" />
-<col style="width: 11%" />
-<col style="width: 13%" />
-<col style="width: 38%" />
+<col width="15%" />
+<col width="24%" />
+<col width="11%" />
+<col width="13%" />
+<col width="38%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></p></td>
-<td><p>No</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
-<td><p>Interface type</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></td>
+<td>No</td>
+<td><code class="docutils literal notranslate"><span class="pre">simple</span></code></td>
+<td>Interface type</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface control type(simple)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1062,51 +1060,51 @@ If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
 <p>This pragma configures the RTL interface for a <a class="reference internal" href="userguide.html#scalar-arg-interface"><span class="std std-ref">Scalar Argument</span></a>.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 18%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 55%" />
+<col width="11%" />
+<col width="18%" />
+<col width="8%" />
+<col width="8%" />
+<col width="55%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">argument</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Argument name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Argument name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></p></td>
-<td><p>No</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
-<td><p>Interface type</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></td>
+<td>No</td>
+<td><code class="docutils literal notranslate"><span class="pre">simple</span></code></td>
+<td>Interface type</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stable</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Only available for <code class="docutils literal notranslate"><span class="pre">simple</span></code> type, <code class="docutils literal notranslate"><span class="pre">true</span></code> if the argument is stable.</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stable</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td>Only available for <code class="docutils literal notranslate"><span class="pre">simple</span></code> type, <code class="docutils literal notranslate"><span class="pre">true</span></code> if the argument is stable.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(simple) stable(true)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1120,52 +1118,52 @@ If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
 More details in <a class="reference internal" href="userguide.html#memory-interface"><span class="std std-ref">Memory Interface</span></a> section.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 8%" />
-<col style="width: 6%" />
-<col style="width: 6%" />
-<col style="width: 66%" />
+<col width="14%" />
+<col width="8%" />
+<col width="6%" />
+<col width="6%" />
+<col width="66%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">argument</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Argument name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Argument name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">memory</span></code></p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Interface type</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">memory</span></code></td>
+<td>No</td>
+<td>&#160;</td>
+<td>Interface type</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td></td>
-<td><p>Specifies the number of elements of the argument array. Can override the array size in the argument.</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>&#160;</td>
+<td>Specifies the number of elements of the argument array. Can override the array size in the argument.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[])</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(memory) num_elements(100)</span>
 <span class="cp">#pragma HLS interface argument(b) type(memory)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1179,40 +1177,40 @@ More details in <a class="reference internal" href="userguide.html#memory-interf
 More details in <a class="reference internal" href="userguide.html#memory-interface"><span class="std std-ref">Memory Interface</span></a> section.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 8%" />
-<col style="width: 6%" />
-<col style="width: 6%" />
-<col style="width: 66%" />
+<col width="14%" />
+<col width="8%" />
+<col width="6%" />
+<col width="6%" />
+<col width="66%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variable</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Variable name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Variable name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">memory</span></code></p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Interface type</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">memory</span></code></td>
+<td>No</td>
+<td>&#160;</td>
+<td>Interface type</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td></td>
-<td><p>Specifies the number of elements of the variable array. Can override the array size of the variable.</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>&#160;</td>
+<td>Specifies the number of elements of the variable array. Can override the array size of the variable.</td>
 </tr>
 </tbody>
 </table>
@@ -1220,11 +1218,11 @@ More details in <a class="reference internal" href="userguide.html#memory-interf
 <p>Before the global variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(b) type(memory) num_elements(100)</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span> <span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1241,57 +1239,57 @@ More details in <a class="reference internal" href="userguide.html#memory-interf
 More details in <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface</span></a> section.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 9%" />
-<col style="width: 4%" />
-<col style="width: 6%" />
-<col style="width: 71%" />
+<col width="10%" />
+<col width="9%" />
+<col width="4%" />
+<col width="6%" />
+<col width="71%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">argument</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Argument name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Argument name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">axi_initiator</span></code></p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Interface type</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">axi_initiator</span></code></td>
+<td>No</td>
+<td>&#160;</td>
+<td>Interface type</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ptr_addr_interface</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
-<td><p>Specifies the interface type for setting the base address of the accessing memory. The default type is <code class="docutils literal notranslate"><span class="pre">simple</span></code> but is changed to <code class="docutils literal notranslate"><span class="pre">axi_target</span></code> if <a class="reference internal" href="#pragma-interface-default"><span class="std std-ref">Default All Interface to Use AXI4 Target</span></a> is set.</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ptr_addr_interface</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">simple</span></code></td>
+<td>Specifies the interface type for setting the base address of the accessing memory. The default type is <code class="docutils literal notranslate"><span class="pre">simple</span></code> but is changed to <code class="docutils literal notranslate"><span class="pre">axi_target</span></code> if <a class="reference internal" href="#pragma-interface-default"><span class="std std-ref">Default All Interface to Use AXI4 Target</span></a> is set.</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td></td>
-<td><p>Specifies the number of elements of the argument array. Can override the array size in the argument. Only needed by the <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> feature and does not affect HLS-generated RTL.</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>&#160;</td>
+<td>Specifies the number of elements of the argument array. Can override the array size in the argument. Only needed by the <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> feature and does not affect HLS-generated RTL.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[])</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(axi_initiator) ptr_addr_interface(axi_target) num_elements(100)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1308,64 +1306,64 @@ More details in <a class="reference internal" href="userguide.html#pointer-arg-a
 More details in <a class="reference internal" href="userguide.html#pointer-arg-axi-target"><span class="std std-ref">AXI4 Target Interface</span></a> section.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 12%" />
-<col style="width: 13%" />
-<col style="width: 6%" />
-<col style="width: 5%" />
-<col style="width: 64%" />
+<col width="12%" />
+<col width="13%" />
+<col width="6%" />
+<col width="5%" />
+<col width="64%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">argument</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Argument name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Argument name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">axi_target</span></code></p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Interface type</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">axi_target</span></code></td>
+<td>No</td>
+<td>&#160;</td>
+<td>Interface type</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td></td>
-<td><p>Specifies the number of elements of the argument array. Can override the array size in the argument.</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>&#160;</td>
+<td>Specifies the number of elements of the argument array. Can override the array size in the argument.</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dma</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><cite>false</cite></p></td>
-<td rowspan="2"><p>Specifies the transfer method and copy-in behaviour in the top-level driver function.
-See <a class="reference internal" href="userguide.html#ptr-arg-pragma-options"><span class="std std-ref">Top-level Driver Options in Pointer Arguments’ AXI4 Target Interface Pragma</span></a></p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dma</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<td>Yes</td>
+<td><cite>false</cite></td>
+<td rowspan="2">Specifies the transfer method and copy-in behaviour in the top-level driver function.
+See <a class="reference internal" href="userguide.html#ptr-arg-pragma-options"><span class="std std-ref">Top-level Driver Options in Pointer Arguments’ AXI4 Target Interface Pragma</span></a></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">requries_copy_in</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
-<td><p>Yes</p></td>
-<td></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">requries_copy_in</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<td>Yes</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">101</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">101</span><span class="p">])</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(axi_target) num_elements(100) dma(true) requires_copy_in(false)</span>
 <span class="cp">#pragma HLS interface argument(b) type(axi_target)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1383,40 +1381,40 @@ throughput to access the memory.
 More details in <a class="reference internal" href="userguide.html#global-variable-axi-slave"><span class="std std-ref">Legacy AXI4 Slave Interface</span></a> section.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-<col style="width: 13%" />
-<col style="width: 46%" />
+<col width="19%" />
+<col width="13%" />
+<col width="8%" />
+<col width="13%" />
+<col width="46%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variable</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Variable name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Variable name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">axi_slave</span></code></p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Interface type</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">axi_slave</span></code></td>
+<td>No</td>
+<td>&#160;</td>
+<td>Interface type</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">concurrent_access</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Enable/disable concurrent access</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">concurrent_access</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td>Enable/disable concurrent access</td>
 </tr>
 </tbody>
 </table>
@@ -1424,7 +1422,7 @@ More details in <a class="reference internal" href="userguide.html#global-variab
 <p>Before the global variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(b) type(axi_slave) concurrent_access(true)</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span><span class="w"></span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1437,28 +1435,28 @@ More details in <a class="reference internal" href="userguide.html#global-variab
 <p>This pragma specifies the default interface to AXI4 target for all arguments and <a class="reference internal" href="userguide.html#module-control-interface"><span class="std std-ref">module control</span></a>.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
+<col width="13%" />
+<col width="10%" />
+<col width="6%" />
+<col width="6%" />
+<col width="65%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">axi_target</span></code></p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Interface type</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">axi_target</span></code></td>
+<td>No</td>
+<td>&#160;</td>
+<td>Interface type</td>
 </tr>
 </tbody>
 </table>
@@ -1468,25 +1466,25 @@ More details in <a class="reference internal" href="userguide.html#global-variab
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// The following two functions have the same interface configurations.</span>
 
 <span class="c1">// Without using default interface pragma:</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="kt">int</span> <span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface control     type(axi_target)</span>
 <span class="cp">#pragma HLS interface argument(a) type(axi_target)</span>
 <span class="cp">#pragma HLS interface argument(b) type(axi_target)</span>
 <span class="cp">#pragma HLS interface argument(c) type(axi_target) dma(true)</span>
 <span class="cp">#pragma HLS interface argument(d) type(axi_initiator) ptr_addr_interface(axi_target)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 
 <span class="c1">// Use default interface pragma:</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="kt">int</span> <span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface default     type(axi_target)</span>
 <span class="cp">#pragma HLS interface argument(c) type(axi_target) dma(true)</span>
 <span class="c1">// Note that &#39;ptr_addr_interface(axi_target)&#39; can be omitted when default interface is set to axi_target.</span>
 <span class="cp">#pragma HLS interface argument(d) type(axi_initiator)</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1494,44 +1492,51 @@ More details in <a class="reference internal" href="userguide.html#global-variab
 <div class="section" id="partition-memory">
 <span id="pragma-memory-partition-variable"></span><h2>Partition Memory<a class="headerlink" href="#partition-memory" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">variable`(&lt;var_name&gt;)</span> <span class="pre">type(complete|none)</span> <span class="pre">dim(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(block|cyclic|complete|struct_fields|none)</span> <span class="pre">dim(&lt;int&gt;)</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies a variable to be partitioned. Dimension 0 corresponds to the right-most dimension of an array and higher dimensions correspond to leftward dimensions. The <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">complete</span></code> partitioning.</p>
+<p>This pragma specifies a variable to be partitioned. Dimension 1 corresponds to the left-most dimension of an array and higher dimensions correspond to right-ward dimensions. The <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic|complete</span></code> types. If <code class="docutils literal notranslate"><span class="pre">dim</span></code> is 0, the specified partitioning will be applied to all dimensions. The <code class="docutils literal notranslate"><span class="pre">factor</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic</span></code> types tos specify the number of partitions. <code class="docutils literal notranslate"><span class="pre">factor</span></code> must be larger than 1.
+See <a class="reference internal" href="userguide.html#user-specified-memory-partitioning"><span class="std std-ref">User-Specified Memory Partitioning</span></a> for more details about the pragma options.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 36%" />
-<col style="width: 11%" />
-<col style="width: 15%" />
-<col style="width: 23%" />
+<col width="13%" />
+<col width="43%" />
+<col width="9%" />
+<col width="13%" />
+<col width="21%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variable</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Variable name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Variable name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">complete,struct_fields,none</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">complete</span></code></p></td>
-<td><p>Partition type</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">block,cyclic,complete,struct_fields,none</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">complete</span></code></td>
+<td>Partition type</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dim</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td><p>0</p></td>
-<td><p>Partition dimension</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dim</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>0</td>
+<td>Partition dimension</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">factor</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>&#160;</td>
+<td>Number of partitions</td>
 </tr>
 </tbody>
 </table>
@@ -1539,14 +1544,14 @@ More details in <a class="reference internal" href="userguide.html#global-variab
 <p>Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(b) type(none)</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="w">  </span><span class="cp">#pragma HLS memory partition variable(c) dim(1)</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">100</span><span class="p">][</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="cp">#pragma HLS memory partition variable(c) type(block) dim(1) factor(2)</span>
+  <span class="kt">int</span> <span class="n">c</span><span class="p">[</span><span class="mi">100</span><span class="p">][</span><span class="mi">100</span><span class="p">];</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1554,56 +1559,62 @@ More details in <a class="reference internal" href="userguide.html#global-variab
 <div class="section" id="partition-top-level-interface">
 <span id="pragma-memory-partition-argument"></span><h2>Partition Top-Level Interface<a class="headerlink" href="#partition-top-level-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(complete|struct_fields|none)</span> <span class="pre">dim(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(block|cyclic|complete|struct_fields|none)</span> <span class="pre">dim(&lt;int&gt;)</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies a top-level argument to be partitioned. Dimension 0 corresponds to the right-most dimension of an array and higher dimensions correspond to leftward dimensions. The <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">complete</span></code> partitioning.
-Note that this only applies to top level functions.</p>
+<p>This pragma specifies a top-level argument to be partitioned. Dimension 1 corresponds to the left-most dimension of an array and higher dimensions correspond to right-ward dimensions. The <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic|complete</span></code> types. If <code class="docutils literal notranslate"><span class="pre">dim</span></code> is 0, the specified partitioning will be applied to all dimensions. The <code class="docutils literal notranslate"><span class="pre">factor</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic</span></code> types tos specify the number of partitions. <code class="docutils literal notranslate"><span class="pre">factor</span></code> must be larger than 1.
+See <a class="reference internal" href="userguide.html#user-specified-memory-partitioning"><span class="std std-ref">User-Specified Memory Partitioning</span></a> for more details about the pragma options.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 36%" />
-<col style="width: 11%" />
-<col style="width: 15%" />
-<col style="width: 23%" />
+<col width="13%" />
+<col width="43%" />
+<col width="9%" />
+<col width="13%" />
+<col width="21%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">argument</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Argument name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Variable name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">complete|struct_fields|none</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">complete</span></code></p></td>
-<td><p>Partition type</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">block,cyclic,complete,struct_fields,none</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">complete</span></code></td>
+<td>Partition type</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dim</span></code></p></td>
-<td><p>Integer</p></td>
-<td><p>Yes</p></td>
-<td><p>0</p></td>
-<td><p>Partition dimension</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dim</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>0</td>
+<td>Partition dimension</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">factor</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>&#160;</td>
+<td>Number of partitions</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
-<span class="cp">#pragma HLS memory partition argument(a) type(none)</span>
+<span class="cp">#pragma HLS memory partition argument(a) type(cyclic) dim(2) factor(4)</span>
 <span class="cp">#pragma HLS memory partition argument(b)</span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1617,40 +1628,40 @@ Note that this only applies to top level functions.</p>
 There are two packing modes: <cite>bit</cite> / <cite>byte</cite> where <cite>bit</cite> packing packs the <cite>struct</cite> fields using the exact bit-width and <cite>byte</cite> mode packs the fields with 8-bit alignment.
 <cite>byte_enable</cite> option creates an interface / memory with byte enable signals to write individual fields when set to <cite>true</cite>. Note that <cite>byte_enable</cite> is only valid with <cite>byte</cite> packing.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 11%" />
-<col style="width: 43%" />
+<col width="17%" />
+<col width="18%" />
+<col width="10%" />
+<col width="11%" />
+<col width="43%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variable</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Variable name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Variable name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pack</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">bit</span> <span class="pre">-</span> <span class="pre">byte</span></code></p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Packing Mode</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">pack</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">bit</span> <span class="pre">-</span> <span class="pre">byte</span></code></td>
+<td>No</td>
+<td>&#160;</td>
+<td>Packing Mode</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">byte_enable</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true</span> <span class="pre">-</span> <span class="pre">false</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Use byte-enable to write <cite>struct fields</cite></p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">byte_enable</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span> <span class="pre">-</span> <span class="pre">false</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td>Use byte-enable to write <cite>struct fields</cite></td>
 </tr>
 </tbody>
 </table>
@@ -1658,7 +1669,7 @@ There are two packing modes: <cite>bit</cite> / <cite>byte</cite> where <cite>bi
 <p>Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory impl variable(b) pack(bit)</span>
-<span class="k">struct</span> <span class="nc">S</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
+<span class="k">struct</span> <span class="n">S</span> <span class="n">s</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1672,51 +1683,51 @@ There are two packing modes: <cite>bit</cite> / <cite>byte</cite> where <cite>bi
 There are two packing modes: <cite>bit</cite> / <cite>byte</cite> where <cite>bit</cite> packing packs the <cite>struct</cite> fields using the exact bit-width and <cite>byte</cite> mode packs the fields with 8-bit alignment.
 <cite>byte_enable</cite> option creates an interface with byte enable signals to write individual fields when set to <cite>true</cite>. Note that <cite>byte_enable</cite> is only valid with <cite>byte</cite> packing.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 11%" />
-<col style="width: 43%" />
+<col width="17%" />
+<col width="18%" />
+<col width="10%" />
+<col width="11%" />
+<col width="43%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">argument</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Argument name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Argument name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pack</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">bit</span> <span class="pre">-</span> <span class="pre">byte</span></code></p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Packing Mode</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">pack</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">bit</span> <span class="pre">-</span> <span class="pre">byte</span></code></td>
+<td>No</td>
+<td>&#160;</td>
+<td>Packing Mode</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">byte_enable</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true</span> <span class="pre">-</span> <span class="pre">false</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Use byte-enable to write <cite>struct fields</cite></p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">byte_enable</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span> <span class="pre">-</span> <span class="pre">false</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td>Use byte-enable to write <cite>struct fields</cite></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="k">struct</span> <span class="nc">S</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="k">struct</span> <span class="n">S</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS memory impl argument(s) pack(btye) byte_enable(true)</span>
-<span class="w"> </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+ <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1743,28 +1754,28 @@ maximize throughput.
 A <code class="docutils literal notranslate"><span class="pre">max_replicas</span></code> of 1 means only one copy is allowed,
 hence no replication, equivalent to not having the pragma.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 16%" />
-<col style="width: 10%" />
-<col style="width: 12%" />
-<col style="width: 41%" />
+<col width="20%" />
+<col width="16%" />
+<col width="10%" />
+<col width="12%" />
+<col width="41%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_replicas</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&lt;int&gt;</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>The maximum number of replicas allowed</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">max_replicas</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;int&gt;</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">0</span></code></td>
+<td>The maximum number of replicas allowed</td>
 </tr>
 </tbody>
 </table>
@@ -1772,7 +1783,7 @@ hence no replication, equivalent to not having the pragma.</p>
 <p>Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory replicate_rom variable(my_rom) max_replicas(10)</span>
-<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">my_rom</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">my_rom</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
 </pre></div>
 </div>
 </div>
@@ -1788,34 +1799,34 @@ It will be the users’ responsibility to ensure at most one function may access
 variable in a clock cycle. If not specified, by default,
 SmartHLS creates arbiters for variables that are accessed by parallel functions.</p>
 <p><strong>Parameters</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 21%" />
-<col style="width: 19%" />
-<col style="width: 10%" />
-<col style="width: 11%" />
-<col style="width: 38%" />
+<col width="21%" />
+<col width="19%" />
+<col width="10%" />
+<col width="11%" />
+<col width="38%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Optional</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variable</span></code></p></td>
-<td><p>String</p></td>
-<td><p>No</p></td>
-<td></td>
-<td><p>Variable name</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<td>String</td>
+<td>No</td>
+<td>&#160;</td>
+<td>Variable name</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">contention_free</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true|false</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> for contention-free access</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">contention_free</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<td>Yes</td>
+<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code> for contention-free access</td>
 </tr>
 </tbody>
 </table>
@@ -1823,7 +1834,7 @@ SmartHLS creates arbiters for variables that are accessed by parallel functions.
 <p>Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory impl variable(b) contention_free(true)</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1886,9 +1897,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2 documentation&\
-		pub_ver=2022.2&\
-		revision_letter=2022.2&\
+		cover_title=SmartHLS 2022.2.1 documentation&\
+		pub_ver=2022.2.1&\
+		revision_letter=2022.2.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

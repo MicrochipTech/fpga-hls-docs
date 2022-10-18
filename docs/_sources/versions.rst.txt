@@ -6,6 +6,7 @@ Previous Releases
 Documentation for previous releases and the current version can be found at:
 
  - `Latest Release <https://microchiptech.github.io/fpga-hls-docs/>`__
+ - `2022.2 <https://microchiptech.github.io/fpga-hls-docs/2022.2/>`__
  - `2022.1.1 <https://microchiptech.github.io/fpga-hls-docs/2022.1.1/>`__
  - `2022.1 <https://microchiptech.github.io/fpga-hls-docs/2022.1/>`__
  - `2021.3.1 <https://microchiptech.github.io/fpga-hls-docs/2021.3.1/>`__

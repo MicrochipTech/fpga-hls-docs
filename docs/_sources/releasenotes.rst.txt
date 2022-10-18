@@ -12,10 +12,42 @@ Latest Release (|version|)
 .. 2) the sections (e.g., Software Features and Enhancements) should have the
 ..    "---------" title indication line changed to "~~~~~~~~".
 
-Release Date: August, 2022
+Release Date: October, 2022
 
 Software Features and Enhancements
 -----------------------------------
+
+ * If you are interested in joining the early access program for our new SmartHLS PolarFire :ref:`soc_features`, please email: SmartHLS@microchip.com
+ * SmartHLS PolarFire SoC feature now uses the standard `PolarFire SoC Icicle Kit Reference Design (v2022.09) <https://github.com/polarfire-soc/icicle-kit-reference-design/releases/tag/v2022.09>`_ as the base project.
+ * SmartHLS PolarFire SoC feature now uses the standard Linux image for the PolarFire SoC Icicle Kit Reference Design: `PolarFire SoC Yocto Board Support Package (v2022.09) <https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/tag/v2022.09>`_.
+ * Support cyclic and block memory partition, and partition along user-specified dimensions; allowing more tailored partition schemes for designs to improve memory access throughput. See :ref:`memory_partitioning`.
+ * Improved access-based partitioning to detect block/cyclic access patterns and automatically partition local memories for better memory access throughput.
+ * Now allows a FIFO to be accessed by multiple reader functions, or by multiple writer functions.
+ * Added a SW/HW Co-Simulation feature to stall the input and/or output FIFOs with a user-specified probability during simulation. See :ref:`COSIM_FIFO_STALL_PROB`.
+ * Updated the device timing model for PolarFire and SmartFusion2/IGLOO2 device families. Saves area (LUTs/DFFs) while getting FMax closer to the target clock period.
+
+Resolved Issues
+-----------------------------------
+
+ * Bit-width minimization optimization for a corner case in arithmetic shift-right and logical shift-right operations.
+ * Optimizing multiply operation with a very large constant integer (> 64bits).
+ * Determining the memory size for a pass-in-by-reference argument.
+ * SW/HW CoSimulation where the simulation testbench may not interact with AXI4 interfaces in a protocol-compliant manner.
+
+
+
+
+
+Previous Releases
+==================
+
+SmartHLS 2022.2
+---------------------
+
+Release Date: August, 2022
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * If you are interested in joining the early access program for our new SmartHLS PolarFire :ref:`soc_features`, please email: SmartHLS@microchip.com
  * New SoC profiling feature: measures runtime spent on data transfer and computation by the HLS accelerator(s) in an SoC design. See :ref:`soc_profiler` for more information.
@@ -27,7 +59,7 @@ Software Features and Enhancements
  * The SmartHLS' default installation location on Windows is changed to under ``C:\Microchip\``.
 
 Resolved Issues
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Fixed an issue that could lead to incorrect RAM inference by the RTL synthesis tool, causing certain designs that work in functional simulation (e.g., SW/HW Co-Simulation) to not work when programmed onto the FPGA.
  * Fixed the :ref:`vhdl_wrapper_files` to properly include the ``axi_target`` and ``axi_initiator`` interface ports.
  * Fixed an issue in the IDE related to compiling C source file (with .c extension) with ``-std=c++0x`` flag.
@@ -36,12 +68,6 @@ Resolved Issues
  * Fixed the IDE cancel button not working properly on Windows.
  * Added support for generating a :ref:`logic_level_distribution` histogram on Windows.
 
-
-
-
-
-Previous Releases
-==================
 
 SmartHLS 2022.1.1
 ---------------------

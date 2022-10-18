@@ -1,0 +1,8 @@
+.. _libero:
+
+Supported Libero version
+==================================
+
+SmartHLS supports Libero v2022.2. 
+
+The first two numbers of the SmartHLS version correspond to the compatible Libero version. Standalone SmartHLS releases are compatible with the previous Libero version and append a third number to the version. For example, SmartHLS v2022.2.1 would be compatible with Libero 2022.2.

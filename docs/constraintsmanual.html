@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Constraints Manual &mdash; SmartHLS 2022.2 documentation</title>
+  <title>Constraints Manual &mdash; SmartHLS 2022.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -489,10 +489,10 @@ display:none;
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -505,8 +505,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="SmartHLS License" href="license_setup.html" />
@@ -521,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
 
 										  </h1>
 								
@@ -555,24 +553,24 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Constraints Manual</a><ul>
@@ -590,6 +588,7 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#debugging-constraints">Debugging Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cosim-input-output-fifo-stall-prob">COSIM_&lt;INPUT|OUTPUT&gt;_FIFO_STALL_PROB</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#keep-signals-with-no-fanout">KEEP_SIGNALS_WITH_NO_FANOUT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vsim-assert">VSIM_ASSERT</a></li>
 </ul>
@@ -611,7 +610,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -686,23 +685,24 @@ This reference section explains the constraints available for SmartHLS.</p>
 <p>The main constraints available from the SmartHLS IDE are:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Set target clock period: <a class="reference internal" href="#clock-period"><span class="std std-ref">CLOCK_PERIOD</span></a></p></li>
-<li><p>Set test bench module: <a class="reference internal" href="#set-custom-test-bench-module"><span class="std std-ref">set_custom_test_bench_module</span></a></p></li>
-<li><p>Set test bench file: <a class="reference internal" href="#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a></p></li>
-<li><p>Set FPGA synthesis top-level module: <a class="reference internal" href="#set-synthesis-top-module"><span class="std std-ref">set_synthesis_top_module</span></a></p></li>
-<li><p>Set FPGA synthesis top-level file: <a class="reference internal" href="#set-synthesis-top-module-file"><span class="std std-ref">set_synthesis_top_module_file</span></a></p></li>
-<li><p>Set resource constraint: <a class="reference internal" href="#set-resource-constraint"><span class="std std-ref">set_resource_constraint</span></a></p></li>
-<li><p>Set operation latency: <a class="reference internal" href="#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a></p></li>
-<li><p>Set FPGA family and device: <a class="reference internal" href="#set-project"><span class="std std-ref">set_project</span></a></p></li>
-<li><p>Set custom config file: <a class="reference internal" href="#set-custom-config-file"><span class="std std-ref">set_custom_config_file</span></a></p></li>
-<li><p>Print the HDL output to a single output file: <a class="reference internal" href="#single-hdl-output-file"><span class="std std-ref">SINGLE_HDL_OUTPUT_FILE</span></a></p></li>
+<li>Set target clock period: <a class="reference internal" href="#clock-period"><span class="std std-ref">CLOCK_PERIOD</span></a></li>
+<li>Set test bench module: <a class="reference internal" href="#set-custom-test-bench-module"><span class="std std-ref">set_custom_test_bench_module</span></a></li>
+<li>Set test bench file: <a class="reference internal" href="#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a></li>
+<li>Set FPGA synthesis top-level module: <a class="reference internal" href="#set-synthesis-top-module"><span class="std std-ref">set_synthesis_top_module</span></a></li>
+<li>Set FPGA synthesis top-level file: <a class="reference internal" href="#set-synthesis-top-module-file"><span class="std std-ref">set_synthesis_top_module_file</span></a></li>
+<li>Set resource constraint: <a class="reference internal" href="#set-resource-constraint"><span class="std std-ref">set_resource_constraint</span></a></li>
+<li>Set operation latency: <a class="reference internal" href="#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a></li>
+<li>Set FPGA family and device: <a class="reference internal" href="#set-project"><span class="std std-ref">set_project</span></a></li>
+<li>Set custom config file: <a class="reference internal" href="#set-custom-config-file"><span class="std std-ref">set_custom_config_file</span></a></li>
+<li>Print the HDL output to a single output file: <a class="reference internal" href="#single-hdl-output-file"><span class="std std-ref">SINGLE_HDL_OUTPUT_FILE</span></a></li>
 </ul>
 </div></blockquote>
 <p>A few debugging constraints are available from the SmartHLS IDE:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Keep signals with no fanout: <a class="reference internal" href="#keep-signals-with-no-fanout"><span class="std std-ref">KEEP_SIGNALS_WITH_NO_FANOUT</span></a></p></li>
-<li><p>Insert simulation assertions (for debugging): <a class="reference internal" href="#vsim-assert"><span class="std std-ref">VSIM_ASSERT</span></a></p></li>
+<li>Stalling input/output FIFOs in CoSimulation: <a class="reference internal" href="#cosim-fifo-stall-prob"><span class="std std-ref">COSIM_&lt;INPUT|OUTPUT&gt;_FIFO_STALL_PROB</span></a></li>
+<li>Keep signals with no fanout: <a class="reference internal" href="#keep-signals-with-no-fanout"><span class="std std-ref">KEEP_SIGNALS_WITH_NO_FANOUT</span></a></li>
+<li>Insert simulation assertions (for debugging): <a class="reference internal" href="#vsim-assert"><span class="std std-ref">VSIM_ASSERT</span></a></li>
 </ul>
 </div></blockquote>
 <div class="section" id="commonly-used-constraints">
@@ -735,8 +735,7 @@ supported (see table in <a class="reference internal" href="userguide.html#smart
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">CLOCK_PERIOD</span> <span class="pre">15</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">CLOCK_PERIOD</span> <span class="pre">15</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 <div class="section" id="set-custom-test-bench-module">
@@ -756,8 +755,7 @@ to be using for RTL simulation. The testbench file must also be specified with
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span> <span class="pre">&quot;user_tb&quot;</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span> <span class="pre">&quot;user_tb&quot;</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 <div class="section" id="set-custom-test-bench-file">
@@ -777,8 +775,7 @@ This is not needed for SW/HW co-simulation.</p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_file</span> <span class="pre">user_tb.v</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_file</span> <span class="pre">user_tb.v</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 <div class="section" id="set-synthesis-top-module">
@@ -799,8 +796,7 @@ In this case, this Tcl command can be used to give the name of the wrapper modul
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span> <span class="pre">&quot;wrapper_top&quot;</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span> <span class="pre">&quot;wrapper_top&quot;</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 <div class="section" id="set-synthesis-top-module-file">
@@ -820,8 +816,7 @@ file that defines the wrapper module.</p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module_file</span> <span class="pre">custom_synthesis_top.v</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module_file</span> <span class="pre">custom_synthesis_top.v</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 <div class="section" id="set-resource-constraint">
@@ -829,16 +824,17 @@ file that defines the wrapper module.</p>
 <p>This Tcl command constrains the resource allocated by SmartHLS.
 For instance, to only have a single divider in the entire circuit, user can specify: <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code>.
 This makes SmartHLS instantiate a maximum of 1 divider in the circuit, and if there are multiple division operations required, they will share the same divider.</p>
-<dl class="simple">
-<dt>Note: A constraint on “divide” will apply to:</dt><dd><ul class="simple">
-<li><p>signed_divide_8</p></li>
-<li><p>signed_divide_16</p></li>
-<li><p>signed_divide_32</p></li>
-<li><p>signed_divide_64</p></li>
-<li><p>unsigned_divide_8</p></li>
-<li><p>unsigned_divide_16</p></li>
-<li><p>unsigned_divide_32</p></li>
-<li><p>unsigned_divide_64</p></li>
+<dl class="docutils">
+<dt>Note: A constraint on “divide” will apply to:</dt>
+<dd><ul class="first last simple">
+<li>signed_divide_8</li>
+<li>signed_divide_16</li>
+<li>signed_divide_32</li>
+<li>signed_divide_64</li>
+<li>unsigned_divide_8</li>
+<li>unsigned_divide_16</li>
+<li>unsigned_divide_32</li>
+<li>unsigned_divide_64</li>
 </ul>
 </dd>
 </dl>
@@ -880,7 +876,7 @@ boards/PolarFire/PolarFire.tcl</p>
 <p><code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">signed_divide</span> <span class="pre">2</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code></p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="first admonition-title">Note</p>
 <p>When implementing an integer multiply operation, SmartHLS’s default behaviour is
 to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
 When a multiply operation is wider than the DSP can support, SmartHLS splits the
@@ -893,7 +889,7 @@ turn off the split-multiply feature and use a generic multiplier that can be
 shared by more than one multiply operations.
 SmartHLS will also print a warning as follows,
 <em>Warning: Detected set_resource_constraint setting for integer multiplier.  However, multiplier sharing is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.</em></p>
-<p>Similarly, <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
+<p class="last">Similarly, <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
 behaviour because the split-multiply does not support user-configured
 multiply latency.</p>
 </div>
@@ -945,7 +941,7 @@ boards/PolarFire/PolarFire.tcl or boards/set_operation_latency.tcl</p>
 <p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">set</span> <span class="pre">memory</span> <span class="pre">operations</span> <span class="pre">to</span> <span class="pre">take</span> <span class="pre">3</span> <span class="pre">cycles</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">memory_port</span> <span class="pre">3</span></code></p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="first admonition-title">Note</p>
 <p>When implementing an integer multiply operation, SmartHLS’s default behaviour is
 to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
 When a multiply operation is wider than the DSP can support, SmartHLS splits the
@@ -959,7 +955,7 @@ turn off the split-multiply feature and use a generic multiplier that will
 adapt to user-specified latency.
 SmartHLS will also print a warnign as follows,
 <em>Warning: Detected set_operation_latency setting for integer multiplier.  However, configurable latency is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.</em></p>
-<p>Similarly, <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
+<p class="last">Similarly, <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
 behaviour because the split-multiply does not support sharing the
 multipliers.</p>
 </div>
@@ -970,9 +966,9 @@ multipliers.</p>
 <p>This parameter sets the default target project, or device, used. Changing the project also updates the associated family and board parameters.</p>
 <p>This parameter has 3 arguments:</p>
 <ul class="simple">
-<li><p>FPGA Family (e.g. PolarFire<sup>®</sup>).</p></li>
-<li><p>FPGA Device: This can either be the board name (e.g. MPF300), or the device number (e.g. MPF300TS-1FCG1152I).</p></li>
-<li><p>Flow: <code class="docutils literal notranslate"><span class="pre">hw_only</span></code> or <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code>.  <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code> is only available when targeting the PolarFire<sup>®</sup> SoC Icicle kit device.</p></li>
+<li>FPGA Family (e.g. PolarFire<sup>®</sup>).</li>
+<li>FPGA Device: This can either be the board name (e.g. MPF300), or the device number (e.g. MPF300TS-1FCG1152I).</li>
+<li>Flow: <code class="docutils literal notranslate"><span class="pre">hw_only</span></code> or <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code>.  <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code> is only available when targeting the PolarFire<sup>®</sup> SoC Icicle kit device.</li>
 </ul>
 <p><strong>Category</strong></p>
 <p>Board and Device Specification</p>
@@ -1037,6 +1033,39 @@ multipliers.</p>
 </div>
 <div class="section" id="debugging-constraints">
 <h2>Debugging Constraints<a class="headerlink" href="#debugging-constraints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cosim-input-output-fifo-stall-prob">
+<span id="cosim-fifo-stall-prob"></span><h3>COSIM_&lt;INPUT|OUTPUT&gt;_FIFO_STALL_PROB<a class="headerlink" href="#cosim-input-output-fifo-stall-prob" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">COSIM_INPUT_FIFO_STALL_PROB</span></code> and <code class="docutils literal notranslate"><span class="pre">COSIM_OUTPUT_FIFO_STALL_PROB</span></code>
+parameters can be used to exercise halting data injecting to input FIFO or
+backpressuring the output FIFO during <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a>.
+When the parameter is set to a value between 1 and 99, representing the
+probablity to halt input FIFO or backpressure output FIFO, the
+SmartHLS-generated CoSimulation testbench will randomly halt the data
+injectiion to input FIFO or backpressure output FIFO, which will then cause the
+SmartHLS-generated circuit to stall during simulation.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraint</p>
+<p><strong>Value Type</strong></p>
+<p>Integer</p>
+<p><strong>Valid Values</strong></p>
+<p>0-99</p>
+<p><strong>Default Value</strong></p>
+<p>0: disabled</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">COSIM_INPUT_FIFO_STALL_PROB</span> <span class="pre">50</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">COSIM_OUTPUT_FIFO_STALL_PROB</span> <span class="pre">40</span></code></p>
+</div></blockquote>
+<hr class="docutils" />
+</div>
 <div class="section" id="keep-signals-with-no-fanout">
 <span id="id11"></span><h3>KEEP_SIGNALS_WITH_NO_FANOUT<a class="headerlink" href="#keep-signals-with-no-fanout" title="Permalink to this headline">¶</a></h3>
 <p>If this parameter is enabled, all signals will be printed to the output Verilog
@@ -1059,8 +1088,7 @@ file, even if they don’t drive any outputs.</p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">KEEP_SIGNALS_WITH_NO_FANOUT</span> <span class="pre">1</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">KEEP_SIGNALS_WITH_NO_FANOUT</span> <span class="pre">1</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 <div class="section" id="vsim-assert">
@@ -1086,8 +1114,7 @@ values (X’s) are being assigned.</p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">VSIM_ASSERT</span> <span class="pre">1</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">VSIM_ASSERT</span> <span class="pre">1</span></code></div></blockquote>
 </div>
 </div>
 <hr class="docutils" />
@@ -1099,34 +1126,34 @@ values (X’s) are being assigned.</p>
 <p>The LATENCY_REDUCTION settings control the SmartHLS’ expression balancing
 optimization, of which the objective is to reduce the circuit latency.
 Below are the related settings,</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 7%" />
-<col style="width: 73%" />
+<col width="19%" />
+<col width="7%" />
+<col width="73%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter Name</p></th>
-<th class="head"><p>Default Value</p></th>
-<th class="head"></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter Name</th>
+<th class="head">Default Value</th>
+<th class="head">&#160;</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>LATENCY_REDUCTION</p></td>
-<td><p>1</p></td>
-<td><p>The main switch that enables or disables expression balancing. Setting to 0 disables all expression balancing optimizations.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>LATENCY_REDUCTION</td>
+<td>1</td>
+<td>The main switch that enables or disables expression balancing. Setting to 0 disables all expression balancing optimizations.</td>
 </tr>
-<tr class="row-odd"><td><p>LATENCY_REDUCTION_ALLOW_FP_REORDERING</p></td>
-<td><p>0</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>LATENCY_REDUCTION_ALLOW_FP_REORDERING</td>
+<td>0</td>
+<td><div class="first last line-block">
 <div class="line">By default expression balancing does not re-order floating-point operations to prevent loss of precisions.</div>
 <div class="line">Setting to 1 allows to re-order floating-point operations if the circuit latency can be reduced.</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>LATENCY_REDUCTION_REDUCE_FP_CONVERSIONS</p></td>
-<td><p>0</p></td>
-<td><div class="line-block">
+<tr class="row-even"><td>LATENCY_REDUCTION_REDUCE_FP_CONVERSIONS</td>
+<td>0</td>
+<td><div class="first last line-block">
 <div class="line">Setting to 1 will allow SmartHLS to cancel out back-and-forth conversion between floating-point and integer, with potential variations in numerical values.</div>
 <div class="line">For example, the following conversions can be cancelled when this setting is 1.</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">int</span>&#160;&#160; <span class="pre">a</span> <span class="pre">=</span> <span class="pre">(int)(float)(3);</span>&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">a</span> <span class="pre">==</span> <span class="pre">3.</span></code></div>
@@ -1134,9 +1161,9 @@ Below are the related settings,</p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>LATENCY_REDUCTION_BALANCE_MULTI_USE_NODE</p></td>
-<td><p>0</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>LATENCY_REDUCTION_BALANCE_MULTI_USE_NODE</td>
+<td>0</td>
+<td><div class="first last line-block">
 <div class="line">By default expression balancing does not optimize the intermediate operations that have multiple uses, to avoid potential increase of resource usage.</div>
 <div class="line">Setting to 1 allows to re-order intermediate operations that have multiple uses and more latency reduction could be achieved.</div>
 </div>
@@ -1206,8 +1233,7 @@ converts multiply-by-constant into shifts and additions:</p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION</span> <span class="pre">1</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION</span> <span class="pre">1</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 <div class="section" id="strength-reduction-adders-allowed-per-multiplier">
@@ -1247,8 +1273,7 @@ meaning strength reduction will not occur and SmartHLS will keep the multiplier.
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</span> <span class="pre">3</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</span> <span class="pre">3</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 <div class="section" id="use-fifo-for-pipeline-reg">
@@ -1282,8 +1307,7 @@ to be more resource-efficient.</p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">USE_FIFO_FOR_PIPELINE_REG</span> <span class="pre">1</span></code></p>
-</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">USE_FIFO_FOR_PIPELINE_REG</span> <span class="pre">1</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 </div>
@@ -1345,9 +1369,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2 documentation&\
-		pub_ver=2022.2&\
-		revision_letter=2022.2&\
+		cover_title=SmartHLS 2022.2.1 documentation&\
+		pub_ver=2022.2.1&\
+		revision_letter=2022.2.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

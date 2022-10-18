@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Release Notes &mdash; SmartHLS 2022.2 documentation</title>
+  <title>Release Notes &mdash; SmartHLS 2022.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -489,10 +489,10 @@ display:none;
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -505,8 +505,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Getting Started" href="gettingstarted.html" />
@@ -521,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
 
 										  </h1>
 								
@@ -555,76 +553,81 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#latest-release-version">Latest Release (2022.2)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#latest-release-version">Latest Release (2022.2.1)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#software-features-and-enhancements">Software Features and Enhancements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#resolved-issues">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#previous-releases">Previous Releases</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-1-1">SmartHLS 2022.1.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#what-s-new">What’s New</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-2">SmartHLS 2022.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">Software Features and Enhancements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-1-1">SmartHLS 2022.1.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-s-new">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Resolved Issues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#known-issues">Known Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-1">SmartHLS 2022.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-3-1">SmartHLS 2021.3.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">What’s New</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-3">SmartHLS 2021.3</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id8">What’s New</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-2-1">SmartHLS 2021.2.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id11">What’s New</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-2">SmartHLS 2021.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id14">What’s New</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">Known Issues</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-eap-2021-1-2">SmartHLS EAP 2021.1.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#legup-hls-is-now-rebranded-to-smart-hls">LegUp HLS is now rebranded to Smart HLS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19">Resolved Issues</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-2021-1">LegUp HLS EAP 2021.1</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id20">Software Features and Enhancements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id21">Resolved Issues</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-2-1">LegUp HLS EAP 9.2.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-2021-1">LegUp HLS EAP 2021.1</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id22">Software Features and Enhancements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id23">Resolved Issues</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-1">LegUp HLS EAP 9.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-2-1">LegUp HLS EAP 9.2.1</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id24">Software Features and Enhancements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id25">Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-1">LegUp HLS EAP 9.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id26">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">Resolved Issues</a></li>
 </ul>
 </li>
 </ul>
@@ -634,13 +637,13 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
@@ -652,7 +655,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -721,20 +724,20 @@ display:none;
   <div class="section" id="release-notes">
 <span id="release"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="latest-release-version">
-<h2>Latest Release (2022.2)<a class="headerlink" href="#latest-release-version" title="Permalink to this headline">¶</a></h2>
-<p>Release Date: August, 2022</p>
+<h2>Latest Release (2022.2.1)<a class="headerlink" href="#latest-release-version" title="Permalink to this headline">¶</a></h2>
+<p>Release Date: October, 2022</p>
 <div class="section" id="software-features-and-enhancements">
 <h3>Software Features and Enhancements<a class="headerlink" href="#software-features-and-enhancements" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>If you are interested in joining the early access program for our new SmartHLS PolarFire <a class="reference internal" href="userguide.html#soc-features"><span class="std std-ref">SoC Features</span></a>, please email: <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a></p></li>
-<li><p>New SoC profiling feature: measures runtime spent on data transfer and computation by the HLS accelerator(s) in an SoC design. See <a class="reference internal" href="userguide.html#soc-profiler"><span class="std std-ref">SoC Profiler</span></a> for more information.</p></li>
-<li><p>Updated naming convention of the SmartHLS’ output RTL files to <code class="docutils literal notranslate"><span class="pre">&lt;ProjectName&gt;_&lt;TopLevelFunctionName&gt;.v|vhd</span></code> (see <a class="reference internal" href="userguide.html#smarthls-outputs"><span class="std std-ref">SmartHLS Output Files</span></a> for more details).</p></li>
-<li><p>When a user clicks on a step (e.g., compile software to hardware) that has already run and yet is still up to date, SmartHLS will now prompt the user to confirm if they intend to re-run the step before proceeding.
-This saves users’ time by avoiding re-running steps that were already done, especially for long-running steps like place-and-route.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">set_custom_top_level_module</span></code> TCL command is deprecated, use instead <a class="reference internal" href="pragmas.html#pragma-function-top"><span class="std std-ref">Set Top-Level Function</span></a> pragma to specify the top-level function.</p></li>
-<li><p>The SmartHLS IDE’s default workspace location is changed to <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\hls_workspace</span></code> on Windows and <code class="docutils literal notranslate"><span class="pre">/home/&lt;username&gt;/hls_workspace</span></code> on Linux.</p></li>
-<li><p>The SmartHLS’ default installation location on Windows is changed to under <code class="docutils literal notranslate"><span class="pre">C:\Microchip\</span></code>.</p></li>
+<li>If you are interested in joining the early access program for our new SmartHLS PolarFire <a class="reference internal" href="userguide.html#soc-features"><span class="std std-ref">SoC Features</span></a>, please email: <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a></li>
+<li>SmartHLS PolarFire SoC feature now uses the standard <a class="reference external" href="https://github.com/polarfire-soc/icicle-kit-reference-design/releases/tag/v2022.09">PolarFire SoC Icicle Kit Reference Design (v2022.09)</a> as the base project.</li>
+<li>SmartHLS PolarFire SoC feature now uses the standard Linux image for the PolarFire SoC Icicle Kit Reference Design: <a class="reference external" href="https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/tag/v2022.09">PolarFire SoC Yocto Board Support Package (v2022.09)</a>.</li>
+<li>Support cyclic and block memory partition, and partition along user-specified dimensions; allowing more tailored partition schemes for designs to improve memory access throughput. See <a class="reference internal" href="userguide.html#memory-partitioning"><span class="std std-ref">Memory Partitioning</span></a>.</li>
+<li>Improved access-based partitioning to detect block/cyclic access patterns and automatically partition local memories for better memory access throughput.</li>
+<li>Now allows a FIFO to be accessed by multiple reader functions, or by multiple writer functions.</li>
+<li>Added a SW/HW Co-Simulation feature to stall the input and/or output FIFOs with a user-specified probability during simulation. See <a class="reference internal" href="constraintsmanual.html#cosim-fifo-stall-prob"><span class="std std-ref">COSIM_&lt;INPUT|OUTPUT&gt;_FIFO_STALL_PROB</span></a>.</li>
+<li>Updated the device timing model for PolarFire and SmartFusion2/IGLOO2 device families. Saves area (LUTs/DFFs) while getting FMax closer to the target clock period.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -742,19 +745,49 @@ This saves users’ time by avoiding re-running steps that were already done, es
 <h3>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>Fixed an issue that could lead to incorrect RAM inference by the RTL synthesis tool, causing certain designs that work in functional simulation (e.g., SW/HW Co-Simulation) to not work when programmed onto the FPGA.</p></li>
-<li><p>Fixed the <a class="reference internal" href="userguide.html#vhdl-wrapper-files"><span class="std std-ref">VHDL Wrapper Files</span></a> to properly include the <code class="docutils literal notranslate"><span class="pre">axi_target</span></code> and <code class="docutils literal notranslate"><span class="pre">axi_initiator</span></code> interface ports.</p></li>
-<li><p>Fixed an issue in the IDE related to compiling C source file (with .c extension) with <code class="docutils literal notranslate"><span class="pre">-std=c++0x</span></code> flag.</p></li>
-<li><p>Fixed an incorrect bit-width minimization optimization that could incorrectly reduce the bit-width of a variable that is passed as write data to the <code class="docutils literal notranslate"><span class="pre">fifo_write</span></code> function while being used by other operations.</p></li>
-<li><p>Changed Linux installation’s read permissions to allow users to share a SmartHLS installation set up by an “admin” account.</p></li>
-<li><p>Fixed the IDE cancel button not working properly on Windows.</p></li>
-<li><p>Added support for generating a <a class="reference internal" href="userguide.html#logic-level-distribution"><span class="std std-ref">Logic Level Distribution</span></a> histogram on Windows.</p></li>
+<li>Bit-width minimization optimization for a corner case in arithmetic shift-right and logical shift-right operations.</li>
+<li>Optimizing multiply operation with a very large constant integer (&gt; 64bits).</li>
+<li>Determining the memory size for a pass-in-by-reference argument.</li>
+<li>SW/HW CoSimulation where the simulation testbench may not interact with AXI4 interfaces in a protocol-compliant manner.</li>
 </ul>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="previous-releases">
 <h2>Previous Releases<a class="headerlink" href="#previous-releases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smarthls-2022-2">
+<h3>SmartHLS 2022.2<a class="headerlink" href="#smarthls-2022-2" title="Permalink to this headline">¶</a></h3>
+<p>Release Date: August, 2022</p>
+<div class="section" id="id1">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>If you are interested in joining the early access program for our new SmartHLS PolarFire <a class="reference internal" href="userguide.html#soc-features"><span class="std std-ref">SoC Features</span></a>, please email: <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a></li>
+<li>New SoC profiling feature: measures runtime spent on data transfer and computation by the HLS accelerator(s) in an SoC design. See <a class="reference internal" href="userguide.html#soc-profiler"><span class="std std-ref">SoC Profiler</span></a> for more information.</li>
+<li>Updated naming convention of the SmartHLS’ output RTL files to <code class="docutils literal notranslate"><span class="pre">&lt;ProjectName&gt;_&lt;TopLevelFunctionName&gt;.v|vhd</span></code> (see <a class="reference internal" href="userguide.html#smarthls-outputs"><span class="std std-ref">SmartHLS Output Files</span></a> for more details).</li>
+<li>When a user clicks on a step (e.g., compile software to hardware) that has already run and yet is still up to date, SmartHLS will now prompt the user to confirm if they intend to re-run the step before proceeding.
+This saves users’ time by avoiding re-running steps that were already done, especially for long-running steps like place-and-route.</li>
+<li><code class="docutils literal notranslate"><span class="pre">set_custom_top_level_module</span></code> TCL command is deprecated, use instead <a class="reference internal" href="pragmas.html#pragma-function-top"><span class="std std-ref">Set Top-Level Function</span></a> pragma to specify the top-level function.</li>
+<li>The SmartHLS IDE’s default workspace location is changed to <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\hls_workspace</span></code> on Windows and <code class="docutils literal notranslate"><span class="pre">/home/&lt;username&gt;/hls_workspace</span></code> on Linux.</li>
+<li>The SmartHLS’ default installation location on Windows is changed to under <code class="docutils literal notranslate"><span class="pre">C:\Microchip\</span></code>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h4>Resolved Issues<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>Fixed an issue that could lead to incorrect RAM inference by the RTL synthesis tool, causing certain designs that work in functional simulation (e.g., SW/HW Co-Simulation) to not work when programmed onto the FPGA.</li>
+<li>Fixed the <a class="reference internal" href="userguide.html#vhdl-wrapper-files"><span class="std std-ref">VHDL Wrapper Files</span></a> to properly include the <code class="docutils literal notranslate"><span class="pre">axi_target</span></code> and <code class="docutils literal notranslate"><span class="pre">axi_initiator</span></code> interface ports.</li>
+<li>Fixed an issue in the IDE related to compiling C source file (with .c extension) with <code class="docutils literal notranslate"><span class="pre">-std=c++0x</span></code> flag.</li>
+<li>Fixed an incorrect bit-width minimization optimization that could incorrectly reduce the bit-width of a variable that is passed as write data to the <code class="docutils literal notranslate"><span class="pre">fifo_write</span></code> function while being used by other operations.</li>
+<li>Changed Linux installation’s read permissions to allow users to share a SmartHLS installation set up by an “admin” account.</li>
+<li>Fixed the IDE cancel button not working properly on Windows.</li>
+<li>Added support for generating a <a class="reference internal" href="userguide.html#logic-level-distribution"><span class="std std-ref">Logic Level Distribution</span></a> histogram on Windows.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
 <div class="section" id="smarthls-2022-1-1">
 <h3>SmartHLS 2022.1.1<a class="headerlink" href="#smarthls-2022-1-1" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: June, 2022</p>
@@ -763,72 +796,22 @@ This saves users’ time by avoiding re-running steps that were already done, es
 <p>SoC features targeting PolarFire<sup>®</sup> SoC FPGAs: only available through the SmartHLS SoC Early Access Program (EAP) and requires a separate SmartHLS SoC EAP license. If you are interested in participating in the EAP, please email <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a>.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Generation of C++ accelerator drivers capable of controlling SmartHLS accelerators from software in an SoC design.</p></li>
-<li><p>Generation of a reference SoC design implementing user’s code, targeting <a class="reference external" href="https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES">PolarFire SoC Icicle Kit</a>.</p></li>
-<li><p>Automatic programming of a generated SoC design (or a base SoC project) to an attached Icicle Kit, and capability to cross-compile user software (with or without hardware accelerators) to run on the Icicle kit.</p></li>
+<li>Generation of C++ accelerator drivers capable of controlling SmartHLS accelerators from software in an SoC design.</li>
+<li>Generation of a reference SoC design implementing user’s code, targeting <a class="reference external" href="https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES">PolarFire SoC Icicle Kit</a>.</li>
+<li>Automatic programming of a generated SoC design (or a base SoC project) to an attached Icicle Kit, and capability to cross-compile user software (with or without hardware accelerators) to run on the Icicle kit.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id1">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>Support for AXI4Target and AXI4Initiator interface types. See the updated section <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>.</p></li>
-<li><p>Support for generating multiple, separate accelerator IPs in the same SmartHLS project by allowing multiple top-level functions. A separate accelerator IP will be generated for each function marked with <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">top</span></code> (see <a class="reference internal" href="pragmas.html#pragma-function-top"><span class="std std-ref">Set Top-Level Function</span></a>).</p></li>
-<li><p>Support for linking external software libraries that can be used as part of the software testbench in <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> or host software running on RISC-V processor in the case of <a class="reference internal" href="userguide.html#soc-features"><span class="std std-ref">SoC</span></a>. For information on including external libraries in SmartHLS projects, see <a class="reference internal" href="userguide.html#makefile"><span class="std std-ref">Makefile Variables</span></a>.</p></li>
-<li><p>Strength-reduction optimization for optimizing division/modulo operations with a constant divisor to multiplication and shift operations.</p></li>
-<li><p>When user invokes an action (e.g., compile, simulate, etc.), SmartHLS now prompts user to address outdated or missing prerequisite steps and give users the option to skip re-running outdated prerequisite.</p></li>
-<li><p>Support <code class="docutils literal notranslate"><span class="pre">this</span></code> as an argument to HLS pragmas used for class/struct methods.</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id2">
-<h4>Resolved Issues<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<p>The following defects and enhancement requests were resolved:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Fix incorrect optimization of global scalars that results in incorrect values for AXI read/write operations.</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="known-issues">
-<h4>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>As part of the newly released SoC features, SmartHLS can program an Icicle Kit using the FlashPro Express software. A known issue is that SPI flash memory initialization using an external FlashPro6 programmer and FlashPro Express does not work. For designs that require memory initialization (e.g., arrays inside the accelerated function that require initial values), it is recommended to use the Icicle Kit’s embedded FlashPro6 programmer.</p>
-<ul>
-<li><p>If you try connecting the embedded programmer and get a warning about the embedded programmer needing an update, follow the steps from this guide (section 1.1): <a class="reference external" href="https://coredocs.s3.amazonaws.com/Libero/12_5_1/programming_debug_v12_5_1_release_notes.pdf">https://coredocs.s3.amazonaws.com/Libero/12_5_1/programming_debug_v12_5_1_release_notes.pdf</a>.</p></li>
-</ul>
-</li>
-<li><p>On Windows, if you run the script <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/examples/scripts/utils/download_libraries.sh</span></code> on a Cygwin terminal as described in <a class="reference internal" href="precompiled_sw.html#ffmpeg-opencv"><span class="std std-ref">FFmpeg 4.4 and OpenCV 4.5.4</span></a> and uninstall SmartHLS some time after, some directories are known to remain in <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/precompiled_libraries</span></code> (<code class="docutils literal notranslate"><span class="pre">ffmpeg4.4-x86_64-cygwin/</span></code> and <code class="docutils literal notranslate"><span class="pre">opencv4.5.4-x86_64-cygwin/</span></code>). These leftover directories will cause any reinstallation of SmartHLS to the same <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/</span></code> as before to become incorrect. Therefore, we require you to manually delete the entire <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS</span></code> after an uninstallation.</p></li>
-<li><p>(Update) In July 2022, version 1.0.205 of the PFSOC_INIT_MONITOR IP core was deprecated from Libero 2022.1.  Since SmartHLS’ reference SoC uses this deprecated version of the IP,  SmartHLS’ SoC Features stop working with Libero 2022.1.
-Please <a class="reference internal" href="techsupport.html#create-techsupport"><span class="std std-ref">Create a Tech Support Case</span></a> if you are impacted by this issue. This issue will be fixed in the SmartHLS v2022.2 release.</p></li>
-</ul>
-</div></blockquote>
-</div>
-</div>
-<div class="section" id="smarthls-2022-1">
-<h3>SmartHLS 2022.1<a class="headerlink" href="#smarthls-2022-1" title="Permalink to this headline">¶</a></h3>
-<p>Release Date: Apr 2022</p>
 <div class="section" id="id3">
 <h4>Software Features and Enhancements<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
-<li><p>Generate <a class="reference internal" href="userguide.html#logic-level-distribution"><span class="std std-ref">Logic Level Distribution</span></a> histogram from the synthesis timing report (Linux only)</p></li>
-<li><p>Improved SW/HW CoSimulation support for C++ class’s private member variables in software testbench.</p></li>
-<li><p>Improved memory partitioning:</p>
-<ul>
-<li><p>Improved automatic <a class="reference internal" href="userguide.html#access-based-partitioning"><span class="std std-ref">Access-Based Memory Partitioning</span></a>.</p></li>
-<li><p>Added an efficient implementation for <a class="reference internal" href="userguide.html#struct-fields-memory-partitioning"><span class="std std-ref">Struct-Fields Partitioning</span></a>.</p></li>
-</ul>
-</li>
-<li><p>Improved <a class="reference internal" href="userguide.html#struct-packing"><span class="std std-ref">Struct Packing</span></a>:</p>
-<ul>
-<li><p>Added comprehensive legality checks for <code class="docutils literal notranslate"><span class="pre">struct</span></code> packing.</p></li>
-<li><p>Support automatic packing for sub-functions, i.e., no need to specify pack pragma for sub-functions.</p></li>
-<li><p>Support <code class="docutils literal notranslate"><span class="pre">struct</span></code> packing when the packed type is the same as the cast type (see <a class="reference internal" href="userguide.html#struct-packing"><span class="std std-ref">Struct Packing</span></a>).</p></li>
-</ul>
-</li>
+<li>Support for AXI4Target and AXI4Initiator interface types. See the updated section <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>.</li>
+<li>Support for generating multiple, separate accelerator IPs in the same SmartHLS project by allowing multiple top-level functions. A separate accelerator IP will be generated for each function marked with <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">top</span></code> (see <a class="reference internal" href="pragmas.html#pragma-function-top"><span class="std std-ref">Set Top-Level Function</span></a>).</li>
+<li>Support for linking external software libraries that can be used as part of the software testbench in <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> or host software running on RISC-V processor in the case of <a class="reference internal" href="userguide.html#soc-features"><span class="std std-ref">SoC</span></a>. For information on including external libraries in SmartHLS projects, see <a class="reference internal" href="userguide.html#makefile"><span class="std std-ref">Makefile Variables</span></a>.</li>
+<li>Strength-reduction optimization for optimizing division/modulo operations with a constant divisor to multiplication and shift operations.</li>
+<li>When user invokes an action (e.g., compile, simulate, etc.), SmartHLS now prompts user to address outdated or missing prerequisite steps and give users the option to skip re-running outdated prerequisite.</li>
+<li>Support <code class="docutils literal notranslate"><span class="pre">this</span></code> as an argument to HLS pragmas used for class/struct methods.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -837,11 +820,58 @@ Please <a class="reference internal" href="techsupport.html#create-techsupport">
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>HLS-616: Fix incorrect path to import HLS-generated Verilog when running SmartHLS’ <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code> script.</p></li>
-<li><p>HLS-608: Fix RTL synthesis issue for training example: Training3/wide_mult_axi.</p></li>
-<li><p>HLS-623: Removed struct member of an <code class="docutils literal notranslate"><span class="pre">axi_slave</span></code> interface variable was incorrectly reported as write-only memory.</p></li>
-<li><p>HLS-592: Incorrect handling of %s with format specifier in printf</p></li>
-<li><p>HLS-559: Fix automatic partitioning for <code class="docutils literal notranslate"><span class="pre">struct</span></code> types with <code class="docutils literal notranslate"><span class="pre">FIFO</span></code> members.</p></li>
+<li>Fix incorrect optimization of global scalars that results in incorrect values for AXI read/write operations.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="known-issues">
+<h4>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>As part of the newly released SoC features, SmartHLS can program an Icicle Kit using the FlashPro Express software. A known issue is that SPI flash memory initialization using an external FlashPro6 programmer and FlashPro Express does not work. For designs that require memory initialization (e.g., arrays inside the accelerated function that require initial values), it is recommended to use the Icicle Kit’s embedded FlashPro6 programmer.<ul>
+<li>If you try connecting the embedded programmer and get a warning about the embedded programmer needing an update, follow the steps from this guide (section 1.1): <a class="reference external" href="https://coredocs.s3.amazonaws.com/Libero/12_5_1/programming_debug_v12_5_1_release_notes.pdf">https://coredocs.s3.amazonaws.com/Libero/12_5_1/programming_debug_v12_5_1_release_notes.pdf</a>.</li>
+</ul>
+</li>
+<li>On Windows, if you run the script <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/examples/scripts/utils/download_libraries.sh</span></code> on a Cygwin terminal as described in <a class="reference internal" href="precompiled_sw.html#ffmpeg-opencv"><span class="std std-ref">FFmpeg 4.4 and OpenCV 4.5.4</span></a> and uninstall SmartHLS some time after, some directories are known to remain in <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/precompiled_libraries</span></code> (<code class="docutils literal notranslate"><span class="pre">ffmpeg4.4-x86_64-cygwin/</span></code> and <code class="docutils literal notranslate"><span class="pre">opencv4.5.4-x86_64-cygwin/</span></code>). These leftover directories will cause any reinstallation of SmartHLS to the same <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/</span></code> as before to become incorrect. Therefore, we require you to manually delete the entire <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS</span></code> after an uninstallation.</li>
+<li>(Update) In July 2022, version 1.0.205 of the PFSOC_INIT_MONITOR IP core was deprecated from Libero 2022.1.  Since SmartHLS’ reference SoC uses this deprecated version of the IP,  SmartHLS’ SoC Features stop working with Libero 2022.1.
+Please <a class="reference internal" href="techsupport.html#create-techsupport"><span class="std std-ref">Create a Tech Support Case</span></a> if you are impacted by this issue. This issue will be fixed in the SmartHLS v2022.2 release.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="smarthls-2022-1">
+<h3>SmartHLS 2022.1<a class="headerlink" href="#smarthls-2022-1" title="Permalink to this headline">¶</a></h3>
+<p>Release Date: Apr 2022</p>
+<div class="section" id="id5">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>Generate <a class="reference internal" href="userguide.html#logic-level-distribution"><span class="std std-ref">Logic Level Distribution</span></a> histogram from the synthesis timing report (Linux only)</li>
+<li>Improved SW/HW CoSimulation support for C++ class’s private member variables in software testbench.</li>
+<li>Improved memory partitioning:<ul>
+<li>Improved automatic <a class="reference internal" href="userguide.html#access-based-partitioning"><span class="std std-ref">Access-Based Memory Partitioning</span></a>.</li>
+<li>Added an efficient implementation for <a class="reference internal" href="userguide.html#struct-fields-memory-partitioning"><span class="std std-ref">Struct-Fields Partitioning</span></a>.</li>
+</ul>
+</li>
+<li>Improved <a class="reference internal" href="userguide.html#struct-packing"><span class="std std-ref">Struct Packing</span></a>:<ul>
+<li>Added comprehensive legality checks for <code class="docutils literal notranslate"><span class="pre">struct</span></code> packing.</li>
+<li>Support automatic packing for sub-functions, i.e., no need to specify pack pragma for sub-functions.</li>
+<li>Support <code class="docutils literal notranslate"><span class="pre">struct</span></code> packing when the packed type is the same as the cast type (see <a class="reference internal" href="userguide.html#struct-packing"><span class="std std-ref">Struct Packing</span></a>).</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h4>Resolved Issues<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li>HLS-616: Fix incorrect path to import HLS-generated Verilog when running SmartHLS’ <code class="docutils literal notranslate"><span class="pre">create_hdl_plus.tcl</span></code> script.</li>
+<li>HLS-608: Fix RTL synthesis issue for training example: Training3/wide_mult_axi.</li>
+<li>HLS-623: Removed struct member of an <code class="docutils literal notranslate"><span class="pre">axi_slave</span></code> interface variable was incorrectly reported as write-only memory.</li>
+<li>HLS-592: Incorrect handling of %s with format specifier in printf</li>
+<li>HLS-559: Fix automatic partitioning for <code class="docutils literal notranslate"><span class="pre">struct</span></code> types with <code class="docutils literal notranslate"><span class="pre">FIFO</span></code> members.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -849,44 +879,44 @@ Please <a class="reference internal" href="techsupport.html#create-techsupport">
 <div class="section" id="smarthls-2021-3-1">
 <h3>SmartHLS 2021.3.1<a class="headerlink" href="#smarthls-2021-3-1" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: Jan 31, 2022</p>
-<div class="section" id="id5">
-<h4>What’s New<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>In December 2021, we made a webinar on “How Microchip FPGAs Can Improve Productivity in Motor Control Applications Using C++ With HLS”.
-The webinar is now available on-demand: <a class="reference external" href="https://event.on24.com/wcc/r/3504585/754DA52F256BFC4463D5751661C3037F">https://event.on24.com/wcc/r/3504585/754DA52F256BFC4463D5751661C3037F</a></p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id6">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>All SmartHLS-generated output files are now put under the <code class="docutils literal notranslate"><span class="pre">hls_output</span></code> directory, except the auto-generated project configuration files <code class="docutils literal notranslate"><span class="pre">makefile</span></code> and <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</p></li>
-<li><p>The SmartHLS-generated Verilog output is now self-contained, by including all Verilog sub-IPs in the <cite>hls_output/rtl</cite> directory.
-* The Sub-IP module names are prefixed with the SmartHLS project name.</p></li>
-<li><p>Improve struct packing for array of structs (<a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</p></li>
-<li><p>Provide a <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro to wrap around the code that should only be enabled for HLS synthesis (<code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">__SYNTHESIS__</span></code>), or to exclude non-synthesizable code (<code class="docutils literal notranslate"><span class="pre">#ifndef</span> <span class="pre">__SYNTHESIS__</span></code>). See more details in <a class="reference internal" href="userguide.html#synthesis-macro"><span class="std std-ref">__SYNTHESIS__ Macro</span></a>.</p></li>
-</ul>
-</div></blockquote>
-</div>
 <div class="section" id="id7">
-<h4>Resolved Issues<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<h4>What’s New<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>In December 2021, we made a webinar on “How Microchip FPGAs Can Improve Productivity in Motor Control Applications Using C++ With HLS”.
+The webinar is now available on-demand: <a class="reference external" href="https://event.on24.com/wcc/r/3504585/754DA52F256BFC4463D5751661C3037F">https://event.on24.com/wcc/r/3504585/754DA52F256BFC4463D5751661C3037F</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>All SmartHLS-generated output files are now put under the <code class="docutils literal notranslate"><span class="pre">hls_output</span></code> directory, except the auto-generated project configuration files <code class="docutils literal notranslate"><span class="pre">makefile</span></code> and <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</li>
+<li>The SmartHLS-generated Verilog output is now self-contained, by including all Verilog sub-IPs in the <cite>hls_output/rtl</cite> directory.
+* The Sub-IP module names are prefixed with the SmartHLS project name.</li>
+<li>Improve struct packing for array of structs (<a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</li>
+<li>Provide a <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro to wrap around the code that should only be enabled for HLS synthesis (<code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">__SYNTHESIS__</span></code>), or to exclude non-synthesizable code (<code class="docutils literal notranslate"><span class="pre">#ifndef</span> <span class="pre">__SYNTHESIS__</span></code>). See more details in <a class="reference internal" href="userguide.html#synthesis-macro"><span class="std std-ref">__SYNTHESIS__ Macro</span></a>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id9">
+<h4>Resolved Issues<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>HLS-568: Fix an incorrect optimization of uninitialized arrays.</p></li>
-<li><p>HLS-558: SW/HW CoSimulation to support struct argument that contains a typedef of FIFO.</p></li>
-<li><p>HLS-573: SW/HW CoSimulation fix about boolean return type from top-level function.</p></li>
-<li><p>HLS-576: Support boolean pragma fields for C programs.</p></li>
-<li><p>HLS-575: Support different return types of C function declaration and definition (C linker allows the declaration to use a different return type from the definition).</p></li>
-<li><p>HLS-572: Fix a corner case bug of indirect access of arrays.</p></li>
-<li><p>HLS-383: Fix int64_t or uint64_t mismatch behaviour in SW/HW CoSimulation.</p></li>
-<li><p>HLS-263: Fix the IP conflict issue between HLS cores generated by different versions of SmartHLS.</p></li>
-<li><p>HLS-235: Skip including unused Verilog IPs in create_hdl_plus.tcl to speed up ‘Build Hierarchy’ in Libero.</p></li>
-<li><p>HLS-542: Improve error messages for struct packing feature.</p></li>
-<li><p>HLS-534: Fix the Schedule Viewer’s control-flow diagram on Windows.</p></li>
-<li><p>HLS-582: Fix the file import dialog in Eclipse IDE.</p></li>
+<li>HLS-568: Fix an incorrect optimization of uninitialized arrays.</li>
+<li>HLS-558: SW/HW CoSimulation to support struct argument that contains a typedef of FIFO.</li>
+<li>HLS-573: SW/HW CoSimulation fix about boolean return type from top-level function.</li>
+<li>HLS-576: Support boolean pragma fields for C programs.</li>
+<li>HLS-575: Support different return types of C function declaration and definition (C linker allows the declaration to use a different return type from the definition).</li>
+<li>HLS-572: Fix a corner case bug of indirect access of arrays.</li>
+<li>HLS-383: Fix int64_t or uint64_t mismatch behaviour in SW/HW CoSimulation.</li>
+<li>HLS-263: Fix the IP conflict issue between HLS cores generated by different versions of SmartHLS.</li>
+<li>HLS-235: Skip including unused Verilog IPs in create_hdl_plus.tcl to speed up ‘Build Hierarchy’ in Libero.</li>
+<li>HLS-542: Improve error messages for struct packing feature.</li>
+<li>HLS-534: Fix the Schedule Viewer’s control-flow diagram on Windows.</li>
+<li>HLS-582: Fix the file import dialog in Eclipse IDE.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -894,38 +924,38 @@ The webinar is now available on-demand: <a class="reference external" href="http
 <div class="section" id="smarthls-2021-3">
 <h3>SmartHLS 2021.3<a class="headerlink" href="#smarthls-2021-3" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: Nov 26, 2021</p>
-<div class="section" id="id8">
-<h4>What’s New<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>A <a class="reference internal" href="vhls_to_shls.html#vhls-to-shls"><span class="std std-ref">SmartHLS Migration Guide</span></a> on how to migrate designs from other HLS tool to SmartHLS.</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id9">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>Enhanced Co-Simulation flow to support more sophisticated software testbenches, specifically those use high-level C++ features such as templates, classes, inheritance, namespaces, nested types and typedef.</p></li>
-<li><p>Improved expression balancing optimization to reduce cycle latency of generated hardware (see <a class="reference internal" href="constraintsmanual.html#latency-reduction"><span class="std std-ref">LATENCY_REDUCTION</span></a> settings).</p></li>
-<li><p>Improved support of AXI4 target (slave) interface in a pipelined function.</p></li>
-<li><p>Added support for floating-point ordered/unordered operations.</p></li>
-<li><p>Added support of packed FIFOs (see <a class="reference internal" href="userguide.html#rtl-interface-fifo-argument"><span class="std std-ref">hls::FIFO Argument</span></a>) in Co-Simulation.</p></li>
-<li><p>Added full lists of supported device options in the IDE’s device selection menu.</p></li>
-<li><p>The <a class="reference internal" href="userguide.html#schedule-viewer"><span class="std std-ref">Schedule Viewer</span></a> now shows the latency and source code location in the control flow graph to ease latency analysis.</p></li>
-<li><p>Improved error checking for invalid constraint settings.</p></li>
-</ul>
-</div></blockquote>
-</div>
 <div class="section" id="id10">
-<h4>Resolved Issues<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<h4>What’s New<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>A <a class="reference internal" href="vhls_to_shls.html#vhls-to-shls"><span class="std std-ref">SmartHLS Migration Guide</span></a> on how to migrate designs from other HLS tool to SmartHLS.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>Enhanced Co-Simulation flow to support more sophisticated software testbenches, specifically those use high-level C++ features such as templates, classes, inheritance, namespaces, nested types and typedef.</li>
+<li>Improved expression balancing optimization to reduce cycle latency of generated hardware (see <a class="reference internal" href="constraintsmanual.html#latency-reduction"><span class="std std-ref">LATENCY_REDUCTION</span></a> settings).</li>
+<li>Improved support of AXI4 target (slave) interface in a pipelined function.</li>
+<li>Added support for floating-point ordered/unordered operations.</li>
+<li>Added support of packed FIFOs (see <a class="reference internal" href="userguide.html#rtl-interface-fifo-argument"><span class="std std-ref">hls::FIFO Argument</span></a>) in Co-Simulation.</li>
+<li>Added full lists of supported device options in the IDE’s device selection menu.</li>
+<li>The <a class="reference internal" href="userguide.html#schedule-viewer"><span class="std std-ref">Schedule Viewer</span></a> now shows the latency and source code location in the control flow graph to ease latency analysis.</li>
+<li>Improved error checking for invalid constraint settings.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h4>Resolved Issues<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>HLS-506: Fixed an issue related to pipelined functions using external memory.</p></li>
-<li><p>HLS-532: JRE version update to include the latest security fixes and enhancements.</p></li>
-<li><p>HLS-484: Fixed the re-initialization of aliased global variables after a reset is triggered.</p></li>
-<li><p>HLS-48: Bug fix in bit-width minimization optimization.</p></li>
+<li>HLS-506: Fixed an issue related to pipelined functions using external memory.</li>
+<li>HLS-532: JRE version update to include the latest security fixes and enhancements.</li>
+<li>HLS-484: Fixed the re-initialization of aliased global variables after a reset is triggered.</li>
+<li>HLS-48: Bug fix in bit-width minimization optimization.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -933,41 +963,41 @@ The webinar is now available on-demand: <a class="reference external" href="http
 <div class="section" id="smarthls-2021-2-1">
 <h3>SmartHLS 2021.2.1<a class="headerlink" href="#smarthls-2021-2-1" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: Sept 24, 2021</p>
-<div class="section" id="id11">
-<h4>What’s New<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>SmartHLS now supports IGLOO2 device family.</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id12">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>A new <strong>branchless</strong> <a class="reference internal" href="pragmas.html#pragma-function-flatten"><span class="std std-ref">Flatten Function</span></a> feature to improve parallelism between operations.</p></li>
-<li><p>A new <a class="reference internal" href="pragmas.html#pragma-replicate-rom"><span class="std std-ref">Replicate ROM</span></a> pragma to enable and control the replication of designated read-only arrays for achieving better circuit throughput.</p></li>
-<li><p>Support for packing interfaces and memories with struct types into a wide scalar using the new pack pragma (see <a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</p></li>
-<li><p>Support struct as a return type for the top-level HLS function (see <a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</p></li>
-<li><p>Support for constant static struct members in SW/HW CoSimulation.</p></li>
-<li><p>Disabled automatic unrolling of pipelined loops and their outer loops. Disabling automatic unrolling saves design size without noticeable loss in performance. A pipelined loop can still be explicitly unrolled with a <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a> pragma.</p></li>
-<li><p>Updated the user guide section on <a class="reference internal" href="userguide.html#cmdline"><span class="std std-ref">SmartHLS Command Line Interface</span></a>.</p></li>
-</ul>
-</div></blockquote>
-</div>
 <div class="section" id="id13">
-<h4>Resolved Issues<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<h4>What’s New<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>SmartHLS now supports IGLOO2 device family.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id14">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>A new <strong>branchless</strong> <a class="reference internal" href="pragmas.html#pragma-function-flatten"><span class="std std-ref">Flatten Function</span></a> feature to improve parallelism between operations.</li>
+<li>A new <a class="reference internal" href="pragmas.html#pragma-replicate-rom"><span class="std std-ref">Replicate ROM</span></a> pragma to enable and control the replication of designated read-only arrays for achieving better circuit throughput.</li>
+<li>Support for packing interfaces and memories with struct types into a wide scalar using the new pack pragma (see <a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</li>
+<li>Support struct as a return type for the top-level HLS function (see <a class="reference internal" href="userguide.html#struct-support"><span class="std std-ref">Struct Support</span></a>).</li>
+<li>Support for constant static struct members in SW/HW CoSimulation.</li>
+<li>Disabled automatic unrolling of pipelined loops and their outer loops. Disabling automatic unrolling saves design size without noticeable loss in performance. A pipelined loop can still be explicitly unrolled with a <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a> pragma.</li>
+<li>Updated the user guide section on <a class="reference internal" href="userguide.html#cmdline"><span class="std std-ref">SmartHLS Command Line Interface</span></a>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id15">
+<h4>Resolved Issues<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>HLS-461: Fixed the initialization of global array of ap_fixpt type.</p></li>
-<li><p>HLS-419: Some of the generated AXI4 slave controllers have IIs greater than 1.</p></li>
-<li><p>HLS-420: Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.</p></li>
-<li><p>HLS-443: Partition pragma is incorrectly overridden by default partitioning.</p></li>
-<li><p>HLS-446: Incorrect mapping of completely partitioned array of struct.</p></li>
-<li><p>HLS-475: Nested struct definitions may have an incorrect order in Co-Simulation.</p></li>
-<li><p>HLS-456: Loops containing inner pipelined loops are automatically unrolled, leading to a significant increase in resources.</p></li>
-<li><p>HLS-53: Removed the internal primitive operations from scheduleviewer.</p></li>
+<li>HLS-461: Fixed the initialization of global array of ap_fixpt type.</li>
+<li>HLS-419: Some of the generated AXI4 slave controllers have IIs greater than 1.</li>
+<li>HLS-420: Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.</li>
+<li>HLS-443: Partition pragma is incorrectly overridden by default partitioning.</li>
+<li>HLS-446: Incorrect mapping of completely partitioned array of struct.</li>
+<li>HLS-475: Nested struct definitions may have an incorrect order in Co-Simulation.</li>
+<li>HLS-456: Loops containing inner pipelined loops are automatically unrolled, leading to a significant increase in resources.</li>
+<li>HLS-53: Removed the internal primitive operations from scheduleviewer.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -975,74 +1005,74 @@ The webinar is now available on-demand: <a class="reference external" href="http
 <div class="section" id="smarthls-2021-2">
 <h3>SmartHLS 2021.2<a class="headerlink" href="#smarthls-2021-2" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: August 06, 2021</p>
-<div class="section" id="id14">
-<h4>What’s New<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>SmartHLS is now installed by default with Libero 2021.2 for general release.</p></li>
-<li><p>Free licenses are provided for SmartHLS, please refer to the instructions here to <a class="reference internal" href="license_setup.html#license-setup"><span class="std std-ref">SmartHLS License</span></a>.</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id15">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>Improved optimizations to minimize signal bit-width to reduce resource usage.</p></li>
-<li><p>Improved multiplier area for wide multipliers (&gt;64-bits).</p></li>
-<li><p>Added a <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> type to the memory partition pragma (see <a class="reference internal" href="userguide.html#struct-fields-memory-partitioning"><span class="std std-ref">Struct-Fields Partitioning</span></a>), which is to specify the intention to partition a struct into its individual elements.</p></li>
-<li><p>Added a new “Synthesize Hardware to FPGA” feature that only runs RTL synthesis without place-and-route to obtain accurate FPGA resource usage faster.</p></li>
-<li><p>Deprecated the <code class="docutils literal notranslate"><span class="pre">scalar_memory</span></code> type from the interface pragma. Please instead use a <code class="docutils literal notranslate"><span class="pre">complete</span></code> type memory partition pragma on the top-level pointer argument to achieve the same effect (see <a class="reference internal" href="userguide.html#complete-memory-partitioning"><span class="std std-ref">Complete Partitioning</span></a>).</p></li>
-<li><p>Deprecated the C arbitrary bitwidth library (<code class="docutils literal notranslate"><span class="pre">hls/types.h</span></code>) and C bit-level operations library (<code class="docutils literal notranslate"><span class="pre">hls/bit_level_operations.h</span></code>). Please use the <a class="reference internal" href="userguide.html#ap-lib"><span class="std std-ref">C++ Arbitrary Precision Data Types Library</span></a> instead for better quality of result of the generated hardware.</p></li>
-<li><p>Windows installation no longer adds system environment variables and Windows IDE no longer uses system environment variables.</p></li>
-</ul>
-</div></blockquote>
-</div>
 <div class="section" id="id16">
-<h4>Known Issues<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<h4>What’s New<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
-<li><p>Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
+<li>SmartHLS is now installed by default with Libero 2021.2 for general release.</li>
+<li>Free licenses are provided for SmartHLS, please refer to the instructions here to <a class="reference internal" href="license_setup.html#license-setup"><span class="std std-ref">SmartHLS License</span></a>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id17">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>Improved optimizations to minimize signal bit-width to reduce resource usage.</li>
+<li>Improved multiplier area for wide multipliers (&gt;64-bits).</li>
+<li>Added a <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> type to the memory partition pragma (see <a class="reference internal" href="userguide.html#struct-fields-memory-partitioning"><span class="std std-ref">Struct-Fields Partitioning</span></a>), which is to specify the intention to partition a struct into its individual elements.</li>
+<li>Added a new “Synthesize Hardware to FPGA” feature that only runs RTL synthesis without place-and-route to obtain accurate FPGA resource usage faster.</li>
+<li>Deprecated the <code class="docutils literal notranslate"><span class="pre">scalar_memory</span></code> type from the interface pragma. Please instead use a <code class="docutils literal notranslate"><span class="pre">complete</span></code> type memory partition pragma on the top-level pointer argument to achieve the same effect (see <a class="reference internal" href="userguide.html#complete-memory-partitioning"><span class="std std-ref">Complete Partitioning</span></a>).</li>
+<li>Deprecated the C arbitrary bitwidth library (<code class="docutils literal notranslate"><span class="pre">hls/types.h</span></code>) and C bit-level operations library (<code class="docutils literal notranslate"><span class="pre">hls/bit_level_operations.h</span></code>). Please use the <a class="reference internal" href="userguide.html#ap-lib"><span class="std std-ref">C++ Arbitrary Precision Data Types Library</span></a> instead for better quality of result of the generated hardware.</li>
+<li>Windows installation no longer adds system environment variables and Windows IDE no longer uses system environment variables.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id18">
+<h4>Known Issues<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
 The issue has been fixed in the 2021.2.1 release.
-For the 2021.2 release, here is the workaround to disable packing pipeline registers into FIFO to avoid the issue:</p></li>
+For the 2021.2 release, here is the workaround to disable packing pipeline registers into FIFO to avoid the issue:</li>
 </ul>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Open the <code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">Constraints</span></code> dialog, choose <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">custom</span> <span class="pre">config</span> <span class="pre">file</span></code> constraint type and put in a file name (e.g., <code class="docutils literal notranslate"><span class="pre">custom_config.tcl</span></code>) for the constraint value, click “Add” then “OK”</p></li>
-<li><p>Create a new custom config file in the project folder with the same filename as above (e.g., <code class="docutils literal notranslate"><span class="pre">custom_config.tcl</span></code>).</p></li>
-<li><p>Put the following line in the custom config file: <code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">USE_FIFO_FOR_PIPELINE_REG</span> <span class="pre">0</span></code></p></li>
+<li>Open the <code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">Constraints</span></code> dialog, choose <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">custom</span> <span class="pre">config</span> <span class="pre">file</span></code> constraint type and put in a file name (e.g., <code class="docutils literal notranslate"><span class="pre">custom_config.tcl</span></code>) for the constraint value, click “Add” then “OK”</li>
+<li>Create a new custom config file in the project folder with the same filename as above (e.g., <code class="docutils literal notranslate"><span class="pre">custom_config.tcl</span></code>).</li>
+<li>Put the following line in the custom config file: <code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">USE_FIFO_FOR_PIPELINE_REG</span> <span class="pre">0</span></code></li>
 </ol>
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="id17">
-<h4>Resolved Issues<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id19">
+<h4>Resolved Issues<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>HLS-198:   ap_uint&lt;24&gt; slices of width 8 is generating wider multipliers than necessary</p></li>
-<li><p>HLS-220:   MBW pass did not optimize for legup_select/concat primitives</p></li>
-<li><p>HLS-233:   Fix Tcl constraint name of floating point cores</p></li>
-<li><p>HLS-234:   Add Libero license check</p></li>
-<li><p>HLS-259:   Remove LEGUP_CYGWIN_BIN environment variable</p></li>
-<li><p>HLS-261:   Memory Partition partitions an unsupported case.</p></li>
-<li><p>HLS-302:   Integrate with Libero installer</p></li>
-<li><p>HLS-353:   Pass-in-by-value class argument not detected properly</p></li>
-<li><p>HLS-354:   cosim_cwrapper_insert.pl breaks in a corner case of comment position</p></li>
-<li><p>HLS-355:   AXI slave address map: change the printing order of fields in the same word</p></li>
-<li><p>HLS-356:   Add a GUI button and a make target to only run synthesis (no P&amp;R) for resource results</p></li>
-<li><p>HLS-364:   UG: add documentation about “set_synthesis_top_module_file” after “set_synthesis_top_module”</p></li>
-<li><p>HLS-366:   Mem-partition fails to split a FIFO of struct</p></li>
-<li><p>HLS-372:   MBW: forward prop of OR operantion is wrong with extendFrom</p></li>
-<li><p>HLS-373:   MBW-related: signed comparison between sign/length-mismatched values was wrong in printed RTL</p></li>
-<li><p>HLS-374:   Differentiate AShr and LShr in generated Verilog</p></li>
-<li><p>HLS-376:   Multiply between two different sign operands is implemented incorrectly</p></li>
-<li><p>HLS-377:   Split-mult operand port widths mismatch.</p></li>
-<li><p>HLS-379:   Remind user to “Recompile Simulation Libraries” when Modelsim version changes</p></li>
-<li><p>HLS-390:   Update SmartHLS EULA to match Libero EULA</p></li>
-<li><p>HLS-394:   Returning AP Type by-value uses ap_num in CoSim</p></li>
-<li><p>HLS-395:   External global memory got incorrectly optimized by LLVM</p></li>
-<li><p>HLS-396:   hls::thread Pointer Arguments Coerced to Int for 64-Bit Target</p></li>
+<li>HLS-198:   ap_uint&lt;24&gt; slices of width 8 is generating wider multipliers than necessary</li>
+<li>HLS-220:   MBW pass did not optimize for legup_select/concat primitives</li>
+<li>HLS-233:   Fix Tcl constraint name of floating point cores</li>
+<li>HLS-234:   Add Libero license check</li>
+<li>HLS-259:   Remove LEGUP_CYGWIN_BIN environment variable</li>
+<li>HLS-261:   Memory Partition partitions an unsupported case.</li>
+<li>HLS-302:   Integrate with Libero installer</li>
+<li>HLS-353:   Pass-in-by-value class argument not detected properly</li>
+<li>HLS-354:   cosim_cwrapper_insert.pl breaks in a corner case of comment position</li>
+<li>HLS-355:   AXI slave address map: change the printing order of fields in the same word</li>
+<li>HLS-356:   Add a GUI button and a make target to only run synthesis (no P&amp;R) for resource results</li>
+<li>HLS-364:   UG: add documentation about “set_synthesis_top_module_file” after “set_synthesis_top_module”</li>
+<li>HLS-366:   Mem-partition fails to split a FIFO of struct</li>
+<li>HLS-372:   MBW: forward prop of OR operantion is wrong with extendFrom</li>
+<li>HLS-373:   MBW-related: signed comparison between sign/length-mismatched values was wrong in printed RTL</li>
+<li>HLS-374:   Differentiate AShr and LShr in generated Verilog</li>
+<li>HLS-376:   Multiply between two different sign operands is implemented incorrectly</li>
+<li>HLS-377:   Split-mult operand port widths mismatch.</li>
+<li>HLS-379:   Remind user to “Recompile Simulation Libraries” when Modelsim version changes</li>
+<li>HLS-390:   Update SmartHLS EULA to match Libero EULA</li>
+<li>HLS-394:   Returning AP Type by-value uses ap_num in CoSim</li>
+<li>HLS-395:   External global memory got incorrectly optimized by LLVM</li>
+<li>HLS-396:   hls::thread Pointer Arguments Coerced to Int for 64-Bit Target</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1056,58 +1086,20 @@ For the 2021.2 release, here is the workaround to disable packing pipeline regis
 will be needed in the source code:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>The include path of HLS library: change <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;legup/...&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;hls/...&quot;</span></code></p></li>
-<li><p>All <code class="docutils literal notranslate"><span class="pre">legup</span></code> namespace is renamed to <code class="docutils literal notranslate"><span class="pre">hls</span></code>; e.g., <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span> <span class="pre">hls;</span></code> or <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">LEGUP</span> <span class="pre">...</span></code> should be changed to <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">...</span></code></p></li>
+<li>The include path of HLS library: change <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;legup/...&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;hls/...&quot;</span></code></li>
+<li>All <code class="docutils literal notranslate"><span class="pre">legup</span></code> namespace is renamed to <code class="docutils literal notranslate"><span class="pre">hls</span></code>; e.g., <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span> <span class="pre">hls;</span></code> or <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">LEGUP</span> <span class="pre">...</span></code> should be changed to <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">...</span></code></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id18">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>Extended AXI4 master interface with AxSIZE and AxBURST support.</p></li>
-<li><p>Improved FIFO depth modeling in software, and full-ness detection in software and RTL simulation.</p></li>
-<li><p>Enhanced bit-width reduction to support very wide integer types (e.g., ap_uint&lt;1024&gt;).</p></li>
-<li><p>Added support for unpartitioned structs (and nested structs) in CoSimulation.</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id19">
-<h4>Resolved Issues<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
-<p>The following defects and enhancement requests were resolved:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>HLS-282:   Rename “LegUp HLS” to “Smart HLS”</p></li>
-<li><p>HLS-335:   AP width memory controller gets “Warning: Invalid bitwidth ‘256’ for instr.”</p></li>
-<li><p>HLS-330:   VectorBlox design not finish when in multithreading with axi_read loops unmerged</p></li>
-<li><p>HLS-328:   Loop pipeline fails with ap_int type induction variable</p></li>
-<li><p>HLS-327:   Fix bug in software emulation of certain ap_int wide multiply operations</p></li>
-<li><p>HLS-324:   Legality check and error message about the one-to-one connection between FIFO and function’s FIFO argument</p></li>
-<li><p>HLS-303:   If Conversion Pass - DFS never exits with a &gt;40,000 basic block size loop</p></li>
-<li><p>HLS-296:   If conversion pass errored out while trying to pipeline a loop</p></li>
-<li><p>HLS-260:   Segfault due to struct of ap_int top-level argument</p></li>
-<li><p>HLS-158:   Crashes at visitLocalMemoryInst – a struct argument containing ap_uint</p></li>
-<li><p>HLS-147:   Incorrect Transformation by if-conv</p></li>
-<li><p>HLS-112:   Add volatile support in extractArgs/cosim for parsing debug info for volatile</p></li>
-</ul>
-</div></blockquote>
-</div>
-</div>
-<div class="section" id="legup-hls-eap-2021-1">
-<h3>LegUp HLS EAP 2021.1<a class="headerlink" href="#legup-hls-eap-2021-1" title="Permalink to this headline">¶</a></h3>
-<p>Release date: April 23, 2021</p>
 <div class="section" id="id20">
 <h4>Software Features and Enhancements<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
-<li><p>Full support for complex software testbenches.</p></li>
-<li><p>Automatically trigger re-compilation if needed to generate the software binary or Verilog when the C++ source code, Makefile, or TCL config files changed.</p></li>
-<li><p>Added limited SW/HW Co-Simulation support for multi-threading when all threads are joined in the function where the threads are forked.</p></li>
-<li><p>Added support for user-specified arguments of the main() function in software testbench.</p></li>
-<li><p>Added AP_RND_ZERO quantization mode to the ap_fixpt C++ library.</p></li>
-<li><p>Added a range() method to ap_int and ap_fixpt C++ libraries.</p></li>
-<li><p>Added a simulation with waves feature to LegUp IDE for custom testbench.</p></li>
+<li>Extended AXI4 master interface with AxSIZE and AxBURST support.</li>
+<li>Improved FIFO depth modeling in software, and full-ness detection in software and RTL simulation.</li>
+<li>Enhanced bit-width reduction to support very wide integer types (e.g., ap_uint&lt;1024&gt;).</li>
+<li>Added support for unpartitioned structs (and nested structs) in CoSimulation.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1116,30 +1108,36 @@ will be needed in the source code:</p>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>HLS-59:     RTL Interface: fix memory port names</p></li>
-<li><p>HLS-174:    Spaces in LegUp workspace path makes synthesis fail. Add user error message to avoid spaces.</p></li>
-<li><p>HLS-177:    Change the header files on Windows</p></li>
-<li><p>HLS-199:    Add documentation comment to LegUp Library classes like ap_int similar to ap_fixpt so the user can mouse over the type in Eclipse and get the usage information</p></li>
-<li><p>HLS-225:    create_hdl_plus.tcl does not properly import mem_init files</p></li>
-<li><p>HLS-232:    Update windows installer link to LegUp getting started guide</p></li>
-<li><p>HLS-255:    After project import LegUp IDE does not save HLS constraints changes when closing</p></li>
-<li><p>HLS-269:    Missing legup_array_depth=1 for struct pass-in-by-reference</p></li>
-<li><p>HLS-277:    Automatically add array-depth attribute to pass-in-by-value structs.</p></li>
-<li><p>HLS-278:    Hardware functions are incorrectly removed by PreprocessThreadLib pass</p></li>
-<li><p>HLS-279:    Interface Report: Struct type IORam is incorrectly considered as scalar memory</p></li>
-<li><p>HLS-280:    Interface Report: byte-enable signal is not properly recognized for non-struct yet byte-enabled RAMs</p></li>
+<li>HLS-282:   Rename “LegUp HLS” to “Smart HLS”</li>
+<li>HLS-335:   AP width memory controller gets “Warning: Invalid bitwidth ‘256’ for instr.”</li>
+<li>HLS-330:   VectorBlox design not finish when in multithreading with axi_read loops unmerged</li>
+<li>HLS-328:   Loop pipeline fails with ap_int type induction variable</li>
+<li>HLS-327:   Fix bug in software emulation of certain ap_int wide multiply operations</li>
+<li>HLS-324:   Legality check and error message about the one-to-one connection between FIFO and function’s FIFO argument</li>
+<li>HLS-303:   If Conversion Pass - DFS never exits with a &gt;40,000 basic block size loop</li>
+<li>HLS-296:   If conversion pass errored out while trying to pipeline a loop</li>
+<li>HLS-260:   Segfault due to struct of ap_int top-level argument</li>
+<li>HLS-158:   Crashes at visitLocalMemoryInst – a struct argument containing ap_uint</li>
+<li>HLS-147:   Incorrect Transformation by if-conv</li>
+<li>HLS-112:   Add volatile support in extractArgs/cosim for parsing debug info for volatile</li>
 </ul>
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="legup-hls-eap-9-2-1">
-<h3>LegUp HLS EAP 9.2.1<a class="headerlink" href="#legup-hls-eap-9-2-1" title="Permalink to this headline">¶</a></h3>
-<p>Release date: March 3, 2021</p>
+<div class="section" id="legup-hls-eap-2021-1">
+<h3>LegUp HLS EAP 2021.1<a class="headerlink" href="#legup-hls-eap-2021-1" title="Permalink to this headline">¶</a></h3>
+<p>Release date: April 23, 2021</p>
 <div class="section" id="id22">
 <h4>Software Features and Enhancements<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
-<li><p>Added support for new <code class="docutils literal notranslate"><span class="pre">legup::thread</span></code> multi-threading API (see <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading with SmartHLS Threads</span></a>)</p></li>
+<li>Full support for complex software testbenches.</li>
+<li>Automatically trigger re-compilation if needed to generate the software binary or Verilog when the C++ source code, Makefile, or TCL config files changed.</li>
+<li>Added limited SW/HW Co-Simulation support for multi-threading when all threads are joined in the function where the threads are forked.</li>
+<li>Added support for user-specified arguments of the main() function in software testbench.</li>
+<li>Added AP_RND_ZERO quantization mode to the ap_fixpt C++ library.</li>
+<li>Added a range() method to ap_int and ap_fixpt C++ libraries.</li>
+<li>Added a simulation with waves feature to LegUp IDE for custom testbench.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1148,45 +1146,30 @@ will be needed in the source code:</p>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>HLS-42: Libero 12.6 complains about set_option -rom_map_logic.</p></li>
-<li><p>HLS-50: Sobel tutorial part 3 to match the syntax as part 1 &amp; 2.</p></li>
-<li><p>HLS-59: Fix the memory port names to a more understandable convention.</p></li>
-<li><p>HLS-60: Give a proper error when there are multiple top-level functions specified.</p></li>
-<li><p>HLS-63: Sefault if the top-level function pragma is removed from Sobel tutorial part 1.</p></li>
-<li><p>HLS-78: Loop pipeline support for variable loop bounds.</p></li>
-<li><p>HLS-97: Fmax improvements for customer design.</p></li>
-<li><p>HLS-121: Cannot access AXI4 slave without starting the accelerator (in concurrent_access mode).</p></li>
-<li><p>HLS-129: Loop unrolling crashes some designs.</p></li>
-<li><p>HLS-142: Running Libero synthesis, P&amp;R from LegUp will fail with Libero 12.5 or before on Windows.</p></li>
-<li><p>HLS-149: LLVM’s loop-unswitch performs an unwanted loop replication.</p></li>
-<li><p>HLS-156: CoSim: wrong values for ap_uint type being fed to the DUT.</p></li>
-<li><p>HLS-162: Verilog name conflict in generated Verilog between a RAM instance and a register.</p></li>
-<li><p>HLS-164: Cannot expand grouped AXI4stream ports in SmartDesign for HDL+ block.</p></li>
-<li><p>HLS-165: Some memory interfaces are not showing in the interface report.</p></li>
-<li><p>HLS-168: Clang errors out with none type memory partition pragma.</p></li>
-<li><p>HLS-200: Can’t set multiply latency when split mult is enabled.</p></li>
-<li><p>HLS-201: Execute create_hdl_plus.tcl from Libero got LEGUP_ROOT_DIR not set error.</p></li>
-<li><p>HLS-203: ScheduleViewer does not work when LegUp installation and workspace are in different drives.</p></li>
-<li><p>HLS-206: Red-line in Eclipse complaining about legup::thread/ref.</p></li>
+<li>HLS-59:     RTL Interface: fix memory port names</li>
+<li>HLS-174:    Spaces in LegUp workspace path makes synthesis fail. Add user error message to avoid spaces.</li>
+<li>HLS-177:    Change the header files on Windows</li>
+<li>HLS-199:    Add documentation comment to LegUp Library classes like ap_int similar to ap_fixpt so the user can mouse over the type in Eclipse and get the usage information</li>
+<li>HLS-225:    create_hdl_plus.tcl does not properly import mem_init files</li>
+<li>HLS-232:    Update windows installer link to LegUp getting started guide</li>
+<li>HLS-255:    After project import LegUp IDE does not save HLS constraints changes when closing</li>
+<li>HLS-269:    Missing legup_array_depth=1 for struct pass-in-by-reference</li>
+<li>HLS-277:    Automatically add array-depth attribute to pass-in-by-value structs.</li>
+<li>HLS-278:    Hardware functions are incorrectly removed by PreprocessThreadLib pass</li>
+<li>HLS-279:    Interface Report: Struct type IORam is incorrectly considered as scalar memory</li>
+<li>HLS-280:    Interface Report: byte-enable signal is not properly recognized for non-struct yet byte-enabled RAMs</li>
 </ul>
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="legup-hls-eap-9-1">
-<h3>LegUp HLS EAP 9.1<a class="headerlink" href="#legup-hls-eap-9-1" title="Permalink to this headline">¶</a></h3>
-<p>Release date: Jan 4, 2021</p>
+<div class="section" id="legup-hls-eap-9-2-1">
+<h3>LegUp HLS EAP 9.2.1<a class="headerlink" href="#legup-hls-eap-9-2-1" title="Permalink to this headline">¶</a></h3>
+<p>Release date: March 3, 2021</p>
 <div class="section" id="id24">
 <h4>Software Features and Enhancements<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
-<li><p>Only support targeting Microchip PolarFire<sup>®</sup> FPGAs</p></li>
-<li><p>Support for Libero 12.6</p></li>
-<li><p>Libero SmartDesign integration (see <a class="reference internal" href="userguide.html#smartdesign"><span class="std std-ref">Instantiating SmartHLS IP Core in Libero SmartDesign</span></a>)</p></li>
-<li><p>Added support for pragmas (see <a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a>) in the source code to specify LegUp user constraints instead of using Tcl commands.</p></li>
-<li><p>Support for math.h functions (see <a class="reference internal" href="userguide.html#c-math-library"><span class="std std-ref">Math Library (math.h)</span></a>)</p></li>
-<li><p>Documentation of top-level RTL interfaces (see <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>)</p></li>
-<li><p>Improvements to memory partitioning (see <a class="reference internal" href="userguide.html#memory-partitioning"><span class="std std-ref">Memory Partitioning</span></a>)</p></li>
-<li><p>Added Microchip software end-user license agreement (EULA)</p></li>
+<li>Added support for new <code class="docutils literal notranslate"><span class="pre">legup::thread</span></code> multi-threading API (see <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading with SmartHLS Threads</span></a>)</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1195,11 +1178,58 @@ will be needed in the source code:</p>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Synthesize with Libero block flow to avoid limited number of top-level I/O pins</p></li>
-<li><p>Fixes for RAM initialization and reset logic</p></li>
-<li><p>Fix LegUp IDE cancel button on Windows</p></li>
-<li><p>Fix Libero FMax parsing</p></li>
-<li><p>Better error messages for unsupported C++ features (vector, map, etc.) and unsupported co-simulation cases</p></li>
+<li>HLS-42: Libero 12.6 complains about set_option -rom_map_logic.</li>
+<li>HLS-50: Sobel tutorial part 3 to match the syntax as part 1 &amp; 2.</li>
+<li>HLS-59: Fix the memory port names to a more understandable convention.</li>
+<li>HLS-60: Give a proper error when there are multiple top-level functions specified.</li>
+<li>HLS-63: Sefault if the top-level function pragma is removed from Sobel tutorial part 1.</li>
+<li>HLS-78: Loop pipeline support for variable loop bounds.</li>
+<li>HLS-97: Fmax improvements for customer design.</li>
+<li>HLS-121: Cannot access AXI4 slave without starting the accelerator (in concurrent_access mode).</li>
+<li>HLS-129: Loop unrolling crashes some designs.</li>
+<li>HLS-142: Running Libero synthesis, P&amp;R from LegUp will fail with Libero 12.5 or before on Windows.</li>
+<li>HLS-149: LLVM’s loop-unswitch performs an unwanted loop replication.</li>
+<li>HLS-156: CoSim: wrong values for ap_uint type being fed to the DUT.</li>
+<li>HLS-162: Verilog name conflict in generated Verilog between a RAM instance and a register.</li>
+<li>HLS-164: Cannot expand grouped AXI4stream ports in SmartDesign for HDL+ block.</li>
+<li>HLS-165: Some memory interfaces are not showing in the interface report.</li>
+<li>HLS-168: Clang errors out with none type memory partition pragma.</li>
+<li>HLS-200: Can’t set multiply latency when split mult is enabled.</li>
+<li>HLS-201: Execute create_hdl_plus.tcl from Libero got LEGUP_ROOT_DIR not set error.</li>
+<li>HLS-203: ScheduleViewer does not work when LegUp installation and workspace are in different drives.</li>
+<li>HLS-206: Red-line in Eclipse complaining about legup::thread/ref.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="legup-hls-eap-9-1">
+<h3>LegUp HLS EAP 9.1<a class="headerlink" href="#legup-hls-eap-9-1" title="Permalink to this headline">¶</a></h3>
+<p>Release date: Jan 4, 2021</p>
+<div class="section" id="id26">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>Only support targeting Microchip PolarFire<sup>®</sup> FPGAs</li>
+<li>Support for Libero 12.6</li>
+<li>Libero SmartDesign integration (see <a class="reference internal" href="userguide.html#smartdesign"><span class="std std-ref">Instantiating SmartHLS IP Core in Libero SmartDesign</span></a>)</li>
+<li>Added support for pragmas (see <a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a>) in the source code to specify LegUp user constraints instead of using Tcl commands.</li>
+<li>Support for math.h functions (see <a class="reference internal" href="userguide.html#c-math-library"><span class="std std-ref">Math Library (math.h)</span></a>)</li>
+<li>Documentation of top-level RTL interfaces (see <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>)</li>
+<li>Improvements to memory partitioning (see <a class="reference internal" href="userguide.html#memory-partitioning"><span class="std std-ref">Memory Partitioning</span></a>)</li>
+<li>Added Microchip software end-user license agreement (EULA)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id27">
+<h4>Resolved Issues<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<p>The following defects and enhancement requests were resolved:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Synthesize with Libero block flow to avoid limited number of top-level I/O pins</li>
+<li>Fixes for RAM initialization and reset logic</li>
+<li>Fix LegUp IDE cancel button on Windows</li>
+<li>Fix Libero FMax parsing</li>
+<li>Better error messages for unsupported C++ features (vector, map, etc.) and unsupported co-simulation cases</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1263,9 +1293,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2 documentation&\
-		pub_ver=2022.2&\
-		revision_letter=2022.2&\
+		cover_title=SmartHLS 2022.2.1 documentation&\
+		pub_ver=2022.2.1&\
+		revision_letter=2022.2.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

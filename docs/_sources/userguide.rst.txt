@@ -96,7 +96,7 @@ the software testbench and accelerator drivers for that reference SoC.
 SmartHLS SoC Flow
 ------------------
 
-SmartHLS can automatically generate a RISC-V processor/accelerator SoC for the PolarFire\ :sup:`®`\  SoC device on the Icicle Kit. For more information on the SoC features, see `SoC Features`_.
+SmartHLS can automatically generate a RISC-V processor/accelerator SoC for the PolarFire\ :sup:`®`\  SoC device on the Icicle Kit. For more information on the SoC features, see :ref:`soc_features`.
 
 .. NOTE::
 
@@ -909,6 +909,62 @@ smaller memories or into its individual elements allows for more accesses per cy
 
 There are two flavors of memory partitioning, access-based partitioning and user-specified partitioning.
 
+.. Note::
+
+  * Accessing memory outside of an array dimension is not supported by memory partitioning and will sometimes cause
+    incorrect circuit behavior. An example of this is casting a 2-d array to a pointer and iterating through the size
+    of the 2-d array.
+
+  * Pointers that alias to different memories (e.g. a function called with different memories) or different sections of the same memory (e.g. a pointer that is assigned to multiple memories based on a condition) can be partitioned if the aliased memories/sections have the same partitions. Otherwise, access-based partitioning will not partition the aliased memories, or a warning will be displayed for user-specified partitioning. The following example shows an unsupported aliasing case:
+
+    .. code-block:: c
+
+      int sum_array(int *z) {
+      #pragma HLS function noinline
+        int sum = 0;
+        for (int i = 0; i < 100; i++)
+          sum += z[i];
+        return sum;
+      }
+
+      int main() {
+      #pragma HLS function top
+      #pragma HLS memory partition variable(x) type(block) dim(1) factor(2)
+        int x[100];   // x should be partitioned into 2 partitions
+      #pragma HLS memory partition variable(x) type(cyclic) dim(1) factor(4)
+        int y[100];   // x should be partitioned into 4 partitions
+        // ...
+        int sum_x = sum_array(x);
+        int sum_y = sum_array(y);
+        // ...
+      }
+
+    SmartHLS will output a warning:
+
+    .. code-block:: text
+
+      Warning: The user specified memory "x" on line 80 of test.cpp could not be partitioned because the memory aliases with another memory at line 71 of test.cpp that has a different partitioning.
+      Warning: The user specified memory "y" on line 82 of test.cpp could not be partitioned because the memory aliases with another memory at line 71 of test.cpp that has a different partitioning.
+
+  * Partitions with no accesses are discarded.
+
+
+.. * Pointers that alias to different memories or different sections of the same memory (e.g. a pointer that is assigned
+  to multiple memories based on a condition) are not supported in memory
+  partitioning. The aliased memories will not be partitioned. The exception
+  to this is that functions that get called with different pointers are handled properly for user-specified
+  partitioning.
+
+.. * Comparisons and other non-arithmetic operators on pointers are not supported by memory partitioning and will prevent
+     partitioning.
+
+.. * Access-based partitioning will not create new accessing instructions and therefore can only modify existing ones.
+     This limits partitions to be the same shape as the range of accesses, with overlapping ranges merged into the same
+     partition. If the shape of the overlapping ranges cannot nicely map old indexes to new indexes using a linear relationship
+     the memory is not partitioned. This makes it so that if there are multiple overlapping ranges, the partition may become
+     large and or not be partitioned at all, reduce performance gain.
+
+
 .. _access_based_partitioning:
 
 Access-Based Memory Partitioning
@@ -953,51 +1009,90 @@ With access-based partitioning, SmartHLS outputs messages to the console specify
 	:language: text
 	:lines: 10
 
-Limitations:
-
-.. * Access-based partitioning will not create new accessing instructions and therefore can only modify existing ones.
-     This limits partitions to be the same shape as the range of accesses, with overlapping ranges merged into the same
-     partition. If the shape of the overlapping ranges cannot nicely map old indexes to new indexes using a linear relationship
-     the memory is not partitioned. This makes it so that if there are multiple overlapping ranges, the partition may become
-     large and or not be partitioned at all, reduce performance gain.
-
-* Accessing memory outside of an array dimension is not supported by memory partitioning and may cause
-  incorrect circuit behavior. An example of this is lowering a 2-d array to a pointer and iterating through the size
-  of the 2-d array.
-
-* Pointers that alias to different memories or different sections of the same memory (e.g. a pointer that is assigned
-  to multiple memories based on a condition) are not supported in memory
-  partitioning. The aliased memories will not be partitioned.
-
-.. * Comparisons and other non-arithmetic operators on pointers are not supported by memory partitioning and will prevent
-     partitioning.
-
 Please refer to the :ref:`optimizationguide` for more examples and details.
 
-
+.. _user_specified_memory_partitioning:
 
 User-Specified Memory Partitioning
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-User-specified partitioning can be achieved with the ``HLS memory partition`` pragma .
-User-specified partitioning is where the user explicitly specifies a memory to be partitioned via the ``memory partition`` pragma (#pragma HLS memory partition variable, #pragma HLS memory partition argument). See :ref:`pragma_memory_partition_argument` and :ref:`pragma_memory_partition_variable` for more details. 
+The user can explicitly specify a memory to be partitioned via the ``memory partition`` pragma (``#pragma HLS memory partition variable``, ``#pragma HLS memory partition argument``). See :ref:`pragma_memory_partition_argument` and :ref:`pragma_memory_partition_variable` for more details.
 User-specified partitioning also analyzes accesses but partitions based on a predefined structure and array dimension.
-There are two user-specified partitioning types supported by SmartHLS: `Complete` and `Struct-fields`.
+SmartHLS supports ``block``, ``cyclic`` and ``complete`` types for arrays, and ``struct_fields`` and ``complete`` partitioning for ``struct``. Specifying the type to be ``none`` prevents partitioning the specified memory.
+
+The memory partition pragma has optional arguments ``type`` and ``dim`` that specifies the partition type and dimension to partition, respectively.
+The default type is ``complete`` which means to partition the array into individual elements, and the default dimension is ``0`` which means to partition all dimensions.
+The ``factor`` argument is required for ``block`` and ``cyclic`` types to specify the partitioning factor, i.e. the number of partitions. Note that the pragma will be ignored if the ``factor <= 1``.
+
+.. Note::
+
+    Lower numbered dimensions correspond to left-ward dimensions of the array and higher numbered dimensions correspond to right-ward dimensions of the array. For an a 2d array ``A[N][M]``, ``dim(1)`` refers to the dimension with ``N`` elements, and ``dim(2)`` refers to the dimension with ``M`` elements.
+
+With user-specified partitioning, SmartHLS outputs messages to the console stating the variable set to be partitioned and its settings.
+SmartHLS also outputs messages specifying if a memory has been partitioned and into how many partitions.
+If a memory is specified to be partitioned but cannot be partitioned, SmartHLS will output a warning.
+
+.. code-block:: text
+
+    Info: Found user-specified memory: "array" on line 6 of test.c, with partition type: Complete, partition dimension: 0.
+    Info: Found user-specified memory: "array3d" on line 27 of test.c, with partition type: Block, partition dimension: 1, partition factor 2.
+    Warning: The user-specified memory "array3d" on line 27 of test.c could not be partitioned because a loop variable indexing into a multi-dimenional array comes from a loop variable and goes out of the array dimension bounds. Going outside of array dimension bounds is not supported for memory partitioning.
+    Info: Partitioning memory: array into 8 partitions.
+
+.. The ability of user-specified partitioning to partition regardless of access patterns makes it ideal to use on bottleneck
+   memories where many accesses need to performed on them every cycle.
+
+Please refer to the :ref:`optimizationguide` for more examples and details.
+
+.. _block_memory_partitioning:
+
+Block Partitioning
++++++++++++++++++++++++
+
+Block partitioning aggregates consecutive elements of the original array into partitions. The number of partitions (blocks) is defined by the ``factor`` argument.
+
+.. code-block:: c
+
+    #pragma HLS memory partition variable(array2d) type(block) dim(1) factor(2)
+    int array2d[10][20];
+
+For example, in the above code snippet ``array2d`` is specified to partition dimension ``1`` with factor ``2``. The result is two ``int[5][20]`` partitions where the first partitions has elements ``0, 1, 2, 3, 4``, and the second has elements ``5, 6, 7, 8, 9`` of dimension ``1``.
+
+.. Note::
+
+  If the number of elements ``N`` in the specified dimension is not divisible by ``factor``, all the partitions will have the same size ``B = ceil(N/factor)``, except the last partition which will have the remaining elements ``N - (factor - 1) * B``. For example, if ``N = 10`` and ``factor = 3``, the resulting partitions will have ``4``, ``4`` and ``2`` elements respectively.
+
+
+.. _cyclic_memory_partitioning:
+
+Cyclic Partitioning
++++++++++++++++++++++++
+
+Cyclic partitioning interleaves elements from the original array into partitions. The number of interleaved partitions is defined by the ``factor`` argument.
+The array is partitioned cyclically by arbitrating the elements between the partitions, putting one element into each partition before coming back to the first one until the array is fully partitioned.
+
+.. code-block:: c
+
+    #pragma HLS memory partition variable(array2d) type(block) dim(2) factor(2)
+    int array2d[10][10];
+
+For example, in the above code snippet ``array2d`` is specified to partition dimension ``2`` with factor ``2``. The result is two ``int[10][5]`` partitions where the first partition has elements ``0, 2, 4, 6, 8``, and the second has elements ``1, 3, 5, 7, 9`` of dimension ``2``.
+
+.. Note::
+
+  If the number of elements ``N`` in the specified dimension is not divisible by ``factor``, the number of complete partitions with ``B = ceil(N/factor)`` elements will be ``M = N % factor``, and the rest of partitions will have ``B-1`` elements. For example, if ``N = 10`` and ``factor = 3``, the resulting partitions will have ``4``, ``3`` and ``3`` elements respectively.
+
 
 .. _complete_memory_partitioning:
 
 Complete Partitioning
 +++++++++++++++++++++++
 
-Complete partitioning partitions memories based on a user-specified dimension. Memories are then partitioned completely on the specified dimension,
-which means the memory is partitioned into individual elements of the specified array dimension. More information on the pragmas can be found in the
-pragma references linked above. Unaccessed sections of the original memory are also discarded.
+Complete partitioning deconstructs the array into individual elements along the specified dimension. For a multi-dimensional array, each element of the specified dimension will correspond to a partition with the rest of the dimensions preserved. For a one-dimensional array, individual elements are mapped to registers. If ``dim(0)`` is specified, complete partitioning is applied across all dimensions resulting in scalar elements.
 
-.. NOTE::
+.. Note::
 
-    Accessing memory outside of an array dimension is not supported by memory partitioning and may cause
-    incorrect circuit behavior. An example of this is casting a 2-d array to a pointer (1-d) and iterating through the entire array as 1-d.
-
+  Applying complete partitioning on a (array of) struct, partitions all struct fields (including nested struct elements) and array dimensions.
 
 **Example**
 
@@ -1010,8 +1105,7 @@ Access-based partitioning will try to partition the array but will only find one
 This preventing access-based partitioning as all eight accesses come from the same load instruction.
 
 User-specified partitioning can be used to force partitioning of this array with a predefined structure. In the example above,
-the memory partition pragma specifies the array to be partitioned completely into individual elements. After partitioning,
-the array will be partitioned into eight individual elements:
+the memory partition pragma specifies the array to be partitioned completely into eight individual elements.
 
 .. literalinclude:: ../examples/user_guide_examples/memory_partitioning/memory_part_user/golden.hls.log
         :language: text
@@ -1020,51 +1114,6 @@ the array will be partitioned into eight individual elements:
 The benefit in this case is that the loop does not have to be unrolled, which can be useful in cases like when the loop is
 pipelined and cannot be unrolled (see :ref:`loop_pipelining`).
 
-.. code-block:: c
-
-    // partitioned completely up to DIM1 from left to right
-    #pragma HLS memory partition variable(array3d) type(complete) dim(1)
-    int array3d[DIM2][DIM1][DIM0];
-
-The memory partition pragma has optional arguments ``type`` and ``dim`` that specifies the partition type and dimension to be partitioned
-up to, respectively. The default type is ``complete`` which means to partition the array into individual elements, and the default dimension
-is ``0`` which means to partition up to the right-most dimension. The type can also specified to be ``none`` to prevent partitioning for a
-specific memory. The dimension provided specifies the dimension to be partitioned up to, with the resulting partitions being elements of
-that array dimension. For example, in the above code snippet ``array3d`` is specified to be partitioned up dimension 1, which means array
-dimensions corresponding to ``DIM2`` and ``DIM1`` will be completely partitioned to produce ``DIM2``x``DIM1`` partitions of ``int[DIM0]``.
-Lower numbered dimensions correspond to right-ward dimensions of the array and higher numbered dimensions correspond to left-ward dimensions
-of the array, as shown by the ``DIMX`` macros specifying the sizes of the dimensions of ``array3d``.
-
-With user-specified partitioning, SmartHLS outputs messages to the console stating the variable set to be partitioned and its settings.
-SmartHLS also outputs messages specifying if a memory has been partitioned and into how many partitions.
-If a memory is specified to be partitioned but cannot be partitioned, SmartHLS will output a warning.
-
-.. code-block:: text
-
-    Info: Found user-specified memory: "array" on line 6 of test.c, with partition type: Complete, partition dimension: 0.
-    Info: Found user-specified memory: "array3d" on line 27 of test.c, with partition type: Complete, partition dimension: 1.
-    Warning: The user-specified memory "array3d" on line 27 of test.c could not be partitioned because a loop variable indexing into a multi-dimenional array comes from a loop variable and goes out of the array dimension bounds. Going outside of array dimension bounds is not supported for memory partitioning.
-    Info: Partitioning memory: array into 8 partitions.
-
-.. The ability of user-specified partitioning to partition regardless of access patterns makes it ideal to use on bottleneck
-   memories where many accesses need to performed on them every cycle.
-
-Limitations:
-
-* Accessing memory outside of an array dimension is not supported by memory partitioning and will sometimes cause
-  incorrect circuit behavior. An example of this is lowering a 2-d array to a pointer and iterating through the size
-  of the 2-d array.
-
-* Pointers that alias to different memories or different sections of the same memory (e.g. a pointer that is assigned 
-  to multiple memories based on a condition) are not supported in memory
-  partitioning. The aliased memories will not be partitioned. The exception
-  to this is that functions that get called with different pointers are handled properly for user-specified
-  partitioning.
-
-.. * Comparisons and other non-arithmetic operators on pointers are not supported by memory partitioning and will prevent
-     partitioning.
-
-Please refer to the :ref:`optimizationguide` for more examples and details. 
 
 .. _struct_fields_memory_partitioning:
 
@@ -1074,7 +1123,7 @@ Struct-Fields Partitioning
 Struct-fields partitioning partitions a (array of) struct argument / variable into its individual fields such that each field is a partition.
 Unlike complete partitioning, if a field in the partitioned struct is an aggregate type (struct or array), the field is not further partitioned to its elements.
 Note that applying Struct-fields partitioning to  an array-of-struct creates an array for each field in the struct.
-Unaccessed partitions (fields) are discarded, but the Unaccessed elements in an aggreagte partition (field) are not be discarded.
+Unaccessed partitions (fields) are discarded, but the unaccessed elements in an aggreagte partition (field) are not discarded.
 
 **Example**
 
@@ -1082,10 +1131,11 @@ Unaccessed partitions (fields) are discarded, but the Unaccessed elements in an 
 	:language: cpp
 	:lines: 3-12,15-23
 
-The example above shows an array of struct `array` that is array of struct of type `Ty` that is
+The example above shows ``array``, an array of struct of type `Ty`, is
 partitioned using Struct-fields partitioning.
 With the user-specified partitioning, SmartHLS outputs messages to the console stating that the argument
 set to be partitioned and how many partitions are created.
+The three partitions are ``array.x[8]``, ``array.y[8][2]``, and ``array.z[8]``, where the 8-element dimensions are inherited from the original array size.
 
 .. literalinclude:: ../examples/user_guide_examples/struct_sum/golden.hls.log
 	:language: text
@@ -1355,7 +1405,7 @@ An example using the C++ library is shown below.
 
 .. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
         :language: cpp
-        :lines: 2,3,6,134-153,156
+        :lines: 2,3,6,138-157,160
 
 In the above code we iterate through a 128 bit unsigned integer in four bit segments, 
 and track the difference between how many segments are above and below 7. 
@@ -1430,18 +1480,23 @@ Selecting and Assigning to a Range of Bits
 
 .. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
         :language: cpp
-        :lines: 2-6,107-120
+        :lines: 2-6,107-123
 
 On C++ arbitrary precision types ``num(a, b)`` (or ``num.range(a, b)``) will select and create a reference to the underlying arbitrary precision value.
 The operator ``num[a]`` selects and creates a reference to a single bit.
 This reference can be assigned to, and used to access the underlying data.
+The arbitrary precision ``num.byte(n, s = 8)`` function selects and creates a
+reference to the ``n-th`` byte of the number which can be assigned to and used
+to access the underlying data. The second argument to the ``byte`` function is
+an optional argument which defines the number of bits per byte, and defaults to 
+8.
 
 Bit Concatenation
 ++++++++++++++++++++++++
 
 .. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
         :language: cpp
-        :lines: 2-6,121-130
+        :lines: 2-6,125-134
 
 Putting any C++ arbitrary precision types in a comma separated list will generate a concatenation. 
 The concatenation can currently be used to create arbitrary precision types (zero extending or truncating to match widths), but can not be assigned to.
@@ -1760,6 +1815,11 @@ convert from one type to another or to convert to standard integral types or str
 |           +------------------------+----------------+-----------+-------------+----------+
 |           | num\[a\]               | Bit            |     Y     |      Y      |    N/A   |
 |           |                        | selection      |           |             |          |
+|           +------------------------+----------------+-----------+-------------+----------+
+|           | num.byte(n, s = 8)     | Select ``n-th``|     Y     |      Y      |    N/A   |
+|           |                        | byte with      |           |             |          |
+|           |                        | ``s`` bits per |           |             |          |
+|           |                        | byte           |           |             |          |
 |           +------------------------+----------------+-----------+-------------+----------+
 |           | (numa, numb, numc)     | Concat         |     Y     |      Y      |    N/A   |
 +-----------+------------------------+----------------+-----------+-------------+----------+
@@ -2187,7 +2247,7 @@ Launch Cygwin terminal on Windows
 Windows users can launch the terminal by opening ``<SMARTHLS_INSTALLATION_DIR>/cygwin64/Cygwin.bat``.
 Users can access their file directory on their computer by using ``/cygdrive/<drive letter>/<path>``
 as the prefix.
-For example, to go to ``C:\Microchip\SmartHLS-2022.2``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2022.2``.
+For example, to go to ``C:\Microchip\SmartHLS-2022.2.1``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2022.2.1``.
 
 Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

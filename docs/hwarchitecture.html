@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Hardware Architecture &mdash; SmartHLS 2022.2 documentation</title>
+  <title>Hardware Architecture &mdash; SmartHLS 2022.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -489,10 +489,10 @@ display:none;
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -505,8 +505,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="SmartHLS Pragmas Manual" href="pragmas.html" />
@@ -521,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
 
 										  </h1>
 								
@@ -555,18 +553,18 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
@@ -594,7 +592,7 @@ display:none;
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
@@ -606,7 +604,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -696,8 +694,8 @@ such as a floating-point unit, which is also created at the same level.
 This architecture also allows such units, which typically consume a lot of area,
 to be shared between different modules.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For a small function, or for a function that is only called once in software, SmartHLS may decide to <code class="docutils literal notranslate"><span class="pre">inline</span></code> the function into its parent function to improve performance.
+<p class="first admonition-title">Note</p>
+<p class="last">For a small function, or for a function that is only called once in software, SmartHLS may decide to <code class="docutils literal notranslate"><span class="pre">inline</span></code> the function into its parent function to improve performance.
 Any inlined function is included as part of its parent function, so there will not be a separate module in the Verilog for the inlined function.
 Thus you may not find all the software functions in the generated hardware.</p>
 </div>
@@ -799,27 +797,17 @@ If a memory is not accessed at all, SmartHLS will automatically optimize away th
 <div class="section" id="smarthls-reference-soc">
 <span id="reference-soc-arch"></span><h2>SmartHLS Reference SoC<a class="headerlink" href="#smarthls-reference-soc" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a>.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a>.</p>
 </div>
-<p>This section describes the architecture of the reference SoC that can be optionally generated by SmartHLS for AXI4 target/initiator-compatible accelerators.
-This reference SoC is targeted for PolarFire<sup>®</sup> SoC Icicle Kit, and contains:</p>
-<ul class="simple">
-<li><p>The Icicle Kit’s Hardened Microprocessor Sub-System (MSS).</p></li>
-<li><p>Any accelerators created from the user’s project.</p></li>
-<li><p>A fabric AXI4 interconnect, connecting the MSS and accelerators.</p></li>
-</ul>
-<p>A diagram of the reference SoC architecture is shown below:</p>
-<img alt="_images/reference_soc_arch.png" src="_images/reference_soc_arch.png" />
-<p>On the left-hand side is the Microprocessor Sub-System (MSS). This is a hardened module on the Icicle Kit, containing four RISC-V cores, DDR memory, a hardened DMA controller, and related components.
-MSS components are connected internally with a TileLink switch, and interface with the FPGA fabric with both an AXI4 Initiator and AXI4 Target interface over an AXI switch. For more details on the MSS, please see the
+<p>SmartHLS uses the <a class="reference external" href="https://github.com/polarfire-soc/icicle-kit-reference-design/">Icicle Kit Reference Design</a> as the base design to automatically integrate SmartHLS-generated hardware modules. The reference design is meant to showcase the many features available in the PolarFire<sup>®</sup> SoC Icicle Kit, such as the use of SPI, PCIe, soft and hard DMA, inter-processor communications, etc. Explaining all these features is beyond the scope of this document. For a complete description of the reference design check the <a class="reference external" href="https://github.com/polarfire-soc/icicle-kit-reference-design/">Icicle Kit Reference Design</a> documentation.</p>
+<p>This section an overview of how the Icicle Kit Reference Design is used by SmartHLS to automatically connect hardware modules generated from C++. A diagram of the reference SoC architecture is shown below:</p>
+<a class="reference internal image-reference" href="_images/reference_soc_arch.drawio.png"><img alt="_images/reference_soc_arch.drawio.png" class="align-center" src="_images/reference_soc_arch.drawio.png" style="width: 878.8000000000001px; height: 1327.3px;" /></a>
+<p>On the top left-hand side is the Microprocessor Sub-System (MSS). This is a hardened module on the PolarFireSoC devices. It contains four RISC-V cores, DDR memory, a hardened DMA controller, and related components. MSS components are connected internally with a TileLink switch, and interface with the FPGA fabric with both an AXI4 Initiator and AXI4 Target interface over an AXI switch. There are four available AXI Fabric Interface Controllers (FIC) available on the MSS. However, the reference design only uses three (FIC0, FIC1 and FIC3) as shown on the diagram. For more details on the MSS, please see the
 <a class="reference external" href="https://onlinedocs.microchip.com/pr/GUID-0E320577-28E6-4365-9BB8-9E1416A0A6E4-en-US-3/index.html">PolarFire SoC MSS Technical Reference Manual</a>.</p>
-<p>On the right-hand side of the diagram is the FPGA fabric.
-An AXI4 interconnect on the fabric connects the AXI4 interface from the MSS to one or more SmartHLS-generated accelerators. Each accelerator has an AXI4 Target interface, and depending
-on the specified interface type, can have an AXI4 Initiator interface as well. Additionally, each accelerator has an on-chip memory buffer for each pointer argument, which acts as local storage
-for the argument data, which is accessible to the MSS/DDR via AXI transactions and is directly connected to the hardware accelerator.</p>
-<p>An example accelerator architecture diagram is shown below. In the figure, the accelerator has three pointer arguments, argA, argB, and argC. The arguments, argA and argB, are transferred to on-chip memory buffers via an AXI4 Target interface. The accelerator directly accesses data for argC via an AXI4 Initiator interface. The interfaces are created based on the pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(axi_target/axi_initiator)</span></code> (see <a class="reference internal" href="pragmas.html#pragma-interface-axi-target-argument"><span class="std std-ref">AXI4 Target Interface for Pointer Argument</span></a>, <a class="reference internal" href="pragmas.html#pragma-interface-axi-initiator-argument"><span class="std std-ref">AXI4 Initiator Interface for Pointer Argument</span></a>). For details on the different data transfer methods for the AXI Target/Initiator arguments, see :ref:soc_data_transfer_methods.</p>
-<a class="reference internal image-reference" href="_images/accelerator_arch.png"><img alt="_images/accelerator_arch.png" class="align-center" src="_images/accelerator_arch.png" style="width: 575.4px; height: 613.5px;" /></a>
+<p>On the top right-hand side of the diagram is the FPGA fabric. There are three sub-blocks created to group logic related to a specific FIC and keep the top-level design clean.  SmartHLS-generated hardware modules and accelerators are automatically instantiated and connected under the FIC_0_PERIPHERALS sub-module, which has three AXI interconnects: FIC_0_INITIATOR, DMA_INITIATOR and HLS_AXI_INTERCONNECT. The first two are part of the Icicle Kit Reference Design and are used to demonstrate how to control a soft-DMA module and LSRAMs (not shown in the diagram) from the MSS. The FIC_0_INITIATOR is used to transfer data in the MSS to Fabric direction, and the DMA_INITIATOR transfers data in the fabric to MSS direction. SmartHLS reuses those AXI interconnects to connect the HLS_AXI_INTERCONNECT and one or more accelerators in the design.</p>
+<p>An example architecture of a SmartHLS-generated module is shown at the bottom of the diagram. It has an AXI4 Target interface, and depending on the specified interface type, it can have an AXI4 Initiator interface as well. Each AXI target argument in the C++ function has a corresponding on-chip storage accessible to the MSS via AXI transactions and is also directly connected to the core of the hardware accelerator. In this case argA, argB and argC are AXI target arguments. The type of storage can be a local memory such as LSRAMs for pointer arguments (argA and argB), or simple flip-flop registers for scalar arguments (argC).  AXI Initiator arguments (argD) do not require additional storage since they directly access the MSS memory, such as external DDR.</p>
+<p>The interfaces are created based on the pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(axi_target/axi_initiator)</span></code> (see <a class="reference internal" href="pragmas.html#pragma-interface-axi-target-argument"><span class="std std-ref">AXI4 Target Interface for Pointer Argument</span></a>, <a class="reference internal" href="pragmas.html#pragma-interface-axi-initiator-argument"><span class="std std-ref">AXI4 Initiator Interface for Pointer Argument</span></a>). For details on the different data transfer methods for the AXI Target/Initiator arguments, see :ref:soc_data_transfer_methods.</p>
 </div>
 </div>
 
@@ -879,9 +867,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2 documentation&\
-		pub_ver=2022.2&\
-		revision_letter=2022.2&\
+		cover_title=SmartHLS 2022.2.1 documentation&\
+		pub_ver=2022.2.1&\
+		revision_letter=2022.2.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

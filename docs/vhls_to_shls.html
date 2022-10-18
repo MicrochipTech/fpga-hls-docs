@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>SmartHLS Migration Guide &mdash; SmartHLS 2022.2 documentation</title>
+  <title>SmartHLS Migration Guide &mdash; SmartHLS 2022.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -489,10 +489,10 @@ display:none;
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -505,8 +505,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Precompiled Software" href="precompiled_sw.html" />
@@ -521,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
 
 										  </h1>
 								
@@ -555,24 +553,24 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
@@ -594,7 +592,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -669,22 +667,22 @@ and libraries used in the source code should be changed to the equivalent ones
 in SmartHLS.</p>
 <div class="section" id="pragmas">
 <h2>Pragmas<a class="headerlink" href="#pragmas" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 12%" />
-<col style="width: 88%" />
+<col width="12%" />
+<col width="88%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Vitis HLS / Vivado HLS</p></th>
-<th class="head"><p>SmartHLS</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Vitis HLS / Vivado HLS</th>
+<th class="head">SmartHLS</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>aggregate, data_pack</p></td>
-<td><p>See the <a class="reference internal" href="pragmas.html#pragma-memory-impl-pack-argument"><span class="std std-ref">Struct Argument Packing</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-impl-pack-variable"><span class="std std-ref">Struct Variable Packing</span></a> pragmas.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>aggregate, data_pack</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-impl-pack-argument"><span class="std std-ref">Struct Argument Packing</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-impl-pack-variable"><span class="std std-ref">Struct Variable Packing</span></a> pragmas.</td>
 </tr>
-<tr class="row-odd"><td><p>allocation</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>allocation</td>
+<td><div class="first last line-block">
 <div class="line">A global constraint of operation resources can be set via <a class="reference internal" href="constraintsmanual.html#set-resource-constraint"><span class="std std-ref">set_resource_constraint</span></a>;
 constraining the operation resource within a function, a loop or a block of code is not yet available.</div>
 <div class="line">Functions that are not inlined (automatically by SmartHLS tool or specified via the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span class="std std-ref">Inline Function</span></a>
@@ -695,41 +693,41 @@ the corresponding RTL module.</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>array_partition</p></td>
-<td><p>See the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> pragmas. The cyclic, block, factor, and dim options are not yet supported.</p></td>
+<tr class="row-even"><td>array_partition</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> pragmas. The cyclic, block, factor, and dim options are not yet supported.</td>
 </tr>
-<tr class="row-odd"><td><p>dataflow</p></td>
-<td><p><a class="reference internal" href="userguide.html#function-pipelining"><span class="std std-ref">Function Pipelining</span></a> and <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading</span></a> can be used to implement a task-level (dataflow) pipeline.</p></td>
+<tr class="row-odd"><td>dataflow</td>
+<td><a class="reference internal" href="userguide.html#function-pipelining"><span class="std std-ref">Function Pipelining</span></a> and <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading</span></a> can be used to implement a task-level (dataflow) pipeline.</td>
 </tr>
-<tr class="row-even"><td><p>disaggregate</p></td>
-<td><p>See the <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> option of the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> pragma.</p></td>
+<tr class="row-even"><td>disaggregate</td>
+<td>See the <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> option of the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> pragma.</td>
 </tr>
-<tr class="row-odd"><td><p>expression_balance</p></td>
-<td><p>See <a class="reference internal" href="constraintsmanual.html#latency-reduction"><span class="std std-ref">LATENCY_REDUCTION</span></a> TCL settings to control the expression balance optimization.</p></td>
+<tr class="row-odd"><td>expression_balance</td>
+<td>See <a class="reference internal" href="constraintsmanual.html#latency-reduction"><span class="std std-ref">LATENCY_REDUCTION</span></a> TCL settings to control the expression balance optimization.</td>
 </tr>
-<tr class="row-even"><td><p>function_instantiate</p></td>
-<td><p>The equivalent optimization can be achieved with the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span class="std std-ref">Inline Function</span></a> pragma or C++ template functions.</p></td>
+<tr class="row-even"><td>function_instantiate</td>
+<td>The equivalent optimization can be achieved with the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span class="std std-ref">Inline Function</span></a> pragma or C++ template functions.</td>
 </tr>
-<tr class="row-odd"><td><p>inline</p></td>
-<td><p>See the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span class="std std-ref">Inline Function</span></a> pragma.</p></td>
+<tr class="row-odd"><td>inline</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span class="std std-ref">Inline Function</span></a> pragma.</td>
 </tr>
-<tr class="row-even"><td><p>interface</p></td>
-<td><p>See <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> for details about supported interfaces and corresponding pragmas.</p></td>
+<tr class="row-even"><td>interface</td>
+<td>See <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> for details about supported interfaces and corresponding pragmas.</td>
 </tr>
-<tr class="row-odd"><td><p>pipeline</p></td>
-<td><p>See <a class="reference internal" href="pragmas.html#pragma-function-pipeline"><span class="std std-ref">Pipeline Function</span></a> and <a class="reference internal" href="pragmas.html#pragma-loop-pipeline"><span class="std std-ref">Pipeline Loop</span></a> pragmas.</p></td>
+<tr class="row-odd"><td>pipeline</td>
+<td>See <a class="reference internal" href="pragmas.html#pragma-function-pipeline"><span class="std std-ref">Pipeline Function</span></a> and <a class="reference internal" href="pragmas.html#pragma-loop-pipeline"><span class="std std-ref">Pipeline Loop</span></a> pragmas.</td>
 </tr>
-<tr class="row-even"><td><p>stable</p></td>
-<td><p>See the <code class="docutils literal notranslate"><span class="pre">stable</span></code> option of the <a class="reference internal" href="pragmas.html#pragma-interface-scalar-argument"><span class="std std-ref">Scalar Argument Interface</span></a> pragma.</p></td>
+<tr class="row-even"><td>stable</td>
+<td>See the <code class="docutils literal notranslate"><span class="pre">stable</span></code> option of the <a class="reference internal" href="pragmas.html#pragma-interface-scalar-argument"><span class="std std-ref">Scalar Argument Interface</span></a> pragma.</td>
 </tr>
-<tr class="row-odd"><td><p>stream</p></td>
-<td><p>Streaming interface is implemented via the <a class="reference internal" href="userguide.html#rtl-interface-fifo-argument"><span class="std std-ref">hls::FIFO Argument</span></a>.</p></td>
+<tr class="row-odd"><td>stream</td>
+<td>Streaming interface is implemented via the <a class="reference internal" href="userguide.html#rtl-interface-fifo-argument"><span class="std std-ref">hls::FIFO Argument</span></a>.</td>
 </tr>
-<tr class="row-even"><td><p>top</p></td>
-<td><p>See the <a class="reference internal" href="pragmas.html#pragma-function-top"><span class="std std-ref">Set Top-Level Function</span></a> pragma.</p></td>
+<tr class="row-even"><td>top</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-function-top"><span class="std std-ref">Set Top-Level Function</span></a> pragma.</td>
 </tr>
-<tr class="row-odd"><td><p>unroll</p></td>
-<td><p>See the <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a> pragma.</p></td>
+<tr class="row-odd"><td>unroll</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a> pragma.</td>
 </tr>
 </tbody>
 </table>
@@ -824,9 +822,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2 documentation&\
-		pub_ver=2022.2&\
-		revision_letter=2022.2&\
+		cover_title=SmartHLS 2022.2.1 documentation&\
+		pub_ver=2022.2.1&\
+		revision_letter=2022.2.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

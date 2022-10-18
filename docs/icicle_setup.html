@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Icicle Kit Setup Instructions &mdash; SmartHLS 2022.2 documentation</title>
+  <title>Icicle Kit Setup Instructions &mdash; SmartHLS 2022.2.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -489,10 +489,10 @@ display:none;
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -505,8 +505,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Precompiled Software" href="precompiled_sw.html" /> 
@@ -520,7 +518,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
 
 										  </h1>
 								
@@ -554,24 +552,24 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
@@ -604,7 +602,7 @@ display:none;
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -675,27 +673,25 @@ display:none;
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
-<li><p><a class="reference internal" href="#polarfire-soc-icicle-kit-diagram" id="id2">PolarFire<sup>®</sup> SoC Icicle Kit Diagram</a></p></li>
-<li><p><a class="reference internal" href="#step-1-setup-required-board-connections" id="id3">Step 1: Setup Required Board Connections</a></p></li>
-<li><p><a class="reference internal" href="#step-2-check-jumper-settings" id="id4">Step 2: Check Jumper Settings</a></p></li>
-<li><p><a class="reference internal" href="#step-3-install-host-pc-applications" id="id5">Step 3: Install Host PC Applications</a></p></li>
-<li><p><a class="reference internal" href="#step-4-open-3-terminals" id="id6">Step 4: Open 3 Terminals</a></p>
-<ul>
-<li><p><a class="reference internal" href="#host-pc-terminal" id="id7">Host PC Terminal</a></p></li>
-<li><p><a class="reference internal" href="#hss-serial-terminal" id="id8">HSS Serial Terminal</a></p></li>
-<li><p><a class="reference internal" href="#linux-serial-terminal" id="id9">Linux Serial Terminal</a></p></li>
+<li><a class="reference internal" href="#introduction" id="id1">Introduction</a></li>
+<li><a class="reference internal" href="#polarfire-soc-icicle-kit-diagram" id="id2">PolarFire<sup>®</sup> SoC Icicle Kit Diagram</a></li>
+<li><a class="reference internal" href="#step-1-setup-required-board-connections" id="id3">Step 1: Setup Required Board Connections</a></li>
+<li><a class="reference internal" href="#step-2-check-jumper-settings" id="id4">Step 2: Check Jumper Settings</a></li>
+<li><a class="reference internal" href="#step-3-install-host-pc-applications" id="id5">Step 3: Install Host PC Applications</a></li>
+<li><a class="reference internal" href="#step-4-open-3-terminals" id="id6">Step 4: Open 3 Terminals</a><ul>
+<li><a class="reference internal" href="#host-pc-terminal" id="id7">Host PC Terminal</a></li>
+<li><a class="reference internal" href="#hss-serial-terminal" id="id8">HSS Serial Terminal</a></li>
+<li><a class="reference internal" href="#linux-serial-terminal" id="id9">Linux Serial Terminal</a></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#step-5-flashing-the-linux-image-to-the-board" id="id10">Step 5: Flashing the Linux Image to the Board</a></p>
-<ul>
-<li><p><a class="reference internal" href="#expose-board-s-emmc-flash-memory-to-host-pc-as-usb-flash-storage" id="id11">Expose Board’s eMMC Flash Memory to Host PC as USB flash storage</a></p></li>
-<li><p><a class="reference internal" href="#flash-the-linux-image-to-the-board" id="id12">Flash the Linux Image to the Board</a></p></li>
+<li><a class="reference internal" href="#step-5-flashing-the-linux-image-to-the-board" id="id10">Step 5: Flashing the Linux Image to the Board</a><ul>
+<li><a class="reference internal" href="#expose-board-s-emmc-flash-memory-to-host-pc-as-usb-flash-storage" id="id11">Expose Board’s eMMC Flash Memory to Host PC as USB flash storage</a></li>
+<li><a class="reference internal" href="#flash-the-linux-image-to-the-board" id="id12">Flash the Linux Image to the Board</a></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#step-6-programming-the-fpga-bitstream-with-fpexpress" id="id13">Step 6: Programming the FPGA bitstream with FPExpress</a></p></li>
-<li><p><a class="reference internal" href="#step-7-accessing-linux-on-board-and-determining-the-ip-address" id="id14">Step 7: Accessing Linux on Board and Determining the IP Address</a></p></li>
-<li><p><a class="reference internal" href="#step-8-accessing-linux-over-network-using-ssh" id="id15">Step 8: Accessing Linux over network using SSH</a></p></li>
+<li><a class="reference internal" href="#step-6-programming-the-fpga-bitstream-with-fpexpress" id="id13">Step 6: Programming the FPGA bitstream with FPExpress</a></li>
+<li><a class="reference internal" href="#step-7-accessing-linux-on-board-and-determining-the-ip-address" id="id14">Step 7: Accessing Linux on Board and Determining the IP Address</a></li>
+<li><a class="reference internal" href="#step-8-accessing-linux-over-network-using-ssh" id="id15">Step 8: Accessing Linux over network using SSH</a></li>
 </ul>
 </div>
 <div class="section" id="introduction">
@@ -714,83 +710,85 @@ aimed at SmartHLS users and we use a different Linux image and FPGA job file as 
 <div class="section" id="step-1-setup-required-board-connections">
 <span id="icicle-required-connections"></span><h2>Step 1: Setup Required Board Connections<a class="headerlink" href="#step-1-setup-required-board-connections" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Micro USB sockets on the Icicle board are very fragile and can easily
+<p class="first admonition-title">Warning</p>
+<p class="last">Micro USB sockets on the Icicle board are very fragile and can easily
 break. Be careful when plugging/unplugging the micro USB cables.
 Also micro USB cables can occasionally fail, so try another cable.</p>
 </div>
 <p>The following cables must be connected to the Icicle Kit for use with SmartHLS:</p>
 <ul>
-<li><p>Power cable (connects to <code class="docutils literal notranslate"><span class="pre">12V</span> <span class="pre">Power</span> <span class="pre">Supply</span> <span class="pre">Input</span></code>).</p></li>
-<li><p>Micro USB for transferring the image to the board (one end connects to <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">OTG</span></code>, while the other end connects to the host PC that will transfer the image).</p>
+<li><p class="first">Power cable (connects to <code class="docutils literal notranslate"><span class="pre">12V</span> <span class="pre">Power</span> <span class="pre">Supply</span> <span class="pre">Input</span></code>).</p>
+</li>
+<li><p class="first">Micro USB for transferring the image to the board (one end connects to <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">OTG</span></code>, while the other end connects to the host PC that will transfer the image).</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>This cable is used to expose the internal eMMC memory as a USB storage</p></li>
-<li><p>Required only if the Linux image needs to be updated</p></li>
+<li>This cable is used to expose the internal eMMC memory as a USB storage</li>
+<li>Required only if the Linux image needs to be updated</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Micro USB for serial communication to the board (one end connects to <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">-</span> <span class="pre">UART</span> <span class="pre">Terminal</span></code>, while the other end connects to the host PC).</p>
+<li><p class="first">Micro USB for serial communication to the board (one end connects to <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">-</span> <span class="pre">UART</span> <span class="pre">Terminal</span></code>, while the other end connects to the host PC).</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>This cable is used to open a serial communication terminal between the Linux system on the board and the host PC.</p></li>
-<li><p>Required only if serial communication is required (for Linux image transfer or determining the board’s network IP address).</p></li>
+<li>This cable is used to open a serial communication terminal between the Linux system on the board and the host PC.</li>
+<li>Required only if serial communication is required (for Linux image transfer or determining the board’s network IP address).</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>FlashPro6 programmer, embedded or external, connected to the host PC.</p>
+<li><p class="first">FlashPro6 programmer, embedded or external, connected to the host PC.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>For an embedded programmer, connect a micro USB cable to <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">Embedded</span> <span class="pre">Programming</span> <span class="pre">Connector</span></code>, and make sure that jumpers J9 and J24 are <strong>closed</strong>.</p></li>
-<li><p>For an external programmer, connect it to <code class="docutils literal notranslate"><span class="pre">JTAG</span> <span class="pre">Programming</span> <span class="pre">Header</span></code>, and make sure that jumpers J9 is <strong>open</strong>.</p></li>
+<li>For an embedded programmer, connect a micro USB cable to <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">Embedded</span> <span class="pre">Programming</span> <span class="pre">Connector</span></code>, and make sure that jumpers J9 and J24 are <strong>closed</strong>.</li>
+<li>For an external programmer, connect it to <code class="docutils literal notranslate"><span class="pre">JTAG</span> <span class="pre">Programming</span> <span class="pre">Header</span></code>, and make sure that jumpers J9 is <strong>open</strong>.</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Ethernet cable, one end connected to <code class="docutils literal notranslate"><span class="pre">GEM1</span></code>, and the other end connected either directly to the PC, or to the same network as the host PC (for example, the same router).
+<li><p class="first">Ethernet cable, one end connected to <code class="docutils literal notranslate"><span class="pre">GEM1</span></code>, and the other end connected either directly to the PC, or to the same network as the host PC (for example, the same router).
 Tip: On Dell laptops to enable both ethernet and wifi at the same time you may have
-to modify your <a class="reference external" href="https://www.dell.com/support/kbdoc/en-ca/000137415/how-to-disable-wireless-when-connected-via-wired-connection-on-latitude-and-precision-mobile-workstations">bios settings</a>.</p></li>
+to modify your <a class="reference external" href="https://www.dell.com/support/kbdoc/en-ca/000137415/how-to-disable-wireless-when-connected-via-wired-connection-on-latitude-and-precision-mobile-workstations">bios settings</a>.</p>
+</li>
 </ul>
 </div>
 <div class="section" id="step-2-check-jumper-settings">
 <h2>Step 2: Check Jumper Settings<a class="headerlink" href="#step-2-check-jumper-settings" title="Permalink to this headline">¶</a></h2>
 <p>The following jumpers must be set on the board:</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 24%" />
-<col style="width: 76%" />
+<col width="24%" />
+<col width="76%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Jumper</p></th>
-<th class="head"><p>Setting</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Jumper</th>
+<th class="head">Setting</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">J9</span></code></p></td>
-<td><p>Open for external FlashPro6, Closed for embedded FlashPro6</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">J9</span></code></td>
+<td>Open for external FlashPro6, Closed for embedded FlashPro6</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">J24</span></code></p></td>
-<td><p>Closed for embedded FlashPro6</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">J24</span></code></td>
+<td>Closed for embedded FlashPro6</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">J28</span></code></p></td>
-<td><p>Closed</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">J28</span></code></td>
+<td>Closed</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">J34</span></code></p></td>
-<td><p>Closed (Right two pins)</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">J34</span></code></td>
+<td>Closed (Right two pins)</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">J35</span></code></p></td>
-<td><p>Closed (2P5V setting / bottom two pins)</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">J35</span></code></td>
+<td>Closed (2P5V setting / bottom two pins)</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">J43</span></code></p></td>
-<td><p>Closed (Right two pins)</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">J43</span></code></td>
+<td>Closed (Right two pins)</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">J45</span></code></p></td>
-<td><p>Closed (1V setting / bottom two pins)</p></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">J45</span></code></td>
+<td>Closed (1V setting / bottom two pins)</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">J46</span></code></p></td>
-<td><p>Closed</p></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">J46</span></code></td>
+<td>Closed</td>
 </tr>
-<tr class="row-even"><td><p>All other jumpers</p></td>
-<td><p>Open</p></td>
+<tr class="row-even"><td>All other jumpers</td>
+<td>Open</td>
 </tr>
 </tbody>
 </table>
@@ -799,12 +797,11 @@ to modify your <a class="reference external" href="https://www.dell.com/support/
 <h2>Step 3: Install Host PC Applications<a class="headerlink" href="#step-3-install-host-pc-applications" title="Permalink to this headline">¶</a></h2>
 <p>The following programs are required to be installed on the host PC to set up the Icicle Kit:</p>
 <ul class="simple">
-<li><p>SmartHLS v2022.2 or newer.</p></li>
-<li><p>Libero v2022.2 or newer.</p></li>
-<li><p>A serial communication terminal, in this guide we will use the following:</p>
-<ul>
-<li><p>Windows: <a class="reference external" href="https://www.putty.org/">PuTTY</a></p></li>
-<li><p>Linux: <a class="reference external" href="https://github.com/Jeija/gtkterm">GTKTerm</a></p></li>
+<li>SmartHLS v2022.2.1 or newer.</li>
+<li>Libero v2022.2 or newer.</li>
+<li>A serial communication terminal, in this guide we will use the following:<ul>
+<li>Windows: <a class="reference external" href="https://www.putty.org/">PuTTY</a></li>
+<li>Linux: <a class="reference external" href="https://github.com/Jeija/gtkterm">GTKTerm</a></li>
 </ul>
 </li>
 </ul>
@@ -813,9 +810,9 @@ to modify your <a class="reference external" href="https://www.dell.com/support/
 <h2>Step 4: Open 3 Terminals<a class="headerlink" href="#step-4-open-3-terminals" title="Permalink to this headline">¶</a></h2>
 <p>During the setup we will open the 3 terminals labeled below:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code>: We will use the <code class="docutils literal notranslate"><span class="pre">dd</span></code> command to flash the Linux image from the Host PC to the Board.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">HSS</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>: We will use the HSS command-line interface to expose the eMMC flash memory as a USB storage device.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>: We will use this serial terminal to interact with Linux running on the board.</p></li>
+<li><code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code>: We will use the <code class="docutils literal notranslate"><span class="pre">dd</span></code> command to flash the Linux image from the Host PC to the Board.</li>
+<li><code class="docutils literal notranslate"><span class="pre">HSS</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>: We will use the HSS command-line interface to expose the eMMC flash memory as a USB storage device.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>: We will use this serial terminal to interact with Linux running on the board.</li>
 </ol>
 <img alt="_images/terminal_windows.png" src="_images/terminal_windows.png" />
 <div class="section" id="host-pc-terminal">
@@ -826,42 +823,41 @@ then navigate to the SmartHLS installation directory: <code class="docutils lite
 Then right-click on Cygwin.bat and choose “Run as administrator”. Administrator rights are required to flash the Linux image to the board.</p>
 <img alt="_images/open_cygwin.png" src="_images/open_cygwin.png" />
 <p>Cygwin tip: Users can access their file directory on their computer by using <code class="docutils literal notranslate"><span class="pre">/cygdrive/&lt;drive</span> <span class="pre">letter&gt;/&lt;path&gt;</span></code>
-as the prefix.  For example, to go to <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2022.2</span></code>, enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/cygdrive/c/Microchip/SmartHLS-2022.2</span></code>.</p>
+as the prefix.  For example, to go to <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2022.2.1</span></code>, enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/cygdrive/c/Microchip/SmartHLS-2022.2.1</span></code>.</p>
 </div>
 <div class="section" id="hss-serial-terminal">
 <h3>HSS Serial Terminal<a class="headerlink" href="#hss-serial-terminal" title="Permalink to this headline">¶</a></h3>
 <p>Make sure the board is powered on and the board’s <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">-</span> <span class="pre">UART</span> <span class="pre">Terminal</span></code> connection is made as described in <a class="reference internal" href="#icicle-required-connections"><span class="std std-ref">Step 1: Setup Required Board Connections</span></a>.</p>
 <p>On Windows, To open the <code class="docutils literal notranslate"><span class="pre">HSS</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>:</p>
 <ol class="arabic simple">
-<li><p>Open Start -&gt; Device Manager. Select View -&gt; Show hidden devices. Under Ports (COM &amp; LPT), and look for “Silicon Labs Quad CP2108 USB to UART Bridge: <strong>Interface 0</strong>” as shown below.
-Take note of the serial line number in parenthesis. In this case, Interface 0 is <strong>COM3</strong>. The digit could be different on your machine.</p></li>
+<li>Open Start -&gt; Device Manager. Select View -&gt; Show hidden devices. Under Ports (COM &amp; LPT), and look for “Silicon Labs Quad CP2108 USB to UART Bridge: <strong>Interface 0</strong>” as shown below.
+Take note of the serial line number in parenthesis. In this case, Interface 0 is <strong>COM3</strong>. The digit could be different on your machine.</li>
 </ol>
 <img alt="_images/device_com_ports.png" src="_images/device_com_ports.png" />
 <ul>
-<li><p>Troubleshooting the serial connection to the board:</p>
+<li><p class="first">Troubleshooting the serial connection to the board:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>If you can’t find the serial port with the correct name, you may have to install <a class="reference external" href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers">CP210x Windows Drivers from SiLabs</a>.</p></li>
-<li><p>You should be able to see the UART interfaces in Start -&gt; Device Manager. If you can’t, try selecting View -&gt; Show hidden devices,</p></li>
-<li><p>If you still can’t see the serial ports, then your USB socket could be broken, which is usually indicated if Windows makes no sound when disconnecting/reconnecting the USB cable.</p></li>
+<li>If you can’t find the serial port with the correct name, you may have to install <a class="reference external" href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers">CP210x Windows Drivers from SiLabs</a>.</li>
+<li>You should be able to see the UART interfaces in Start -&gt; Device Manager. If you can’t, try selecting View -&gt; Show hidden devices,</li>
+<li>If you still can’t see the serial ports, then your USB socket could be broken, which is usually indicated if Windows makes no sound when disconnecting/reconnecting the USB cable.</li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p>With the Icicle Kit on and connected, open a new PuTTY terminal. Change the settings on the left navigation panel, under Connection-&gt;Serial to:</p>
-<ul class="simple">
-<li><p>Serial line to connect to: &lt;Serial line number&gt;</p></li>
-<li><p>Baud Rate: 115200</p></li>
-<li><p>Data Bits: 8</p></li>
-<li><p>Stop Bits: 1</p></li>
-<li><p>Parity: None</p></li>
-<li><p>Flow Control: None</p></li>
+<li>With the Icicle Kit on and connected, open a new PuTTY terminal. Change the settings on the left navigation panel, under Connection-&gt;Serial to:<ul>
+<li>Serial line to connect to: &lt;Serial line number&gt;</li>
+<li>Baud Rate: 115200</li>
+<li>Data Bits: 8</li>
+<li>Stop Bits: 1</li>
+<li>Parity: None</li>
+<li>Flow Control: None</li>
 </ul>
 </li>
 </ol>
 <ul class="simple">
-<li><p>Below is an image of how the settings look in PuTTY:</p></li>
+<li>Below is an image of how the settings look in PuTTY:</li>
 </ul>
 <img alt="_images/putty_settings.png" src="_images/putty_settings.png" />
 <p>Then go back to Session on the left navigation panel, Change Connection Type to Serial as shown below, then click Open:</p>
@@ -869,15 +865,16 @@ Take note of the serial line number in parenthesis. In this case, Interface 0 is
 <p>On Linux, to open the <code class="docutils literal notranslate"><span class="pre">HSS</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>:</p>
 <blockquote>
 <div><ul>
-<li><p>The UART channel that we will connect to is channel 0. To do this in GTKTerm, the command is:</p>
+<li><p class="first">The UART channel that we will connect to is channel 0. To do this in GTKTerm, the command is:</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gtkterm</span> <span class="pre">-p</span> <span class="pre">/dev/ttyUSB0</span> <span class="pre">-s</span> <span class="pre">1200</span></code></p>
 </div></blockquote>
 </li>
-<li><p>Note that if you have other ttyUSB devices connected to your host PC, the number after <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSb</span></code> may need to change.
+<li><p class="first">Note that if you have other ttyUSB devices connected to your host PC, the number after <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSb</span></code> may need to change.
 To out find which devices are associated with the Icicle Kit’s UART channels, you can run <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/dev/ttyUSB*</span></code> with and without the
 USB cable connected to the board. Any new devices (there should be four) that appear when plugging in the board are the UART channels.
-For this step, we want to use the <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB</span></code> device with the lowest number.</p></li>
+For this step, we want to use the <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB</span></code> device with the lowest number.</p>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -891,20 +888,24 @@ Except this time use interface 1 (<code class="docutils literal notranslate"><sp
 </div>
 <div class="section" id="step-5-flashing-the-linux-image-to-the-board">
 <span id="icicle-linux-image"></span><h2>Step 5: Flashing the Linux Image to the Board<a class="headerlink" href="#step-5-flashing-the-linux-image-to-the-board" title="Permalink to this headline">¶</a></h2>
-<p>A Linux image is tightly related to the SoC hardware design it was compiled for. The SmartHLS Reference SoC Linux image
-is designed to work with the SmartHLS SoC SmartDesign Reference Libero project and is not the same as the image that
-the Icicle board has been flashed with from the factory, or any other image
+<p>A Linux image is tightly related to the SoC hardware design it was compiled for. SmartHLS uses the <a class="reference external" href="https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/tag/v2022.09">Microchip Linux image - 2022.09 release</a>, which is meant to be used with the <a class="reference external" href="https://github.com/polarfire-soc/icicle-kit-reference-design/releases/tag/v2022.09">Icicle Kit Reference Design</a> and may not be the same as the image that
+the Icicle Kit board has been flashed with from the factory, or any other image
 currently loaded in your board. If you have your own Linux image and your own
 Libero SoC project then see the  <a class="reference internal" href="userguide.html#user-defined-smartdesigns"><span class="std std-ref">User-defined SmartDesigns</span></a> section.</p>
 <p>To program this Linux image to the board, follow these instructions:</p>
-<p>1. Download the Linux image required to run SmartHLS reference SoC projects from the following link: <a class="reference external" href="https://www.microchip.com/en-us/software-library/smarthls-reference-soc-linux-image.html">SmartHLS Reference SoC Linux Image</a>.</p>
-<ol class="arabic simple" start="2">
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code>, verify that the Linux image you downloaded is the correct one by navigating to the download folder (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;folder&gt;</span></code>) and run the <code class="docutils literal notranslate"><span class="pre">sha256</span></code> command on the file.
-The expected sha256 is: <code class="docutils literal notranslate"><span class="pre">7c79c3877d7cb6c998251f5be38e28911696331bc8535986c6503d1db4b2a888</span></code></p></li>
+<ol class="arabic simple">
+<li>Download the Linux image <a class="reference external" href="https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/download/v2022.09/core-image-minimal-dev-icicle-kit-es.wic.gz">core-image-minimal-dev-icicle-kit-es.wic.gz</a> and its associated <a class="reference external" href="https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/download/v2022.09/core-image-minimal-dev-icicle-kit-es.wic.bmap">core-image-minimal-dev-icicle-kit-es.wic.bmap file</a> file. Then verify their checksum.</li>
 </ol>
-<img alt="_images/shasum_image.png" src="_images/shasum_image.png" />
-<ol class="arabic simple" id="step-initial-dev" start="3">
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code>, enter the command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/dev/sd*</span></code>, and take note of what appears. This will be used <a class="reference internal" href="#step-compare-dev">in a later step</a>  to help determine the device name of the eMMC flash memory.</p></li>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/download/v2022.09/core-image-minimal-dev-icicle-kit-es.wic.gz
+$&gt; wget https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/download/v2022.09/core-image-minimal-dev-icicle-kit-es.wic.bmap
+$&gt; sha256sum core-image-minimal-dev-icicle-kit-es.wic.*
+3861249ec2f7953684d5c56907e4644ebd38384070a3628f660421750382130e  core-image-minimal-dev-icicle-kit-es.wic.bmap
+f217eda90b23914911fcc6d0a76db0c73968c5889417ddb36643b3cc9d597532  core-image-minimal-dev-icicle-kit-es.wic.gz
+     ...
+</pre></div>
+</div>
+<ol class="arabic simple" id="step-initial-dev" start="2">
+<li>In the <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code>, enter the command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/dev/sd*</span></code>, and take note of what appears. This will be used <a class="reference internal" href="#step-compare-dev">in a later step</a>  to help determine the device name of the eMMC flash memory.</li>
 </ol>
 <p>In our example, we have <code class="docutils literal notranslate"><span class="pre">/dev/sda</span></code> and <code class="docutils literal notranslate"><span class="pre">/dev/sdc</span></code> already:</p>
 <img alt="_images/dev_sdx_before.png" src="_images/dev_sdx_before.png" />
@@ -912,79 +913,92 @@ The expected sha256 is: <code class="docutils literal notranslate"><span class="
 <h3>Expose Board’s eMMC Flash Memory to Host PC as USB flash storage<a class="headerlink" href="#expose-board-s-emmc-flash-memory-to-host-pc-as-usb-flash-storage" title="Permalink to this headline">¶</a></h3>
 <p>To flash the Linux image we first need to expose the eMMC flash memory as a USB storage device to the host PC. Make sure the board’s <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">OTG</span></code> connection is made as described in <a class="reference internal" href="#icicle-required-connections"><span class="std std-ref">Step 1: Setup Required Board Connections</span></a>.</p>
 <ol class="arabic simple" start="4">
-<li><p>Reset the Icicle Kit by pressing pushbutton SW4 (top left pushbutton).
+<li>Reset the Icicle Kit by pressing pushbutton SW4 (top left pushbutton).
 In the <code class="docutils literal notranslate"><span class="pre">HSS</span> <span class="pre">Serial</span> <span class="pre">terminal</span></code>, when prompted to <code class="docutils literal notranslate"><span class="pre">Press</span> <span class="pre">a</span> <span class="pre">key</span> <span class="pre">to</span> <span class="pre">enter</span>
 <span class="pre">CLI</span></code>, press any key aside from <code class="docutils literal notranslate"><span class="pre">ESC</span></code>.
 If you don’t press a key within 5 seconds then the board will continue to boot Linux and you will have to reset the board again.
-Double check in the <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code> to verify that you don’t see any output from Linux booting.</p></li>
+Double check in the <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code> to verify that you don’t see any output from Linux booting.</li>
 </ol>
 <img alt="_images/putty_cli.png" src="_images/putty_cli.png" />
 <p>You should now see a prompt for the HSS command-line interface:</p>
 <img alt="_images/enter_cli.png" src="_images/enter_cli.png" />
 <ol class="arabic simple" start="5">
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">HSS</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>, enter the command <code class="docutils literal notranslate"><span class="pre">mmc</span></code> to select the eMMC flash memory (only needed for newer HSS versions). Then enter the command <code class="docutils literal notranslate"><span class="pre">usbdmsc</span></code>.</p></li>
+<li>In the <code class="docutils literal notranslate"><span class="pre">HSS</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>, enter the command <code class="docutils literal notranslate"><span class="pre">mmc</span></code> to select the eMMC flash memory (only needed for newer HSS versions). Then enter the command <code class="docutils literal notranslate"><span class="pre">usbdmsc</span></code>.</li>
 </ol>
 <img alt="_images/usbdmsc.png" src="_images/usbdmsc.png" />
 <ul class="simple">
-<li><p>Troubleshooting <code class="docutils literal notranslate"><span class="pre">usbdmsc</span></code> command:</p>
-<ul>
-<li><p>If you see “FLASH_DRIVE_init() returned false” (below), then you forgot to run the <code class="docutils literal notranslate"><span class="pre">mmc</span></code> command before running <code class="docutils literal notranslate"><span class="pre">usbdmsc</span></code></p></li>
+<li>Troubleshooting <code class="docutils literal notranslate"><span class="pre">usbdmsc</span></code> command:<ul>
+<li>If you see “FLASH_DRIVE_init() returned false” (below), then you forgot to run the <code class="docutils literal notranslate"><span class="pre">mmc</span></code> command before running <code class="docutils literal notranslate"><span class="pre">usbdmsc</span></code></li>
 </ul>
 </li>
 </ul>
 <img alt="_images/flash_drive_init_failed.png" src="_images/flash_drive_init_failed.png" />
 <ol class="arabic simple" start="6">
-<li><p>If the board is properly connected to your host computer, you should see data being read as shown on the last line of the image below:</p></li>
+<li>If the board is properly connected to your host computer, you should see data being read as shown on the last line of the image below:</li>
 </ol>
 <img alt="_images/putty_usbdmsc.png" src="_images/putty_usbdmsc.png" />
 <ul class="simple">
-<li><p>On the host PC, in Windows File Explorer -&gt; This PC, you should also be able to see the Icicle Kit’s eMMC flash memory as a media drive. In this case, shown as “boot (D:)”:</p></li>
+<li>On the host PC, in Windows File Explorer -&gt; This PC, you should also be able to see the Icicle Kit’s eMMC flash memory as a media drive. In this case, shown as “boot (D:)”:</li>
 </ul>
 <img alt="_images/media_drive.png" src="_images/media_drive.png" />
 </div>
 <div class="section" id="flash-the-linux-image-to-the-board">
 <h3>Flash the Linux Image to the Board<a class="headerlink" href="#flash-the-linux-image-to-the-board" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" id="step-compare-dev" start="7">
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code>, run <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/dev/sd*</span></code> again, and compare to what we saw <a class="reference internal" href="#step-initial-dev">in the earlier step</a>. Note which new device shows up. In our example,
+<li>In the <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code>, run <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/dev/sd*</span></code> again, and compare to what we saw <a class="reference internal" href="#step-initial-dev">in the earlier step</a>. Note which new device shows up. In our example,
 <code class="docutils literal notranslate"><span class="pre">/dev/sda</span></code> and <code class="docutils literal notranslate"><span class="pre">/dev/sdc</span></code> were present before, but <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code> is new. Therefore, the eMMC flash memory on the board is represented on our host machine as: <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>.
-We can now flash the Linux image to the board.</p></li>
+We can now flash the Linux image to the board.</li>
 </ol>
 <img alt="_images/dev_sdx_after.png" src="_images/dev_sdx_after.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Alternatively, you can check the exact device using the <code class="docutils literal notranslate"><span class="pre">lshw</span></code> command and it will show the device for the <cite>PolarFireSoC</cite>:</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sudo lshw -class disk -short
+H/W path                 Device     Class          <span class="nv">Description</span>
+<span class="o">==============================================================</span>
+/0/100/14/0/6/0.0.0      /dev/sdb   disk           7820MB PolarFireSoC_msd
+/0/100/14/0/6/0.0.0/0    /dev/sdb   disk           7820MB
+/0/1/0.0.0               /dev/sda   disk           1TB Samsung SSD <span class="m">860</span>
+</pre></div>
+</div>
 <p>On Windows, in the <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code> you can also run the command <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/proc/partitions</span></code> and verify that the device name (<code class="docutils literal notranslate"><span class="pre">sdb</span></code>) “win-mounts” column matches the drive names shown in the Windows File Explorer (<code class="docutils literal notranslate"><span class="pre">D:\</span></code>):</p>
 <img alt="_images/proc_partitions.png" src="_images/proc_partitions.png" />
 <ol class="arabic simple" start="8">
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code>, enter the following commands, where <code class="docutils literal notranslate"><span class="pre">/dev/sdx</span></code> is the device you found the Icicle Kit to be attached to (in our example it would be <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>),
-and <code class="docutils literal notranslate"><span class="pre">&lt;linux</span> <span class="pre">image&gt;.wic.gz</span></code> is the Linux image file you downloaded:</p></li>
+<li>In the <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code>, enter the following commands, where <code class="docutils literal notranslate"><span class="pre">/dev/sdx</span></code> is the device you found the Icicle Kit to be attached to (in our example it would be <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>),
+and <code class="docutils literal notranslate"><span class="pre">&lt;linux</span> <span class="pre">image&gt;.wic.gz</span></code> is the Linux image file you downloaded:</li>
 </ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Be extremely careful that you run the <code class="docutils literal notranslate"><span class="pre">dd</span></code> command on the correct device. Otherwise you could permanently corrupt another hard disk and lose data.</p>
+<p>For Linux (option 1):  Using <a class="reference external" href="https://github.com/intel/bmap-tools">bmaptool</a> is the recommended option because it is fast.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; bmaptool copy core-image-minimal-dev-icicle-kit-es.wic.gz /dev/sdb
+</pre></div>
 </div>
-<dl>
-<dt>For Linux:</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">umount</span> <span class="pre">/dev/sdx?</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">zcat</span> <span class="pre">&lt;linux</span> <span class="pre">image&gt;.wic.gz</span> <span class="pre">|</span> <span class="pre">sudo</span> <span class="pre">dd</span> <span class="pre">of=/dev/sdx</span> <span class="pre">bs=4096</span> <span class="pre">iflag=fullblock</span> <span class="pre">oflag=direct</span> <span class="pre">conv=fsync</span> <span class="pre">status=progress</span></code></p></li>
-</ul>
-</dd>
-<dt>For Windows:</dt><dd><ul>
-<li><p>Run this command in Cygwin:</p>
+<p>For Linux (option 2): Using dd.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be extremely careful that you run the <code class="docutils literal notranslate"><span class="pre">dd</span></code> command on the correct device. Otherwise you could permanently corrupt another hard disk and lose data.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo umount /dev/sdx?
+zcat core-image-minimal-dev-icicle-kit-es.wic.gz <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/sdx <span class="nv">bs</span><span class="o">=</span><span class="m">4096</span> <span class="nv">iflag</span><span class="o">=</span>fullblock <span class="nv">oflag</span><span class="o">=</span>direct <span class="nv">conv</span><span class="o">=</span>fsync <span class="nv">status</span><span class="o">=</span>progress<span class="sb">``</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>For Windows:</dt>
+<dd><ul class="first last">
+<li><p class="first">Run this command in Cygwin:</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">zcat</span> <span class="pre">&lt;linux</span> <span class="pre">image&gt;.wic.gz</span> <span class="pre">|</span> <span class="pre">dd</span> <span class="pre">of=/dev/sdx</span> <span class="pre">bs=4096</span> <span class="pre">iflag=fullblock</span> <span class="pre">oflag=direct</span> <span class="pre">conv=fsync</span> <span class="pre">status=progress</span></code></p>
 </div></blockquote>
 </li>
-<li><p>If you get a permission denied error then you forgot to run Cygwin as an administrator. <a class="reference internal" href="#cygwin-launch">Launch Cygwin again</a>.</p></li>
+<li><p class="first">If you get a permission denied error then you forgot to run Cygwin as an administrator. <a class="reference internal" href="#cygwin-launch">Launch Cygwin again</a>.</p>
+</li>
 </ul>
 </dd>
 </dl>
 <img alt="_images/cygwin_nonadmin.png" src="_images/cygwin_nonadmin.png" />
-<ol class="arabic simple" start="9">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">dd</span></code> flashing command should take around 15 minutes to complete. After the command completes, you should disconnect the mounted drive, by typing <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> in the <code class="docutils literal notranslate"><span class="pre">HSS</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>. The Linux image on the board is now updated.</p></li>
-</ol>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">dd</span></code> flashing command should take several minutes to complete.</p>
 <p><strong>DO NOT</strong> power cycle the Icicle board at this point.</p>
 <img alt="_images/putty_disconnect_usb.png" src="_images/putty_disconnect_usb.png" />
-<ol class="arabic simple" start="10">
-<li><p>We recommend unplugging the <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">OTG</span></code> cable from the <a class="reference internal" href="#icicle-required-connections"><span class="std std-ref">Step 1: Setup Required Board Connections</span></a> before booting Linux to avoid unnecessary output to the serial terminal (“unhandled DISCONNECT transition”).</p></li>
-</ol>
+<p>After the flashing command completes, you should disconnect the mounted drive, by typing <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> in the <code class="docutils literal notranslate"><span class="pre">HSS</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>. The Linux image on the board is now updated.</p>
 </div>
 </div>
 <div class="section" id="step-6-programming-the-fpga-bitstream-with-fpexpress">
@@ -992,64 +1006,95 @@ and <code class="docutils literal notranslate"><span class="pre">&lt;linux</span
 <p>After programming the Linux image for the first time, in order to boot the board, you’ll also have to program a matching bitstream to the FPGA.
 SmartHLS comes with a default bitstream that can be used to boot the board, which can be programmed using the following steps:</p>
 <ol class="arabic simple">
-<li><p>Open FPExpress:</p>
-<ul class="simple">
-<li><p>On Windows, the program can be found by opening the Start Menu, then scrolling down the list of programs until you see the <code class="docutils literal notranslate"><span class="pre">Microchip</span> <span class="pre">Libero</span> <span class="pre">SoC</span> <span class="pre">v2022.2</span></code> folder (under the <code class="docutils literal notranslate"><span class="pre">M</span></code> letter) -&gt; <code class="docutils literal notranslate"><span class="pre">FPExpress</span></code>.</p></li>
-<li><p>On Linux, you can navigate to the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory in your Libero installation, and then <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./fp6_env_install</span></code>, then open FPExpress with the command <code class="docutils literal notranslate"><span class="pre">./FPExpress</span></code>.</p></li>
+<li>Open FPExpress:<ul>
+<li>On Windows, the program can be found by opening the Start Menu, then scrolling down the list of programs until you see the <code class="docutils literal notranslate"><span class="pre">Microchip</span> <span class="pre">Libero</span> <span class="pre">SoC</span> <span class="pre">v2022.2</span></code> folder (under the <code class="docutils literal notranslate"><span class="pre">M</span></code> letter) -&gt; <code class="docutils literal notranslate"><span class="pre">FPExpress</span></code>.</li>
+<li>On Linux, you can navigate to the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory in your Libero installation, and then <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./fp6_env_install</span></code>, then open FPExpress with the command <code class="docutils literal notranslate"><span class="pre">./FPExpress</span></code>.</li>
 </ul>
 </li>
-<li><p>Click <code class="docutils literal notranslate"><span class="pre">New...</span></code>, select <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">FlashPro</span> <span class="pre">Express</span> <span class="pre">job</span> <span class="pre">file</span></code>, and navigate to your SmartHLS installation to select the job file: <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;\SmartHLS\boards\PolarFireSoC\MPFS250T\Icicle_SoC\soc\Icicle_SoC_base_proj.job</span></code>. For example: <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2022.2\SmartHLS\boards\PolarFireSoC\MPFS250T\Icicle_SoC\soc\Icicle_SoC_base_proj.job</span></code>. Click Open.</p></li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">New...</span></code>, select <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">FlashPro</span> <span class="pre">Express</span> <span class="pre">job</span> <span class="pre">file</span></code>, and navigate to your SmartHLS installation to select the job file: <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;\SmartHLS\boards\iciclekit\MPFS_ICICLE_BASE_DESIGN_2022_09.job</span></code>. For example: <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2022.2.1\SmartHLS\boards\iciclekit\MPFS_ICICLE_BASE_DESIGN_2022_09.job</span></code>.  Then choose a temporary path for the FPExpress project location.</li>
 </ol>
 <img alt="_images/fpexpress_browse.png" src="_images/fpexpress_browse.png" />
 <ol class="arabic simple" start="3">
-<li><p>Set your FPExpress project location to wherever you please, then click <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p></li>
-</ol>
-<img alt="_images/fpexpress_new.png" src="_images/fpexpress_new.png" />
-<ol class="arabic simple" start="4">
-<li><p>Select which programmer you wish to use (if you have multiple), and note down the programmer ID (highlighted in a red box in the picture below). From the drop-down box above the <code class="docutils literal notranslate"><span class="pre">RUN</span></code> button make sure that <code class="docutils literal notranslate"><span class="pre">PROGRAM</span></code> is selected.</p></li>
+<li>Select which programmer you wish to use (if you have multiple), and note down the programmer ID (highlighted in a red box in the picture below). From the drop-down box above the <code class="docutils literal notranslate"><span class="pre">RUN</span></code> button make sure that <code class="docutils literal notranslate"><span class="pre">PROGRAM</span></code> is selected.</li>
 </ol>
 <img alt="_images/fpexpress_run.png" src="_images/fpexpress_run.png" />
-<ol class="arabic simple" start="5">
-<li><p>Now press the <code class="docutils literal notranslate"><span class="pre">RUN</span></code> button, and you should see a confirmation that the programming passed:</p></li>
+<ol class="arabic simple" start="4">
+<li>Now press the <code class="docutils literal notranslate"><span class="pre">RUN</span></code> button, and you should see a confirmation that the programming passed:</li>
 </ol>
 <img alt="_images/fpexpress_done.png" src="_images/fpexpress_done.png" />
 <p>This will program a default bitstream to the FPGA fabric, as well as a compatible bootloader (HSS), which will allow the board to boot up with the newly added Linux image.</p>
-<ol class="arabic simple" start="6">
-<li><p>Programming the bitstream will automatically reset the board.  Do NOT power cycle.</p></li>
+<ol class="arabic simple" start="5">
+<li>Programming the bitstream will automatically reset the board.  Do NOT power cycle.</li>
 </ol>
 </div>
 <div class="section" id="step-7-accessing-linux-on-board-and-determining-the-ip-address">
 <h2>Step 7: Accessing Linux on Board and Determining the IP Address<a class="headerlink" href="#step-7-accessing-linux-on-board-and-determining-the-ip-address" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>, after Linux boots you should see a login screen:</p></li>
+<li>In the <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">Serial</span> <span class="pre">Terminal</span></code>, after Linux boots you should see a login screen:</li>
 </ol>
 <img alt="_images/serial_login.png" src="_images/serial_login.png" />
 <p>The login is <code class="docutils literal notranslate"><span class="pre">root</span></code>, and no password is required. After logging in, you should be able to see a terminal.</p>
 <p>Troubleshooting if Linux does not boot:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>If you see an error message when booting Linux there could have been a problem/corruption when writing the Linux image to the board. Please repeat the steps in <a class="reference internal" href="#icicle-linux-image"><span class="std std-ref">Step 5: Flashing the Linux Image to the Board</span></a> and try again.</p></li>
-<li><p>Also check the serial terminal output from the other UART <cite>Interface 0</cite> and
+<li>If you see an error message when booting Linux there could have been a problem/corruption when writing the Linux image to the board. Please repeat the steps in <a class="reference internal" href="#icicle-linux-image"><span class="std std-ref">Step 5: Flashing the Linux Image to the Board</span></a> and try again.</li>
+<li>Also check the serial terminal output from the other UART <cite>Interface 0</cite> and
 if you see “boot image failed CRC” as shown below. This error means there is a mismatch between your FPGA
 job file (which writes the HSS bootloader) and the Linux image. Double check
-that you used the exact files specified in this document. The Linux image will only boot with a compatible FPGA job file.</p></li>
+that you used the exact files specified in this document. The Linux image will only boot with a compatible FPGA job file.</li>
 </ul>
 </div></blockquote>
 <img alt="_images/hss_crc_fail.png" src="_images/hss_crc_fail.png" />
 <p>2. Make sure the ethernet cable is connected as described in <a class="reference internal" href="#icicle-required-connections"><span class="std std-ref">Step 1: Setup Required Board Connections</span></a>.
 Now enter <code class="docutils literal notranslate"><span class="pre">ifconfig</span> <span class="pre">eth0</span></code>, and take note of the IP address that should have been assigned to the Icicle Kit by the network:</p>
-<img alt="_images/serial_ip.png" src="_images/serial_ip.png" />
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@icicle</span><span class="o">-</span><span class="n">kit</span><span class="o">-</span><span class="n">es</span><span class="p">:</span><span class="o">~</span><span class="c1"># ifconfig eth0</span>
+<span class="n">eth0</span><span class="p">:</span> <span class="n">flags</span><span class="o">=</span><span class="mi">4163</span><span class="o">&lt;</span><span class="n">UP</span><span class="p">,</span><span class="n">BROADCAST</span><span class="p">,</span><span class="n">RUNNING</span><span class="p">,</span><span class="n">MULTICAST</span><span class="o">&gt;</span>  <span class="n">mtu</span> <span class="mi">1500</span>
+   <span class="n">inet</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.173</span>  <span class="n">netmask</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span>  <span class="n">broadcast</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.255</span>
+   <span class="n">inet6</span> <span class="n">fe80</span><span class="p">::</span><span class="mi">204</span><span class="p">:</span><span class="n">a3ff</span><span class="p">:</span><span class="n">fefb</span><span class="p">:</span><span class="mi">406</span><span class="n">f</span>  <span class="n">prefixlen</span> <span class="mi">64</span>  <span class="n">scopeid</span> <span class="mh">0x20</span><span class="o">&lt;</span><span class="n">link</span><span class="o">&gt;</span>
+   <span class="n">ether</span> <span class="mi">00</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="n">a3</span><span class="p">:</span><span class="n">fb</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">6</span><span class="n">f</span>  <span class="n">txqueuelen</span> <span class="mi">1000</span>  <span class="p">(</span><span class="n">Ethernet</span><span class="p">)</span>
+   <span class="n">RX</span> <span class="n">packets</span> <span class="mi">17882</span>  <span class="nb">bytes</span> <span class="mi">3231759</span> <span class="p">(</span><span class="mf">3.0</span> <span class="n">MiB</span><span class="p">)</span>
+   <span class="n">RX</span> <span class="n">errors</span> <span class="mi">0</span>  <span class="n">dropped</span> <span class="mi">4843</span>  <span class="n">overruns</span> <span class="mi">0</span>  <span class="n">frame</span> <span class="mi">0</span>
+   <span class="n">TX</span> <span class="n">packets</span> <span class="mi">4963</span>  <span class="nb">bytes</span> <span class="mi">1478718</span> <span class="p">(</span><span class="mf">1.4</span> <span class="n">MiB</span><span class="p">)</span>
+   <span class="n">TX</span> <span class="n">errors</span> <span class="mi">0</span>  <span class="n">dropped</span> <span class="mi">0</span> <span class="n">overruns</span> <span class="mi">0</span>  <span class="n">carrier</span> <span class="mi">0</span>  <span class="n">collisions</span> <span class="mi">0</span>
+   <span class="n">device</span> <span class="n">interrupt</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">If the network is not setup or if you want to assign a static IP address, for example 192.168.0.173 to eth0 using 192.168.0.161 as the gateway, you can create a file like this: <cite>/etc/systemd/network/70-static-eth0.network</cite> with the following content:</div>
+</div>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; vim /etc/systemd/network/70-static-eth0.network
+[Match]
+Name=eth0
+
+[Network]
+Address=192.168.0.173/24
+Gateway=192.168.0.161
+DCHP=no
+</pre></div>
+</div>
+<p>Save the file and restart the network and confirm the status:</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; systemctl restart systemd-networkd
+$&gt; networkctl status
+*        State: routable
+Online state: online
+    Address: 192.168.0.173 on eth0
+             fe80::204:a3ff:fefb:406f on eth0
+             fe80::204:a3ff:fefb:406e on eth1
+    Gateway: 192.168.0.161 on eth0
+</pre></div>
+</div>
+<p>Now you should be able to ping and ssh into the board.</p>
 </div>
 <div class="section" id="step-8-accessing-linux-over-network-using-ssh">
 <h2>Step 8: Accessing Linux over network using SSH<a class="headerlink" href="#step-8-accessing-linux-over-network-using-ssh" title="Permalink to this headline">¶</a></h2>
 <p>Now that the IP address of the board was determined in the previous step, you can access the board remotely over the network using SSH from your <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">PC</span> <span class="pre">Terminal</span></code> with the command:</p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">root&#64;[your</span> <span class="pre">board</span> <span class="pre">IP</span> <span class="pre">here]</span></code></p>
-</div></blockquote>
-<p>For the example above, you would run <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">root&#64;10.245.245.172</span></code>.</p>
+<div><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">root&#64;[your</span> <span class="pre">board</span> <span class="pre">IP</span> <span class="pre">here]</span></code></div></blockquote>
+<p>For the example above, you would run <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">root&#64;192.168.0.173</span></code>.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>SmartHLS uses SSH to access and run programs on the Icicle Kit as well, so all SmartHLS projects will need to specify the BOARD_IP.
+<p class="first admonition-title">Note</p>
+<p class="last">SmartHLS uses SSH to access and run programs on the Icicle Kit as well, so all SmartHLS projects will need to specify the BOARD_IP.
 In addition, if you have multiple connected programmers and only want to program a specific one, you need to specify the PROGRAMMER_ID.
 By default, all connected programmers are programmed.
 For SmartHLS IDE projects, this can be done by adding <code class="docutils literal notranslate"><span class="pre">BOARD_IP=[your</span> <span class="pre">board</span> <span class="pre">IP</span> <span class="pre">here]</span></code> and <code class="docutils literal notranslate"><span class="pre">PROGRAMMER_ID=[your</span> <span class="pre">FlashPro</span> <span class="pre">ID</span> <span class="pre">here]</span></code> to the project’s <code class="docutils literal notranslate"><span class="pre">Makefile.user</span></code>.
@@ -1114,9 +1159,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2 documentation&\
-		pub_ver=2022.2&\
-		revision_letter=2022.2&\
+		cover_title=SmartHLS 2022.2.1 documentation&\
+		pub_ver=2022.2.1&\
+		revision_letter=2022.2.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

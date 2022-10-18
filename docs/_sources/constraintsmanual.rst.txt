@@ -28,13 +28,13 @@ The main constraints available from the SmartHLS IDE are:
  * Inline function: :ref:`inline_function`
  * Do not inline function: :ref:`noinline_function`
  * Flatten function: :ref:`flatten_function`
- * Preserve function: :ref:`preserve_kernel`
  * Minimize bitwidth: :ref:`MB_MINIMIZE_HW`
  * Replicate ROM to each accessing module: :ref:`REPLICATE_ROMS`
  * Use generic memory initialization file: :ref:`USE_MEM_FILE`
 
 A few debugging constraints are available from the SmartHLS IDE:
 
+ * Stalling input/output FIFOs in CoSimulation: :ref:`COSIM_FIFO_STALL_PROB`
  * Keep signals with no fanout: :ref:`KEEP_SIGNALS_WITH_NO_FANOUT`
  * Insert simulation assertions (for debugging): :ref:`VSIM_ASSERT`
 
@@ -43,7 +43,6 @@ A few debugging constraints are available from the SmartHLS IDE:
    * Pipeline all loops: :ref:`PIPELINE_ALL`
    * Print cycle count for each function: :ref:`PRINTF_CYCLES`
    if-conversion is now enabled by default whenever this is any loop/function pipeline
-   * Enable if-conversion: :ref:`set_combine_basicblock`
    * Unroll all loops: :ref:`UNROLL`
 
 .. .. NOTE::
@@ -75,12 +74,12 @@ Commonly Used Constraints
 .. .. include:: constraint_docs/inline_function.inc
 .. .. include:: constraint_docs/noinline_function.inc
 .. .. include:: constraint_docs/flatten_function.inc
-.. .. include:: constraint_docs/preserve_kernel.inc
 .. .. include:: constraint_docs/MB_MINIMIZE_HW.inc
 .. .. include:: constraint_docs/REPLICATE_ROMS.inc
 
 Debugging Constraints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. include:: constraint_docs/COSIM_FIFO_STALL_PROB.inc
 .. include:: constraint_docs/KEEP_SIGNALS_WITH_NO_FANOUT.inc
 .. include:: constraint_docs/VSIM_ASSERT.inc
 
@@ -104,7 +103,6 @@ These are not available from the SmartHLS GUI.
 .. .. include:: constraint_docs/UNROLL.inc
 .. .. include:: constraint_docs/SET_ACCELERATOR_FUNCTION.inc
 .. .. include:: constraint_docs/set_argument_interface_type.inc
-.. .. include:: constraint_docs/set_combine_basicblock.inc
 .. .. include:: constraint_docs/set_project.inc
 .. .. include:: constraint_docs/USE_MEM_FILE.inc
 .. .. include:: constraint_docs/partition_top_level_argument.inc
@@ -203,8 +201,6 @@ These are not available from the SmartHLS GUI.
   .. include:: constraint_docs/set_device_specs.inc
   .. include:: constraint_docs/set_smarthls_config_board.inc
   .. include:: constraint_docs/set_smarthls_output_path.inc
-  .. include:: constraint_docs/set_memory_global.inc
-  .. include:: constraint_docs/set_memory_local.inc
   .. include:: constraint_docs/set_operation_attributes.inc
   .. include:: constraint_docs/set_operation_sharing.inc
   .. include:: constraint_docs/use_debugger.inc
