@@ -70,6 +70,8 @@ In SmartHLS, there exists four hierarchies of memories: 1) Local memory, 2) shar
 Local, shared-local, and aliased memories exist in the generated hardware.
 I/O memories are data that are inputs/output to/from the generated hardware. They exist outside of the generated hardware (SmartHLS does not instantiate memories for them), where top-level memory interfaces are created for them.
 
+SmartHLS automatically determines the read latency for memories based on the target clock period and timing model. User can disable this function by changing :ref:`ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING` Tcl parameter. Alternatively, users can override the default values using :ref:`set_operation_latency` Tcl parameter. The auto-determined latency can be found in :ref:`memory_usage` section of SmartHLS report.
+
 .. Any data that is only accessed by an accelerator is stored on the accelerator side.
 .. Any data that is only accessed by the processor, or is shared between multiple accelerators,
 .. or is shared between an accelerator and the processor, is stored in processor memory.
@@ -77,6 +79,7 @@ I/O memories are data that are inputs/output to/from the generated hardware. The
 .. The processor and all hardware accelerators have access to the on-chip cache.
 .. For the processor-accelerator hybrid architecture, see the `ARM Processor-Accelerator Hybrid Architecture`_ section below.
 
+.. _local_memory:
 
 Local Memory
 ^^^^^^^^^^^^^^^^^
@@ -86,7 +89,9 @@ functions. If a memory is determined to be used by a single function, where the 
 is to be compiled to hardware, that array is implemented as a local memory. A
 local memory is created and connected directly inside the module that accesses it.
 
-Local memories have a latency of 1 clock cycle by default. The local memory latency can be changed with the :ref:`set_operation_latency` Tcl parameter.
+The read latency of local memories are determined by :ref:`ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING` on default setting. The local memory read latency can be changed with the :ref:`set_operation_latency` Tcl parameter.
+
+.. _shared_local_memory:
 
 Shared-Local Memory
 ^^^^^^^^^^^^^^^^^^^
@@ -101,7 +106,7 @@ access the memory are executing sequentially, a simple ``OR`` gate is used for a
 (which consumes only a small amount of area), but if the accessing modules are
 executing concurrently (with the use of ``hls::thread``), a round-robin arbiter is automatically created to handle contention.
 
-Shared-local memories have a latency of 1 clock cycle. The shared-local memory latency can be changed with the :ref:`set_operation_latency` Tcl parameter.
+The read latency of shared-local memories are determined by :ref:`ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING` on default setting. The shared-local memory read latency can be changed with the :ref:`set_operation_latency` Tcl parameter.
 
 Aliased Memory
 ^^^^^^^^^^^^^^^^^
@@ -113,7 +118,9 @@ A memory controller contains all memories that can alias to each other, and
 allows memory accesses to be steered to the correct memory at runtime.
 There can be multiple memory controllers in a system, each containing a set of memories that alias to each other.
 
-Aliased memories have a latency of 2 clock cycles. The aliased memory latency can be changed with the :ref:`set_operation_latency` Tcl parameter.
+Aliased memories have a read latency of 2 clock cycles. The aliased memory read latency can be changed with the :ref:`set_operation_latency` Tcl parameter.
+
+.. _memory_controller:
 
 Memory Controller
 ~~~~~~~~~~~~~~~~~

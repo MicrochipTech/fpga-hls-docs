@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Release Notes &mdash; SmartHLS 2022.2.1 documentation</title>
+  <title>Release Notes &mdash; SmartHLS 2022.3 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
 
 										  </h1>
 								
@@ -561,73 +561,80 @@ display:none;
 <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#latest-release-version">Latest Release (2022.2.1)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#latest-release-version">Latest Release (2022.3)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installer-update">Installer Update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#software-features-and-enhancements">Software Features and Enhancements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#resolved-issues">Resolved Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#previous-releases">Previous Releases</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-2">SmartHLS 2022.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-2-1">SmartHLS 2022.2.1</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">Software Features and Enhancements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">Resolved Issues</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-1-1">SmartHLS 2022.1.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#what-s-new">What’s New</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-2">SmartHLS 2022.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">Software Features and Enhancements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">Resolved Issues</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-1-1">SmartHLS 2022.1.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-s-new">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Known Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-2022-1">SmartHLS 2022.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Resolved Issues</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-3-1">SmartHLS 2021.3.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id7">What’s New</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id8">Software Features and Enhancements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id9">Resolved Issues</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-3">SmartHLS 2021.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-3-1">SmartHLS 2021.3.1</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id10">What’s New</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id11">Software Features and Enhancements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id12">Resolved Issues</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-2-1">SmartHLS 2021.2.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-3">SmartHLS 2021.3</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id13">What’s New</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id14">Software Features and Enhancements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id15">Resolved Issues</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-2">SmartHLS 2021.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-2-1">SmartHLS 2021.2.1</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id16">What’s New</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id17">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18">Known Issues</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">Resolved Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#smarthls-2021-2">SmartHLS 2021.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id19">What’s New</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#smarthls-eap-2021-1-2">SmartHLS EAP 2021.1.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#legup-hls-is-now-rebranded-to-smart-hls">LegUp HLS is now rebranded to Smart HLS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id20">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id21">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-2021-1">LegUp HLS EAP 2021.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id22">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id23">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-2-1">LegUp HLS EAP 9.2.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id24">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id25">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">Resolved Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#legup-hls-eap-9-1">LegUp HLS EAP 9.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id26">Software Features and Enhancements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id27">Resolved Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">Software Features and Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">Resolved Issues</a></li>
 </ul>
 </li>
 </ul>
@@ -724,13 +731,72 @@ display:none;
   <div class="section" id="release-notes">
 <span id="release"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="latest-release-version">
-<h2>Latest Release (2022.2.1)<a class="headerlink" href="#latest-release-version" title="Permalink to this headline">¶</a></h2>
-<p>Release Date: October, 2022</p>
+<h2>Latest Release (2022.3)<a class="headerlink" href="#latest-release-version" title="Permalink to this headline">¶</a></h2>
+<p>Release Date: December, 2022</p>
+<div class="section" id="installer-update">
+<h3>Installer Update<a class="headerlink" href="#installer-update" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Starting from this release, Microchip will no longer publish a standalone version for SmartHLS.
+All future SmartHLS releases will be included in the releases of Libero SoC Design Suite.
+Please make sure that the SmartHLS software is selected when installing Libero SoC Design Suite.</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="software-features-and-enhancements">
 <h3>Software Features and Enhancements<a class="headerlink" href="#software-features-and-enhancements" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>If you are interested in joining the early access program for our new SmartHLS PolarFire <a class="reference internal" href="userguide.html#soc-features"><span class="std std-ref">SoC Features</span></a>, please email: <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a></li>
+<li>Support burst transfer via AXI initiator interface (beta) – SmartHLS analyzes the C++ input code for burst-able access patterns to AXI initiator interfaces.
+When these access patterns are detected, SmartHLS will generate hardware to perform AXI burst transfers.
+AXI burst transfers significantly improve the data transfer throughput of AXI initiator interfaces. See <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface</span></a> for more details.</li>
+<li>Introduced two new C++ library classes, <a class="reference internal" href="userguide.html#data-buffer"><span class="std std-ref">DoubleBuffer and SharedBuffer</span></a>, for describing data buffers in multi-threaded dataflow designs.
+The new classes allow users to easily implement the well-known <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_buffering#Software_double_buffering">double buffer</a> (also known as ping-pong buffer) design pattern in C++ using SmartHLS.</li>
+<li>Enhanced compiler analysis for memory dependencies across loop iterations.
+SmartHLS can now generate hardware with higher throughput by using the analysis to reduce the loop pipeline initiation interval (clock cycles between starting successive loop iterations).</li>
+<li>SmartHLS now automatically selects the pipeline latency for multipliers and RAMs needed to achieve the user-specified target clock period on the target device.
+See <a class="reference internal" href="constraintsmanual.html#enable-automatic-multiply-mode-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING</span></a> and <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> for more details.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="resolved-issues">
+<h3>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Robustness improvements in SmartHLS optimization to minimize bit-widths of operations.</li>
+<li>Fixed SmartHLS scheduling to make sure read-write conflict does not occur when targeting SmartFusion2/IGLOO2 devices.
+The issue could lead to incorrect implementation on device that appears to be working in RTL simulation (or SW/HW CoSimulation).<ul>
+<li>Read-write conflict means one read access and one write access are happening at the same clock cycle to the same RAM address. SmartFusion2/IGLOO2 devices do not support read-first mode under read-write conflict for LSRAMs.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="known-issues">
+<h3>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>The new AXI initiator feature supports type-cast pointers (e.g., an <code class="docutils literal notranslate"><span class="pre">int64_t</span> <span class="pre">*</span></code> pointer argument is cast to and accessed as an <code class="docutils literal notranslate"><span class="pre">int32_t</span> <span class="pre">*</span></code> pointer).
+However, <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> of this use case may fail due to an issue in the CoSimulation testbench.
+Note that the HLS-generated RTL is still functionally correct and works on the device.
+We will fix the CoSimulation issue in the next release.</li>
+<li>There is a known synthesis issue in the Libero 2022.3 release, where timing may not be met if larger sized signed multipliers are in the design.
+If your SmartHLS design is not meeting timing with critical paths through multipliers, you can increase the latency of multiply operation to get around this synthesis issue,
+by adding the following constraint (in the GUI or in your config.tcl file): <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">6</span></code>.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="previous-releases">
+<h2>Previous Releases<a class="headerlink" href="#previous-releases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smarthls-2022-2-1">
+<h3>SmartHLS 2022.2.1<a class="headerlink" href="#smarthls-2022-2-1" title="Permalink to this headline">¶</a></h3>
+<p>Release Date: October, 2022</p>
+<div class="section" id="id1">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
 <li>SmartHLS PolarFire SoC feature now uses the standard <a class="reference external" href="https://github.com/polarfire-soc/icicle-kit-reference-design/releases/tag/v2022.09">PolarFire SoC Icicle Kit Reference Design (v2022.09)</a> as the base project.</li>
 <li>SmartHLS PolarFire SoC feature now uses the standard Linux image for the PolarFire SoC Icicle Kit Reference Design: <a class="reference external" href="https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/tag/v2022.09">PolarFire SoC Yocto Board Support Package (v2022.09)</a>.</li>
 <li>Support cyclic and block memory partition, and partition along user-specified dimensions; allowing more tailored partition schemes for designs to improve memory access throughput. See <a class="reference internal" href="userguide.html#memory-partitioning"><span class="std std-ref">Memory Partitioning</span></a>.</li>
@@ -741,8 +807,8 @@ display:none;
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="resolved-issues">
-<h3>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>Resolved Issues<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Bit-width minimization optimization for a corner case in arithmetic shift-right and logical shift-right operations.</li>
@@ -753,16 +819,13 @@ display:none;
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="previous-releases">
-<h2>Previous Releases<a class="headerlink" href="#previous-releases" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="smarthls-2022-2">
 <h3>SmartHLS 2022.2<a class="headerlink" href="#smarthls-2022-2" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: August, 2022</p>
-<div class="section" id="id1">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id3">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
-<li>If you are interested in joining the early access program for our new SmartHLS PolarFire <a class="reference internal" href="userguide.html#soc-features"><span class="std std-ref">SoC Features</span></a>, please email: <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a></li>
 <li>New SoC profiling feature: measures runtime spent on data transfer and computation by the HLS accelerator(s) in an SoC design. See <a class="reference internal" href="userguide.html#soc-profiler"><span class="std std-ref">SoC Profiler</span></a> for more information.</li>
 <li>Updated naming convention of the SmartHLS’ output RTL files to <code class="docutils literal notranslate"><span class="pre">&lt;ProjectName&gt;_&lt;TopLevelFunctionName&gt;.v|vhd</span></code> (see <a class="reference internal" href="userguide.html#smarthls-outputs"><span class="std std-ref">SmartHLS Output Files</span></a> for more details).</li>
 <li>When a user clicks on a step (e.g., compile software to hardware) that has already run and yet is still up to date, SmartHLS will now prompt the user to confirm if they intend to re-run the step before proceeding.
@@ -773,8 +836,8 @@ This saves users’ time by avoiding re-running steps that were already done, es
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id2">
-<h4>Resolved Issues<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h4>Resolved Issues<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Fixed an issue that could lead to incorrect RAM inference by the RTL synthesis tool, causing certain designs that work in functional simulation (e.g., SW/HW Co-Simulation) to not work when programmed onto the FPGA.</li>
@@ -802,8 +865,8 @@ This saves users’ time by avoiding re-running steps that were already done, es
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id3">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Support for AXI4Target and AXI4Initiator interface types. See the updated section <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>.</li>
@@ -815,8 +878,8 @@ This saves users’ time by avoiding re-running steps that were already done, es
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h4>Resolved Issues<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h4>Resolved Issues<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -824,8 +887,8 @@ This saves users’ time by avoiding re-running steps that were already done, es
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="known-issues">
-<h4>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id7">
+<h4>Known Issues<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>As part of the newly released SoC features, SmartHLS can program an Icicle Kit using the FlashPro Express software. A known issue is that SPI flash memory initialization using an external FlashPro6 programmer and FlashPro Express does not work. For designs that require memory initialization (e.g., arrays inside the accelerated function that require initial values), it is recommended to use the Icicle Kit’s embedded FlashPro6 programmer.<ul>
@@ -842,8 +905,8 @@ Please <a class="reference internal" href="techsupport.html#create-techsupport">
 <div class="section" id="smarthls-2022-1">
 <h3>SmartHLS 2022.1<a class="headerlink" href="#smarthls-2022-1" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: Apr 2022</p>
-<div class="section" id="id5">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id8">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Generate <a class="reference internal" href="userguide.html#logic-level-distribution"><span class="std std-ref">Logic Level Distribution</span></a> histogram from the synthesis timing report (Linux only)</li>
@@ -862,8 +925,8 @@ Please <a class="reference internal" href="techsupport.html#create-techsupport">
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h4>Resolved Issues<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>Resolved Issues<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -879,8 +942,8 @@ Please <a class="reference internal" href="techsupport.html#create-techsupport">
 <div class="section" id="smarthls-2021-3-1">
 <h3>SmartHLS 2021.3.1<a class="headerlink" href="#smarthls-2021-3-1" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: Jan 31, 2022</p>
-<div class="section" id="id7">
-<h4>What’s New<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id10">
+<h4>What’s New<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>In December 2021, we made a webinar on “How Microchip FPGAs Can Improve Productivity in Motor Control Applications Using C++ With HLS”.
@@ -888,8 +951,8 @@ The webinar is now available on-demand: <a class="reference external" href="http
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id8">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>All SmartHLS-generated output files are now put under the <code class="docutils literal notranslate"><span class="pre">hls_output</span></code> directory, except the auto-generated project configuration files <code class="docutils literal notranslate"><span class="pre">makefile</span></code> and <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</li>
@@ -900,8 +963,8 @@ The webinar is now available on-demand: <a class="reference external" href="http
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id9">
-<h4>Resolved Issues<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id12">
+<h4>Resolved Issues<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -924,16 +987,16 @@ The webinar is now available on-demand: <a class="reference external" href="http
 <div class="section" id="smarthls-2021-3">
 <h3>SmartHLS 2021.3<a class="headerlink" href="#smarthls-2021-3" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: Nov 26, 2021</p>
-<div class="section" id="id10">
-<h4>What’s New<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id13">
+<h4>What’s New<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>A <a class="reference internal" href="vhls_to_shls.html#vhls-to-shls"><span class="std std-ref">SmartHLS Migration Guide</span></a> on how to migrate designs from other HLS tool to SmartHLS.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id11">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id14">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Enhanced Co-Simulation flow to support more sophisticated software testbenches, specifically those use high-level C++ features such as templates, classes, inheritance, namespaces, nested types and typedef.</li>
@@ -947,8 +1010,8 @@ The webinar is now available on-demand: <a class="reference external" href="http
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id12">
-<h4>Resolved Issues<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id15">
+<h4>Resolved Issues<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -963,16 +1026,16 @@ The webinar is now available on-demand: <a class="reference external" href="http
 <div class="section" id="smarthls-2021-2-1">
 <h3>SmartHLS 2021.2.1<a class="headerlink" href="#smarthls-2021-2-1" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: Sept 24, 2021</p>
-<div class="section" id="id13">
-<h4>What’s New<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id16">
+<h4>What’s New<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>SmartHLS now supports IGLOO2 device family.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id14">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id17">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>A new <strong>branchless</strong> <a class="reference internal" href="pragmas.html#pragma-function-flatten"><span class="std std-ref">Flatten Function</span></a> feature to improve parallelism between operations.</li>
@@ -985,8 +1048,8 @@ The webinar is now available on-demand: <a class="reference external" href="http
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id15">
-<h4>Resolved Issues<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id18">
+<h4>Resolved Issues<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1005,8 +1068,8 @@ The webinar is now available on-demand: <a class="reference external" href="http
 <div class="section" id="smarthls-2021-2">
 <h3>SmartHLS 2021.2<a class="headerlink" href="#smarthls-2021-2" title="Permalink to this headline">¶</a></h3>
 <p>Release Date: August 06, 2021</p>
-<div class="section" id="id16">
-<h4>What’s New<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id19">
+<h4>What’s New<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>SmartHLS is now installed by default with Libero 2021.2 for general release.</li>
@@ -1014,8 +1077,8 @@ The webinar is now available on-demand: <a class="reference external" href="http
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id17">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id20">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Improved optimizations to minimize signal bit-width to reduce resource usage.</li>
@@ -1028,8 +1091,8 @@ The webinar is now available on-demand: <a class="reference external" href="http
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id18">
-<h4>Known Issues<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id21">
+<h4>Known Issues<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Excessive use of block RAMs (specifically uSRAMs) due to a sub-optimal heuristic when packing pipeline registers into FIFO-like constructs.
@@ -1045,8 +1108,8 @@ For the 2021.2 release, here is the workaround to disable packing pipeline regis
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="id19">
-<h4>Resolved Issues<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id22">
+<h4>Resolved Issues<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1092,8 +1155,8 @@ will be needed in the source code:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id20">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id23">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Extended AXI4 master interface with AxSIZE and AxBURST support.</li>
@@ -1103,8 +1166,8 @@ will be needed in the source code:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id21">
-<h4>Resolved Issues<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id24">
+<h4>Resolved Issues<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1127,8 +1190,8 @@ will be needed in the source code:</p>
 <div class="section" id="legup-hls-eap-2021-1">
 <h3>LegUp HLS EAP 2021.1<a class="headerlink" href="#legup-hls-eap-2021-1" title="Permalink to this headline">¶</a></h3>
 <p>Release date: April 23, 2021</p>
-<div class="section" id="id22">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id25">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Full support for complex software testbenches.</li>
@@ -1141,8 +1204,8 @@ will be needed in the source code:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id23">
-<h4>Resolved Issues<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id26">
+<h4>Resolved Issues<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1165,16 +1228,16 @@ will be needed in the source code:</p>
 <div class="section" id="legup-hls-eap-9-2-1">
 <h3>LegUp HLS EAP 9.2.1<a class="headerlink" href="#legup-hls-eap-9-2-1" title="Permalink to this headline">¶</a></h3>
 <p>Release date: March 3, 2021</p>
-<div class="section" id="id24">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id27">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Added support for new <code class="docutils literal notranslate"><span class="pre">legup::thread</span></code> multi-threading API (see <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading with SmartHLS Threads</span></a>)</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id25">
-<h4>Resolved Issues<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id28">
+<h4>Resolved Issues<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1205,8 +1268,8 @@ will be needed in the source code:</p>
 <div class="section" id="legup-hls-eap-9-1">
 <h3>LegUp HLS EAP 9.1<a class="headerlink" href="#legup-hls-eap-9-1" title="Permalink to this headline">¶</a></h3>
 <p>Release date: Jan 4, 2021</p>
-<div class="section" id="id26">
-<h4>Software Features and Enhancements<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id29">
+<h4>Software Features and Enhancements<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Only support targeting Microchip PolarFire<sup>®</sup> FPGAs</li>
@@ -1220,8 +1283,8 @@ will be needed in the source code:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id27">
-<h4>Resolved Issues<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id30">
+<h4>Resolved Issues<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
 <p>The following defects and enhancement requests were resolved:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1293,9 +1356,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2.1 documentation&\
-		pub_ver=2022.2.1&\
-		revision_letter=2022.2.1&\
+		cover_title=SmartHLS 2022.3 documentation&\
+		pub_ver=2022.3&\
+		revision_letter=2022.3&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>User Guide &mdash; SmartHLS 2022.2.1 documentation</title>
+  <title>User Guide &mdash; SmartHLS 2022.3 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
 
 										  </h1>
 								
@@ -634,6 +634,10 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#supported-operations-in-ap-u-int-ap-u-fixpt-and-floating-point">Supported Operations in ap_[u]int, ap_[u]fixpt, and floating-point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-double-buffer-and-shared-buffer">C++ Double Buffer and Shared Buffer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-doublebuffer-and-sharedbuffer-in-a-multi-threaded-dataflow-design">Using <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> and <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code> in a multi-threaded dataflow design</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#image-processing-library">Image Processing Library</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#line-buffer">Line Buffer</a></li>
 </ul>
@@ -890,7 +894,7 @@ on the processor in an SoC system and control the generated hardware. There are 
 the software testbench and accelerator drivers for that reference SoC.</p>
 </div>
 <div class="section" id="smarthls-soc-flow">
-<h2>SmartHLS SoC Flow<a class="headerlink" href="#smarthls-soc-flow" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>SmartHLS SoC Flow<a class="headerlink" href="#smarthls-soc-flow" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS can automatically generate a RISC-V processor/accelerator SoC for the PolarFire<sup>®</sup> SoC device on the Icicle Kit. For more information on the SoC features, see <a class="reference internal" href="#soc-features"><span class="std std-ref">SoC Features</span></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -898,7 +902,7 @@ the software testbench and accelerator drivers for that reference SoC.</p>
 </div>
 </div>
 <div class="section" id="smarthls-pragmas">
-<span id="id1"></span><h2>SmartHLS Pragmas<a class="headerlink" href="#smarthls-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>SmartHLS Pragmas<a class="headerlink" href="#smarthls-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>Pragmas can be applied to the software code by the user to apply HLS optimization techniques and/or guide the compiler for hardware generation.
 They are applied directly on the applicable software construct (i.e., function, loop, argument, array) to specify a certain optimization for them. For example, to apply pipelining on a loop:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
@@ -911,7 +915,7 @@ They are applied directly on the applicable software construct (i.e., function, 
 For more details on loop pipelining, please refer to <a class="reference internal" href="#loop-pipelining"><span class="std std-ref">Loop Pipelining</span></a>.</p>
 </div>
 <div class="section" id="smarthls-constraints">
-<span id="id2"></span><h2>SmartHLS Constraints<a class="headerlink" href="#smarthls-constraints" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>SmartHLS Constraints<a class="headerlink" href="#smarthls-constraints" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS also supports user constraints to guide hardware generation.
 Whereas pragmas are applied directly on the source code for optimizations that are specific and local to the software construct that it is being applied on (function, loop, memory, argument, etc),
 constraints are used for settings that will be globally applied to the entire program (i.e., setting the target FPGA, target clock period).
@@ -1037,7 +1041,7 @@ and never joined) are not supported by SW/HW Co-Simulation.</li>
 </div>
 </div>
 <div class="section" id="loop-pipelining">
-<span id="id3"></span><h2>Loop Pipelining<a class="headerlink" href="#loop-pipelining" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Loop Pipelining<a class="headerlink" href="#loop-pipelining" title="Permalink to this headline">¶</a></h2>
 <p>Loop pipelining is an optimization that can automatically extract
 loop-level parallelism to create an efficient hardware pipeline.
 It allows executing multiple loop iterations concurrently on the same pipelined hardware.</p>
@@ -1217,6 +1221,10 @@ But the threaded function can continue executing.</li>
 continuous streams of data can execute in parallel.
 The concurrent execution of computational tasks can also be accurately described in software using <code class="docutils literal notranslate"><span class="pre">hls::thread</span></code> APIs.
 In addition, the continuous streams of data flowing through the tasks can be inferred using SmartHLS’s built-in FIFO data structure (see <a class="reference internal" href="#streaming-lib"><span class="std std-ref">Streaming Library</span></a>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Also see <a class="reference internal" href="#use-data-buffer-in-multi-threaded-dataflow"><span class="std std-ref">Using DoubleBuffer and SharedBuffer in a multi-threaded dataflow design</span></a> for another example that uses data buffer instead of FIFO to pass data between threads.</p>
+</div>
 <p>Let’s take a look at the code snippet below, which is from the example project, “Fir Filter (Loop Pipelining with <code class="docutils literal notranslate"><span class="pre">hls::thread</span></code>)”, included in the SmartHLS IDE.
 In the example, the <code class="docutils literal notranslate"><span class="pre">main</span></code> function contains the following code snippet:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create input and output FIFOs</span>
@@ -1293,7 +1301,7 @@ Now run the simulation (<code class="docutils literal notranslate"><span class="
 </div>
 </div>
 <div class="section" id="function-pipelining">
-<span id="id4"></span><h2>Function Pipelining<a class="headerlink" href="#function-pipelining" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Function Pipelining<a class="headerlink" href="#function-pipelining" title="Permalink to this headline">¶</a></h2>
 <p>You have just seen how an efficient streaming circuit can be described in software by using loop pipelining with SmartHLS threads.
 An alternative way to describe such a streaming circuit is to use <code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">Pipelining</span></code>.
 When a function is marked to be pipelined (by using the <code class="docutils literal notranslate"><span class="pre">Pipeline</span> <span class="pre">Function</span></code> constraint), SmartHLS will implement the function as a pipelined circuit that can start a new invocation every <code class="docutils literal notranslate"><span class="pre">II</span></code> cycles.
@@ -1338,7 +1346,7 @@ The circuit stops running when the <code class="docutils literal notranslate"><s
 </div>
 </div>
 <div class="section" id="memory-partitioning">
-<span id="id5"></span><h2>Memory Partitioning<a class="headerlink" href="#memory-partitioning" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>Memory Partitioning<a class="headerlink" href="#memory-partitioning" title="Permalink to this headline">¶</a></h2>
 <p>Memory Partitioning is an optimization where aggregate types such as arrays and structs are partitioned into smaller pieces
 allowing for a greater number of reads and writes (accesses) per cycle. SmartHLS instantiates a RAM for each aggregate
 type where each RAM has up to two ports (allowing up to two reads/writes per cycle). Partitioning aggregate types into
@@ -1421,7 +1429,7 @@ With this example, we can see that memory partitioning can help to improve memor
 <p>Please refer to the <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a> for more examples and details.</p>
 </div>
 <div class="section" id="user-specified-memory-partitioning">
-<span id="id6"></span><h3>User-Specified Memory Partitioning<a class="headerlink" href="#user-specified-memory-partitioning" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h3>User-Specified Memory Partitioning<a class="headerlink" href="#user-specified-memory-partitioning" title="Permalink to this headline">¶</a></h3>
 <p>The user can explicitly specify a memory to be partitioned via the <code class="docutils literal notranslate"><span class="pre">memory</span> <span class="pre">partition</span></code> pragma (<code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">variable</span></code>, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">argument</span></code>). See <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> for more details.
 User-specified partitioning also analyzes accesses but partitions based on a predefined structure and array dimension.
 SmartHLS supports <code class="docutils literal notranslate"><span class="pre">block</span></code>, <code class="docutils literal notranslate"><span class="pre">cyclic</span></code> and <code class="docutils literal notranslate"><span class="pre">complete</span></code> types for arrays, and <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> and <code class="docutils literal notranslate"><span class="pre">complete</span></code> partitioning for <code class="docutils literal notranslate"><span class="pre">struct</span></code>. Specifying the type to be <code class="docutils literal notranslate"><span class="pre">none</span></code> prevents partitioning the specified memory.</p>
@@ -1459,7 +1467,7 @@ Info: Partitioning memory: array into 8 partitions.
 <span id="cyclic-memory-partitioning"></span><h4>Cyclic Partitioning<a class="headerlink" href="#cyclic-partitioning" title="Permalink to this headline">¶</a></h4>
 <p>Cyclic partitioning interleaves elements from the original array into partitions. The number of interleaved partitions is defined by the <code class="docutils literal notranslate"><span class="pre">factor</span></code> argument.
 The array is partitioned cyclically by arbitrating the elements between the partitions, putting one element into each partition before coming back to the first one until the array is fully partitioned.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(array2d) type(block) dim(2) factor(2)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(array2d) type(cyclic) dim(2) factor(2)</span>
 <span class="kt">int</span> <span class="n">array2d</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>
 </pre></div>
 </div>
@@ -1551,7 +1559,7 @@ Note that the array field <cite>Ty.y</cite> has one partition, and similarly the
 </div>
 </div>
 <div class="section" id="struct-support">
-<span id="id7"></span><h2>Struct Support<a class="headerlink" href="#struct-support" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>Struct Support<a class="headerlink" href="#struct-support" title="Permalink to this headline">¶</a></h2>
 <p>A C++ <code class="docutils literal notranslate"><span class="pre">struct</span></code> is a user-defined data type that is used to group several fields, possibly with different data types.
 Using <code class="docutils literal notranslate"><span class="pre">struct</span></code> allows passing a set of variables around the design together while retaining the readability and accessibility of each of these variables.
 In this section, we will discuss how interfaces and memories with <code class="docutils literal notranslate"><span class="pre">struct</span></code> types are handled in SmartHLS including partitioning, packing, and returning by value.</p>
@@ -1638,7 +1646,7 @@ It returns <code class="docutils literal notranslate"><span class="pre">UpdateRe
 </pre></div>
 </div>
 <div class="section" id="struct-packing">
-<span id="id8"></span><h3>Struct Packing<a class="headerlink" href="#struct-packing" title="Permalink to this headline">¶</a></h3>
+<span id="id9"></span><h3>Struct Packing<a class="headerlink" href="#struct-packing" title="Permalink to this headline">¶</a></h3>
 <p>Packing a <code class="docutils literal notranslate"><span class="pre">struct</span></code> creates a single scalar with a wide word width.
 All the <code class="docutils literal notranslate"><span class="pre">struct</span></code> members are placed in the scalar with their order in the <code class="docutils literal notranslate"><span class="pre">struct</span></code> definition such that the first element is the least significant part of the vector and the last element is the most significant part of the vector.
 Packing allows all the <code class="docutils literal notranslate"><span class="pre">struct</span></code> elements to be read and written simultaneously.
@@ -3163,6 +3171,328 @@ and the result will be cast back to double. This can result in a loss of precisi
 or incorrect results when the double input is not representable in the range of float.</p>
 </div>
 </div>
+<div class="section" id="c-double-buffer-and-shared-buffer">
+<span id="data-buffer"></span><h3>C++ Double Buffer and Shared Buffer<a class="headerlink" href="#c-double-buffer-and-shared-buffer" title="Permalink to this headline">¶</a></h3>
+<p>With SmartHLS’ <a class="reference internal" href="#pthreads-multithreading"><span class="std std-ref">Multi-threading</span></a> feature, users can create a dataflow design where producer and consumer functions/threads execute simultaneously with data flowing from producer to consumer (also see <a class="reference internal" href="#data-flow-parallelism-with-pthreads"><span class="std std-ref">Data Flow Parallelism with SmartHLS Threads</span></a>).
+Multi-threaded dataflow designs typically need some form of buffering and handshaking to pass intermediate data from producer thread to consumer thread.
+For example, SmartHLS’ <a class="reference internal" href="#streaming-lib"><span class="std std-ref">FIFO</span></a> class allows to buffer intermediate data and the blocking <code class="docutils literal notranslate"><span class="pre">write()</span></code> and <code class="docutils literal notranslate"><span class="pre">read()</span></code> methods implement the handshaking for data passing.
+However, the FIFO construct is not suitable for the scenarios where the producer and consumer access the data in different orders, or require repeated accesses to the data.
+In this case, SmartHLS’ <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> and <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code> classes can be useful alternatives.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">DoubleBuffer&lt;T&gt;</span></code> (or <code class="docutils literal notranslate"><span class="pre">SharedBuffer&lt;T&gt;</span></code>) class contains two copies of storage (or one copy for <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code>) for buffering the data of type <code class="docutils literal notranslate"><span class="pre">T</span></code>, which is specified as a template argument of the class.
+Each class object is expected to be accessed by two functions, typically two threads, one producer writing data to the buffer, and one consumer reading data from the buffer.
+The producer and consumer functions will use the following class methods to access the buffer and perform synchronization,</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2">Producer Side Methods</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">&amp;producer()</span></code></td>
+<td>Returns a reference to the buffer that should be used exclusively by the producer function.
+The reference stays unchanged throughout the entire lifetime of the buffer object.
+Hence the producer function typically only needs to call this method once.
+Although the producer function is meant to store output to the buffer,
+the producer function can still read back the self-written data via the reference.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">producer_acquire()</span></code></td>
+<td>Acquires a buffer for producer to store the output.
+After this function returns, the producer may start writing to the buffer.
+This method is a blocking call – if there is an available buffer, the method returns immediately;
+otherwise the method blocks until a buffer becomes available, after the consumer
+side calls the <code class="docutils literal notranslate"><span class="pre">consumer_release()</span></code> method to release a buffer.
+Initially all buffers (2 for <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code>, 1 for <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code>) are available for the producer function to acquire.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">producer_release()</span></code></td>
+<td>Releases the previously acquired buffer after finish writing output.
+The released buffer can then be acquired by the consumer to access as input.
+This method is not a blocking call and returns immediately.
+If the producer does not have an acquired buffer when calling this release method,
+the method simply returns with no operation, no buffer will be released.</td>
+</tr>
+<tr class="row-odd"><td colspan="2">Consumer Side Methods</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">&amp;consumer()</span></code></td>
+<td>Returns a reference to the buffer that should be used exclusively by the consumer function.
+The reference stays unchanged throughout the entire lifetime of the buffer object.
+Hence the consumer function typically only needs to call this method once.
+Although the consumer function is meant to read the buffer as input,
+the consumer function can also write data to the buffer via the reference.
+However the data written by the consumer function won’t be visible to the producer function.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">consumer_acquire()</span></code></td>
+<td>Acquires a producer-released buffer in the <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> or <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code> for the consumer to access as input.
+This method is a blocking call – if there is a producer-released buffer available, the method returns immediately;
+otherwise the method blocks until a buffer becomes available, after the producer
+side calls the <code class="docutils literal notranslate"><span class="pre">producer_release()</span></code> method to release a buffer.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">consumer_release()</span></code></td>
+<td>Releases the previously acquired buffer after finish reading input.
+The released buffer is returned back to the producer side for producer to write the next set of data.
+This method is not a blocking call and returns immediately.
+If the consumer does not have an acquired buffer when calling this release method,
+the method simply returns with no operation, no buffer will be released.</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s use an example to illustrate the usage of these class methods.
+Say we have a <code class="docutils literal notranslate"><span class="pre">CopyArray</span></code> function that copies from array A to array B.
+If we want to overlap <code class="docutils literal notranslate"><span class="pre">CopyArray</span></code> function’s execution with its upstream function (who produces A) and downstream function (who consumes B),
+we can invoke the upstream, <code class="docutils literal notranslate"><span class="pre">CopyArray</span></code> and downstream functions as threads, and change the intermediate arrays to <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> data type to implement shared storage and synchronization between threads.
+The <code class="docutils literal notranslate"><span class="pre">CopyArray</span></code> function would be the consumer of input array A and the producer of output array B.
+The code below demonstrates the changes to access input and output arrays as <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> type.
+To use <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code> instead, the only change in the code below is to use <code class="docutils literal notranslate"><span class="pre">SharedBuffer&lt;int[100]&gt;</span></code>; all other class methods stay the same.</p>
+<div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">CopyArray</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="mi">100</span><span class="p">],</span> <span class="kt">int</span> <span class="n">B</span><span class="p">[</span><span class="mi">100</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">//=== Change to use DoubleBuffer: ===</span>
+
+<span class="kt">void</span> <span class="nf">CopyArray</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">DoubleBuffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">BufferA</span><span class="p">,</span> <span class="n">hls</span><span class="o">::</span><span class="n">DoubleBuffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">BufferB</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">A</span> <span class="o">=</span> <span class="n">BufferA</span><span class="p">.</span><span class="n">consumer</span><span class="p">();</span> <span class="c1">// Obtain the reference to input buffer.</span>
+    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">B</span> <span class="o">=</span> <span class="n">BufferB</span><span class="p">.</span><span class="n">producer</span><span class="p">();</span> <span class="c1">// Obtain the reference to output buffer.</span>
+
+    <span class="n">BufferA</span><span class="p">.</span><span class="n">consumer_acquire</span><span class="p">();</span>  <span class="c1">// Acquire input buffer from upstream.</span>
+    <span class="n">BufferB</span><span class="p">.</span><span class="n">producer_acquire</span><span class="p">();</span>  <span class="c1">// Acquire buffer for output.</span>
+
+    <span class="c1">// Note that the original code reading/writing the data</span>
+    <span class="c1">// stays unchanged via the references with &#39;T&amp;&#39; type.</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+    <span class="n">BufferA</span><span class="p">.</span><span class="n">consumer_release</span><span class="p">();</span>  <span class="c1">// Release input buffer back to upstream.</span>
+    <span class="n">BufferB</span><span class="p">.</span><span class="n">producer_release</span><span class="p">();</span>  <span class="c1">// Release output buffer to downstream.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="using-doublebuffer-and-sharedbuffer-in-a-multi-threaded-dataflow-design">
+<span id="use-data-buffer-in-multi-threaded-dataflow"></span><h4>Using <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> and <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code> in a multi-threaded dataflow design<a class="headerlink" href="#using-doublebuffer-and-sharedbuffer-in-a-multi-threaded-dataflow-design" title="Permalink to this headline">¶</a></h4>
+<p>We will use a more complete example to further demonstrate how to use <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> and <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code> in a multi-threaded dataflow design, and how the buffer classes enable parallelism between the dataflow threads.</p>
+<p>Say we have a continuous input stream, every 2048 elements in the stream is considered as a segment.
+We are going to sort each 2048-element segment of the input stream and write the sorted segments to an output stream.</p>
+<p>As we know, no algorithm can sort with an O(n) runtime performance.
+That is, a sorting algorithm needs to visit each element more than once, and hence the sorting algorithm cannot process the data stream at line rate and cannot work on the streaming FIFO interfaces directly.
+A dataflow design in this case can be composed of three stages, 1) store each 2048-element segment of input stream into a buffer, 2) sort the elements in the buffer, and 3) stream out the sorted elements.
+The three processing stages form a dataflow design, where the output produced by the earlier stage is consumed by the next stage.</p>
+<a class="reference internal image-reference" href="_images/DoubleBufferDataflow.png"><img alt="_images/DoubleBufferDataflow.png" class="align-center" src="_images/DoubleBufferDataflow.png" style="width: 852.2px; height: 74.60000000000001px;" /></a>
+<p>For better throughput, we can overlap the three processing stages with multi-threading, and use <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> or <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code> to synchronize the accesses to the shared buffer between upstream and downstream threads.
+Compared to <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code>, each <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> contains two copies of storage instead of one, which reduces the delay that a processing stage waits for the buffer to become available.</p>
+<p>The code below describes the design in C++:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;hls/data_buffer.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;hls/streaming.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define N 2048</span>
+
+<span class="k">using</span> <span class="n">hls</span><span class="o">::</span><span class="n">DoubleBuffer</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">hls</span><span class="o">::</span><span class="n">ref</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">hls</span><span class="o">::</span><span class="kr">thread</span><span class="p">;</span>
+
+<span class="c1">// Reads input stream into array.</span>
+<span class="kt">void</span> <span class="nf">StreamToBuffer</span><span class="p">(</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">in_fifo</span><span class="p">,</span> <span class="n">DoubleBuffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">in_buffer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">buf_array</span> <span class="o">=</span> <span class="n">in_buffer</span><span class="p">.</span><span class="n">producer</span><span class="p">();</span> <span class="c1">// Obtain the reference to buffer.</span>
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">in_buffer</span><span class="p">.</span><span class="n">producer_acquire</span><span class="p">();</span> <span class="c1">// Acquire buffer to write output data.</span>
+
+<span class="cp">#pragma HLS loop pipeline</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">buf_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in_fifo</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+
+        <span class="n">in_buffer</span><span class="p">.</span><span class="n">producer_release</span><span class="p">();</span> <span class="c1">// Release buffer to downstream.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Forward declare the MergeSortArray function. Implementation is shown below.</span>
+<span class="kt">void</span> <span class="nf">MergeSortArray</span><span class="p">(</span><span class="kt">int</span> <span class="n">in</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="kt">int</span> <span class="n">out</span><span class="p">[</span><span class="n">N</span><span class="p">]);</span>
+
+<span class="c1">// Performs merge sort whenever the input and output buffers become available.</span>
+<span class="kt">void</span> <span class="nf">MergeSort</span><span class="p">(</span><span class="n">DoubleBuffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">in_buffer</span><span class="p">,</span> <span class="n">DoubleBuffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">out_buffer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">in</span> <span class="o">=</span> <span class="n">in_buffer</span><span class="p">.</span><span class="n">consumer</span><span class="p">();</span>   <span class="c1">// Obtain the reference to input buffer.</span>
+    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">out</span> <span class="o">=</span> <span class="n">out_buffer</span><span class="p">.</span><span class="n">producer</span><span class="p">();</span> <span class="c1">// Obtain the reference to output buffer.</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">in_buffer</span><span class="p">.</span><span class="n">consumer_acquire</span><span class="p">();</span>  <span class="c1">// Acquire input buffer from upstream.</span>
+        <span class="n">out_buffer</span><span class="p">.</span><span class="n">producer_acquire</span><span class="p">();</span> <span class="c1">// Acquire buffer for output.</span>
+
+        <span class="n">MergeSortArray</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+
+        <span class="n">out_buffer</span><span class="p">.</span><span class="n">producer_release</span><span class="p">();</span> <span class="c1">// Release output buffer to downstream.</span>
+        <span class="n">in_buffer</span><span class="p">.</span><span class="n">consumer_release</span><span class="p">();</span>  <span class="c1">// Release input buffer back to upstream.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Writes array into output stream.</span>
+<span class="kt">void</span> <span class="nf">BufferToStream</span><span class="p">(</span><span class="n">DoubleBuffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">out_buffer</span><span class="p">,</span> <span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">out_fifo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">buf_array</span> <span class="o">=</span> <span class="n">out_buffer</span><span class="p">.</span><span class="n">consumer</span><span class="p">();</span> <span class="c1">// Obtain the reference to buffer.</span>
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out_buffer</span><span class="p">.</span><span class="n">consumer_acquire</span><span class="p">();</span> <span class="c1">// Acquire buffer to read data from upstream.</span>
+
+<span class="cp">#pragma HLS loop pipeline</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">out_fifo</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf_array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+
+        <span class="n">out_buffer</span><span class="p">.</span><span class="n">consumer_release</span><span class="p">();</span> <span class="c1">// Release buffer back to upstream.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Top-level function implementing a pipeline that sorts data stream.</span>
+<span class="kt">void</span> <span class="nf">MergeSortPipeline</span><span class="p">(</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">in_fifo</span><span class="p">,</span> <span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">out_fifo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Create two buffers as the intermediate storage for the three threads/functions.</span>
+    <span class="n">DoubleBuffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">in_buffer</span><span class="p">,</span> <span class="n">out_buffer</span><span class="p">;</span>
+
+    <span class="kr">thread</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StreamToBuffer</span><span class="p">,</span> <span class="n">ref</span><span class="p">(</span><span class="n">in_fifo</span><span class="p">),</span> <span class="n">ref</span><span class="p">(</span><span class="n">in_buffer</span><span class="p">));</span>
+    <span class="kr">thread</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">MergeSort</span><span class="p">,</span> <span class="n">ref</span><span class="p">(</span><span class="n">in_buffer</span><span class="p">),</span> <span class="n">ref</span><span class="p">(</span><span class="n">out_buffer</span><span class="p">));</span>
+    <span class="kr">thread</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">BufferToStream</span><span class="p">,</span> <span class="n">ref</span><span class="p">(</span><span class="n">out_buffer</span><span class="p">),</span> <span class="n">ref</span><span class="p">(</span><span class="n">out_fifo</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">StreamToBuffer</span></code>, <code class="docutils literal notranslate"><span class="pre">MergeSort</span></code>, and <code class="docutils literal notranslate"><span class="pre">BufferToStream</span></code> functions correspond to the blue function blocks in the above diagram.<ul>
+<li><code class="docutils literal notranslate"><span class="pre">StreamToBuffer</span></code> reads <code class="docutils literal notranslate"><span class="pre">in_fifo</span></code> stream and writes to <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code>,</li>
+<li><code class="docutils literal notranslate"><span class="pre">MergeSort</span></code> reads <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code> and writes to <code class="docutils literal notranslate"><span class="pre">out_buffer</span></code>,</li>
+<li><code class="docutils literal notranslate"><span class="pre">BufferToStream</span></code> reads <code class="docutils literal notranslate"><span class="pre">out_buffer</span></code> and writes to <code class="docutils literal notranslate"><span class="pre">out_fifo</span></code> stream,</li>
+<li>each function calls the corresponding producer or consumer side methods to access the shared <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code>, as described in the above section.</li>
+</ul>
+</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">MergeSortPipeline</span></code> function implements the dataflow pipeline,<ul>
+<li>the <code class="docutils literal notranslate"><span class="pre">in_fifo</span></code> and <code class="docutils literal notranslate"><span class="pre">out_fifo</span></code> arguments correspond to the input and output streams of the pipeline,</li>
+<li>the intermediate <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> are instantiated: <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code> and <code class="docutils literal notranslate"><span class="pre">out_buffer</span></code>, corresponding to the gray buffer blocks in the above diagram,</li>
+<li>the three processing functions are then invoked as parallel threads, and the input and output data are passed by reference to the threads (also see <a class="reference internal" href="#supported-parallel-apis"><span class="std std-ref">Supported SmartHLS Thread APIs</span></a>).</li>
+</ul>
+</li>
+<li>Since we want the pipeline to continuously process the data stream, the three processing threads are made free-running. To achieve this,<ul>
+<li>in each of the three processing functions, wrap the operations inside an infinite <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">(1)</span></code> loop; each loop iteration processes one segment of data,</li>
+<li>the three threads forked in <code class="docutils literal notranslate"><span class="pre">MergeSortPipeline</span></code> function are never joined and left constantly running.</li>
+</ul>
+</li>
+<li>Now we have three free-running threads, each can start processing a new segment of data whenever the input/output storage becomes available to acquire via the <code class="docutils literal notranslate"><span class="pre">&lt;producer|consumer&gt;_acquire()</span></code> methods.</li>
+</ul>
+<p>In this design, each of the input and output buffers has two copies of storage for the 2048-element segment.
+By having two copies of storage in a double buffer, the upstream producer can write a new batch of output to one copy of storage,
+while the downstream consumer simultaneously processes the previous batch stored in the other copy of storage as input.</p>
+<p>The figure below illustrates how <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> allows to overlap the executions of upstream and downstream threads,</p>
+<a class="reference internal image-reference" href="_images/DoubleBufferTimeline.png"><img alt="_images/DoubleBufferTimeline.png" class="align-center" src="_images/DoubleBufferTimeline.png" style="width: 800.75px; height: 293.75px;" /></a>
+<ul class="simple">
+<li>At time a, <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> starts to receive input stream and store every 2048 input elements to storage A of input buffer (annotated as “in/A” in the figure).</li>
+<li>At time b, when <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> finishes storing the first segment,<ul>
+<li><code class="docutils literal notranslate"><span class="pre">Sort</span></code> starts working on the input stored in storage A of input buffer, and saves sorted result into storage A of output buffer,</li>
+<li>meanwhile <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> can start storing the second segment to storage B of input buffer.</li>
+</ul>
+</li>
+<li>At time c, when <code class="docutils literal notranslate"><span class="pre">Sort</span></code> finishes sorting the first segment,<ul>
+<li>output buffer’s storage A is released for <code class="docutils literal notranslate"><span class="pre">Buf2Str</span></code> to send sorted segment to output stream,</li>
+<li>input buffer’s storage A is freed up for <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> to store the next segment (segment 3),</li>
+<li>and by this time, <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> has finished storing segment 2 into input buffer’s storage B, so <code class="docutils literal notranslate"><span class="pre">Sort</span></code> can immediately start working on segment 2.<ul>
+<li>We assume <code class="docutils literal notranslate"><span class="pre">Sort</span></code> takes more time than <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>From this point on, the dataflow pipeline enters steady state – whenever <code class="docutils literal notranslate"><span class="pre">Sort</span></code> finishes (e.g., at time c, d, and e),<ul>
+<li>one input storage is released to the upstream <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> to store a new input segment,</li>
+<li>one output storage is released to the downstream <code class="docutils literal notranslate"><span class="pre">Buf2Str</span></code> to stream out the sorted segment,</li>
+<li>the <code class="docutils literal notranslate"><span class="pre">Sort</span></code> stage itself can work on the next segment immediately,</li>
+<li><strong>the throughput of the dataflow pipeline is determined by the most time-consuming stage, i.e.,</strong> <code class="docutils literal notranslate"><span class="pre">Sort</span></code> <strong>in this case.</strong></li>
+</ul>
+</li>
+</ul>
+<p>The above C++ code can be easily changed to use <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code>, by simply replacing all <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> type with <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code> type.
+When using <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code>, each buffer has only one copy of storage, which can only be accessed by one function at a time. So two adjacent upstream and downstream functions cannot be both active simultaneously.
+The figure below shows the timeline when using <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code>:</p>
+<a class="reference internal image-reference" href="_images/SharedBufferTimeline.png"><img alt="_images/SharedBufferTimeline.png" class="align-center" src="_images/SharedBufferTimeline.png" style="width: 802.0px; height: 230.25px;" /></a>
+<p>Notice at time b, when <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> finishes writing a segment to input buffer, <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> cannot immediately start writing the next segment as in the <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> case.
+<code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> needs to wait until <code class="docutils literal notranslate"><span class="pre">Sort</span></code> finishes sorting at time c and releases the only input buffer storage, in order to start storing the next segment.
+Similarly, when <code class="docutils literal notranslate"><span class="pre">Sort</span></code> is running and has the output buffer acquired, the downstream <code class="docutils literal notranslate"><span class="pre">Buf2Str</span></code> has to wait.</p>
+<p>In short, when <code class="docutils literal notranslate"><span class="pre">Sort</span></code> is running, its upstream <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> and downstream <code class="docutils literal notranslate"><span class="pre">Buf2Str</span></code> have no available buffers to continue processing and have to wait;
+when <code class="docutils literal notranslate"><span class="pre">Sort</span></code> finishes, <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> and <code class="docutils literal notranslate"><span class="pre">Buf2Str</span></code> can be both active (e.g., from time c to d), because they do not access common buffers.</p>
+<p>In this case, <strong>the throughput of the dataflow pipeline is determined by the latency of</strong> <code class="docutils literal notranslate"><span class="pre">Sort</span></code> <strong>plus</strong> <code class="docutils literal notranslate"><span class="pre">Str2Buf</span></code> (or <code class="docutils literal notranslate"><span class="pre">Buf2Str</span></code>, whichever is longer).</p>
+<p>For completeness, the code below implements the merge sort algorithm (<code class="docutils literal notranslate"><span class="pre">MergeSortArray</span></code>) and a main function injecting input and checking output to/from the dataflow pipeline.
+Note that,</p>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">MergeOnePass</span></code> function merges the multiple pairs of halves from one array into another array.
+The <code class="docutils literal notranslate"><span class="pre">MergeSortArray</span></code> calls <code class="docutils literal notranslate"><span class="pre">MergeOnePass</span></code> repeatedly with a doubling partition size, and alternates the input and output array arguments between calls to reuse memory.
+The two arrays are the storage inside the input and output buffers.
+As you can see, the sort function, being the consumer of the input buffer, can also write to the buffer; and being the producer of the output buffer, can also read from the buffer.</li>
+<li>Since free-running threads (that are continuously running and never joined) are not supported by SW/HW Co-Simulation (limitation listed in <a class="reference internal" href="#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a>),
+we make the <code class="docutils literal notranslate"><span class="pre">main</span></code> function as the top-level to generate hardware for the entire program, so that the <code class="docutils literal notranslate"><span class="pre">Simulate</span> <span class="pre">Hardware</span></code> (<code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">sim</span></code>) feature can run directly without a custom testbench.</li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// One pass of merge with partition_size -- merging multiple pairs of halves</span>
+<span class="c1">// across the whole array.</span>
+<span class="c1">// For each pair, merges the two haves in[l .. m] and in[m + 1 .. r] into out[l</span>
+<span class="c1">// .. r], where m = l + partition_size - 1, r = l + 2 * partition_size - 1</span>
+<span class="c1">// Assume the array size is a power of 2.</span>
+<span class="kt">void</span> <span class="nf">MergeOnePass</span><span class="p">(</span><span class="kt">int</span> <span class="n">in</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="kt">int</span> <span class="n">out</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="kt">int</span> <span class="n">partition_size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">left_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">left_idx</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">left_idx</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">partition_size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">left_idx</span> <span class="o">+</span> <span class="n">partition_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="n">partition_size</span><span class="p">;</span>
+        <span class="c1">// Indices in the input and output arrays.</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">left_idx</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="cp">#pragma HLS loop pipeline</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">left_idx</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">left_idx</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">partition_size</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">bool</span> <span class="n">copy_i</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">)</span> <span class="o">?</span> <span class="nb">false</span> <span class="o">:</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">)</span> <span class="o">?</span> <span class="nb">true</span> <span class="o">:</span> <span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">in</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">copy_i</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">in</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+                <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Merge sort is done in multiple steps, each step merges on two partitions with</span>
+<span class="c1">// twice bigger the size of previous step.</span>
+<span class="kt">void</span> <span class="nf">MergeSortArray</span><span class="p">(</span><span class="kt">int</span> <span class="n">in</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="kt">int</span> <span class="n">out</span><span class="p">[</span><span class="n">N</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c1">// Each MergeOnePass merges from halves in array &#39;in&#39; to &#39;out&#39;, then</span>
+    <span class="c1">// alternates to merge halves in array &#39;out&#39; to &#39;in&#39;.</span>
+    <span class="c1">// We can reuse the memory by alternating the in and out arrays.</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">in</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">in</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">in</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="mi">64</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">in</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="mi">256</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">in</span><span class="p">,</span> <span class="mi">512</span><span class="p">);</span>
+    <span class="n">MergeOnePass</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="mi">1024</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define TEST_ITERATIONS 10</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function top</span>
+    <span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">in_fifo</span><span class="p">(</span><span class="n">TEST_ITERATIONS</span> <span class="o">*</span> <span class="n">N</span><span class="p">),</span> <span class="n">out_fifo</span><span class="p">(</span><span class="n">TEST_ITERATIONS</span> <span class="o">*</span> <span class="n">N</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">TEST_ITERATIONS</span> <span class="o">*</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">in_fifo</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">TEST_ITERATIONS</span> <span class="o">*</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">MergeSortPipeline</span><span class="p">(</span><span class="n">in_fifo</span><span class="p">,</span> <span class="n">out_fifo</span><span class="p">);</span>
+
+    <span class="kt">unsigned</span> <span class="n">err_cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">TEST_ITERATIONS</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">last</span> <span class="o">=</span> <span class="n">out_fifo</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">out_fifo</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">last</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;i: %d, last (%d) &gt; cur (%d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">cur</span><span class="p">);</span>
+                <span class="n">err_cnt</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="n">cur</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">err_cnt</span><span class="p">)</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;FAIL. err_cnt = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">err_cnt</span><span class="p">);</span>
+    <span class="k">else</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;PASS. err_cnt = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">err_cnt</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">err_cnt</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="image-processing-library">
 <h3>Image Processing Library<a class="headerlink" href="#image-processing-library" title="Permalink to this headline">¶</a></h3>
 <p>The SmartHLS image processing library provides C++ class/function APIs for a
@@ -3364,7 +3694,7 @@ This section describes the types of interfaces that are supported by SmartHLS, t
 default interface for each data type in C/C++, and how to customize the
 interface.</p>
 <div class="section" id="module-control-interface">
-<span id="id9"></span><h3>Module Control Interface<a class="headerlink" href="#module-control-interface" title="Permalink to this headline">¶</a></h3>
+<span id="id10"></span><h3>Module Control Interface<a class="headerlink" href="#module-control-interface" title="Permalink to this headline">¶</a></h3>
 <p>The top-level Verilog module generated by SmartHLS is always associated with a
 module control interface to start the HLS module, read completion status and
 retrieve return data.
@@ -3644,7 +3974,7 @@ global variables.</td>
 </tbody>
 </table>
 <div class="section" id="memory-interface">
-<span id="id10"></span><h4>Memory Interface<a class="headerlink" href="#memory-interface" title="Permalink to this headline">¶</a></h4>
+<span id="id11"></span><h4>Memory Interface<a class="headerlink" href="#memory-interface" title="Permalink to this headline">¶</a></h4>
 <p>The memory interface can be used for any pointer arguments or global variables
 (including array and struct types).
 The memory interface can be connected to an external RAM module that stores the
@@ -3848,7 +4178,9 @@ write AXI4 transactions through the AXI4 initiator interface.
 The pragma below specifies the AXI4 initiator interface type for a pointer
 argument (including array, struct, class types),</p>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface argument(&lt;ARGUMENT_NAME&gt;) type(axi_initiator) \</span>
-<span class="cp">                      ptr_addr_interface(&lt;simple|axi_target&gt;) num_elements(&lt;NUM_ARRAY_ELEMENTS&gt;)</span>
+<span class="cp">                      ptr_addr_interface(&lt;simple|axi_target&gt;) \</span>
+<span class="cp">                      num_elements(&lt;NUM_ARRAY_ELEMENTS&gt;) \</span>
+<span class="cp">                      max_burst_len(&lt;AXI4I_MAX_BURST_LENGTH&gt;)</span>
 </pre></div>
 </div>
 <p>Typically the AXI4 initiator interface is connected to the AXI4 target (or AXI4
@@ -3898,11 +4230,69 @@ Assuming we write a base address of 0xFFFF0000 to the AXI4 target interface, the
 size can be specified or overridden (over the declared size in C++) by
 specifying the <cite>num_elements</cite> option.
 This option is needed by the <a class="reference internal" href="#sw-hw-co-simulation">SW/HW Co-Simulation</a> feature to know the size of the external memory to be modelled in the simulation testbench; this option does not affect the HLS-generated RTL/circuit.</p>
-<p>Currently the AXI4 initiator interface does not yet support burst transfer.
-Meaning each write or read access of the pointer argument in the C++ code
-becomes a single-beat AXI4 transaction.
-If burst transfer is needed for better data transfer throughput, consider
-<a class="reference internal" href="#custom-axi4-using-fifo"><span class="std std-ref">Implementing A Custom AXI4 Master/Slave Using hls::FIFO</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">AXI4 initiator burst support is currently a beta feature in SmartHLS, and is under active development. Data transfer throughput will be improved and additional features will be added in subsequent SmartHLS releases.</p>
+</div>
+<p>By default, each read or write to an AXI4 initiator pointer argument in the C++ will become a single-beat AXI4 transaction. However, when the read or write is inside a loop, SmartHLS can detect when a burst transaction can be used instead, and SmartHLS will convert that read or write into an AXI4 burst transaction. In order to use a loop to infer an AXI4 burst transfer, the loop should have the following properties:</p>
+<ul class="simple">
+<li>The loop should be pipelined (see <a class="reference internal" href="#loop-pipelining"><span class="std std-ref">Loop Pipelining</span></a>).</li>
+<li>The loop bound should be known before the loop executes.</li>
+<li>The loop should have no more than 1 read and no more than 1 write to AXI4 initiator pointer arguments.</li>
+<li>The addressing for the reads and writes should be incrementing by 1 word per loop iteration.</li>
+<li>The reads and writes should not be inside conditional statements.</li>
+</ul>
+<p>If the user expects a burst read or write to an AXI4 initiator pointer argument, they can use the <cite>max_burst_len</cite> option (default is 16) in the interface pragma to specify the burst length to use when doing a burst read or write transaction for that argument. An example of using a loop that meets all the criteria to infer an AXI4 initiator burst is shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define NUM_ELEMENTS 1000</span>
+
+<span class="kt">void</span> <span class="nf">init_array</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">out_array</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function top</span>
+<span class="c1">// In the interface argument, set the max burst length to 64</span>
+<span class="cp">#pragma HLS interface argument(out_array) type(axi_initiator)                  \</span>
+<span class="cp">    ptr_addr_interface(axi_target) num_elements(NUM_ELEMENTS)                  \</span>
+<span class="cp">        max_burst_len(64)</span>
+
+<span class="c1">// Burstable</span>
+<span class="cp">#pragma HLS loop pipeline</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">NUM_ELEMENTS</span><span class="p">;</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out_array</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>An example of loops that do not meet the burst criteria (and will produce warnings if pipelined) is shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define NUM_ELEMENTS 1000</span>
+
+<span class="kt">void</span> <span class="nf">init_array</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">out_array</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function top</span>
+<span class="c1">// In the interface argument, set the max burst length to 64</span>
+<span class="cp">#pragma HLS interface argument(out_array) type(axi_initiator)                  \</span>
+<span class="cp">    ptr_addr_interface(axi_target) num_elements(NUM_ELEMENTS)                  \</span>
+<span class="cp">        max_burst_len(64)</span>
+
+<span class="c1">// Not burstable - two writes per iteration</span>
+<span class="cp">#pragma HLS loop pipeline</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">NUM_ELEMENTS</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out_array</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+        <span class="n">out_array</span><span class="p">[</span><span class="n">idx</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="c1">// Not burstable - address is not incrementing by one</span>
+<span class="cp">#pragma HLS loop pipeline</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">NUM_ELEMENTS</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out_array</span><span class="p">[</span><span class="n">idx</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="c1">// Not burstable - write is inside conditional code</span>
+<span class="cp">#pragma HLS loop pipeline</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">NUM_ELEMENTS</span><span class="p">;</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">idx</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
+            <span class="n">out_array</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If finer control of the burst transfer is required, consider <a class="reference internal" href="#custom-axi4-using-fifo"><span class="std std-ref">Implementing A Custom AXI4 Master/Slave Using hls::FIFO</span></a>.</p>
 </div>
 <div class="section" id="axi4-target-interface">
 <span id="pointer-arg-axi-target"></span><h4>AXI4 Target Interface<a class="headerlink" href="#axi4-target-interface" title="Permalink to this headline">¶</a></h4>
@@ -4476,7 +4866,7 @@ pointer argument (<code class="docutils literal notranslate"><span class="pre">M
 function (see <a class="reference internal" href="#allocation-library"><span class="std std-ref">Memory Allocation Library</span></a>).</p>
 </div>
 <div class="section" id="top-level-driver-functions">
-<span id="id11"></span><h3>Top-level Driver Functions<a class="headerlink" href="#top-level-driver-functions" title="Permalink to this headline">¶</a></h3>
+<span id="id12"></span><h3>Top-level Driver Functions<a class="headerlink" href="#top-level-driver-functions" title="Permalink to this headline">¶</a></h3>
 <p>When all interfaces of a HLS module are either AXI4 target or AXI4 initiator,
 that means an attached processor can initialize/retrieve all input/output data
 of the HLS module and control the HLS module’s execution.
@@ -4768,7 +5158,7 @@ There are two options for <code class="docutils literal notranslate"><span class
 <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;\SmartHLS\examples\synthesize_microsemi.tcl</span></code></p>
 </div>
 <div class="section" id="soc-features">
-<span id="id12"></span><h2>SoC Features<a class="headerlink" href="#soc-features" title="Permalink to this headline">¶</a></h2>
+<span id="id13"></span><h2>SoC Features<a class="headerlink" href="#soc-features" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS can generate a RISC-V processor/accelerator reference SoC, where it generates hardware accelerators and automatically integrates into Microprocessor Sub-System (MSS). The SoC features are currently limited to targeting the <a class="reference external" href="https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES">PolarFire SoC Icicle Kit</a>, and are described in the following sections.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -4791,7 +5181,7 @@ It also generates Tcl scripts that contains commands for SmartDesign, which is r
 <a class="reference internal image-reference" href="_images/SoC_flow_overview.png"><img alt="_images/SoC_flow_overview.png" src="_images/SoC_flow_overview.png" style="width: 1000.5px; height: 609.0px;" /></a>
 </div>
 <div class="section" id="soc-data-transfer-methods">
-<span id="id13"></span><h3>SoC Data Transfer Methods<a class="headerlink" href="#soc-data-transfer-methods" title="Permalink to this headline">¶</a></h3>
+<span id="id14"></span><h3>SoC Data Transfer Methods<a class="headerlink" href="#soc-data-transfer-methods" title="Permalink to this headline">¶</a></h3>
 <p>For the RISC-V SoC on the PolarFire SoC Icicle Kit, main memory resides in off-chip DDR memory. For each pointer argument of an accelerator, data can be copied from DDR memory to accelerator’s on-chip memory buffer, or it can be accessed directly in DDR by the accelerator. Any access to DDR, whether data is copied or accessed directly, goes through the MSS data cache to maintain cache coherency.
 There are three data transfer methods provided to transfer data between DDR memory and hardware accelerators.</p>
 <p><strong>CPU Copy</strong>:
@@ -4853,7 +5243,7 @@ In order to run software on an attached Icicle Kit, some preliminary steps are r
 </div>
 </div>
 <div class="section" id="soc-profiler">
-<span id="id15"></span><h3>SoC Profiler<a class="headerlink" href="#soc-profiler" title="Permalink to this headline">¶</a></h3>
+<span id="id16"></span><h3>SoC Profiler<a class="headerlink" href="#soc-profiler" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS includes a lightweight profiler that allows the measurement of the amount of time spent transferring data between the CPU and the generated hardware modules. Ideally we want to have a high computation-to-communication ratio to maximize the use of a hardware accelerator. In other words, minimize the amount of communication (time sending and receiving data), and maximize the amount of time the hardware modules are actively processing data.</p>
 <p>The SmartHLS soc profiler allows a breakdown analysis of the application runtime to identify potential optimizations. For example, depending on the application, sometimes we can run concurrently multiple hardware modules instead of a sequential execution.  Another example is we can try to overlap communication and computation time to make more efficient use of hardware resources.</p>
 <div class="section" id="soc-profiler-overview">
@@ -5156,51 +5546,51 @@ Please refer to <a class="reference internal" href="#loop-pipelining"><span clas
 SmartHLS’s <cite>Schedule Viewer</cite> also gives more details about how individual instructions are scheduled inside each pipeline.</p>
 </div>
 <div class="section" id="memory-usage">
-<h4>Memory Usage<a class="headerlink" href="#memory-usage" title="Permalink to this headline">¶</a></h4>
+<span id="id17"></span><h4>Memory Usage<a class="headerlink" href="#memory-usage" title="Permalink to this headline">¶</a></h4>
 <p>The memory usage section lists the memories used by the generated circuit, grouped by the type of memory architecture.
 Please refer to <a class="reference internal" href="hwarchitecture.html#mem-arch"><span class="std std-ref">Memory Architecture</span></a> section for more details about the memory architecture used by SmartHLS.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+----------------------------------------------------------------------------------------------------------+
-| Local Constant Memories                                                                                  |
-+-------+--------------------------------------------------------+------+-------------+------------+-------+
-| Name  | Accessing Function(s)                                  | Type | Size [Bits] | Data Width | Depth |
-+-------+--------------------------------------------------------+------+-------------+------------+-------+
-| gauss | blackscholes_hw (concurrent access through an arbiter) | ROM  | 8192        | 32         | 256   |
-+-------+--------------------------------------------------------+------+-------------+------------+-------+
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-------------------------------------------------------------------------------------------------------------------------+
+| Local Constant Memories                                                                                                 |
++-------+--------------------------------------------------------+------+-------------+------------+-------+--------------+
+| Name  | Accessing Function(s)                                  | Type | Size [Bits] | Data Width | Depth | Read Latency |
++-------+--------------------------------------------------------+------+-------------+------------+-------+--------------+
+| gauss | blackscholes_hw (concurrent access through an arbiter) | ROM  | 8192        | 32         | 256   | 1            |
++-------+--------------------------------------------------------+------+-------------+------------+-------+--------------+
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Shared Local Memories                                                                                                                                |
-+-------------+-------------------------------------------------------------------------------------+---------------+-------------+------------+-------+
-| Name        | Accessing Function(s)                                                               | Type          | Size [Bits] | Data Width | Depth |
-+-------------+-------------------------------------------------------------------------------------+---------------+-------------+------------+-------+
-| bdata_0     | blackscholes_hw, option_pricing (concurrent access through an arbiter)              | Register      | 32          | 32         | 1     |
-| bdata_1     | blackscholes_hw, option_pricing (concurrent access through an arbiter)              | Register      | 32          | 32         | 1     |
-| idata_0     | mersenne_twister_init_hw, option_pricing (concurrent access through an arbiter)     | Register      | 1           | 1          | 1     |
-| idata_1     | mersenne_twister_init_hw, option_pricing (concurrent access through an arbiter)     | Register      | 32          | 32         | 1     |
-| init_fifo   | mersenne_twister_generate_hw, mersenne_twister_init_hw                              | FIFO (LUTRAM) | 64          | 32         | 2     |
-| random_fifo | blackscholes_hw, mersenne_twister_generate_hw                                       | FIFO (LUTRAM) | 64          | 32         | 2     |
-| tdata_0     | mersenne_twister_generate_hw, option_pricing (concurrent access through an arbiter) | Register      | 32          | 32         | 1     |
-| tdata_1     | mersenne_twister_generate_hw, option_pricing (concurrent access through an arbiter) | Register      | 32          | 32         | 1     |
-+-------------+-------------------------------------------------------------------------------------+---------------+-------------+------------+-------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Shared Local Memories                                                                                                                                               |
++-------------+-------------------------------------------------------------------------------------+---------------+-------------+------------+-------+--------------+
+| Name        | Accessing Function(s)                                                               | Type          | Size [Bits] | Data Width | Depth | Read Latency |
++-------------+-------------------------------------------------------------------------------------+---------------+-------------+------------+-------+--------------+
+| bdata_0     | blackscholes_hw, option_pricing (concurrent access through an arbiter)              | Register      | 32          | 32         | 1     | 0            |
+| bdata_1     | blackscholes_hw, option_pricing (concurrent access through an arbiter)              | Register      | 32          | 32         | 1     | 0            |
+| idata_0     | mersenne_twister_init_hw, option_pricing (concurrent access through an arbiter)     | Register      | 1           | 1          | 1     | 0            |
+| idata_1     | mersenne_twister_init_hw, option_pricing (concurrent access through an arbiter)     | Register      | 32          | 32         | 1     | 0            |
+| init_fifo   | mersenne_twister_generate_hw, mersenne_twister_init_hw                              | FIFO (LUTRAM) | 64          | 32         | 2     | 1            |
+| random_fifo | blackscholes_hw, mersenne_twister_generate_hw                                       | FIFO (LUTRAM) | 64          | 32         | 2     | 1            |
+| tdata_0     | mersenne_twister_generate_hw, option_pricing (concurrent access through an arbiter) | Register      | 32          | 32         | 1     | 0            |
+| tdata_1     | mersenne_twister_generate_hw, option_pricing (concurrent access through an arbiter) | Register      | 32          | 32         | 1     | 0            |
++-------------+-------------------------------------------------------------------------------------+---------------+-------------+------------+-------+--------------+
 
-+----------------------------------------------------------------------------------------------------------------+
-| Aliased Memories                                                                                               |
-+------------------------+---------------------+-----------------------+------+-------------+------------+-------+
-| Name                   | Memory Controller   | Accessing Function(s) | Type | Size [Bits] | Data Width | Depth |
-+------------------------+---------------------+-----------------------+------+-------------+------------+-------+
-| foo_entry_local_array1 | memory_controller_0 | foo, foo_sub          | RAM  | 160         | 32         | 5     |
-| foo_entry_local_array2 | memory_controller_0 | foo, foo_sub          | RAM  | 160         | 32         | 5     |
-+------------------------+---------------------+-----------------------+------+-------------+------------+-------+
++-------------------------------------------------------------------------------------------------------------------------------+
+| Aliased Memories                                                                                                              |
++------------------------+---------------------+-----------------------+------+-------------+------------+-------+--------------+
+| Name                   | Memory Controller   | Accessing Function(s) | Type | Size [Bits] | Data Width | Depth | Read Latency |
++------------------------+---------------------+-----------------------+------+-------------+------------+-------+--------------+
+| foo_entry_local_array1 | memory_controller_0 | foo, foo_sub          | RAM  | 160         | 32         | 5     | 1            |
+| foo_entry_local_array2 | memory_controller_0 | foo, foo_sub          | RAM  | 160         | 32         | 5     | 1            |
++------------------------+---------------------+-----------------------+------+-------------+------------+-------+--------------+
 
-+------------------------------------------------------------------------------------------+
-| I/O Memories                                                                             |
-+--------+-----------------------+----------------------+-------------+------------+-------+
-| Name   | Accessing Function(s) | Type                 | Size [Bits] | Data Width | Depth |
-+--------+-----------------------+----------------------+-------------+------------+-------+
-| rd_arr | kernel                | ROM                  | 0           | 16         | 0     |
-| rd_reg | kernel                | Register (Read-Only) | 0           | 16         | 0     |
-| wr_arr | kernel                | RAM                  | 0           | 16         | 0     |
-| wr_reg | kernel                | Register             | 0           | 16         | 0     |
-+--------+-----------------------+----------------------+-------------+------------+-------+
++---------------------------------------------------------------------------------------------------------+
+| I/O Memories                                                                                            |
++--------+-----------------------+----------------------+-------------+------------+-------+--------------+
+| Name   | Accessing Function(s) | Type                 | Size [Bits] | Data Width | Depth | Read Latency |
++--------+-----------------------+----------------------+-------------+------------+-------+--------------+
+| rd_arr | kernel                | ROM                  | 0           | 16         | 0     | 1            |
+| rd_reg | kernel                | Register (Read-Only) | 0           | 16         | 0     | 0            |
+| wr_arr | kernel                | RAM                  | 0           | 16         | 0     | 1            |
+| wr_reg | kernel                | Register             | 0           | 16         | 0     | 0            |
++--------+-----------------------+----------------------+-------------+------------+-------+--------------+
 </pre></div>
 </div>
 <p>The example tables above show the accessing functions and the hardware implementation of each “memory” in the software.</p>
@@ -5257,7 +5647,7 @@ See memcpy and dma transfer driver functions in hls_output/accelerator_drivers/v
 </pre></div>
 </div>
 <p>Firstly, this section prints whether the top-level module is compatible with the
-SmartHLS-generated reference SoC (see <a class="reference internal" href="#id12">SoC Features</a>). For a top-level module
+SmartHLS-generated reference SoC (see <a class="reference internal" href="#id13">SoC Features</a>). For a top-level module
 to be compatible and thus can be integrated into the reference SoC, it needs to
 satisfy the following conditions:</p>
 <blockquote>
@@ -5359,7 +5749,7 @@ initiation interval of 1, and we can see that the average cycle per call is
 very close to 1 (6,134/6,105).</p>
 </div>
 <div class="section" id="logic-level-distribution">
-<span id="id16"></span><h3>Logic Level Distribution<a class="headerlink" href="#logic-level-distribution" title="Permalink to this headline">¶</a></h3>
+<span id="id18"></span><h3>Logic Level Distribution<a class="headerlink" href="#logic-level-distribution" title="Permalink to this headline">¶</a></h3>
 <p>The number of levels of logic (or logic levels) in a design is an indication of
 how much combinatorial logic (e.g. LUTs, carry-chains) there is between registers
 (Flip-Flops). The more pipelined the design is, the lower the number of logic
@@ -5405,7 +5795,7 @@ family (see the table in <a class="reference internal" href="#smarthls-constrain
 </div>
 </div>
 <div class="section" id="schedule-viewer">
-<span id="id17"></span><h2>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h2>
+<span id="id19"></span><h2>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h2>
 <p>The Schedule Viewer shows information on how the top-level function was scheduled in hardware by SmartHLS.
 This includes information on the flow of control between different functions and blocks of execution,
 as well as the cycle by cycle schedule of the operations in hardware.</p>
@@ -5682,7 +6072,7 @@ a PolarFire<sup>®</sup> SoC Microprocessor Sub-System (MSS) to which the genera
 SmartHLS IP modules are automatically attached to via AXI interconnects.</p>
 </div>
 <div class="section" id="user-defined-smartdesigns">
-<span id="id18"></span><h2>User-defined SmartDesigns<a class="headerlink" href="#user-defined-smartdesigns" title="Permalink to this headline">¶</a></h2>
+<span id="id20"></span><h2>User-defined SmartDesigns<a class="headerlink" href="#user-defined-smartdesigns" title="Permalink to this headline">¶</a></h2>
 <p>The automatic integration of SmartHLS cores can also be applied to user-defined
 SmartDesigns, not just the Icicle Kit Reference Design included with SmartHLS as
 long as some integration parameters are specified as shown in the following image:</p>
@@ -5693,8 +6083,8 @@ foo(), bar() and baz(). These parameters have default values based on the
 <em>Icicle_SoC</em> reference design included in SmartHLS but can be overridden as
 necessary in the <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> file to adapt to user-defined designs.</p>
 <p>The following table further describes the integration parameters:</p>
-<table border="1" class="colwidths-given docutils" id="id22">
-<caption><span class="caption-text">SoC integration parameters</span><a class="headerlink" href="#id22" title="Permalink to this table">¶</a></caption>
+<span id="soc-integration-parameters"></span><table border="1" class="colwidths-given docutils" id="id24">
+<caption><span class="caption-text">SoC integration parameters</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="14%" />
 <col width="14%" />
@@ -5862,7 +6252,7 @@ After this, the system can be synthesized and run through place and route.</p>
 <p>The generated hardware module(s) are produced in the sub-directory <code class="docutils literal notranslate"><span class="pre">hls_output/rtl</span></code>. By default, each top-level module, along with all its child modules, will be printed to a separate Verilog file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top</span> <span class="pre">Level</span> <span class="pre">Name&gt;.v</span></code>). If it is desired to print all Verilog into a single file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.v</span></code>), users can configure the <a class="reference internal" href="constraintsmanual.html#single-hdl-output-file"><span class="std std-ref">SINGLE_HDL_OUTPUT_FILE</span></a> parameter.</p>
 </div>
 <div class="section" id="vhdl-wrapper-files">
-<span id="id19"></span><h3>VHDL Wrapper Files<a class="headerlink" href="#vhdl-wrapper-files" title="Permalink to this headline">¶</a></h3>
+<span id="id21"></span><h3>VHDL Wrapper Files<a class="headerlink" href="#vhdl-wrapper-files" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS produces VHDL wrapper files which contain a top-level VHDL entity that wraps a corresponding Verilog top-level module. By default, there will be a single VHDL file for each Verilog top-level module (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top</span> <span class="pre">Level</span> <span class="pre">name&gt;.vhd</span></code>). If it is desired to print all VHDL into a single file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.vhd</span></code>), users can configure the <a class="reference internal" href="constraintsmanual.html#single-hdl-output-file"><span class="std std-ref">SINGLE_HDL_OUTPUT_FILE</span></a> parameter.</p>
 </div>
 <div class="section" id="reports">
@@ -5904,7 +6294,7 @@ SmartHLS from a terminal, or from a user script for the purposes of automation.<
 <p>Windows users can launch the terminal by opening <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/cygwin64/Cygwin.bat</span></code>.
 Users can access their file directory on their computer by using <code class="docutils literal notranslate"><span class="pre">/cygdrive/&lt;drive</span> <span class="pre">letter&gt;/&lt;path&gt;</span></code>
 as the prefix.
-For example, to go to <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2022.2.1</span></code>, enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/cygdrive/c/Microchip/SmartHLS-2022.2.1</span></code>.</p>
+For example, to go to <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2022.3</span></code>, enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/cygdrive/c/Microchip/SmartHLS-2022.3</span></code>.</p>
 </div>
 <div class="section" id="setup">
 <h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
@@ -6048,7 +6438,7 @@ Requires the BOARD_IP environment variable to be set.</td>
 <div class="section" id="software-macros">
 <span id="sw-macro"></span><h2>Software Macros<a class="headerlink" href="#software-macros" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="synthesis-macro">
-<span id="id20"></span><h3><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro<a class="headerlink" href="#synthesis-macro" title="Permalink to this headline">¶</a></h3>
+<span id="id22"></span><h3><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro<a class="headerlink" href="#synthesis-macro" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro is defined in SmartHLS during synthesis. This provides a convenient way to exclude non-synthesizable code without removing/commenting the code itself. In the folling example, the assertion header and statement are ignored during synthesis:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __SYNTHESIS__</span>
 <span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
@@ -6331,7 +6721,7 @@ run the accelerator 100 times.</p>
 </tbody>
 </table>
 <div class="section" id="makefile-example">
-<span id="id21"></span><h3>Makefile Example<a class="headerlink" href="#makefile-example" title="Permalink to this headline">¶</a></h3>
+<span id="id23"></span><h3>Makefile Example<a class="headerlink" href="#makefile-example" title="Permalink to this headline">¶</a></h3>
 <p>The example below shows how to define some of the above Makefile variables.</p>
 <p>For IDE projects, you should create a new <code class="docutils literal notranslate"><span class="pre">Makefile.user</span></code> file and put your custom Makefile settings there (any changes in the <code class="docutils literal notranslate"><span class="pre">makefile</span></code> of an IDE project will be overwritten).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to place files on the Icicle kit, relative to root home dir.</span>
@@ -6469,9 +6859,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2.1 documentation&\
-		pub_ver=2022.2.1&\
-		revision_letter=2022.2.1&\
+		cover_title=SmartHLS 2022.3 documentation&\
+		pub_ver=2022.3&\
+		revision_letter=2022.3&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

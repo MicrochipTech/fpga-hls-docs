@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>SmartHLS Pragmas Manual &mdash; SmartHLS 2022.2.1 documentation</title>
+  <title>SmartHLS Pragmas Manual &mdash; SmartHLS 2022.3 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
 
 										  </h1>
 								
@@ -740,7 +740,7 @@ The top-level function and all of its descendant functions will be compiled to h
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">pipeline</span> <span class="pre">II(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma enables pipelining for a given function in the code.
-Function pipelining allows a new invocation of a function to begin before the current one has completed, achieving higher throughput.
+Function pipelining allows a new invocation of a function to begin before the current one finishes, achieving higher throughput.
 Optional arguments:</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
@@ -826,7 +826,7 @@ Optional arguments:</p>
 <p><strong>Description</strong></p>
 <p>This pragma unrolls all loops and inlines all subfunctions for a given function.
 If the <code class="docutils literal notranslate"><span class="pre">branchless</span></code> option is set to true, all branches (e.g., if-else,
-switch) in the specified function will also be flatten to allow more
+switch) in the specified function will also be flattened to allow more
 parallelism between operations, specifically between the operations that are
 under different-yet-independent conditions.</p>
 <p><strong>Parameters</strong></p>
@@ -891,10 +891,10 @@ When using this pragma on the function, SmartHLS will create a new instance of t
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">pipeline</span> <span class="pre">II(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma enables pipelining for a given loop in the code.
-Loop pipelining allows a new iteration of the loop to begin before the current one has completed, achieving higher throughput.
+Loop pipelining allows a new iteration of the loop to begin before the current one has finished, achieving higher throughput.
 It can be specified to pipeline a single loop or a nested loop.
-If specified on a single loop or on a inner loop of a nested loop, that loop will be pipelined.
-If specified on the outer loop of a nested loop, the outer loop will be pipelined and all of its inner loops will be automatically unrolled.</p>
+If specified on a single loop or an inner loop of a nested loop, that loop will be pipelined.
+If specified on the outer loop of a nested loop, the outer loop will be pipelined, and all of its inner loops will be automatically unrolled.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1114,7 +1114,7 @@ If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the memory interface type for a pointer (including array, struct, class types) argument.
+<p>This pragma specifies the memory interface type for a pointer (including array, struct, and class types) argument.
 More details in <a class="reference internal" href="userguide.html#memory-interface"><span class="std std-ref">Memory Interface</span></a> section.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
@@ -1235,7 +1235,7 @@ More details in <a class="reference internal" href="userguide.html#memory-interf
 </pre></div>
 </div>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the AXI4 initiator interface type for a pointer (including array, struct, class types) argument.
+<p>This pragma specifies the AXI4 initiator interface type for a pointer (including array, struct, and class types) argument.
 More details in <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface</span></a> section.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
@@ -1280,6 +1280,12 @@ More details in <a class="reference internal" href="userguide.html#pointer-arg-a
 <td>&#160;</td>
 <td>Specifies the number of elements of the argument array. Can override the array size in the argument. Only needed by the <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> feature and does not affect HLS-generated RTL.</td>
 </tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">max_burst_len</span></code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>&#160;</td>
+<td>Specifies the maximum burst length for AXI Initiator burst transactions using this pointer, see <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface</span></a>. Permitted values: 1 - 256 (default: 16).</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
@@ -1302,7 +1308,7 @@ More details in <a class="reference internal" href="userguide.html#pointer-arg-a
 </pre></div>
 </div>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the AXI4 target interface type for a pointer (including array, struct, class types) argument.
+<p>This pragma specifies the AXI4 target interface type for a pointer (including array, struct, and class types) argument.
 More details in <a class="reference internal" href="userguide.html#pointer-arg-axi-target"><span class="std std-ref">AXI4 Target Interface</span></a> section.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
@@ -1348,7 +1354,7 @@ More details in <a class="reference internal" href="userguide.html#pointer-arg-a
 <td rowspan="2">Specifies the transfer method and copy-in behaviour in the top-level driver function.
 See <a class="reference internal" href="userguide.html#ptr-arg-pragma-options"><span class="std std-ref">Top-level Driver Options in Pointer Arguments’ AXI4 Target Interface Pragma</span></a></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">requries_copy_in</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">requires_copy_in</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
 <td>Yes</td>
 <td>&#160;</td>
@@ -1376,7 +1382,7 @@ See <a class="reference internal" href="userguide.html#ptr-arg-pragma-options"><
 <p>This pragma specifies the legacy AXI4 slave interface for a global struct.
 When the <code class="docutils literal notranslate"><span class="pre">concurrent_access</span></code> option is set to true (default to false), the
 external logic can read/write the AXI4 slave interface while the SmartHLS module is
-running.  The concurrent access will however reduce the SmartHLS module’s
+running.  However, concurrent access will reduce the SmartHLS module’s
 throughput to access the memory.
 More details in <a class="reference internal" href="userguide.html#global-variable-axi-slave"><span class="std std-ref">Legacy AXI4 Slave Interface</span></a> section.</p>
 <p>This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
@@ -1561,7 +1567,7 @@ See <a class="reference internal" href="userguide.html#user-specified-memory-par
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(block|cyclic|complete|struct_fields|none)</span> <span class="pre">dim(&lt;int&gt;)</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies a top-level argument to be partitioned. Dimension 1 corresponds to the left-most dimension of an array and higher dimensions correspond to right-ward dimensions. The <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic|complete</span></code> types. If <code class="docutils literal notranslate"><span class="pre">dim</span></code> is 0, the specified partitioning will be applied to all dimensions. The <code class="docutils literal notranslate"><span class="pre">factor</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic</span></code> types tos specify the number of partitions. <code class="docutils literal notranslate"><span class="pre">factor</span></code> must be larger than 1.
+<p>This pragma specifies a top-level argument to be partitioned. Dimension 1 corresponds to the left-most dimension of an array and higher dimensions correspond to right-ward dimensions. The <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic|complete</span></code> types. If <code class="docutils literal notranslate"><span class="pre">dim</span></code> is 0, the specified partitioning will be applied to all dimensions. The <code class="docutils literal notranslate"><span class="pre">factor</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic</span></code> types to specify the number of partitions. <code class="docutils literal notranslate"><span class="pre">factor</span></code> must be larger than 1.
 See <a class="reference internal" href="userguide.html#user-specified-memory-partitioning"><span class="std std-ref">User-Specified Memory Partitioning</span></a> for more details about the pragma options.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
@@ -1624,7 +1630,7 @@ See <a class="reference internal" href="userguide.html#user-specified-memory-par
 <p><strong>Syntax</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">impl</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">pack(bit|byte)</span> <span class="pre">byte_enable(true|false)</span></code></p>
 <p><strong>Description</strong></p>
-<p>The pragma is to be used to pack an global interface / local memory variable with <cite>struct</cite> type.
+<p>The pragma is to be used to pack a global interface / local memory variable with <cite>struct</cite> type.
 There are two packing modes: <cite>bit</cite> / <cite>byte</cite> where <cite>bit</cite> packing packs the <cite>struct</cite> fields using the exact bit-width and <cite>byte</cite> mode packs the fields with 8-bit alignment.
 <cite>byte_enable</cite> option creates an interface / memory with byte enable signals to write individual fields when set to <cite>true</cite>. Note that <cite>byte_enable</cite> is only valid with <cite>byte</cite> packing.</p>
 <p><strong>Parameters</strong></p>
@@ -1738,7 +1744,7 @@ There are two packing modes: <cite>bit</cite> / <cite>byte</cite> where <cite>bi
 <p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">replicate_rom</span> <span class="pre">variable(&lt;rom_var_name&gt;)</span> <span class="pre">max_replicas(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma can be used to replicate constant memory (i.e., arrays) to achieve
-better throughput (shorter cycle latency) at the expense of extra resource
+better throughput (shorter cycle latency) at the expense of extra resources
 (e.g., block RAM).  Typically when an array is implemented in block RAMs, there
 are up-to-two RAM ports to allow a maximum of two reads per clock cycle.
 To allow more parallel read accesses in each clock cycle, constant read-only
@@ -1897,9 +1903,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2.1 documentation&\
-		pub_ver=2022.2.1&\
-		revision_letter=2022.2.1&\
+		cover_title=SmartHLS 2022.3 documentation&\
+		pub_ver=2022.3&\
+		revision_letter=2022.3&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

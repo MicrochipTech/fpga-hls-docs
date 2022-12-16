@@ -13,15 +13,15 @@ This reference section explains the constraints available for SmartHLS.
 The main constraints available from the SmartHLS IDE are:
 
  * Set target clock period: :ref:`CLOCK_PERIOD`
- * Set test bench module: :ref:`set_custom_test_bench_module`
+ * Print the HDL output to a single output file: :ref:`SINGLE_HDL_OUTPUT_FILE`
+ * Set custom config file: :ref:`set_custom_config_file`
  * Set test bench file: :ref:`set_custom_test_bench_file`
- * Set FPGA synthesis top-level module: :ref:`set_synthesis_top_module`
- * Set FPGA synthesis top-level file: :ref:`set_synthesis_top_module_file`
- * Set resource constraint: :ref:`set_resource_constraint`
+ * Set test bench module: :ref:`set_custom_test_bench_module`
  * Set operation latency: :ref:`set_operation_latency`
  * Set FPGA family and device: :ref:`set_project`
- * Set custom config file: :ref:`set_custom_config_file`
- * Print the HDL output to a single output file: :ref:`SINGLE_HDL_OUTPUT_FILE`
+ * Set resource constraint: :ref:`set_resource_constraint`
+ * Set FPGA synthesis top-level module: :ref:`set_synthesis_top_module`
+ * Set FPGA synthesis top-level file: :ref:`set_synthesis_top_module_file`
 
 .. * Pipeline loop: :ref:`loop_pipeline`  
  * Pipeline function: :ref:`function_pipeline`
@@ -57,15 +57,15 @@ Commonly Used Constraints
 
 
 .. include:: constraint_docs/CLOCK_PERIOD.inc
-.. include:: constraint_docs/set_custom_test_bench_module.inc
+.. include:: constraint_docs/SINGLE_HDL_OUTPUT_FILE.inc
+.. include:: constraint_docs/set_custom_config_file.inc
 .. include:: constraint_docs/set_custom_test_bench_file.inc
-.. include:: constraint_docs/set_synthesis_top_module.inc
-.. include:: constraint_docs/set_synthesis_top_module_file.inc
-.. include:: constraint_docs/set_resource_constraint.inc
+.. include:: constraint_docs/set_custom_test_bench_module.inc
 .. include:: constraint_docs/set_operation_latency.inc
 .. include:: constraint_docs/set_project.inc
-.. include:: constraint_docs/set_custom_config_file.inc
-.. include:: constraint_docs/SINGLE_HDL_OUTPUT_FILE.inc
+.. include:: constraint_docs/set_resource_constraint.inc
+.. include:: constraint_docs/set_synthesis_top_module.inc
+.. include:: constraint_docs/set_synthesis_top_module_file.inc
 
 .. .. include:: constraint_docs/ENABLE_OPENMP.inc
 .. .. include:: constraint_docs/loop_pipeline.inc
@@ -89,9 +89,27 @@ Advanced Constraints
 
 These are not available from the SmartHLS GUI.
 
+.. .. include:: constraint_docs/ADAPTIVE_LATENCY_BINDING.inc
+.. include:: constraint_docs/IFCONV_PREDICATE_LOADS.inc
 .. include:: constraint_docs/LATENCY_REDUCTION.inc
+.. include:: constraint_docs/ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING.inc
+.. include:: constraint_docs/ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING.inc
+.. include:: constraint_docs/MULTIPLY_SPLITTING_FULLY_PIPELINED.inc
+.. include:: constraint_docs/SOC_AXI_INITIATOR.inc
+.. include:: constraint_docs/SOC_AXI_TARGET.inc
+.. include:: constraint_docs/SOC_BD_NAME.inc
+.. include:: constraint_docs/SOC_CLOCK.inc
+.. include:: constraint_docs/SOC_CPU_MEM_BASE_ADDRESS.inc
+.. include:: constraint_docs/SOC_CPU_MEM_SIZE.inc
+.. include:: constraint_docs/SOC_DMA_ENGINE.inc
+.. include:: constraint_docs/SOC_FABRIC_BASE_ADDRESS.inc
+.. include:: constraint_docs/SOC_FABRIC_SIZE.inc
+.. include:: constraint_docs/SOC_POLL_DELAY.inc
+.. include:: constraint_docs/SOC_PROFILER_COUNTER.inc
+.. include:: constraint_docs/SOC_RESET.inc
 .. include:: constraint_docs/STRENGTH_REDUCTION.inc
 .. include:: constraint_docs/STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER.inc
+.. include:: constraint_docs/SYNTHESIS_CLOCK_PERIOD.inc
 .. include:: constraint_docs/USE_FIFO_FOR_PIPELINE_REG.inc
 .. .. include:: constraint_docs/CASE_FSM.inc
 .. .. include:: constraint_docs/GROUP_RAMS.inc

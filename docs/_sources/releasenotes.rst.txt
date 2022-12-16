@@ -12,12 +12,62 @@ Latest Release (|version|)
 .. 2) the sections (e.g., Software Features and Enhancements) should have the
 ..    "---------" title indication line changed to "~~~~~~~~".
 
-Release Date: October, 2022
+Release Date: December, 2022
+
+Installer Update
+-----------------------------------
+
+ * Starting from this release, Microchip will no longer publish a standalone version for SmartHLS.
+   All future SmartHLS releases will be included in the releases of Libero SoC Design Suite.
+   Please make sure that the SmartHLS software is selected when installing Libero SoC Design Suite.
 
 Software Features and Enhancements
 -----------------------------------
 
  * If you are interested in joining the early access program for our new SmartHLS PolarFire :ref:`soc_features`, please email: SmartHLS@microchip.com
+ * Support burst transfer via AXI initiator interface (beta) -- SmartHLS analyzes the C++ input code for burst-able access patterns to AXI initiator interfaces.
+   When these access patterns are detected, SmartHLS will generate hardware to perform AXI burst transfers.
+   AXI burst transfers significantly improve the data transfer throughput of AXI initiator interfaces. See :ref:`pointer_arg_axi_initiator` for more details.
+ * Introduced two new C++ library classes, :ref:`DoubleBuffer and SharedBuffer<data_buffer>`, for describing data buffers in multi-threaded dataflow designs.
+   The new classes allow users to easily implement the well-known `double buffer <https://en.wikipedia.org/wiki/Multiple_buffering#Software_double_buffering>`_ (also known as ping-pong buffer) design pattern in C++ using SmartHLS.
+ * Enhanced compiler analysis for memory dependencies across loop iterations.
+   SmartHLS can now generate hardware with higher throughput by using the analysis to reduce the loop pipeline initiation interval (clock cycles between starting successive loop iterations).
+ * SmartHLS now automatically selects the pipeline latency for multipliers and RAMs needed to achieve the user-specified target clock period on the target device.
+   See :ref:`ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING` and :ref:`ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING` for more details.
+
+Resolved Issues
+-----------------------------------
+
+ * Robustness improvements in SmartHLS optimization to minimize bit-widths of operations.
+
+ * Fixed SmartHLS scheduling to make sure read-write conflict does not occur when targeting SmartFusion2/IGLOO2 devices.
+   The issue could lead to incorrect implementation on device that appears to be working in RTL simulation (or SW/HW CoSimulation).
+
+   * Read-write conflict means one read access and one write access are happening at the same clock cycle to the same RAM address. SmartFusion2/IGLOO2 devices do not support read-first mode under read-write conflict for LSRAMs.
+
+Known Issues
+-----------------------------------
+
+ * The new AXI initiator feature supports type-cast pointers (e.g., an ``int64_t *`` pointer argument is cast to and accessed as an ``int32_t *`` pointer).
+   However, :ref:`sw_hw_cosimulation` of this use case may fail due to an issue in the CoSimulation testbench.
+   Note that the HLS-generated RTL is still functionally correct and works on the device.
+   We will fix the CoSimulation issue in the next release.
+ * There is a known synthesis issue in the Libero 2022.3 release, where timing may not be met if larger sized signed multipliers are in the design.
+   If your SmartHLS design is not meeting timing with critical paths through multipliers, you can increase the latency of multiply operation to get around this synthesis issue,
+   by adding the following constraint (in the GUI or in your config.tcl file): ``set_operation_latency multiply 6``.
+
+
+Previous Releases
+==================
+
+SmartHLS 2022.2.1
+---------------------
+
+Release Date: October, 2022
+
+Software Features and Enhancements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
  * SmartHLS PolarFire SoC feature now uses the standard `PolarFire SoC Icicle Kit Reference Design (v2022.09) <https://github.com/polarfire-soc/icicle-kit-reference-design/releases/tag/v2022.09>`_ as the base project.
  * SmartHLS PolarFire SoC feature now uses the standard Linux image for the PolarFire SoC Icicle Kit Reference Design: `PolarFire SoC Yocto Board Support Package (v2022.09) <https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/tag/v2022.09>`_.
  * Support cyclic and block memory partition, and partition along user-specified dimensions; allowing more tailored partition schemes for designs to improve memory access throughput. See :ref:`memory_partitioning`.
@@ -27,19 +77,13 @@ Software Features and Enhancements
  * Updated the device timing model for PolarFire and SmartFusion2/IGLOO2 device families. Saves area (LUTs/DFFs) while getting FMax closer to the target clock period.
 
 Resolved Issues
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * Bit-width minimization optimization for a corner case in arithmetic shift-right and logical shift-right operations.
  * Optimizing multiply operation with a very large constant integer (> 64bits).
  * Determining the memory size for a pass-in-by-reference argument.
  * SW/HW CoSimulation where the simulation testbench may not interact with AXI4 interfaces in a protocol-compliant manner.
 
-
-
-
-
-Previous Releases
-==================
 
 SmartHLS 2022.2
 ---------------------
@@ -49,7 +93,6 @@ Release Date: August, 2022
 Software Features and Enhancements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- * If you are interested in joining the early access program for our new SmartHLS PolarFire :ref:`soc_features`, please email: SmartHLS@microchip.com
  * New SoC profiling feature: measures runtime spent on data transfer and computation by the HLS accelerator(s) in an SoC design. See :ref:`soc_profiler` for more information.
  * Updated naming convention of the SmartHLS' output RTL files to ``<ProjectName>_<TopLevelFunctionName>.v|vhd`` (see :ref:`smarthls_outputs` for more details).
  * When a user clicks on a step (e.g., compile software to hardware) that has already run and yet is still up to date, SmartHLS will now prompt the user to confirm if they intend to re-run the step before proceeding.
@@ -121,12 +164,12 @@ Software Features and Enhancements
 
  * Generate :ref:`logic_level_distribution` histogram from the synthesis timing report (Linux only)
  * Improved SW/HW CoSimulation support for C++ class's private member variables in software testbench.
- * Improved memory partitioning: 
+ * Improved memory partitioning:
 
    * Improved automatic :ref:`access_based_partitioning`.
    * Added an efficient implementation for :ref:`struct_fields_memory_partitioning`.
 
- * Improved :ref:`struct_packing`: 
+ * Improved :ref:`struct_packing`:
 
    * Added comprehensive legality checks for ``struct`` packing.
    * Support automatic packing for sub-functions, i.e., no need to specify pack pragma for sub-functions.

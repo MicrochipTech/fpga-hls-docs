@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Hardware Architecture &mdash; SmartHLS 2022.2.1 documentation</title>
+  <title>Hardware Architecture &mdash; SmartHLS 2022.3 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
 
 										  </h1>
 								
@@ -715,16 +715,17 @@ memories are stored.</p>
 <p>In SmartHLS, there exists four hierarchies of memories: 1) Local memory, 2) shared-local memory, 3) aliased memory, and 4) I/O memory.
 Local, shared-local, and aliased memories exist in the generated hardware.
 I/O memories are data that are inputs/output to/from the generated hardware. They exist outside of the generated hardware (SmartHLS does not instantiate memories for them), where top-level memory interfaces are created for them.</p>
+<p>SmartHLS automatically determines the read latency for memories based on the target clock period and timing model. User can disable this function by changing <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> Tcl parameter. Alternatively, users can override the default values using <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter. The auto-determined latency can be found in <a class="reference internal" href="userguide.html#memory-usage"><span class="std std-ref">Memory Usage</span></a> section of SmartHLS report.</p>
 <div class="section" id="local-memory">
-<h3>Local Memory<a class="headerlink" href="#local-memory" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>Local Memory<a class="headerlink" href="#local-memory" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS uses points-to analysis to determine which memories are used by which
 functions. If a memory is determined to be used by a single function, where the function
 is to be compiled to hardware, that array is implemented as a local memory. A
 local memory is created and connected directly inside the module that accesses it.</p>
-<p>Local memories have a latency of 1 clock cycle by default. The local memory latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
+<p>The read latency of local memories are determined by <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> on default setting. The local memory read latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
 </div>
 <div class="section" id="shared-local-memory">
-<h3>Shared-Local Memory<a class="headerlink" href="#shared-local-memory" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>Shared-Local Memory<a class="headerlink" href="#shared-local-memory" title="Permalink to this headline">¶</a></h3>
 <p>If a memory is accessed by multiple functions, where all the functions that access it are
 to be compiled to hardware, the memory is designated as a shared-local memory. A shared-local memory is
 instantiated outside the modules (at the same level of hierarchy as the modules themselves, as shown for functions and FU in the diagram above),
@@ -734,7 +735,7 @@ SmartHLS automatically optimizes the arbitration logic, so that if the modules t
 access the memory are executing sequentially, a simple <code class="docutils literal notranslate"><span class="pre">OR</span></code> gate is used for arbitration
 (which consumes only a small amount of area), but if the accessing modules are
 executing concurrently (with the use of <code class="docutils literal notranslate"><span class="pre">hls::thread</span></code>), a round-robin arbiter is automatically created to handle contention.</p>
-<p>Shared-local memories have a latency of 1 clock cycle. The shared-local memory latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
+<p>The read latency of shared-local memories are determined by <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> on default setting. The shared-local memory read latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
 </div>
 <div class="section" id="aliased-memory">
 <h3>Aliased Memory<a class="headerlink" href="#aliased-memory" title="Permalink to this headline">¶</a></h3>
@@ -744,9 +745,9 @@ aliased memories, which are stored in a memory controller (described below).
 A memory controller contains all memories that can alias to each other, and
 allows memory accesses to be steered to the correct memory at runtime.
 There can be multiple memory controllers in a system, each containing a set of memories that alias to each other.</p>
-<p>Aliased memories have a latency of 2 clock cycles. The aliased memory latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
+<p>Aliased memories have a read latency of 2 clock cycles. The aliased memory read latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
 <div class="section" id="memory-controller">
-<h4>Memory Controller<a class="headerlink" href="#memory-controller" title="Permalink to this headline">¶</a></h4>
+<span id="id3"></span><h4>Memory Controller<a class="headerlink" href="#memory-controller" title="Permalink to this headline">¶</a></h4>
 <p>The purpose of the memory controller is to automatically resolve pointer
 ambiguity at runtime.
 The memory controller is only created if there are aliased memories.
@@ -867,9 +868,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2.1 documentation&\
-		pub_ver=2022.2.1&\
-		revision_letter=2022.2.1&\
+		cover_title=SmartHLS 2022.3 documentation&\
+		pub_ver=2022.3&\
+		revision_letter=2022.3&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

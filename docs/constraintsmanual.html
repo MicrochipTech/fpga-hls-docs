@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Constraints Manual &mdash; SmartHLS 2022.2.1 documentation</title>
+  <title>Constraints Manual &mdash; SmartHLS 2022.3 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.2.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
 
 										  </h1>
 								
@@ -576,15 +576,15 @@ display:none;
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Constraints Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#commonly-used-constraints">Commonly Used Constraints</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#clock-period">CLOCK_PERIOD</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set-custom-test-bench-module">set_custom_test_bench_module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-hdl-output-file">SINGLE_HDL_OUTPUT_FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-custom-config-file">set_custom_config_file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#set-custom-test-bench-file">set_custom_test_bench_file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set-synthesis-top-module">set_synthesis_top_module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set-synthesis-top-module-file">set_synthesis_top_module_file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set-resource-constraint">set_resource_constraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-custom-test-bench-module">set_custom_test_bench_module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#set-operation-latency">set_operation_latency</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#set-project">set_project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set-custom-config-file">set_custom_config_file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#single-hdl-output-file">SINGLE_HDL_OUTPUT_FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-resource-constraint">set_resource_constraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-synthesis-top-module">set_synthesis_top_module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-synthesis-top-module-file">set_synthesis_top_module_file</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#debugging-constraints">Debugging Constraints</a><ul>
@@ -594,9 +594,26 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#advanced-constraints">Advanced Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ifconv-predicate-loads">IFCONV_PREDICATE_LOADS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#latency-reduction">LATENCY_REDUCTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-automatic-memory-latency-setting">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-automatic-multiply-mode-setting">ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiply-splitting-fully-pipelined">MULTIPLY_SPLITTING_FULLY_PIPELINED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-axi-initiator">SOC_AXI_INITIATOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-axi-target">SOC_AXI_TARGET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-bd-name">SOC_BD_NAME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-clock">SOC_CLOCK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-cpu-mem-base-address">SOC_CPU_MEM_BASE_ADDRESS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-cpu-mem-size">SOC_CPU_MEM_SIZE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-dma-engine">SOC_DMA_ENGINE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-fabric-base-address">SOC_FABRIC_BASE_ADDRESS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-fabric-size">SOC_FABRIC_SIZE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-poll-delay">SOC_POLL_DELAY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-profiler-counter">SOC_PROFILER_COUNTER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-reset">SOC_RESET</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#strength-reduction">STRENGTH_REDUCTION</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#strength-reduction-adders-allowed-per-multiplier">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#synthesis-clock-period">SYNTHESIS_CLOCK_PERIOD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-fifo-for-pipeline-reg">USE_FIFO_FOR_PIPELINE_REG</a></li>
 </ul>
 </li>
@@ -686,15 +703,15 @@ This reference section explains the constraints available for SmartHLS.</p>
 <blockquote>
 <div><ul class="simple">
 <li>Set target clock period: <a class="reference internal" href="#clock-period"><span class="std std-ref">CLOCK_PERIOD</span></a></li>
-<li>Set test bench module: <a class="reference internal" href="#set-custom-test-bench-module"><span class="std std-ref">set_custom_test_bench_module</span></a></li>
+<li>Print the HDL output to a single output file: <a class="reference internal" href="#single-hdl-output-file"><span class="std std-ref">SINGLE_HDL_OUTPUT_FILE</span></a></li>
+<li>Set custom config file: <a class="reference internal" href="#set-custom-config-file"><span class="std std-ref">set_custom_config_file</span></a></li>
 <li>Set test bench file: <a class="reference internal" href="#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a></li>
-<li>Set FPGA synthesis top-level module: <a class="reference internal" href="#set-synthesis-top-module"><span class="std std-ref">set_synthesis_top_module</span></a></li>
-<li>Set FPGA synthesis top-level file: <a class="reference internal" href="#set-synthesis-top-module-file"><span class="std std-ref">set_synthesis_top_module_file</span></a></li>
-<li>Set resource constraint: <a class="reference internal" href="#set-resource-constraint"><span class="std std-ref">set_resource_constraint</span></a></li>
+<li>Set test bench module: <a class="reference internal" href="#set-custom-test-bench-module"><span class="std std-ref">set_custom_test_bench_module</span></a></li>
 <li>Set operation latency: <a class="reference internal" href="#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a></li>
 <li>Set FPGA family and device: <a class="reference internal" href="#set-project"><span class="std std-ref">set_project</span></a></li>
-<li>Set custom config file: <a class="reference internal" href="#set-custom-config-file"><span class="std std-ref">set_custom_config_file</span></a></li>
-<li>Print the HDL output to a single output file: <a class="reference internal" href="#single-hdl-output-file"><span class="std std-ref">SINGLE_HDL_OUTPUT_FILE</span></a></li>
+<li>Set resource constraint: <a class="reference internal" href="#set-resource-constraint"><span class="std std-ref">set_resource_constraint</span></a></li>
+<li>Set FPGA synthesis top-level module: <a class="reference internal" href="#set-synthesis-top-module"><span class="std std-ref">set_synthesis_top_module</span></a></li>
+<li>Set FPGA synthesis top-level file: <a class="reference internal" href="#set-synthesis-top-module-file"><span class="std std-ref">set_synthesis_top_module_file</span></a></li>
 </ul>
 </div></blockquote>
 <p>A few debugging constraints are available from the SmartHLS IDE:</p>
@@ -738,28 +755,44 @@ supported (see table in <a class="reference internal" href="userguide.html#smart
 <div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">CLOCK_PERIOD</span> <span class="pre">15</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
-<div class="section" id="set-custom-test-bench-module">
-<span id="id2"></span><h3>set_custom_test_bench_module<a class="headerlink" href="#set-custom-test-bench-module" title="Permalink to this headline">¶</a></h3>
-<p>This TCL command is to specify the name of the user-provided testbench module
-to be using for RTL simulation. The testbench file must also be specified with
-<a class="reference internal" href="#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a>.</p>
+<div class="section" id="single-hdl-output-file">
+<span id="id2"></span><h3>SINGLE_HDL_OUTPUT_FILE<a class="headerlink" href="#single-hdl-output-file" title="Permalink to this headline">¶</a></h3>
+<p>When set to 1, this TCL parameter constrains SmartHLS-generated Verilog RTL and VHDL wrapper modules to a single Verilog file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.v</span></code>) and a single VHDL file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.vhd</span></code>) respectively. By default, each Verilog top-level module (and its child modules) is printed to a separate output file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top-Level</span> <span class="pre">Name&gt;.v</span></code>), and each VHDL wrapper module of a top-level is printed to a separate VHDL file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top-Level</span> <span class="pre">Name&gt;.vhd</span></code>).</p>
 <p><strong>Category</strong></p>
-<p>Simulation</p>
+<p>HLS Constraints</p>
 <p><strong>Value Type</strong></p>
-<p>String</p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SINGLE_HDL_OUTPUT_FILE</span> <span class="mi">0</span>
+</pre></div>
+</div>
 <p><strong>Dependencies</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_file</span> <span class="pre">user_tb.v</span></code></p>
+<p>None</p>
 <p><strong>Applicable Flows</strong></p>
 <p>All devices and flows</p>
 <p><strong>Test Status</strong></p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span> <span class="pre">&quot;user_tb&quot;</span></code></div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SINGLE_HDL_OUTPUT_FILE</span> <span class="pre">1</span></code></p>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-custom-config-file">
+<span id="id3"></span><h3>set_custom_config_file<a class="headerlink" href="#set-custom-config-file" title="Permalink to this headline">¶</a></h3>
+<p>If you want to add advanced SmartHLS Tcl constraints that are not listed in the SmartHLS IDE constraints dialog you need to use a custom config file. Be careful not to modify the config.tcl constraints file directly, since config.tcl will be overwritten whenever you make changes in the SmartHLS IDE constraints dialog.</p>
+<p>To add a custom config file, open the SmartHLS Constraints Menu. Select <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">custom</span> <span class="pre">config</span> <span class="pre">file</span></code> from the dropdown and enter the Constraint Value as “custom_config.tcl”. Then click <code class="docutils literal notranslate"><span class="pre">Add</span></code>:</p>
+<a class="reference internal image-reference" href="_images/SmartHLSCustomConfigDropdown.png"><img alt="_images/SmartHLSCustomConfigDropdown.png" class="align-center" src="_images/SmartHLSCustomConfigDropdown.png" style="width: 639.0px; height: 126.0px;" /></a>
+<p>Now click <code class="docutils literal notranslate"><span class="pre">OK</span></code>:</p>
+<a class="reference internal image-reference" href="_images/SmartHLSCustomConfigDropdown_AddFile.png"><img alt="_images/SmartHLSCustomConfigDropdown_AddFile.png" class="align-center" src="_images/SmartHLSCustomConfigDropdown_AddFile.png" style="width: 639.0px; height: 258.0px;" /></a>
+<p>Now in the Project Explorer, right click and select <code class="docutils literal notranslate"><span class="pre">New-&gt;File</span></code>:</p>
+<a class="reference internal image-reference" href="_images/ProjectExplorerNewFile.png"><img alt="_images/ProjectExplorerNewFile.png" class="align-center" src="_images/ProjectExplorerNewFile.png" style="width: 639.0px; height: 195.5px;" /></a>
+<p>Enter the name of “custom_config.tcl”. This should match the file name entered in the Set HLS Constraints previously. Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code>:</p>
+<a class="reference internal image-reference" href="_images/EnterFileNameCustomConfig.png"><img alt="_images/EnterFileNameCustomConfig.png" class="align-center" src="_images/EnterFileNameCustomConfig.png" style="width: 302.0px; height: 359.5px;" /></a>
 <hr class="docutils" />
 </div>
 <div class="section" id="set-custom-test-bench-file">
-<span id="id3"></span><h3>set_custom_test_bench_file<a class="headerlink" href="#set-custom-test-bench-file" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>set_custom_test_bench_file<a class="headerlink" href="#set-custom-test-bench-file" title="Permalink to this headline">¶</a></h3>
 <p>This TCL command is to specify the user-provided custom testbench file
 that defines the custom testbench module, which is set via <code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span></code>.
 This is not needed for SW/HW co-simulation.</p>
@@ -778,16 +811,61 @@ This is not needed for SW/HW co-simulation.</p>
 <div><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_file</span> <span class="pre">user_tb.v</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
-<div class="section" id="set-synthesis-top-module">
-<span id="id4"></span><h3>set_synthesis_top_module<a class="headerlink" href="#set-synthesis-top-module" title="Permalink to this headline">¶</a></h3>
-<p>This TCL command specifies the name of the Verilog module that will be set as
-the top-level module when creating a Libero project for synthesis, place and route.
-By default, the top-level function (see <a class="reference internal" href="userguide.html#custom-top-level"><span class="std std-ref">Specifying the Top-level Function</span></a>) is set as the top-level module for the Libero project, however user may want to provide wrapper HDL module that instantiates the SmartHLS-generate top-level module.
-In this case, this Tcl command can be used to give the name of the wrapper module.</p>
+<div class="section" id="set-custom-test-bench-module">
+<span id="id5"></span><h3>set_custom_test_bench_module<a class="headerlink" href="#set-custom-test-bench-module" title="Permalink to this headline">¶</a></h3>
+<p>This TCL command is to specify the name of the user-provided testbench module
+to be using for RTL simulation. The testbench file must also be specified with
+<a class="reference internal" href="#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a>.</p>
 <p><strong>Category</strong></p>
-<p>Libero</p>
+<p>Simulation</p>
 <p><strong>Value Type</strong></p>
 <p>String</p>
+<p><strong>Dependencies</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_file</span> <span class="pre">user_tb.v</span></code></p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span> <span class="pre">&quot;user_tb&quot;</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-operation-latency">
+<span id="id6"></span><h3>set_operation_latency<a class="headerlink" href="#set-operation-latency" title="Permalink to this headline">¶</a></h3>
+<p>This Tcl command sets the latency of a given operation.
+Latency refers to the number of clock cycles required to complete the computation; an operation with latency one requires one cycle, while zero-latency operations are completely combinational, meaning multiple such operations can be chained together in a single clock cycle.
+This command is used to schedule each type operation to take the specified number of cycles.</p>
+<p>This Tcl command should only be used by advanced SmartHLS users.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>set_operation_latency &lt;operation&gt; &lt;constraint&gt;
+&lt;operation&gt; is a string
+&lt;constraint&gt; is an integer</p>
+<p><strong>Valid Values</strong></p>
+<p>See Default and Examples
+Note: operator name should match the operation database file:
+boards/PolarFire/PolarFire.tcl or boards/set_operation_latency.tcl</p>
+<p>See <a class="reference internal" href="#enable-automatic-memory-latency-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> on default latency for memory latency.
+See <a class="reference internal" href="#enable-automatic-multiply-mode-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING</span></a> on default latency for multiplies.</p>
+<p><strong>Default Values</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fp_add</span> <span class="mi">14</span>
+<span class="n">fp_subtract</span> <span class="mi">14</span>
+<span class="n">fp_multiply</span> <span class="mi">11</span>
+<span class="n">fp_divide_32</span> <span class="mi">33</span>
+<span class="n">fp_divide_64</span> <span class="mi">61</span>
+<span class="n">fp_truncate_64</span> <span class="mi">3</span>
+<span class="n">fp_extend_32</span> <span class="mi">2</span>
+<span class="n">fp_fptosi</span> <span class="mi">6</span>
+<span class="n">fp_sitofp</span> <span class="mi">6</span>
+<span class="n">signed_comp_o</span> <span class="mi">1</span>
+<span class="n">signed_comp_u</span> <span class="mi">1</span>
+<span class="n">reg</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
 <p><strong>Dependencies</strong></p>
 <p>None</p>
 <p><strong>Applicable Flows</strong></p>
@@ -795,32 +873,64 @@ In this case, this Tcl command can be used to give the name of the wrapper modul
 <p><strong>Test Status</strong></p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span> <span class="pre">&quot;wrapper_top&quot;</span></code></div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">set</span> <span class="pre">memory</span> <span class="pre">operations</span> <span class="pre">to</span> <span class="pre">take</span> <span class="pre">3</span> <span class="pre">cycles</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">memory_port</span> <span class="pre">3</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>When implementing an integer multiply operation, SmartHLS’s default behaviour is
+to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
+When a multiply operation is wider than the DSP can support, SmartHLS splits the
+multiply into multiple DSPs and automatically inserts registers to help RTL
+synthesis tool to utilize registers in DSPs better, and hence achieve better
+timing.</p>
+<p>However, this split-multiply feature does not support a user-configurable
+latency.
+When <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is specified by user, SmartHLS will
+turn off the split-multiply feature and use a generic multiplier that will
+adapt to user-specified latency.
+SmartHLS will also print a warnign as follows,
+<em>Warning: Detected set_operation_latency setting for integer multiplier.  However, configurable latency is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.</em></p>
+<p class="last">Similarly, <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
+behaviour because the split-multiply does not support sharing the
+multipliers.</p>
+</div>
 <hr class="docutils" />
 </div>
-<div class="section" id="set-synthesis-top-module-file">
-<span id="id5"></span><h3>set_synthesis_top_module_file<a class="headerlink" href="#set-synthesis-top-module-file" title="Permalink to this headline">¶</a></h3>
-<p>When <code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span></code> is used to set a different wrapper module as
-the top-level for synthesis, place &amp; route, use this command to specify the
-file that defines the wrapper module.</p>
+<div class="section" id="set-project">
+<span id="id7"></span><h3>set_project<a class="headerlink" href="#set-project" title="Permalink to this headline">¶</a></h3>
+<p>This parameter sets the default target project, or device, used. Changing the project also updates the associated family and board parameters.</p>
+<p>This parameter has 3 arguments:</p>
+<ul class="simple">
+<li>FPGA Family (e.g. PolarFire<sup>®</sup>).</li>
+<li>FPGA Device: This can either be the board name (e.g. MPF300), or the device number (e.g. MPF300TS-1FCG1152I).</li>
+<li>Flow: <code class="docutils literal notranslate"><span class="pre">hw_only</span></code> or <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code>.  <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code> is only available when targeting the PolarFire<sup>®</sup> SoC Icicle kit device.</li>
+</ul>
 <p><strong>Category</strong></p>
-<p>Libero</p>
+<p>Board and Device Specification</p>
 <p><strong>Value Type</strong></p>
 <p>String</p>
+<p><strong>Valid Values</strong></p>
+<p>See Examples</p>
+<p><strong>Default Value</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
 <p><strong>Dependencies</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span> <span class="pre">&quot;wrapper_top&quot;</span></code></p>
+<p>None</p>
 <p><strong>Applicable Flows</strong></p>
 <p>All devices and flows</p>
 <p><strong>Test Status</strong></p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module_file</span> <span class="pre">custom_synthesis_top.v</span></code></div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300T-1FCG1152I</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">FUTUREM2SF</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">M2S025T-FG484I</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">IGLOO2</span> <span class="pre">M2GL005-1FG484</span> <span class="pre">hw_only</span></code></p>
 <hr class="docutils" />
 </div>
 <div class="section" id="set-resource-constraint">
-<span id="id6"></span><h3>set_resource_constraint<a class="headerlink" href="#set-resource-constraint" title="Permalink to this headline">¶</a></h3>
+<span id="id8"></span><h3>set_resource_constraint<a class="headerlink" href="#set-resource-constraint" title="Permalink to this headline">¶</a></h3>
 <p>This Tcl command constrains the resource allocated by SmartHLS.
 For instance, to only have a single divider in the entire circuit, user can specify: <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code>.
 This makes SmartHLS instantiate a maximum of 1 divider in the circuit, and if there are multiple division operations required, they will share the same divider.</p>
@@ -895,91 +1005,16 @@ multiply latency.</p>
 </div>
 <hr class="docutils" />
 </div>
-<div class="section" id="set-operation-latency">
-<span id="id7"></span><h3>set_operation_latency<a class="headerlink" href="#set-operation-latency" title="Permalink to this headline">¶</a></h3>
-<p>This Tcl command sets the latency of a given operation.
-Latency refers to the number of clock cycles required to complete the computation; an operation with latency one requires one cycle, while zero-latency operations are completely combinational, meaning multiple such operations can be chained together in a single clock cycle.
-This command is used to schedule each type operation to take the specified number of cycles.</p>
-<p>This Tcl command should only be used by advanced SmartHLS users.</p>
+<div class="section" id="set-synthesis-top-module">
+<span id="id9"></span><h3>set_synthesis_top_module<a class="headerlink" href="#set-synthesis-top-module" title="Permalink to this headline">¶</a></h3>
+<p>This TCL command specifies the name of the Verilog module that will be set as
+the top-level module when creating a Libero project for synthesis, place and route.
+By default, the top-level function (see <a class="reference internal" href="userguide.html#custom-top-level"><span class="std std-ref">Specifying the Top-level Function</span></a>) is set as the top-level module for the Libero project, however user may want to provide wrapper HDL module that instantiates the SmartHLS-generate top-level module.
+In this case, this Tcl command can be used to give the name of the wrapper module.</p>
 <p><strong>Category</strong></p>
-<p>HLS Constraints</p>
-<p><strong>Value Type</strong></p>
-<p>set_operation_latency &lt;operation&gt; &lt;constraint&gt;
-&lt;operation&gt; is a string
-&lt;constraint&gt; is an integer</p>
-<p><strong>Valid Values</strong></p>
-<p>See Default and Examples
-Note: operator name should match the operation database file:
-boards/PolarFire/PolarFire.tcl or boards/set_operation_latency.tcl</p>
-<p><strong>Default Values</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fp_add</span> <span class="mi">14</span>
-<span class="n">fp_subtract</span> <span class="mi">14</span>
-<span class="n">fp_multiply</span> <span class="mi">11</span>
-<span class="n">fp_divide_32</span> <span class="mi">33</span>
-<span class="n">fp_divide_64</span> <span class="mi">61</span>
-<span class="n">fp_truncate_64</span> <span class="mi">3</span>
-<span class="n">fp_extend_32</span> <span class="mi">2</span>
-<span class="n">fp_fptosi</span> <span class="mi">6</span>
-<span class="n">fp_sitofp</span> <span class="mi">6</span>
-<span class="n">signed_comp_o</span> <span class="mi">1</span>
-<span class="n">signed_comp_u</span> <span class="mi">1</span>
-<span class="n">reg</span> <span class="mi">2</span>
-<span class="n">memory_port</span> <span class="mi">2</span>
-<span class="n">local_memory_port</span> <span class="mi">1</span>
-<span class="n">multiply</span> <span class="mi">1</span>
-</pre></div>
-</div>
-<p><strong>Location Where Default is Specified</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
-<p><strong>Dependencies</strong></p>
-<p>None</p>
-<p><strong>Applicable Flows</strong></p>
-<p>All devices and flows</p>
-<p><strong>Test Status</strong></p>
-<p>Actively in-use</p>
-<p><strong>Examples</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">set</span> <span class="pre">memory</span> <span class="pre">operations</span> <span class="pre">to</span> <span class="pre">take</span> <span class="pre">3</span> <span class="pre">cycles</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">memory_port</span> <span class="pre">3</span></code></p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>When implementing an integer multiply operation, SmartHLS’s default behaviour is
-to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
-When a multiply operation is wider than the DSP can support, SmartHLS splits the
-multiply into multiple DSPs and automatically inserts registers to help RTL
-synthesis tool to utilize registers in DSPs better, and hence achieve better
-timing.</p>
-<p>However, this split-multiply feature does not support a user-configurable
-latency.
-When <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is specified by user, SmartHLS will
-turn off the split-multiply feature and use a generic multiplier that will
-adapt to user-specified latency.
-SmartHLS will also print a warnign as follows,
-<em>Warning: Detected set_operation_latency setting for integer multiplier.  However, configurable latency is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.</em></p>
-<p class="last">Similarly, <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
-behaviour because the split-multiply does not support sharing the
-multipliers.</p>
-</div>
-<hr class="docutils" />
-</div>
-<div class="section" id="set-project">
-<span id="id8"></span><h3>set_project<a class="headerlink" href="#set-project" title="Permalink to this headline">¶</a></h3>
-<p>This parameter sets the default target project, or device, used. Changing the project also updates the associated family and board parameters.</p>
-<p>This parameter has 3 arguments:</p>
-<ul class="simple">
-<li>FPGA Family (e.g. PolarFire<sup>®</sup>).</li>
-<li>FPGA Device: This can either be the board name (e.g. MPF300), or the device number (e.g. MPF300TS-1FCG1152I).</li>
-<li>Flow: <code class="docutils literal notranslate"><span class="pre">hw_only</span></code> or <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code>.  <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code> is only available when targeting the PolarFire<sup>®</sup> SoC Icicle kit device.</li>
-</ul>
-<p><strong>Category</strong></p>
-<p>Board and Device Specification</p>
+<p>Libero</p>
 <p><strong>Value Type</strong></p>
 <p>String</p>
-<p><strong>Valid Values</strong></p>
-<p>See Examples</p>
-<p><strong>Default Value</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
-<p><strong>Location Where Default is Specified</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
 <p><strong>Dependencies</strong></p>
 <p>None</p>
 <p><strong>Applicable Flows</strong></p>
@@ -987,47 +1022,28 @@ multipliers.</p>
 <p><strong>Test Status</strong></p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300T-1FCG1152I</span> <span class="pre">hw_only</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">FUTUREM2SF</span> <span class="pre">hw_only</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">M2S025T-FG484I</span> <span class="pre">hw_only</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">IGLOO2</span> <span class="pre">M2GL005-1FG484</span> <span class="pre">hw_only</span></code></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span> <span class="pre">&quot;wrapper_top&quot;</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
-<div class="section" id="set-custom-config-file">
-<span id="id9"></span><h3>set_custom_config_file<a class="headerlink" href="#set-custom-config-file" title="Permalink to this headline">¶</a></h3>
-<p>If you want to add advanced SmartHLS Tcl constraints that are not listed in the SmartHLS IDE constraints dialog you need to use a custom config file. Be careful not to modify the config.tcl constraints file directly, since config.tcl will be overwritten whenever you make changes in the SmartHLS IDE constraints dialog.</p>
-<p>To add a custom config file, open the SmartHLS Constraints Menu. Select <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">custom</span> <span class="pre">config</span> <span class="pre">file</span></code> from the dropdown and enter the Constraint Value as “custom_config.tcl”. Then click <code class="docutils literal notranslate"><span class="pre">Add</span></code>:</p>
-<a class="reference internal image-reference" href="_images/SmartHLSCustomConfigDropdown.png"><img alt="_images/SmartHLSCustomConfigDropdown.png" class="align-center" src="_images/SmartHLSCustomConfigDropdown.png" style="width: 639.0px; height: 126.0px;" /></a>
-<p>Now click <code class="docutils literal notranslate"><span class="pre">OK</span></code>:</p>
-<a class="reference internal image-reference" href="_images/SmartHLSCustomConfigDropdown_AddFile.png"><img alt="_images/SmartHLSCustomConfigDropdown_AddFile.png" class="align-center" src="_images/SmartHLSCustomConfigDropdown_AddFile.png" style="width: 639.0px; height: 258.0px;" /></a>
-<p>Now in the Project Explorer, right click and select <code class="docutils literal notranslate"><span class="pre">New-&gt;File</span></code>:</p>
-<a class="reference internal image-reference" href="_images/ProjectExplorerNewFile.png"><img alt="_images/ProjectExplorerNewFile.png" class="align-center" src="_images/ProjectExplorerNewFile.png" style="width: 639.0px; height: 195.5px;" /></a>
-<p>Enter the name of “custom_config.tcl”. This should match the file name entered in the Set HLS Constraints previously. Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code>:</p>
-<a class="reference internal image-reference" href="_images/EnterFileNameCustomConfig.png"><img alt="_images/EnterFileNameCustomConfig.png" class="align-center" src="_images/EnterFileNameCustomConfig.png" style="width: 302.0px; height: 359.5px;" /></a>
-<hr class="docutils" />
-</div>
-<div class="section" id="single-hdl-output-file">
-<span id="id10"></span><h3>SINGLE_HDL_OUTPUT_FILE<a class="headerlink" href="#single-hdl-output-file" title="Permalink to this headline">¶</a></h3>
-<p>When set to 1, this TCL parameter constrains SmartHLS-generated Verilog RTL and VHDL wrapper modules to a single Verilog file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.v</span></code>) and a single VHDL file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.vhd</span></code>) respectively. By default, each Verilog top-level module (and its child modules) is printed to a separate output file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top-Level</span> <span class="pre">Name&gt;.v</span></code>), and each VHDL wrapper module of a top-level is printed to a separate VHDL file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top-Level</span> <span class="pre">Name&gt;.vhd</span></code>).</p>
+<div class="section" id="set-synthesis-top-module-file">
+<span id="id10"></span><h3>set_synthesis_top_module_file<a class="headerlink" href="#set-synthesis-top-module-file" title="Permalink to this headline">¶</a></h3>
+<p>When <code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span></code> is used to set a different wrapper module as
+the top-level for synthesis, place &amp; route, use this command to specify the
+file that defines the wrapper module.</p>
 <p><strong>Category</strong></p>
-<p>HLS Constraints</p>
+<p>Libero</p>
 <p><strong>Value Type</strong></p>
-<p>Boolean</p>
-<p><strong>Valid Values</strong></p>
-<p>0, 1</p>
-<p><strong>Default Value</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SINGLE_HDL_OUTPUT_FILE</span> <span class="mi">0</span>
-</pre></div>
-</div>
+<p>String</p>
 <p><strong>Dependencies</strong></p>
-<p>None</p>
+<p><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span> <span class="pre">&quot;wrapper_top&quot;</span></code></p>
 <p><strong>Applicable Flows</strong></p>
 <p>All devices and flows</p>
 <p><strong>Test Status</strong></p>
 <p>Actively in-use</p>
 <p><strong>Examples</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SINGLE_HDL_OUTPUT_FILE</span> <span class="pre">1</span></code></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module_file</span> <span class="pre">custom_synthesis_top.v</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
 </div>
@@ -1077,7 +1093,7 @@ file, even if they don’t drive any outputs.</p>
 <p><strong>Valid Values</strong></p>
 <p>0, 1</p>
 <p><strong>Default Value</strong></p>
-<p>unset (0)</p>
+<p>1</p>
 <p><strong>Location Where Default is Specified</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
 <p><strong>Dependencies</strong></p>
@@ -1121,8 +1137,32 @@ values (X’s) are being assigned.</p>
 <div class="section" id="advanced-constraints">
 <h2>Advanced Constraints<a class="headerlink" href="#advanced-constraints" title="Permalink to this headline">¶</a></h2>
 <p>These are not available from the SmartHLS GUI.</p>
+<div class="section" id="ifconv-predicate-loads">
+<span id="id13"></span><h3>IFCONV_PREDICATE_LOADS<a class="headerlink" href="#ifconv-predicate-loads" title="Permalink to this headline">¶</a></h3>
+<p>This constraint sets whether load instructions should be predicated during if-conversion. By default, it is set to 1 to predicate load instructions to avoid resource contention between mutually exclusive loads. If there is no resource contention between mutually exclusive loads, it can set to 0 avoid inserting predication logic.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>1</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">IFCONV_PREDICATE_LOADS</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
 <div class="section" id="latency-reduction">
-<span id="id13"></span><h3>LATENCY_REDUCTION<a class="headerlink" href="#latency-reduction" title="Permalink to this headline">¶</a></h3>
+<span id="id14"></span><h3>LATENCY_REDUCTION<a class="headerlink" href="#latency-reduction" title="Permalink to this headline">¶</a></h3>
 <p>The LATENCY_REDUCTION settings control the SmartHLS’ expression balancing
 optimization, of which the objective is to reduce the circuit latency.
 Below are the related settings,</p>
@@ -1196,8 +1236,466 @@ Below are the related settings,</p>
 </div></blockquote>
 <hr class="docutils" />
 </div>
+<div class="section" id="enable-automatic-memory-latency-setting">
+<span id="id15"></span><h3>ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING<a class="headerlink" href="#enable-automatic-memory-latency-setting" title="Permalink to this headline">¶</a></h3>
+<p>Enable determining memory latency for reads automatically according to the target clock period and timing model of the board. Memory latency is set to 2 when the target clock period is less than the delay of memory for the target device, otherwise is set to 1. Increasing the memory latency can result in higher circuit Fmax at the expense of higher circuit latency. The auto-determined latency can be found in <a class="reference internal" href="userguide.html#memory-usage"><span class="std std-ref">Memory Usage</span></a> section of SmartHLS report.</p>
+<p>Setting the operation latency for a RAM will override the latency automatically calculated. See <a class="reference internal" href="#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> for a list of valid memory port latency. The threshold for switching are listed in the table below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device</th>
+<th class="head">Use Memory Latency of 2 when Target Period is less than (ns)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PolarFire, PolarFireSoC</td>
+<td>4.167</td>
+</tr>
+<tr class="row-odd"><td>IGLOO2, SmartFusion2</td>
+<td>4.167</td>
+</tr>
+</tbody>
+</table>
+<p>ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING controls the latency for the following memory constraints. Each constraint can be used with <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">&lt;Name&gt;</span> <span class="pre">&lt;latency&gt;</span></code> to override the auto-determined latency.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">local_memory_port</span></code></td>
+<td>Controls the memory latency of <a class="reference internal" href="hwarchitecture.html#local-memory"><span class="std std-ref">Local Memory</span></a> used by a single function.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">shared_local_memory_port</span></code></td>
+<td>Controls the memory latency of <a class="reference internal" href="hwarchitecture.html#shared-local-memory"><span class="std std-ref">Shared-Local Memory</span></a> shared by multiple functions.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">axi_slave_ram_memory_port</span></code></td>
+<td>Controls the memory latency of <a class="reference internal" href="userguide.html#global-variable-axi-slave"><span class="std std-ref">Legacy AXI4 Slave Interface</span></a></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">memory_port</span></code></td>
+<td>Controls the memory latency of <a class="reference internal" href="hwarchitecture.html#memory-controller"><span class="std std-ref">Memory Controller</span></a></td>
+</tr>
+</tbody>
+</table>
+<p>SmartHLS does not automatically determine the latency for <code class="docutils literal notranslate"><span class="pre">external_memory_port</span></code> as it is only for creating an interface with the RAMs outside of the circuit. However, for <a class="reference internal" href="userguide.html#smarthls-soc-flow"><span class="std std-ref">SmartHLS SoC Flow</span></a>, <code class="docutils literal notranslate"><span class="pre">external_memory_port</span></code> controls the latency for the on-chip memory buffers.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>1</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="enable-automatic-multiply-mode-setting">
+<span id="id16"></span><h3>ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING<a class="headerlink" href="#enable-automatic-multiply-mode-setting" title="Permalink to this headline">¶</a></h3>
+<p>Enable determining multiply mode automatically according to the target clock period and timing model of the board. Fully pipelined mode (i.e., using both input and output registers of each Math block) will be used when the target clock period is less than the delay of a Math block, otherwise half pipelined mode (i.e., using only the input register of each Math block) will be used.</p>
+<p>Fully pipelined mode can result in higher circuit Fmax at the expense of higher circuit latency. This functionality is disabled when <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> or <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is defined. The threshold for switching are listed in the table below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device</th>
+<th class="head">Fully Pipelined Mode when Target Period is less than (ns)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PolarFire, PolarFireSoC</td>
+<td>3.704</td>
+</tr>
+<tr class="row-odd"><td>IGLOO2, SmartFusion2</td>
+<td>4.169</td>
+</tr>
+</tbody>
+</table>
+<p>Below is a table of latency for multiplications of unsigned integers for selected bit widths for reference:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="34%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">(Bit Width) x (Bit Width)</th>
+<th class="head">Half Pipelined Mode Latency</th>
+<th class="head">Full Pipelined Mode Latency</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>8 x 8</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>16 x 16</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>32 x 32</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>64 x 64</td>
+<td>6</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>1</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="multiply-splitting-fully-pipelined">
+<span id="id17"></span><h3>MULTIPLY_SPLITTING_FULLY_PIPELINED<a class="headerlink" href="#multiply-splitting-fully-pipelined" title="Permalink to this headline">¶</a></h3>
+<p>Multipliers are implemented in Math (DSP) blocks. When this constraint is set to 0, only the input register of each Math block is used, whereas when it is set to 1, both the input and output registers of each Math block are used. Utilizing just the input register will result in lower latency but utilizing both input and output registers will result in higher Fmax. When <a class="reference internal" href="#enable-automatic-multiply-mode-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING</span></a> is set to 1, which is the default, SmartHLS will automatically decide which multiplier mode should be used based on the target clock period constraint.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>0</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MULTIPLY_SPLITTING_FULLY_PIPELINED</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-axi-initiator">
+<span id="id18"></span><h3>SOC_AXI_INITIATOR<a class="headerlink" href="#soc-axi-initiator" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the AXI initiator interface used by the processor in the user-defined SmartDesign system to connect to the HLS module’s AXI target interface. This AXI initiator interface is used by the processor to control and transfer data to/from the HLS modules.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on using this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>AXI2AXI_TO_HLS:AXI4_MASTER</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_AXI_INITIATOR</span> <span class="pre">AXI2AXI_TO_HLS:AXI4_MASTER</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-axi-target">
+<span id="id19"></span><h3>SOC_AXI_TARGET<a class="headerlink" href="#soc-axi-target" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the AXI target interface in the user-defined SmartDesign system where the HLS module’s AXI initiator interface can connect to. This AXI target interface is used by the HLS modules to access shared memory (DDR) directly.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on using this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>AXI2AXI_FROM_HLS:AXI4_SLAVE</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_AXI_TARGET</span> <span class="pre">AXI2AXI_FROM_HLS:AXI4_SLAVE</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-bd-name">
+<span id="id20"></span><h3>SOC_BD_NAME<a class="headerlink" href="#soc-bd-name" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the name of the SmartDesign system to integrate the HLS modules into.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>FIC_0_PERIPHERALS</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_BD_NAME</span> <span class="pre">FIC_0_PERIPHERALS</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-clock">
+<span id="id21"></span><h3>SOC_CLOCK<a class="headerlink" href="#soc-clock" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the name of the clock to connect to the HLS modules. Currently, all HLS modules use the same clock.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>ACLK</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_CLOCK</span> <span class="pre">ACLK</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-cpu-mem-base-address">
+<span id="id22"></span><h3>SOC_CPU_MEM_BASE_ADDRESS<a class="headerlink" href="#soc-cpu-mem-base-address" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the base address of the memory window in the shared memory space (DDR) that can be accessed by the HLS module’s AXI initiator interfaces. This address is used to configure the AXI interconnect that HLS modules connect to for accessing the shared memory.</p>
+<p>Note that the value for the parameter is specified in hexadecimal format and must be prefixed with 0x.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Hexadecimal</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0x80000000</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_CPU_MEM_BASE_ADDRESS</span> <span class="pre">0x80000000</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-cpu-mem-size">
+<span id="id23"></span><h3>SOC_CPU_MEM_SIZE<a class="headerlink" href="#soc-cpu-mem-size" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the size of the shared memory (DDR) space that the HLS module’s AXI initiator interfaces can access.</p>
+<p>Note that the value for the parameter is specified in hexadecimal format and must be prefixed with 0x.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Hexadecimal</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0x60000000</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_CPU_MEM_SIZE</span> <span class="pre">0x60000000</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-dma-engine">
+<span id="id24"></span><h3>SOC_DMA_ENGINE<a class="headerlink" href="#soc-dma-engine" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the type of DMA engine to use in the system for transferring data to/from HLS modules.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">DMA Engine</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>HARD_DMA</td>
+<td><div class="first last line-block">
+<div class="line">Uses the DMA available in the PolarFire SoC MSS. This implies that the CPUs to be used are the RISC-V U54 application cores in the MSS.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>SOFT_DMA</td>
+<td><div class="first last line-block">
+<div class="line">Automatically instantiates a DMA engine on the FPGA fabric and be connected to the SmartHLS AXI interconnect along with the SmartHLS IP modules.</div>
+<div class="line">Currently this option is not enabled, but will be in a future release.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>HARD_DMA</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>HARD_DMA is actively in-use; SOFT_DMA will be made available in a future release</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_DMA_ENGINE</span> <span class="pre">HARD_DMA</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-fabric-base-address">
+<span id="id25"></span><h3>SOC_FABRIC_BASE_ADDRESS<a class="headerlink" href="#soc-fabric-base-address" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the base address of the CPU memory space that is reserved for all HLS modules. The control registers and on-chip memory buffers of HLS modules are allocated and mapped within this memory window. This address is also used to configure the AXI interconnect that HLS modules connect to.</p>
+<p>Note that the value for the parameter is specified in hexadecimal format and must be prefixed with 0x.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Hexadecimal</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0x70000000</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_FABRIC_BASE_ADDRESS</span> <span class="pre">0x70000000</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-fabric-size">
+<span id="id26"></span><h3>SOC_FABRIC_SIZE<a class="headerlink" href="#soc-fabric-size" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the size of the CPU memory space that is reserved for all HLS modules. The control registers and on-chip memory buffers of HLS modules are allocated and mapped within this memory window. This address is also used to configure the AXI interconnect that HLS modules connect to.</p>
+<p>Note that the value for the parameter is specified in hexadecimal format and must be prefixed with 0x.</p>
+<p>By default, 4MB of size is reserved. If this is larger than what HLS modules require, it can just be left for future use. Reserving a larger window does not mean more on-chip memory will be used.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Hexadecimal</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0x400000</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_FABRIC_SIZE</span> <span class="pre">0x400000</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-poll-delay">
+<span id="id27"></span><h3>SOC_POLL_DELAY<a class="headerlink" href="#soc-poll-delay" title="Permalink to this headline">¶</a></h3>
+<p>This parameter controls how often an accelerator driver function polls the status register of an HLS module to check for its completion. By default, the delay is set to 0, which means the processor will continuously poll the status. However, it may be beneficial to insert a delay in polling to reduce CPU usage and power consumption. The poll delay is specified in microseconds.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Integer; represents a value in microseconds</p>
+<p><strong>Valid Values</strong></p>
+<p>Integer</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_POLL_DELAY</span> <span class="pre">10</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-profiler-counter">
+<span id="id28"></span><h3>SOC_PROFILER_COUNTER<a class="headerlink" href="#soc-profiler-counter" title="Permalink to this headline">¶</a></h3>
+<p>This parameter specifies whether or not to include a hardware counter to help profile SoC-based designs. The counter is not included by default.</p>
+<p>For more information, see <a class="reference internal" href="userguide.html#soc-profiler"><span class="std std-ref">SoC Profiler</span></a>.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>0</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_PROFILER_COUNTER</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-reset">
+<span id="id29"></span><h3>SOC_RESET<a class="headerlink" href="#soc-reset" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the name of the reset signal to connect to the HLS modules. Currently, all HLS modules use the same reset. Note that the reset polarity must be active high.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>ARESETN</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_RESET</span> <span class="pre">ARESETN</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
 <div class="section" id="strength-reduction">
-<span id="id14"></span><h3>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction" title="Permalink to this headline">¶</a></h3>
+<span id="id30"></span><h3>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction" title="Permalink to this headline">¶</a></h3>
 <p>Strength reduction is an optimization that
 converts multiply-by-constant into shifts and additions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
@@ -1237,7 +1735,7 @@ converts multiply-by-constant into shifts and additions:</p>
 <hr class="docutils" />
 </div>
 <div class="section" id="strength-reduction-adders-allowed-per-multiplier">
-<span id="id15"></span><h3>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER<a class="headerlink" href="#strength-reduction-adders-allowed-per-multiplier" title="Permalink to this headline">¶</a></h3>
+<span id="id31"></span><h3>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER<a class="headerlink" href="#strength-reduction-adders-allowed-per-multiplier" title="Permalink to this headline">¶</a></h3>
 <p>Strength reduction is an optimization that
 converts multiply-by-constant into shifts and additions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
@@ -1276,8 +1774,32 @@ meaning strength reduction will not occur and SmartHLS will keep the multiplier.
 <div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</span> <span class="pre">3</span></code></div></blockquote>
 <hr class="docutils" />
 </div>
+<div class="section" id="synthesis-clock-period">
+<span id="id32"></span><h3>SYNTHESIS_CLOCK_PERIOD<a class="headerlink" href="#synthesis-clock-period" title="Permalink to this headline">¶</a></h3>
+<p>This constraint allows the user to override the SDC clock period constraint for synthesis, P&amp;R, and timing analysis.</p>
+<p>By default, when this constraint is not specified, the same CLOCK_PERIOD constraint for HLS is used for the SDC clock period constraint. However, it may be useful to give a tighter SDC clock period constraint to close timing.</p>
+<p>The clock period is specified in nanoseconds.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Integer; represents a value in nanoseconds</p>
+<p><strong>Valid Values</strong></p>
+<p>Integer</p>
+<p><strong>Default Value</strong></p>
+<p>N/A</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SYNTHESIS_CLOCK_PERIOD</span> <span class="pre">10</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
 <div class="section" id="use-fifo-for-pipeline-reg">
-<span id="id16"></span><h3>USE_FIFO_FOR_PIPELINE_REG<a class="headerlink" href="#use-fifo-for-pipeline-reg" title="Permalink to this headline">¶</a></h3>
+<span id="id33"></span><h3>USE_FIFO_FOR_PIPELINE_REG<a class="headerlink" href="#use-fifo-for-pipeline-reg" title="Permalink to this headline">¶</a></h3>
 <p>In a pipeline circuit where multiple stages of the circuit are concurrently
 active and processing different loop iterations (or function calls), <em>pipeline
 registers</em> are used to retain and propagate a variable value from the
@@ -1296,7 +1818,7 @@ to be more resource-efficient.</p>
 <p><strong>Valid Values</strong></p>
 <p>0, 1</p>
 <p><strong>Default Value</strong></p>
-<p>unset (0)</p>
+<p>1</p>
 <p><strong>Location Where Default is Specified</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
 <p><strong>Dependencies</strong></p>
@@ -1369,9 +1891,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.2.1 documentation&\
-		pub_ver=2022.2.1&\
-		revision_letter=2022.2.1&\
+		cover_title=SmartHLS 2022.3 documentation&\
+		pub_ver=2022.3&\
+		revision_letter=2022.3&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \
