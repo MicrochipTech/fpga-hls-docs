@@ -341,11 +341,17 @@ SW/HW co-simulation consists of the following automated steps:
 3. ModelSim simulates the testbench and saves the SmartHLS-generated module outputs.
 4. SmartHLS runs your software program again, but uses the simulation outputs as the output of your top-level function.
 
-You should write your C/C++ testbench such that the ``main()`` function returns a 0 when all outputs from the top-level function are as expected and otherwise return a non-zero value. We use this return value to determine whether the SW/HW co-simulation has passed.
+You should write your C/C++ testbench such that the ``main()`` function returns a 0 when all outputs from the top-level function are as expected and otherwise return a non-zero value up to 255. We use this return value to determine whether the SW/HW co-simulation has passed.
+
 In step 1, we verify that the program returns 0.
+
 In step 4, we run the program using the outputs from simulation and if the SmartHLS-generated circuit matches the C program then ``main()`` should still return 0.
 
 If the C/C++ program matches the RTL simulation then you should see: ``SW/HW co-simulation: PASS``
+
+.. warning::
+    The return value of the ``main()`` function must be within the range of 0 to 255. If the return value is greater than 255, only the lower 8 bits will be used as the return code. For example, a return value of 257 or 1025 will be considered as failed since their lower 8 bits equal to 1, but values such as 256, 512 and 1024 will be considered as passed since their lower 8 bits equal to 0.
+
 
 For any values that are shared between software testbench and hardware functions (top-level and descendants), you can either pass in as arguments into the top-level function, or if it is a global variable, it can be directly accessed without being passed in as an argument. 
 Any variables that are accessed by both software testbench and hardware functions will create an interface at the top-level module. 
@@ -355,7 +361,7 @@ The top-level function can also have a return value.
 Please refer to the included example in the SmartHLS IDE, ``C++ Canny Edge Detection (SW/HW Co-Simulation)``, as a reference. 
 
 If a top-level argument is coming from a dynamically allocated array (e.g., malloc), the size of the array (in bytes) must be specified with our ``interface`` pragma (e.g., ``#pragma HLS interface argument(<arg_name>) depth(<int>)``). 
-Please see the :ref:`pragma_interface_memory_argument` for more details. The sizes of arrays that are statically allocated do not need to be specified with the pragma, as SmartHLS will automatically determine them. 
+Please see the :ref:`pragma_interface_memory` for more details. The sizes of arrays that are statically allocated do not need to be specified with the pragma, as SmartHLS will automatically determine them. 
 
 For debugging purposes, SmartHLS converts any C ``printf``
 statements into Verilog ``$write`` statements so that values printed during
@@ -577,6 +583,197 @@ that satisfies the constraints and dependencies.
     .. [#] Use mouse to hover over the cell to see the complete statement of an operation.
 
 
+.. _function_pipelining:
+
+Function Pipelining
+---------------------
+
+.. comment:
+  You have just seen how an efficient streaming circuit can be described in software by using loop pipelining with SmartHLS threads.
+  An alternative way to describe such a streaming circuit is to use ``Function Pipelining``.
+
+Loop pipelining is one way to exploit pipeline parallelism in a circuit.
+An alternative way is to use ``Function Pipelining``.
+When a function is marked to be pipelined (by using the :ref:`pragma_function_pipeline` pragma), SmartHLS will implement the function as a pipelined circuit that can start a new invocation every ``II`` cycles.
+That is, the circuit can execute again while its previous invocation is still executing, allowing it to continuously process incoming data in a pipelined fashion.
+Typically a pipelined function is called together with other pipelined functions, and these are called from within a parent "dataflow function", specified via the :ref:`pragma_dataflow` pragma described below.
+
+.. comment:
+  This essentially has the same circuit behaviour as what was described in the previous example (loop pipelining with threads) in the :ref:`data_flow_parallelism_with_pthreads` section, without having to write the software code using threads.
+  This feature also allows multiple functions that are added to the ``Pipeline function`` constraint to execute in parallel, achieving the same hardware behaviour as the previous loop pipelining with threads example.
+
+.. comment:
+  To simplify the ``C`` code, SmartHLS provides a ``Function Pipelining`` feature as an alternative approach to describing streaming circuits.
+  With this feature, we do not need to add a loop around the processing algorithm for specifying continuous execution, or use the thread APIs to initiate the concurrent execution among a succession of tasks.
+  Instead, we just need to add a ``Pipeline Function`` constraint with the name of the function (:ref:`smarthls_constraints`).
+  SmartHLS will then generate a pipelined circuit, which implements the function's algorithm and automatically starts a new invocation every ``II`` cycles.
+  Meaning that the circuit can execute again while its previous invocation (of the function algorithm) is still executing.
+  This feature also allows multiple functions that are added with ``Pipeline function`` constraint to execute in parallel.
+  
+  Notice the difference between generated hardware and software specification, the generated hardware automatically starts a new invocation to continuously processes the data streams, while the software function does not imply so but only specifies the processing algorithm.
+  
+  When using this feature, the user-specified top-level function (see :ref:`custom_top_level`) can only call functions that are specified to be function pipelined (e.g., the top-level function cannot call one function pipeline and one non-function pipeline).  
+  The top-level function cannot have any control flow (i.e., loops, if/else statements), and cannot perform any operations other than declaring variables (i.e., memories, FIFOs) and calling function pipelines. 
+  
+  For SW/HW co-simulation, the top-level function that calls one or more function pipelines can only have interfaces that are created from FIFOs and constant values (top-level interfaces are created from top-level function arguments and global variables that are accessed from both software testbench functions and hardware kernel functions). 
+
+.. _dataflow_parallelism:
+
+Data Flow Parallelism
+---------------------
+
+.. comment:
+  Dataflow parallelism allows separate tasks to run in parallel.
+
+Data Flow or "dataflow" parallelism is another commonly used technique to improve hardware throughput. In dataflow parallelism, a succession of computational tasks which process continuous streams of data can execute in parallel.
+These tasks are called dataflow sub-functions.
+A function is declared as a dataflow function using the pragma ``#pragma HLS function dataflow`` (see :ref:`pragma_dataflow`).
+Within this dataflow function, the called functions, or sub-functions, will execute with dataflow parallelism.
+If the dataflow function contains loops or control-flow, each top-level loop nest or control-flow region will be extracted into a new sub-function.
+
+In a dataflow circuit, synchronization will be required for passing intermediate data between the sub-functions that can run in parallel.
+For instance, a producer sub-function can write to an array for another consumer sub-function to read. In this case, the consumer sub-function needs to "know" that the producer has finished writing the array in order to start.
+SmartHLS can convert such intermediate data into double/shared buffer or FIFOs.
+By default, intermediate data is converted into double buffer. This can be configured via the :ref:`pragma_dataflow_channel` pragma.
+
+
+.. NOTE::
+
+  Dataflow functions and sub-functions have the following restrictions or properties:
+  
+  #. The dataflow function and all its sub-functions must have ``void`` return type, with output data passed by pointer or by reference.
+  #. Nested dataflow functions must have the parent dataflow function directly calling the child dataflow function.
+     That is, it is supported for a dataflow function to call another dataflow function;
+     however it is not allowed to have a dataflow function, calling a non-dataflow function, which further calls a dataflow function.
+  #. Sub-functions cannot contain SmartHLS Threads (to use SmartHLS Threads, see :ref:`pthreads_multithreading`).
+  #. When a dataflow function is called from within a loop, the loop body can only contain that call in order for SmartHLS to overlap the invocations of the dataflow function;
+     otherwise the dataflow function will still run in a non-overlapped manner.
+  #. Data external to the dataflow function (declared outside of the dataflow function and its sub-functions) can only be accessed by 1 sub-function, unless the data is of FIFO type.
+  #. All intermediate data should have exactly one producer and one consumer sub-function.
+  #. When configuring an intermediate data variable (i.e., an array or single-element memory) to be implemented as a FIFO channel using the :ref:`pragma_dataflow_channel` pragma, it is only correct to use the ``fifo`` type when:
+     1) the producer function only writes to the variable in a sequential manner,
+     and 2) the consumer function only reads from the variable in a sequential manner.
+  #. If a sub-function calls another synthesizable sub-sub-function, the sub-sub-function will be automatically inlined by SmartHLS.
+  #. If a sub-function is called in more than one location inside a dataflow function, the sub-function will be automatically replicated by SmartHLS.
+
+.. NOTE::
+
+  If a dataflow function contains conditionally executed tasks, the generated circuit may mismatch with the software and may need to be free-running on hardware for the circuit to work properly.
+  To make the generated circuit free-running, tie the start signal to 1.
+  For CoSimulation, see :ref:`COSIM_FREE_RUNNING_DATAFLOW_TOP` for how to keep the start signal at 1 during simulation.
+
+Dataflow parallelism can be used to overlap sub-functions which run in sequence, or to run independent sub-functions in parallel.
+
+Dataflow Example: Canny with FIFOs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To see this complete code example, please refer to the `C++ Canny Edge Detection (SW/HW Co-Simulation)` example
+included in the SmartHLS IDE.
+
+An example of overlapping sequential sub-functions is an image processing pipeline, such as Canny edge detection.
+Canny edge detection runs 4 image processing algorithms sequentially.
+
+.. code-block:: c
+
+  void canny(unsigned char *input_frame,
+             unsigned char *output_frame) {
+  #pragma HLS function dataflow
+
+  #pragma HLS dataflow_channel variable(output_gf) type(double_buffer)
+      unsigned char output_gf [HEIGHT * WIDTH];
+  #pragma HLS dataflow_channel variable(output_sf) type(double_buffer)
+      unsigned short output_sf [HEIGHT * WIDTH];
+  #pragma HLS dataflow_channel variable(output_nm) type(double_buffer)
+      unsigned char output_nm [HEIGHT * WIDTH];
+
+      gaussian_filter(input_frame, output_gf);
+      sobel_filter(output_gf, output_sf);
+      nonmaximum_suppression(output_sf, output_nm);
+      hysteresis_filter(output_nm, output_frame);
+  }
+
+These can overlap using dataflow parallelism to operate as a single pipeline.
+Each time the ``canny`` function is called, one new piece of data will enter the pipeline.
+In the example above, the granularity of data is an entire image, of size HEIGHT * WIDTH pixels.
+After the fourth call, the pipeline will be in steady-state, and all 4 sub-functions will be executing in parallel on 4 separate images.
+The intermediate data arrays are double-buffered as specified by the :ref:`pragma_dataflow_channel` pragma.
+
+.. image:: /images/dataflow_canny_pipeline.png
+        :scale: 25 %
+        :align: center
+
+Because the Canny pipeline processes the image data in sequential order, however, the granularity of data
+entering the pipeline each function call does not need to be an entire image. Instead, it can be a single
+pixel. The intermediate channels could then be FIFOs.
+
+.. code-block:: c
+
+  void canny_fifo(hls::FIFO<unsigned char> &input_fifo,
+                  hls::FIFO<unsigned char> &output_fifo) {
+  #pragma HLS function dataflow
+
+  #pragma HLS dataflow_channel variable(output_gf) type(fifo)
+      unsigned char output_gf [HEIGHT * WIDTH];
+  #pragma HLS dataflow_channel variable(output_sf) type(fifo)
+      unsigned short output_sf [HEIGHT * WIDTH];
+  #pragma HLS dataflow_channel variable(output_nm) type(fifo)
+      unsigned char output_nm [HEIGHT * WIDTH];
+
+      gaussian_filter(input_fifo, output_gf);
+      sobel_filter(output_gf, output_sf);
+      nonmaximum_suppression(output_sf, output_nm);
+      hysteresis_filter(output_nm, output_fifo);
+  }
+
+In this case, the FIFO only needs to be as deep as 2 elements to accommodate the dataflow.
+By using FIFO rather than double/shared buffer, we can significantly save resource usage as well as achieve better performance by allowing the pipeline to be in steady state faster.
+
+.. image:: /images/dataflow_canny_pipeline_fifo.png
+           :scale: 30 %
+           :align: center
+
+Another way to implement these as fifo channels would be to use the
+hls::FIFO library. This final version is included as a complete code example.
+Please refer to the `C++ Canny Edge Detection (SW/HW Co-Simulation)` example in the SmartHLS IDE.
+
+.. literalinclude:: ../examples/user_guide_examples/dataflow/canny_fifo/canny.cpp
+	:language: cpp
+	:lines: 10-23
+
+The top-level function has been specified with ``#pragma HLS function top``. The top-level function calls the four sub-functions, ``gaussian_filter``, ``sobel_filter``, ``nonmaximum_suppression``, and ``hysteresis_filter``, each of which are specified to be function pipelined with ``#pragma HLS function pipeline``.
+The top-level arguments are ``input_fifo`` and ``output_fifo``. The ``input_fifo`` is given as an argument into the first sub-function, ``gaussian_filter``, and gives the inputs into the overall circuit. 
+The ``output_fifo`` is given as an argument into the last sub-function, ``hysteresis_filter``, and receives the outputs of the overall circuit.
+There are also intermediate FIFOs, ``output_fifo_gf``, ``output_fifo_sf``, and ``output_fifo_nm``, which are given as arguments into the sub-function and thus connect them (i.e., outputs of ``gaussian_filter`` is given as inputs to ``sobel_filter``). 
+
+When synthesizing a function with multiple pipelined sub-functions, specifying
+``#pragma HLS function dataflow`` causes SmartHLS to parallelize the execution of all
+sub-functions, forming a streaming circuit with dataflow parallelism.
+In this case ``gaussian_filter`` executes as soon as there is data in the ``input_fifo``, and ``sobel_filter`` starts running as soon as there is data in the ``output_fifo_sf``.
+In other words, a sub-function does not wait for its previous sub-function to completely finish running before it starts to execute, but rather, it starts running as early as possible.
+Each sub-function also starts working on the next data while the previous data is being processed (in a pipelined fashion).
+If the initiation interval (II) is 1, a sub-function starts processing new data every clock cycle.
+Once the sub-functions reach steady-state, all sub-functions execute concurrently.
+This example showcases the synthesis of a streaming circuit that consists of a succession of concurrently executing dataflow sub-functions.
+
+
+Dataflow Example: Diamond
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Next, consider an example in which there are sub-functions without dependencies.
+
+.. A simple dataflow graph showing sub-functions B and C which can execute concurrently.
+.. image:: /images/dataflow_diamond.png
+        :scale: 30 %
+        :align: center
+
+The sub-functions B and C can execute in parallel, starting when A is finished.
+Once both B and C are finished, D will begin.
+An implementation of the dataflow function is shown below.
+
+.. literalinclude:: ../examples/user_guide_examples/dataflow/diamond/dut.cpp
+	:language: cpp
+	:lines: 38-52
+
 .. _pthreads_multithreading:
 
 Multi-threading with SmartHLS Threads 
@@ -745,8 +942,12 @@ The following example illustrates the use of ``hls::mutex`` and ``hls::barrier``
 Data Flow Parallelism with SmartHLS Threads
 ------------------------------------------------
 
-Data flow parallelism is another commonly used technique to improve hardware throughput, where a succession of computational tasks that process 
-continuous streams of data can execute in parallel.
+Most of the time a dataflow design can be implemented with the
+:ref:`pragma_dataflow` pragma that requires minimal code change.
+However, for more complex parallelism, e.g., with feedback/cycles
+between sub-functions, multi-threading APIs may be needed to
+explicitly describe the parallelism between the functions.
+
 The concurrent execution of computational tasks can also be accurately described in software using ``hls::thread`` APIs.
 In addition, the continuous streams of data flowing through the tasks can be inferred using SmartHLS's built-in FIFO data structure (see :ref:`streaming_lib`).
 
@@ -836,71 +1037,6 @@ If you run SmartHLS synthesis for the example (``Compile Software to Hardware``)
 That means all functions can start a new iteration every clock cycle, and hence the entire streaming circuit can process one piece of data every clock cycle.
 Now run the simulation (``Simulate Hardware``) to confirm our expected throughput. The reported cycle latency should be just slightly more than the number of data samples to be processed
 (``INPUTSIZE`` is set to 128; the extra cycles are spent on activating the parallel accelerators, flushing out the pipelines, and verifying the results).
-
-.. _function_pipelining:
-
-Function Pipelining
----------------------
-
-You have just seen how an efficient streaming circuit can be described in software by using loop pipelining with SmartHLS threads.
-An alternative way to describe such a streaming circuit is to use ``Function Pipelining``.
-When a function is marked to be pipelined (by using the ``Pipeline Function`` constraint), SmartHLS will implement the function as a pipelined circuit that can start a new invocation every ``II`` cycles.
-That is, the circuit can execute again while its previous invocation is still executing, allowing it to continuously process incoming data in a pipelined fashion.
-This essentially has the same circuit behaviour as what was described in the previous example (loop pipelining with threads) in the :ref:`data_flow_parallelism_with_pthreads` section, without having to write the software code using threads.
-This feature also allows multiple functions that are added to the ``Pipeline function`` constraint to execute in parallel, achieving the same hardware behaviour as the previous loop pipelining with threads example.
-
-.. comment:
-  To simplify the ``C`` code, SmartHLS provides a ``Function Pipelining`` feature as an alternative approach to describing streaming circuits.
-  With this feature, we do not need to add a loop around the processing algorithm for specifying continuous execution, or use the thread APIs to initiate the concurrent execution among a succession of tasks.
-  Instead, we just need to add a ``Pipeline Function`` constraint with the name of the function (:ref:`smarthls_constraints`).
-  SmartHLS will then generate a pipelined circuit, which implements the function's algorithm and automatically starts a new invocation every ``II`` cycles.
-  Meaning that the circuit can execute again while its previous invocation (of the function algorithm) is still executing.
-  This feature also allows multiple funcstions that are added with ``Pipeline function`` constraint to execute in parallel.
-..
-  Notice the difference between generated hardware and software specification, the generated hardware automatically starts a new invocation to continuously processes the data streams, while the software function does not imply so but only specifies the processing algorithm.
-
-When using this feature, the user-specified top-level function (see :ref:`custom_top_level`) can only call functions that are specified to be function pipelined (e.g., the top-level function cannot call one function pipeline and one non-function pipeline).  
-The top-level function cannot have any control flow (i.e., loops, if/else statements), and cannot perform any operations other than declaring variables (i.e., memories, FIFOs) and calling function pipelines. 
-
-For SW/HW co-simulation, the top-level function that calls one or more function pipelines can only have interfaces that are created from FIFOs and constant values (top-level interfaces are created from top-level function arguments and global variables that are accessed from both software testbench functions and hardware kernel functions). 
-
-Please refer to the `C++ Canny Edge Detection (SW/HW Co-Simulation)` example included in the SmartHLS IDE for an example of using function pipelining. 
-
-In this example, you should see the top-level function, ``canny``, as below.  
-
-.. code-block:: c
-
-    void canny(hls::FIFO<unsigned char> &input_fifo,
-               hls::FIFO<unsigned char> &output_fifo) {
-       #pragma HLS function top
-
-       hls::FIFO<unsigned char> output_fifo_gf(/* depth = */ 2);
-       hls::FIFO<unsigned short> output_fifo_sf(/* depth = */ 2);
-       hls::FIFO<unsigned char> output_fifo_nm(/* depth = */ 2);
-
-       gaussian_filter(input_fifo, output_fifo_gf);
-       sobel_filter(output_fifo_gf, output_fifo_sf);
-       nonmaximum_suppression(output_fifo_sf, output_fifo_nm);
-       hysteresis_filter(output_fifo_nm, output_fifo);
-    }
-
-As shown above, the top-level function has been specified with ``#pragma HLS function top``. The top-level function calls four functions, ``gaussian_filter, sobel_filter, nonmaximum_suppression, and hysteresis_filter``, each of which are specified to be function pipelined (with ``#pragma HLS function pipeline``). 
-The top-level arguments are ``input_fifo`` and ``output_fifo``. The ``input_fifo`` is given as an argument into the first function, ``gaussian_filter``, and gives the inputs into the overall circuit. 
-The ``output_fifo`` is given as an argument into the last function, ``hysteresis_filter``, and receives the outputs of the overall circuit. 
-There are also intermediate FIFOs, ``output_fifo_gf``, ``output_fifo_sf``, and ``output_fifo_nm``, which are given as arguments into the function pipelines and thus connect them (i.e., outputs of ``gaussian_filter`` is given as inputs to ``sobel_filter``). 
-
-When synthesizing a top-level function with multiple pipelined sub-functions, SmartHLS will automatically parallelize the execution of all sub-functions that are called in the top-level function, forming a streaming circuit with data flow parallelism.
-In this case ``gaussian_filter`` executes as soon as there is data in the ``input_fifo``, and ``sobel_filter`` starts running as soon as there is data in the ``output_fifo_sf``.
-In other words, a function pipeline does not wait for its previous function pipeline to completely finish running before it starts to execute, but rather, it starts running as early as possible.
-Each function pipeline also starts working on the next data while the previous data is being processed (in a pipelined fashion).
-If the initiation interval (II) is 1, a function pipeline starts processing new data every clock cycle.
-Once the function pipelines reach steady-state, all function pipelines execute concurrently.
-This example showcases the synthesis of a streaming circuit that consists of a succession of concurrently executing pipelined functions. 
-
-.. NOTE::
-  In the generated Verilog for a function pipelined hardware, the ``start`` input port serves as an enable signal to the circuit.
-  The circuit stops running when the ``start`` signal is de-asserted. To have the circuit running continuously, the ``start`` input port should be kept high.
-
 
 .. _memory_partitioning:
 
@@ -1410,7 +1546,7 @@ An example using the C++ library is shown below.
 
 .. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
         :language: cpp
-        :lines: 2,3,6,138-157,160
+        :lines: 2,3,6,141-160,163
 
 In the above code we iterate through a 128 bit unsigned integer in four bit segments, 
 and track the difference between how many segments are above and below 7. 
@@ -1485,23 +1621,26 @@ Selecting and Assigning to a Range of Bits
 
 .. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
         :language: cpp
-        :lines: 2-6,107-123
+        :lines: 2-6,107-126
 
 On C++ arbitrary precision types ``num(a, b)`` (or ``num.range(a, b)``) will select and create a reference to the underlying arbitrary precision value.
 The operator ``num[a]`` selects and creates a reference to a single bit.
 This reference can be assigned to, and used to access the underlying data.
 The arbitrary precision ``num.byte(n, s = 8)`` function selects and creates a
 reference to the ``n-th`` byte of the number which can be assigned to and used
-to access the underlying data. The second argument to the ``byte`` function is
-an optional argument which defines the number of bits per byte, and defaults to 
-8.
+to access the underlying data. Similarly, the ``num.bytes(m, n, s = 8)``
+function selects and creates a reference to a range of bytes from the
+``m-th`` to the ``n-th`` byte (inclusive) of the number. In both functions, the
+last argument is an optional argument which defines the number of bits per byte,
+and defaults to 8.
+
 
 Bit Concatenation
 ++++++++++++++++++++++++
 
 .. literalinclude:: ../examples/user_guide_examples/int_arbitrary_precision/int_arbitrary_precision.cpp
         :language: cpp
-        :lines: 2-6,125-134
+        :lines: 2-6,128-137
 
 Putting any C++ arbitrary precision types in a comma separated list will generate a concatenation. 
 The concatenation can currently be used to create arbitrary precision types (zero extending or truncating to match widths), but can not be assigned to.
@@ -1825,6 +1964,13 @@ convert from one type to another or to convert to standard integral types or str
 |           |                        | byte with      |           |             |          |
 |           |                        | ``s`` bits per |           |             |          |
 |           |                        | byte           |           |             |          |
+|           +------------------------+----------------+-----------+-------------+----------+
+|           | num.bytes(m, n, s = 8) | Select ``m-th``|     Y     |      Y      |    N/A   |
+|           |                        | to ``n-th``    |           |             |          |
+|           |                        | byte           |           |             |          |
+|           |                        | (inclusive)    |           |             |          |
+|           |                        | with ``s``     |           |             |          |
+|           |                        | bits per byte  |           |             |          |
 |           +------------------------+----------------+-----------+-------------+----------+
 |           | (numa, numb, numc)     | Concat         |     Y     |      Y      |    N/A   |
 +-----------+------------------------+----------------+-----------+-------------+----------+
@@ -2254,7 +2400,7 @@ Launch Cygwin terminal on Windows
 Windows users can launch the terminal by opening ``<SMARTHLS_INSTALLATION_DIR>/cygwin64/Cygwin.bat``.
 Users can access their file directory on their computer by using ``/cygdrive/<drive letter>/<path>``
 as the prefix.
-For example, to go to ``C:\Microchip\SmartHLS-2022.3``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2022.3``.
+For example, to go to ``C:\Microchip\SmartHLS-2023.1``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2023.1``.
 
 Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2313,6 +2459,9 @@ init
       **NOTE**: the above variables should be specified before the last line in ``Makefile: include $(LEVEL)/Makefile.common``.
 
   * ``config.tcl`` - this file contains the project's configuration settings. Project parameters and constraints can be specified in this file as necessary. Please refer to the :ref:`constraints` page.
+
+\-g
+  Launch SmartHLS IDE from command line.
 
 sw
   Compile and run the program in software on your host machine.  The compilation step is skipped if no change is detected in source/header files, ``Makefile`` and ``config.tcl``.

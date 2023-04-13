@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>User Guide &mdash; SmartHLS 2022.3 documentation</title>
+  <title>User Guide &mdash; SmartHLS 2023.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
 
 										  </h1>
 								
@@ -575,22 +575,27 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#smarthls-overview">SmartHLS Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#smarthls-soc-flow">SmartHLS SoC Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#smarthls-pragmas">SmartHLS Pragmas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#smarthls-constraints">SmartHLS Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smarthls-soc-flow-1">SmartHLS SoC Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smarthls-pragmas-1">SmartHLS Pragmas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smarthls-constraints-1">SmartHLS Constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#specifying-the-top-level-function">Specifying the Top-level Function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sw-hw-co-simulation">SW/HW Co-Simulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#loop-pipelining">Loop Pipelining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loop-pipelining-1">Loop Pipelining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-pipelining-1">Function Pipelining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-flow-parallelism">Data Flow Parallelism</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dataflow-example-canny-with-fifos">Dataflow Example: Canny with FIFOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataflow-example-diamond">Dataflow Example: Diamond</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#multi-threading-with-smarthls-threads">Multi-threading with SmartHLS Threads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#supported-smarthls-thread-apis">Supported SmartHLS Thread APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#data-flow-parallelism-with-smarthls-threads">Data Flow Parallelism with SmartHLS Threads</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#further-throughput-enhancement-with-loop-pipelining">Further Throughput Enhancement with Loop Pipelining</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#function-pipelining">Function Pipelining</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#memory-partitioning">Memory Partitioning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#memory-partitioning-1">Memory Partitioning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#access-based-memory-partitioning">Access-Based Memory Partitioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-specified-memory-partitioning">User-Specified Memory Partitioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-specified-memory-partitioning-1">User-Specified Memory Partitioning</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#block-partitioning">Block Partitioning</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cyclic-partitioning">Cyclic Partitioning</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#complete-partitioning">Complete Partitioning</a></li>
@@ -599,8 +604,8 @@ display:none;
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#struct-support">Struct Support</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#struct-packing">Struct Packing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#struct-support-1">Struct Support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#struct-packing-1">Struct Packing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#struct-partitioning">Struct Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#return-struct-by-value">Return Struct By Value</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#default-struct-modes">Default Struct Modes</a></li>
@@ -647,7 +652,7 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#top-level-rtl-interface">Top-Level RTL Interface</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-control-interface">Module Control Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-control-interface-1">Module Control Interface</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#simple-module-control-interface">Simple Module Control Interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#axi4-target-for-module-control">AXI4 Target for Module Control</a></li>
 </ul>
@@ -658,7 +663,7 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#pointer-argument-and-shared-global-variable">Pointer Argument and Shared Global Variable</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#memory-interface">Memory Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-interface-1">Memory Interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#axi4-initiator-interface">AXI4 Initiator Interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#axi4-target-interface">AXI4 Target Interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#legacy-axi4-slave-interface">Legacy AXI4 Slave Interface</a></li>
@@ -677,7 +682,7 @@ display:none;
 <li class="toctree-l3"><a class="reference internal" href="#scalar-argument-driver-functions">Scalar Argument Driver Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pointer-argument-driver-functions">Pointer Argument Driver Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#axi4-initiator-argument-s-pointer-address-driver-functions">AXI4 Initiator Argument’s Pointer Address Driver Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#top-level-driver-functions">Top-level Driver Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#top-level-driver-functions-1">Top-level Driver Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#top-level-driver-options-in-pointer-arguments-axi4-target-interface-pragma">Top-level Driver Options in Pointer Arguments’ AXI4 Target Interface Pragma</a></li>
 </ul>
 </li>
@@ -686,16 +691,16 @@ display:none;
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#specifying-a-custom-test-bench">Specifying a Custom Test Bench</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#synthesize-hardware-to-fpga">Synthesize Hardware to FPGA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#soc-features">SoC Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#soc-features-1">SoC Features</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#soc-flow-overview">SoC Flow Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#soc-data-transfer-methods">SoC Data Transfer Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-data-transfer-methods-1">SoC Data Transfer Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#running-soc-features">Running SoC Features</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#base-soc-project-programming-cross-compilation">Base SoC Project Programming / Cross-Compilation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reference-soc-generation">Reference SoC Generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference-soc-generation-1">Reference SoC Generation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#running-the-reference-soc">Running the Reference SoC</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#soc-profiler">SoC Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#soc-profiler-1">SoC Profiler</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#soc-profiler-overview">SoC Profiler Overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#soc-profiling-process">SoC Profiling process</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#compiling-and-running-the-profiled-application">Compiling and running the profiled application</a></li>
@@ -709,15 +714,15 @@ display:none;
 <li class="toctree-l4"><a class="reference internal" href="#rtl-interface-section">RTL Interface Section</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#scheduling-result">Scheduling Result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pipeline-result">Pipeline Result</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#memory-usage">Memory Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-usage-1">Memory Usage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#axi4-target-interface-address-map">AXI4 Target Interface Address Map</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#simulation-and-rtl-synthesis-place-route-report">Simulation and RTL Synthesis, Place &amp; Route Report</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#logic-level-distribution">Logic Level Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logic-level-distribution-1">Logic Level Distribution</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#schedule-viewer">Schedule Viewer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#schedule-viewer-1">Schedule Viewer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#background-llvm-internal-representation-used-by-smarthls">Background: LLVM Internal Representation used by SmartHLS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#call-graph">Call Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#control-flow-graph">Control Flow Graph</a></li>
@@ -727,10 +732,10 @@ display:none;
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#instantiating-smarthls-ip-core-in-libero-smartdesign">Instantiating SmartHLS IP Core in Libero SmartDesign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hardware-integration-of-smarthls-modules-into-soc-smartdesigns">Hardware Integration of SmartHLS modules into SoC SmartDesigns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#user-defined-smartdesigns">User-defined SmartDesigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-defined-smartdesigns-1">User-defined SmartDesigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#smarthls-output-files">SmartHLS Output Files</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#verilog-files">Verilog Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vhdl-wrapper-files">VHDL Wrapper Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vhdl-wrapper-files-1">VHDL Wrapper Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reports">Reports</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#scripts">Scripts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#accelerator-driver-code">Accelerator Driver Code</a></li>
@@ -744,13 +749,13 @@ display:none;
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#software-macros">Software Macros</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#synthesis-macro"><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#synthesis-macro-1"><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#has-accelerator-macro"><code class="docutils literal notranslate"><span class="pre">HAS_ACCELERATOR</span></code> Macro</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cosim-early-exit-macro"><code class="docutils literal notranslate"><span class="pre">COSIM_EARLY_EXIT</span></code> Macro</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#makefile-variables">Makefile Variables</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#makefile-example">Makefile Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#makefile-example-1">Makefile Example</a></li>
 </ul>
 </li>
 </ul>
@@ -893,16 +898,16 @@ The software testbench is used to automatically generate the RTL testbench and s
 on the processor in an SoC system and control the generated hardware. There are also optional SoC-related features offered by SmartHLS, such as generation of a reference SoC and automatic combination and cross-compilation of
 the software testbench and accelerator drivers for that reference SoC.</p>
 </div>
-<div class="section" id="smarthls-soc-flow">
-<span id="id1"></span><h2>SmartHLS SoC Flow<a class="headerlink" href="#smarthls-soc-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smarthls-soc-flow-1">
+<span id="smarthls-soc-flow"></span><h2>SmartHLS SoC Flow<a class="headerlink" href="#smarthls-soc-flow-1" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS can automatically generate a RISC-V processor/accelerator SoC for the PolarFire<sup>®</sup> SoC device on the Icicle Kit. For more information on the SoC features, see <a class="reference internal" href="#soc-features"><span class="std std-ref">SoC Features</span></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a>.</p>
 </div>
 </div>
-<div class="section" id="smarthls-pragmas">
-<span id="id2"></span><h2>SmartHLS Pragmas<a class="headerlink" href="#smarthls-pragmas" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smarthls-pragmas-1">
+<span id="smarthls-pragmas"></span><h2>SmartHLS Pragmas<a class="headerlink" href="#smarthls-pragmas-1" title="Permalink to this headline">¶</a></h2>
 <p>Pragmas can be applied to the software code by the user to apply HLS optimization techniques and/or guide the compiler for hardware generation.
 They are applied directly on the applicable software construct (i.e., function, loop, argument, array) to specify a certain optimization for them. For example, to apply pipelining on a loop:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
@@ -914,8 +919,8 @@ They are applied directly on the applicable software construct (i.e., function, 
 <p>For more details on the supported pragmas, please refer to <a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a>.
 For more details on loop pipelining, please refer to <a class="reference internal" href="#loop-pipelining"><span class="std std-ref">Loop Pipelining</span></a>.</p>
 </div>
-<div class="section" id="smarthls-constraints">
-<span id="id3"></span><h2>SmartHLS Constraints<a class="headerlink" href="#smarthls-constraints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smarthls-constraints-1">
+<span id="smarthls-constraints"></span><h2>SmartHLS Constraints<a class="headerlink" href="#smarthls-constraints-1" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS also supports user constraints to guide hardware generation.
 Whereas pragmas are applied directly on the source code for optimizations that are specific and local to the software construct that it is being applied on (function, loop, memory, argument, etc),
 constraints are used for settings that will be globally applied to the entire program (i.e., setting the target FPGA, target clock period).
@@ -993,10 +998,14 @@ If user already has their own custom RTL testbench, one can optionally choose th
 <li>ModelSim simulates the testbench and saves the SmartHLS-generated module outputs.</li>
 <li>SmartHLS runs your software program again, but uses the simulation outputs as the output of your top-level function.</li>
 </ol>
-<p>You should write your C/C++ testbench such that the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function returns a 0 when all outputs from the top-level function are as expected and otherwise return a non-zero value. We use this return value to determine whether the SW/HW co-simulation has passed.
-In step 1, we verify that the program returns 0.
-In step 4, we run the program using the outputs from simulation and if the SmartHLS-generated circuit matches the C program then <code class="docutils literal notranslate"><span class="pre">main()</span></code> should still return 0.</p>
+<p>You should write your C/C++ testbench such that the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function returns a 0 when all outputs from the top-level function are as expected and otherwise return a non-zero value up to 255. We use this return value to determine whether the SW/HW co-simulation has passed.</p>
+<p>In step 1, we verify that the program returns 0.</p>
+<p>In step 4, we run the program using the outputs from simulation and if the SmartHLS-generated circuit matches the C program then <code class="docutils literal notranslate"><span class="pre">main()</span></code> should still return 0.</p>
 <p>If the C/C++ program matches the RTL simulation then you should see: <code class="docutils literal notranslate"><span class="pre">SW/HW</span> <span class="pre">co-simulation:</span> <span class="pre">PASS</span></code></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The return value of the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function must be within the range of 0 to 255. If the return value is greater than 255, only the lower 8 bits will be used as the return code. For example, a return value of 257 or 1025 will be considered as failed since their lower 8 bits equal to 1, but values such as 256, 512 and 1024 will be considered as passed since their lower 8 bits equal to 0.</p>
+</div>
 <p>For any values that are shared between software testbench and hardware functions (top-level and descendants), you can either pass in as arguments into the top-level function, or if it is a global variable, it can be directly accessed without being passed in as an argument.
 Any variables that are accessed by both software testbench and hardware functions will create an interface at the top-level module.
 For example, if there is an array that is initialized in the software testbench and is used as an input to the hardware function, you may pass the array as an argument into the top-level function, which will create a memory interface for the array in the hardware core generated by SmartHLS.
@@ -1004,7 +1013,7 @@ Arguments into the top-level function can be constants, pointers, arrays, and FI
 The top-level function can also have a return value.
 Please refer to the included example in the SmartHLS IDE, <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">Canny</span> <span class="pre">Edge</span> <span class="pre">Detection</span> <span class="pre">(SW/HW</span> <span class="pre">Co-Simulation)</span></code>, as a reference.</p>
 <p>If a top-level argument is coming from a dynamically allocated array (e.g., malloc), the size of the array (in bytes) must be specified with our <code class="docutils literal notranslate"><span class="pre">interface</span></code> pragma (e.g., <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">depth(&lt;int&gt;)</span></code>).
-Please see the <a class="reference internal" href="pragmas.html#pragma-interface-memory-argument"><span class="std std-ref">Memory Interface for Pointer Argument</span></a> for more details. The sizes of arrays that are statically allocated do not need to be specified with the pragma, as SmartHLS will automatically determine them.</p>
+Please see the <a class="reference internal" href="pragmas.html#pragma-interface-memory"><span class="std std-ref">Memory Interface for Pointer Argument/Global Variable</span></a> for more details. The sizes of arrays that are statically allocated do not need to be specified with the pragma, as SmartHLS will automatically determine them.</p>
 <p>For debugging purposes, SmartHLS converts any C <code class="docutils literal notranslate"><span class="pre">printf</span></code>
 statements into Verilog <code class="docutils literal notranslate"><span class="pre">$write</span></code> statements so that values printed during
 software execution will also be printed during hardware simulation. This
@@ -1040,8 +1049,8 @@ and never joined) are not supported by SW/HW Co-Simulation.</li>
 </ul>
 </div>
 </div>
-<div class="section" id="loop-pipelining">
-<span id="id4"></span><h2>Loop Pipelining<a class="headerlink" href="#loop-pipelining" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="loop-pipelining-1">
+<span id="loop-pipelining"></span><h2>Loop Pipelining<a class="headerlink" href="#loop-pipelining-1" title="Permalink to this headline">¶</a></h2>
 <p>Loop pipelining is an optimization that can automatically extract
 loop-level parallelism to create an efficient hardware pipeline.
 It allows executing multiple loop iterations concurrently on the same pipelined hardware.</p>
@@ -1063,6 +1072,165 @@ However, this is not possible in some cases due to resource constraints or
 cross-iteration dependencies. Please refer to <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a> on more examples and details on loop pipelining.
 When II=1 cannot be met, SmartHLS’s pipeline scheduling algorithm will try to find the smallest possible II
 that satisfies the constraints and dependencies.</p>
+</div>
+<div class="section" id="function-pipelining-1">
+<span id="function-pipelining"></span><h2>Function Pipelining<a class="headerlink" href="#function-pipelining-1" title="Permalink to this headline">¶</a></h2>
+<p>Loop pipelining is one way to exploit pipeline parallelism in a circuit.
+An alternative way is to use <code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">Pipelining</span></code>.
+When a function is marked to be pipelined (by using the <a class="reference internal" href="pragmas.html#pragma-function-pipeline"><span class="std std-ref">Pipeline Function</span></a> pragma), SmartHLS will implement the function as a pipelined circuit that can start a new invocation every <code class="docutils literal notranslate"><span class="pre">II</span></code> cycles.
+That is, the circuit can execute again while its previous invocation is still executing, allowing it to continuously process incoming data in a pipelined fashion.
+Typically a pipelined function is called together with other pipelined functions, and these are called from within a parent “dataflow function”, specified via the <a class="reference internal" href="pragmas.html#pragma-dataflow"><span class="std std-ref">Dataflow</span></a> pragma described below.</p>
+</div>
+<div class="section" id="data-flow-parallelism">
+<span id="dataflow-parallelism"></span><h2>Data Flow Parallelism<a class="headerlink" href="#data-flow-parallelism" title="Permalink to this headline">¶</a></h2>
+<p>Data Flow or “dataflow” parallelism is another commonly used technique to improve hardware throughput. In dataflow parallelism, a succession of computational tasks which process continuous streams of data can execute in parallel.
+These tasks are called dataflow sub-functions.
+A function is declared as a dataflow function using the pragma <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">dataflow</span></code> (see <a class="reference internal" href="pragmas.html#pragma-dataflow"><span class="std std-ref">Dataflow</span></a>).
+Within this dataflow function, the called functions, or sub-functions, will execute with dataflow parallelism.
+If the dataflow function contains loops or control-flow, each top-level loop nest or control-flow region will be extracted into a new sub-function.</p>
+<p>In a dataflow circuit, synchronization will be required for passing intermediate data between the sub-functions that can run in parallel.
+For instance, a producer sub-function can write to an array for another consumer sub-function to read. In this case, the consumer sub-function needs to “know” that the producer has finished writing the array in order to start.
+SmartHLS can convert such intermediate data into double/shared buffer or FIFOs.
+By default, intermediate data is converted into double buffer. This can be configured via the <a class="reference internal" href="pragmas.html#pragma-dataflow-channel"><span class="std std-ref">Dataflow Channel</span></a> pragma.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Dataflow functions and sub-functions have the following restrictions or properties:</p>
+<ol class="last arabic simple">
+<li>The dataflow function and all its sub-functions must have <code class="docutils literal notranslate"><span class="pre">void</span></code> return type, with output data passed by pointer or by reference.</li>
+<li>Nested dataflow functions must have the parent dataflow function directly calling the child dataflow function.
+That is, it is supported for a dataflow function to call another dataflow function;
+however it is not allowed to have a dataflow function, calling a non-dataflow function, which further calls a dataflow function.</li>
+<li>Sub-functions cannot contain SmartHLS Threads (to use SmartHLS Threads, see <a class="reference internal" href="#pthreads-multithreading"><span class="std std-ref">Multi-threading with SmartHLS Threads</span></a>).</li>
+<li>When a dataflow function is called from within a loop, the loop body can only contain that call in order for SmartHLS to overlap the invocations of the dataflow function;
+otherwise the dataflow function will still run in a non-overlapped manner.</li>
+<li>Data external to the dataflow function (declared outside of the dataflow function and its sub-functions) can only be accessed by 1 sub-function, unless the data is of FIFO type.</li>
+<li>All intermediate data should have exactly one producer and one consumer sub-function.</li>
+<li>When configuring an intermediate data variable (i.e., an array or single-element memory) to be implemented as a FIFO channel using the <a class="reference internal" href="pragmas.html#pragma-dataflow-channel"><span class="std std-ref">Dataflow Channel</span></a> pragma, it is only correct to use the <code class="docutils literal notranslate"><span class="pre">fifo</span></code> type when:
+1) the producer function only writes to the variable in a sequential manner,
+and 2) the consumer function only reads from the variable in a sequential manner.</li>
+<li>If a sub-function calls another synthesizable sub-sub-function, the sub-sub-function will be automatically inlined by SmartHLS.</li>
+<li>If a sub-function is called in more than one location inside a dataflow function, the sub-function will be automatically replicated by SmartHLS.</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If a dataflow function contains conditionally executed tasks, the generated circuit may mismatch with the software and may need to be free-running on hardware for the circuit to work properly.
+To make the generated circuit free-running, tie the start signal to 1.
+For CoSimulation, see <a class="reference internal" href="constraintsmanual.html#cosim-free-running-dataflow-top"><span class="std std-ref">COSIM_FREE_RUNNING_DATAFLOW_TOP</span></a> for how to keep the start signal at 1 during simulation.</p>
+</div>
+<p>Dataflow parallelism can be used to overlap sub-functions which run in sequence, or to run independent sub-functions in parallel.</p>
+<div class="section" id="dataflow-example-canny-with-fifos">
+<h3>Dataflow Example: Canny with FIFOs<a class="headerlink" href="#dataflow-example-canny-with-fifos" title="Permalink to this headline">¶</a></h3>
+<p>To see this complete code example, please refer to the <cite>C++ Canny Edge Detection (SW/HW Co-Simulation)</cite> example
+included in the SmartHLS IDE.</p>
+<p>An example of overlapping sequential sub-functions is an image processing pipeline, such as Canny edge detection.
+Canny edge detection runs 4 image processing algorithms sequentially.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">canny</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">input_frame</span><span class="p">,</span>
+           <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">output_frame</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function dataflow</span>
+
+<span class="cp">#pragma HLS dataflow_channel variable(output_gf) type(double_buffer)</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">output_gf</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
+<span class="cp">#pragma HLS dataflow_channel variable(output_sf) type(double_buffer)</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">output_sf</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
+<span class="cp">#pragma HLS dataflow_channel variable(output_nm) type(double_buffer)</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">output_nm</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
+
+    <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">input_frame</span><span class="p">,</span> <span class="n">output_gf</span><span class="p">);</span>
+    <span class="n">sobel_filter</span><span class="p">(</span><span class="n">output_gf</span><span class="p">,</span> <span class="n">output_sf</span><span class="p">);</span>
+    <span class="n">nonmaximum_suppression</span><span class="p">(</span><span class="n">output_sf</span><span class="p">,</span> <span class="n">output_nm</span><span class="p">);</span>
+    <span class="n">hysteresis_filter</span><span class="p">(</span><span class="n">output_nm</span><span class="p">,</span> <span class="n">output_frame</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These can overlap using dataflow parallelism to operate as a single pipeline.
+Each time the <code class="docutils literal notranslate"><span class="pre">canny</span></code> function is called, one new piece of data will enter the pipeline.
+In the example above, the granularity of data is an entire image, of size HEIGHT * WIDTH pixels.
+After the fourth call, the pipeline will be in steady-state, and all 4 sub-functions will be executing in parallel on 4 separate images.
+The intermediate data arrays are double-buffered as specified by the <a class="reference internal" href="pragmas.html#pragma-dataflow-channel"><span class="std std-ref">Dataflow Channel</span></a> pragma.</p>
+<a class="reference internal image-reference" href="_images/dataflow_canny_pipeline.png"><img alt="_images/dataflow_canny_pipeline.png" class="align-center" src="_images/dataflow_canny_pipeline.png" style="width: 928.25px; height: 418.75px;" /></a>
+<p>Because the Canny pipeline processes the image data in sequential order, however, the granularity of data
+entering the pipeline each function call does not need to be an entire image. Instead, it can be a single
+pixel. The intermediate channels could then be FIFOs.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">canny_fifo</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">input_fifo</span><span class="p">,</span>
+                <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output_fifo</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function dataflow</span>
+
+<span class="cp">#pragma HLS dataflow_channel variable(output_gf) type(fifo)</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">output_gf</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
+<span class="cp">#pragma HLS dataflow_channel variable(output_sf) type(fifo)</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">output_sf</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
+<span class="cp">#pragma HLS dataflow_channel variable(output_nm) type(fifo)</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">output_nm</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
+
+    <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">input_fifo</span><span class="p">,</span> <span class="n">output_gf</span><span class="p">);</span>
+    <span class="n">sobel_filter</span><span class="p">(</span><span class="n">output_gf</span><span class="p">,</span> <span class="n">output_sf</span><span class="p">);</span>
+    <span class="n">nonmaximum_suppression</span><span class="p">(</span><span class="n">output_sf</span><span class="p">,</span> <span class="n">output_nm</span><span class="p">);</span>
+    <span class="n">hysteresis_filter</span><span class="p">(</span><span class="n">output_nm</span><span class="p">,</span> <span class="n">output_fifo</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this case, the FIFO only needs to be as deep as 2 elements to accommodate the dataflow.
+By using FIFO rather than double/shared buffer, we can significantly save resource usage as well as achieve better performance by allowing the pipeline to be in steady state faster.</p>
+<a class="reference internal image-reference" href="_images/dataflow_canny_pipeline_fifo.png"><img alt="_images/dataflow_canny_pipeline_fifo.png" class="align-center" src="_images/dataflow_canny_pipeline_fifo.png" style="width: 1124.1px; height: 502.5px;" /></a>
+<p>Another way to implement these as fifo channels would be to use the
+hls::FIFO library. This final version is included as a complete code example.
+Please refer to the <cite>C++ Canny Edge Detection (SW/HW Co-Simulation)</cite> example in the SmartHLS IDE.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">canny_fifo</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">input_fifo</span><span class="p">,</span>
+                <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output_fifo</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS function dataflow</span>
+
+    <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="n">output_fifo_gf</span><span class="p">(</span><span class="cm">/* depth = */</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="o">&gt;</span> <span class="n">output_fifo_sf</span><span class="p">(</span><span class="cm">/* depth = */</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="n">output_fifo_nm</span><span class="p">(</span><span class="cm">/* depth = */</span> <span class="mi">2</span><span class="p">);</span>
+
+    <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">input_fifo</span><span class="p">,</span> <span class="n">output_fifo_gf</span><span class="p">);</span>
+    <span class="n">sobel_filter</span><span class="p">(</span><span class="n">output_fifo_gf</span><span class="p">,</span> <span class="n">output_fifo_sf</span><span class="p">);</span>
+    <span class="n">nonmaximum_suppression</span><span class="p">(</span><span class="n">output_fifo_sf</span><span class="p">,</span> <span class="n">output_fifo_nm</span><span class="p">);</span>
+    <span class="n">hysteresis_filter</span><span class="p">(</span><span class="n">output_fifo_nm</span><span class="p">,</span> <span class="n">output_fifo</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The top-level function has been specified with <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">top</span></code>. The top-level function calls the four sub-functions, <code class="docutils literal notranslate"><span class="pre">gaussian_filter</span></code>, <code class="docutils literal notranslate"><span class="pre">sobel_filter</span></code>, <code class="docutils literal notranslate"><span class="pre">nonmaximum_suppression</span></code>, and <code class="docutils literal notranslate"><span class="pre">hysteresis_filter</span></code>, each of which are specified to be function pipelined with <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">pipeline</span></code>.
+The top-level arguments are <code class="docutils literal notranslate"><span class="pre">input_fifo</span></code> and <code class="docutils literal notranslate"><span class="pre">output_fifo</span></code>. The <code class="docutils literal notranslate"><span class="pre">input_fifo</span></code> is given as an argument into the first sub-function, <code class="docutils literal notranslate"><span class="pre">gaussian_filter</span></code>, and gives the inputs into the overall circuit.
+The <code class="docutils literal notranslate"><span class="pre">output_fifo</span></code> is given as an argument into the last sub-function, <code class="docutils literal notranslate"><span class="pre">hysteresis_filter</span></code>, and receives the outputs of the overall circuit.
+There are also intermediate FIFOs, <code class="docutils literal notranslate"><span class="pre">output_fifo_gf</span></code>, <code class="docutils literal notranslate"><span class="pre">output_fifo_sf</span></code>, and <code class="docutils literal notranslate"><span class="pre">output_fifo_nm</span></code>, which are given as arguments into the sub-function and thus connect them (i.e., outputs of <code class="docutils literal notranslate"><span class="pre">gaussian_filter</span></code> is given as inputs to <code class="docutils literal notranslate"><span class="pre">sobel_filter</span></code>).</p>
+<p>When synthesizing a function with multiple pipelined sub-functions, specifying
+<code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">dataflow</span></code> causes SmartHLS to parallelize the execution of all
+sub-functions, forming a streaming circuit with dataflow parallelism.
+In this case <code class="docutils literal notranslate"><span class="pre">gaussian_filter</span></code> executes as soon as there is data in the <code class="docutils literal notranslate"><span class="pre">input_fifo</span></code>, and <code class="docutils literal notranslate"><span class="pre">sobel_filter</span></code> starts running as soon as there is data in the <code class="docutils literal notranslate"><span class="pre">output_fifo_sf</span></code>.
+In other words, a sub-function does not wait for its previous sub-function to completely finish running before it starts to execute, but rather, it starts running as early as possible.
+Each sub-function also starts working on the next data while the previous data is being processed (in a pipelined fashion).
+If the initiation interval (II) is 1, a sub-function starts processing new data every clock cycle.
+Once the sub-functions reach steady-state, all sub-functions execute concurrently.
+This example showcases the synthesis of a streaming circuit that consists of a succession of concurrently executing dataflow sub-functions.</p>
+</div>
+<div class="section" id="dataflow-example-diamond">
+<h3>Dataflow Example: Diamond<a class="headerlink" href="#dataflow-example-diamond" title="Permalink to this headline">¶</a></h3>
+<p>Next, consider an example in which there are sub-functions without dependencies.</p>
+<a class="reference internal image-reference" href="_images/dataflow_diamond.png"><img alt="_images/dataflow_diamond.png" class="align-center" src="_images/dataflow_diamond.png" style="width: 582.3px; height: 291.9px;" /></a>
+<p>The sub-functions B and C can execute in parallel, starting when A is finished.
+Once both B and C are finished, D will begin.
+An implementation of the dataflow function is shown below.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">diamond</span><span class="p">(</span><span class="kt">int</span> <span class="n">in1</span><span class="p">[</span><span class="mi">128</span><span class="p">],</span> <span class="kt">int</span> <span class="n">in2</span><span class="p">[</span><span class="mi">128</span><span class="p">],</span> <span class="kt">int</span> <span class="n">out</span><span class="p">[</span><span class="mi">128</span><span class="p">])</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS function dataflow</span>
+
+<span class="cp">#pragma HLS dataflow_channel variable(tmp1_0) type(double_buffer)</span>
+<span class="cp">#pragma HLS dataflow_channel variable(tmp2_0) type(double_buffer)</span>
+<span class="cp">#pragma HLS dataflow_channel variable(tmp1_1) type(double_buffer)</span>
+<span class="cp">#pragma HLS dataflow_channel variable(tmp2_1) type(double_buffer)</span>
+
+    <span class="kt">int</span> <span class="n">tmp1_0</span><span class="p">[</span><span class="mi">128</span><span class="p">],</span> <span class="n">tmp2_0</span><span class="p">[</span><span class="mi">128</span><span class="p">],</span> <span class="n">tmp1_1</span><span class="p">[</span><span class="mi">128</span><span class="p">],</span> <span class="n">tmp2_1</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+    <span class="n">subfunction_A</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span> <span class="n">in2</span><span class="p">,</span> <span class="n">tmp1_0</span><span class="p">,</span> <span class="n">tmp2_0</span><span class="p">);</span>
+    <span class="n">subfunction_B</span><span class="p">(</span><span class="n">tmp1_0</span><span class="p">,</span> <span class="n">tmp1_1</span><span class="p">);</span>
+    <span class="n">subfunction_C</span><span class="p">(</span><span class="n">tmp2_0</span><span class="p">,</span> <span class="n">tmp2_1</span><span class="p">);</span>
+    <span class="n">subfunction_D</span><span class="p">(</span><span class="n">tmp1_1</span><span class="p">,</span> <span class="n">tmp2_1</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="multi-threading-with-smarthls-threads">
 <span id="pthreads-multithreading"></span><h2>Multi-threading with SmartHLS Threads<a class="headerlink" href="#multi-threading-with-smarthls-threads" title="Permalink to this headline">¶</a></h2>
@@ -1217,9 +1385,12 @@ But the threaded function can continue executing.</li>
 </div>
 <div class="section" id="data-flow-parallelism-with-smarthls-threads">
 <span id="data-flow-parallelism-with-pthreads"></span><h2>Data Flow Parallelism with SmartHLS Threads<a class="headerlink" href="#data-flow-parallelism-with-smarthls-threads" title="Permalink to this headline">¶</a></h2>
-<p>Data flow parallelism is another commonly used technique to improve hardware throughput, where a succession of computational tasks that process
-continuous streams of data can execute in parallel.
-The concurrent execution of computational tasks can also be accurately described in software using <code class="docutils literal notranslate"><span class="pre">hls::thread</span></code> APIs.
+<p>Most of the time a dataflow design can be implemented with the
+<a class="reference internal" href="pragmas.html#pragma-dataflow"><span class="std std-ref">Dataflow</span></a> pragma that requires minimal code change.
+However, for more complex parallelism, e.g., with feedback/cycles
+between sub-functions, multi-threading APIs may be needed to
+explicitly describe the parallelism between the functions.</p>
+<p>The concurrent execution of computational tasks can also be accurately described in software using <code class="docutils literal notranslate"><span class="pre">hls::thread</span></code> APIs.
 In addition, the continuous streams of data flowing through the tasks can be inferred using SmartHLS’s built-in FIFO data structure (see <a class="reference internal" href="#streaming-lib"><span class="std std-ref">Streaming Library</span></a>).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -1300,53 +1471,8 @@ Now run the simulation (<code class="docutils literal notranslate"><span class="
 (<code class="docutils literal notranslate"><span class="pre">INPUTSIZE</span></code> is set to 128; the extra cycles are spent on activating the parallel accelerators, flushing out the pipelines, and verifying the results).</p>
 </div>
 </div>
-<div class="section" id="function-pipelining">
-<span id="id5"></span><h2>Function Pipelining<a class="headerlink" href="#function-pipelining" title="Permalink to this headline">¶</a></h2>
-<p>You have just seen how an efficient streaming circuit can be described in software by using loop pipelining with SmartHLS threads.
-An alternative way to describe such a streaming circuit is to use <code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">Pipelining</span></code>.
-When a function is marked to be pipelined (by using the <code class="docutils literal notranslate"><span class="pre">Pipeline</span> <span class="pre">Function</span></code> constraint), SmartHLS will implement the function as a pipelined circuit that can start a new invocation every <code class="docutils literal notranslate"><span class="pre">II</span></code> cycles.
-That is, the circuit can execute again while its previous invocation is still executing, allowing it to continuously process incoming data in a pipelined fashion.
-This essentially has the same circuit behaviour as what was described in the previous example (loop pipelining with threads) in the <a class="reference internal" href="#data-flow-parallelism-with-pthreads"><span class="std std-ref">Data Flow Parallelism with SmartHLS Threads</span></a> section, without having to write the software code using threads.
-This feature also allows multiple functions that are added to the <code class="docutils literal notranslate"><span class="pre">Pipeline</span> <span class="pre">function</span></code> constraint to execute in parallel, achieving the same hardware behaviour as the previous loop pipelining with threads example.</p>
-<p>When using this feature, the user-specified top-level function (see <a class="reference internal" href="#custom-top-level"><span class="std std-ref">Specifying the Top-level Function</span></a>) can only call functions that are specified to be function pipelined (e.g., the top-level function cannot call one function pipeline and one non-function pipeline).
-The top-level function cannot have any control flow (i.e., loops, if/else statements), and cannot perform any operations other than declaring variables (i.e., memories, FIFOs) and calling function pipelines.</p>
-<p>For SW/HW co-simulation, the top-level function that calls one or more function pipelines can only have interfaces that are created from FIFOs and constant values (top-level interfaces are created from top-level function arguments and global variables that are accessed from both software testbench functions and hardware kernel functions).</p>
-<p>Please refer to the <cite>C++ Canny Edge Detection (SW/HW Co-Simulation)</cite> example included in the SmartHLS IDE for an example of using function pipelining.</p>
-<p>In this example, you should see the top-level function, <code class="docutils literal notranslate"><span class="pre">canny</span></code>, as below.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">canny</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">input_fifo</span><span class="p">,</span>
-           <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output_fifo</span><span class="p">)</span> <span class="p">{</span>
-   <span class="cp">#pragma HLS function top</span>
-
-   <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="n">output_fifo_gf</span><span class="p">(</span><span class="cm">/* depth = */</span> <span class="mi">2</span><span class="p">);</span>
-   <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="o">&gt;</span> <span class="n">output_fifo_sf</span><span class="p">(</span><span class="cm">/* depth = */</span> <span class="mi">2</span><span class="p">);</span>
-   <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="n">output_fifo_nm</span><span class="p">(</span><span class="cm">/* depth = */</span> <span class="mi">2</span><span class="p">);</span>
-
-   <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">input_fifo</span><span class="p">,</span> <span class="n">output_fifo_gf</span><span class="p">);</span>
-   <span class="n">sobel_filter</span><span class="p">(</span><span class="n">output_fifo_gf</span><span class="p">,</span> <span class="n">output_fifo_sf</span><span class="p">);</span>
-   <span class="n">nonmaximum_suppression</span><span class="p">(</span><span class="n">output_fifo_sf</span><span class="p">,</span> <span class="n">output_fifo_nm</span><span class="p">);</span>
-   <span class="n">hysteresis_filter</span><span class="p">(</span><span class="n">output_fifo_nm</span><span class="p">,</span> <span class="n">output_fifo</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>As shown above, the top-level function has been specified with <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">top</span></code>. The top-level function calls four functions, <code class="docutils literal notranslate"><span class="pre">gaussian_filter,</span> <span class="pre">sobel_filter,</span> <span class="pre">nonmaximum_suppression,</span> <span class="pre">and</span> <span class="pre">hysteresis_filter</span></code>, each of which are specified to be function pipelined (with <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">pipeline</span></code>).
-The top-level arguments are <code class="docutils literal notranslate"><span class="pre">input_fifo</span></code> and <code class="docutils literal notranslate"><span class="pre">output_fifo</span></code>. The <code class="docutils literal notranslate"><span class="pre">input_fifo</span></code> is given as an argument into the first function, <code class="docutils literal notranslate"><span class="pre">gaussian_filter</span></code>, and gives the inputs into the overall circuit.
-The <code class="docutils literal notranslate"><span class="pre">output_fifo</span></code> is given as an argument into the last function, <code class="docutils literal notranslate"><span class="pre">hysteresis_filter</span></code>, and receives the outputs of the overall circuit.
-There are also intermediate FIFOs, <code class="docutils literal notranslate"><span class="pre">output_fifo_gf</span></code>, <code class="docutils literal notranslate"><span class="pre">output_fifo_sf</span></code>, and <code class="docutils literal notranslate"><span class="pre">output_fifo_nm</span></code>, which are given as arguments into the function pipelines and thus connect them (i.e., outputs of <code class="docutils literal notranslate"><span class="pre">gaussian_filter</span></code> is given as inputs to <code class="docutils literal notranslate"><span class="pre">sobel_filter</span></code>).</p>
-<p>When synthesizing a top-level function with multiple pipelined sub-functions, SmartHLS will automatically parallelize the execution of all sub-functions that are called in the top-level function, forming a streaming circuit with data flow parallelism.
-In this case <code class="docutils literal notranslate"><span class="pre">gaussian_filter</span></code> executes as soon as there is data in the <code class="docutils literal notranslate"><span class="pre">input_fifo</span></code>, and <code class="docutils literal notranslate"><span class="pre">sobel_filter</span></code> starts running as soon as there is data in the <code class="docutils literal notranslate"><span class="pre">output_fifo_sf</span></code>.
-In other words, a function pipeline does not wait for its previous function pipeline to completely finish running before it starts to execute, but rather, it starts running as early as possible.
-Each function pipeline also starts working on the next data while the previous data is being processed (in a pipelined fashion).
-If the initiation interval (II) is 1, a function pipeline starts processing new data every clock cycle.
-Once the function pipelines reach steady-state, all function pipelines execute concurrently.
-This example showcases the synthesis of a streaming circuit that consists of a succession of concurrently executing pipelined functions.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In the generated Verilog for a function pipelined hardware, the <code class="docutils literal notranslate"><span class="pre">start</span></code> input port serves as an enable signal to the circuit.
-The circuit stops running when the <code class="docutils literal notranslate"><span class="pre">start</span></code> signal is de-asserted. To have the circuit running continuously, the <code class="docutils literal notranslate"><span class="pre">start</span></code> input port should be kept high.</p>
-</div>
-</div>
-<div class="section" id="memory-partitioning">
-<span id="id6"></span><h2>Memory Partitioning<a class="headerlink" href="#memory-partitioning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="memory-partitioning-1">
+<span id="memory-partitioning"></span><h2>Memory Partitioning<a class="headerlink" href="#memory-partitioning-1" title="Permalink to this headline">¶</a></h2>
 <p>Memory Partitioning is an optimization where aggregate types such as arrays and structs are partitioned into smaller pieces
 allowing for a greater number of reads and writes (accesses) per cycle. SmartHLS instantiates a RAM for each aggregate
 type where each RAM has up to two ports (allowing up to two reads/writes per cycle). Partitioning aggregate types into
@@ -1428,8 +1554,8 @@ With this example, we can see that memory partitioning can help to improve memor
 </div>
 <p>Please refer to the <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a> for more examples and details.</p>
 </div>
-<div class="section" id="user-specified-memory-partitioning">
-<span id="id7"></span><h3>User-Specified Memory Partitioning<a class="headerlink" href="#user-specified-memory-partitioning" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="user-specified-memory-partitioning-1">
+<span id="user-specified-memory-partitioning"></span><h3>User-Specified Memory Partitioning<a class="headerlink" href="#user-specified-memory-partitioning-1" title="Permalink to this headline">¶</a></h3>
 <p>The user can explicitly specify a memory to be partitioned via the <code class="docutils literal notranslate"><span class="pre">memory</span> <span class="pre">partition</span></code> pragma (<code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">variable</span></code>, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">argument</span></code>). See <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> for more details.
 User-specified partitioning also analyzes accesses but partitions based on a predefined structure and array dimension.
 SmartHLS supports <code class="docutils literal notranslate"><span class="pre">block</span></code>, <code class="docutils literal notranslate"><span class="pre">cyclic</span></code> and <code class="docutils literal notranslate"><span class="pre">complete</span></code> types for arrays, and <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> and <code class="docutils literal notranslate"><span class="pre">complete</span></code> partitioning for <code class="docutils literal notranslate"><span class="pre">struct</span></code>. Specifying the type to be <code class="docutils literal notranslate"><span class="pre">none</span></code> prevents partitioning the specified memory.</p>
@@ -1558,8 +1684,8 @@ Note that the array field <cite>Ty.y</cite> has one partition, and similarly the
 </div>
 </div>
 </div>
-<div class="section" id="struct-support">
-<span id="id8"></span><h2>Struct Support<a class="headerlink" href="#struct-support" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="struct-support-1">
+<span id="struct-support"></span><h2>Struct Support<a class="headerlink" href="#struct-support-1" title="Permalink to this headline">¶</a></h2>
 <p>A C++ <code class="docutils literal notranslate"><span class="pre">struct</span></code> is a user-defined data type that is used to group several fields, possibly with different data types.
 Using <code class="docutils literal notranslate"><span class="pre">struct</span></code> allows passing a set of variables around the design together while retaining the readability and accessibility of each of these variables.
 In this section, we will discuss how interfaces and memories with <code class="docutils literal notranslate"><span class="pre">struct</span></code> types are handled in SmartHLS including partitioning, packing, and returning by value.</p>
@@ -1645,8 +1771,8 @@ It returns <code class="docutils literal notranslate"><span class="pre">UpdateRe
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="section" id="struct-packing">
-<span id="id9"></span><h3>Struct Packing<a class="headerlink" href="#struct-packing" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="struct-packing-1">
+<span id="struct-packing"></span><h3>Struct Packing<a class="headerlink" href="#struct-packing-1" title="Permalink to this headline">¶</a></h3>
 <p>Packing a <code class="docutils literal notranslate"><span class="pre">struct</span></code> creates a single scalar with a wide word width.
 All the <code class="docutils literal notranslate"><span class="pre">struct</span></code> members are placed in the scalar with their order in the <code class="docutils literal notranslate"><span class="pre">struct</span></code> definition such that the first element is the least significant part of the vector and the last element is the most significant part of the vector.
 Packing allows all the <code class="docutils literal notranslate"><span class="pre">struct</span></code> elements to be read and written simultaneously.
@@ -2365,6 +2491,9 @@ C++ Arbitrary Precision Library constructs including arbitrary precision numeric
 
     <span class="n">Aa</span><span class="p">.</span><span class="n">byte</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mh">0xC</span><span class="p">;</span> <span class="c1">// Aa becomes 0xCA;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Aa = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">Aa</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">Aa</span><span class="p">.</span><span class="n">bytes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mh">0xD</span><span class="p">;</span> <span class="c1">// AA becomes 0xDA</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Aa = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">Aa</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>On C++ arbitrary precision types <code class="docutils literal notranslate"><span class="pre">num(a,</span> <span class="pre">b)</span></code> (or <code class="docutils literal notranslate"><span class="pre">num.range(a,</span> <span class="pre">b)</span></code>) will select and create a reference to the underlying arbitrary precision value.
@@ -2372,9 +2501,11 @@ The operator <code class="docutils literal notranslate"><span class="pre">num[a]
 This reference can be assigned to, and used to access the underlying data.
 The arbitrary precision <code class="docutils literal notranslate"><span class="pre">num.byte(n,</span> <span class="pre">s</span> <span class="pre">=</span> <span class="pre">8)</span></code> function selects and creates a
 reference to the <code class="docutils literal notranslate"><span class="pre">n-th</span></code> byte of the number which can be assigned to and used
-to access the underlying data. The second argument to the <code class="docutils literal notranslate"><span class="pre">byte</span></code> function is
-an optional argument which defines the number of bits per byte, and defaults to
-8.</p>
+to access the underlying data. Similarly, the <code class="docutils literal notranslate"><span class="pre">num.bytes(m,</span> <span class="pre">n,</span> <span class="pre">s</span> <span class="pre">=</span> <span class="pre">8)</span></code>
+function selects and creates a reference to a range of bytes from the
+<code class="docutils literal notranslate"><span class="pre">m-th</span></code> to the <code class="docutils literal notranslate"><span class="pre">n-th</span></code> byte (inclusive) of the number. In both functions, the
+last argument is an optional argument which defines the number of bits per byte,
+and defaults to 8.</p>
 </div>
 <div class="section" id="bit-concatenation">
 <h4>Bit Concatenation<a class="headerlink" href="#bit-concatenation" title="Permalink to this headline">¶</a></h4>
@@ -3054,7 +3185,7 @@ shift right</td>
 <td>Y</td>
 <td>N/A</td>
 </tr>
-<tr class="row-even"><td rowspan="5">Bit level
+<tr class="row-even"><td rowspan="6">Bit level
 access</td>
 <td>num(a, b)</td>
 <td>Range
@@ -3086,13 +3217,24 @@ byte</td>
 <td>Y</td>
 <td>N/A</td>
 </tr>
-<tr class="row-even"><td>(numa, numb, numc)</td>
+<tr class="row-even"><td>num.bytes(m, n, s = 8)</td>
+<td>Select <code class="docutils literal notranslate"><span class="pre">m-th</span></code>
+to <code class="docutils literal notranslate"><span class="pre">n-th</span></code>
+byte
+(inclusive)
+with <code class="docutils literal notranslate"><span class="pre">s</span></code>
+bits per byte</td>
+<td>Y</td>
+<td>Y</td>
+<td>N/A</td>
+</tr>
+<tr class="row-odd"><td>(numa, numb, numc)</td>
 <td>Concat</td>
 <td>Y</td>
 <td>Y</td>
 <td>N/A</td>
 </tr>
-<tr class="row-odd"><td rowspan="7">Explicit
+<tr class="row-even"><td rowspan="7">Explicit
 Conversion</td>
 <td>.to_ufixpt()</td>
 <td>Convert to
@@ -3101,49 +3243,49 @@ ap_ufixpt</td>
 <td>N/A</td>
 <td>N/A</td>
 </tr>
-<tr class="row-even"><td>.to_fixpt()</td>
+<tr class="row-odd"><td>.to_fixpt()</td>
 <td>Convert to
 ap_fixt</td>
 <td>Y</td>
 <td>N/A</td>
 <td>N/A</td>
 </tr>
-<tr class="row-odd"><td>.to_uint64()</td>
+<tr class="row-even"><td>.to_uint64()</td>
 <td>Convert to
 uint64</td>
 <td>Y</td>
 <td>N/A</td>
 <td>N/A</td>
 </tr>
-<tr class="row-even"><td>.to_int64()</td>
+<tr class="row-odd"><td>.to_int64()</td>
 <td>Convert to
 int64</td>
 <td>Y</td>
 <td>N/A</td>
 <td>N/A</td>
 </tr>
-<tr class="row-odd"><td>.raw_bits()</td>
+<tr class="row-even"><td>.raw_bits()</td>
 <td>Convert to
 raw bits</td>
 <td>N/A</td>
 <td>Y</td>
 <td>N/A</td>
 </tr>
-<tr class="row-even"><td>.from_raw_bits()</td>
+<tr class="row-odd"><td>.from_raw_bits()</td>
 <td>Convert from
 raw bits</td>
 <td>N/A</td>
 <td>Y</td>
 <td>N/A</td>
 </tr>
-<tr class="row-odd"><td>.to_double()</td>
+<tr class="row-even"><td>.to_double()</td>
 <td>Convert to
 double</td>
 <td>N/A</td>
 <td>Y</td>
 <td>N/A</td>
 </tr>
-<tr class="row-even"><td rowspan="2">String
+<tr class="row-odd"><td rowspan="2">String
 Conversion</td>
 <td>.to_fixpt_string()</td>
 <td>Convert to
@@ -3152,7 +3294,7 @@ fixpt string</td>
 <td>Y</td>
 <td>N/A</td>
 </tr>
-<tr class="row-odd"><td>.to_string()</td>
+<tr class="row-even"><td>.to_string()</td>
 <td>Convert to
 int string</td>
 <td>Y</td>
@@ -3274,7 +3416,7 @@ We are going to sort each 2048-element segment of the input stream and write the
 That is, a sorting algorithm needs to visit each element more than once, and hence the sorting algorithm cannot process the data stream at line rate and cannot work on the streaming FIFO interfaces directly.
 A dataflow design in this case can be composed of three stages, 1) store each 2048-element segment of input stream into a buffer, 2) sort the elements in the buffer, and 3) stream out the sorted elements.
 The three processing stages form a dataflow design, where the output produced by the earlier stage is consumed by the next stage.</p>
-<a class="reference internal image-reference" href="_images/DoubleBufferDataflow.png"><img alt="_images/DoubleBufferDataflow.png" class="align-center" src="_images/DoubleBufferDataflow.png" style="width: 852.2px; height: 74.60000000000001px;" /></a>
+<a class="reference internal image-reference" href="_images/DoubleBufferDataflow.png"><img alt="_images/DoubleBufferDataflow.png" class="align-center" src="_images/DoubleBufferDataflow.png" style="width: 852.2px; height: 74.6px;" /></a>
 <p>For better throughput, we can overlap the three processing stages with multi-threading, and use <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> or <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code> to synchronize the accesses to the shared buffer between upstream and downstream threads.
 Compared to <code class="docutils literal notranslate"><span class="pre">SharedBuffer</span></code>, each <code class="docutils literal notranslate"><span class="pre">DoubleBuffer</span></code> contains two copies of storage instead of one, which reduces the delay that a processing stage waits for the buffer to become available.</p>
 <p>The code below describes the design in C++:</p>
@@ -3546,7 +3688,7 @@ you will need to add ‘static’ to make the line buffer static.</li>
 <p>The figure below illustrates how the line buffer <code class="docutils literal notranslate"><span class="pre">window</span></code> is being updated
 after each call of <code class="docutils literal notranslate"><span class="pre">ShiftInPixel</span></code>.  You will notice that the <cite>window</cite> can
 contain out-of-bound pixels at certain sliding locations.</p>
-<a class="reference internal image-reference" href="_images/LineBufferClass.png"><img alt="_images/LineBufferClass.png" class="align-center" src="_images/LineBufferClass.png" style="width: 765.0px; height: 1044.0px;" /></a>
+<a class="reference internal image-reference" href="_images/LineBufferClass.png"><img alt="_images/LineBufferClass.png" class="align-center" src="_images/LineBufferClass.png" style="width: 764.1px; height: 1044.0px;" /></a>
 <p>For more details about when/why to use the <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> class, see
 <a class="reference internal" href="optimizationguide.html#line-buffer-opt-guide"><span class="std std-ref">Inferring a Line Buffer</span></a> in the <a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a>.</p>
 </div>
@@ -3693,8 +3835,8 @@ RTL interface.
 This section describes the types of interfaces that are supported by SmartHLS, the
 default interface for each data type in C/C++, and how to customize the
 interface.</p>
-<div class="section" id="module-control-interface">
-<span id="id10"></span><h3>Module Control Interface<a class="headerlink" href="#module-control-interface" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-control-interface-1">
+<span id="module-control-interface"></span><h3>Module Control Interface<a class="headerlink" href="#module-control-interface-1" title="Permalink to this headline">¶</a></h3>
 <p>The top-level Verilog module generated by SmartHLS is always associated with a
 module control interface to start the HLS module, read completion status and
 retrieve return data.
@@ -3973,8 +4115,8 @@ global variables.</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="memory-interface">
-<span id="id11"></span><h4>Memory Interface<a class="headerlink" href="#memory-interface" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="memory-interface-1">
+<span id="memory-interface"></span><h4>Memory Interface<a class="headerlink" href="#memory-interface-1" title="Permalink to this headline">¶</a></h4>
 <p>The memory interface can be used for any pointer arguments or global variables
 (including array and struct types).
 The memory interface can be connected to an external RAM module that stores the
@@ -4180,7 +4322,9 @@ argument (including array, struct, class types),</p>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface argument(&lt;ARGUMENT_NAME&gt;) type(axi_initiator) \</span>
 <span class="cp">                      ptr_addr_interface(&lt;simple|axi_target&gt;) \</span>
 <span class="cp">                      num_elements(&lt;NUM_ARRAY_ELEMENTS&gt;) \</span>
-<span class="cp">                      max_burst_len(&lt;AXI4I_MAX_BURST_LENGTH&gt;)</span>
+<span class="cp">                      max_burst_len(&lt;AXI4I_MAX_BURST_LENGTH&gt;) \</span>
+<span class="cp">                      max_outstanding_reads(&lt;AXI4I_MAX_OUTSTANDING_READS&gt;) \</span>
+<span class="cp">                      max_outstanding_writes(&lt;AXI4I_MAX_OUTSTANDING_WRITE&gt;)</span>
 </pre></div>
 </div>
 <p>Typically the AXI4 initiator interface is connected to the AXI4 target (or AXI4
@@ -4211,7 +4355,7 @@ A driver function will be generated to set the register (see
 <a class="reference internal" href="#axi-initiator-ptr-addr-driver"><span class="std std-ref">AXI4 Initiator Argument’s Pointer Address Driver Functions</span></a>).</li>
 <li>The default <code class="docutils literal notranslate"><span class="pre">ptr_addr_interface</span></code> is <code class="docutils literal notranslate"><span class="pre">simple</span></code>; but when the
 default-to-<code class="docutils literal notranslate"><span class="pre">axi_target</span></code> interface pragma (see
-<a class="reference internal" href="pragmas.html#pragma-interface-default"><span class="std std-ref">Default All Interface to Use AXI4 Target</span></a>) is used, the default <code class="docutils literal notranslate"><span class="pre">ptr_addr_interface</span></code>
+<a class="reference internal" href="pragmas.html#pragma-interface-default"><span class="std std-ref">Default All Interfaces to Use AXI4 Target</span></a>) is used, the default <code class="docutils literal notranslate"><span class="pre">ptr_addr_interface</span></code>
 becomes <code class="docutils literal notranslate"><span class="pre">axi_target</span></code>.</li>
 </ul>
 <p>To illustrate further about pointer address, consider the following example,</p>
@@ -4234,7 +4378,7 @@ This option is needed by the <a class="reference internal" href="#sw-hw-co-simul
 <p class="first admonition-title">Note</p>
 <p class="last">AXI4 initiator burst support is currently a beta feature in SmartHLS, and is under active development. Data transfer throughput will be improved and additional features will be added in subsequent SmartHLS releases.</p>
 </div>
-<p>By default, each read or write to an AXI4 initiator pointer argument in the C++ will become a single-beat AXI4 transaction. However, when the read or write is inside a loop, SmartHLS can detect when a burst transaction can be used instead, and SmartHLS will convert that read or write into an AXI4 burst transaction. In order to use a loop to infer an AXI4 burst transfer, the loop should have the following properties:</p>
+<p>By default, each read or write to an AXI4 initiator pointer argument in the C++ will become a non-burst AXI4 transaction. However, when the read or write is inside a loop, SmartHLS can detect when a burst transaction can be used instead, and SmartHLS will combine the reads or writes that occur over multiple loop iterations into an AXI4 burst transaction. In order to use a loop to infer an AXI4 burst transfer, the loop should have the following properties:</p>
 <ul class="simple">
 <li>The loop should be pipelined (see <a class="reference internal" href="#loop-pipelining"><span class="std std-ref">Loop Pipelining</span></a>).</li>
 <li>The loop bound should be known before the loop executes.</li>
@@ -4242,7 +4386,7 @@ This option is needed by the <a class="reference internal" href="#sw-hw-co-simul
 <li>The addressing for the reads and writes should be incrementing by 1 word per loop iteration.</li>
 <li>The reads and writes should not be inside conditional statements.</li>
 </ul>
-<p>If the user expects a burst read or write to an AXI4 initiator pointer argument, they can use the <cite>max_burst_len</cite> option (default is 16) in the interface pragma to specify the burst length to use when doing a burst read or write transaction for that argument. An example of using a loop that meets all the criteria to infer an AXI4 initiator burst is shown below:</p>
+<p>If the user expects a burst read or write to an AXI4 initiator pointer argument, they can use the <code class="docutils literal notranslate"><span class="pre">max_burst_len</span></code> option in the interface pragma to specify the burst length to use when doing a burst read or write transaction for that argument. If the <code class="docutils literal notranslate"><span class="pre">max_burst_len</span></code> is unspecified, SmartHLS will use a default value of <code class="docutils literal notranslate"><span class="pre">16</span></code>. An example of using a loop that meets all the criteria to infer an AXI4 initiator burst is shown below:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define NUM_ELEMENTS 1000</span>
 
 <span class="kt">void</span> <span class="nf">init_array</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">out_array</span><span class="p">)</span> <span class="p">{</span>
@@ -4292,7 +4436,31 @@ This option is needed by the <a class="reference internal" href="#sw-hw-co-simul
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If finer control of the burst transfer is required, consider <a class="reference internal" href="#custom-axi4-using-fifo"><span class="std std-ref">Implementing A Custom AXI4 Master/Slave Using hls::FIFO</span></a>.</p>
+<p>SmartHLS also supports allowing multiple AXI4 Initiator burst requests to be left outstanding without stalling the accelerator. By sending more burst requests in advance, the AXI4 target can have more time to respond, potentially reducing the time the SmartHLS accelerator needs to wait.
+Using this feature infers internal FIFOs in the design, of size <code class="docutils literal notranslate"><span class="pre">max_ouststanding_&lt;reads/writes&gt;</span> <span class="pre">*</span> <span class="pre">addr_size</span></code> for the ARADDR and AWADDR channels and <code class="docutils literal notranslate"><span class="pre">max_outstanding_&lt;reads/writes&gt;</span> <span class="pre">*</span> <span class="pre">max_burst_len</span> <span class="pre">*</span> <span class="pre">word_size</span></code> for RDATA and WDATA channels.
+The <code class="docutils literal notranslate"><span class="pre">max_burst_len</span></code> and <code class="docutils literal notranslate"><span class="pre">max_outstanding_&lt;reads/writes&gt;</span></code> can be set separately for input and output AXI4 Initiator arguments, allowing the user to optimize their read and write burst transactions separately. An example of how to use the interface pragmas to specify this behaviour is shown below.
+In this example, <code class="docutils literal notranslate"><span class="pre">addr_size</span></code> depends on the AXI4 interface address width (SmartHLS will generate an interface with address width <code class="docutils literal notranslate"><span class="pre">64</span></code>), and <code class="docutils literal notranslate"><span class="pre">word_size</span></code> depends on the argument type (in this case since the argument is an <code class="docutils literal notranslate"><span class="pre">int</span></code> pointer, the word size is <code class="docutils literal notranslate"><span class="pre">32</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define NUM_ELEMENTS 10000</span>
+
+<span class="c1">// Use AXI initiator to copy data from one cpu-side location to another</span>
+<span class="kt">void</span> <span class="nf">cpy_array</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">in_array</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">out_array</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS interface default type(axi_target)</span>
+<span class="cp">#pragma HLS interface argument(in_array) type(axi_initiator)                   \</span>
+<span class="cp">    num_elements(NUM_ELEMENTS) max_burst_len(256) max_outstanding_reads(8)</span>
+<span class="cp">#pragma HLS interface argument(out_array) type(axi_initiator)                  \</span>
+<span class="cp">    num_elements(NUM_ELEMENTS) max_burst_len(64) max_outstanding_writes(2)</span>
+<span class="c1">// Burstable</span>
+<span class="cp">#pragma HLS loop pipeline</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">NUM_ELEMENTS</span><span class="p">;</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out_array</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">in_array</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The values specified for these interface pragmas can be tuned to optimize the throughput of the AXI4 Initiator interface. For more information on how to pick these values to improve performance, see <a class="reference internal" href="optimizationguide.html#axi4i-performance-optimization"><span class="std std-ref">Optimizing AXI4 Initiator Performance</span></a>.
+For more information on the semantics of the interface pragmas themselves, see the relevant Pragma Guide section: <a class="reference internal" href="pragmas.html#pragma-interface-axi-initiator-argument"><span class="std std-ref">AXI4 Initiator Interface for Pointer Argument</span></a>.
+If finer control of the burst transfer is required, consider <a class="reference internal" href="#custom-axi4-using-fifo"><span class="std std-ref">Implementing A Custom AXI4 Master/Slave Using hls::FIFO</span></a>.</p>
 </div>
 <div class="section" id="axi4-target-interface">
 <span id="pointer-arg-axi-target"></span><h4>AXI4 Target Interface<a class="headerlink" href="#axi4-target-interface" title="Permalink to this headline">¶</a></h4>
@@ -4865,8 +5033,8 @@ function below is generated for setting the pointer address:</p>
 pointer argument (<code class="docutils literal notranslate"><span class="pre">MyPtrArg</span></code>) must be allocated by the <code class="docutils literal notranslate"><span class="pre">hls_malloc</span></code>
 function (see <a class="reference internal" href="#allocation-library"><span class="std std-ref">Memory Allocation Library</span></a>).</p>
 </div>
-<div class="section" id="top-level-driver-functions">
-<span id="id12"></span><h3>Top-level Driver Functions<a class="headerlink" href="#top-level-driver-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="top-level-driver-functions-1">
+<span id="top-level-driver-functions"></span><h3>Top-level Driver Functions<a class="headerlink" href="#top-level-driver-functions-1" title="Permalink to this headline">¶</a></h3>
 <p>When all interfaces of a HLS module are either AXI4 target or AXI4 initiator,
 that means an attached processor can initialize/retrieve all input/output data
 of the HLS module and control the HLS module’s execution.
@@ -4891,7 +5059,7 @@ convenient for replacing the original top-level function in a software program.<
 control drivers (as described in above sections) under the hood.</p>
 <p>To make all interfaces accessible by an attached processor, one can use the
 default interface pragma to set the default interface to AXI4 target for all
-arguments and module control (see <a class="reference internal" href="pragmas.html#pragma-interface-default"><span class="std std-ref">Default All Interface to Use AXI4 Target</span></a>), and then add
+arguments and module control (see <a class="reference internal" href="pragmas.html#pragma-interface-default"><span class="std std-ref">Default All Interfaces to Use AXI4 Target</span></a>), and then add
 pragmas for <code class="docutils literal notranslate"><span class="pre">axi_initiator</span></code> interface or to configure non-default options.</p>
 <div class="section" id="top-level-driver-options-in-pointer-arguments-axi4-target-interface-pragma">
 <span id="ptr-arg-pragma-options"></span><h4>Top-level Driver Options in Pointer Arguments’ AXI4 Target Interface Pragma<a class="headerlink" href="#top-level-driver-options-in-pointer-arguments-axi4-target-interface-pragma" title="Permalink to this headline">¶</a></h4>
@@ -5157,8 +5325,8 @@ There are two options for <code class="docutils literal notranslate"><span class
 <p>For more details, see the following Tcl script that SmartHLS uses to run Libero synthesis, place and route:
 <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;\SmartHLS\examples\synthesize_microsemi.tcl</span></code></p>
 </div>
-<div class="section" id="soc-features">
-<span id="id13"></span><h2>SoC Features<a class="headerlink" href="#soc-features" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="soc-features-1">
+<span id="soc-features"></span><h2>SoC Features<a class="headerlink" href="#soc-features-1" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS can generate a RISC-V processor/accelerator reference SoC, where it generates hardware accelerators and automatically integrates into Microprocessor Sub-System (MSS). The SoC features are currently limited to targeting the <a class="reference external" href="https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES">PolarFire SoC Icicle Kit</a>, and are described in the following sections.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -5180,8 +5348,8 @@ The hardware generation step generates hardware accelerators in Verilog.
 It also generates Tcl scripts that contains commands for SmartDesign, which is run to integrate the hardware accelerators and any additional IPs to generate a complete SoC comprising the RISC-V MSS, interconnect, and hardware accelerators.</p>
 <a class="reference internal image-reference" href="_images/SoC_flow_overview.png"><img alt="_images/SoC_flow_overview.png" src="_images/SoC_flow_overview.png" style="width: 1000.5px; height: 609.0px;" /></a>
 </div>
-<div class="section" id="soc-data-transfer-methods">
-<span id="id14"></span><h3>SoC Data Transfer Methods<a class="headerlink" href="#soc-data-transfer-methods" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="soc-data-transfer-methods-1">
+<span id="soc-data-transfer-methods"></span><h3>SoC Data Transfer Methods<a class="headerlink" href="#soc-data-transfer-methods-1" title="Permalink to this headline">¶</a></h3>
 <p>For the RISC-V SoC on the PolarFire SoC Icicle Kit, main memory resides in off-chip DDR memory. For each pointer argument of an accelerator, data can be copied from DDR memory to accelerator’s on-chip memory buffer, or it can be accessed directly in DDR by the accelerator. Any access to DDR, whether data is copied or accessed directly, goes through the MSS data cache to maintain cache coherency.
 There are three data transfer methods provided to transfer data between DDR memory and hardware accelerators.</p>
 <p><strong>CPU Copy</strong>:
@@ -5222,8 +5390,8 @@ To program this base SoC, navigate to the SmartHLS tab, and select  <code class=
 <p>In the same sub-menu, there is an option to cross-compile the project software into a binary for RISC-V (<code class="docutils literal notranslate"><span class="pre">Cross-compile</span> <span class="pre">software</span> <span class="pre">for</span> <span class="pre">RISC-V</span></code>), as well as an option to move this binary to an attached
 Icicle Kit and run it (<code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">software</span> <span class="pre">without</span> <span class="pre">accelerators</span></code>). In order to run software on an attached Icicle Kit, some preliminary setup steps are required, see <a class="reference internal" href="icicle_setup.html#icicle-setup"><span class="std std-ref">Icicle Kit Setup Instructions</span></a>.</p>
 </div>
-<div class="section" id="reference-soc-generation">
-<h4>Reference SoC Generation<a class="headerlink" href="#reference-soc-generation" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="reference-soc-generation-1">
+<span id="reference-soc-generation"></span><h4>Reference SoC Generation<a class="headerlink" href="#reference-soc-generation-1" title="Permalink to this headline">¶</a></h4>
 <p>SmartHLS is also capable of taking the hardware accelerators it generates, and integrating them with the Microprocessor Sub-System (MSS) on a PolarFire SoC FPGA (currently only supports
 <a class="reference external" href="https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES">PolarFire SoC Icicle Kit</a>) to create a reference SoC design in SmartDesign. This is done by taking the base SoC
 project, adding hardware accelerators as SmartDesign HDL+ cores, and connecting the components using an AXI4 interconnect. To generate this reference SoC design, navigate to the SmartHLS tab, and select
@@ -5242,8 +5410,8 @@ There are also options to generate a bitstream and program it to an attached Ici
 In order to run software on an attached Icicle Kit, some preliminary steps are required, see <a class="reference internal" href="icicle_setup.html#icicle-setup"><span class="std std-ref">Icicle Kit Setup Instructions</span></a>.</p>
 </div>
 </div>
-<div class="section" id="soc-profiler">
-<span id="id16"></span><h3>SoC Profiler<a class="headerlink" href="#soc-profiler" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="soc-profiler-1">
+<span id="soc-profiler"></span><h3>SoC Profiler<a class="headerlink" href="#soc-profiler-1" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS includes a lightweight profiler that allows the measurement of the amount of time spent transferring data between the CPU and the generated hardware modules. Ideally we want to have a high computation-to-communication ratio to maximize the use of a hardware accelerator. In other words, minimize the amount of communication (time sending and receiving data), and maximize the amount of time the hardware modules are actively processing data.</p>
 <p>The SmartHLS soc profiler allows a breakdown analysis of the application runtime to identify potential optimizations. For example, depending on the application, sometimes we can run concurrently multiple hardware modules instead of a sequential execution.  Another example is we can try to overlap communication and computation time to make more efficient use of hardware resources.</p>
 <div class="section" id="soc-profiler-overview">
@@ -5370,7 +5538,7 @@ The command <code class="docutils literal notranslate"><span class="pre">shls</s
 </pre></div>
 </div>
 <p>Note the <code class="docutils literal notranslate"><span class="pre">hls_</span></code> prefix in the filename. The plot will look like this:</p>
-<a class="reference internal image-reference" href="_images/soc_profiler-single-top.png"><img alt="_images/soc_profiler-single-top.png" class="align-center" src="_images/soc_profiler-single-top.png" style="width: 1340.5px; height: 803.5999999999999px;" /></a>
+<a class="reference internal image-reference" href="_images/soc_profiler-single-top.png"><img alt="_images/soc_profiler-single-top.png" class="align-center" src="_images/soc_profiler-single-top.png" style="width: 1340.5px; height: 803.6px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Currently this feature to selectively show a single timeline is only available via the command line.</p>
@@ -5545,8 +5713,8 @@ scheduling and the control-flow between basic blocks.</p>
 Please refer to <a class="reference internal" href="#loop-pipelining"><span class="std std-ref">Loop Pipelining</span></a> and <a class="reference internal" href="#function-pipelining"><span class="std std-ref">Function Pipelining</span></a> for more details.
 SmartHLS’s <cite>Schedule Viewer</cite> also gives more details about how individual instructions are scheduled inside each pipeline.</p>
 </div>
-<div class="section" id="memory-usage">
-<span id="id17"></span><h4>Memory Usage<a class="headerlink" href="#memory-usage" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="memory-usage-1">
+<span id="memory-usage"></span><h4>Memory Usage<a class="headerlink" href="#memory-usage-1" title="Permalink to this headline">¶</a></h4>
 <p>The memory usage section lists the memories used by the generated circuit, grouped by the type of memory architecture.
 Please refer to <a class="reference internal" href="hwarchitecture.html#mem-arch"><span class="std std-ref">Memory Architecture</span></a> section for more details about the memory architecture used by SmartHLS.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-------------------------------------------------------------------------------------------------------------------------+
@@ -5602,6 +5770,7 @@ Please refer to <a class="reference internal" href="hwarchitecture.html#mem-arch
 <li>The <cite>Depth</cite> field represents the depth of a RAM or FIFO, and it is always 1 for register.</li>
 <li><cite>Aliased Memories</cite> have an additional column showing the name of the <cite>Memory Controller</cite> of which the memory is being placed behind.
 So you can see which memories are aliasing and being put behind the same memory controller to support aliased memory accesses.</li>
+<li><cite>I/O Memories</cite> have <cite>Size</cite> and <cite>Depth</cite> to be 0. This is because I/O interface memories are not instantiated inside the SmartHLS-generated circuit.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -5647,7 +5816,7 @@ See memcpy and dma transfer driver functions in hls_output/accelerator_drivers/v
 </pre></div>
 </div>
 <p>Firstly, this section prints whether the top-level module is compatible with the
-SmartHLS-generated reference SoC (see <a class="reference internal" href="#id13">SoC Features</a>). For a top-level module
+SmartHLS-generated reference SoC (see <a class="reference internal" href="#soc-features-1">SoC Features</a>). For a top-level module
 to be compatible and thus can be integrated into the reference SoC, it needs to
 satisfy the following conditions:</p>
 <blockquote>
@@ -5748,8 +5917,8 @@ For instance, the example report above is from a pipelined function with an
 initiation interval of 1, and we can see that the average cycle per call is
 very close to 1 (6,134/6,105).</p>
 </div>
-<div class="section" id="logic-level-distribution">
-<span id="id18"></span><h3>Logic Level Distribution<a class="headerlink" href="#logic-level-distribution" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="logic-level-distribution-1">
+<span id="logic-level-distribution"></span><h3>Logic Level Distribution<a class="headerlink" href="#logic-level-distribution-1" title="Permalink to this headline">¶</a></h3>
 <p>The number of levels of logic (or logic levels) in a design is an indication of
 how much combinatorial logic (e.g. LUTs, carry-chains) there is between registers
 (Flip-Flops). The more pipelined the design is, the lower the number of logic
@@ -5794,8 +5963,8 @@ Period</cite> is not set, SmartHLS uses a default clock period for the target FP
 family (see the table in <a class="reference internal" href="#smarthls-constraints"><span class="std std-ref">SmartHLS Constraints</span></a>).</p>
 </div>
 </div>
-<div class="section" id="schedule-viewer">
-<span id="id19"></span><h2>Schedule Viewer<a class="headerlink" href="#schedule-viewer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="schedule-viewer-1">
+<span id="schedule-viewer"></span><h2>Schedule Viewer<a class="headerlink" href="#schedule-viewer-1" title="Permalink to this headline">¶</a></h2>
 <p>The Schedule Viewer shows information on how the top-level function was scheduled in hardware by SmartHLS.
 This includes information on the flow of control between different functions and blocks of execution,
 as well as the cycle by cycle schedule of the operations in hardware.</p>
@@ -5810,7 +5979,7 @@ The Explorer tab lets you navigate between the functions and blocks within the d
 The Call Graph contains the directed graph of which software functions are called by which other software functions within the top-level function.
 The Control Flow Graph shows the control flow of execution between the blocks within each function for if/else conditionals and loops.
 The Schedule Chart and Pipeline Viewer shows the scheduling of instructions within a block or a pipeline on a cycle-by-cycle basis.</p>
-<a class="reference internal image-reference" href="_images/Schedule_Viewer.png"><img alt="_images/Schedule_Viewer.png" class="align-center" src="_images/Schedule_Viewer.png" style="width: 681.6px; height: 520.8000000000001px;" /></a>
+<a class="reference internal image-reference" href="_images/Schedule_Viewer.png"><img alt="_images/Schedule_Viewer.png" class="align-center" src="_images/Schedule_Viewer.png" style="width: 681.6px; height: 520.8px;" /></a>
 <div class="section" id="background-llvm-internal-representation-used-by-smarthls">
 <h3>Background: LLVM Internal Representation used by SmartHLS<a class="headerlink" href="#background-llvm-internal-representation-used-by-smarthls" title="Permalink to this headline">¶</a></h3>
 <p>The instructions displayed in the Schedule Viewer are from the LLVM compiler that SmartHLS is built on.
@@ -5837,7 +6006,7 @@ Control flow occurs between basic blocks.</p>
 <div class="highlight-llvm notranslate"><div class="highlight"><pre><span></span><span class="nl">body.0:</span>
   <span class="nv nv-Anonymous">%0</span> <span class="p">=</span> <span class="k">add</span> <span class="k">i32</span> <span class="nv">%a</span><span class="p">,</span> <span class="nv">%b</span>
   <span class="nv">%result</span> <span class="p">=</span> <span class="k">sub</span> <span class="k">i32</span> <span class="nv nv-Anonymous">%0</span><span class="p">,</span> <span class="m">5</span>
-  <span class="k">br</span> <span class="kt">label</span> <span class="nv">%body.1</span>
+  <span class="k">br</span> <span class="k">label</span> <span class="nv">%body.1</span>
 </pre></div>
 </div>
 <p>All of the basic blocks and instructions shown in the Scheduler Viewer are directly from the LLVM IR optimized by SmartHLS before being compiled into Verilog.</p>
@@ -5875,7 +6044,7 @@ main function body, making sure we can see them in the Call Graph.</p>
 </div>
 <p>This will generate the Call Graph shown below.
 The Call Graph shows that <code class="docutils literal notranslate"><span class="pre">main</span></code> calls <code class="docutils literal notranslate"><span class="pre">top_level</span></code>, which in turn calls <code class="docutils literal notranslate"><span class="pre">helper_func_0</span></code> and <code class="docutils literal notranslate"><span class="pre">helper_function_1</span></code>.</p>
-<a class="reference internal image-reference" href="_images/Schedule_Viewer_Call_Graph.png"><img alt="_images/Schedule_Viewer_Call_Graph.png" class="align-center" src="_images/Schedule_Viewer_Call_Graph.png" style="width: 681.6px; height: 520.8000000000001px;" /></a>
+<a class="reference internal image-reference" href="_images/Schedule_Viewer_Call_Graph.png"><img alt="_images/Schedule_Viewer_Call_Graph.png" class="align-center" src="_images/Schedule_Viewer_Call_Graph.png" style="width: 681.6px; height: 520.8px;" /></a>
 </div>
 <div class="section" id="control-flow-graph">
 <h3>Control Flow Graph<a class="headerlink" href="#control-flow-graph" title="Permalink to this headline">¶</a></h3>
@@ -6071,8 +6240,8 @@ Design</a> featuring
 a PolarFire<sup>®</sup> SoC Microprocessor Sub-System (MSS) to which the generated
 SmartHLS IP modules are automatically attached to via AXI interconnects.</p>
 </div>
-<div class="section" id="user-defined-smartdesigns">
-<span id="id20"></span><h2>User-defined SmartDesigns<a class="headerlink" href="#user-defined-smartdesigns" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-defined-smartdesigns-1">
+<span id="user-defined-smartdesigns"></span><h2>User-defined SmartDesigns<a class="headerlink" href="#user-defined-smartdesigns-1" title="Permalink to this headline">¶</a></h2>
 <p>The automatic integration of SmartHLS cores can also be applied to user-defined
 SmartDesigns, not just the Icicle Kit Reference Design included with SmartHLS as
 long as some integration parameters are specified as shown in the following image:</p>
@@ -6083,8 +6252,8 @@ foo(), bar() and baz(). These parameters have default values based on the
 <em>Icicle_SoC</em> reference design included in SmartHLS but can be overridden as
 necessary in the <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> file to adapt to user-defined designs.</p>
 <p>The following table further describes the integration parameters:</p>
-<span id="soc-integration-parameters"></span><table border="1" class="colwidths-given docutils" id="id24">
-<caption><span class="caption-text">SoC integration parameters</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
+<span id="soc-integration-parameters"></span><table border="1" class="docutils" id="table-1">
+<caption><span class="caption-text">SoC integration parameters</span><a class="headerlink" href="#table-1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="14%" />
 <col width="14%" />
@@ -6251,8 +6420,8 @@ After this, the system can be synthesized and run through place and route.</p>
 <h3>Verilog Files<a class="headerlink" href="#verilog-files" title="Permalink to this headline">¶</a></h3>
 <p>The generated hardware module(s) are produced in the sub-directory <code class="docutils literal notranslate"><span class="pre">hls_output/rtl</span></code>. By default, each top-level module, along with all its child modules, will be printed to a separate Verilog file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top</span> <span class="pre">Level</span> <span class="pre">Name&gt;.v</span></code>). If it is desired to print all Verilog into a single file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.v</span></code>), users can configure the <a class="reference internal" href="constraintsmanual.html#single-hdl-output-file"><span class="std std-ref">SINGLE_HDL_OUTPUT_FILE</span></a> parameter.</p>
 </div>
-<div class="section" id="vhdl-wrapper-files">
-<span id="id21"></span><h3>VHDL Wrapper Files<a class="headerlink" href="#vhdl-wrapper-files" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="vhdl-wrapper-files-1">
+<span id="vhdl-wrapper-files"></span><h3>VHDL Wrapper Files<a class="headerlink" href="#vhdl-wrapper-files-1" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS produces VHDL wrapper files which contain a top-level VHDL entity that wraps a corresponding Verilog top-level module. By default, there will be a single VHDL file for each Verilog top-level module (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top</span> <span class="pre">Level</span> <span class="pre">name&gt;.vhd</span></code>). If it is desired to print all VHDL into a single file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.vhd</span></code>), users can configure the <a class="reference internal" href="constraintsmanual.html#single-hdl-output-file"><span class="std std-ref">SINGLE_HDL_OUTPUT_FILE</span></a> parameter.</p>
 </div>
 <div class="section" id="reports">
@@ -6294,7 +6463,7 @@ SmartHLS from a terminal, or from a user script for the purposes of automation.<
 <p>Windows users can launch the terminal by opening <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/cygwin64/Cygwin.bat</span></code>.
 Users can access their file directory on their computer by using <code class="docutils literal notranslate"><span class="pre">/cygdrive/&lt;drive</span> <span class="pre">letter&gt;/&lt;path&gt;</span></code>
 as the prefix.
-For example, to go to <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2022.3</span></code>, enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/cygdrive/c/Microchip/SmartHLS-2022.3</span></code>.</p>
+For example, to go to <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2023.1</span></code>, enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/cygdrive/c/Microchip/SmartHLS-2023.1</span></code>.</p>
 </div>
 <div class="section" id="setup">
 <h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
@@ -6352,6 +6521,8 @@ More details can be found in <a class="reference internal" href="#sw-hw-cosimula
 </li>
 </ul>
 </dd>
+<dt>-g</dt>
+<dd>Launch SmartHLS IDE from command line.</dd>
 <dt>sw</dt>
 <dd>Compile and run the program in software on your host machine.  The compilation step is skipped if no change is detected in source/header files, <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code>.</dd>
 <dt>sw_compile</dt>
@@ -6437,8 +6608,8 @@ Requires the BOARD_IP environment variable to be set.</td>
 </div>
 <div class="section" id="software-macros">
 <span id="sw-macro"></span><h2>Software Macros<a class="headerlink" href="#software-macros" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="synthesis-macro">
-<span id="id22"></span><h3><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro<a class="headerlink" href="#synthesis-macro" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="synthesis-macro-1">
+<span id="synthesis-macro"></span><h3><code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> Macro<a class="headerlink" href="#synthesis-macro-1" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">__SYNTHESIS__</span></code> macro is defined in SmartHLS during synthesis. This provides a convenient way to exclude non-synthesizable code without removing/commenting the code itself. In the folling example, the assertion header and statement are ignored during synthesis:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __SYNTHESIS__</span>
 <span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
@@ -6720,26 +6891,27 @@ run the accelerator 100 times.</p>
 </tr>
 </tbody>
 </table>
-<div class="section" id="makefile-example">
-<span id="id23"></span><h3>Makefile Example<a class="headerlink" href="#makefile-example" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="makefile-example-1">
+<span id="makefile-example"></span><h3>Makefile Example<a class="headerlink" href="#makefile-example-1" title="Permalink to this headline">¶</a></h3>
 <p>The example below shows how to define some of the above Makefile variables.</p>
 <p>For IDE projects, you should create a new <code class="docutils literal notranslate"><span class="pre">Makefile.user</span></code> file and put your custom Makefile settings there (any changes in the <code class="docutils literal notranslate"><span class="pre">makefile</span></code> of an IDE project will be overwritten).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to place files on the Icicle kit, relative to root home dir.</span>
-<span class="nv">BOARD_PATH</span><span class="o">=</span>tests/lane-detection-shls
+BOARD_PATH:<span class="o">=</span>tests/lane-detection-shls
 
 <span class="c1"># To pass timing for this project, we require more PnR passes</span>
-<span class="nv">NUM_LIBERO_PnR_PASSES</span> <span class="o">=</span> <span class="m">10</span>
+NUM_LIBERO_PnR_PASSES :<span class="o">=</span> <span class="m">10</span>
 
 <span class="c1"># Extra defines to include shared opencv/ffmpeg libraries below:</span>
-<span class="nv">OPENCV_PATH_RISCV</span> <span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/opencv4.5.4-riscv_64-linux
-<span class="nv">FFMPEG_PATH_RISCV</span> <span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/ffmpeg4.4-riscv_64-linux
+OPENCV_PATH_RISCV :<span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/opencv4.5.4-riscv_64-linux
+FFMPEG_PATH_RISCV :<span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/ffmpeg4.4-riscv_64-linux
 
 ifeq <span class="o">(</span><span class="k">$(</span>shell uname -o<span class="k">)</span>, Cygwin<span class="o">)</span>
-<span class="nv">OPENCV_PATH</span> <span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/opencv4.5.4-x86_64-cygwin
-<span class="nv">FFMPEG_PATH</span> <span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/ffmpeg4.4-x86_64-cygwin
+<span class="c1"># Use cygpath to locate the actual location in Windows</span>
+OPENCV_PATH :<span class="o">=</span> <span class="k">$(</span>shell cygpath -t mixed <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/opencv4.5.4-x86_64-cygwin<span class="k">)</span>
+FFMPEG_PATH :<span class="o">=</span> <span class="k">$(</span>shell cygpath -t mixed <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/ffmpeg4.4-x86_64-cygwin<span class="k">)</span>
 <span class="k">else</span>
-<span class="nv">OPENCV_PATH</span> <span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/opencv4.5.4-x86_64-linux
-<span class="nv">FFMPEG_PATH</span> <span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/ffmpeg4.4-x86_64-linux
+OPENCV_PATH :<span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/opencv4.5.4-x86_64-linux
+FFMPEG_PATH :<span class="o">=</span> <span class="k">$(</span>LEGUP_ROOT_DIR<span class="k">)</span>/precompiled_sw_libraries/ffmpeg4.4-x86_64-linux
 endif
 
 <span class="c1">###########################################################################################</span>
@@ -6748,14 +6920,16 @@ endif
 <span class="c1"># Specify input and optput files to copy to and from the board.</span>
 <span class="c1"># INPUT_FILES_RISCV should use host paths.</span>
 <span class="c1"># OUTPUT_FILES should use on-board paths.</span>
-<span class="nv">INPUT_FILES_RISCV</span> <span class="o">=</span> lane3.avi lane3_golden.txt
-<span class="nv">OUTPUT_FILES_RISCV</span> <span class="o">=</span> outputlane3.avi lane3_lane_distances.txt
+INPUT_FILES_RISCV :<span class="o">=</span> lane3.avi lane3_golden.txt
+OUTPUT_FILES_RISCV :<span class="o">=</span> outputlane3.avi lane3_lane_distances.txt
 
 <span class="c1"># Secify input arguments</span>
-<span class="nv">PROGRAM_ARGUMENTS</span> <span class="o">=</span> lane3.avi lane3_golden.txt
+PROGRAM_ARGUMENTS :<span class="o">=</span> lane3.avi lane3_golden.txt
 
 <span class="c1"># Additional flags used for compilation, such as -I</span>
-<span class="nv">USER_CXX_FLAG</span> <span class="o">+=</span> -I<span class="k">$(</span>OPENCV_PATH<span class="k">)</span>/include/opencv4 -fexceptions
+<span class="nv">USER_CXX_FLAG</span> <span class="o">+=</span> -I<span class="k">$(</span>OPENCV_PATH<span class="k">)</span>/include/opencv4 -fexceptions <span class="se">\</span>
+                 -Wno-sign-compare -Wno-unused-function        <span class="se">\</span>
+                 -Wno-unused-variable
 
 <span class="c1"># Flags for additional link libraries such as -L and -l</span>
 <span class="c1"># This variable is for running on local host machine (i.e., x86 target).</span>
@@ -6780,17 +6954,17 @@ endif
 
 <span class="c1"># Additional user-defined environment variables that user might need to run their program</span>
 <span class="c1"># This variable is for running on local host machine</span>
-<span class="nv">USER_ENV_VARS</span> <span class="o">=</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="k">$(</span>OPENCV_PATH<span class="k">)</span>/lib:<span class="k">$(</span>FFMPEG_PATH<span class="k">)</span>/lib
+ifeq <span class="o">(</span><span class="k">$(</span>shell uname -o<span class="k">)</span>, Cygwin<span class="o">)</span>
+<span class="c1"># Use semicolons as PATH separator on Windows</span>
+USER_ENV_VARS :<span class="o">=</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>OPENCV_PATH<span class="k">)</span>/bin<span class="p">;</span><span class="k">$(</span>FFMPEG_PATH<span class="k">)</span>/bin<span class="p">;</span><span class="k">$(</span>shell cygpath -t mixed /usr/x86_64-w64-mingw32/sys-root/mingw/bin<span class="k">)</span><span class="p">;</span><span class="nv">$$</span>PATH
+<span class="k">else</span>
+USER_ENV_VARS :<span class="o">=</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="k">$(</span>OPENCV_PATH<span class="k">)</span>/lib:<span class="k">$(</span>FFMPEG_PATH<span class="k">)</span>/lib
+endif
 
 <span class="c1"># Additional user-defined environment variables that user might need to run their program</span>
 <span class="c1"># This variable is for running on the SOC</span>
 <span class="c1"># LD_LIBRARY_PATH is needed for dynamically linking OpenCV</span>
-ifeq <span class="o">(</span><span class="k">$(</span>shell uname -o<span class="k">)</span>, Cygwin<span class="o">)</span>
-<span class="nv">USER_ENV_VARS</span> <span class="o">=</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>OPENCV_PATH<span class="k">)</span>/bin:<span class="k">$(</span>FFMPEG_PATH<span class="k">)</span>/bin:/usr/x86_64-w64-mingw32/sys-root/mingw/bin:<span class="nv">$$</span>PATH
-<span class="k">else</span>
-<span class="nv">USER_ENV_VARS</span> <span class="o">=</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="k">$(</span>OPENCV_PATH<span class="k">)</span>/lib:<span class="k">$(</span>FFMPEG_PATH<span class="k">)</span>/lib
-endif
-<span class="nv">USER_ENV_VARS_RISCV</span> <span class="o">=</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/home/root/shls_sw_dependencies/opencv4.5.4-riscv_64-linux/lib:/home/root/shls_sw_dependencies/ffmpeg4.4-riscv_64-linux/lib
+USER_ENV_VARS_RISCV :<span class="o">=</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/home/root/shls_sw_dependencies/opencv4.5.4-riscv_64-linux/lib:/home/root/shls_sw_dependencies/ffmpeg4.4-riscv_64-linux/lib
 
 <span class="c1"># The IP adddress of the ethernet-cable-connected Icicle kit.</span>
 BOARD_IP ?<span class="o">=</span> <span class="m">192</span>.168.X.X
@@ -6859,9 +7033,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.3 documentation&\
-		pub_ver=2022.3&\
-		revision_letter=2022.3&\
+		cover_title=SmartHLS 2023.1 documentation&\
+		pub_ver=2023.1&\
+		revision_letter=2023.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

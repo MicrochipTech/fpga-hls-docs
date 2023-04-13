@@ -12,17 +12,79 @@ Latest Release (|version|)
 .. 2) the sections (e.g., Software Features and Enhancements) should have the
 ..    "---------" title indication line changed to "~~~~~~~~".
 
-Release Date: December, 2022
+Release Date: April, 2023
 
 Installer Update
 -----------------------------------
+
+ * SmartHLS PolarFire :ref:`soc_features` will be in production and no longer require a separate early access program license.
+   PolarFire SoC features are available using a standard SmartHLS license.
+
+Software Features and Enhancements
+-----------------------------------
+
+ * Introduced a new :ref:`pragma_dataflow` pragma to express dataflow parallelism with minimal code changes,
+   which is commonly used to improve hardware throughput.
+   In dataflow parallelism, a succession of computational tasks which process continuous streams of data can execute in parallel.
+   This parallelism can also be expressed using SmartHLS threads, but in many cases using the dataflow pragma instead requires almost no code changes.
+   See the :ref:`dataflow_parallelism` section for more information.
+
+   * In previous SmartHLS releases, the function pipeline pragma was used to implicitly implement dataflow execution in some cases.
+     This pragma did 2 things:
+
+     #. Modified the hardware generated for a function to support pipelining (e.g., unroll all loops)
+
+     #. Ran a sequence of functions with dataflow parallelism.
+
+   * To improve clarity in the 2023.1 release, the function pipeline pragma now only does 1), and the dataflow pragma does 2).
+
+ * Improved burst transfer via AXI initiator interfaces.
+   When a burst-able access pattern is detected, the user can specify the ``max_outstanding_reads``/``max_outstanding_writes`` interface pragma field (see :ref:`pragma_interface_axi_initiator_argument`)
+   to improve performance.
+   This performance gain is achieved by allowing multiple AXI initiator requests to be sent while the accelerator is running.
+   Additionally, SmartHLS will insert a FIFO on the AXI initiator interface to further improve performance by reducing back-pressure on the interface.
+   For more details, see :ref:`axi4i_performance_optimization`.
+
+ * Enhanced compiler analysis for memory dependencies in pipelined functions.
+   SmartHLS can now generate hardware with higher throughput using analysis to reduce the function pipeline initiation interval (clock cycles between starting successive function invocations).
+
+Resolved Issues
+-----------------------------------
+
+ * Fixed AXI4 initiator support when used together with threading feature.
+ * Fixed AXI4 initiator burst support when used with float pointer top-level arguments.
+ * Fixed a bug in ``ap_int`` library regarding the wide integer addition.
+ * Fixed SmartHLS scheduling to make sure read-write address collision does not occur.
+
+   * Read-write address collision means that a read and write access occur in the same clock cycle at the same RAM address.
+     Microchip FPGA devices do not support read-first mode under read-write conflict for LSRAMs across ports A and B.
+
+ * Fixed bugs in SmartHLS optimization to minimize bit-widths of operations.
+
+Known Issues
+-----------------------------------
+
+ * The new AXI initiator feature supports type-cast pointers (e.g., an `int64_t *` pointer argument is cast to and accessed as an `int32_t *` pointer).
+   While the HLS-generated RTL is functionally correct and works on the device, HW/SW Co-simulation may report a failure within the testbench.  This issue will be fixed in the next release.
+
+
+Previous Releases
+==================
+
+SmartHLS 2022.3
+-----------------------------------
+
+Release Date: December, 2022
+
+Installer Update
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * Starting from this release, Microchip will no longer publish a standalone version for SmartHLS.
    All future SmartHLS releases will be included in the releases of Libero SoC Design Suite.
    Please make sure that the SmartHLS software is selected when installing Libero SoC Design Suite.
 
 Software Features and Enhancements
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * If you are interested in joining the early access program for our new SmartHLS PolarFire :ref:`soc_features`, please email: SmartHLS@microchip.com
  * Support burst transfer via AXI initiator interface (beta) -- SmartHLS analyzes the C++ input code for burst-able access patterns to AXI initiator interfaces.
@@ -36,7 +98,7 @@ Software Features and Enhancements
    See :ref:`ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING` and :ref:`ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING` for more details.
 
 Resolved Issues
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * Robustness improvements in SmartHLS optimization to minimize bit-widths of operations.
 
@@ -46,7 +108,7 @@ Resolved Issues
    * Read-write conflict means one read access and one write access are happening at the same clock cycle to the same RAM address. SmartFusion2/IGLOO2 devices do not support read-first mode under read-write conflict for LSRAMs.
 
 Known Issues
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * The new AXI initiator feature supports type-cast pointers (e.g., an ``int64_t *`` pointer argument is cast to and accessed as an ``int32_t *`` pointer).
    However, :ref:`sw_hw_cosimulation` of this use case may fail due to an issue in the CoSimulation testbench.
@@ -57,8 +119,6 @@ Known Issues
    by adding the following constraint (in the GUI or in your config.tcl file): ``set_operation_latency multiply 6``.
 
 
-Previous Releases
-==================
 
 SmartHLS 2022.2.1
 ---------------------

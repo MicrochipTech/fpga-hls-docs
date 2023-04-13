@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Optimization Guide &mdash; SmartHLS 2022.3 documentation</title>
+  <title>Optimization Guide &mdash; SmartHLS 2023.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
 
 										  </h1>
 								
@@ -580,6 +580,7 @@ display:none;
 <li class="toctree-l2"><a class="reference internal" href="#inferring-a-shift-register">Inferring a Shift Register</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inferring-a-line-buffer">Inferring a Line Buffer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inferring-streaming-hardware-via-producer-consumer-pattern-with-threads">Inferring Streaming Hardware via Producer-Consumer Pattern with Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optimizing-axi4-initiator-performance">Optimizing AXI4 Initiator Performance</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
@@ -982,6 +983,7 @@ If the loop is completely unrolled, the loop disappears, hence you cannot pipeli
 <h2>Function Pipelining<a class="headerlink" href="#function-pipelining" title="Permalink to this headline">¶</a></h2>
 <p>Similar to loop pipelining, when a function is specified to be pipelined, SmartHLS will automatically inline all of its descendant functions, and unroll all loops (in the specified function as well as in all of its descendant functions).
 This is done to create a high-performance pipelined hardware.
+A function can be specified to be pipelined using the pragma <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">pipeline</span></code> (see <a class="reference internal" href="pragmas.html#pragma-function-pipeline"><span class="std std-ref">Pipeline Function</span></a>).
 Consider the following call graph:</p>
 <a class="reference internal image-reference" href="_images/callgraph_new.png"><img alt="_images/callgraph_new.png" class="align-center" src="_images/callgraph_new.png" style="width: 117.0px; height: 121.5px;" /></a>
 <p>where function <code class="docutils literal notranslate"><span class="pre">c</span></code> contains a loop.
@@ -1359,7 +1361,7 @@ wait time before seeing any output. Second, we would need to store the entire in
 Assuming 8-bit pixel values, this would require 262KB of memory. If the image is stored in off-chip memory, it would take a considerable
 amount of time to access each pixel, and the performance would suffer significantly.</p>
 <p>An alternative widely used approach is to use line buffers.</p>
-<a class="reference internal image-reference" href="_images/sobel.png"><img alt="_images/sobel.png" class="align-center" src="_images/sobel.png" style="width: 383.40000000000003px; height: 108.9px;" /></a>
+<a class="reference internal image-reference" href="_images/sobel.png"><img alt="_images/sobel.png" class="align-center" src="_images/sobel.png" style="width: 383.4px; height: 108.9px;" /></a>
 <p>The figure shows two buffers, each holding 512 pixels.
 Rather than storing the entire input image, we only need to store the previous two rows of the input image (as the 3x3 stencil window can cover 3 rows), along with a few
 pixels from the first row being covered by the stencil window. As new pixels are received, they are stored into the line buffers.
@@ -1416,7 +1418,7 @@ The pixels labelled “0” are stored in the first line buffer (e.g., <code cla
 and the pixels labelled “1” are stored in the second line buffer (e.g., <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code>).
 When the <code class="docutils literal notranslate"><span class="pre">ShiftInPixel</span></code> method is called to shift in a new pixel, you can see the 3x3 window is shifted to left and covers the new pixel.
 The line buffers are also updated — <code class="docutils literal notranslate"><span class="pre">prev_rows[0]</span></code> takes in the new pixel and retires its oldest pixel, which is taken in by the second line buffer <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code>; <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code> also retires its oldest pixel, labelled with “x”.</p>
-<a class="reference internal image-reference" href="_images/LineBufferOptGuideAnimation.png"><img alt="_images/LineBufferOptGuideAnimation.png" class="align-center" src="_images/LineBufferOptGuideAnimation.png" style="width: 748.8000000000001px; height: 864.9px;" /></a>
+<a class="reference internal image-reference" href="_images/LineBufferOptGuideAnimation.png"><img alt="_images/LineBufferOptGuideAnimation.png" class="align-center" src="_images/LineBufferOptGuideAnimation.png" style="width: 748.8px; height: 864.9px;" /></a>
 </div>
 <div class="section" id="inferring-streaming-hardware-via-producer-consumer-pattern-with-threads">
 <h2>Inferring Streaming Hardware via Producer-Consumer Pattern with Threads<a class="headerlink" href="#inferring-streaming-hardware-via-producer-consumer-pattern-with-threads" title="Permalink to this headline">¶</a></h2>
@@ -1532,7 +1534,7 @@ there is data in their input FIFOs. This matches the always
 running behaviour of streaming hardware.
 The multi-threaded code above can be compiled, concurrently executed, and debugged using standard software tools (e.g., gcc, gdb).
 When compiled to hardware with SmartHLS, the following hardware architecture is created:</p>
-<a class="reference internal image-reference" href="_images/multiple_kernels.png"><img alt="_images/multiple_kernels.png" class="align-center" src="_images/multiple_kernels.png" style="width: 320.4px; height: 104.39999999999999px;" /></a>
+<a class="reference internal image-reference" href="_images/multiple_kernels.png"><img alt="_images/multiple_kernels.png" class="align-center" src="_images/multiple_kernels.png" style="width: 320.4px; height: 104.4px;" /></a>
 <p>Another advantage of using threads in SmartHLS is that one can also
 easily replicate streaming hardware. In SmartHLS, each thread is
 mapped to a hardware instance, hence forking multiple
@@ -1542,7 +1544,7 @@ completely parallelizable (i.e., data-parallel), one can exploit
 spatial hardware parallelism by forking two threads for each
 function, to create the architecture shown below. This
 methodology therefore allows exploiting both spatial (replication) and pipeline hardware parallelism all from software.</p>
-<a class="reference internal image-reference" href="_images/multiple_replicated_kernels.png"><img alt="_images/multiple_replicated_kernels.png" class="align-center" src="_images/multiple_replicated_kernels.png" style="width: 339.59999999999997px; height: 145.2px;" /></a>
+<a class="reference internal image-reference" href="_images/multiple_replicated_kernels.png"><img alt="_images/multiple_replicated_kernels.png" class="align-center" src="_images/multiple_replicated_kernels.png" style="width: 339.6px; height: 145.2px;" /></a>
 <p>For replication, some HLS tools may require the hardware
 designer to manually instantiate a synthesized core multiple
 times and also make the necessary connections in HDL. This
@@ -1573,6 +1575,77 @@ connect multiple concurrently executing streaming modules.</p>
 directly from standard software.
 As this is a purely standard software solution, without requiring any tool specific pragmas, the concurrent
 execution behaviour of the replicated kernels can be modeled from software.</p>
+</div>
+<div class="section" id="optimizing-axi4-initiator-performance">
+<span id="axi4i-performance-optimization"></span><h2>Optimizing AXI4 Initiator Performance<a class="headerlink" href="#optimizing-axi4-initiator-performance" title="Permalink to this headline">¶</a></h2>
+<p>An AXI4 Initiator interface can be used to allow an HLS module to access an external memory while it is running, potentially saving time compared to other methods where data needs to be fully transferred first before the module can start. SmartHLS allows for optimization of the AXI4 Initiator transactions using pragmas. For more information on AXI4 Initiator interface arguments, see <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface</span></a>. For more information on the pragmas used in this section, see <a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a>.</p>
+<p>And example of an unoptimized HLS module that uses an AXI4 Initiator interface is shown below. The module simply uses a loop to copy elements from one external memory to another. The interface pragmas for <code class="docutils literal notranslate"><span class="pre">in_array</span></code> and <code class="docutils literal notranslate"><span class="pre">out_array</span></code> declare that memory transfers to these external memories should be implemented using an AXI4 Initiator interface. The interface pragma for <code class="docutils literal notranslate"><span class="pre">default</span></code> declares that the HLS module control (see <a class="reference internal" href="userguide.html#module-control-interface"><span class="std std-ref">Module Control Interface</span></a>), as well as pointer addresses are implemented with an AXI4 Target interface.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use AXI initiator to copy from one external memory to another.</span>
+<span class="kt">void</span> <span class="nf">copy_array</span><span class="p">(</span><span class="kt">unsigned</span> <span class="o">*</span><span class="n">in_array</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="o">*</span><span class="n">out_array</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">num_elements</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS interface default type(axi_target)</span>
+<span class="cp">#pragma HLS interface argument(in_array) type(axi_initiator)                   \</span>
+<span class="cp">    num_elements(NUM_ELEMENTS)</span>
+<span class="cp">#pragma HLS interface argument(out_array) type(axi_initiator)                  \</span>
+<span class="cp">    num_elements(NUM_ELEMENTS)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">num_elements</span><span class="p">;</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out_array</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">in_array</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The HLS module described above is functional, but there are multiple optimizations that can be implemented to improve the performance of the AXI4 Initiator transactions. An example of an optimized version of the same module is show below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// An optimized version of the same core.</span>
+<span class="kt">void</span> <span class="nf">copy_array_optimized</span><span class="p">(</span><span class="kt">unsigned</span> <span class="o">*</span><span class="n">in_array</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="o">*</span><span class="n">out_array</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">num_elements</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#pragma HLS function top</span>
+<span class="cp">#pragma HLS interface default type(axi_target)</span>
+<span class="c1">// (2) Specify maximum burst length in the interface pragma</span>
+<span class="c1">// (3) Specify maximum number of outstanding transactions via interface pragma</span>
+<span class="cp">#pragma HLS interface argument(in_array) type(axi_initiator)                   \</span>
+<span class="cp">    num_elements(NUM_ELEMENTS) max_burst_len(256) max_outstanding_reads(2)</span>
+<span class="cp">#pragma HLS interface argument(out_array) type(axi_initiator)                  \</span>
+<span class="cp">    num_elements(NUM_ELEMENTS) max_burst_len(256) max_outstanding_writes(2)</span>
+<span class="c1">// (1) Pipeline the loop to infer an AXI burst transfer</span>
+<span class="cp">#pragma HLS loop pipeline</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">num_elements</span><span class="p">;</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out_array</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">in_array</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the optimized version above, the following optimizations have been made:</p>
+<ol class="arabic simple">
+<li>By pipelining the loop that the AXI4 Initiator transaction resides in, SmartHLS can infer an AXI burst. There are specific criteria that must be met to infer a burst transaction (see <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface</span></a>). An AXI burst has the benefit of only needing to send the address once for multiple data beats, so it can improve performance by sending less data overall, and spending less time waiting for a response from the external memory. It is important to note that when SmartHLS infers an AXI4 Initiator burst transfer, it will also infer FIFOs on the AXI4 RDATA and WDATA signals (of size equal to the maximum burst length). This is to ensure that the HLS module and the external memory will not stall each other mid-burst while processing data.</li>
+<li>For AXI4 Initiator burst transactions, the maximum burst length can be configured using the interface pragma. Setting this to a larger number (max 256, default is 16) can improve the burst performance at the cost of holding the AXI channel for a longer time per burst. The maximum burst length also determines the size of the RDATA/WDATA FIFOs inside the HLS module, so a larger burst length will use more memory.</li>
+<li>For AXI4 Initiator burst transaction, the maximum number of outstanding transactions can be configured using the interface pragma. Setting this to a larger number (maximum 8, default is 1) can improve performance by sending burst requests earlier and potentially reducing the cases where the HLS module stalls waiting for data, at the cost of larger RDATA/WDATA FIFOs.</li>
+</ol>
+<p>Additionally, for SmartHLS modules that use their AXI4 Initiator interface to transfer data to/from DDR on an MSS (see <a class="reference internal" href="userguide.html#soc-features"><span class="std std-ref">SoC Features</span></a>), the DDR memory region where the data resides can have a large impact on performance.
+For projects using the PolarFire SoC Icicle Kit and reference design, such as those generated by SmartHLS’ <a class="reference internal" href="userguide.html#reference-soc-generation"><span class="std std-ref">Reference SoC Generation</span></a>, the memory region can be selected in the allocation call for the software running on the MSS as shown below. For more information on using the <code class="docutils literal notranslate"><span class="pre">hls_alloc</span></code> library, see <a class="reference internal" href="userguide.html#allocation-library"><span class="std std-ref">Memory Allocation Library</span></a>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Allocate/initialize cpu-side memory</span>
+    <span class="c1">// (4) Choose a cpu-side allocation region that best suits the transfer</span>
+    <span class="kt">unsigned</span> <span class="o">*</span><span class="n">memory_in</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="o">*</span><span class="p">)</span><span class="n">hls_malloc</span><span class="p">(</span>
+        <span class="k">sizeof</span><span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span> <span class="o">*</span> <span class="n">NUM_ELEMENTS</span><span class="p">,</span> <span class="n">HLS_ALLOC_CACHED</span><span class="p">);</span>
+    <span class="kt">unsigned</span> <span class="o">*</span><span class="n">memory_out</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="o">*</span><span class="p">)</span><span class="n">hls_malloc</span><span class="p">(</span>
+        <span class="k">sizeof</span><span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span> <span class="o">*</span> <span class="n">NUM_ELEMENTS</span><span class="p">,</span> <span class="n">HLS_ALLOC_CACHED</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">NUM_ELEMENTS</span><span class="p">;</span> <span class="n">idx</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">memory_in</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Run the accelerator</span>
+    <span class="n">copy_array_optimized</span><span class="p">(</span><span class="n">memory_in</span><span class="p">,</span> <span class="n">memory_out</span><span class="p">,</span> <span class="n">NUM_ELEMENTS</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The recommended configuration for both AXI4 Initiator configuration and memory region choice can vary greatly depending on the system the HLS module is included in. For SoC projects using the PolarFire SoC Icicle Kit, we recommend the following settings for best AXI4 Initiator performance:</p>
+<ul class="simple">
+<li>AXI4 Initiator bursting is recommended when the code is in a format that is supported.</li>
+<li>Larger <code class="docutils literal notranslate"><span class="pre">max_burst_len</span></code> is recommended for best performance (best performance at <code class="docutils literal notranslate"><span class="pre">256</span></code>).</li>
+<li>The recommended <code class="docutils literal notranslate"><span class="pre">max_outstanding_reads</span></code> is <code class="docutils literal notranslate"><span class="pre">2</span></code>, and the recommended <code class="docutils literal notranslate"><span class="pre">max_outstanding_writes</span></code> transactions is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</li>
+<li>For reading data from MSS DDR to a SmartHLS module, it is recommended to use the AXI4 Initiator interface, and to store the data to be read in the HLS_ALLOC_NONCACHED memory region.</li>
+<li>For writing data to MSS DDR from a SmartHLS module below 1MB, it is recommended to use the AXI4 Initiator interface, and to write the data to the HLS_ALLOC_CACHED memory region.</li>
+<li>For writing data to MSS DDR from a SmartHLS module above 1MB, it is recommended to <strong>NOT</strong> use the AXI4 Initiator interface, and instead to use an AXI4 Target interface and MSS PDMA (for more information on how to do this, see <a class="reference internal" href="userguide.html#pointer-arg-axi-target"><span class="std std-ref">AXI4 Target Interface</span></a> and <a class="reference internal" href="userguide.html#allocation-library"><span class="std std-ref">Memory Allocation Library</span></a>.</li>
+</ul>
 </div>
 </div>
 
@@ -1632,9 +1705,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.3 documentation&\
-		pub_ver=2022.3&\
-		revision_letter=2022.3&\
+		cover_title=SmartHLS 2023.1 documentation&\
+		pub_ver=2023.1&\
+		revision_letter=2023.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

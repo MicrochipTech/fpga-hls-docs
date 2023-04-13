@@ -1,6 +1,6 @@
 
 .. 
-   Copyright 2021 Microchip.
+   Copyright 2023 Microchip.
 
 .. meta::
    :keywords: SmartHLS, HLS, Verilog, HDL, development, FPGA

@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Icicle Kit Setup Instructions &mdash; SmartHLS 2022.3 documentation</title>
+  <title>Icicle Kit Setup Instructions &mdash; SmartHLS 2023.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -518,7 +518,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
 
 										  </h1>
 								
@@ -673,25 +673,25 @@ display:none;
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#introduction" id="id1">Introduction</a></li>
-<li><a class="reference internal" href="#polarfire-soc-icicle-kit-diagram" id="id2">PolarFire<sup>®</sup> SoC Icicle Kit Diagram</a></li>
-<li><a class="reference internal" href="#step-1-setup-required-board-connections" id="id3">Step 1: Setup Required Board Connections</a></li>
-<li><a class="reference internal" href="#step-2-check-jumper-settings" id="id4">Step 2: Check Jumper Settings</a></li>
-<li><a class="reference internal" href="#step-3-install-host-pc-applications" id="id5">Step 3: Install Host PC Applications</a></li>
-<li><a class="reference internal" href="#step-4-open-3-terminals" id="id6">Step 4: Open 3 Terminals</a><ul>
-<li><a class="reference internal" href="#host-pc-terminal" id="id7">Host PC Terminal</a></li>
-<li><a class="reference internal" href="#hss-serial-terminal" id="id8">HSS Serial Terminal</a></li>
-<li><a class="reference internal" href="#linux-serial-terminal" id="id9">Linux Serial Terminal</a></li>
+<li><a class="reference internal" href="#introduction" id="toc-entry-1">Introduction</a></li>
+<li><a class="reference internal" href="#polarfire-soc-icicle-kit-diagram" id="toc-entry-2">PolarFire<sup>®</sup> SoC Icicle Kit Diagram</a></li>
+<li><a class="reference internal" href="#step-1-setup-required-board-connections" id="toc-entry-3">Step 1: Setup Required Board Connections</a></li>
+<li><a class="reference internal" href="#step-2-check-jumper-settings" id="toc-entry-4">Step 2: Check Jumper Settings</a></li>
+<li><a class="reference internal" href="#step-3-install-host-pc-applications" id="toc-entry-5">Step 3: Install Host PC Applications</a></li>
+<li><a class="reference internal" href="#step-4-open-3-terminals" id="toc-entry-6">Step 4: Open 3 Terminals</a><ul>
+<li><a class="reference internal" href="#host-pc-terminal" id="toc-entry-7">Host PC Terminal</a></li>
+<li><a class="reference internal" href="#hss-serial-terminal" id="toc-entry-8">HSS Serial Terminal</a></li>
+<li><a class="reference internal" href="#linux-serial-terminal" id="toc-entry-9">Linux Serial Terminal</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#step-5-flashing-the-linux-image-to-the-board" id="id10">Step 5: Flashing the Linux Image to the Board</a><ul>
-<li><a class="reference internal" href="#expose-board-s-emmc-flash-memory-to-host-pc-as-usb-flash-storage" id="id11">Expose Board’s eMMC Flash Memory to Host PC as USB flash storage</a></li>
-<li><a class="reference internal" href="#flash-the-linux-image-to-the-board" id="id12">Flash the Linux Image to the Board</a></li>
+<li><a class="reference internal" href="#step-5-flashing-the-linux-image-to-the-board" id="toc-entry-10">Step 5: Flashing the Linux Image to the Board</a><ul>
+<li><a class="reference internal" href="#expose-board-s-emmc-flash-memory-to-host-pc-as-usb-flash-storage" id="toc-entry-11">Expose Board’s eMMC Flash Memory to Host PC as USB flash storage</a></li>
+<li><a class="reference internal" href="#flash-the-linux-image-to-the-board" id="toc-entry-12">Flash the Linux Image to the Board</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#step-6-programming-the-fpga-bitstream-with-fpexpress" id="id13">Step 6: Programming the FPGA bitstream with FPExpress</a></li>
-<li><a class="reference internal" href="#step-7-accessing-linux-on-board-and-determining-the-ip-address" id="id14">Step 7: Accessing Linux on Board and Determining the IP Address</a></li>
-<li><a class="reference internal" href="#step-8-accessing-linux-over-network-using-ssh" id="id15">Step 8: Accessing Linux over network using SSH</a></li>
+<li><a class="reference internal" href="#step-6-programming-the-fpga-bitstream-with-fpexpress" id="toc-entry-13">Step 6: Programming the FPGA bitstream with FPExpress</a></li>
+<li><a class="reference internal" href="#step-7-accessing-linux-on-board-and-determining-the-ip-address" id="toc-entry-14">Step 7: Accessing Linux on Board and Determining the IP Address</a></li>
+<li><a class="reference internal" href="#step-8-accessing-linux-over-network-using-ssh" id="toc-entry-15">Step 8: Accessing Linux over network using SSH</a></li>
 </ul>
 </div>
 <div class="section" id="introduction">
@@ -797,8 +797,8 @@ to modify your <a class="reference external" href="https://www.dell.com/support/
 <h2>Step 3: Install Host PC Applications<a class="headerlink" href="#step-3-install-host-pc-applications" title="Permalink to this headline">¶</a></h2>
 <p>The following programs are required to be installed on the host PC to set up the Icicle Kit:</p>
 <ul class="simple">
-<li>SmartHLS v2022.3 or newer.</li>
-<li>Libero v2022.3 or newer.</li>
+<li>SmartHLS v2023.1 or newer.</li>
+<li>Libero v2023.1 or newer.</li>
 <li>A serial communication terminal, in this guide we will use the following:<ul>
 <li>Windows: <a class="reference external" href="https://www.putty.org/">PuTTY</a></li>
 <li>Linux: <a class="reference external" href="https://github.com/Jeija/gtkterm">GTKTerm</a></li>
@@ -823,7 +823,7 @@ then navigate to the SmartHLS installation directory: <code class="docutils lite
 Then right-click on Cygwin.bat and choose “Run as administrator”. Administrator rights are required to flash the Linux image to the board.</p>
 <img alt="_images/open_cygwin.png" src="_images/open_cygwin.png" />
 <p>Cygwin tip: Users can access their file directory on their computer by using <code class="docutils literal notranslate"><span class="pre">/cygdrive/&lt;drive</span> <span class="pre">letter&gt;/&lt;path&gt;</span></code>
-as the prefix.  For example, to go to <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2022.3</span></code>, enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/cygdrive/c/Microchip/SmartHLS-2022.3</span></code>.</p>
+as the prefix.  For example, to go to <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2023.1</span></code>, enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/cygdrive/c/Microchip/SmartHLS-2023.1</span></code>.</p>
 </div>
 <div class="section" id="hss-serial-terminal">
 <h3>HSS Serial Terminal<a class="headerlink" href="#hss-serial-terminal" title="Permalink to this headline">¶</a></h3>
@@ -1007,11 +1007,11 @@ zcat core-image-minimal-dev-icicle-kit-es.wic.gz <span class="p">|</span> sudo d
 SmartHLS comes with a default bitstream that can be used to boot the board, which can be programmed using the following steps:</p>
 <ol class="arabic simple">
 <li>Open FPExpress:<ul>
-<li>On Windows, the program can be found by opening the Start Menu, then scrolling down the list of programs until you see the <code class="docutils literal notranslate"><span class="pre">Microchip</span> <span class="pre">Libero</span> <span class="pre">SoC</span> <span class="pre">v2022.3</span></code> folder (under the <code class="docutils literal notranslate"><span class="pre">M</span></code> letter) -&gt; <code class="docutils literal notranslate"><span class="pre">FPExpress</span></code>.</li>
+<li>On Windows, the program can be found by opening the Start Menu, then scrolling down the list of programs until you see the <code class="docutils literal notranslate"><span class="pre">Microchip</span> <span class="pre">Libero</span> <span class="pre">SoC</span> <span class="pre">v2023.1</span></code> folder (under the <code class="docutils literal notranslate"><span class="pre">M</span></code> letter) -&gt; <code class="docutils literal notranslate"><span class="pre">FPExpress</span></code>.</li>
 <li>On Linux, you can navigate to the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory in your Libero installation, and then <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./fp6_env_install</span></code>, then open FPExpress with the command <code class="docutils literal notranslate"><span class="pre">./FPExpress</span></code>.</li>
 </ul>
 </li>
-<li>Click <code class="docutils literal notranslate"><span class="pre">New...</span></code>, select <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">FlashPro</span> <span class="pre">Express</span> <span class="pre">job</span> <span class="pre">file</span></code>, and navigate to your SmartHLS installation to select the job file: <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;\SmartHLS\boards\iciclekit\MPFS_ICICLE_BASE_DESIGN_2022_09.job</span></code>. For example: <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2022.3\SmartHLS\boards\iciclekit\MPFS_ICICLE_BASE_DESIGN_2022_09.job</span></code>.  Then choose a temporary path for the FPExpress project location.</li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">New...</span></code>, select <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">FlashPro</span> <span class="pre">Express</span> <span class="pre">job</span> <span class="pre">file</span></code>, and navigate to your SmartHLS installation to select the job file: <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;\SmartHLS\boards\iciclekit\MPFS_ICICLE_BASE_DESIGN_2022_09.job</span></code>. For example: <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SmartHLS-2023.1\SmartHLS\boards\iciclekit\MPFS_ICICLE_BASE_DESIGN_2022_09.job</span></code>.  Then choose a temporary path for the FPExpress project location.</li>
 </ol>
 <img alt="_images/fpexpress_browse.png" src="_images/fpexpress_browse.png" />
 <ol class="arabic simple" start="3">
@@ -1159,9 +1159,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.3 documentation&\
-		pub_ver=2022.3&\
-		revision_letter=2022.3&\
+		cover_title=SmartHLS 2023.1 documentation&\
+		pub_ver=2023.1&\
+		revision_letter=2023.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

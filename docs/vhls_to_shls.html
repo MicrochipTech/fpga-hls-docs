@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>SmartHLS Migration Guide &mdash; SmartHLS 2022.3 documentation</title>
+  <title>SmartHLS Migration Guide &mdash; SmartHLS 2023.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
 
 										  </h1>
 								
@@ -669,8 +669,8 @@ in SmartHLS.</p>
 <h2>Pragmas<a class="headerlink" href="#pragmas" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="12%" />
-<col width="88%" />
+<col width="13%" />
+<col width="87%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Vitis HLS / Vivado HLS</th>
@@ -679,7 +679,7 @@ in SmartHLS.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>aggregate, data_pack</td>
-<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-impl-pack-argument"><span class="std std-ref">Struct Argument Packing</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-impl-pack-variable"><span class="std std-ref">Struct Variable Packing</span></a> pragmas.</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-impl-pack"><span class="std std-ref">Struct Variable/Argument Packing</span></a> pragmas.</td>
 </tr>
 <tr class="row-odd"><td>allocation</td>
 <td><div class="first last line-block">
@@ -694,10 +694,10 @@ the corresponding RTL module.</div>
 </td>
 </tr>
 <tr class="row-even"><td>array_partition</td>
-<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> pragmas. The cyclic, block, factor, and dim options are not yet supported.</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> pragmas.</td>
 </tr>
 <tr class="row-odd"><td>dataflow</td>
-<td><a class="reference internal" href="userguide.html#function-pipelining"><span class="std std-ref">Function Pipelining</span></a> and <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading</span></a> can be used to implement a task-level (dataflow) pipeline.</td>
+<td><a class="reference internal" href="userguide.html#dataflow-parallelism"><span class="std std-ref">Data Flow Parallelism</span></a> and <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading</span></a> can be used to implement a task-level (dataflow) pipeline.</td>
 </tr>
 <tr class="row-even"><td>disaggregate</td>
 <td>See the <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> option of the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> pragma.</td>
@@ -745,7 +745,7 @@ protocol, reset, shared.</p>
 <div class="section" id="streaming-library">
 <h3>Streaming Library<a class="headerlink" href="#streaming-library" title="Permalink to this headline">¶</a></h3>
 <p>Similar to the <code class="docutils literal notranslate"><span class="pre">hls::stream</span></code> template class in Vitis/Vivado HLS, SmartHLS
-provides a <code class="docutils literal notranslate"><span class="pre">hls::fifo</span></code> template class in the <a class="reference internal" href="userguide.html#streaming-lib"><span class="std std-ref">Streaming Library</span></a>.</p>
+provides a <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code> template class in the <a class="reference internal" href="userguide.html#streaming-lib"><span class="std std-ref">Streaming Library</span></a>.</p>
 </div>
 <div class="section" id="math-library">
 <h3>Math Library<a class="headerlink" href="#math-library" title="Permalink to this headline">¶</a></h3>
@@ -822,9 +822,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.3 documentation&\
-		pub_ver=2022.3&\
-		revision_letter=2022.3&\
+		cover_title=SmartHLS 2023.1 documentation&\
+		pub_ver=2023.1&\
+		revision_letter=2023.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

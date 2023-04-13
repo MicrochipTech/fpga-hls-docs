@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Getting Started &mdash; SmartHLS 2022.3 documentation</title>
+  <title>Getting Started &mdash; SmartHLS 2023.1 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -519,7 +519,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2022.3  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
 
 										  </h1>
 								
@@ -569,6 +569,7 @@ display:none;
 <li class="toctree-l4"><a class="reference internal" href="#centos">CentOS</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-smarthls-ide">Launching SmartHLS IDE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#libero-and-modelsim">Libero and ModelSim</a></li>
 </ul>
 </li>
@@ -672,7 +673,7 @@ display:none;
 <p>SmartHLS supports Windows 10 and Linux (CentOS 7).</p>
 <div class="section" id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
-<p>Run the Windows installer program, <code class="docutils literal notranslate"><span class="pre">SmartHLS-2022.3-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
+<p>Run the Windows installer program, <code class="docutils literal notranslate"><span class="pre">SmartHLS-2023.1-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
 </div>
 <div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
@@ -681,15 +682,19 @@ display:none;
 <p>The CentOS installer is packaged as a self-extracting shell script that can be installed to a local
 directory. To run the installer:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>
-sh /path/to/smarthls-2022.3-centos-installer.run
+sh /path/to/smarthls-2023.1-centos-installer.run
 </pre></div>
 </div>
 <p>This will install SmartHLS into the INSTALLATION_DIRECTORY.  After the
 installation is completed, please add the SmartHLS bin directory to your path:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/smarthls-2022.3/smarthls/bin:<span class="nv">$PATH</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/SmartHLS-2023.1/SmartHLS/bin:<span class="nv">$PATH</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="launching-smarthls-ide">
+<h3>Launching SmartHLS IDE<a class="headerlink" href="#launching-smarthls-ide" title="Permalink to this headline">¶</a></h3>
+<p>On Windows or Linux, you can launch the SmartHLS IDE by running the <code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">-g</span></code> command from the terminal.</p>
 </div>
 <div class="section" id="libero-and-modelsim">
 <h3>Libero and ModelSim<a class="headerlink" href="#libero-and-modelsim" title="Permalink to this headline">¶</a></h3>
@@ -697,7 +702,7 @@ installation is completed, please add the SmartHLS bin directory to your path:</
 to synthesize the generated hardware for Microchip FPGAs.
 After installing Libero, please make sure to download all of new IP cores (open a Libero project, go to the Catalog pane, and click on “Download them now!”, as shown below), as some IPs may be needed for SmartHLS.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="_images/libero_ip_download.png"><img alt="_images/libero_ip_download.png" class="align-center" src="_images/libero_ip_download.png" style="width: 485.6px; height: 62.400000000000006px;" /></a>
+<div><a class="reference internal image-reference" href="_images/libero_ip_download.png"><img alt="_images/libero_ip_download.png" class="align-center" src="_images/libero_ip_download.png" style="width: 485.6px; height: 62.4px;" /></a>
 </div></blockquote>
 <p>Libero also comes with ModelSim which is used by SmartHLS to simulate the
 generated Verilog.
@@ -766,9 +771,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2022.3 documentation&\
-		pub_ver=2022.3&\
-		revision_letter=2022.3&\
+		cover_title=SmartHLS 2023.1 documentation&\
+		pub_ver=2023.1&\
+		revision_letter=2023.1&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

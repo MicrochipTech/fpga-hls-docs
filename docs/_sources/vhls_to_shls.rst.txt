@@ -15,7 +15,7 @@ Pragmas
 =======================  ==============================
 Vitis HLS / Vivado HLS   SmartHLS
 =======================  ==============================
-aggregate, data_pack      See the :ref:`pragma_memory_impl_pack_argument` and :ref:`pragma_memory_impl_pack_variable` pragmas.
+aggregate, data_pack      See the :ref:`pragma_memory_impl_pack` pragmas.
 allocation                | A global constraint of operation resources can be set via :ref:`set_resource_constraint`;
                             constraining the operation resource within a function, a loop or a block of code is not yet available.
                           | Functions that are not inlined (automatically by SmartHLS tool or specified via the :ref:`pragma_function_inline`
@@ -23,8 +23,8 @@ allocation                | A global constraint of operation resources can be se
                             Replication of a function instance in hardware can be achieved by the :ref:`pragma_function_replicate` and :ref:`pragma_function_inline` pragmas.
                             In the case of :ref:`multi-threading<pthreads_multithreading>`, each thread of a function creates an instance of
                             the corresponding RTL module.
-array_partition           See the :ref:`pragma_memory_partition_argument` and :ref:`pragma_memory_partition_variable` pragmas. The cyclic, block, factor, and dim options are not yet supported.
-dataflow                  :ref:`function_pipelining` and :ref:`Multi-threading<pthreads_multithreading>` can be used to implement a task-level (dataflow) pipeline.
+array_partition           See the :ref:`pragma_memory_partition_argument` and :ref:`pragma_memory_partition_variable` pragmas.
+dataflow                  :ref:`dataflow_parallelism` and :ref:`Multi-threading<pthreads_multithreading>` can be used to implement a task-level (dataflow) pipeline.
 disaggregate              See the ``struct_fields`` option of the :ref:`pragma_memory_partition_argument` pragma.
 expression_balance        See :ref:`LATENCY_REDUCTION` TCL settings to control the expression balance optimization.
 function_instantiate      The equivalent optimization can be achieved with the :ref:`pragma_function_inline` pragma or C++ template functions.
@@ -54,7 +54,7 @@ Streaming Library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Similar to the ``hls::stream`` template class in Vitis/Vivado HLS, SmartHLS
-provides a ``hls::fifo`` template class in the :ref:`streaming_lib`.
+provides a ``hls::FIFO`` template class in the :ref:`streaming_lib`.
 
 Math Library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

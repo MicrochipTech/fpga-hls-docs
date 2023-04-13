@@ -54,35 +54,6 @@ will cause an error. Each pragma can has one of the following positions:
 
 --------------------------------------------------------------------------------
 
-
-.. include:: pragmas_docs/function_top.inc
-.. .. include:: pragmas_docs/function_soc_top.inc
-.. include:: pragmas_docs/function_pipeline.inc
-.. include:: pragmas_docs/function_inline.inc
-.. include:: pragmas_docs/function_noinline.inc
-.. include:: pragmas_docs/function_flatten.inc
-.. include:: pragmas_docs/function_replicate.inc
-
-.. include:: pragmas_docs/loop_pipeline.inc
-.. include:: pragmas_docs/loop_unroll.inc
-
-
-.. include:: pragmas_docs/interface_module_control.inc
-.. include:: pragmas_docs/interface_scalar_argument.inc
-.. include:: pragmas_docs/interface_memory_argument.inc
-.. include:: pragmas_docs/interface_memory_variable.inc
-.. include:: pragmas_docs/interface_axi_initiator_argument.inc
-.. include:: pragmas_docs/interface_axi_target_argument.inc
-.. include:: pragmas_docs/interface_axi_slave_variable.inc
-.. include:: pragmas_docs/interface_default.inc
-
-.. .. include:: pragmas_docs/soc_interface.inc
-
-.. include:: pragmas_docs/memory_partition_variable.inc
-.. include:: pragmas_docs/memory_partition_argument.inc
-.. include:: pragmas_docs/memory_pack_variable.inc
-.. include:: pragmas_docs/memory_pack_argument.inc
-.. include:: pragmas_docs/replicate_rom.inc
-.. include:: pragmas_docs/memory_contention_free.inc
+.. include:: pragmas_include_doc.inc
 
 .. this comment is here to avoid: "WARNING: Document may not end with a transition."
