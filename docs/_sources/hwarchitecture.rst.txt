@@ -387,11 +387,6 @@ Please refer to the :ref:`rtl_interface` section for a detailed description on t
 SmartHLS Reference SoC
 ----------------------
 
-.. NOTE::
-
-    This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email SmartHLS@microchip.com.
-
-
 SmartHLS uses the `Icicle Kit Reference Design <https://github.com/polarfire-soc/icicle-kit-reference-design/>`_ as the base design to automatically integrate SmartHLS-generated hardware modules. The reference design is meant to showcase the many features available in the PolarFire\ :sup:`®`\  SoC Icicle Kit, such as the use of SPI, PCIe, soft and hard DMA, inter-processor communications, etc. Explaining all these features is beyond the scope of this document. For a complete description of the reference design check the `Icicle Kit Reference Design <https://github.com/polarfire-soc/icicle-kit-reference-design/>`_ documentation.
 
 This section an overview of how the Icicle Kit Reference Design is used by SmartHLS to automatically connect hardware modules generated from C++. A diagram of the reference SoC architecture is shown below:

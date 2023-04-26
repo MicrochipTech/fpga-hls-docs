@@ -4,6 +4,16 @@
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB7E9KG0X9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VB7E9KG0X9');
+  </script>
+
   <meta charset="utf-8">
   
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -797,10 +807,6 @@ If a memory is not accessed at all, SmartHLS will automatically optimize away th
 </div>
 <div class="section" id="smarthls-reference-soc">
 <span id="reference-soc-arch"></span><h2>SmartHLS Reference SoC<a class="headerlink" href="#smarthls-reference-soc" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a>.</p>
-</div>
 <p>SmartHLS uses the <a class="reference external" href="https://github.com/polarfire-soc/icicle-kit-reference-design/">Icicle Kit Reference Design</a> as the base design to automatically integrate SmartHLS-generated hardware modules. The reference design is meant to showcase the many features available in the PolarFire<sup>®</sup> SoC Icicle Kit, such as the use of SPI, PCIe, soft and hard DMA, inter-processor communications, etc. Explaining all these features is beyond the scope of this document. For a complete description of the reference design check the <a class="reference external" href="https://github.com/polarfire-soc/icicle-kit-reference-design/">Icicle Kit Reference Design</a> documentation.</p>
 <p>This section an overview of how the Icicle Kit Reference Design is used by SmartHLS to automatically connect hardware modules generated from C++. A diagram of the reference SoC architecture is shown below:</p>
 <a class="reference internal image-reference" href="_images/reference_soc_arch.drawio.png"><img alt="_images/reference_soc_arch.drawio.png" class="align-center" src="_images/reference_soc_arch.drawio.png" style="width: 878.8px; height: 1327.3px;" /></a>
