@@ -511,6 +511,7 @@ display:none;
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/cookie-alert.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/common-ui-all.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
@@ -770,6 +771,16 @@ $(document).ready(function(){
 	});
 });
 </script>
+
+<div class="cookie-banner" id="cookie-alert">
+  This website uses cookies for analytics. Check out our <a href="https://www.microchip.com/en-us/about/legal-information/privacy-policy">Privacy Policy</a> to learn more.
+  By continuing to browse, you agree to our use of cookies as described in our Cookies Statement.
+  <button onclick="accpetCookie()" style="background-color:grey;">
+    Accept Cookies
+  </button>
+</div>
+
+<script type="text/javascript" src="_static/js/cookie-alert.js"></script>
 
 </body>
 </html>
