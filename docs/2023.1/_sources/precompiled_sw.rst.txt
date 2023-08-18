@@ -1,0 +1,75 @@
+.. _precompiled_sw:
+
+Precompiled Software
+==================================
+
+The SmartHLS Team has precompiled the following software for your convenience:
+
+* RISC-V GNU Cross compiler (GCC 10)
+* FFmpeg 4.4
+* OpenCV 4.5.4
+
+Please refer to :ref:`makefile_example` for how to specify additional software libraries.
+
+RISC-V GNU Cross Compiler
+----------------------------------
+
+SmartHLS uses RISC-V GNU Cross compiler to compile the binary running on the
+RISC-V Microprocessor Sub-System (MSS) processor of PolarFire\ :sup:`®`\ . You can find the
+compiler at:
+
+ * <SMARTHLS_INSTALLATION_DIR>/SmartHLS/swtools/binutils/riscv-gnu-toolchain/install/bin
+
+.. _ffmpeg_opencv:
+
+FFmpeg 4.4 and OpenCV 4.5.4
+----------------------------------
+
+The SmartHLS Team has precompiled FFmpeg 4.4 and OpenCV 4.5.4. They are used in
+our tutorials and are made available to the users.
+
+You can download them here:
+`SmartHLS Compiled Open Source Libraries <https://www.microchip.com/en-us/software-library/smarthls-compiled-open-source-libraries>`_
+
+Alternatively, you can download the libraries by running
+``<SMARTHLS_INSTALLATION_DIR>/SmartHLS/examples/scripts/utils/download_libraries.sh`` on
+a terminal (to open a terminal on Windows, please refer to
+:ref:`windows_cmdline`). The script will download and extract the libraries
+under ``<SMARTHLS_INSTALLATION_DIR>/SmartHLS/precompiled_libraries/``.
+
+The x86_64 Linux libraries and the x86_64 Cygwin libraries are required to run
+FFmpeg/OpenCV software on Linux and Windows respectively.
+The RISC-V libraries are needed for cross-compilation and have to be copied
+onto the board as described in the next section.
+
+
+Copying Compiled Libraries onto Icicle Board
+--------------------------------------------
+
+After setting up by following :ref:`icicle_setup`, note the IP address of the board.
+
+On a terminal, go to the directory where you downloaded the precompiled
+libraries to extract the RISC-V libraries. Note that if you run the
+``download_libraries.sh`` script as described above, the precompiled libraries
+have already been extracted automatically so you do not have to run the commands
+below.
+
+| ``tar xzpf opencv4.5.4-riscv64-linux.tar.gz``
+| ``tar xzpf ffmpeg4.4-riscv64-linux.tar.gz``
+
+Now, copy the extracted precompiled libraries to your Icicle board's
+``/home/root/shls_sw_dependencies`` or a folder of your choice by using the
+``scp`` command:
+
+| ``scp -r ffmpeg4.4-riscv64-linux root@<Icicle Board's IP>:/home/root/shls_sw_dependencies``
+| ``scp -r opencv4.5.4-riscv64-linux root@<Icicle Board's IP>:/home/root/shls_sw_dependencies``
+
+
+All external libraries, such as FFmpeg and OpenCV, must be copied onto the board,
+and their references must be properly defined using :ref:`makefile` in ``Makefile.user``
+in order for them to run properly on the board.
+
+For Windows, if you do not want to use the Cygwin terminal, you can use external
+programs to do the extracting and copying steps above. For example, you can use
+7-Zip to extract the precompiled libraries, and FileZilla to copy the files over
+to the Icicle board.

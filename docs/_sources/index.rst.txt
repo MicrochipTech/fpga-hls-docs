@@ -108,6 +108,7 @@ repository.
    vhls_to_shls
    precompiled_sw
    icicle_setup
+   pfvideokit_setup
 
 .. toctree::
    :caption: SmartHLS Examples   
