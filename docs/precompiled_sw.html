@@ -23,7 +23,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Precompiled Software &mdash; SmartHLS 2023.1 documentation</title>
+  <title>Precompiled Software &mdash; SmartHLS 2023.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -498,11 +498,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -516,8 +526,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Icicle Kit Setup Instructions" href="icicle_setup.html" />
     <link rel="prev" title="SmartHLS Migration Guide" href="vhls_to_shls.html" /> 
 </head>
@@ -530,7 +538,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.2  </span>
 
 										  </h1>
 								
@@ -590,13 +598,14 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="libero.html">Supported Libero version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Precompiled Software</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Precompiled Software</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#risc-v-gnu-cross-compiler">RISC-V GNU Cross Compiler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ffmpeg-4-4-and-opencv-4-5-4">FFmpeg 4.4 and OpenCV 4.5.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#copying-compiled-libraries-onto-icicle-board">Copying Compiled Libraries onto Icicle Board</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfvideokit_setup.html">PolarFire Video Kit Setup Instructions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -672,7 +681,7 @@ display:none;
 <li>FFmpeg 4.4</li>
 <li>OpenCV 4.5.4</li>
 </ul>
-<p>Please refer to <a class="reference internal" href="userguide.html#makefile-example"><span class="std std-ref">Makefile Example</span></a> for how to specify additional software libraries.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#makefile-example"><span>Makefile Example</span></a> for how to specify additional software libraries.</p>
 <div class="section" id="risc-v-gnu-cross-compiler">
 <h2>RISC-V GNU Cross Compiler<a class="headerlink" href="#risc-v-gnu-cross-compiler" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS uses RISC-V GNU Cross compiler to compile the binary running on the
@@ -691,10 +700,10 @@ our tutorials and are made available to the users.</p>
 <p>You can download them here:
 <a class="reference external" href="https://www.microchip.com/en-us/software-library/smarthls-compiled-open-source-libraries">SmartHLS Compiled Open Source Libraries</a></p>
 <p>Alternatively, you can download the libraries by running
-<code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/examples/scripts/utils/download_libraries.sh</span></code> on
+<code class="docutils literal"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/examples/scripts/utils/download_libraries.sh</span></code> on
 a terminal (to open a terminal on Windows, please refer to
-<a class="reference internal" href="userguide.html#windows-cmdline"><span class="std std-ref">Launch Cygwin terminal on Windows</span></a>). The script will download and extract the libraries
-under <code class="docutils literal notranslate"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/precompiled_libraries/</span></code>.</p>
+<a class="reference internal" href="userguide.html#windows-cmdline"><span>Launch Cygwin terminal on Windows</span></a>). The script will download and extract the libraries
+under <code class="docutils literal"><span class="pre">&lt;SMARTHLS_INSTALLATION_DIR&gt;/SmartHLS/precompiled_libraries/</span></code>.</p>
 <p>The x86_64 Linux libraries and the x86_64 Cygwin libraries are required to run
 FFmpeg/OpenCV software on Linux and Windows respectively.
 The RISC-V libraries are needed for cross-compilation and have to be copied
@@ -702,25 +711,25 @@ onto the board as described in the next section.</p>
 </div>
 <div class="section" id="copying-compiled-libraries-onto-icicle-board">
 <h2>Copying Compiled Libraries onto Icicle Board<a class="headerlink" href="#copying-compiled-libraries-onto-icicle-board" title="Permalink to this headline">¶</a></h2>
-<p>After setting up by following <a class="reference internal" href="icicle_setup.html#icicle-setup"><span class="std std-ref">Icicle Kit Setup Instructions</span></a>, note the IP address of the board.</p>
+<p>After setting up by following <a class="reference internal" href="icicle_setup.html#icicle-setup"><span>Icicle Kit Setup Instructions</span></a>, note the IP address of the board.</p>
 <p>On a terminal, go to the directory where you downloaded the precompiled
 libraries to extract the RISC-V libraries. Note that if you run the
-<code class="docutils literal notranslate"><span class="pre">download_libraries.sh</span></code> script as described above, the precompiled libraries
+<code class="docutils literal"><span class="pre">download_libraries.sh</span></code> script as described above, the precompiled libraries
 have already been extracted automatically so you do not have to run the commands
 below.</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">xzpf</span> <span class="pre">opencv4.5.4-riscv64-linux.tar.gz</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">xzpf</span> <span class="pre">ffmpeg4.4-riscv64-linux.tar.gz</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">tar</span> <span class="pre">xzpf</span> <span class="pre">opencv4.5.4-riscv64-linux.tar.gz</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">tar</span> <span class="pre">xzpf</span> <span class="pre">ffmpeg4.4-riscv64-linux.tar.gz</span></code></div>
 </div>
-<p>Now, copy the extracted precompiled libraries to your Icicle board’s
-<code class="docutils literal notranslate"><span class="pre">/home/root/shls_sw_dependencies</span></code> or a folder of your choice by using the
-<code class="docutils literal notranslate"><span class="pre">scp</span></code> command:</p>
+<p>Now, copy the extracted precompiled libraries to your Icicle board&#8217;s
+<code class="docutils literal"><span class="pre">/home/root/shls_sw_dependencies</span></code> or a folder of your choice by using the
+<code class="docutils literal"><span class="pre">scp</span></code> command:</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">ffmpeg4.4-riscv64-linux</span> <span class="pre">root&#64;&lt;Icicle</span> <span class="pre">Board's</span> <span class="pre">IP&gt;:/home/root/shls_sw_dependencies</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">opencv4.5.4-riscv64-linux</span> <span class="pre">root&#64;&lt;Icicle</span> <span class="pre">Board's</span> <span class="pre">IP&gt;:/home/root/shls_sw_dependencies</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">ffmpeg4.4-riscv64-linux</span> <span class="pre">root&#64;&lt;Icicle</span> <span class="pre">Board's</span> <span class="pre">IP&gt;:/home/root/shls_sw_dependencies</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">opencv4.5.4-riscv64-linux</span> <span class="pre">root&#64;&lt;Icicle</span> <span class="pre">Board's</span> <span class="pre">IP&gt;:/home/root/shls_sw_dependencies</span></code></div>
 </div>
 <p>All external libraries, such as FFmpeg and OpenCV, must be copied onto the board,
-and their references must be properly defined using <a class="reference internal" href="userguide.html#makefile"><span class="std std-ref">Makefile Variables</span></a> in <code class="docutils literal notranslate"><span class="pre">Makefile.user</span></code>
+and their references must be properly defined using <a class="reference internal" href="userguide.html#makefile"><span>Makefile Variables</span></a> in <code class="docutils literal"><span class="pre">Makefile.user</span></code>
 in order for them to run properly on the board.</p>
 <p>For Windows, if you do not want to use the Cygwin terminal, you can use external
 programs to do the extracting and copying steps above. For example, you can use
@@ -773,7 +782,7 @@ to the Icicle board.</p>
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "precompiled_sw.rst.txt".replace(/\.txt/g,'');
+	var pageName = "precompiled_sw.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]
@@ -785,9 +794,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2023.1 documentation&\
-		pub_ver=2023.1&\
-		revision_letter=2023.1&\
+		cover_title=SmartHLS 2023.2 documentation&\
+		pub_ver=2023.2&\
+		revision_letter=2023.2&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

@@ -12,16 +12,168 @@ Latest Release (|version|)
 .. 2) the sections (e.g., Software Features and Enhancements) should have the
 ..    "---------" title indication line changed to "~~~~~~~~".
 
+Release Date: August, 2023
+
+Software Features and Enhancements
+-----------------------------------
+
+ * New SmartHLS `Vision library <https://github.com/MicrochipTech/fpga-hls-libraries/tree/main/vision>`_:
+
+   * Provides pre-optimized HLS C++ library functions for fast algorithm
+     prototyping of video applications.
+
+   * Configuring the HLS-generated Video IP interface is easy with the Vision
+     library, requiring no changes to the C++ algorithm code. Switching the RTL
+     interface between AXI initiator (M), AXI target (S), AXI stream, and a
+     generic RAM interface with just changing a few lines of code.
+
+   * Includes RTL modules for interfacing with I/O, specifically the camera and
+     display modules. These modules use an AXI-stream-based video interface
+     protocol, allowing easy system integration with HLS IPs.
+
+   * Contains a complete demo design for the PolarFire Video Kit. This reference
+     design uses the HLS C++ library and RTL components to take camera data,
+     complete image processing on the data and displaying the resulting video.
+
+
+ * Improvements to SmartHLS SoC reference designs:
+
+   * Updated the PolarFireSoC Icicle Kit reference design based on `2023.02
+     release <https://github.com/polarfire-soc/icicle-kit-reference-design/tree/v2023.02>`_
+     and tested with its corresponding `Linux Image
+     <https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/tag/v2023.02.1>`_.
+
+   * Updated project type: MiV_SoC to use `MIV_RV32 v3.1
+     <https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/SupportingCollateral/MIV_RV32+v3.1+User+Guide.pdf>`_
+     RISC-V embedded processor and targets the PolarFire Video Kit board
+     (**alpha feature**).
+
+   * Support for automatic attachment of HLS-generated modules to the MiV_RV32
+     processor and generate bitstreams.
+
+ * AXI initiator interface burst transfer support is now in production.
+
+   * Fixed performance issues caused by crossing 4K address boundary.
+
+   * Added add_4k_boundary_protection ``add_4k_boundary_protection`` pragma
+     option (see :ref:`pragma_interface_axi_initiator_argument`) (true by default) to
+     allow for user to disable 4k address boundary protection if needed
+     (potentially saving resources).
+
+ * Added protection against address decoding errors during AXI read requests to
+   the HLS module address space. Before the module would not respond to an
+   invalid request, now the module always responds and returns an AXI RRESP = 0x2
+   code when an address decoding error happens.
+
+   * This behavior can be overridden and force the ``AXI_RRESP`` to always be 0
+     by asserting the new parameter ``AXI_RRESP_ALWAYS_ZERO``. This could be
+     useful for debugging purposes by allowing to perform memory monitoring from
+     SoftConsole or memory dumps from gdb over the entire address space of the
+     HLS module.
+
+ * Improved HLS pipeline reports:
+
+   * Example of the new format in the summary report:
+
+    .. code-block:: text
+
+       +------------------------------------------------------------------------------------------------------+
+       | Function: row_cumulative_sum takes 40804 cycles                                                      |
+       +---------------------------+--------------------+------------+-------------------+----+---------------+
+       | Loop                      | Location In Source | Trip Count | Iteration Latency | II | Total Latency |
+       +---------------------------+--------------------+------------+-------------------+----+---------------+
+       | for.loop:main.cpp:7:5     | line 7 of main.cpp | 200        | 204               | -  | 40800         |
+       | |__ for.loop:main.cpp:9:9 | line 9 of main.cpp | 199        | 3                 | 1  | 201           |
+       +---------------------------+--------------------+------------+-------------------+----+---------------+
+
+   * Scheduling and pipelining sections replaced with a new section that provides
+     performance information.
+
+   * All information that can be extracted on trip count, iteration time, total
+     time, and initiation interval (II) is provided for any pipelined or
+     unpipelined loops, or functions.
+
+   * The loops are grouped under their parent function in a tree structure to show the hierarchy.
+
+   * All special characters replaced with _.
+
+   * Scheduler viewer also shows the same information:
+
+     .. image:: images/schedule_viewer_2023.2.png
+        :width: 400
+
+ * Improved HLS co-simulation reports:
+
+   * Print latency and initiation interval statistics for multiple calls.
+   * Support reporting simulation statistics for multiple top-level functions.
+
+ * Loop pipelining improved:
+
+   * Remove the constraints on increment/decrement step for loops with variable
+     number of iterations.
+   * Enable pipelining for ``do...while`` loops.
+   * Provide better support for complex control flow in the loop body including
+     ``break`` and ``continue`` statements.
+
+ * Control status registers can now be read and written by a processor using a
+   AXI target interface while the HLS core is running.
+
+ * `SmartHLS training materials
+   <https://github.com/MicrochipTech/fpga-hls-examples>`_ were updated to
+   include the dataflow pragma (Training 1 and 2). A fourth training was added
+   to describe the SmartHLS SoC flow targeting a PolarFire SoC FPGA device.
+
+ * Added an improved analysis to mitigate dataflow deadlocks by reducing
+   critical regions for data buffers.
+
+ * Bit-width optimization has been improved to handle loop-carried values.
+
+ * HLS threads improved:
+
+   * Support for arbitrary precision return types and return by value for
+     user-defined ``struct/class`` types.
+
+   * Improved support for implicit casting of thread arguments.
+
+ * Messages related to FIFOs improved by adding FIFO name and source location.
+
+
+Resolved Issues
+-----------------------------------
+
+ * Fixed issue with using threads with different return types.
+ * Fixed known issue from last release: HW/SW Co-simulation now passes for AXI initiator type-cast pointers (e.g., an ``int64_t *`` pointer argument is casted and accessed as an ``int32_t *`` pointer)
+ * Fixed issues with generated Verilog parameters in Libero: If the user updated their HLS code and changed AXI widths (address, ID, data), they wouldn't change in the Libero design because Libero keeps the parameter values unchanged when updating SmartDesign instances.
+ * Fixed multiple function definition compilation errors when including the soft-dma API.
+ * Fixed incorrect inline attribute in generated driver API that was causing functions to be optimized away during software compilation.
+ * Fixed incorrect function name generation in accelerator driver API when passing array or struct arguments that are being partitioned.
+ * Fixed issue with silent failure when running software.
+ * Fixed crash during function pipelining with unmergeable control flow.
+ * Fixed issues with stall logic for shared functional units.
+ * Fixed issue with co-simulation testbench for single-port RAM interfaces.
+
+Known Issues
+-----------------------------------
+
+ * Dataflow feature has known issues with control flow in dataflow functions. Using an explicit dataflow pipeline (i.e. each task is a function that is called directly in the dataflow function) can avoid these issues.
+ * Dataflow sub-functions are completely flattened by inlining all calls recursively. This can add some limitations, e.g. reading and writing the same FIFO in the same task will show an error as it is not supported.
+
+Previous Releases
+==================
+
+SmartHLS 2023.1
+-----------------------------------
+
 Release Date: April, 2023
 
 Installer Update
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * SmartHLS PolarFire :ref:`soc_features` will be in production and no longer require a separate early access program license.
    PolarFire SoC features are available using a standard SmartHLS license.
 
 Software Features and Enhancements
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * Introduced a new :ref:`pragma_dataflow` pragma to express dataflow parallelism with minimal code changes,
    which is commonly used to improve hardware throughput.
@@ -36,7 +188,7 @@ Software Features and Enhancements
 
      #. Ran a sequence of functions with dataflow parallelism.
 
-   * To improve clarity in the 2023.1 release, the function pipeline pragma now only does 1), and the dataflow pragma does 2).
+   * To improve clarity in the 2023.2 release, the function pipeline pragma now only does 1), and the dataflow pragma does 2).
 
  * Improved burst transfer via AXI initiator interfaces.
    When a burst-able access pattern is detected, the user can specify the ``max_outstanding_reads``/``max_outstanding_writes`` interface pragma field (see :ref:`pragma_interface_axi_initiator_argument`)
@@ -49,7 +201,7 @@ Software Features and Enhancements
    SmartHLS can now generate hardware with higher throughput using analysis to reduce the function pipeline initiation interval (clock cycles between starting successive function invocations).
 
 Resolved Issues
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * Fixed AXI4 initiator support when used together with threading feature.
  * Fixed AXI4 initiator burst support when used with float pointer top-level arguments.
@@ -62,14 +214,11 @@ Resolved Issues
  * Fixed bugs in SmartHLS optimization to minimize bit-widths of operations.
 
 Known Issues
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  * The new AXI initiator feature supports type-cast pointers (e.g., an `int64_t *` pointer argument is cast to and accessed as an `int32_t *` pointer).
    While the HLS-generated RTL is functionally correct and works on the device, HW/SW Co-simulation may report a failure within the testbench.  This issue will be fixed in the next release.
 
-
-Previous Releases
-==================
 
 SmartHLS 2022.3
 -----------------------------------

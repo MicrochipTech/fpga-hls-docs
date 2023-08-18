@@ -1,0 +1,1991 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB7E9KG0X9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VB7E9KG0X9');
+  </script>
+
+  <meta charset="utf-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Header information-->
+    <meta name="Language" content="en">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  <title>Constraints Manual &mdash; SmartHLS 2023.1 documentation</title>
+  
+<!-- Header information-->
+<style type="text/css">svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.225em;
+}
+.svg-inline--fa.fa-w-1 {
+  width: 0.0625em;
+}
+.svg-inline--fa.fa-w-2 {
+  width: 0.125em;
+}
+.svg-inline--fa.fa-w-3 {
+  width: 0.1875em;
+}
+.svg-inline--fa.fa-w-4 {
+  width: 0.25em;
+}
+.svg-inline--fa.fa-w-5 {
+  width: 0.3125em;
+}
+.svg-inline--fa.fa-w-6 {
+  width: 0.375em;
+}
+.svg-inline--fa.fa-w-7 {
+  width: 0.4375em;
+}
+.svg-inline--fa.fa-w-8 {
+  width: 0.5em;
+}
+.svg-inline--fa.fa-w-9 {
+  width: 0.5625em;
+}
+.svg-inline--fa.fa-w-10 {
+  width: 0.625em;
+}
+.svg-inline--fa.fa-w-11 {
+  width: 0.6875em;
+}
+.svg-inline--fa.fa-w-12 {
+  width: 0.75em;
+}
+.svg-inline--fa.fa-w-13 {
+  width: 0.8125em;
+}
+.svg-inline--fa.fa-w-14 {
+  width: 0.875em;
+}
+.svg-inline--fa.fa-w-15 {
+  width: 0.9375em;
+}
+.svg-inline--fa.fa-w-16 {
+  width: 1em;
+}
+.svg-inline--fa.fa-w-17 {
+  width: 1.0625em;
+}
+.svg-inline--fa.fa-w-18 {
+  width: 1.125em;
+}
+.svg-inline--fa.fa-w-19 {
+  width: 1.1875em;
+}
+.svg-inline--fa.fa-w-20 {
+  width: 1.25em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-border {
+  height: 1.5em;
+}
+.svg-inline--fa.fa-li {
+  width: 2em;
+}
+.svg-inline--fa.fa-fw {
+  width: 1.25em;
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: #ff253a;
+  border-radius: 1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  height: 1.5em;
+  line-height: 1;
+  max-width: 5em;
+  min-width: 1.5em;
+  overflow: hidden;
+  padding: 0.25em;
+  right: 0;
+  text-overflow: ellipsis;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: 0;
+  right: 0;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  right: 0;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: 0;
+  right: auto;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -0.0667em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+}
+
+.fa-border {
+  border: solid 0.08em #eee;
+  border-radius: 0.1em;
+  padding: 0.2em 0.25em 0.15em;
+}
+
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left,
+.fas.fa-pull-left,
+.far.fa-pull-left,
+.fal.fa-pull-left,
+.fab.fa-pull-left {
+  margin-right: 0.3em;
+}
+.fa.fa-pull-right,
+.fas.fa-pull-right,
+.far.fa-pull-right,
+.fal.fa-pull-right,
+.fab.fa-pull-right {
+  margin-left: 0.3em;
+}
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+          animation: fa-spin 2s infinite linear;
+}
+
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+          animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
+}
+
+.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
+}
+
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical,
+:root .fa-flip-both {
+  -webkit-filter: none;
+          filter: none;
+}
+
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse {
+  color: #fff;
+}
+
+@media screen and (max-width: 768px)
+.booktitle #booktitle{
+display:none;
+}
+</style>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+	<script src="https://kit.fontawesome.com/d3dd8c60ed.js"></script>
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/cookie-alert.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/common-ui-all.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
+<link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SmartHLS License" href="license_setup.html" />
+    <link rel="prev" title="SmartHLS Pragmas Manual" href="pragmas.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+		<div class="mchp-ghp"/>
+		<div class="root responsivegrid">
+								<noindex>
+								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
+"><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
+								          
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
+
+										  </h1>
+								
+								</div></div></div><section _ngcontent-hes-c23="" class="separator"></section></header>	
+								</noindex>		
+
+		</div>
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+		
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+         
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional References</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Constraints Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#commonly-used-constraints">Commonly Used Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clock-period-1">CLOCK_PERIOD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-hdl-output-file-1">SINGLE_HDL_OUTPUT_FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-custom-config-file-1">set_custom_config_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-custom-test-bench-file-1">set_custom_test_bench_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-custom-test-bench-module-1">set_custom_test_bench_module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-operation-latency-1">set_operation_latency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-project-1">set_project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-resource-constraint-1">set_resource_constraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-synthesis-top-module-1">set_synthesis_top_module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-synthesis-top-module-file-1">set_synthesis_top_module_file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-constraints">Debugging Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cosim-input-output-fifo-stall-prob">COSIM_&lt;INPUT|OUTPUT&gt;_FIFO_STALL_PROB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keep-signals-with-no-fanout-1">KEEP_SIGNALS_WITH_NO_FANOUT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vsim-assert-1">VSIM_ASSERT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-constraints">Advanced Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ifconv-predicate-loads-1">IFCONV_PREDICATE_LOADS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#latency-reduction-1">LATENCY_REDUCTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-automatic-memory-latency-setting-1">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-automatic-multiply-mode-setting-1">ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiply-splitting-fully-pipelined-1">MULTIPLY_SPLITTING_FULLY_PIPELINED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-axi-initiator-1">SOC_AXI_INITIATOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-axi-target-1">SOC_AXI_TARGET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-bd-name-1">SOC_BD_NAME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-clock-1">SOC_CLOCK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-cpu-mem-base-address-1">SOC_CPU_MEM_BASE_ADDRESS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-cpu-mem-size-1">SOC_CPU_MEM_SIZE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-dma-engine-1">SOC_DMA_ENGINE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-fabric-base-address-1">SOC_FABRIC_BASE_ADDRESS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-fabric-size-1">SOC_FABRIC_SIZE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-poll-delay-1">SOC_POLL_DELAY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-profiler-counter-1">SOC_PROFILER_COUNTER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-reset-1">SOC_RESET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strength-reduction-1">STRENGTH_REDUCTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strength-reduction-adders-allowed-per-multiplier-1">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#synthesis-clock-period-1">SYNTHESIS_CLOCK_PERIOD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-fifo-for-pipeline-reg-1">USE_FIFO_FOR_PIPELINE_REG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cosim-free-running-dataflow-top-1">COSIM_FREE_RUNNING_DATAFLOW_TOP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license_setup.html">SmartHLS License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libero.html">Supported Libero version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SmartHLS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Constraints Manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="constraints-manual">
+<span id="constraints"></span><h1>Constraints Manual<a class="headerlink" href="#constraints-manual" title="Permalink to this headline">¶</a></h1>
+<p>SmartHLS accepts user-provided constraints that impact the automatically generated
+hardware.  These constraints can be specified using the SmartHLS IDE and are
+stored in the Tcl configuration file <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> in your project directory.
+This reference section explains the constraints available for SmartHLS.</p>
+<p>The main constraints available from the SmartHLS IDE are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Set target clock period: <a class="reference internal" href="#clock-period"><span class="std std-ref">CLOCK_PERIOD</span></a></li>
+<li>Print the HDL output to a single output file: <a class="reference internal" href="#single-hdl-output-file"><span class="std std-ref">SINGLE_HDL_OUTPUT_FILE</span></a></li>
+<li>Set custom config file: <a class="reference internal" href="#set-custom-config-file"><span class="std std-ref">set_custom_config_file</span></a></li>
+<li>Set test bench file: <a class="reference internal" href="#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a></li>
+<li>Set test bench module: <a class="reference internal" href="#set-custom-test-bench-module"><span class="std std-ref">set_custom_test_bench_module</span></a></li>
+<li>Set operation latency: <a class="reference internal" href="#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a></li>
+<li>Set FPGA family and device: <a class="reference internal" href="#set-project"><span class="std std-ref">set_project</span></a></li>
+<li>Set resource constraint: <a class="reference internal" href="#set-resource-constraint"><span class="std std-ref">set_resource_constraint</span></a></li>
+<li>Set FPGA synthesis top-level module: <a class="reference internal" href="#set-synthesis-top-module"><span class="std std-ref">set_synthesis_top_module</span></a></li>
+<li>Set FPGA synthesis top-level file: <a class="reference internal" href="#set-synthesis-top-module-file"><span class="std std-ref">set_synthesis_top_module_file</span></a></li>
+</ul>
+</div></blockquote>
+<p>A few debugging constraints are available from the SmartHLS IDE:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Stalling input/output FIFOs in CoSimulation: <a class="reference internal" href="#cosim-fifo-stall-prob"><span class="std std-ref">COSIM_&lt;INPUT|OUTPUT&gt;_FIFO_STALL_PROB</span></a></li>
+<li>Keep signals with no fanout: <a class="reference internal" href="#keep-signals-with-no-fanout"><span class="std std-ref">KEEP_SIGNALS_WITH_NO_FANOUT</span></a></li>
+<li>Insert simulation assertions (for debugging): <a class="reference internal" href="#vsim-assert"><span class="std std-ref">VSIM_ASSERT</span></a></li>
+</ul>
+</div></blockquote>
+<div class="section" id="commonly-used-constraints">
+<h2>Commonly Used Constraints<a class="headerlink" href="#commonly-used-constraints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="clock-period-1">
+<span id="clock-period"></span><h3>CLOCK_PERIOD<a class="headerlink" href="#clock-period-1" title="Permalink to this headline">¶</a></h3>
+<p>This is a widely used constraint that allows the user to set the
+target clock period for a design.  The clock period is specified in
+nanoseconds.</p>
+<p>It has a significant impact on scheduling: the scheduler will schedule
+operators into clock cycles using delay estimates for each operator,
+such that the specified clock period is honored.  In other words,
+operators will be chained together combinationally to the extent
+allowed by the value of the CLOCK_PERIOD parameter.</p>
+<p>SmartHLS has a default CLOCK_PERIOD value for each device family that is
+supported (see table in <a class="reference internal" href="userguide.html#smarthls-constraints"><span class="std std-ref">SmartHLS Constraints</span></a>).</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Integer represent a value in nanoseconds</p>
+<p><strong>Valid Values</strong></p>
+<p>Integer</p>
+<p><strong>Default Value</strong></p>
+<p>Depends on the target device</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">CLOCK_PERIOD</span> <span class="pre">15</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="single-hdl-output-file-1">
+<span id="single-hdl-output-file"></span><h3>SINGLE_HDL_OUTPUT_FILE<a class="headerlink" href="#single-hdl-output-file-1" title="Permalink to this headline">¶</a></h3>
+<p>When set to 1, this TCL parameter constrains SmartHLS-generated Verilog RTL and VHDL wrapper modules to a single Verilog file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.v</span></code>) and a single VHDL file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;.vhd</span></code>) respectively. By default, each Verilog top-level module (and its child modules) is printed to a separate output file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top-Level</span> <span class="pre">Name&gt;.v</span></code>), and each VHDL wrapper module of a top-level is printed to a separate VHDL file (<code class="docutils literal notranslate"><span class="pre">&lt;Project</span> <span class="pre">Name&gt;_&lt;Top-Level</span> <span class="pre">Name&gt;.vhd</span></code>).</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SINGLE_HDL_OUTPUT_FILE</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SINGLE_HDL_OUTPUT_FILE</span> <span class="pre">1</span></code></p>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-custom-config-file-1">
+<span id="set-custom-config-file"></span><h3>set_custom_config_file<a class="headerlink" href="#set-custom-config-file-1" title="Permalink to this headline">¶</a></h3>
+<p>If you want to add advanced SmartHLS Tcl constraints that are not listed in the SmartHLS IDE constraints dialog you need to use a custom config file. Be careful not to modify the config.tcl constraints file directly, since config.tcl will be overwritten whenever you make changes in the SmartHLS IDE constraints dialog.</p>
+<p>To add a custom config file, open the SmartHLS Constraints Menu. Select <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">custom</span> <span class="pre">config</span> <span class="pre">file</span></code> from the dropdown and enter the Constraint Value as “custom_config.tcl”. Then click <code class="docutils literal notranslate"><span class="pre">Add</span></code>:</p>
+<a class="reference internal image-reference" href="_images/SmartHLSCustomConfigDropdown.png"><img alt="_images/SmartHLSCustomConfigDropdown.png" class="align-center" src="_images/SmartHLSCustomConfigDropdown.png" style="width: 639.0px; height: 126.0px;" /></a>
+<p>Now click <code class="docutils literal notranslate"><span class="pre">OK</span></code>:</p>
+<a class="reference internal image-reference" href="_images/SmartHLSCustomConfigDropdown_AddFile.png"><img alt="_images/SmartHLSCustomConfigDropdown_AddFile.png" class="align-center" src="_images/SmartHLSCustomConfigDropdown_AddFile.png" style="width: 639.0px; height: 258.0px;" /></a>
+<p>Now in the Project Explorer, right click and select <code class="docutils literal notranslate"><span class="pre">New-&gt;File</span></code>:</p>
+<a class="reference internal image-reference" href="_images/ProjectExplorerNewFile.png"><img alt="_images/ProjectExplorerNewFile.png" class="align-center" src="_images/ProjectExplorerNewFile.png" style="width: 639.0px; height: 195.5px;" /></a>
+<p>Enter the name of “custom_config.tcl”. This should match the file name entered in the Set HLS Constraints previously. Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code>:</p>
+<a class="reference internal image-reference" href="_images/EnterFileNameCustomConfig.png"><img alt="_images/EnterFileNameCustomConfig.png" class="align-center" src="_images/EnterFileNameCustomConfig.png" style="width: 302.0px; height: 359.5px;" /></a>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-custom-test-bench-file-1">
+<span id="set-custom-test-bench-file"></span><h3>set_custom_test_bench_file<a class="headerlink" href="#set-custom-test-bench-file-1" title="Permalink to this headline">¶</a></h3>
+<p>This TCL command is to specify the user-provided custom testbench file
+that defines the custom testbench module, which is set via <code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span></code>.
+This is not needed for SW/HW co-simulation.</p>
+<p><strong>Category</strong></p>
+<p>Simulation</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Dependencies</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span> <span class="pre">&quot;user_tb&quot;</span></code></p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_file</span> <span class="pre">user_tb.v</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-custom-test-bench-module-1">
+<span id="set-custom-test-bench-module"></span><h3>set_custom_test_bench_module<a class="headerlink" href="#set-custom-test-bench-module-1" title="Permalink to this headline">¶</a></h3>
+<p>This TCL command is to specify the name of the user-provided testbench module
+to be using for RTL simulation. The testbench file must also be specified with
+<a class="reference internal" href="#set-custom-test-bench-file"><span class="std std-ref">set_custom_test_bench_file</span></a>.</p>
+<p><strong>Category</strong></p>
+<p>Simulation</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Dependencies</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_file</span> <span class="pre">user_tb.v</span></code></p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_custom_test_bench_module</span> <span class="pre">&quot;user_tb&quot;</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-operation-latency-1">
+<span id="set-operation-latency"></span><h3>set_operation_latency<a class="headerlink" href="#set-operation-latency-1" title="Permalink to this headline">¶</a></h3>
+<p>This Tcl command sets the latency of a given operation.
+Latency refers to the number of clock cycles required to complete the computation; an operation with latency one requires one cycle, while zero-latency operations are completely combinational, meaning multiple such operations can be chained together in a single clock cycle.
+This command is used to schedule each type operation to take the specified number of cycles.</p>
+<p>This Tcl command should only be used by advanced SmartHLS users.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>set_operation_latency &lt;operation&gt; &lt;constraint&gt;
+&lt;operation&gt; is a string
+&lt;constraint&gt; is an integer</p>
+<p><strong>Valid Values</strong></p>
+<p>See Default and Examples
+Note: operator name should match the operation database file:
+boards/PolarFire/PolarFire.tcl or boards/set_operation_latency.tcl</p>
+<p>See <a class="reference internal" href="#enable-automatic-memory-latency-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> on default latency for memory latency.
+See <a class="reference internal" href="#enable-automatic-multiply-mode-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING</span></a> on default latency for multiplies.</p>
+<p><strong>Default Values</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fp_add</span> <span class="mi">14</span>
+<span class="n">fp_subtract</span> <span class="mi">14</span>
+<span class="n">fp_multiply</span> <span class="mi">11</span>
+<span class="n">fp_divide_32</span> <span class="mi">33</span>
+<span class="n">fp_divide_64</span> <span class="mi">61</span>
+<span class="n">fp_truncate_64</span> <span class="mi">3</span>
+<span class="n">fp_extend_32</span> <span class="mi">2</span>
+<span class="n">fp_fptosi</span> <span class="mi">6</span>
+<span class="n">fp_sitofp</span> <span class="mi">6</span>
+<span class="n">signed_comp_o</span> <span class="mi">1</span>
+<span class="n">signed_comp_u</span> <span class="mi">1</span>
+<span class="n">reg</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">set</span> <span class="pre">memory</span> <span class="pre">operations</span> <span class="pre">to</span> <span class="pre">take</span> <span class="pre">3</span> <span class="pre">cycles</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">memory_port</span> <span class="pre">3</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>When implementing an integer multiply operation, SmartHLS’s default behaviour is
+to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
+When a multiply operation is wider than the DSP can support, SmartHLS splits the
+multiply into multiple DSPs and automatically inserts registers to help RTL
+synthesis tool to utilize registers in DSPs better, and hence achieve better
+timing.</p>
+<p>However, this split-multiply feature does not support a user-configurable
+latency.
+When <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is specified by user, SmartHLS will
+turn off the split-multiply feature and use a generic multiplier that will
+adapt to user-specified latency.
+SmartHLS will also print a warnign as follows,
+<em>Warning: Detected set_operation_latency setting for integer multiplier.  However, configurable latency is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.</em></p>
+<p class="last">Similarly, <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
+behaviour because the split-multiply does not support sharing the
+multipliers.</p>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-project-1">
+<span id="set-project"></span><h3>set_project<a class="headerlink" href="#set-project-1" title="Permalink to this headline">¶</a></h3>
+<p>This parameter sets the default target project, or device, used. Changing the project also updates the associated family and board parameters.</p>
+<p>This parameter has 3 arguments:</p>
+<ul class="simple">
+<li>FPGA Family (e.g. PolarFire<sup>®</sup>).</li>
+<li>FPGA Device: This can either be the board name (e.g. MPF300), or the device number (e.g. MPF300TS-1FCG1152I).</li>
+<li>Flow: <code class="docutils literal notranslate"><span class="pre">hw_only</span></code> or <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code>.  <code class="docutils literal notranslate"><span class="pre">Icicle_SoC</span></code> is only available when targeting the PolarFire<sup>®</sup> SoC Icicle kit device.</li>
+</ul>
+<p><strong>Category</strong></p>
+<p>Board and Device Specification</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Valid Values</strong></p>
+<p>See Examples</p>
+<p><strong>Default Value</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">PolarFire</span> <span class="pre">MPF300T-1FCG1152I</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">FUTUREM2SF</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">SmartFusion2</span> <span class="pre">M2S025T-FG484I</span> <span class="pre">hw_only</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_project</span> <span class="pre">IGLOO2</span> <span class="pre">M2GL005-1FG484</span> <span class="pre">hw_only</span></code></p>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-resource-constraint-1">
+<span id="set-resource-constraint"></span><h3>set_resource_constraint<a class="headerlink" href="#set-resource-constraint-1" title="Permalink to this headline">¶</a></h3>
+<p>This Tcl command constrains the resource allocated by SmartHLS.
+For instance, to only have a single divider in the entire circuit, user can specify: <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code>.
+This makes SmartHLS instantiate a maximum of 1 divider in the circuit, and if there are multiple division operations required, they will share the same divider.</p>
+<dl class="docutils">
+<dt>Note: A constraint on “divide” will apply to:</dt>
+<dd><ul class="first last simple">
+<li>signed_divide_8</li>
+<li>signed_divide_16</li>
+<li>signed_divide_32</li>
+<li>signed_divide_64</li>
+<li>unsigned_divide_8</li>
+<li>unsigned_divide_16</li>
+<li>unsigned_divide_32</li>
+<li>unsigned_divide_64</li>
+</ul>
+</dd>
+</dl>
+<p>It can also be used to constrain the number of memory ports. To make all memories single-ported: <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">memory_port</span> <span class="pre">1</span></code>
+For memory ports, only 1 and 2 are valid values, as FPGA RAMs have up to 2 ports.</p>
+<p>This Tcl command should only be used by advanced SmartHLS users.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>set_resource_constraint &lt;operation&gt; &lt;constraint&gt;
+&lt;operation&gt; is a string
+&lt;constraint&gt; is an integer</p>
+<p><strong>Valid Values</strong></p>
+<p>See Default and Examples
+Note: operator name should match the device family operation database file:
+boards/PolarFire/PolarFire.tcl</p>
+<p><strong>Default Values</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">memory_port</span> <span class="mi">2</span>
+<span class="n">divide</span> <span class="mi">1</span>
+<span class="n">modulus</span> <span class="mi">1</span>
+<span class="n">multiply</span> <span class="mi">2</span>
+<span class="n">fp_add</span> <span class="mi">1</span>
+<span class="n">fp_subtract</span> <span class="mi">1</span>
+<span class="n">fp_multiply</span> <span class="mi">1</span>
+<span class="n">fp_divide</span> <span class="mi">1</span>
+<span class="n">fp</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">signed_divide_16</span> <span class="pre">3</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">signed_divide</span> <span class="pre">2</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">divide</span> <span class="pre">1</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>When implementing an integer multiply operation, SmartHLS’s default behaviour is
+to optimize for timing (Fmax) by mapping a multiply operation to target DSPs.
+When a multiply operation is wider than the DSP can support, SmartHLS splits the
+multiply into multiple DSPs and automatically inserts registers to help RTL
+synthesis tool to utilize registers in DSPs better, and hence achieve better
+timing.</p>
+<p>However, this split-multiply feature cannot support sharing multipliers.
+When <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is specified by user, SmartHLS will
+turn off the split-multiply feature and use a generic multiplier that can be
+shared by more than one multiply operations.
+SmartHLS will also print a warning as follows,
+<em>Warning: Detected set_resource_constraint setting for integer multiplier.  However, multiplier sharing is incompatible with the multiply splitting feature.  Disabling multiply splitting feature and the normal multiplier modules will be used.</em></p>
+<p class="last">Similarly, <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> will trigger the same
+behaviour because the split-multiply does not support user-configured
+multiply latency.</p>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-synthesis-top-module-1">
+<span id="set-synthesis-top-module"></span><h3>set_synthesis_top_module<a class="headerlink" href="#set-synthesis-top-module-1" title="Permalink to this headline">¶</a></h3>
+<p>This TCL command specifies the name of the Verilog module that will be set as
+the top-level module when creating a Libero project for synthesis, place and route.
+By default, the top-level function (see <a class="reference internal" href="userguide.html#custom-top-level"><span class="std std-ref">Specifying the Top-level Function</span></a>) is set as the top-level module for the Libero project, however user may want to provide wrapper HDL module that instantiates the SmartHLS-generate top-level module.
+In this case, this Tcl command can be used to give the name of the wrapper module.</p>
+<p><strong>Category</strong></p>
+<p>Libero</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span> <span class="pre">&quot;wrapper_top&quot;</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="set-synthesis-top-module-file-1">
+<span id="set-synthesis-top-module-file"></span><h3>set_synthesis_top_module_file<a class="headerlink" href="#set-synthesis-top-module-file-1" title="Permalink to this headline">¶</a></h3>
+<p>When <code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span></code> is used to set a different wrapper module as
+the top-level for synthesis, place &amp; route, use this command to specify the
+file that defines the wrapper module.</p>
+<p><strong>Category</strong></p>
+<p>Libero</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Dependencies</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module</span> <span class="pre">&quot;wrapper_top&quot;</span></code></p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_synthesis_top_module_file</span> <span class="pre">custom_synthesis_top.v</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="debugging-constraints">
+<h2>Debugging Constraints<a class="headerlink" href="#debugging-constraints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cosim-input-output-fifo-stall-prob">
+<span id="cosim-fifo-stall-prob"></span><h3>COSIM_&lt;INPUT|OUTPUT&gt;_FIFO_STALL_PROB<a class="headerlink" href="#cosim-input-output-fifo-stall-prob" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">COSIM_INPUT_FIFO_STALL_PROB</span></code> and <code class="docutils literal notranslate"><span class="pre">COSIM_OUTPUT_FIFO_STALL_PROB</span></code>
+parameters can be used to exercise halting data injecting to input FIFO or
+backpressuring the output FIFO during <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a>.
+When the parameter is set to a value between 1 and 99, representing the
+probablity to halt input FIFO or backpressure output FIFO, the
+SmartHLS-generated CoSimulation testbench will randomly halt the data
+injectiion to input FIFO or backpressure output FIFO, which will then cause the
+SmartHLS-generated circuit to stall during simulation.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraint</p>
+<p><strong>Value Type</strong></p>
+<p>Integer</p>
+<p><strong>Valid Values</strong></p>
+<p>0-99</p>
+<p><strong>Default Value</strong></p>
+<p>0: disabled</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">COSIM_INPUT_FIFO_STALL_PROB</span> <span class="pre">50</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">COSIM_OUTPUT_FIFO_STALL_PROB</span> <span class="pre">40</span></code></p>
+</div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="keep-signals-with-no-fanout-1">
+<span id="keep-signals-with-no-fanout"></span><h3>KEEP_SIGNALS_WITH_NO_FANOUT<a class="headerlink" href="#keep-signals-with-no-fanout-1" title="Permalink to this headline">¶</a></h3>
+<p>If this parameter is enabled, all signals will be printed to the output Verilog
+file, even if they don’t drive any outputs.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraint</p>
+<p><strong>Value Type</strong></p>
+<p>Integer</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>1</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">KEEP_SIGNALS_WITH_NO_FANOUT</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="vsim-assert-1">
+<span id="vsim-assert"></span><h3>VSIM_ASSERT<a class="headerlink" href="#vsim-assert-1" title="Permalink to this headline">¶</a></h3>
+<p>When set to 1, this constraint causes assertions to be inserted in the Verilog
+produced by SmartHLS. This is useful for debugging the circuit to see where invalid
+values (X’s) are being assigned.</p>
+<p><strong>Category</strong></p>
+<p>Simulation</p>
+<p><strong>Value Type</strong></p>
+<p>Integer</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>0</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">VSIM_ASSERT</span> <span class="pre">1</span></code></div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="advanced-constraints">
+<h2>Advanced Constraints<a class="headerlink" href="#advanced-constraints" title="Permalink to this headline">¶</a></h2>
+<p>These are not available from the SmartHLS GUI.</p>
+<div class="section" id="ifconv-predicate-loads-1">
+<span id="ifconv-predicate-loads"></span><h3>IFCONV_PREDICATE_LOADS<a class="headerlink" href="#ifconv-predicate-loads-1" title="Permalink to this headline">¶</a></h3>
+<p>This constraint sets whether load instructions should be predicated during if-conversion. By default, it is set to 1 to predicate load instructions to avoid resource contention between mutually exclusive loads. If there is no resource contention between mutually exclusive loads, it can set to 0 avoid inserting predication logic.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>1</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">IFCONV_PREDICATE_LOADS</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="latency-reduction-1">
+<span id="latency-reduction"></span><h3>LATENCY_REDUCTION<a class="headerlink" href="#latency-reduction-1" title="Permalink to this headline">¶</a></h3>
+<p>The LATENCY_REDUCTION settings control the SmartHLS’ expression balancing
+optimization, of which the objective is to reduce the circuit latency.
+Below are the related settings,</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="7%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter Name</th>
+<th class="head">Default Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>LATENCY_REDUCTION</td>
+<td>1</td>
+<td>The main switch that enables or disables expression balancing. Setting to 0 disables all expression balancing optimizations.</td>
+</tr>
+<tr class="row-odd"><td>LATENCY_REDUCTION_ALLOW_FP_REORDERING</td>
+<td>0</td>
+<td><div class="first last line-block">
+<div class="line">By default expression balancing does not re-order floating-point operations to prevent loss of precisions.</div>
+<div class="line">Setting to 1 allows to re-order floating-point operations if the circuit latency can be reduced.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>LATENCY_REDUCTION_REDUCE_FP_CONVERSIONS</td>
+<td>0</td>
+<td><div class="first last line-block">
+<div class="line">Setting to 1 will allow SmartHLS to cancel out back-and-forth conversion between floating-point and integer, with potential variations in numerical values.</div>
+<div class="line">For example, the following conversions can be cancelled when this setting is 1.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">int</span>&#160;&#160; <span class="pre">a</span> <span class="pre">=</span> <span class="pre">(int)(float)(3);</span>&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">a</span> <span class="pre">==</span> <span class="pre">3.</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">(float)(int)(1.2);</span>&#160; <span class="pre">//</span> <span class="pre">b</span> <span class="pre">==</span> <span class="pre">1.2</span> <span class="pre">instead</span> <span class="pre">of</span> <span class="pre">1.</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>LATENCY_REDUCTION_BALANCE_MULTI_USE_NODE</td>
+<td>0</td>
+<td><div class="first last line-block">
+<div class="line">By default expression balancing does not optimize the intermediate operations that have multiple uses, to avoid potential increase of resource usage.</div>
+<div class="line">Setting to 1 allows to re-order intermediate operations that have multiple uses and more latency reduction could be achieved.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Integer</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>As listed in the table above.</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LATENCY_REDUCTION</span> <span class="pre">1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LATENCY_REDUCTION_ALLOW_FP_REORDERING</span> <span class="pre">0</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LATENCY_REDUCTION_REDUCE_FP_CONVERSIONS</span> <span class="pre">0</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">LATENCY_REDUCTION_BALANCE_MULTI_USE_NODE</span> <span class="pre">0</span></code></p>
+</div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="enable-automatic-memory-latency-setting-1">
+<span id="enable-automatic-memory-latency-setting"></span><h3>ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING<a class="headerlink" href="#enable-automatic-memory-latency-setting-1" title="Permalink to this headline">¶</a></h3>
+<p>Enable determining memory latency for reads automatically according to the target clock period and timing model of the board. Memory latency is set to 2 when the target clock period is less than the delay of memory for the target device, otherwise is set to 1. Increasing the memory latency can result in higher circuit Fmax at the expense of higher circuit latency. The auto-determined latency can be found in <a class="reference internal" href="userguide.html#memory-usage"><span class="std std-ref">Memory Usage</span></a> section of SmartHLS report.</p>
+<p>Setting the operation latency for a RAM will override the latency automatically calculated. See <a class="reference internal" href="#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> for a list of valid memory port latency. The threshold for switching are listed in the table below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device</th>
+<th class="head">Use Memory Latency of 2 when Target Period is less than (ns)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PolarFire, PolarFireSoC</td>
+<td>4.167</td>
+</tr>
+<tr class="row-odd"><td>IGLOO2, SmartFusion2</td>
+<td>4.167</td>
+</tr>
+</tbody>
+</table>
+<p>ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING controls the latency for the following memory constraints. Each constraint can be used with <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">&lt;Name&gt;</span> <span class="pre">&lt;latency&gt;</span></code> to override the auto-determined latency.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">local_memory_port</span></code></td>
+<td>Controls the memory latency of <a class="reference internal" href="hwarchitecture.html#local-memory"><span class="std std-ref">Local Memory</span></a> used by a single function.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">shared_local_memory_port</span></code></td>
+<td>Controls the memory latency of <a class="reference internal" href="hwarchitecture.html#shared-local-memory"><span class="std std-ref">Shared-Local Memory</span></a> shared by multiple functions.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">axi_slave_ram_memory_port</span></code></td>
+<td>Controls the memory latency of <a class="reference internal" href="userguide.html#global-variable-axi-slave"><span class="std std-ref">Legacy AXI4 Slave Interface</span></a></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">memory_port</span></code></td>
+<td>Controls the memory latency of <a class="reference internal" href="hwarchitecture.html#memory-controller"><span class="std std-ref">Memory Controller</span></a></td>
+</tr>
+</tbody>
+</table>
+<p>SmartHLS does not automatically determine the latency for <code class="docutils literal notranslate"><span class="pre">external_memory_port</span></code> as it is only for creating an interface with the RAMs outside of the circuit. However, for <a class="reference internal" href="userguide.html#smarthls-soc-flow"><span class="std std-ref">SmartHLS SoC Flow</span></a>, <code class="docutils literal notranslate"><span class="pre">external_memory_port</span></code> controls the latency for the on-chip memory buffers.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>1</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="enable-automatic-multiply-mode-setting-1">
+<span id="enable-automatic-multiply-mode-setting"></span><h3>ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING<a class="headerlink" href="#enable-automatic-multiply-mode-setting-1" title="Permalink to this headline">¶</a></h3>
+<p>Enable determining multiply mode automatically according to the target clock period and timing model of the board. Fully pipelined mode (i.e., using both input and output registers of each Math block) will be used when the target clock period is less than the delay of a Math block, otherwise half pipelined mode (i.e., using only the input register of each Math block) will be used.</p>
+<p>Fully pipelined mode can result in higher circuit Fmax at the expense of higher circuit latency. This functionality is disabled when <code class="docutils literal notranslate"><span class="pre">set_resource_constraint</span> <span class="pre">multiply</span> <span class="pre">X</span></code> or <code class="docutils literal notranslate"><span class="pre">set_operation_latency</span> <span class="pre">multiply</span> <span class="pre">X</span></code> is defined. The threshold for switching are listed in the table below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device</th>
+<th class="head">Fully Pipelined Mode when Target Period is less than (ns)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PolarFire, PolarFireSoC</td>
+<td>3.704</td>
+</tr>
+<tr class="row-odd"><td>IGLOO2, SmartFusion2</td>
+<td>4.169</td>
+</tr>
+</tbody>
+</table>
+<p>Below is a table of latency for multiplications of unsigned integers for selected bit widths for reference:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="29%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">(Bit Width) x (Bit Width) = (Bit Width)</th>
+<th class="head">Half Pipelined Mode Latency</th>
+<th class="head">Full Pipelined Mode Latency</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>8 x 8  = 8</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>8 x 8  = 16</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>16 x 16 = 16</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>16 x 16 = 32</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>32 x 32 = 32</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>32 x 32 = 64</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td>64 x 64 = 64</td>
+<td>6</td>
+<td>11</td>
+</tr>
+<tr class="row-odd"><td>64 x 64 = 128</td>
+<td>9</td>
+<td>17</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>1</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="multiply-splitting-fully-pipelined-1">
+<span id="multiply-splitting-fully-pipelined"></span><h3>MULTIPLY_SPLITTING_FULLY_PIPELINED<a class="headerlink" href="#multiply-splitting-fully-pipelined-1" title="Permalink to this headline">¶</a></h3>
+<p>Multipliers are implemented in Math (DSP) blocks. When this constraint is set to 0, only the input register of each Math block is used, whereas when it is set to 1, both the input and output registers of each Math block are used. Utilizing just the input register will result in lower latency but utilizing both input and output registers will result in higher Fmax. When <a class="reference internal" href="#enable-automatic-multiply-mode-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MULTIPLY_MODE_SETTING</span></a> is set to 1, which is the default, SmartHLS will automatically decide which multiplier mode should be used based on the target clock period constraint.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>0</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">MULTIPLY_SPLITTING_FULLY_PIPELINED</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-axi-initiator-1">
+<span id="soc-axi-initiator"></span><h3>SOC_AXI_INITIATOR<a class="headerlink" href="#soc-axi-initiator-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the AXI initiator interface used by the processor in the user-defined SmartDesign system to connect to the HLS module’s AXI target interface. This AXI initiator interface is used by the processor to control and transfer data to/from the HLS modules.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on using this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>AXI2AXI_TO_HLS:AXI4_MASTER</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_AXI_INITIATOR</span> <span class="pre">AXI2AXI_TO_HLS:AXI4_MASTER</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-axi-target-1">
+<span id="soc-axi-target"></span><h3>SOC_AXI_TARGET<a class="headerlink" href="#soc-axi-target-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the AXI target interface in the user-defined SmartDesign system where the HLS module’s AXI initiator interface can connect to. This AXI target interface is used by the HLS modules to access shared memory (DDR) directly.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on using this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>AXI2AXI_FROM_HLS:AXI4_SLAVE</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_AXI_TARGET</span> <span class="pre">AXI2AXI_FROM_HLS:AXI4_SLAVE</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-bd-name-1">
+<span id="soc-bd-name"></span><h3>SOC_BD_NAME<a class="headerlink" href="#soc-bd-name-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the name of the SmartDesign system to integrate the HLS modules into.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>FIC_0_PERIPHERALS</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_BD_NAME</span> <span class="pre">FIC_0_PERIPHERALS</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-clock-1">
+<span id="soc-clock"></span><h3>SOC_CLOCK<a class="headerlink" href="#soc-clock-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the name of the clock to connect to the HLS modules. Currently, all HLS modules use the same clock.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>ACLK</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_CLOCK</span> <span class="pre">ACLK</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-cpu-mem-base-address-1">
+<span id="soc-cpu-mem-base-address"></span><h3>SOC_CPU_MEM_BASE_ADDRESS<a class="headerlink" href="#soc-cpu-mem-base-address-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the base address of the memory window in the shared memory space (DDR) that can be accessed by the HLS module’s AXI initiator interfaces. This address is used to configure the AXI interconnect that HLS modules connect to for accessing the shared memory.</p>
+<p>Note that the value for the parameter is specified in hexadecimal format and must be prefixed with 0x.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Hexadecimal</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0x80000000</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_CPU_MEM_BASE_ADDRESS</span> <span class="pre">0x80000000</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-cpu-mem-size-1">
+<span id="soc-cpu-mem-size"></span><h3>SOC_CPU_MEM_SIZE<a class="headerlink" href="#soc-cpu-mem-size-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the size of the shared memory (DDR) space that the HLS module’s AXI initiator interfaces can access.</p>
+<p>Note that the value for the parameter is specified in hexadecimal format and must be prefixed with 0x.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Hexadecimal</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0x60000000</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_CPU_MEM_SIZE</span> <span class="pre">0x60000000</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-dma-engine-1">
+<span id="soc-dma-engine"></span><h3>SOC_DMA_ENGINE<a class="headerlink" href="#soc-dma-engine-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the type of DMA engine to use in the system for transferring data to/from HLS modules.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">DMA Engine</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>HARD_DMA</td>
+<td><div class="first last line-block">
+<div class="line">Uses the DMA available in the PolarFire SoC MSS. This implies that the CPUs to be used are the RISC-V U54 application cores in the MSS.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>SOFT_DMA</td>
+<td><div class="first last line-block">
+<div class="line">Automatically instantiates a DMA engine on the FPGA fabric and be connected to the SmartHLS AXI interconnect along with the SmartHLS IP modules.</div>
+<div class="line">Currently this option is not enabled, but will be in a future release.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>HARD_DMA</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>HARD_DMA is actively in-use; SOFT_DMA will be made available in a future release</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_DMA_ENGINE</span> <span class="pre">HARD_DMA</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-fabric-base-address-1">
+<span id="soc-fabric-base-address"></span><h3>SOC_FABRIC_BASE_ADDRESS<a class="headerlink" href="#soc-fabric-base-address-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the base address of the CPU memory space that is reserved for all HLS modules. The control registers and on-chip memory buffers of HLS modules are allocated and mapped within this memory window. This address is also used to configure the AXI interconnect that HLS modules connect to.</p>
+<p>Note that the value for the parameter is specified in hexadecimal format and must be prefixed with 0x.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Hexadecimal</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0x70000000</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_FABRIC_BASE_ADDRESS</span> <span class="pre">0x70000000</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-fabric-size-1">
+<span id="soc-fabric-size"></span><h3>SOC_FABRIC_SIZE<a class="headerlink" href="#soc-fabric-size-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the size of the CPU memory space that is reserved for all HLS modules. The control registers and on-chip memory buffers of HLS modules are allocated and mapped within this memory window. This address is also used to configure the AXI interconnect that HLS modules connect to.</p>
+<p>Note that the value for the parameter is specified in hexadecimal format and must be prefixed with 0x.</p>
+<p>By default, 4MB of size is reserved. If this is larger than what HLS modules require, it can just be left for future use. Reserving a larger window does not mean more on-chip memory will be used.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Hexadecimal</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0x400000</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_FABRIC_SIZE</span> <span class="pre">0x400000</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-poll-delay-1">
+<span id="soc-poll-delay"></span><h3>SOC_POLL_DELAY<a class="headerlink" href="#soc-poll-delay-1" title="Permalink to this headline">¶</a></h3>
+<p>This parameter controls how often an accelerator driver function polls the status register of an HLS module to check for its completion. By default, the delay is set to 0, which means the processor will continuously poll the status. However, it may be beneficial to insert a delay in polling to reduce CPU usage and power consumption. The poll delay is specified in microseconds.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Integer; represents a value in microseconds</p>
+<p><strong>Valid Values</strong></p>
+<p>Integer</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>0</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_POLL_DELAY</span> <span class="pre">10</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-profiler-counter-1">
+<span id="soc-profiler-counter"></span><h3>SOC_PROFILER_COUNTER<a class="headerlink" href="#soc-profiler-counter-1" title="Permalink to this headline">¶</a></h3>
+<p>This parameter specifies whether or not to include a hardware counter to help profile SoC-based designs. The counter is not included by default.</p>
+<p>For more information, see <a class="reference internal" href="userguide.html#soc-profiler"><span class="std std-ref">SoC Profiler</span></a>.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>0</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_PROFILER_COUNTER</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="soc-reset-1">
+<span id="soc-reset"></span><h3>SOC_RESET<a class="headerlink" href="#soc-reset-1" title="Permalink to this headline">¶</a></h3>
+<p>This is an SoC integration parameter to allow integrating HLS-generated modules into a custom user-defined SmartDesign system. The parameter specifies the name of the reset signal to connect to the HLS modules. Currently, all HLS modules use the same reset. Note that the reset polarity must be active high.</p>
+<p>Please refer to <a class="reference internal" href="userguide.html#soc-integration-parameters"><span class="std std-ref">SoC integration parameters</span></a> for more details on how to use this Tcl parameter.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>String</p>
+<p><strong>Default Value (Based on Icicle SoC reference design)</strong></p>
+<p>ARESETN</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>SoC Flow Only</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SOC_RESET</span> <span class="pre">ARESETN</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="strength-reduction-1">
+<span id="strength-reduction"></span><h3>STRENGTH_REDUCTION<a class="headerlink" href="#strength-reduction-1" title="Permalink to this headline">¶</a></h3>
+<p>Strength reduction is an optimization that
+converts multiply-by-constant into shifts and additions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
+        <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">6416</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">11</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">28784</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
+        <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">4680</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">9</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33024</span><span class="p">)</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">adder</span><span class="p">:</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This optimization saves DSP blocks on the FPGA but can also increase LUT usage in the design.</p>
+<p>You can tune the number of adders allowed per multiplier with the constraint:
+<a class="reference internal" href="#strength-reduction-adders-allowed-per-multiplier"><span class="std std-ref">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</span></a></p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Integer</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>1</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="strength-reduction-adders-allowed-per-multiplier-1">
+<span id="strength-reduction-adders-allowed-per-multiplier"></span><h3>STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER<a class="headerlink" href="#strength-reduction-adders-allowed-per-multiplier-1" title="Permalink to this headline">¶</a></h3>
+<p>Strength reduction is an optimization that
+converts multiply-by-constant into shifts and additions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Info</span><span class="p">:</span> <span class="n">StrengthReduction</span><span class="p">:</span> <span class="n">Replacing</span> <span class="n">multiply</span> <span class="n">by</span> <span class="n">constant</span> <span class="p">(</span><span class="n">i26</span> <span class="mi">33038</span><span class="p">)</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">adders</span><span class="p">:</span>
+        <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER constraint allows you to
+tune the number of adders allowed per multiplier (default is 3).
+Strength reduction for multiply-by-constants will not be performed if this requires
+more adders than allowed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i26</span> <span class="mi">16828</span> <span class="ow">is</span> <span class="n">composed</span> <span class="n">of</span> <span class="mi">4</span> <span class="n">adders</span><span class="p">:</span>
+<span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">Skipping</span> <span class="n">conversion</span> <span class="n">otherwise</span> <span class="n">would</span> <span class="n">need</span> <span class="n">too</span> <span class="n">many</span> <span class="n">additions</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>In this example, we would need 4 adders which is more than the default of 3,
+meaning strength reduction will not occur and SmartHLS will keep the multiplier.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Integer</p>
+<p><strong>Valid Values</strong></p>
+<p>Positive Integer</p>
+<p><strong>Default Value</strong></p>
+<p>3</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p><a class="reference internal" href="#strength-reduction"><span class="std std-ref">STRENGTH_REDUCTION</span></a> must be on</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">STRENGTH_REDUCTION_ADDERS_ALLOWED_PER_MULTIPLIER</span> <span class="pre">3</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="synthesis-clock-period-1">
+<span id="synthesis-clock-period"></span><h3>SYNTHESIS_CLOCK_PERIOD<a class="headerlink" href="#synthesis-clock-period-1" title="Permalink to this headline">¶</a></h3>
+<p>This constraint allows the user to override the SDC clock period constraint for synthesis, P&amp;R, and timing analysis.</p>
+<p>By default, when this constraint is not specified, the same CLOCK_PERIOD constraint for HLS is used for the SDC clock period constraint. However, it may be useful to give a tighter SDC clock period constraint to close timing.</p>
+<p>The clock period is specified in nanoseconds.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraints</p>
+<p><strong>Value Type</strong></p>
+<p>Integer; represents a value in nanoseconds</p>
+<p><strong>Valid Values</strong></p>
+<p>Integer</p>
+<p><strong>Default Value</strong></p>
+<p>N/A</p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">SYNTHESIS_CLOCK_PERIOD</span> <span class="pre">10</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="use-fifo-for-pipeline-reg-1">
+<span id="use-fifo-for-pipeline-reg"></span><h3>USE_FIFO_FOR_PIPELINE_REG<a class="headerlink" href="#use-fifo-for-pipeline-reg-1" title="Permalink to this headline">¶</a></h3>
+<p>In a pipeline circuit where multiple stages of the circuit are concurrently
+active and processing different loop iterations (or function calls), <em>pipeline
+registers</em> are used to retain and propagate a variable value from the
+value-producing stage to the value-use stage.  The pipeline registers are
+essentially a chain of shift registers with additional control logic.
+When the chain of pipeline registers is long, it may be more resource-efficient
+to implement the pipeline registers as a block-RAM FIFO rather than shift
+registers.</p>
+<p>When this parameter is enabled, Smart HLS will examine each chain of pipeline
+registers and use the implementation (FIFO or shift register) that is estimated
+to be more resource-efficient.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraint</p>
+<p><strong>Value Type</strong></p>
+<p>Integer</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>1</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Actively in-use</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">USE_FIFO_FOR_PIPELINE_REG</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="cosim-free-running-dataflow-top-1">
+<span id="cosim-free-running-dataflow-top"></span><h3>COSIM_FREE_RUNNING_DATAFLOW_TOP<a class="headerlink" href="#cosim-free-running-dataflow-top-1" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">COSIM_FREE_RUNNING_DATAFLOW_TOP</span></code> parameter can be useful for dataflow
+designs which contain conditionally-executed tasks. When the top-level module
+uses dataflow, this parameter will make the top-level module free-running, i.e.,
+its start signal will be tied to 1. This parameter should not be enabled if an
+AXI Target interface is used.</p>
+<p><strong>Category</strong></p>
+<p>HLS Constraint</p>
+<p><strong>Value Type</strong></p>
+<p>Boolean</p>
+<p><strong>Valid Values</strong></p>
+<p>0, 1</p>
+<p><strong>Default Value</strong></p>
+<p>0: disabled</p>
+<p><strong>Location Where Default is Specified</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">examples/legup.tcl</span></code></p>
+<p><strong>Dependencies</strong></p>
+<p>None</p>
+<p><strong>Applicable Flows</strong></p>
+<p>All devices and flows</p>
+<p><strong>Test Status</strong></p>
+<p>Alpha release</p>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">set_parameter</span> <span class="pre">COSIM_FREE_RUNNING_DATAFLOW_TOP</span> <span class="pre">1</span></code></div></blockquote>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+<!-- Amandeep.Talwar: Moved the footer code to layout.html to resolve conflict with the Microchip template -->
+</footer>
+
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+  
+<footer _ngcontent-hes-c23=""><div _ngcontent-hes-c23="" class="social-icons">
+<a _ngcontent-hes-c23="" href="https://github.com/MicrochipTech/" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="fa-github-square" class="svg-inline--fa fa-github-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path
+     fill="currentColor"
+     d="m 151.375,357.33334 q 1.16667,-2 -0.875,-4.33334 -2.625,-2.33334 -4.08333,-0.66666 -1.16667,2 0.875,4.33332 2.625,2.33334 4.08333,0.66668 z m -8.16667,-13.66668 q -1.45833,-2.33332 -3.5,-1.33332 -1.75,1.33332 0,4 2.04167,2.66666 3.5,1.66666 1.75,-1.33334 0,-4.33334 z M 131.25,330.33334 Q 131.83333,329 129.79167,327.66666 127.75,327 127.45833,328.33334 126.58333,330 128.625,331 q 2.33333,0.66666 2.625,-0.66666 z M 137.375,338 q 0.58333,-0.33334 0.4375,-1.5 -0.14583,-1.16666 -1.02083,-1.83334 -1.75,-2.33332 -2.91667,-1 -1.16667,1.33334 0.29167,3.66668 1.75,2 3.20833,0.66666 z m 25.08333,25 q 0.58334,-2.33334 -2.625,-3.66666 -2.625,-1 -3.79166,1.33332 -0.58334,2.33334 2.625,3.66668 2.625,1 3.79166,-1.33334 z m 12.25,1 q 0,-2.66666 -3.5,-2.66666 -2.91666,0 -2.91666,2.66666 0,2.66666 3.20833,2.66666 3.20833,0 3.20833,-2.66666 z m 11.375,-2.33334 Q 185.5,359.33334 182.29167,360 q -3.20834,0.66666 -2.625,3 0.58333,2.66666 3.5,2 2.91666,-0.66666 2.91666,-3.33334 z M 373.33333,256 q 0,-70.66666 -43.75,-120.66666 Q 285.83333,85.333334 224,85.333334 q -61.83333,0 -105.58333,50.000006 -43.750003,50 -43.750003,120.66666 0,55.66666 28.583333,100.16666 28.58333,44.5 73.5,61.83334 5.25,1 7.72917,-1.66666 2.47916,-2.66668 2.47916,-6.66668 0,-17.33332 -0.29166,-31.66666 -1.75,0.33334 -4.52084,0.83334 -2.77083,0.5 -10.35416,0.66666 -7.58334,0.16666 -14,-1.33334 -6.41667,-1.5 -12.6875,-6.66666 Q 138.83333,366.33334 136.5,357.66666 129.79167,338 119.875,333 q -0.58333,-0.33334 -1.3125,-1.16666 L 116.22917,329.16666 114.1875,326 l 1.16667,-2.5 5.6875,-1.16666 q 1.75,0 4.375,0.66666 2.625,0.66666 8.75,5.16666 6.125,4.5 9.625,11.83334 4.66666,9.33334 10.9375,14 6.27083,4.66666 12.6875,4.66666 6.41666,0 11.08333,-1.16666 4.66667,-1.16666 8.75,-3.16666 2.04167,-15.66668 9.625,-23 -14.29167,-2 -25.08333,-6.16668 Q 161,321 150.5,312.16666 140,303.33334 134.3125,286.83334 128.625,270.33334 128.625,247 q 0,-26.33334 15.45833,-45.66666 -7,-20.66668 1.45834,-45.33334 5.54166,-2 15.89583,2.5 10.35417,4.5 17.64583,9.83334 l 7.58334,5.33332 Q 203.58333,168 224,168 q 20.41667,0 37.33333,5.66666 3.20834,-2.33332 8.3125,-6 Q 274.75,164 285.83333,159 q 11.08334,-5 16.625,-3 8.45834,24.66666 1.45834,45.33334 Q 319.375,220.66666 319.375,247 q 0,19 -4.08333,33.5 -4.08334,14.5 -10.35417,23.33334 -6.27083,8.83332 -15.60417,14.83332 -9.33333,6 -18.22916,8.66668 -8.89584,2.66666 -19.97917,4 10.20833,10.33332 10.20833,31.66666 0,13.33334 -0.14583,29.66666 -0.14583,16.33334 -0.14583,17 0,4 2.47916,6.66668 Q 266,419 271.25,418 316.16667,400.66666 344.75,356.16666 373.33333,311.66666 373.33333,256 Z M 448,96 v 320 q 0,39.66666 -24.64583,67.83334 Q 398.70833,512 364,512 H 84 Q 49.291667,512 24.645833,483.83334 0,455.66666 0,416 V 96 Q 0,56.333334 24.645833,28.166666 49.291667,0 84,0 H 364 Q 398.70833,0 423.35417,28.166666 448,56.333334 448,96 Z"/></svg></fa-icon></div>
+</a>
+
+
+
+<a _ngcontent-hes-c23="" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_top">
+<div _ngcontent-hes-c23="" class="facebook"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg></fa-icon></div></a>
+<a _ngcontent-hes-c23="" href="https://google.com/+MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="google"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square" class="svg-inline--fa fa-google-plus-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.linkedin.com/company/microchip-technology" target="_top"><div _ngcontent-hes-c23="" class="linkedin"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://twitter.com/MicrochipTech" target="_top"><div _ngcontent-hes-c23="" class="twitter"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square" class="svg-inline--fa fa-twitter-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.youtube.com/user/MicrochipTechnology" target="_top"><div _ngcontent-hes-c23="" class="youtube"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube-square" class="svg-inline--fa fa-youtube-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"></path></svg></fa-icon></div></a><a _ngcontent-hes-c23="" href="https://www.microchip.com/rss/" target="_top"><div _ngcontent-hes-c23="" class="rss"><fa-icon _ngcontent-hes-c23="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss-square" class="svg-inline--fa fa-rss-square fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM112 416c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm157.533 0h-34.335c-6.011 0-11.051-4.636-11.442-10.634-5.214-80.05-69.243-143.92-149.123-149.123-5.997-.39-10.633-5.431-10.633-11.441v-34.335c0-6.535 5.468-11.777 11.994-11.425 110.546 5.974 198.997 94.536 204.964 204.964.352 6.526-4.89 11.994-11.425 11.994zm103.027 0h-34.334c-6.161 0-11.175-4.882-11.427-11.038-5.598-136.535-115.204-246.161-251.76-251.76C68.882 152.949 64 147.935 64 141.774V107.44c0-6.454 5.338-11.664 11.787-11.432 167.83 6.025 302.21 141.191 308.205 308.205.232 6.449-4.978 11.787-11.432 11.787z"></path></svg></fa-icon></div></a></div><div _ngcontent-hes-c23="" id="mchip-overlay" onclick="off()" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; background-color: rgba(0,0,0,.3); display: none;"><div _ngcontent-hes-c23="" style="position: relative; width: 100%; height: 100%;"></div></div><div _ngcontent-hes-c23="" class="links"><nav _ngcontent-hes-c23=""><a _ngcontent-hes-c23="" href="https://www.microchip.com/products/" target="_top">Products</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Applications</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/technology/" target="_top">Design</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/training/" target="_top">Training</a><a _ngcontent-hes-c23="" href="https://www.microchipdirect.com/" target="_top">Sample</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/aboutus/" target="_top">About</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/contactus/" target="_top">Contact</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/legal/" target="_top">Legal</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/about-us/legal-information/privacy-policy" target="_top">Privacy Policy</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/investors/" target="_top">Investors</a><a _ngcontent-hes-c23="" href="https://www.microchip.com/careers/" target="_top">Careers</a><a _ngcontent-hes-c23="" href="https://support.microchip.com/" target="_top">Support</a></nav><p _ngcontent-hes-c23="" class="links">©Copyright 2021 Microchip Technology Inc. All rights reserved.</p></div></footer>
+
+<!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
+<script>
+function link(headingTitle) {
+	var pageName = "constraintsmanual.rst.txt".replace(/\.txt/g,'');
+	var title = document.title;
+	var source = encodeURIComponent(
+		window.location.href.split('#')[0]
+		+'#'+headingTitle.toLowerCase().replace(/ /g,'-'));
+	var newuri = "https://microchipsupport.force.com/s/newcase?\
+		pub_guid=SmartHLS-Documentation&\
+		pub_lang=en-US&\
+		pub_type=UserGuide&\
+		bu=fpga&\
+		tech_support_link=NA&\
+		source="+source+"&\
+		cover_title=SmartHLS 2023.1 documentation&\
+		pub_ver=2023.1&\
+		revision_letter=2023.1&\
+		title="+headingTitle+"&\
+		tpc_guid="+pageName;
+	return "&nbsp; <a class=\"reference external\" \
+		style=\"font-size:60%\" href=\"" + newuri + " \
+		\" target=_blank>Ask a question</a>";
+}
+
+$(document).ready(function(){
+	$("h1").each(function(i) {
+		<!-- id="booktitle" is ignored since the <h1> at the top of the page	-->
+		<!-- 	(currently "SmartHLS - v2022.2") does not need the link.	-->
+		<!-- Furthermore, appending the link to the "booktitle" header will	-->
+		<!--	cover up the search bar, rendering it unusuable.		-->
+		if (this.id != "booktitle") $(this).append(link($(this)[0].firstChild.textContent));
+	});
+	$("h2").each(function(i) {
+		$(this).append(link($(this)[0].firstChild.textContent));
+	});
+	$("h3").each(function(i) {
+		$(this).append(link($(this)[0].firstChild.textContent));
+	});
+	$("h4").each(function(i) {
+		$(this).append(link($(this)[0].firstChild.textContent));
+	});
+});
+</script>
+
+<div class="cookie-banner" id="cookie-alert">
+  This website uses cookies for analytics. Check out our <a href="https://www.microchip.com/en-us/about/legal-information/privacy-policy">Privacy Policy</a> to learn more.
+  By continuing to browse, you agree to our use of cookies as described in our Cookies Statement.
+  <button onclick="accpetCookie()" style="background-color:grey;">
+    Accept Cookies
+  </button>
+</div>
+
+<script type="text/javascript" src="_static/js/cookie-alert.js"></script>
+
+</body>
+</html>

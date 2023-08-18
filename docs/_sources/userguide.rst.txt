@@ -2396,7 +2396,7 @@ Launch Cygwin terminal on Windows
 Windows users can launch the terminal by opening ``<SMARTHLS_INSTALLATION_DIR>/cygwin64/Cygwin.bat``.
 Users can access their file directory on their computer by using ``/cygdrive/<drive letter>/<path>``
 as the prefix.
-For example, to go to ``C:\Microchip\SmartHLS-2023.1``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2023.1``.
+For example, to go to ``C:\Microchip\SmartHLS-2023.2``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2023.2``.
 
 Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2407,15 +2407,17 @@ To run SmartHLS from the command line, your ``PATH`` environment variable should
   * ``vsim``: Modelsim's executable for HW simulation and SW/HW co-simulation.
   * ``libero``: Libero's executable for synthesis and Place & Route.  
   
-Here's an example that you can adapt to your system:
+Here's an example that you can adapt to your system. Note that the paths to the ``vsim`` and ``libero`` executables are different for the Windows and Linux Libero installations.
 
 .. code-block:: bash
 
   export PATH=<SMARTHLS_INSTALLATION_DIR>/SmartHLS/bin:$PATH
-  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/ModelSimPro/modeltech/bin:$PATH
-  # Libero executable path is different on Linux, export PATH=<LIBERO_SOC_INSTALLATION_DIR>/Libero/bin:$PATH
-  # On Windows, use the path below:
+  ################################ For Windows ################################
+  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/ModelSimPro/win32acoem:$PATH
   export PATH=<LIBERO_SOC_INSTALLATION_DIR>/Designer/bin:$PATH
+  ################################# For Linux #################################
+  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/ModelSimPro/modeltech/bin:$PATH
+  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/Libero/bin64:$PATH
 
 SmartHLS comes with a bash script to provide autocompletion when using the command line on a Linux terminal.
 It can be sourced like this:

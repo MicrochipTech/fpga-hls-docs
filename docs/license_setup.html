@@ -23,7 +23,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>SmartHLS License &mdash; SmartHLS 2023.1 documentation</title>
+  <title>SmartHLS License &mdash; SmartHLS 2023.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -498,11 +498,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -516,8 +526,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Supported FPGA Devices" href="devices.html" />
     <link rel="prev" title="Constraints Manual" href="constraintsmanual.html" /> 
 </head>
@@ -530,7 +538,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.2  </span>
 
 										  </h1>
 								
@@ -585,8 +593,9 @@ display:none;
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SmartHLS License</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">SmartHLS License</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-license-issues">Debugging License Issues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#when-is-the-license-checked">When is the License Checked?</a></li>
 </ul>
 </li>
@@ -596,6 +605,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfvideokit_setup.html">PolarFire Video Kit Setup Instructions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -670,14 +680,14 @@ display:none;
 <p>Please follow the below instructions to generate and install SmartHLS tool license:</p>
 <ol class="arabic simple">
 <li>Log into <a class="reference external" href="https://www.microchipdirect.com/fpga-software-products?_ga=2.64389999.1724603044.1642798569-550376685.1606760895">Microchip Direct &gt; FPGA Software and IP Core Products</a>.</li>
-<li>Click on the “Request Free License” button on the right.</li>
+<li>Click on the &#8220;Request Free License&#8221; button on the right.</li>
 </ol>
 <blockquote>
 <div><img alt="_images/license_screenshot_request.png" class="align-center" src="_images/license_screenshot_request.png" />
 </div></blockquote>
 <ol class="arabic simple">
-<li>Click “Register” beside either the “SmartHLS 1 Year Node Locked License for
-Windows” or “SmartHLS 1 Year Floating License for Windows or Linux Server”.</li>
+<li>Click &#8220;Register&#8221; beside either the &#8220;SmartHLS 1 Year Node Locked License for
+Windows&#8221; or &#8220;SmartHLS 1 Year Floating License for Windows or Linux Server&#8221;.</li>
 </ol>
 <blockquote>
 <div><img alt="_images/license_screenshot_register.png" class="align-center" src="_images/license_screenshot_register.png" />
@@ -685,14 +695,14 @@ Windows” or “SmartHLS 1 Year Floating License for Windows or Linux Server”
 <ol class="arabic simple">
 <li>On the next page, enter the hard Disk ID (for node locked license) or MAC ID (for
 floating license) of the machine based on the selected license option and click on
-the “Submit” button. You will then be emailed a new <code class="docutils literal notranslate"><span class="pre">license.dat</span></code> license
+the &#8220;Submit&#8221; button. You will then be emailed a new <code class="docutils literal"><span class="pre">license.dat</span></code> license
 file enabling you to use SmartHLS.</li>
-<li>Open the SmartHLS <code class="docutils literal notranslate"><span class="pre">license.dat</span></code> file and copy the contents into your
+<li>Open the SmartHLS <code class="docutils literal"><span class="pre">license.dat</span></code> file and copy the contents into your
 existing Libero software license file with the same Libero license option
 (Disk ID or MAC ID). For example, if you generated a node locked license for
 the SmartHLS tool, you need to add the SmartHLS license file contents into the
 Libero node locked license file.</li>
-<li>Double check that your <code class="docutils literal notranslate"><span class="pre">LM_LICENSE_FILE</span></code> environment variable is set correctly.</li>
+<li>Double check that your <code class="docutils literal"><span class="pre">LM_LICENSE_FILE</span></code> environment variable is set correctly.</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -702,12 +712,48 @@ your Libero license file email for instructions on how to download and install
 your Libero license and software.</p>
 </div>
 </div>
+<div class="section" id="debugging-license-issues">
+<h2>Debugging License Issues<a class="headerlink" href="#debugging-license-issues" title="Permalink to this headline">¶</a></h2>
+<p>If you are having license issues with SmartHLS try the following steps:</p>
+<ol class="arabic">
+<li><p class="first">Double check the <code class="docutils literal"><span class="pre">LM_LICENSE_FILE</span></code> is printed correctly in the SmartHLS license error message:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Error: There is a problem with your SmartHLS feature license.
+Your current environment variable is: LM_LICENSE_FILE=1702@server.domain.com
+Please modify your LM_LICENSE_FILE environment variable and restart SmartHLS.
+</pre></div>
+</div>
+<p>If you changed your <code class="docutils literal"><span class="pre">LM_LICENSE_FILE</span></code> environment variable then you will need to restart the SmartHLS IDE to detect the change.</p>
+</li>
+<li><p class="first">Otherwise, on Windows run Start -&gt; Command Prompt.  In the command prompt, run this command to debug issues checking out the &#8220;SmartHLS&#8221; feature:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">C:\Microchip\Libero_SoC_v2023.1\Designer\bin\lmutil.exe lmdiag SmartHLS</span>
+</pre></div>
+</div>
+<p>Make sure you can see <code class="docutils literal"><span class="pre">This</span> <span class="pre">license</span> <span class="pre">can</span> <span class="pre">be</span> <span class="pre">checked</span> <span class="pre">out</span></code>. For example:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>-----------------------------------------------------
+License file: 1702@server.domain.com
+-----------------------------------------------------
+&quot;SmartHLS&quot; v2022.08, vendor: actlmgrd, expiry: 14-aug-2041
+License server: 10.241.70.175
+floating license  expires: 14-aug-2041
+
+This license can be checked out
+</pre></div>
+</div>
+<p>If not, you will need to update your license.dat file to include the SmartHLS feature line.</p>
+</li>
+<li><p class="first">You can also check how many SmartHLS licenses are in use with:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">C:\Microchip\Libero_SoC_v2023.1\Designer\bin\lmutil.exe lmstat -f SmartHLS</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
 <div class="section" id="when-is-the-license-checked">
 <h2>When is the License Checked?<a class="headerlink" href="#when-is-the-license-checked" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS does not check the license when opening the SmartHLS IDE or when running the standard software flow (compiling/debugging/execution).</p>
-<p>SmartHLS will check for a valid license when <code class="docutils literal notranslate"><span class="pre">Compile</span> <span class="pre">Software</span> <span class="pre">to</span> <span class="pre">Hardware</span></code> is clicked to compile software to hardware:</p>
+<p>SmartHLS will check for a valid license when <code class="docutils literal"><span class="pre">Compile</span> <span class="pre">Software</span> <span class="pre">to</span> <span class="pre">Hardware</span></code> is clicked to compile software to hardware:</p>
 <img alt="_images/icon_hardware_flow.png" class="align-center" src="_images/icon_hardware_flow.png" />
-<p>SmartHLS will also check for a valid license whenever running <cite>shls</cite> commands from the <a class="reference internal" href="userguide.html#cmdline"><span class="std std-ref">SmartHLS Command Line Interface</span></a>.</p>
+<p>SmartHLS will also check for a valid license whenever running <cite>shls</cite> commands from the <a class="reference internal" href="userguide.html#cmdline"><span>SmartHLS Command Line Interface</span></a>.</p>
 </div>
 </div>
 
@@ -755,7 +801,7 @@ your Libero license and software.</p>
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "license_setup.rst.txt".replace(/\.txt/g,'');
+	var pageName = "license_setup.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]
@@ -767,9 +813,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2023.1 documentation&\
-		pub_ver=2023.1&\
-		revision_letter=2023.1&\
+		cover_title=SmartHLS 2023.2 documentation&\
+		pub_ver=2023.2&\
+		revision_letter=2023.2&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

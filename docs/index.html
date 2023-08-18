@@ -25,7 +25,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Overview &mdash; SmartHLS 2023.1 documentation</title>
+  <title>Overview &mdash; SmartHLS 2023.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -500,11 +500,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -518,8 +528,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Previous Releases" href="versions.html" /> 
 </head>
 
@@ -531,7 +539,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.2  </span>
 
 										  </h1>
 								
@@ -593,6 +601,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfvideokit_setup.html">PolarFire Video Kit Setup Instructions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -671,7 +680,7 @@ is an Eclipse-based integrated development environment that takes C++ software c
 Hardware implemented on an FPGA can provide 2-10X performance and power benefits over the same computation running on regular processors.</p>
 <p>SmartHLS includes C/C++ to Verilog high-level synthesis tool and is tested on Windows and Linux 64-bit Operating systems.</p>
 <hr/><p>The following table describes each document shipped with SmartHLS.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="25%" />
 <col width="75%" />
@@ -682,58 +691,58 @@ Hardware implemented on an FPGA can provide 2-10X performance and power benefits
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="gettingstarted.html#getstarted"><span class="std std-ref">Getting Started</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="gettingstarted.html#getstarted"><span>Getting Started</span></a></td>
 <td>Installation and a quick start guide</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="userguide.html#userguide"><span class="std std-ref">User Guide</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="userguide.html#userguide"><span>User Guide</span></a></td>
 <td>How to use SmartHLS to generate hardware</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="optimizationguide.html#optimizationguide"><span class="std std-ref">Optimization Guide</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="optimizationguide.html#optimizationguide"><span>Optimization Guide</span></a></td>
 <td>How to optimize the generated hardware</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="hwarchitecture.html#hwarch"><span class="std std-ref">Hardware Architecture</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="hwarchitecture.html#hwarch"><span>Hardware Architecture</span></a></td>
 <td>Synthesized hardware architecture</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="pragmas.html#pragmas"><span>SmartHLS Pragmas Manual</span></a></td>
 <td>Pragmas manual</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="constraintsmanual.html#constraints"><span class="std std-ref">Constraints Manual</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="constraintsmanual.html#constraints"><span>Constraints Manual</span></a></td>
 <td>Constraints manual</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="license_setup.html#license-setup"><span class="std std-ref">SmartHLS License</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="license_setup.html#license-setup"><span>SmartHLS License</span></a></td>
 <td>How to obtain a free license for SmartHLS</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="devices.html#devices"><span class="std std-ref">Supported FPGA Devices</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="devices.html#devices"><span>Supported FPGA Devices</span></a></td>
 <td>Supported FPGA devices</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="libero.html#libero"><span class="std std-ref">Supported Libero version</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="libero.html#libero"><span>Supported Libero version</span></a></td>
 <td>Supported Libero version</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="faq.html#faq"><span class="std std-ref">Frequently Asked Questions</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="faq.html#faq"><span>Frequently Asked Questions</span></a></td>
 <td>Frequently asked questions</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="vhls_to_shls.html#vhls-to-shls"><span class="std std-ref">SmartHLS Migration Guide</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="vhls_to_shls.html#vhls-to-shls"><span>SmartHLS Migration Guide</span></a></td>
 <td>SmartHLS Migration Guide</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="releasenotes.html#release"><span class="std std-ref">Release Notes</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="releasenotes.html#release"><span>Release Notes</span></a></td>
 <td>New features and known problems with each release</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="techsupport.html#techsupport"><span class="std std-ref">Technical Support</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="techsupport.html#techsupport"><span>Technical Support</span></a></td>
 <td>How to create tech support cases and post to our forum</td>
 </tr>
 </tbody>
 </table>
 <p>For detailed trainings on using SmartHLS and example applications, see our <a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a>
 repository.</p>
-<div class="toctree-wrapper compound">
+<div class="toctree-wrapper compound" id="user-guide-versions">
 </div>
-<div class="toctree-wrapper compound">
+<div class="toctree-wrapper compound" id="introduction">
 </div>
-<div class="toctree-wrapper compound">
+<div class="toctree-wrapper compound" id="working-with-smarthls">
 </div>
-<div class="toctree-wrapper compound">
+<div class="toctree-wrapper compound" id="additional-references">
 </div>
-<div class="toctree-wrapper compound">
+<div class="toctree-wrapper compound" id="smarthls-examples">
 </div>
 </div>
 
@@ -781,7 +790,7 @@ repository.</p>
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "index.rst.txt".replace(/\.txt/g,'');
+	var pageName = "index.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]
@@ -793,9 +802,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2023.1 documentation&\
-		pub_ver=2023.1&\
-		revision_letter=2023.1&\
+		cover_title=SmartHLS 2023.2 documentation&\
+		pub_ver=2023.2&\
+		revision_letter=2023.2&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

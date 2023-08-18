@@ -23,7 +23,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>Frequently Asked Questions &mdash; SmartHLS 2023.1 documentation</title>
+  <title>Frequently Asked Questions &mdash; SmartHLS 2023.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -498,11 +498,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -516,8 +526,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="SmartHLS Migration Guide" href="vhls_to_shls.html" />
     <link rel="prev" title="Supported Libero version" href="libero.html" /> 
 </head>
@@ -530,7 +538,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.2  </span>
 
 										  </h1>
 								
@@ -588,10 +596,11 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="license_setup.html">SmartHLS License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libero.html">Supported Libero version</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfvideokit_setup.html">PolarFire Video Kit Setup Instructions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -663,24 +672,24 @@ display:none;
 <span id="faq"></span><h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
 <p><strong>What is the input software language to SmartHLS?</strong></p>
 <blockquote>
-<div>The input language to SmartHLS is C/C++. For compiling to hardware, SmartHLS supports most of C/C++, but does not support recursive functions or dynamic memory (malloc, calloc, new, etc). Also we do not support the STL C++ library (vector, map, set, etc.) and only support a subset of the C math library (see <a class="reference internal" href="userguide.html#c-math-library"><span class="std std-ref">Math Library (math.h)</span></a>).
-These unsupported software constructs can be in the software testbench portion of the code, outside of the top-level function to be compiled to hardware (see <a class="reference internal" href="userguide.html#custom-top-level"><span class="std std-ref">Specifying the Top-level Function</span></a>).</div></blockquote>
+<div>The input language to SmartHLS is C/C++. For compiling to hardware, SmartHLS supports most of C/C++, but does not support recursive functions or dynamic memory (malloc, calloc, new, etc). Also we do not support the STL C++ library (vector, map, set, etc.) and only support a subset of the C math library (see <a class="reference internal" href="userguide.html#c-math-library"><span>Math Library (math.h)</span></a>).
+These unsupported software constructs can be in the software testbench portion of the code, outside of the top-level function to be compiled to hardware (see <a class="reference internal" href="userguide.html#custom-top-level"><span>Specifying the Top-level Function</span></a>).</div></blockquote>
 <p><strong>What is the generated RTL language?</strong></p>
 <blockquote>
 <div>Currently, SmartHLS only supports Verilog HDL output.</div></blockquote>
 <p><strong>Which FPGAs do you support?</strong></p>
 <blockquote>
-<div>See: <a class="reference internal" href="devices.html#devices"><span class="std std-ref">Supported FPGA Devices</span></a></div></blockquote>
+<div>See: <a class="reference internal" href="devices.html#devices"><span>Supported FPGA Devices</span></a></div></blockquote>
 <p><strong>How can I get technical support?</strong></p>
 <blockquote>
-<div>See: <a class="reference internal" href="techsupport.html#techsupport"><span class="std std-ref">Technical Support</span></a></div></blockquote>
+<div>See: <a class="reference internal" href="techsupport.html#techsupport"><span>Technical Support</span></a></div></blockquote>
 <p><strong>What if running my program leads to segmentation fault due to lack of available stack space?</strong></p>
 <blockquote>
 <div><p>Linux has a default stack size of 8 MBs. As a result, using more than 8 MBs of stack in your code will lead to page fault. To overcome this issue, you can do one of the following:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Use the <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-s</span> <span class="pre">NEW_STACK_SIZE</span></code> command in terminal to increase stack limit.</li>
-<li>Declare your large variables as <code class="docutils literal notranslate"><span class="pre">static</span></code>. By using the <code class="docutils literal notranslate"><span class="pre">static</span></code> key word, the variables are moved to heap and no longer occupy stack space.</li>
+<li>Use the <code class="docutils literal"><span class="pre">ulimit</span> <span class="pre">-s</span> <span class="pre">NEW_STACK_SIZE</span></code> command in terminal to increase stack limit.</li>
+<li>Declare your large variables as <code class="docutils literal"><span class="pre">static</span></code>. By using the <code class="docutils literal"><span class="pre">static</span></code> key word, the variables are moved to heap and no longer occupy stack space.</li>
 </ol>
 </div></blockquote>
 </div></blockquote>
@@ -730,7 +739,7 @@ These unsupported software constructs can be in the software testbench portion o
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "faq.rst.txt".replace(/\.txt/g,'');
+	var pageName = "faq.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]
@@ -742,9 +751,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2023.1 documentation&\
-		pub_ver=2023.1&\
-		revision_letter=2023.1&\
+		cover_title=SmartHLS 2023.2 documentation&\
+		pub_ver=2023.2&\
+		revision_letter=2023.2&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

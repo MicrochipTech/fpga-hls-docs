@@ -41,6 +41,50 @@ Please follow the below instructions to generate and install SmartHLS tool licen
     your Libero license file email for instructions on how to download and install
     your Libero license and software.
 
+
+Debugging License Issues
+-----------------------------
+
+If you are having license issues with SmartHLS try the following steps:
+
+1. Double check the ``LM_LICENSE_FILE`` is printed correctly in the SmartHLS license error message:
+
+   .. code-block:: text
+
+            Error: There is a problem with your SmartHLS feature license.
+            Your current environment variable is: LM_LICENSE_FILE=1702@server.domain.com
+            Please modify your LM_LICENSE_FILE environment variable and restart SmartHLS.
+
+   If you changed your ``LM_LICENSE_FILE`` environment variable then you will need to restart the SmartHLS IDE to detect the change. 
+
+2. Otherwise, on Windows run Start -> Command Prompt.  In the command prompt, run this command to debug issues checking out the "SmartHLS" feature:
+
+   .. code-block:: console
+
+            C:\Microchip\Libero_SoC_v2023.1\Designer\bin\lmutil.exe lmdiag SmartHLS
+
+   Make sure you can see ``This license can be checked out``. For example:
+
+   .. code-block:: text
+
+            -----------------------------------------------------
+            License file: 1702@server.domain.com
+            -----------------------------------------------------
+            "SmartHLS" v2022.08, vendor: actlmgrd, expiry: 14-aug-2041
+            License server: 10.241.70.175
+            floating license  expires: 14-aug-2041
+
+            This license can be checked out
+
+   If not, you will need to update your license.dat file to include the SmartHLS feature line.
+
+3. You can also check how many SmartHLS licenses are in use with:
+
+   .. code-block:: console
+
+            C:\Microchip\Libero_SoC_v2023.1\Designer\bin\lmutil.exe lmstat -f SmartHLS
+
+
 When is the License Checked?
 -----------------------------
 
@@ -53,3 +97,4 @@ SmartHLS will check for a valid license when ``Compile Software to Hardware`` is
 
 
 SmartHLS will also check for a valid license whenever running `shls` commands from the :ref:`cmdline`.
+

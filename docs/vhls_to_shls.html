@@ -23,7 +23,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>SmartHLS Migration Guide &mdash; SmartHLS 2023.1 documentation</title>
+  <title>SmartHLS Migration Guide &mdash; SmartHLS 2023.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -498,11 +498,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -516,8 +526,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Precompiled Software" href="precompiled_sw.html" />
     <link rel="prev" title="Frequently Asked Questions" href="faq.html" /> 
 </head>
@@ -530,7 +538,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.2  </span>
 
 										  </h1>
 								
@@ -589,7 +597,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="devices.html">Supported FPGA Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libero.html">Supported Libero version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SmartHLS Migration Guide</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">SmartHLS Migration Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pragmas">Pragmas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#libraries">Libraries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#arbitrary-precision-data-types">Arbitrary Precision Data Types</a></li>
@@ -602,6 +610,7 @@ display:none;
 </li>
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfvideokit_setup.html">PolarFire Video Kit Setup Instructions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -690,55 +699,55 @@ in SmartHLS.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>aggregate, data_pack</td>
-<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-impl-pack"><span class="std std-ref">Struct Variable/Argument Packing</span></a> pragmas.</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-impl-pack"><span>Struct Variable/Argument Packing</span></a> pragmas.</td>
 </tr>
 <tr class="row-odd"><td>allocation</td>
 <td><div class="first last line-block">
-<div class="line">A global constraint of operation resources can be set via <a class="reference internal" href="constraintsmanual.html#set-resource-constraint"><span class="std std-ref">set_resource_constraint</span></a>;
+<div class="line">A global constraint of operation resources can be set via <a class="reference internal" href="constraintsmanual.html#set-resource-constraint"><span>set_resource_constraint</span></a>;
 constraining the operation resource within a function, a loop or a block of code is not yet available.</div>
-<div class="line">Functions that are not inlined (automatically by SmartHLS tool or specified via the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span class="std std-ref">Inline Function</span></a>
+<div class="line">Functions that are not inlined (automatically by SmartHLS tool or specified via the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span>Inline Function</span></a>
 pragma) always have a single RTL module instance in hardware, and it is shared by all callers.
-Replication of a function instance in hardware can be achieved by the <a class="reference internal" href="pragmas.html#pragma-function-replicate"><span class="std std-ref">Replicate Function</span></a> and <a class="reference internal" href="pragmas.html#pragma-function-inline"><span class="std std-ref">Inline Function</span></a> pragmas.
-In the case of <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">multi-threading</span></a>, each thread of a function creates an instance of
+Replication of a function instance in hardware can be achieved by the <a class="reference internal" href="pragmas.html#pragma-function-replicate"><span>Replicate Function</span></a> and <a class="reference internal" href="pragmas.html#pragma-function-inline"><span>Inline Function</span></a> pragmas.
+In the case of <a class="reference internal" href="userguide.html#pthreads-multithreading"><span>multi-threading</span></a>, each thread of a function creates an instance of
 the corresponding RTL module.</div>
 </div>
 </td>
 </tr>
 <tr class="row-even"><td>array_partition</td>
-<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a> pragmas.</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span>Partition Top-Level Interface</span></a> and <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span>Partition Memory</span></a> pragmas.</td>
 </tr>
 <tr class="row-odd"><td>dataflow</td>
-<td><a class="reference internal" href="userguide.html#dataflow-parallelism"><span class="std std-ref">Data Flow Parallelism</span></a> and <a class="reference internal" href="userguide.html#pthreads-multithreading"><span class="std std-ref">Multi-threading</span></a> can be used to implement a task-level (dataflow) pipeline.</td>
+<td><a class="reference internal" href="userguide.html#dataflow-parallelism"><span>Data Flow Parallelism</span></a> and <a class="reference internal" href="userguide.html#pthreads-multithreading"><span>Multi-threading</span></a> can be used to implement a task-level (dataflow) pipeline.</td>
 </tr>
 <tr class="row-even"><td>disaggregate</td>
-<td>See the <code class="docutils literal notranslate"><span class="pre">struct_fields</span></code> option of the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span class="std std-ref">Partition Top-Level Interface</span></a> pragma.</td>
+<td>See the <code class="docutils literal"><span class="pre">struct_fields</span></code> option of the <a class="reference internal" href="pragmas.html#pragma-memory-partition-argument"><span>Partition Top-Level Interface</span></a> pragma.</td>
 </tr>
 <tr class="row-odd"><td>expression_balance</td>
-<td>See <a class="reference internal" href="constraintsmanual.html#latency-reduction"><span class="std std-ref">LATENCY_REDUCTION</span></a> TCL settings to control the expression balance optimization.</td>
+<td>See <a class="reference internal" href="constraintsmanual.html#latency-reduction"><span>LATENCY_REDUCTION</span></a> TCL settings to control the expression balance optimization.</td>
 </tr>
 <tr class="row-even"><td>function_instantiate</td>
-<td>The equivalent optimization can be achieved with the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span class="std std-ref">Inline Function</span></a> pragma or C++ template functions.</td>
+<td>The equivalent optimization can be achieved with the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span>Inline Function</span></a> pragma or C++ template functions.</td>
 </tr>
 <tr class="row-odd"><td>inline</td>
-<td>See the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span class="std std-ref">Inline Function</span></a> pragma.</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-function-inline"><span>Inline Function</span></a> pragma.</td>
 </tr>
 <tr class="row-even"><td>interface</td>
-<td>See <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> for details about supported interfaces and corresponding pragmas.</td>
+<td>See <a class="reference internal" href="userguide.html#rtl-interface"><span>Top-Level RTL Interface</span></a> for details about supported interfaces and corresponding pragmas.</td>
 </tr>
 <tr class="row-odd"><td>pipeline</td>
-<td>See <a class="reference internal" href="pragmas.html#pragma-function-pipeline"><span class="std std-ref">Pipeline Function</span></a> and <a class="reference internal" href="pragmas.html#pragma-loop-pipeline"><span class="std std-ref">Pipeline Loop</span></a> pragmas.</td>
+<td>See <a class="reference internal" href="pragmas.html#pragma-function-pipeline"><span>Pipeline Function</span></a> and <a class="reference internal" href="pragmas.html#pragma-loop-pipeline"><span>Pipeline Loop</span></a> pragmas.</td>
 </tr>
 <tr class="row-even"><td>stable</td>
-<td>See the <code class="docutils literal notranslate"><span class="pre">stable</span></code> option of the <a class="reference internal" href="pragmas.html#pragma-interface-scalar-argument"><span class="std std-ref">Scalar Argument Interface</span></a> pragma.</td>
+<td>See the <code class="docutils literal"><span class="pre">stable</span></code> option of the <a class="reference internal" href="pragmas.html#pragma-interface-scalar-argument"><span>Scalar Argument Interface</span></a> pragma.</td>
 </tr>
 <tr class="row-odd"><td>stream</td>
-<td>Streaming interface is implemented via the <a class="reference internal" href="userguide.html#rtl-interface-fifo-argument"><span class="std std-ref">hls::FIFO Argument</span></a>.</td>
+<td>Streaming interface is implemented via the <a class="reference internal" href="userguide.html#rtl-interface-fifo-argument"><span>hls::FIFO Argument</span></a>.</td>
 </tr>
 <tr class="row-even"><td>top</td>
-<td>See the <a class="reference internal" href="pragmas.html#pragma-function-top"><span class="std std-ref">Set Top-Level Function</span></a> pragma.</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-function-top"><span>Set Top-Level Function</span></a> pragma.</td>
 </tr>
 <tr class="row-odd"><td>unroll</td>
-<td>See the <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a> pragma.</td>
+<td>See the <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span>Unroll Loop</span></a> pragma.</td>
 </tr>
 </tbody>
 </table>
@@ -751,16 +760,16 @@ protocol, reset, shared.</p>
 <h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="arbitrary-precision-data-types">
 <h3>Arbitrary Precision Data Types<a class="headerlink" href="#arbitrary-precision-data-types" title="Permalink to this headline">¶</a></h3>
-<p>Similar to Vitis/Vivado HLS, SmartHLS provides <a class="reference internal" href="userguide.html#ap-int"><span class="std std-ref">C++ Arbitrary Precision Integer Library</span></a> and <a class="reference internal" href="userguide.html#ap-fixpt"><span class="std std-ref">C++ Arbitrary Precision Fixed Point Library</span></a>.</p>
+<p>Similar to Vitis/Vivado HLS, SmartHLS provides <a class="reference internal" href="userguide.html#ap-int"><span>C++ Arbitrary Precision Integer Library</span></a> and <a class="reference internal" href="userguide.html#ap-fixpt"><span>C++ Arbitrary Precision Fixed Point Library</span></a>.</p>
 </div>
 <div class="section" id="streaming-library">
 <h3>Streaming Library<a class="headerlink" href="#streaming-library" title="Permalink to this headline">¶</a></h3>
-<p>Similar to the <code class="docutils literal notranslate"><span class="pre">hls::stream</span></code> template class in Vitis/Vivado HLS, SmartHLS
-provides a <code class="docutils literal notranslate"><span class="pre">hls::FIFO</span></code> template class in the <a class="reference internal" href="userguide.html#streaming-lib"><span class="std std-ref">Streaming Library</span></a>.</p>
+<p>Similar to the <code class="docutils literal"><span class="pre">hls::stream</span></code> template class in Vitis/Vivado HLS, SmartHLS
+provides a <code class="docutils literal"><span class="pre">hls::FIFO</span></code> template class in the <a class="reference internal" href="userguide.html#streaming-lib"><span>Streaming Library</span></a>.</p>
 </div>
 <div class="section" id="math-library">
 <h3>Math Library<a class="headerlink" href="#math-library" title="Permalink to this headline">¶</a></h3>
-<p>SmartHLS supports a subset of functions in the <a class="reference internal" href="userguide.html#c-math-library"><span class="std std-ref">Math Library (math.h)</span></a>, but does
+<p>SmartHLS supports a subset of functions in the <a class="reference internal" href="userguide.html#c-math-library"><span>Math Library (math.h)</span></a>, but does
 not yet have a math function library that is optimized for hardware
 implementation with customizable arbitrary precisions.</p>
 </div>
@@ -821,7 +830,7 @@ prioritize our production plan.</p>
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "vhls_to_shls.rst.txt".replace(/\.txt/g,'');
+	var pageName = "vhls_to_shls.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]
@@ -833,9 +842,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2023.1 documentation&\
-		pub_ver=2023.1&\
-		revision_letter=2023.1&\
+		cover_title=SmartHLS 2023.2 documentation&\
+		pub_ver=2023.2&\
+		revision_letter=2023.2&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \

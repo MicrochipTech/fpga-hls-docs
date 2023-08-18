@@ -23,7 +23,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   
-  <title>SmartHLS Pragmas Manual &mdash; SmartHLS 2023.1 documentation</title>
+  <title>SmartHLS Pragmas Manual &mdash; SmartHLS 2023.2 documentation</title>
   
 <!-- Header information-->
 <style type="text/css">svg:not(:root).svg-inline--fa {
@@ -498,11 +498,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -516,8 +526,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Constraints Manual" href="constraintsmanual.html" />
     <link rel="prev" title="Hardware Architecture" href="hwarchitecture.html" /> 
 </head>
@@ -530,7 +538,7 @@ display:none;
 								<header _ngcontent-hes-c23="" style="background: white;"><div _ngcontent-hes-c23="" id="container" style="background: white;
 "><div _ngcontent-hes-c23="" id="mc_header_container"><div _ngcontent-hes-c23="" id="mc_header_logo" class="float-left"><a _ngcontent-hes-c23="" href="https://www.microchip.com"><img _ngcontent-hes-c23="" file="Microchip_logo.png" src="_static/css/Microchip_logo.png"></a></div><div _ngcontent-hes-c23="" class="text-center tablet-hide mobile-hide"><h1 id="booktitle" class="booktitle" style="margin-top:10px;display:block;"> 
 								          
-											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.1  </span>
+											<span style="padding-top:15px;display:block;">SmartHLS  - v2023.2  </span>
 
 										  </h1>
 								
@@ -583,9 +591,10 @@ display:none;
 </ul>
 <p class="caption"><span class="caption-text">Additional References</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SmartHLS Pragmas Manual</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">SmartHLS Pragmas Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pipeline-loop">Pipeline Loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#unroll-loop">Unroll Loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bound-loop">Bound Loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inline-function">Inline Function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#noinline-function">Noinline Function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#replicate-function">Replicate Function</a></li>
@@ -616,6 +625,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfvideokit_setup.html">PolarFire Video Kit Setup Instructions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
@@ -688,32 +698,32 @@ display:none;
 <p>SmartHLS accepts pragma directives in the source code to guide the hardware generation.
 This reference section explains all of the pragmas available for SmartHLS.</p>
 <p>The pragmas follow the following syntax:</p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">&lt;category&gt;</span> <span class="pre">&lt;feature&gt;</span> <span class="pre">&lt;parameter&gt;(&lt;value&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">&lt;category&gt;</span> <span class="pre">&lt;feature&gt;</span> <span class="pre">&lt;parameter&gt;(&lt;value&gt;)</span></code></p>
 <p>The category refers to the general usage class of the pragma. Each pragma has one of the following categories:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">function</span></code>: configure a hardware function.</li>
-<li><code class="docutils literal notranslate"><span class="pre">loop</span></code>: configure loop optimizations.</li>
-<li><code class="docutils literal notranslate"><span class="pre">interface</span></code>: configure hardware interfaces (arguments / global variables).</li>
-<li><code class="docutils literal notranslate"><span class="pre">memory</span></code>: configure hardware memory implementation.</li>
+<li><code class="docutils literal"><span class="pre">function</span></code>: configure a hardware function.</li>
+<li><code class="docutils literal"><span class="pre">loop</span></code>: configure loop optimizations.</li>
+<li><code class="docutils literal"><span class="pre">interface</span></code>: configure hardware interfaces (arguments / global variables).</li>
+<li><code class="docutils literal"><span class="pre">memory</span></code>: configure hardware memory implementation.</li>
 </ul>
 </div></blockquote>
 <p>Each category can have different configurable features.
 Some categories / features have parameters to passed to the pragma.
 A parameter can be optional with a default behaviour if not specified.</p>
-<p>The value of a parameter can be either integer, boolean (<code class="docutils literal notranslate"><span class="pre">true|false</span></code>),
+<p>The value of a parameter can be either integer, boolean (<code class="docutils literal"><span class="pre">true|false</span></code>),
 name (variable / argument), or a set of pre-specified values.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>For integer parameters, the user is allowed to use constants
 (or expressions of constants) defined using <cite>#define</cite> directive.
 For example, this is allowed:</p>
-<div class="last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define N 10</span>
-<span class="kt">void</span> <span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
-  <span class="cp">#pragma HLS loop unroll factor(N+1)</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">...</span>
-<span class="p">}</span>
+<div class="last highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define N 10</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">fun</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma HLS loop unroll factor(N+1)</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -730,7 +740,7 @@ will cause an error. Each pragma can has one of the following positions:</p>
 <div class="section" id="pipeline-loop">
 <span id="pragma-loop-pipeline"></span><h2>Pipeline Loop<a class="headerlink" href="#pipeline-loop" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">pipeline</span> <span class="pre">II(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">pipeline</span> <span class="pre">II(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma enables pipelining for a given loop in the code. Loop pipelining allows a new iteration of the loop to begin before the current one has completed, achieving higher throughput. It can be specified to pipeline a single loop or a nested loop. If specified on a single loop or on a inner loop of a nested loop, that loop will be pipelined. If specified on the outer loop of a nested loop, the outer loop will be pipelined and all of its inner loops will be automatically unrolled.</p>
 <p><strong>Parameters</strong></p>
@@ -751,7 +761,7 @@ will cause an error. Each pragma can has one of the following positions:</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">II</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">II</span></code></td>
 <td>Integer</td>
 <td>Yes</td>
 <td>1</td>
@@ -763,17 +773,17 @@ will cause an error. Each pragma can has one of the following positions:</p>
 <p>Before the beginning of the loop.
 If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline II(2)</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline II(2)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="nl">LOOP_LABEL</span><span class="p">:</span><span class="w"></span>
 <span class="cp">#pragma HLS loop pipeline</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -781,7 +791,7 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="unroll-loop">
 <span id="pragma-loop-unroll"></span><h2>Unroll Loop<a class="headerlink" href="#unroll-loop" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
 <p>Specifies a loop to be unrolled. The factor indicates how many times to unroll the loop. If it is not specified, or specified as N (the total number of loop iterations), the loop will be fully unrolled. If it is specified as 2, the loop will be unrolled 2 times, where the number of loop iterations will be halved and the loop body will be replicated twice. If it is specified as 1, the loop will <em>NOT</em> be unrolled.</p>
 <p><strong>Parameters</strong></p>
@@ -802,7 +812,7 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">factor</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">factor</span></code></td>
 <td>Integer</td>
 <td>Yes</td>
 <td>N (fully unroll)</td>
@@ -814,10 +824,61 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p>Before the beginning of the loop.
 If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(1)</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(1)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="bound-loop">
+<span id="pragma-loop-bound"></span><h2>Bound Loop<a class="headerlink" href="#bound-loop" title="Permalink to this headline">¶</a></h2>
+<p><strong>Syntax</strong></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">bounds</span> <span class="pre">lower(&lt;int&gt;)</span> <span class="pre">upper(&lt;int&gt;)</span></code></p>
+<p><strong>Description</strong></p>
+<p>Specifies the bounds on the number of times a loop will iterate. This pragma does not affect the synthesized circuit. It&#8217;s only used to improve reporting. By manually specifying bounds, the overall loop latency can be computed and reported.</p>
+<p><strong>Parameters</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="17%" />
+<col width="19%" />
+<col width="17%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+<th class="head">Optional</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">lower</span></code></td>
+<td>Integer</td>
+<td>No</td>
+<td>&nbsp;</td>
+<td>Lower bound</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">upper</span></code></td>
+<td>Integer</td>
+<td>No</td>
+<td>&nbsp;</td>
+<td>Upper bound</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Position</strong></p>
+<p>Before the beginning of the loop.
+If there is a loop label, the pragma should be placed after the label.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop bounds lower(5) upper(10)</span>
+<span class="c1">// Here, the bounds tell us the trip count (number of iterations) will be between 5 and 10 inclusively.</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -825,16 +886,16 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="inline-function">
 <span id="pragma-function-inline"></span><h2>Inline Function<a class="headerlink" href="#inline-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">inline</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">inline</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma forces a given function to be inlined.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function inline</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -842,16 +903,16 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="noinline-function">
 <span id="pragma-function-noinline"></span><h2>Noinline Function<a class="headerlink" href="#noinline-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">noinline</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">noinline</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma prevents a given function from being inlined.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function noinline</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -859,16 +920,16 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="replicate-function">
 <span id="pragma-function-replicate"></span><h2>Replicate Function<a class="headerlink" href="#replicate-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">replicate</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">replicate</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma specifies a function to be replicated every time it is called. By default, when the circuit is not pipelined, SmartHLS creates a single instance for each function which is shared across multiple calls to the function. When using this pragma on the function, SmartHLS will create a new instance of the function for every function call.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function replicate</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -876,9 +937,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="flatten-function">
 <span id="pragma-function-flatten"></span><h2>Flatten Function<a class="headerlink" href="#flatten-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">flatten</span> <span class="pre">branchless(true|false)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">flatten</span> <span class="pre">branchless(true|false)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma unrolls all loops and inlines all subfunctions for a given function. If the <code class="docutils literal notranslate"><span class="pre">branchless</span></code> option is set to true, all branches (e.g., if-else, switch) in the specified function will also be flattened to allow more parallelism between operations, specifically between the operations that are under different-yet-independent conditions.</p>
+<p>This pragma unrolls all loops and inlines all subfunctions for a given function. If the <code class="docutils literal"><span class="pre">branchless</span></code> option is set to true, all branches (e.g., if-else, switch) in the specified function will also be flattened to allow more parallelism between operations, specifically between the operations that are under different-yet-independent conditions.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -897,21 +958,21 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">branchless</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">branchless</span></code></td>
 <td>true|false</td>
 <td>Yes</td>
-<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">true</span></code> to flatten branch statements</td>
+<td><code class="docutils literal"><span class="pre">true</span></code></td>
+<td><code class="docutils literal"><span class="pre">true</span></code> to flatten branch statements</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function flatten branchless(true)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -919,16 +980,16 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="set-top-level-function">
 <span id="pragma-function-top"></span><h2>Set Top-Level Function<a class="headerlink" href="#set-top-level-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">top</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">top</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma specifies the top-level C/C++ function. The top-level function and all of its descendant functions will be compiled to hardware.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -936,7 +997,7 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="pipeline-function">
 <span id="pragma-function-pipeline"></span><h2>Pipeline Function<a class="headerlink" href="#pipeline-function" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">pipeline</span> <span class="pre">II(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">pipeline</span> <span class="pre">II(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma enables pipelining for a given function in the code. Function pipelining allows a new invocation of a function to begin before the current one has completed, achieving higher throughput.</p>
 <p><strong>Parameters</strong></p>
@@ -957,7 +1018,7 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">II</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">II</span></code></td>
 <td>Integer</td>
 <td>Yes</td>
 <td>1</td>
@@ -968,16 +1029,16 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function pipeline</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">conv</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[])</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">conv</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function pipeline II(3)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -985,29 +1046,28 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="dataflow">
 <span id="pragma-dataflow"></span><h2>Dataflow<a class="headerlink" href="#dataflow" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">dataflow</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">dataflow</span></code></p>
 <p><strong>Description</strong></p>
 <p>Specifies that a function should execute using dataflow parallelism.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">canny</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">input_fifo</span><span class="p">,</span>
-           <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output_fifo</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">canny</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">input_fifo</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">output_fifo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function dataflow</span>
 
 <span class="cp">#pragma HLS dataflow_channel variable(output_gf) type(fifo)</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">output_gf</span><span class="w"> </span><span class="p">[</span><span class="n">HEIGHT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WIDTH</span><span class="p">];</span><span class="w"></span>
 <span class="cp">#pragma HLS dataflow_channel variable(output_sf) type(fifo)</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">output_sf</span><span class="w"> </span><span class="p">[</span><span class="n">HEIGHT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WIDTH</span><span class="p">];</span><span class="w"></span>
 <span class="cp">#pragma HLS dataflow_channel variable(output_nm) type(fifo)</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">output_nm</span><span class="w"> </span><span class="p">[</span><span class="n">HEIGHT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WIDTH</span><span class="p">];</span><span class="w"></span>
 
-    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">output_gf</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
-    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">output_sf</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
-    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">output_nm</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
-
-    <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">input_fifo</span><span class="p">,</span> <span class="n">output_gf</span><span class="p">);</span>
-    <span class="n">sobel_filter</span><span class="p">(</span><span class="n">output_gf</span><span class="p">,</span> <span class="n">output_sf</span><span class="p">);</span>
-    <span class="n">nonmaximum_suppression</span><span class="p">(</span><span class="n">output_sf</span><span class="p">,</span> <span class="n">output_nm</span><span class="p">);</span>
-    <span class="n">hysteresis_filter</span><span class="p">(</span><span class="n">output_nm</span><span class="p">,</span> <span class="n">output_fifo</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">input_fifo</span><span class="p">,</span><span class="w"> </span><span class="n">output_gf</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">sobel_filter</span><span class="p">(</span><span class="n">output_gf</span><span class="p">,</span><span class="w"> </span><span class="n">output_sf</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">nonmaximum_suppression</span><span class="p">(</span><span class="n">output_sf</span><span class="p">,</span><span class="w"> </span><span class="n">output_nm</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">hysteresis_filter</span><span class="p">(</span><span class="n">output_nm</span><span class="p">,</span><span class="w"> </span><span class="n">output_fifo</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1015,7 +1075,7 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="dataflow-channel">
 <span id="pragma-dataflow-channel"></span><h2>Dataflow Channel<a class="headerlink" href="#dataflow-channel" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">dataflow_channel</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(fifo|shared_buffer|double_buffer)</span> <span class="pre">depth(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">dataflow_channel</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(fifo|shared_buffer|double_buffer)</span> <span class="pre">depth(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
 <p>Specifies that a variable in a dataflow function should be converted to use a particular channel type.</p>
 <p><strong>Parameters</strong></p>
@@ -1036,19 +1096,19 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">variable</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Variable Name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">fifo|shared_buffer|double_buffer</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">type</span></code></td>
+<td><code class="docutils literal"><span class="pre">fifo|shared_buffer|double_buffer</span></code></td>
 <td>No</td>
-<td><code class="docutils literal notranslate"><span class="pre">double_buffer</span></code></td>
+<td><code class="docutils literal"><span class="pre">double_buffer</span></code></td>
 <td>Channel type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">depth</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">depth</span></code></td>
 <td>Integer</td>
 <td>Yes</td>
 <td>2</td>
@@ -1060,23 +1120,22 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p>Before the variable declaration.</p>
 <p><strong>Examples</strong></p>
 <p>FIFO channels are used for a Canny edge detector, since the pixels are processed in sequential order.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">canny</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">input_fifo</span><span class="p">,</span>
-           <span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output_fifo</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">canny</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">input_fifo</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">output_fifo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function dataflow</span>
 
 <span class="cp">#pragma HLS dataflow_channel variable(output_gf) type(fifo)</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">output_gf</span><span class="w"> </span><span class="p">[</span><span class="n">HEIGHT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WIDTH</span><span class="p">];</span><span class="w"></span>
 <span class="cp">#pragma HLS dataflow_channel variable(output_sf) type(fifo)</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">output_sf</span><span class="w"> </span><span class="p">[</span><span class="n">HEIGHT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WIDTH</span><span class="p">];</span><span class="w"></span>
 <span class="cp">#pragma HLS dataflow_channel variable(output_nm) type(fifo)</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">output_nm</span><span class="w"> </span><span class="p">[</span><span class="n">HEIGHT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WIDTH</span><span class="p">];</span><span class="w"></span>
 
-    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">output_gf</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
-    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">output_sf</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
-    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">output_nm</span> <span class="p">[</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">];</span>
-
-    <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">input_fifo</span><span class="p">,</span> <span class="n">output_gf</span><span class="p">);</span>
-    <span class="n">sobel_filter</span><span class="p">(</span><span class="n">output_gf</span><span class="p">,</span> <span class="n">output_sf</span><span class="p">);</span>
-    <span class="n">nonmaximum_suppression</span><span class="p">(</span><span class="n">output_sf</span><span class="p">,</span> <span class="n">output_nm</span><span class="p">);</span>
-    <span class="n">hysteresis_filter</span><span class="p">(</span><span class="n">output_nm</span><span class="p">,</span> <span class="n">output_fifo</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">input_fifo</span><span class="p">,</span><span class="w"> </span><span class="n">output_gf</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">sobel_filter</span><span class="p">(</span><span class="n">output_gf</span><span class="p">,</span><span class="w"> </span><span class="n">output_sf</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">nonmaximum_suppression</span><span class="p">(</span><span class="n">output_sf</span><span class="p">,</span><span class="w"> </span><span class="n">output_nm</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">hysteresis_filter</span><span class="p">(</span><span class="n">output_nm</span><span class="p">,</span><span class="w"> </span><span class="n">output_fifo</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1084,9 +1143,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="scalar-argument-interface">
 <span id="pragma-interface-scalar-argument"></span><h2>Scalar Argument Interface<a class="headerlink" href="#scalar-argument-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(&lt;simple|axi_target&gt;)</span> <span class="pre">stable(&lt;false|true&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(&lt;simple|axi_target&gt;)</span> <span class="pre">stable(&lt;false|true&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma configures the RTL interface for a <a class="reference internal" href="userguide.html#scalar-arg-interface"><span class="std std-ref">scalar argument</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p>This pragma configures the RTL interface for a <a class="reference internal" href="userguide.html#scalar-arg-interface"><span>scalar argument</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span>specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1105,34 +1164,34 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">argument</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Argument name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">type</span></code></td>
+<td><code class="docutils literal"><span class="pre">simple|axi_target</span></code></td>
 <td>No</td>
-<td><code class="docutils literal notranslate"><span class="pre">simple</span></code></td>
+<td><code class="docutils literal"><span class="pre">simple</span></code></td>
 <td>Interface type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stable</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">stable</span></code></td>
+<td><code class="docutils literal"><span class="pre">true|false</span></code></td>
 <td>Yes</td>
-<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
-<td>Only available for <code class="docutils literal notranslate"><span class="pre">simple</span></code> type; <code class="docutils literal notranslate"><span class="pre">true</span></code> if the argument is stable.</td>
+<td><code class="docutils literal"><span class="pre">false</span></code></td>
+<td>Only available for <code class="docutils literal"><span class="pre">simple</span></code> type; <code class="docutils literal"><span class="pre">true</span></code> if the argument is stable.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(simple) stable(true)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1140,10 +1199,10 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="memory-interface-for-pointer-argument-global-variable">
 <span id="pragma-interface-memory"></span><h2>Memory Interface for Pointer Argument/Global Variable<a class="headerlink" href="#memory-interface-for-pointer-argument-global-variable" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(memory)</span> <span class="pre">num_elements(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the memory interface type for a pointer (including array, struct, class types) argument or shared global variable. For more details, see the <a class="reference internal" href="userguide.html#memory-interface"><span class="std std-ref">memory interface section</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p>This pragma specifies the memory interface type for a pointer (including array, struct, class types) argument or shared global variable. For more details, see the <a class="reference internal" href="userguide.html#memory-interface"><span>memory interface section</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span>specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1162,22 +1221,22 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument/variable</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">argument/variable</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Argument/Variable name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">memory</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">type</span></code></td>
+<td><code class="docutils literal"><span class="pre">memory</span></code></td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Interface type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">num_elements</span></code></td>
 <td>integer</td>
 <td>Yes</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Specifies the number of elements of the argument array. Can override the array size in the argument.</td>
 </tr>
 </tbody>
@@ -1186,15 +1245,15 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p>Argument - At the beginning of the function definition block.</p>
 <p>Variable - Before the global variable declaration.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(c) type(memory) num_elements(100)</span>
-<span class="kt">int</span> <span class="n">c</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(c) type(memory) num_elements(100)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[])</span> <span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(memory) num_elements(100)</span>
 <span class="cp">#pragma HLS interface argument(b) type(memory)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1202,9 +1261,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="axi4-target-interface-for-pointer-argument">
 <span id="pragma-interface-axi-target-argument"></span><h2>AXI4 Target Interface for Pointer Argument<a class="headerlink" href="#axi4-target-interface-for-pointer-argument" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(axi_target)</span> <span class="pre">num_elements(&lt;int&gt;)</span> <span class="pre">dma(true|false)</span> <span class="pre">requires_copy_in(true|false)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(axi_target)</span> <span class="pre">num_elements(&lt;int&gt;)</span> <span class="pre">dma(true|false)</span> <span class="pre">requires_copy_in(true|false)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the AXI4 target interface type for a pointer (including array, struct, class types) argument. For more details, see the <a class="reference internal" href="userguide.html#pointer-arg-axi-target"><span class="std std-ref">AXI4 Target Interface section</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p>This pragma specifies the AXI4 target interface type for a pointer (including array, struct, class types) argument. For more details, see the <a class="reference internal" href="userguide.html#pointer-arg-axi-target"><span>AXI4 Target Interface section</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span>specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1223,41 +1282,41 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">argument</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Argument name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">axi_target</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">type</span></code></td>
+<td><code class="docutils literal"><span class="pre">axi_target</span></code></td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Interface type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">num_elements</span></code></td>
 <td>integer</td>
 <td>Yes</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Specifies the number of elements of the argument array. Can override the array size in the argument.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dma,</span> <span class="pre">requires_copy_in</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dma,</span> <span class="pre">requires_copy_in</span></code></td>
+<td><code class="docutils literal"><span class="pre">true|false</span></code></td>
 <td>Yes</td>
-<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
-<td>Specifies the transfer method and copy-in behaviour in the top-level driver function. See <a class="reference internal" href="userguide.html#ptr-arg-pragma-options"><span class="std std-ref">Top-level Driver Options in Pointer Arguments’ AXI4 Target Interface Pragma</span></a></td>
+<td><code class="docutils literal"><span class="pre">false</span></code></td>
+<td>Specifies the transfer method and copy-in behaviour in the top-level driver function. See <a class="reference internal" href="userguide.html#ptr-arg-pragma-options"><span>Top-level Driver Options in Pointer Arguments&#8217; AXI4 Target Interface Pragma</span></a></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">101</span><span class="p">])</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">101</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(axi_target) num_elements(100) dma(true) requires_copy_in(false)</span>
 <span class="cp">#pragma HLS interface argument(b) type(axi_target)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1265,9 +1324,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="axi4-initiator-interface-for-pointer-argument">
 <span id="pragma-interface-axi-initiator-argument"></span><h2>AXI4 Initiator Interface for Pointer Argument<a class="headerlink" href="#axi4-initiator-interface-for-pointer-argument" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(axi_initiator)</span> <span class="pre">ptr_addr_interface(&lt;simple|axi_target&gt;)</span> <span class="pre">num_elements(&lt;int&gt;)</span> <span class="pre">max_burst_len(&lt;int&gt;)</span> <span class="pre">max_outstanding_reads(&lt;int&gt;)</span> <span class="pre">max_outstanding_writes(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(axi_initiator)</span> <span class="pre">ptr_addr_interface(&lt;simple|axi_target&gt;)</span> <span class="pre">num_elements(&lt;int&gt;)</span> <span class="pre">max_burst_len(&lt;int&gt;)</span> <span class="pre">max_outstanding_reads(&lt;int&gt;)</span> <span class="pre">max_outstanding_writes(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the AXI4 initiator interface type for a pointer (including array, struct, class types) argument. For more details, see the <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface section</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p>This pragma specifies the AXI4 initiator interface type for a pointer (including array, struct, class types) argument. For more details, see the <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span>AXI4 Initiator Interface section</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span>specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1286,59 +1345,59 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">argument</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Argument name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">axi_target</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">type</span></code></td>
+<td><code class="docutils literal"><span class="pre">axi_target</span></code></td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Interface type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">num_elements</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">num_elements</span></code></td>
 <td>integer</td>
 <td>Yes</td>
-<td>&#160;</td>
-<td>Specifies the number of elements of the argument array. Can override the array size in the argument. Only needed by the <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span class="std std-ref">SW/HW Co-Simulation</span></a> feature and does not affect HLS-generated RTL.</td>
+<td>&nbsp;</td>
+<td>Specifies the number of elements of the argument array. Can override the array size in the argument. Only needed by the <a class="reference internal" href="userguide.html#sw-hw-cosimulation"><span>SW/HW Co-Simulation</span></a> feature and does not affect HLS-generated RTL.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ptr_addr_interface</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">simple|axi_target</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ptr_addr_interface</span></code></td>
+<td><code class="docutils literal"><span class="pre">simple|axi_target</span></code></td>
 <td>Yes</td>
-<td>&#160;</td>
-<td>Specifies the interface type for setting the base address of the accessing memory. The default type is <code class="docutils literal notranslate"><span class="pre">simple</span></code> but is changed to <code class="docutils literal notranslate"><span class="pre">axi_target</span></code> if <a class="reference internal" href="#pragma-interface-default"><span class="std std-ref">Default All Interface to Use AXI4 Target</span></a> is set.</td>
+<td>&nbsp;</td>
+<td>Specifies the interface type for setting the base address of the accessing memory. The default type is <code class="docutils literal"><span class="pre">simple</span></code> but is changed to <code class="docutils literal"><span class="pre">axi_target</span></code> if <a class="reference internal" href="#pragma-interface-default"><span>Default All Interface to Use AXI4 Target</span></a> is set.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">max_burst_len</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">max_burst_len</span></code></td>
 <td>integer</td>
 <td>Yes</td>
 <td>16</td>
 <td>Specifies the maximum burst length for each AXI initiator transaction. Transfers that are larger than the maximum burst length will be split into multiple AXI transactions. The permitted values are between 1 and 256.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">max_outstanding_reads</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">max_outstanding_reads</span></code></td>
 <td>integer</td>
 <td>Yes</td>
 <td>1</td>
-<td>Specifies the maximum amount of read burst requests to external AXI4 Targets that can be left outstanding (waiting for response) before the accelerator stalls. This infers a FIFO of size <code class="docutils literal notranslate"><span class="pre">max_outstanding_reads*addr_size</span></code> for the AR channel, and a FIFO of size <code class="docutils literal notranslate"><span class="pre">max_outstanding_reads*max_burst_len*word_size</span></code> for the R channel. The permitted values are between 1 and 8.</td>
+<td>Specifies the maximum amount of read burst requests to external AXI4 Targets that can be left outstanding (waiting for response) before the accelerator stalls. This infers a FIFO of size <code class="docutils literal"><span class="pre">max_outstanding_reads*addr_size</span></code> for the AR channel, and a FIFO of size <code class="docutils literal"><span class="pre">max_outstanding_reads*max_burst_len*word_size</span></code> for the R channel. The permitted values are between 1 and 8.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">max_outstanding_writes</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">max_outstanding_writes</span></code></td>
 <td>integer</td>
 <td>Yes</td>
 <td>1</td>
-<td>Specifies the maximum amount of write burst requests to external AXI4 Targets that can be left outstanding (waiting for response) before the accelerator stalls. This infers a FIFO of size <code class="docutils literal notranslate"><span class="pre">max_outstanding_writes*addr_size</span></code> for the AW channel, and a FIFO of size <code class="docutils literal notranslate"><span class="pre">max_outstanding_writes*max_burst_len*word_size</span></code> for the W channel. The permitted values are between 1 and 8.</td>
+<td>Specifies the maximum amount of write burst requests to external AXI4 Targets that can be left outstanding (waiting for response) before the accelerator stalls. This infers a FIFO of size <code class="docutils literal"><span class="pre">max_outstanding_writes*addr_size</span></code> for the AW channel, and a FIFO of size <code class="docutils literal"><span class="pre">max_outstanding_writes*max_burst_len*word_size</span></code> for the W channel. The permitted values are between 1 and 8.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[])</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface argument(a) type(axi_initiator) num_elements(100) ptr_addr_interface(axi_target) max_burst_len(8)</span>
 <span class="cp">#pragma HLS interface argument(a) type(axi_initiator) num_elements(100) max_outstanding_reads(4) max_outstanding_writes(4)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1346,9 +1405,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="legacy-axi4-slave-interface-for-global-variable">
 <span id="pragma-interface-axi-slave-variable"></span><h2>Legacy AXI4 Slave Interface for Global Variable<a class="headerlink" href="#legacy-axi4-slave-interface-for-global-variable" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(axi_slave)</span> <span class="pre">concurrent_access(true|false)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(axi_slave)</span> <span class="pre">concurrent_access(true|false)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the legacy AXI4 slave interface for a global struct. When the <code class="docutils literal notranslate"><span class="pre">concurrent_access</span></code> option is set to true (default to false), the external logic can read/write the AXI4 slave interface while the SmartHLS module is running.  The concurrent access will however reduce the SmartHLS module’s throughput to access the memory. For more details. see the <a class="reference internal" href="userguide.html#global-variable-axi-slave"><span class="std std-ref">Legacy AXI4 Slave Interface section</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p>This pragma specifies the legacy AXI4 slave interface for a global struct. When the <code class="docutils literal"><span class="pre">concurrent_access</span></code> option is set to true (default to false), the external logic can read/write the AXI4 slave interface while the SmartHLS module is running.  The concurrent access will however reduce the SmartHLS module&#8217;s throughput to access the memory. For more details. see the <a class="reference internal" href="userguide.html#global-variable-axi-slave"><span>Legacy AXI4 Slave Interface section</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span>specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1367,22 +1426,22 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">variable</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Variable name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">axi_slave</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">type</span></code></td>
+<td><code class="docutils literal"><span class="pre">axi_slave</span></code></td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Interface type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">concurent_access</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">concurent_access</span></code></td>
+<td><code class="docutils literal"><span class="pre">true|false</span></code></td>
 <td>Yes</td>
-<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td><code class="docutils literal"><span class="pre">false</span></code></td>
 <td>Enable/disable concurrent access</td>
 </tr>
 </tbody>
@@ -1390,8 +1449,8 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Position</strong></p>
 <p>Before the global variable declaration.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(b) type(axi_slave) concurrent_access(true)</span>
-<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="n">SIZE</span><span class="p">]</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS interface variable(b) type(axi_slave) concurrent_access(true)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">SIZE</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1399,9 +1458,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="module-control-interface">
 <span id="pragma-interface-module-control"></span><h2>Module Control Interface<a class="headerlink" href="#module-control-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">control</span> <span class="pre">type(&lt;simple|axi_target&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">control</span> <span class="pre">type(&lt;simple|axi_target&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma configures the <a class="reference internal" href="userguide.html#module-control-interface"><span class="std std-ref">module control interface</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p>This pragma configures the <a class="reference internal" href="userguide.html#module-control-interface"><span>module control interface</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span>specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1420,10 +1479,10 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">type</span></code></td>
 <td>simple|axi_target</td>
 <td>No</td>
-<td><code class="docutils literal notranslate"><span class="pre">simple</span></code></td>
+<td><code class="docutils literal"><span class="pre">simple</span></code></td>
 <td>Interface type</td>
 </tr>
 </tbody>
@@ -1431,10 +1490,10 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface control type(simple)    ...</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1442,9 +1501,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="default-all-interfaces-to-use-axi4-target">
 <span id="pragma-interface-default"></span><h2>Default All Interfaces to Use AXI4 Target<a class="headerlink" href="#default-all-interfaces-to-use-axi4-target" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">default</span> <span class="pre">type(axi_target)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">default</span> <span class="pre">type(axi_target)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies the default interface to AXI4 target for all arguments and <a class="reference internal" href="userguide.html#module-control-interface"><span class="std std-ref">module control</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span class="std std-ref">specified as the top-level</span></a>.</p>
+<p>This pragma specifies the default interface to AXI4 target for all arguments and <a class="reference internal" href="userguide.html#module-control-interface"><span>module control</span></a>. This pragma is ignored if the enclosing function is not <a class="reference internal" href="#pragma-function-top"><span>specified as the top-level</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1463,10 +1522,10 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">type</span></code></td>
 <td>axi_target</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Interface type</td>
 </tr>
 </tbody>
@@ -1474,27 +1533,27 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// The following two functions have the same interface configurations.</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// The following two functions have the same interface configurations.</span>
 
 <span class="c1">// Without using default interface pragma:</span>
-<span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="kt">int</span> <span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span> <span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface control     type(axi_target)</span>
 <span class="cp">#pragma HLS interface argument(a) type(axi_target)</span>
 <span class="cp">#pragma HLS interface argument(b) type(axi_target)</span>
 <span class="cp">#pragma HLS interface argument(c) type(axi_target) dma(true)</span>
 <span class="cp">#pragma HLS interface argument(d) type(axi_initiator) ptr_addr_interface(axi_target)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="c1">// Use default interface pragma:</span>
-<span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="kt">int</span> <span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span> <span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface default     type(axi_target)</span>
 <span class="cp">#pragma HLS interface argument(c) type(axi_target) dma(true)</span>
 <span class="c1">// Note that &#39;ptr_addr_interface(axi_target)&#39; can be omitted when default interface is set to axi_target.  #pragma HLS interface argument(d) type(axi_initiator)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1502,9 +1561,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="contention-free-memory-access">
 <span id="pragma-memory-impl-contention-free"></span><h2>Contention-Free Memory Access<a class="headerlink" href="#contention-free-memory-access" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">impl</span> <span class="pre">variable(&lt;arg_name&gt;)</span> <span class="pre">contention_free(true|false)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">impl</span> <span class="pre">variable(&lt;arg_name&gt;)</span> <span class="pre">contention_free(true|false)</span></code></p>
 <p><strong>Description</strong></p>
-<p>The pragma is to be used for variables accessed by parallel functions (<code class="docutils literal notranslate"><span class="pre">hls::thread</span></code>) so that SmartHLS does not create arbiters for the specified variable. The specified variable can still be accessed by multiple concurrently running functions, but without contention. It will be the users’ responsibility to ensure at most one function may access the shared variable in a clock cycle. If not specified, by default, SmartHLS creates arbiters for variables that are accessed by parallel functions.</p>
+<p>The pragma is to be used for variables accessed by parallel functions (<code class="docutils literal"><span class="pre">hls::thread</span></code>) so that SmartHLS does not create arbiters for the specified variable. The specified variable can still be accessed by multiple concurrently running functions, but without contention. It will be the users’ responsibility to ensure at most one function may access the shared variable in a clock cycle. If not specified, by default, SmartHLS creates arbiters for variables that are accessed by parallel functions.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1523,25 +1582,25 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">variable</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Variable Name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">contention_free</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">contention_free</span></code></td>
+<td><code class="docutils literal"><span class="pre">true|false</span></code></td>
 <td>Yes</td>
-<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">true</span></code> for contention-free access</td>
+<td><code class="docutils literal"><span class="pre">false</span></code></td>
+<td><code class="docutils literal"><span class="pre">true</span></code> for contention-free access</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Position</strong></p>
 <p>Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory impl variable(b) contention_free(true)</span>
-<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory impl variable(b) contention_free(true)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1549,8 +1608,8 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="struct-variable-argument-packing">
 <span id="pragma-memory-impl-pack"></span><h2>Struct Variable/Argument Packing<a class="headerlink" href="#struct-variable-argument-packing" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">impl</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">pack(bit|byte)</span> <span class="pre">byte_enable(true|false)</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">impl</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">pack(bit|byte)</span> <span class="pre">byte_enable(true|false)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">impl</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">pack(bit|byte)</span> <span class="pre">byte_enable(true|false)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">impl</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">pack(bit|byte)</span> <span class="pre">byte_enable(true|false)</span></code></p>
 <p><strong>Description</strong></p>
 <p>The pragma is to be used to pack a global interface / local memory variable with <cite>struct</cite> type. There are two packing modes: <cite>bit</cite> / <cite>byte</cite> where <cite>bit</cite> packing packs the <cite>struct</cite> fields using the exact bit-width and <cite>byte</cite> mode packs the fields with 8-bit alignment. <cite>byte_enable</cite> option creates an interface / memory with byte enable signals to write individual fields when set to <cite>true</cite>. Note that <cite>byte_enable</cite> is only valid with <cite>byte</cite> packing.</p>
 <p><strong>Parameters</strong></p>
@@ -1571,22 +1630,22 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable/argument</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">variable/argument</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Variable/Argument Name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">pack</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">bit|byte</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">pack</span></code></td>
+<td><code class="docutils literal"><span class="pre">bit|byte</span></code></td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Packing Mode</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">byte_enable</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">true|false</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">byte_enable</span></code></td>
+<td><code class="docutils literal"><span class="pre">true|false</span></code></td>
 <td>Yes</td>
-<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td><code class="docutils literal"><span class="pre">false</span></code></td>
 <td>Use byte-enable to write <cite>struct fields</cite></td>
 </tr>
 </tbody>
@@ -1595,14 +1654,14 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p>Argument - At the beginning of the function definition block.</p>
 <p>Variable - Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory impl variable(b) pack(bit)</span>
-<span class="k">struct</span> <span class="n">S</span> <span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory impl variable(b) pack(bit)</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">S</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="k">struct</span> <span class="n">S</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">S</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS memory impl argument(s) pack(byte) byte_enable(true)</span>
- <span class="p">...</span>
-<span class="p">}</span>
+<span class="w"> </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1610,9 +1669,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="partition-memory">
 <span id="pragma-memory-partition-variable"></span><h2>Partition Memory<a class="headerlink" href="#partition-memory" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(block|cyclic|complete|struct_fields|none)</span> <span class="pre">dim(&lt;int&gt;)</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">variable(&lt;var_name&gt;)</span> <span class="pre">type(block|cyclic|complete|struct_fields|none)</span> <span class="pre">dim(&lt;int&gt;)</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies a variable to be partitioned. Dimension 1 corresponds to the left-most dimension of an array and higher dimensions correspond to right-ward dimensions. The <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic|complete</span></code> types. If <code class="docutils literal notranslate"><span class="pre">dim</span></code> is 0, the specified partitioning will be applied to all dimensions. The <code class="docutils literal notranslate"><span class="pre">factor</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic</span></code> types to specify the number of partitions. <code class="docutils literal notranslate"><span class="pre">factor</span></code> must be larger than 1. For more details about the pragma options, see <a class="reference internal" href="userguide.html#user-specified-memory-partitioning"><span class="std std-ref">User-Specified Memory Partitioning</span></a>.</p>
+<p>This pragma specifies a variable to be partitioned. Dimension 1 corresponds to the left-most dimension of an array and higher dimensions correspond to right-ward dimensions. The <code class="docutils literal"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal"><span class="pre">block|cyclic|complete</span></code> types. If <code class="docutils literal"><span class="pre">dim</span></code> is 0, the specified partitioning will be applied to all dimensions. The <code class="docutils literal"><span class="pre">factor</span></code> parameter is only applicable for <code class="docutils literal"><span class="pre">block|cyclic</span></code> types to specify the number of partitions. <code class="docutils literal"><span class="pre">factor</span></code> must be larger than 1. For more details about the pragma options, see <a class="reference internal" href="userguide.html#user-specified-memory-partitioning"><span>User-Specified Memory Partitioning</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1631,28 +1690,28 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">variable</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">variable</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Variable name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">block,</span> <span class="pre">cyclic,</span> <span class="pre">complete,</span> <span class="pre">struct_fields,</span> <span class="pre">none</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">type</span></code></td>
+<td><code class="docutils literal"><span class="pre">block,</span> <span class="pre">cyclic,</span> <span class="pre">complete,</span> <span class="pre">struct_fields,</span> <span class="pre">none</span></code></td>
 <td>Yes</td>
-<td><code class="docutils literal notranslate"><span class="pre">complete</span></code></td>
+<td><code class="docutils literal"><span class="pre">complete</span></code></td>
 <td>Partition type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dim</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dim</span></code></td>
 <td>integer</td>
 <td>Yes</td>
 <td>0</td>
 <td>Partition dimension</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">factor</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">factor</span></code></td>
 <td>integer</td>
 <td>Yes</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Number of partitions</td>
 </tr>
 </tbody>
@@ -1660,15 +1719,15 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Position</strong></p>
 <p>Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(b) type(none)</span>
-<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(b) type(none)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-  <span class="cp">#pragma HLS memory partition variable(c) type(block) dim(1) factor(2)</span>
-  <span class="kt">int</span> <span class="n">c</span><span class="p">[</span><span class="mi">100</span><span class="p">][</span><span class="mi">100</span><span class="p">];</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma HLS memory partition variable(c) type(block) dim(1) factor(2)</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">100</span><span class="p">][</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1676,9 +1735,9 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="partition-top-level-interface">
 <span id="pragma-memory-partition-argument"></span><h2>Partition Top-Level Interface<a class="headerlink" href="#partition-top-level-interface" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(block|cyclic|complete|struct_fields|none)</span> <span class="pre">dim(&lt;int&gt;)</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">partition</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(block|cyclic|complete|struct_fields|none)</span> <span class="pre">dim(&lt;int&gt;)</span> <span class="pre">factor(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
-<p>This pragma specifies a top-level argument to be partitioned. Dimension 1 corresponds to the left-most dimension of an array and higher dimensions correspond to right-ward dimensions. The <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic|complete</span></code> types. If <code class="docutils literal notranslate"><span class="pre">dim</span></code> is 0, the specified partitioning will be applied to all dimensions. The <code class="docutils literal notranslate"><span class="pre">factor</span></code> parameter is only applicable for <code class="docutils literal notranslate"><span class="pre">block|cyclic</span></code> types to specify the number of partitions. <code class="docutils literal notranslate"><span class="pre">factor</span></code> must be larger than 1. For more details about the pragma options, see <a class="reference internal" href="userguide.html#user-specified-memory-partitioning"><span class="std std-ref">User-Specified Memory Partitioning</span></a>.</p>
+<p>This pragma specifies a top-level argument to be partitioned. Dimension 1 corresponds to the left-most dimension of an array and higher dimensions correspond to right-ward dimensions. The <code class="docutils literal"><span class="pre">dim</span></code> parameter is only applicable for <code class="docutils literal"><span class="pre">block|cyclic|complete</span></code> types. If <code class="docutils literal"><span class="pre">dim</span></code> is 0, the specified partitioning will be applied to all dimensions. The <code class="docutils literal"><span class="pre">factor</span></code> parameter is only applicable for <code class="docutils literal"><span class="pre">block|cyclic</span></code> types to specify the number of partitions. <code class="docutils literal"><span class="pre">factor</span></code> must be larger than 1. For more details about the pragma options, see <a class="reference internal" href="userguide.html#user-specified-memory-partitioning"><span>User-Specified Memory Partitioning</span></a>.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1697,28 +1756,28 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">argument</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">argument</span></code></td>
 <td>string</td>
 <td>No</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Argument name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">block,</span> <span class="pre">cyclic,</span> <span class="pre">complete,</span> <span class="pre">struct_fields,</span> <span class="pre">none</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">type</span></code></td>
+<td><code class="docutils literal"><span class="pre">block,</span> <span class="pre">cyclic,</span> <span class="pre">complete,</span> <span class="pre">struct_fields,</span> <span class="pre">none</span></code></td>
 <td>Yes</td>
-<td><code class="docutils literal notranslate"><span class="pre">complete</span></code></td>
+<td><code class="docutils literal"><span class="pre">complete</span></code></td>
 <td>Partition type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dim</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dim</span></code></td>
 <td>integer</td>
 <td>Yes</td>
 <td>0</td>
 <td>Partition dimension</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">factor</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">factor</span></code></td>
 <td>integer</td>
 <td>Yes</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Number of partitions</td>
 </tr>
 </tbody>
@@ -1726,11 +1785,11 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Position</strong></p>
 <p>At the beginning of the function definition block.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS memory partition argument(a) type(cyclic) dim(2) factor(4)</span>
 <span class="cp">#pragma HLS memory partition argument(b)</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1738,10 +1797,10 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <div class="section" id="replicate-rom">
 <span id="pragma-replicate-rom"></span><h2>Replicate ROM<a class="headerlink" href="#replicate-rom" title="Permalink to this headline">¶</a></h2>
 <p><strong>Syntax</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">replicate_rom</span> <span class="pre">variable(&lt;rom_var_name&gt;)</span> <span class="pre">max_replicas(&lt;int&gt;)</span></code></p>
+<p><code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">memory</span> <span class="pre">replicate_rom</span> <span class="pre">variable(&lt;rom_var_name&gt;)</span> <span class="pre">max_replicas(&lt;int&gt;)</span></code></p>
 <p><strong>Description</strong></p>
 <p>This pragma can be used to replicate constant memory (i.e., arrays) to achieve better throughput (shorter cycle latency) at the expense of extra resource (e.g., block RAM).  Typically when an array is implemented in block RAMs, there are up-to-two RAM ports to allow a maximum of two reads per clock cycle. To allow more parallel read accesses in each clock cycle, constant read-only memories (ROM) can be replicated by using this pragma.</p>
-<p>The optional <code class="docutils literal notranslate"><span class="pre">max_replicas</span></code> can be used to control the maximum number of replicas. If a <code class="docutils literal notranslate"><span class="pre">max_replicas</span></code> of <cite>N</cite> is specified, SmartHLS will make sure to use no more than <cite>N</cite> replicas of the ROM in the generated circuit; the generated circuit may use less than <cite>N</cite> replicas when the throughput cannot be further improved with more replicas. When <code class="docutils literal notranslate"><span class="pre">max_replicas</span></code> is unspecified or set to 0, the number of replicas is unlimited and SmartHLS will use as many replicas as it needs to maximize throughput. A <code class="docutils literal notranslate"><span class="pre">max_replicas</span></code> of 1 means only one copy is allowed, hence no replication, equivalent to not having the pragma.</p>
+<p>The optional <code class="docutils literal"><span class="pre">max_replicas</span></code> can be used to control the maximum number of replicas. If a <code class="docutils literal"><span class="pre">max_replicas</span></code> of <cite>N</cite> is specified, SmartHLS will make sure to use no more than <cite>N</cite> replicas of the ROM in the generated circuit; the generated circuit may use less than <cite>N</cite> replicas when the throughput cannot be further improved with more replicas. When <code class="docutils literal"><span class="pre">max_replicas</span></code> is unspecified or set to 0, the number of replicas is unlimited and SmartHLS will use as many replicas as it needs to maximize throughput. A <code class="docutils literal"><span class="pre">max_replicas</span></code> of 1 means only one copy is allowed, hence no replication, equivalent to not having the pragma.</p>
 <p><strong>Parameters</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1760,7 +1819,7 @@ If there is a loop label, the pragma should be placed after the label.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">max_replicas</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">max_replicas</span></code></td>
 <td>integer</td>
 <td>Yes</td>
 <td>0</td>
@@ -1771,8 +1830,8 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <p><strong>Position</strong></p>
 <p>Before the global / local variable declaration.</p>
 <p><strong>Examples</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory replicate_rom variable(my_rom) max_replicas(10)</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">my_rom</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory replicate_rom variable(my_rom) max_replicas(10)</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">my_rom</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -1823,7 +1882,7 @@ If there is a loop label, the pragma should be placed after the label.</p>
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "pragmas.rst.txt".replace(/\.txt/g,'');
+	var pageName = "pragmas.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]
@@ -1835,9 +1894,9 @@ function link(headingTitle) {
 		bu=fpga&\
 		tech_support_link=NA&\
 		source="+source+"&\
-		cover_title=SmartHLS 2023.1 documentation&\
-		pub_ver=2023.1&\
-		revision_letter=2023.1&\
+		cover_title=SmartHLS 2023.2 documentation&\
+		pub_ver=2023.2&\
+		revision_letter=2023.2&\
 		title="+headingTitle+"&\
 		tpc_guid="+pageName;
 	return "&nbsp; <a class=\"reference external\" \
