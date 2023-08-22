@@ -387,12 +387,24 @@ Please refer to the :ref:`rtl_interface` section for a detailed description on t
 SmartHLS Reference SoC
 ----------------------
 
-SmartHLS uses the `Icicle Kit Reference Design <https://github.com/polarfire-soc/icicle-kit-reference-design/>`_ as the base design to automatically integrate SmartHLS-generated hardware modules. The reference design is meant to showcase the many features available in the PolarFire\ :sup:`®`\  SoC Icicle Kit, such as the use of SPI, PCIe, soft and hard DMA, inter-processor communications, etc. Explaining all these features is beyond the scope of this document. For a complete description of the reference design check the `Icicle Kit Reference Design <https://github.com/polarfire-soc/icicle-kit-reference-design/>`_ documentation.
+.. NOTE::
 
-This section an overview of how the Icicle Kit Reference Design is used by SmartHLS to automatically connect hardware modules generated from C++. A diagram of the reference SoC architecture is shown below:
+    This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email SmartHLS@microchip.com.
+
+
+The SmartHLS SoC flow uses pre-existing reference designs that include a microprocessor (CPU) as the basis to automatically integrate SmartHLS-generated hardware modules and make them available to the processor.  Currently, SmartHLS uses the `Icicle Kit Reference Design <https://github.com/polarfire-soc/icicle-kit-reference-design/>`_, which is meant to showcase the many features available in the PolarFire\ :sup:`®`\  SoC Icicle Kit, such as the use of the hardened RISC-V Quad-core Microprocessor Subsystem, SPI, PCIe, soft and hard DMA, inter-processor communications, etc. Explaining all these features is beyond the scope of this document. For a complete description of the reference design check the `Icicle Kit Reference Design <https://github.com/polarfire-soc/icicle-kit-reference-design/>`_ documentation.
+
+As an *ALPHA feature*, SmartHLS also supports attaching HLS-generated modules to the MiV_RV32 processor (a.k.a. Soft-MiV). The reference design for the MiV_RV32 processor targets the `PolarFire Video Kit <https://www.microchip.com/en-us/development-tool/MPF300-VIDEO-KIT-NS>`_. 
+
+This section presents an overview of how these two reference designs are used by SmartHLS to automatically connect hardware modules generated from C++. First we will describe the Icicle Kit Reference architecture followed by the MiV_RV32 Reference architecture.
+
+Icicle Kit Reference Design
+---------------------------
+
+The Icicle Kit Reference Design is described in the following image:
 
 .. image:: /images/reference_soc_arch.drawio.png
-        :scale: 130 %
+        :scale: 120 %
         :align: center
 
 
@@ -403,6 +415,26 @@ On the top right-hand side of the diagram is the FPGA fabric. There are three su
 
 An example architecture of a SmartHLS-generated module is shown at the bottom of the diagram. It has an AXI4 Target interface, and depending on the specified interface type, it can have an AXI4 Initiator interface as well. Each AXI target argument in the C++ function has a corresponding on-chip storage accessible to the MSS via AXI transactions and is also directly connected to the core of the hardware accelerator. In this case argA, argB and argC are AXI target arguments. The type of storage can be a local memory such as LSRAMs for pointer arguments (argA and argB), or simple flip-flop registers for scalar arguments (argC).  AXI Initiator arguments (argD) do not require additional storage since they directly access the MSS memory, such as external DDR.  
 
-The interfaces are created based on the pragma, ``#pragma HLS interface argument(<arg_name>) type(axi_target/axi_initiator)`` (see :ref:`pragma_interface_axi_target_argument`, :ref:`pragma_interface_axi_initiator_argument`). For details on the different data transfer methods for the AXI Target/Initiator arguments, see :ref:soc_data_transfer_methods. 
+The interfaces are created based on the pragma, ``#pragma HLS interface argument(<arg_name>) type(axi_target/axi_initiator)`` (see :ref:`pragma_interface_axi_target_argument`, :ref:`pragma_interface_axi_initiator_argument`). For details on the different data transfer methods for the AXI Target/Initiator arguments, see :ref:`soc_data_transfer_methods`. 
 
+.. _miv_rv32_ref_design:
+
+MiV_RV32 Reference Design
+-------------------------
+
+.. NOTE::
+
+    This feature is an alpha release. 
+
+The reference design for the MiV_RV32 is simpler compared to the Icicle Kit Reference design. The processor is implemented on the FPGA fabric and it runs baremetal, i.e. without an operating system. However, as can be seen on the following image, the processor has a few peripherals, such as General Purpose I/O, UART and a Timer module, which are connected via an Advanced Peripheral Bus (APB).
+
+.. image:: /images/reference_miv_soc_arch.drawio.png
+        :scale: 120 %
+        :align: center
+
+The MiV_RV32 also has an AXI interconnect which is connected to a LSRAM memory block to store instructions and data for the processor.  Similar to the Icicle Kit Reference design, the SmartHLS-generated subsystem is also connected to this AXI interconnect. The architecture of the modules generated by SmartHLS is the same regardless of which reference design is used. 
+
+One difference compared to the Icicle Kit Refernce Design is the DMA. For the Icicle Kit Reference Design, SmartHLS uses the hardened DMA part of the MSS, but the MiV_RV Reference Design SmartHLS uses a Soft-DMA implemented on the FPGA fabric.  When a C++ function argument is marked as AXI target with the DMA option set to true (e.g. ``#pragma HLS interface argument(<argname>) type(axi_target) dma(true)``) SmartHLS will automatically instantiate the soft-DMA engine, connect it to the HLS AXI interconnect and generate the driver DMA API for the CPU to use it.  If the DMA option is later disabled (``dma(flase)``) then the Soft-DMA engine will be automatically removed. 
+
+Finally, the MiV_RV32 Reference Design also includes reset and clock circuitry, and most importantly, a JTAG module that allows the programming and debugging of the MiV_RV32 processor via OpenOCD using SoftConsole or the GNU Debugger (gdb) from the command line.
 
