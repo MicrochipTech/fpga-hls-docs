@@ -1165,6 +1165,4 @@ The recommended configuration for both AXI4 Initiator configuration and memory r
 - AXI4 Initiator bursting is recommended when the code is in a format that is supported.
 - Larger ``max_burst_len`` is recommended for best performance (best performance at ``256``).
 - The recommended ``max_outstanding_reads`` is ``2``, and the recommended ``max_outstanding_writes`` transactions is ``1``.
-- For reading data from MSS DDR to a SmartHLS module, it is recommended to use the AXI4 Initiator interface, and to store the data to be read in the HLS_ALLOC_NONCACHED memory region.
-- For writing data to MSS DDR from a SmartHLS module below 1MB, it is recommended to use the AXI4 Initiator interface, and to write the data to the HLS_ALLOC_CACHED memory region.
-- For writing data to MSS DDR from a SmartHLS module above 1MB, it is recommended to **NOT** use the AXI4 Initiator interface, and instead to use an AXI4 Target interface and MSS PDMA (for more information on how to do this, see :ref:`pointer_arg_axi_target` and :ref:`allocation_library`.
+- For moving data between MSS DDR and a SmartHLS module, it is recommended to use the AXI4 Initiator interface, and to store the data in the HLS_ALLOC_NONCACHED memory region.
