@@ -13,9 +13,9 @@
 
     gtag('config', 'G-VB7E9KG0X9');
   </script>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
+  <meta charset="utf-8">
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -498,11 +498,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -516,10 +526,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Hardware Architecture" href="hwarchitecture.html" />
     <link rel="prev" title="User Guide" href="userguide.html" /> 
 </head>
@@ -566,21 +572,21 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Optimization Guide</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Optimization Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#loop-pipelining">Loop Pipelining</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#loop-unrolling">Loop Unrolling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#function-pipelining">Function Pipelining</a></li>
@@ -598,7 +604,7 @@ display:none;
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
@@ -611,7 +617,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pfvideokit_setup.html">PolarFire Video Kit Setup Instructions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -677,17 +683,17 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="optimization-guide">
+  <div class="section" id="optimization-guide">
 <span id="optimizationguide"></span><h1>Optimization Guide<a class="headerlink" href="#optimization-guide" title="Permalink to this headline">¶</a></h1>
 <p>This chapter describes how to optimize the generated hardware through software code changes and SmartHLS pragmas/constraints.</p>
-<section id="loop-pipelining">
+<div class="section" id="loop-pipelining">
 <h2>Loop Pipelining<a class="headerlink" href="#loop-pipelining" title="Permalink to this headline">¶</a></h2>
 <p>Loop pipelining is a performance optimization in high-level synthesis (HLS), which extracts loop-level parallelism by executing multiple loop iterations concurrently using the same hardware.
 The key performance metric when loop pipelining is the time interval between starting successive loop iterations, called the <em>initiation interval</em> (II).
 Ideally, the initiation interval should be one, meaning that we  can start a new loop iteration every clock cycle. This is the highest throughput that a pipelined loop can achieve without unrolling.
 Although SmartHLS will always try to achieve an II of 1, sometimes this is not possible, due to resource constraints, or due to cross-iteration dependencies (recurrences) in a loop.</p>
 <p>Consider the following example:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="cp">#pragma HLS loop pipeline</span>
 <span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -697,8 +703,8 @@ Although SmartHLS will always try to achieve an II of 1, sometimes this is not p
 </pre></div>
 </div>
 <p>This example shows a nested loop, which performs an element-wise multiplication of two 2-dimensional arrays and accumulates the sum.
-The inner loop is specified with the <a class="reference internal" href="pragmas.html#pragma-loop-pipeline"><span class="std std-ref">Pipeline Loop</span></a> pragma. SmartHLS will show message as below when compiling this code:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 61 of loop.c with label &quot;loop&quot;.
+The inner loop is specified with the <a class="reference internal" href="pragmas.html#pragma-loop-pipeline"><span>Pipeline Loop</span></a> pragma. SmartHLS will show message as below when compiling this code:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 61 of loop.c with label &quot;loop&quot;.
 Info: Done pipelining the loop on line 61 of loop.c with label &quot;loop&quot;.
     Pipeline Initiation Interval (II) = 1.
 </pre></div>
@@ -706,7 +712,7 @@ Info: Done pipelining the loop on line 61 of loop.c with label &quot;loop&quot;.
 <p>These info messages let us know that SmartHLS successfully pipelined the inner loop with an II of 1.
 Even though an II of 1 has been achieved, the hardware may not meet our desired performance requirements.
 In this case, we can choose to pipeline the outer loop by moving the pragma to the outer loop:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="cp">#pragma HLS loop pipeline</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -717,10 +723,10 @@ In this case, we can choose to pipeline the outer loop by moving the pragma to t
 </div>
 <p>When an outer loop is specified to be pipelined, SmartHLS will automatically unroll all of the inner loops.
 This can provide higher performance at the expense of higher circuit area.
-In this example, <code class="docutils literal notranslate"><span class="pre">N</span></code> is 25, and when the inner loop is unrolled, SmartHLS will create 25 multipliers and adder units working in parallel.
-However, this does not mean that the performance will be improved by 25x due to the resource constraints on memories <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code>.</p>
+In this example, <code class="docutils literal"><span class="pre">N</span></code> is 25, and when the inner loop is unrolled, SmartHLS will create 25 multipliers and adder units working in parallel.
+However, this does not mean that the performance will be improved by 25x due to the resource constraints on memories <code class="docutils literal"><span class="pre">A</span></code> and <code class="docutils literal"><span class="pre">B</span></code>.</p>
 <p>When SmartHLS runs, we will see the following messages:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Unrolling the entire loop nest on line 61 of loop.c.
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Unrolling the entire loop nest on line 61 of loop.c.
     This loop nest is inside a parent loop labelled &#39;loop&#39;, which is specified to be
     pipelined.
 Info: Pipelining the loop on line 60 of loop.c with label &quot;loop&quot;.
@@ -749,8 +755,8 @@ Info: Done pipelining the loop on line 60 of loop.c with label &quot;loop&quot;.
 </pre></div>
 </div>
 <p>The first info message indicates that the inner loop is being unrolled, since the outer loop is specified to be pipelined.
-Next, the info messages tell us there are 25 load operations that need to occur to both memory <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> every clock cycle if II is 1, but there are only two ports (which allows 2 loads per cycle) available for each memory.
-<code class="docutils literal notranslate"><span class="pre">Local_memory_port</span></code> indicates that this resource is a memory port of a local memory, which is described in <a class="reference internal" href="hwarchitecture.html#hwarch"><span class="std std-ref">Hardware Architecture</span></a>.
+Next, the info messages tell us there are 25 load operations that need to occur to both memory <code class="docutils literal"><span class="pre">A</span></code> and <code class="docutils literal"><span class="pre">B</span></code> every clock cycle if II is 1, but there are only two ports (which allows 2 loads per cycle) available for each memory.
+<code class="docutils literal"><span class="pre">Local_memory_port</span></code> indicates that this resource is a memory port of a local memory, which is described in <a class="reference internal" href="hwarchitecture.html#hwarch"><span>Hardware Architecture</span></a>.
 Due to the limited available memory ports, SmartHLS must increase the loop pipeline II until we can meet the constraint of having 25 load operations to each memory.
 When the II is 13, meaning that each successive loop iteration is started every 13 cycles, we have enough time to allow 26 load operations, hence the constraint is met
 (each memory has 2 ports by default, which allows 2 memory accesses per cycle. In 13 cycles, we can perform 26 memory accesses in total).</p>
@@ -759,14 +765,14 @@ However, the area has also increased by about 25x, due to having 25 multipliers 
 Therefore, we must use care when pipelining outer loops due to the unrolling of its inner loops.
 In general, we recommend pipelining the innermost loop first, and if the performance requirement is not met, then try pipelining the outer loops.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If the loop specified to be pipelined contains any function calls (in the loop or in any of the inner loops), the function calls will be inlined into the loop.
+<p class="first admonition-title">Note</p>
+<p class="last">If the loop specified to be pipelined contains any function calls (in the loop or in any of the inner loops), the function calls will be inlined into the loop.
 Any descendants of the called functions will also be inlined, and all of their loops will also be unrolled automatically.
 If there are many descendant functions and loops, this can increase the area significantly (also described in <a class="reference internal" href="#function-pipelining">Function Pipelining</a>).
 We recommend the user to examine the program for such cases before pipelining a loop.</p>
 </div>
 <p>Lets look at an image filtering example:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HEIGHT</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HEIGHT</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="cp">#pragma HLS loop pipeline</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WIDTH</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">out</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="mi">-1</span><span class="p">][</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="mi">-1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">y</span><span class="mi">-1</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
@@ -776,9 +782,9 @@ We recommend the user to examine the program for such cases before pipelining a 
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This example applies a 3 x 3 image kernel filter, array <code class="docutils literal notranslate"><span class="pre">k</span></code>, to an input image, array <code class="docutils literal notranslate"><span class="pre">in</span></code>, producing an output image, array <code class="docutils literal notranslate"><span class="pre">out</span></code>.
+<p>This example applies a 3 x 3 image kernel filter, array <code class="docutils literal"><span class="pre">k</span></code>, to an input image, array <code class="docutils literal"><span class="pre">in</span></code>, producing an output image, array <code class="docutils literal"><span class="pre">out</span></code>.
 When we turn on loop pipelining and run SmartHLS, we can see the following messages:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 22 of kernel.c with label &quot;loop&quot;.
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 22 of kernel.c with label &quot;loop&quot;.
 Info: Assigning new label to the loop on line 22 of kernel.c with label &quot;loop&quot;
 Info: Resource constraint limits initiation interval to 5.
       Resource &#39;in_local_memory_port&#39; has 9 uses per cycle but only 2 units available.
@@ -794,11 +800,11 @@ Info: Done pipelining the loop on line 22 of kernel.c with label &quot;loop&quot
       Pipeline Initiation Interval (II) = 5.
 </pre></div>
 </div>
-<p>The pipeline initiation interval is limited by the memory accesses to the input image (array <code class="docutils literal notranslate"><span class="pre">in</span></code>). There are 9 loads but only two memory ports, which forces the loop II to be 5, allowing up to 10 loads per iteration from array <code class="docutils literal notranslate"><span class="pre">in</span></code>.
+<p>The pipeline initiation interval is limited by the memory accesses to the input image (array <code class="docutils literal"><span class="pre">in</span></code>). There are 9 loads but only two memory ports, which forces the loop II to be 5, allowing up to 10 loads per iteration from array <code class="docutils literal"><span class="pre">in</span></code>.
 For loops where the II is constrained by memory accesses to an array, you can improve the II by manually splitting the array into several smaller C arrays.
 Each array can be accessed independently, which reduces resource contention.
-In this case, we can split the image into rows of pixels, where each row is stored in a separate array (<code class="docutils literal notranslate"><span class="pre">in_0</span></code>, <code class="docutils literal notranslate"><span class="pre">in_1</span></code>, and <code class="docutils literal notranslate"><span class="pre">in_2</span></code>).</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HEIGHT</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+In this case, we can split the image into rows of pixels, where each row is stored in a separate array (<code class="docutils literal"><span class="pre">in_0</span></code>, <code class="docutils literal"><span class="pre">in_1</span></code>, and <code class="docutils literal"><span class="pre">in_2</span></code>).</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HEIGHT</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="cp">#pragma HLS loop pipeline</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WIDTH</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">out</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in_0</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
@@ -809,7 +815,7 @@ In this case, we can split the image into rows of pixels, where each row is stor
 </pre></div>
 </div>
 <p>Now when we run SmartHLS we will see:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 22 of kernel.c with label &quot;loop&quot;.
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 22 of kernel.c with label &quot;loop&quot;.
 Info: Resource constraint limits initiation interval to 2.
       Resource &#39;in_0_local_memory_port&#39; has 3 uses per cycle but only 2 units available.
       +-----------------------------------+---------------------+-----------+
@@ -845,7 +851,7 @@ Info: Done pipelining the loop on line 22 of kernel.c with label &quot;loop&quot
 </div>
 <p>Now the initiation interval has improved from 5 to 2, which is a more than a 2x performance improvement just by manually partitioning the arrays.</p>
 <p>Consider another example below:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 
 <span class="cp">#pragma HLS loop pipeline</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -853,13 +859,13 @@ Info: Done pipelining the loop on line 22 of kernel.c with label &quot;loop&quot
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>We have a loop where the value of <code class="docutils literal notranslate"><span class="pre">A</span></code> in the current iteration is dependent on the previous iteration. This is called a cross-iteration dependency or loop recurrence.
-In order to achieve an II of 1, the value of <code class="docutils literal notranslate"><span class="pre">A</span></code> is required every clock cycle.
-This means that the multiplication of <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B[i]</span></code> has to complete every clock cycle.
-Now, let’s consider a case where we would like to pipeline the multiplier more in order to get a higher Fmax (the maximum frequency of the circuit).
-This can be done by changing the multiplier latency to 2 (using the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> constraint in SmartHLS) from the default latency of 1.</p>
+<p>We have a loop where the value of <code class="docutils literal"><span class="pre">A</span></code> in the current iteration is dependent on the previous iteration. This is called a cross-iteration dependency or loop recurrence.
+In order to achieve an II of 1, the value of <code class="docutils literal"><span class="pre">A</span></code> is required every clock cycle.
+This means that the multiplication of <code class="docutils literal"><span class="pre">A</span></code> and <code class="docutils literal"><span class="pre">B[i]</span></code> has to complete every clock cycle.
+Now, let&#8217;s consider a case where we would like to pipeline the multiplier more in order to get a higher Fmax (the maximum frequency of the circuit).
+This can be done by changing the multiplier latency to 2 (using the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span>set_operation_latency</span></a> constraint in SmartHLS) from the default latency of 1.</p>
 <p>When SmartHLS runs, we will see the following messages:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 10 of loop_recurrence.c with label &quot;loop&quot;.
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 10 of loop_recurrence.c with label &quot;loop&quot;.
 Info: Cross-iteration dependency does not allow initiation interval of 1.
     Dependency (distance = 1) from &#39;mul&#39; operation (at line 11 of loop_recurrence.c) to
     &#39;phi&#39; operation (at line 11 of loop_recurrence.c)
@@ -880,11 +886,11 @@ Info: Done pipelining the loop on line 10 of loop_recurrence.c with label &quot;
 </pre></div>
 </div>
 <p>The messages tell us that the II cannot be 1 due to a cross-iteration dependency, which is from the multiply operation of the current loop iteration to the phi operation of the next iteration.
-You can think of a phi as a select operation, which is need to represent the program’s intermediate representation in static single assignment form.
-In this particular case, the phi selects the value of <code class="docutils literal notranslate"><span class="pre">A</span></code> between the initial value of 1 (in the first iteration of the loop),
-and the computed value of <code class="docutils literal notranslate"><span class="pre">A</span></code> from within the loop (in the iterations after the first).
+You can think of a phi as a select operation, which is need to represent the program&#8217;s intermediate representation in static single assignment form.
+In this particular case, the phi selects the value of <code class="docutils literal"><span class="pre">A</span></code> between the initial value of 1 (in the first iteration of the loop),
+and the computed value of <code class="docutils literal"><span class="pre">A</span></code> from within the loop (in the iterations after the first).
 The dependency distance of 1 means that the multiply value is used by the phi operation 1 loop iteration later. Or alternatively, the phi operation is dependent on the multiply value from one loop iteration ago.
-The <code class="docutils literal notranslate"><span class="pre">Recurrence</span> <span class="pre">path</span></code> table shows that the phi operation takes 0 cycles, but the multiply operation takes 2 cycles, hence the total required latency is 2 for the path.
+The <code class="docutils literal"><span class="pre">Recurrence</span> <span class="pre">path</span></code> table shows that the phi operation takes 0 cycles, but the multiply operation takes 2 cycles, hence the total required latency is 2 for the path.
 However, the maximum allowed latency, if the II were to be 1, is 1 (distance x II = 1 x 1 = 1).
 In this case, the next loop iteration should be starting after 1 clock cycle (II = 1) but we still have not finished calculating the result of the multiply which is needed by the phi operation in the next iteration.
 Since the total required latency is greater than the maximum allowed latency, the II has to be increased to 2.
@@ -892,8 +898,8 @@ With the II being 2, the maximum allowed latency becomes 2, which satisfies the 
 In this case, the first iteration will start, we will wait two clock cycles for the multiply to finish (II = 2), then start the next loop iteration.</p>
 <p>In general, for pipelining, achieving a lower II is the highest priority for achieving the highest performance, even at the expense of slightly lower Fmax.
 For example, if we can reduce the II from 2 to 1 then we cut the clock cycles taken by the loop in half, but we are unlikely to double the Fmax by inserting one more pipeline stage (which changes an II of 1 to 2 in this case).</p>
-<p>If we use the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> constraint to reduce the multiplier latency from 2 to 1 and run SmartHLS, we will see the following messages, where we have achieved an II of 1:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 10 of loop_recurrence.c with label &quot;loop&quot;.
+<p>If we use the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span>set_operation_latency</span></a> constraint to reduce the multiplier latency from 2 to 1 and run SmartHLS, we will see the following messages, where we have achieved an II of 1:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 10 of loop_recurrence.c with label &quot;loop&quot;.
 Info: Done pipelining the loop on line 10 of loop_recurrence.c with label &quot;loop&quot;.
     Pipeline Initiation Interval (II) = 1.
 </pre></div>
@@ -901,7 +907,7 @@ Info: Done pipelining the loop on line 10 of loop_recurrence.c with label &quot;
 <p>The above example illustrated a case of II being increased due to the latency of operations in the presence of a loop recurrence.
 The II can also be increased due to the delay of operations in a loop with cross-iteration dependencies.</p>
 <p>Consider the following example:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop pipeline</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_ITER</span><span class="p">;</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">squared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">xtmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x_0</span><span class="p">;</span><span class="w"></span>
@@ -914,7 +920,7 @@ The II can also be increased due to the delay of operations in a loop with cross
 </div>
 <p>The code shows the main computations for the mandelbrot set, the algorithm details are not important.
 When we run SmartHLS on this code, we see the following messages:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 39 of mandelbrot.c with label &quot;loop&quot;.
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Pipelining the loop on line 39 of mandelbrot.c with label &quot;loop&quot;.
 Info: Cross-iteration dependency does not allow initiation interval (II) of 1.
     Dependency (distance = 1) from &#39;trunc&#39; operation (at line 42 of mandelbrot.c) to
     &#39;phi&#39; operation (at line 42 of mandelbrot.c)
@@ -954,21 +960,21 @@ to satisfy the required delay.
 If the II is 2, the maximum allowed latency (distance x II = 1 x 2) becomes 2, hence the maximum allowed delay becomes 16 ns (maximum allowed latency x clock period = 2 x 8 ns),
 and the required delay can be met.</p>
 <p>As mentioned above, keeping the II low (and ideally 1) should generally be the priority for achieving the maximum performance.
-Another way to meet the required delay shown above, based on the equations shown as well as the described <code class="docutils literal notranslate"><span class="pre">Tip</span></code>, is to increase the clock period rather than increasing the II.
+Another way to meet the required delay shown above, based on the equations shown as well as the described <code class="docutils literal"><span class="pre">Tip</span></code>, is to increase the clock period rather than increasing the II.
 With an II of 1 (hence the maximum allowed latency of 1), if the clock period is bigger than 14.4, the maximum allowed delay should be greater than the total required delay.</p>
-<p>Let’s set the clock period to 15 (with the <a class="reference internal" href="constraintsmanual.html#clock-period"><span class="std std-ref">CLOCK_PERIOD</span></a> constraint), and re-run SmartHLS:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Generating pipeline for loop on line 39 of mandelbrot.c with label &quot;loop&quot;.
+<p>Let&#8217;s set the clock period to 15 (with the <a class="reference internal" href="constraintsmanual.html#clock-period"><span>CLOCK_PERIOD</span></a> constraint), and re-run SmartHLS:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Generating pipeline for loop on line 39 of mandelbrot.c with label &quot;loop&quot;.
     Pipeline initiation interval = 1.
 </pre></div>
 </div>
 <p>You can see that SmartHLS was now able to generate a circuit with an II of 1.</p>
 <p>Loop pipelining is a great technique for achieving high performance, and in order to achieve the maximum performance, users should be mindful
 of the circuit resource constraints and the recurrences that exist in the loop.</p>
-</section>
-<section id="loop-unrolling">
+</div>
+<div class="section" id="loop-unrolling">
 <h2>Loop Unrolling<a class="headerlink" href="#loop-unrolling" title="Permalink to this headline">¶</a></h2>
-<p>SmartHLS allows the user to specify a loop to be unrolled through the use of a pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span></code> (see <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span class="std std-ref">Unroll Loop</span></a>).</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll</span>
+<p>SmartHLS allows the user to specify a loop to be unrolled through the use of a pragma, <code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop</span> <span class="pre">unroll</span></code> (see <a class="reference internal" href="pragmas.html#pragma-loop-unroll"><span>Unroll Loop</span></a>).</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -976,7 +982,7 @@ of the circuit resource constraints and the recurrences that exist in the loop.<
 </div>
 <p>This unrolls the loop completely. Unrolling a loop can improve performance as the hardware units for the loop body are replicated, but it also increases area.
 You may also specify a loop to be partially unrolled, to prevent the area from increasing too much.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(2)</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(2)</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -985,25 +991,25 @@ You may also specify a loop to be partially unrolled, to prevent the area from i
 <p>This unrolls the loop two times (i.e., the number of loop iteration is halved and the loop body is doubled).
 You may also prevent a loop from being unrolled. SmartHLS automatically unrolls small loops, but you may not want the loop to be unrolled due to area constraints or to pipeline the loop.
 If the loop is completely unrolled, the loop disappears, hence you cannot pipeline the loop.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(1)</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS loop unroll factor(1)</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This prevents the loop from being unrolled.</p>
-</section>
-<section id="function-pipelining">
+</div>
+<div class="section" id="function-pipelining">
 <h2>Function Pipelining<a class="headerlink" href="#function-pipelining" title="Permalink to this headline">¶</a></h2>
 <p>Similar to loop pipelining, when a function is specified to be pipelined, SmartHLS will automatically inline all of its descendant functions, and unroll all loops (in the specified function as well as in all of its descendant functions).
 This is done to create a high-performance pipelined hardware.
-A function can be specified to be pipelined using the pragma <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">pipeline</span></code> (see <a class="reference internal" href="pragmas.html#pragma-function-pipeline"><span class="std std-ref">Pipeline Function</span></a>).
+A function can be specified to be pipelined using the pragma <code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">function</span> <span class="pre">pipeline</span></code> (see <a class="reference internal" href="pragmas.html#pragma-function-pipeline"><span>Pipeline Function</span></a>).
 Consider the following call graph:</p>
 <a class="reference internal image-reference" href="_images/callgraph_new.png"><img alt="_images/callgraph_new.png" class="align-center" src="_images/callgraph_new.png" style="width: 117.0px; height: 121.5px;" /></a>
-<p>where function <code class="docutils literal notranslate"><span class="pre">c</span></code> contains a loop.
-If function <code class="docutils literal notranslate"><span class="pre">a</span></code> is specified as the top-level function and to be function pipelined, functions <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code>, which are descendant functions of <code class="docutils literal notranslate"><span class="pre">a</span></code> will be automatically inlined (<code class="docutils literal notranslate"><span class="pre">c</span></code> will not be inlined into <code class="docutils literal notranslate"><span class="pre">b</span></code>).</p>
+<p>where function <code class="docutils literal"><span class="pre">c</span></code> contains a loop.
+If function <code class="docutils literal"><span class="pre">a</span></code> is specified as the top-level function and to be function pipelined, functions <code class="docutils literal"><span class="pre">c</span></code> and <code class="docutils literal"><span class="pre">d</span></code>, which are descendant functions of <code class="docutils literal"><span class="pre">a</span></code> will be automatically inlined (<code class="docutils literal"><span class="pre">c</span></code> will not be inlined into <code class="docutils literal"><span class="pre">b</span></code>).</p>
 <p>When SmartHLS runs, it will print out the following:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Adding no_inline attribute to the user-specified function: a
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Adding no_inline attribute to the user-specified function: a
 Info: Inlining function &#39;c&#39; into its parent function &#39;a&#39; for pipelining.
 Info: Inlining function &#39;d&#39; into its parent function &#39;a&#39; for pipelining.
 Info: Unrolling the entire loop nest on line 22 of function_pipeline.c.
@@ -1011,22 +1017,22 @@ Info: Unrolling the entire loop nest on line 22 of function_pipeline.c.
 Info: Pipelining function &#39;a&#39; on line 15 of function_pipeline.c.
 </pre></div>
 </div>
-<p>It shows that SmartHLS first adds the <code class="docutils literal notranslate"><span class="pre">no_inline</span></code> attribute to function <code class="docutils literal notranslate"><span class="pre">a</span></code> to prevent it from being inlined. Then it inlines its descendant functions and unrolls their loops.</p>
+<p>It shows that SmartHLS first adds the <code class="docutils literal"><span class="pre">no_inline</span></code> attribute to function <code class="docutils literal"><span class="pre">a</span></code> to prevent it from being inlined. Then it inlines its descendant functions and unrolls their loops.</p>
 <p>Care must be taken though, if the function designated to be pipelined has many descendant functions, which also has many loops, the hardware area can increase significantly (as was described above for <a class="reference internal" href="#loop-pipelining">Loop Pipelining</a>).
-For instance, in the call graph shown above, if <code class="docutils literal notranslate"><span class="pre">main</span></code> is specified to be pipelined, functions <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, and <code class="docutils literal notranslate"><span class="pre">d</span></code> will be automatically inlined.
-There will be two copies of <code class="docutils literal notranslate"><span class="pre">c</span></code>, as the function is called from two different places.
-As there is also a loop in <code class="docutils literal notranslate"><span class="pre">c</span></code> that will be completely unrolled (in each copy of <code class="docutils literal notranslate"><span class="pre">c</span></code>), this can increase the area significantly.
+For instance, in the call graph shown above, if <code class="docutils literal"><span class="pre">main</span></code> is specified to be pipelined, functions <code class="docutils literal"><span class="pre">a</span></code>, <code class="docutils literal"><span class="pre">b</span></code>, <code class="docutils literal"><span class="pre">c</span></code>, and <code class="docutils literal"><span class="pre">d</span></code> will be automatically inlined.
+There will be two copies of <code class="docutils literal"><span class="pre">c</span></code>, as the function is called from two different places.
+As there is also a loop in <code class="docutils literal"><span class="pre">c</span></code> that will be completely unrolled (in each copy of <code class="docutils literal"><span class="pre">c</span></code>), this can increase the area significantly.
 Hence for function pipelining, one should examine the program before pipelining a function that has many descendant functions or loops.</p>
-</section>
-<section id="memory-partitioning">
+</div>
+<div class="section" id="memory-partitioning">
 <h2>Memory Partitioning<a class="headerlink" href="#memory-partitioning" title="Permalink to this headline">¶</a></h2>
 <p>Memory Partitioning is an optimization where aggregate types such as arrays and structs are partitioned into smaller pieces
 allowing for a greater number of reads and writes (accesses) per cycle. SmartHLS instantiates a RAM for each aggregate
 type where each RAM has up to two ports (allowing up to two reads/writes per cycle). Partitioning aggregate types into
 smaller memories or into its individual elements allows for more memory accesses per cycle and improves memory bandwidth.</p>
-<p>More information about memory partitioning is described in <a class="reference internal" href="userguide.html#memory-partitioning"><span class="std std-ref">Memory Partitioning</span></a>.</p>
+<p>More information about memory partitioning is described in <a class="reference internal" href="userguide.html#memory-partitioning"><span>Memory Partitioning</span></a>.</p>
 <p>Memory partitioning can be used to gain performance when there are pipelines with high II due to memory contention.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">MAX_ITER</span><span class="p">];</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">MAX_ITER</span><span class="p">];</span><span class="w"></span>
 
 <span class="p">...</span><span class="w"></span>
 
@@ -1040,16 +1046,16 @@ smaller memories or into its individual elements allows for more memory accesses
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In the pipelined code above, there are four accesses to the array <code class="docutils literal notranslate"><span class="pre">data</span></code> per cycle but only two ports are available for the memory.
+<p>In the pipelined code above, there are four accesses to the array <code class="docutils literal"><span class="pre">data</span></code> per cycle but only two ports are available for the memory.
 All four accesses of one iteration must finish before the next loop iteration can start. With two accesses possible
 per cycle and four accesses required per iteration, the II for the pipeline will be 2. For more information on pipelines and II, please refer
 to the <a class="reference internal" href="#loop-pipelining">Loop Pipelining</a> section.</p>
 <p>To help improve the memory bandwidth, SmartHLS automatically analyzes the access patterns of each memory
 and attempts to split the memory into separate partitions if possible. In the above example, automatic access-based
-partitioning will not be able to partition the <code class="docutils literal notranslate"><span class="pre">data</span></code> array as the four accesses in the loop overlap and span the
+partitioning will not be able to partition the <code class="docutils literal"><span class="pre">data</span></code> array as the four accesses in the loop overlap and span the
 entire memory. In this case, user-specified partitioning would be ideal to partition memories and eliminate memory
 contention, allowing the pipeline to achieve an II of 1.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(data)</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(data)</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">MAX_ITER</span><span class="p">];</span><span class="w"></span>
 
 <span class="p">...</span><span class="w"></span>
@@ -1064,19 +1070,19 @@ contention, allowing the pipeline to achieve an II of 1.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In the above snippet, the array <code class="docutils literal notranslate"><span class="pre">data</span></code> is specified to be completely partitioned. By default,
+<p>In the above snippet, the array <code class="docutils literal"><span class="pre">data</span></code> is specified to be completely partitioned. By default,
 the partition dimension is set to 0. This means the memory will be partitioned into individual elements
-along the right-most dimension. The partition dimension can be changed with the optional <code class="docutils literal notranslate"><span class="pre">dim</span></code> parameter (see <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span class="std std-ref">Partition Memory</span></a>).
+along the right-most dimension. The partition dimension can be changed with the optional <code class="docutils literal"><span class="pre">dim</span></code> parameter (see <a class="reference internal" href="pragmas.html#pragma-memory-partition-variable"><span>Partition Memory</span></a>).
 SmartHLS will analyze the ranges of each accessing instruction to the array and create partitions only for the accessed elements.
 Unaccessed partitions are discarded.
 For user-specified partitioning, the accesses will be modified to be access the correct partition based
 on the index at runtime.</p>
 <p>When applied to memories with high memory contention in deep pipelines, memory partition has the potential
 to greatly impact circuit performance by reducing pipeline II.</p>
-<section id="advanced-memory-partitioning">
+<div class="section" id="advanced-memory-partitioning">
 <h3>Advanced Memory Partitioning<a class="headerlink" href="#advanced-memory-partitioning" title="Permalink to this headline">¶</a></h3>
 <p>Memory partitioning can also be used to partition structs.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
@@ -1093,12 +1099,12 @@ to greatly impact circuit performance by reducing pipeline II.</p>
 </div>
 <p>The code above shows a 3-level nested loop, where only the middle loop is fully unrolled.
 After the middle loop is unrolled, it creates three different memory accesses to non-overlapping regions of the
-array <code class="docutils literal notranslate"><span class="pre">zero</span></code>. This means the array can be automatically partitioned across the array dimension 1.
-Because the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> fields are accessed separately, each element of <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">point</span></code> can be
-further partitioned into two partitions. Therefore, SmartHLS will partition the array <code class="docutils literal notranslate"><span class="pre">zero</span></code> into 6
+array <code class="docutils literal"><span class="pre">zero</span></code>. This means the array can be automatically partitioned across the array dimension 1.
+Because the <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> fields are accessed separately, each element of <code class="docutils literal"><span class="pre">struct</span> <span class="pre">point</span></code> can be
+further partitioned into two partitions. Therefore, SmartHLS will partition the array <code class="docutils literal"><span class="pre">zero</span></code> into 6
 partitions, one for each non-overlapping access range into the array of structs. This results in the
 equivalent code below.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
@@ -1129,7 +1135,7 @@ array dimension specified, therefore, if higher dimensions are specified the ele
 SmartHLS will not partition the lower dimensions. When dimension 0 is specified for an array, the element type will be struct type and
 SmartHLS will partition the array completely and then automatically partition the struct elements. When partitioning structs or array
 elements that are structs, user-specified partitioning will also automatically partition any nested aggregate types.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
@@ -1159,7 +1165,7 @@ elements that are structs, user-specified partitioning will also automatically p
 </pre></div>
 </div>
 <p>When memory partitioning fails to partition a struct, it will print the following warning.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Warning: The struct, &quot;struct1&quot;, on line 168 of struct.c can result in inefficient
+<div class="highlight-text"><div class="highlight"><pre><span></span>Warning: The struct, &quot;struct1&quot;, on line 168 of struct.c can result in inefficient
 memory accesses. We recommend splitting it up into individual elements.
 </pre></div>
 </div>
@@ -1167,7 +1173,7 @@ memory accesses. We recommend splitting it up into individual elements.
 partitioning to try to fully partition the memory and make sure the FIFOs become individual
 variables. In the case that memory partitioning fails to do so, SmartHLS will error out as
 SmartHLS cannot handle unpartitioned FIFOs.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: Found memory with FIFO(s): &quot;array_of_FIFOs&quot; on line 10 of fifos.c. Forcing
+<div class="highlight-text"><div class="highlight"><pre><span></span>Info: Found memory with FIFO(s): &quot;array_of_FIFOs&quot; on line 10 of fifos.c. Forcing
 partition type to be complete.
 Error: The FIFO(s) in memory &quot;array_of_FIFOs&quot; on line 10 of fifos.c was unable to
 be split into individual FIFOs by SmartHLS which will result in functional errors.
@@ -1175,14 +1181,14 @@ To better partition the FIFO memory please try moving the FIFOs into a simpler
 data structures or manually partitioning the FIFOs into individual variables.
 </pre></div>
 </div>
-</section>
-<section id="limitations-and-workarounds">
+</div>
+<div class="section" id="limitations-and-workarounds">
 <h3>Limitations and Workarounds<a class="headerlink" href="#limitations-and-workarounds" title="Permalink to this headline">¶</a></h3>
 <p>Access-based partitioning will not create new accessing instructions and therefore can only modify existing ones.
 This limits partitions to be the same shape as the range of accesses, with overlapping ranges merged into the same
 partition. A side-effect of this is that if there are multiple overlapping ranges, the partition may become large
 and reduce performance gain.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
 <span class="p">...</span><span class="w"></span>
@@ -1202,7 +1208,7 @@ and reduce performance gain.</p>
 element 0 to 4 of the array, the range of accesses of the second loop is from element 4 to 7 of the array. In this case
 the two accesses have element 4 overlapping. They will be merged and the generated partition will cover the entire
 array which results in the memory being left unpartitioned.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
 <span class="p">...</span><span class="w"></span>
@@ -1228,7 +1234,7 @@ This allows access-based partitioning to partition the array into three partitio
 <p>Indexing arrays outside of any array dimension, even when the resulting address is inside of the memory, is not supported
 by memory partitioning and may cause incorrect circuit behavior. An example of this is casting a 2-d array to a pointer
 or only using the lowest dimension index to iterate through the entire 2-d array.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(array)</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#pragma HLS memory partition variable(array)</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
@@ -1251,7 +1257,7 @@ or only using the lowest dimension index to iterate through the entire 2-d array
 <p>In the code snippet above, both styles of access to the array go past the end of the right-most dimension bound by incrementing
 the index from 0 to the size of the array. A supported access pattern would to be to access the array as a 2-d array in a nested for loop,
 with the index to each dimension never going outside of the dimension bound.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}};</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}};</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In the same way, initializers, memcpy calls and other memory intrinsic calls are unsupported as they cast the pointer
@@ -1263,25 +1269,25 @@ analysis.</p>
 <p>In general, avoid aliasing memories if you want to use memory partitioning on a memory.</p>
 <p>Avoid comparisons and other non-arithmetic operators on pointers as they are not supported by memory partitioning and
 will prevent partitioning.</p>
-</section>
-</section>
-<section id="force-register">
+</div>
+</div>
+<div class="section" id="force-register">
 <h2>Force Register<a class="headerlink" href="#force-register" title="Permalink to this headline">¶</a></h2>
 <p>The SmartHLS Scheduler will attempt to find the best approach to schedule the circuit based on the information it has at that time.
 Usually, this is enough to generate a hardware with good performance.
 However, sometimes users may want to have explicit control about certain location to insert the register.
 SmartHLS does provide the flexibility to force a register at specific location.</p>
 <p>To do so, you need to include the header file:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hls/utils.hpp&quot;</span><span class="cp"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hls/utils.hpp&quot;</span><span class="cp"></span>
 </pre></div>
 </div>
-<p>and call the function <code class="docutils literal notranslate"><span class="pre">hls_reg</span></code> for the data you want to register as below:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">val_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hls_reg</span><span class="p">(</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
+<p>and call the function <code class="docutils literal"><span class="pre">hls_reg</span></code> for the data you want to register as below:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">val_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hls_reg</span><span class="p">(</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This will force SmartHLS to register the value, <code class="docutils literal notranslate"><span class="pre">val</span></code>, and any operations that depend on <code class="docutils literal notranslate"><span class="pre">val</span></code> will be scheduled accordingly, taking into the account the 1-cycle latency required to register the value.</p>
-</section>
-<section id="inferring-a-shift-register">
+<p>This will force SmartHLS to register the value, <code class="docutils literal"><span class="pre">val</span></code>, and any operations that depend on <code class="docutils literal"><span class="pre">val</span></code> will be scheduled accordingly, taking into the account the 1-cycle latency required to register the value.</p>
+</div>
+<div class="section" id="inferring-a-shift-register">
 <h2>Inferring a Shift Register<a class="headerlink" href="#inferring-a-shift-register" title="Permalink to this headline">¶</a></h2>
 <p>A shift register is an efficient hardware unit that is composed of a chain of registers that are connected from one to the next.
 It allows data to be continuously shifted from one register to its adjacent register.
@@ -1289,14 +1295,14 @@ It is useful in applications where data is continuously coming in in a streaming
 A shift register is different from a memory, in that all elements stored in a shift register can be accessed at the same time.</p>
 <p>For example, in a FIR filter, time-shifted versions of the input data, commonly referred to as taps, are needed to compute the output.
 A FIR filter can be expressed with the following equation:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b0</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b1</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="mi">-1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bN</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">N</span><span class="p">]</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b0</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b1</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="mi">-1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bN</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">N</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 <p>where y[n] is the output, x[n] is the input, N indicates the filter order, and b0 to bN are filter coefficients.
 As you can see in the equation, once an input is received, it is needed for N+1 computations of the output.
 This is the perfect application for a shift register.</p>
-<p>Let’s see how one can infer a shift register from software using SmartHLS.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">FIRFilter</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<p>Let&#8217;s see how one can infer a shift register from software using SmartHLS.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">FIRFilter</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">shift_register</span><span class="p">[</span><span class="n">TAPS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
 
@@ -1312,9 +1318,9 @@ This is the perfect application for a shift register.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>We show the part of the <code class="docutils literal notranslate"><span class="pre">FIRFilter</span></code> function which pertains to the shift register (x[n] in the equation above).
-Each time the <code class="docutils literal notranslate"><span class="pre">FIRFilter</span></code> function is called, it receives one input and produces one output.
-First, the <code class="docutils literal notranslate"><span class="pre">shift_register</span></code> array is declared as <code class="docutils literal notranslate"><span class="pre">static</span></code>.
+<p>We show the part of the <code class="docutils literal"><span class="pre">FIRFilter</span></code> function which pertains to the shift register (x[n] in the equation above).
+Each time the <code class="docutils literal"><span class="pre">FIRFilter</span></code> function is called, it receives one input and produces one output.
+First, the <code class="docutils literal"><span class="pre">shift_register</span></code> array is declared as <code class="docutils literal"><span class="pre">static</span></code>.
 This is needed since the data stored in the shift register (time shifted versions of the input data) needs to be kept around on the
 next invocation of the function.
 The loop shows each element of the array being stored to an array index of 1 greater than its current index,
@@ -1322,16 +1328,16 @@ starting from the highest array index (TAPS - 1) all the way down to 1.
 This is effectively moving each element of the array up by one array index. Then the newest input is stored in the lowest array index (0).
 It is important to note the unroll pragma, which allows the loop to be unrolled. Unrolling the loop splits up the array into individual elements,
 where each element is stored in a register, hence creating the shift register.
-Without the unroll pragma, the <code class="docutils literal notranslate"><span class="pre">shift_register</span></code> array is stored in a memory (RAM), which only allows up to 2 memory accesses per cycle.</p>
-<p>Note that if the <code class="docutils literal notranslate"><span class="pre">FIRFilter</span></code> function is specified to be pipelined, or if the shift register loop is contained within another loop that is specified to be pipelined,
+Without the unroll pragma, the <code class="docutils literal"><span class="pre">shift_register</span></code> array is stored in a memory (RAM), which only allows up to 2 memory accesses per cycle.</p>
+<p>Note that if the <code class="docutils literal"><span class="pre">FIRFilter</span></code> function is specified to be pipelined, or if the shift register loop is contained within another loop that is specified to be pipelined,
 the shift register loop will automatically be unrolled and the unroll pragma is not required.</p>
-</section>
-<section id="inferring-a-line-buffer">
+</div>
+<div class="section" id="inferring-a-line-buffer">
 <span id="line-buffer-opt-guide"></span><h2>Inferring a Line Buffer<a class="headerlink" href="#inferring-a-line-buffer" title="Permalink to this headline">¶</a></h2>
 <p>A line buffer is used to buffer a line of pixels of an image or a video frame, in order to keep data around and reduce the overall required memory bandwidth.
 It is useful for image/video processing applications, where an image/video pixel is continuously streamed in and processed.</p>
-<p>SmartHLS provides a <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> C++ template class that can be used to conveniently infer a line buffer hardware structure.
-For usages about the <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> class, please refer to <a class="reference internal" href="userguide.html#line-buffer-user-guide"><span class="std std-ref">Line Buffer</span></a> in the <a class="reference internal" href="userguide.html#userguide"><span class="std std-ref">User Guide</span></a>.
+<p>SmartHLS provides a <code class="docutils literal"><span class="pre">LineBuffer</span></code> C++ template class that can be used to conveniently infer a line buffer hardware structure.
+For usages about the <code class="docutils literal"><span class="pre">LineBuffer</span></code> class, please refer to <a class="reference internal" href="userguide.html#line-buffer-user-guide"><span>Line Buffer</span></a> in the <a class="reference internal" href="userguide.html#userguide"><span>User Guide</span></a>.
 This section will give more details about the motivations of using a line buffer and its underlying implementation.</p>
 <p>A good example of using a line buffer is the Sobel filter, which is used as one of the key steps of edge detection –
 a widely used transformation that identifies the edges in an input image and produces an output image showing just those edges.
@@ -1344,7 +1350,7 @@ pixel value in the output image.</p>
 <p>At every position of the stencil, we calculate the
 edge value of the middle pixel e, using the adjacent pixels labeled from a to i, each of which is multiplied by the value at its corresponding position of Gx and Gy, and then summed.
 An example C code for the Sobel filter is shown below.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define HEIGHT 512</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define HEIGHT 512</span>
 <span class="cp">#define WIDTH 512</span>
 
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HEIGHT</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1385,8 +1391,8 @@ From this point onwards, the stencil starts to move with every new pixel receive
 This also drastically reduces the amount of memory required to just two rows of the input image.
 By storing the line buffers in on-chip memory, its data can be accessed very quickly (with 1 cycle latency).
 Techniques such as this allow efficient real-time video processing on FPGAs.</p>
-<p>To give more insight to SmartHLS’s <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> class, the code snippet below illustrates the <code class="docutils literal notranslate"><span class="pre">LineBuffer</span></code> template class implementation when it is instantiated with an 3x3 <code class="docutils literal notranslate"><span class="pre">WindowSize</span></code>.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">PixelType</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">ImageWidth</span><span class="w"></span>
+<p>To give more insight to SmartHLS&#8217;s <code class="docutils literal"><span class="pre">LineBuffer</span></code> class, the code snippet below illustrates the <code class="docutils literal"><span class="pre">LineBuffer</span></code> template class implementation when it is instantiated with an 3x3 <code class="docutils literal"><span class="pre">WindowSize</span></code>.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">PixelType</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">ImageWidth</span><span class="w"></span>
 <span class="w">          </span><span class="cm">/* WindowSize == 3 for illustration purpose */</span><span class="o">&gt;</span><span class="w"></span>
 <span class="k">class</span><span class="w"> </span><span class="nc">LineBuffer</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
@@ -1419,22 +1425,22 @@ Techniques such as this allow efficient real-time video processing on FPGAs.</p>
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This class contains two internal line buffers using a private <cite>2xImageWidth</cite> <code class="docutils literal notranslate"><span class="pre">prev_rows</span></code> array, and an externally accessible 3x3 stencil <code class="docutils literal notranslate"><span class="pre">window</span></code>.
-The <code class="docutils literal notranslate"><span class="pre">prev_row_index</span></code> variable keeps track of the position of the line buffer where its data needs to shifted out, and where new data needs to be shifted in.</p>
-<p>Each time when the <code class="docutils literal notranslate"><span class="pre">ShiftInPixel</span></code> method is called to shift in a new <code class="docutils literal notranslate"><span class="pre">input_pixel</span></code>, we shift each element in the 3x3 window to the left by one.
+<p>This class contains two internal line buffers using a private <cite>2xImageWidth</cite> <code class="docutils literal"><span class="pre">prev_rows</span></code> array, and an externally accessible 3x3 stencil <code class="docutils literal"><span class="pre">window</span></code>.
+The <code class="docutils literal"><span class="pre">prev_row_index</span></code> variable keeps track of the position of the line buffer where its data needs to shifted out, and where new data needs to be shifted in.</p>
+<p>Each time when the <code class="docutils literal"><span class="pre">ShiftInPixel</span></code> method is called to shift in a new <code class="docutils literal"><span class="pre">input_pixel</span></code>, we shift each element in the 3x3 window to the left by one.
 The last elements of the line buffers are read out and stored into the rightmost column of the 3x3 window, along with the new input pixel.
 The new input pixel is also stored into the first line buffer, while the last element of the first line buffer is stored into the second line buffer.
-Then <code class="docutils literal notranslate"><span class="pre">prev_row_index</span></code> is updated, by incrementing it by one, unless it has gone through the entire row, in which case it is set to zero (indicating that we are moving onto a new row).</p>
+Then <code class="docutils literal"><span class="pre">prev_row_index</span></code> is updated, by incrementing it by one, unless it has gone through the entire row, in which case it is set to zero (indicating that we are moving onto a new row).</p>
 <p>To help visualizing how the window and line buffers are updated, the diagram below shows a 3x3 window sliding across a 10x10 input image.
-We declare a <cite>LineBuffer</cite> as <code class="docutils literal notranslate"><span class="pre">hls::LineBuffer&lt;PixelType,</span> <span class="pre">10,</span> <span class="pre">3&gt;</span> <span class="pre">lb;</span></code>.
+We declare a <cite>LineBuffer</cite> as <code class="docutils literal"><span class="pre">hls::LineBuffer&lt;PixelType,</span> <span class="pre">10,</span> <span class="pre">3&gt;</span> <span class="pre">lb;</span></code>.
 The outer box represents the 10x10 input image, and the 3x3 black box represents the sliding window.
-The pixels labelled “0” are stored in the first line buffer (e.g., <code class="docutils literal notranslate"><span class="pre">prev_rows[0]</span></code> in the code above),
-and the pixels labelled “1” are stored in the second line buffer (e.g., <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code>).
-When the <code class="docutils literal notranslate"><span class="pre">ShiftInPixel</span></code> method is called to shift in a new pixel, you can see the 3x3 window is shifted to left and covers the new pixel.
-The line buffers are also updated — <code class="docutils literal notranslate"><span class="pre">prev_rows[0]</span></code> takes in the new pixel and retires its oldest pixel, which is taken in by the second line buffer <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code>; <code class="docutils literal notranslate"><span class="pre">prev_rows[1]</span></code> also retires its oldest pixel, labelled with “x”.</p>
+The pixels labelled &#8220;0&#8221; are stored in the first line buffer (e.g., <code class="docutils literal"><span class="pre">prev_rows[0]</span></code> in the code above),
+and the pixels labelled &#8220;1&#8221; are stored in the second line buffer (e.g., <code class="docutils literal"><span class="pre">prev_rows[1]</span></code>).
+When the <code class="docutils literal"><span class="pre">ShiftInPixel</span></code> method is called to shift in a new pixel, you can see the 3x3 window is shifted to left and covers the new pixel.
+The line buffers are also updated &#8212; <code class="docutils literal"><span class="pre">prev_rows[0]</span></code> takes in the new pixel and retires its oldest pixel, which is taken in by the second line buffer <code class="docutils literal"><span class="pre">prev_rows[1]</span></code>; <code class="docutils literal"><span class="pre">prev_rows[1]</span></code> also retires its oldest pixel, labelled with &#8220;x&#8221;.</p>
 <a class="reference internal image-reference" href="_images/LineBufferOptGuideAnimation.png"><img alt="_images/LineBufferOptGuideAnimation.png" class="align-center" src="_images/LineBufferOptGuideAnimation.png" style="width: 748.8000000000001px; height: 864.9px;" /></a>
-</section>
-<section id="inferring-streaming-hardware-via-producer-consumer-pattern-with-threads">
+</div>
+<div class="section" id="inferring-streaming-hardware-via-producer-consumer-pattern-with-threads">
 <h2>Inferring Streaming Hardware via Producer-Consumer Pattern with Threads<a class="headerlink" href="#inferring-streaming-hardware-via-producer-consumer-pattern-with-threads" title="Permalink to this headline">¶</a></h2>
 <p>The producer-consumer pattern is a well-known concurrent programming paradigm.
 It typically comprises a finite-size buffer and two classes of threads, a producer and a
@@ -1444,7 +1450,7 @@ buffer has space before it can store new data, and the consumer
 must wait until the buffer is not empty before it can take data.
 The waiting is usually realized with the use of a semaphore.</p>
 <p>The pseudocode for a producer-consumer pattern with two threads is shown below.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">producer_thread</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">producer_thread</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// produce data</span>
 <span class="w">    </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">produce</span><span class="p">();</span><span class="w"></span>
@@ -1486,9 +1492,9 @@ streaming hardware modules execute concurrently and independently, as with the p
 SmartHLS supports the use of threads, hence the producer-consumer pattern expressed with threads can be directly synthesized to streaming hardware.
 Our easy-to-use FIFO library provides the required buffer between a producer and a consumer, without the user having to
 specify the low-level intricacies of using semaphores and mutexes.</p>
-<p>An example pseudo code with three kernels, where function <code class="docutils literal notranslate"><span class="pre">A</span></code> is a producer to function <code class="docutils literal notranslate"><span class="pre">B</span></code> (<code class="docutils literal notranslate"><span class="pre">B</span></code> is a consumer to <code class="docutils literal notranslate"><span class="pre">A</span></code>),
-and function <code class="docutils literal notranslate"><span class="pre">B</span></code> is a producer to <code class="docutils literal notranslate"><span class="pre">C</span></code> (<code class="docutils literal notranslate"><span class="pre">C</span></code> is a consumer to <code class="docutils literal notranslate"><span class="pre">B</span></code>) is shown below.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">A</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">FIFO0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<p>An example pseudo code with three kernels, where function <code class="docutils literal"><span class="pre">A</span></code> is a producer to function <code class="docutils literal"><span class="pre">B</span></code> (<code class="docutils literal"><span class="pre">B</span></code> is a consumer to <code class="docutils literal"><span class="pre">A</span></code>),
+and function <code class="docutils literal"><span class="pre">B</span></code> is a producer to <code class="docutils literal"><span class="pre">C</span></code> (<code class="docutils literal"><span class="pre">C</span></code> is a consumer to <code class="docutils literal"><span class="pre">B</span></code>) is shown below.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">A</span><span class="p">(</span><span class="n">hls</span><span class="o">::</span><span class="n">FIFO</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">FIFO0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
 <span class="w">  </span><span class="cp">#pragma HLS loop pipeline</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1569,8 +1575,8 @@ This, also, is a foreign concept in the software domain. Our methodology
 uses purely software concepts to automatically create and
 connect multiple concurrently executing streaming modules.</p>
 <p>To create the replicated architecture shown above, one simply has to change the
-<code class="docutils literal notranslate"><span class="pre">top</span></code> function as the following:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define NUM_THREADS 2</span>
+<code class="docutils literal"><span class="pre">top</span></code> function as the following:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define NUM_THREADS 2</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">top</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
@@ -1589,12 +1595,12 @@ connect multiple concurrently executing streaming modules.</p>
 directly from standard software.
 As this is a purely standard software solution, without requiring any tool specific pragmas, the concurrent
 execution behaviour of the replicated kernels can be modeled from software.</p>
-</section>
-<section id="optimizing-axi4-initiator-performance">
+</div>
+<div class="section" id="optimizing-axi4-initiator-performance">
 <span id="axi4i-performance-optimization"></span><h2>Optimizing AXI4 Initiator Performance<a class="headerlink" href="#optimizing-axi4-initiator-performance" title="Permalink to this headline">¶</a></h2>
-<p>An AXI4 Initiator interface can be used to allow an HLS module to access an external memory while it is running, potentially saving time compared to other methods where data needs to be fully transferred first before the module can start. SmartHLS allows for optimization of the AXI4 Initiator transactions using pragmas. For more information on AXI4 Initiator interface arguments, see <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface</span></a>. For more information on the pragmas used in this section, see <a class="reference internal" href="pragmas.html#pragmas"><span class="std std-ref">SmartHLS Pragmas Manual</span></a>.</p>
-<p>And example of an unoptimized HLS module that uses an AXI4 Initiator interface is shown below. The module simply uses a loop to copy elements from one external memory to another. The interface pragmas for <code class="docutils literal notranslate"><span class="pre">in_array</span></code> and <code class="docutils literal notranslate"><span class="pre">out_array</span></code> declare that memory transfers to these external memories should be implemented using an AXI4 Initiator interface. The interface pragma for <code class="docutils literal notranslate"><span class="pre">default</span></code> declares that the HLS module control (see <a class="reference internal" href="userguide.html#module-control-interface"><span class="std std-ref">Module Control Interface</span></a>), as well as pointer addresses are implemented with an AXI4 Target interface.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use AXI initiator to copy from one external memory to another.</span>
+<p>An AXI4 Initiator interface can be used to allow an HLS module to access an external memory while it is running, potentially saving time compared to other methods where data needs to be fully transferred first before the module can start. SmartHLS allows for optimization of the AXI4 Initiator transactions using pragmas. For more information on AXI4 Initiator interface arguments, see <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span>AXI4 Initiator Interface</span></a>. For more information on the pragmas used in this section, see <a class="reference internal" href="pragmas.html#pragmas"><span>SmartHLS Pragmas Manual</span></a>.</p>
+<p>And example of an unoptimized HLS module that uses an AXI4 Initiator interface is shown below. The module simply uses a loop to copy elements from one external memory to another. The interface pragmas for <code class="docutils literal"><span class="pre">in_array</span></code> and <code class="docutils literal"><span class="pre">out_array</span></code> declare that memory transfers to these external memories should be implemented using an AXI4 Initiator interface. The interface pragma for <code class="docutils literal"><span class="pre">default</span></code> declares that the HLS module control (see <a class="reference internal" href="userguide.html#module-control-interface"><span>Module Control Interface</span></a>), as well as pointer addresses are implemented with an AXI4 Target interface.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Use AXI initiator to copy from one external memory to another.</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">copy_array</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="o">*</span><span class="n">in_array</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="o">*</span><span class="n">out_array</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">num_elements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface default type(axi_target)</span>
@@ -1609,7 +1615,7 @@ execution behaviour of the replicated kernels can be modeled from software.</p>
 </pre></div>
 </div>
 <p>The HLS module described above is functional, but there are multiple optimizations that can be implemented to improve the performance of the AXI4 Initiator transactions. An example of an optimized version of the same module is show below:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// An optimized version of the same core.</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// An optimized version of the same core.</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">copy_array_optimized</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="o">*</span><span class="n">in_array</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="o">*</span><span class="n">out_array</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">num_elements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS function top</span>
 <span class="cp">#pragma HLS interface default type(axi_target)</span>
@@ -1629,13 +1635,13 @@ execution behaviour of the replicated kernels can be modeled from software.</p>
 </div>
 <p>In the optimized version above, the following optimizations have been made:</p>
 <ol class="arabic simple">
-<li><p>By pipelining the loop that the AXI4 Initiator transaction resides in, SmartHLS can infer an AXI burst. There are specific criteria that must be met to infer a burst transaction (see <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span class="std std-ref">AXI4 Initiator Interface</span></a>). An AXI burst has the benefit of only needing to send the address once for multiple data beats, so it can improve performance by sending less data overall, and spending less time waiting for a response from the external memory. It is important to note that when SmartHLS infers an AXI4 Initiator burst transfer, it will also infer FIFOs on the AXI4 RDATA and WDATA signals (of size equal to the maximum burst length). This is to ensure that the HLS module and the external memory will not stall each other mid-burst while processing data.</p></li>
-<li><p>For AXI4 Initiator burst transactions, the maximum burst length can be configured using the interface pragma. Setting this to a larger number (max 256, default is 16) can improve the burst performance at the cost of holding the AXI channel for a longer time per burst. The maximum burst length also determines the size of the RDATA/WDATA FIFOs inside the HLS module, so a larger burst length will use more memory.</p></li>
-<li><p>For AXI4 Initiator burst transaction, the maximum number of outstanding transactions can be configured using the interface pragma. Setting this to a larger number (maximum 8, default is 1) can improve performance by sending burst requests earlier and potentially reducing the cases where the HLS module stalls waiting for data, at the cost of larger RDATA/WDATA FIFOs.</p></li>
+<li>By pipelining the loop that the AXI4 Initiator transaction resides in, SmartHLS can infer an AXI burst. There are specific criteria that must be met to infer a burst transaction (see <a class="reference internal" href="userguide.html#pointer-arg-axi-initiator"><span>AXI4 Initiator Interface</span></a>). An AXI burst has the benefit of only needing to send the address once for multiple data beats, so it can improve performance by sending less data overall, and spending less time waiting for a response from the external memory. It is important to note that when SmartHLS infers an AXI4 Initiator burst transfer, it will also infer FIFOs on the AXI4 RDATA and WDATA signals (of size equal to the maximum burst length). This is to ensure that the HLS module and the external memory will not stall each other mid-burst while processing data.</li>
+<li>For AXI4 Initiator burst transactions, the maximum burst length can be configured using the interface pragma. Setting this to a larger number (max 256, default is 16) can improve the burst performance at the cost of holding the AXI channel for a longer time per burst. The maximum burst length also determines the size of the RDATA/WDATA FIFOs inside the HLS module, so a larger burst length will use more memory.</li>
+<li>For AXI4 Initiator burst transaction, the maximum number of outstanding transactions can be configured using the interface pragma. Setting this to a larger number (maximum 8, default is 1) can improve performance by sending burst requests earlier and potentially reducing the cases where the HLS module stalls waiting for data, at the cost of larger RDATA/WDATA FIFOs.</li>
 </ol>
-<p>Additionally, for SmartHLS modules that use their AXI4 Initiator interface to transfer data to/from DDR on an MSS (see <a class="reference internal" href="userguide.html#soc-features"><span class="std std-ref">SoC Features</span></a>), the DDR memory region where the data resides can have a large impact on performance.
-For projects using the PolarFire SoC Icicle Kit and reference design, such as those generated by SmartHLS’ <a class="reference internal" href="userguide.html#reference-soc-generation"><span class="std std-ref">Reference SoC Generation</span></a>, the memory region can be selected in the allocation call for the software running on the MSS as shown below. For more information on using the <code class="docutils literal notranslate"><span class="pre">hls_alloc</span></code> library, see <a class="reference internal" href="userguide.html#allocation-library"><span class="std std-ref">Memory Allocation Library</span></a>.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<p>Additionally, for SmartHLS modules that use their AXI4 Initiator interface to transfer data to/from DDR on an MSS (see <a class="reference internal" href="userguide.html#soc-features"><span>SoC Features</span></a>), the DDR memory region where the data resides can have a large impact on performance.
+For projects using the PolarFire SoC Icicle Kit and reference design, such as those generated by SmartHLS&#8217; <a class="reference internal" href="userguide.html#reference-soc-generation"><span>Reference SoC Generation</span></a>, the memory region can be selected in the allocation call for the software running on the MSS as shown below. For more information on using the <code class="docutils literal"><span class="pre">hls_alloc</span></code> library, see <a class="reference internal" href="userguide.html#allocation-library"><span>Memory Allocation Library</span></a>.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// Allocate/initialize cpu-side memory</span>
 <span class="w">    </span><span class="c1">// (4) Choose a cpu-side allocation region that best suits the transfer</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="o">*</span><span class="n">memory_in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">hls_malloc</span><span class="p">(</span><span class="w"></span>
@@ -1653,13 +1659,13 @@ For projects using the PolarFire SoC Icicle Kit and reference design, such as th
 </div>
 <p>The recommended configuration for both AXI4 Initiator configuration and memory region choice can vary greatly depending on the system the HLS module is included in. For SoC projects using the PolarFire SoC Icicle Kit, we recommend the following settings for best AXI4 Initiator performance:</p>
 <ul class="simple">
-<li><p>AXI4 Initiator bursting is recommended when the code is in a format that is supported.</p></li>
-<li><p>Larger <code class="docutils literal notranslate"><span class="pre">max_burst_len</span></code> is recommended for best performance (best performance at <code class="docutils literal notranslate"><span class="pre">256</span></code>).</p></li>
-<li><p>The recommended <code class="docutils literal notranslate"><span class="pre">max_outstanding_reads</span></code> is <code class="docutils literal notranslate"><span class="pre">2</span></code>, and the recommended <code class="docutils literal notranslate"><span class="pre">max_outstanding_writes</span></code> transactions is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
-<li><p>For moving data between MSS DDR and a SmartHLS module, it is recommended to use the AXI4 Initiator interface, and to store the data in the HLS_ALLOC_NONCACHED memory region.</p></li>
+<li>AXI4 Initiator bursting is recommended when the code is in a format that is supported.</li>
+<li>Larger <code class="docutils literal"><span class="pre">max_burst_len</span></code> is recommended for best performance (best performance at <code class="docutils literal"><span class="pre">256</span></code>).</li>
+<li>The recommended <code class="docutils literal"><span class="pre">max_outstanding_reads</span></code> is <code class="docutils literal"><span class="pre">2</span></code>, and the recommended <code class="docutils literal"><span class="pre">max_outstanding_writes</span></code> transactions is <code class="docutils literal"><span class="pre">1</span></code>.</li>
+<li>For moving data between MSS DDR and a SmartHLS module, it is recommended to use the AXI4 Initiator interface, and to store the data in the HLS_ALLOC_NONCACHED memory region.</li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1705,7 +1711,7 @@ For projects using the PolarFire SoC Icicle Kit and reference design, such as th
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "optimizationguide.rst.txt".replace(/\.txt/g,'');
+	var pageName = "optimizationguide.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]

@@ -387,11 +387,6 @@ Please refer to the :ref:`rtl_interface` section for a detailed description on t
 SmartHLS Reference SoC
 ----------------------
 
-.. NOTE::
-
-    This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email SmartHLS@microchip.com.
-
-
 The SmartHLS SoC flow uses pre-existing reference designs that include a microprocessor (CPU) as the basis to automatically integrate SmartHLS-generated hardware modules and make them available to the processor.  Currently, SmartHLS uses the `Icicle Kit Reference Design <https://github.com/polarfire-soc/icicle-kit-reference-design/>`_, which is meant to showcase the many features available in the PolarFire\ :sup:`®`\  SoC Icicle Kit, such as the use of the hardened RISC-V Quad-core Microprocessor Subsystem, SPI, PCIe, soft and hard DMA, inter-processor communications, etc. Explaining all these features is beyond the scope of this document. For a complete description of the reference design check the `Icicle Kit Reference Design <https://github.com/polarfire-soc/icicle-kit-reference-design/>`_ documentation.
 
 As an *ALPHA feature*, SmartHLS also supports attaching HLS-generated modules to the MiV_RV32 processor (a.k.a. Soft-MiV). The reference design for the MiV_RV32 processor targets the `PolarFire Video Kit <https://www.microchip.com/en-us/development-tool/MPF300-VIDEO-KIT-NS>`_. 

@@ -99,10 +99,6 @@ SmartHLS SoC Flow
 
 SmartHLS can automatically generate a RISC-V processor/accelerator SoC for the PolarFire\ :sup:`®`\  SoC device on the Icicle Kit. For more information on the SoC features, see :ref:`soc_features`.
 
-.. NOTE::
-
-    This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email SmartHLS@microchip.com.
-
 .. Processor-Accelerator Hybrid Flow
 .. ------------------------------
 .. 
@@ -2509,10 +2505,6 @@ clean
 soc_*
   SoC-specific commands are prefixed with "soc\_" and are outlined in the table below:
 
-  .. NOTE::
-
-      This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email SmartHLS@microchip.com.
-
 
 .. The soc_base_proj_generate target is internal and there is no button in GUI.
 .. | `soc_base_proj_generate`   | Generates a basic PolarFire SoC project in Libero/SmartDesign, containing an Icicle MSS component.
@@ -2601,10 +2593,6 @@ The ``__SYNTHESIS__`` macro is defined in SmartHLS during synthesis. This provid
   
 ``HAS_ACCELERATOR`` Macro
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. NOTE::
-
-    This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email SmartHLS@microchip.com.
 
 For SoC projects where different code needs to be called depending on if hardware accelerators are used, the ``HAS_ACCELERATOR`` macro can be used. For example, SoC accelerators using DMA transfer
 need their argument buffers to be initialized using ``hls_alloc`` (see `Memory Allocation Library`_), where as when the function is not accelerated (the software version is run), a simple ``malloc`` will suffice.

@@ -13,9 +13,9 @@
 
     gtag('config', 'G-VB7E9KG0X9');
   </script>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
+  <meta charset="utf-8">
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -498,11 +498,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -516,10 +526,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Icicle Kit Setup Instructions" href="icicle_setup.html" /> 
 </head>
 
@@ -565,24 +571,24 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
@@ -593,7 +599,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="vhls_to_shls.html">SmartHLS Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="precompiled_sw.html">Precompiled Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">PolarFire Video Kit Setup Instructions</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">PolarFire Video Kit Setup Instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#polarfire-video-kit-image">PolarFire<sup>®</sup> Video Kit Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-1-board-connections">Step 1: Board Connections</a></li>
@@ -602,7 +608,7 @@ display:none;
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -668,152 +674,152 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="polarfire-video-kit-setup-instructions">
+  <div class="section" id="polarfire-video-kit-setup-instructions">
 <span id="pfvideokit-setup"></span><h1>PolarFire Video Kit Setup Instructions<a class="headerlink" href="#polarfire-video-kit-setup-instructions" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
-<li><p><a class="reference internal" href="#polarfire-video-kit-image" id="id2">PolarFire<sup>®</sup> Video Kit Image</a></p></li>
-<li><p><a class="reference internal" href="#step-1-board-connections" id="id3">Step 1: Board Connections</a></p></li>
-<li><p><a class="reference internal" href="#step-3-install-host-pc-applications" id="id4">Step 3: Install Host PC Applications</a></p></li>
-<li><p><a class="reference internal" href="#step-4-write-compile-and-run-a-simple-test-program" id="id5">Step 4: Write, compile and run a simple test program</a></p></li>
+<li><a class="reference internal" href="#introduction" id="id1">Introduction</a></li>
+<li><a class="reference internal" href="#polarfire-video-kit-image" id="id2">PolarFire<sup>®</sup> Video Kit Image</a></li>
+<li><a class="reference internal" href="#step-1-board-connections" id="id3">Step 1: Board Connections</a></li>
+<li><a class="reference internal" href="#step-3-install-host-pc-applications" id="id4">Step 3: Install Host PC Applications</a></li>
+<li><a class="reference internal" href="#step-4-write-compile-and-run-a-simple-test-program" id="id5">Step 4: Write, compile and run a simple test program</a></li>
 </ul>
 </div>
-<section id="introduction">
+<div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>These instructions describe how to setup, compile and run an example on the PolarFireVideo Kit with the MiV_RV32 Reference Design.
 The instructions are for Linux but similar steps can be followed on Windows using Cygwin.</p>
-</section>
-<section id="polarfire-video-kit-image">
+</div>
+<div class="section" id="polarfire-video-kit-image">
 <h2>PolarFire<sup>®</sup> Video Kit Image<a class="headerlink" href="#polarfire-video-kit-image" title="Permalink to this headline">¶</a></h2>
 <p>This is a picture of the PolarFire Video Kit:</p>
 <img alt="_images/pfvideokit_front.png" class="align-center" src="_images/pfvideokit_front.png" />
-</section>
-<section id="step-1-board-connections">
+</div>
+<div class="section" id="step-1-board-connections">
 <h2>Step 1: Board Connections<a class="headerlink" href="#step-1-board-connections" title="Permalink to this headline">¶</a></h2>
 <p>The following cables must be connected to the board for use with SmartHLS:</p>
 <ul class="simple">
-<li><p>Power cable (connects to <code class="docutils literal notranslate"><span class="pre">12V</span> <span class="pre">Power</span> <span class="pre">Supply</span> <span class="pre">Input</span></code>).</p></li>
-<li><p>Mini-USB cable for serial communication to the board and embedded JTAG programmer.
-The same cable is used for both. Alternatively, you use the External FP6 programmer.</p></li>
-<li><p>Jumper <code class="docutils literal notranslate"><span class="pre">J28</span></code> must be open to use the external programmer, or closed to use
-the embedded programmer.</p></li>
+<li>Power cable (connects to <code class="docutils literal"><span class="pre">12V</span> <span class="pre">Power</span> <span class="pre">Supply</span> <span class="pre">Input</span></code>).</li>
+<li>Mini-USB cable for serial communication to the board and embedded JTAG programmer.
+The same cable is used for both. Alternatively, you use the External FP6 programmer.</li>
+<li>Jumper <code class="docutils literal"><span class="pre">J28</span></code> must be open to use the external programmer, or closed to use
+the embedded programmer.</li>
 </ul>
-</section>
-<section id="step-3-install-host-pc-applications">
+</div>
+<div class="section" id="step-3-install-host-pc-applications">
 <h2>Step 3: Install Host PC Applications<a class="headerlink" href="#step-3-install-host-pc-applications" title="Permalink to this headline">¶</a></h2>
 <p>The following programs are required to be installed on the host PC to set up the PolarFire Video Kit:</p>
 <ul class="simple">
-<li><p>SmartHLS v2023.2 or newer.</p></li>
-<li><p>Libero v2023.2 or newer.</p></li>
-<li><p>SoftConsole v2021.3 or later.</p></li>
-<li><p>A serial communication terminal of your choosing. in this guide we will use
-<a class="reference external" href="https://github.com/tio/tio">tio</a>.</p></li>
+<li>SmartHLS v2023.2 or newer.</li>
+<li>Libero v2023.2 or newer.</li>
+<li>SoftConsole v2021.3 or later.</li>
+<li>A serial communication terminal of your choosing. in this guide we will use
+<a class="reference external" href="https://github.com/tio/tio">tio</a>.</li>
 </ul>
-</section>
-<section id="step-4-write-compile-and-run-a-simple-test-program">
+</div>
+<div class="section" id="step-4-write-compile-and-run-a-simple-test-program">
 <h2>Step 4: Write, compile and run a simple test program<a class="headerlink" href="#step-4-write-compile-and-run-a-simple-test-program" title="Permalink to this headline">¶</a></h2>
 <p>During the test we will open the 3 terminals labeled below:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">UART</span> <span class="pre">Terminal</span></code>: We will use this to see the stdout from the program.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SmartHLS</span> <span class="pre">terminal</span></code>: We will use this to run SmartHLS commands from the command line.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OpenOCD</span> <span class="pre">terminal</span></code>: We will use this to launch OpenOCD manually.</p></li>
+<li><code class="docutils literal"><span class="pre">UART</span> <span class="pre">Terminal</span></code>: We will use this to see the stdout from the program.</li>
+<li><code class="docutils literal"><span class="pre">SmartHLS</span> <span class="pre">terminal</span></code>: We will use this to run SmartHLS commands from the command line.</li>
+<li><code class="docutils literal"><span class="pre">OpenOCD</span> <span class="pre">terminal</span></code>: We will use this to launch OpenOCD manually.</li>
 </ol>
-<p>Create a temporary directory, for example, <code class="docutils literal notranslate"><span class="pre">test</span></code>, and use your favorite text editor to
+<p>Create a temporary directory, for example, <code class="docutils literal"><span class="pre">test</span></code>, and use your favorite text editor to
 write the following 4 files under this directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir <span class="nb">test</span>
-$&gt; <span class="nb">cd</span> <span class="nb">test</span>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>$&gt; mkdir test
+$&gt; cd test
 </pre></div>
 </div>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">simple_add.c</span></code> file with the following content:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
+<p>Create a <code class="docutils literal"><span class="pre">simple_add.c</span></code> file with the following content:</p>
+<div class="code C highlight-python"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
 
-<span class="kt">uint32_t</span><span class="w"> </span><span class="nf">hw_add</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">   </span><span class="cp">#pragma HLS function top</span>
-<span class="w">   </span><span class="cp">#pragma HLS interface default type(axi_target)</span>
-<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+uint32_t hw_add(uint32_t a, uint32_t b) {
+   #pragma HLS function top
+   #pragma HLS interface default type(axi_target)
+   return a + b;
+}
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w"></span>
-<span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
-<span class="w">   </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hw_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+int main() {
+   uint32_t sum;
+   uint32_t a = 2, b = 3;
+   sum = hw_add(a, b);
 
-<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">sum</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
-<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;FAIL&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;PASS&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">error</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+   int error = (sum != a + b);
+   printf(&quot;\n%s\n&quot;, error ? &quot;FAIL&quot; : &quot;PASS&quot;);
+   return error;
+}
 </pre></div>
 </div>
-<p>Create the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> with the following content:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">NAME</span><span class="o">=</span>simple_add
-<span class="nv">SRCS</span><span class="o">=</span><span class="k">$(</span>NAME<span class="k">)</span>.c
-<span class="nv">LOCAL_CONFIG</span> <span class="o">=</span> -legup-config<span class="o">=</span>config.tcl
-<span class="nv">LEVEL</span> <span class="o">=</span> <span class="k">$(</span>SHLS_ROOT_DIR<span class="k">)</span>/examples
-<span class="cp">include $(LEVEL)/Makefile.common</span>
+<p>Create the <code class="docutils literal"><span class="pre">Makefile</span></code> with the following content:</p>
+<div class="code Makefile highlight-python"><div class="highlight"><pre><span></span>NAME=simple_add
+SRCS=$(NAME).c
+LOCAL_CONFIG = -legup-config=config.tcl
+LEVEL = $(SHLS_ROOT_DIR)/examples
+include $(LEVEL)/Makefile.common
 </pre></div>
 </div>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">config.tcl</span></code> file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> <span class="nv">$env</span><span class="o">(</span>SHLS_ROOT_DIR<span class="o">)</span>/examples/legup.tcl
+<p>Create a <code class="docutils literal"><span class="pre">config.tcl</span></code> file:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>source $env(SHLS_ROOT_DIR)/examples/legup.tcl
 set_project PolarFire MPF300 MiV_SoC
 </pre></div>
 </div>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">gdb.txt</span></code> file with the following instructions for gdb to connect to
-OpenOCD, load the .elf binary into the MiV_RV32’s memory and run the code:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="nv">$target_riscv</span> <span class="o">=</span> <span class="m">1</span>
-<span class="nb">set</span> mem inaccessible-by-default off
-<span class="nb">set</span> arch riscv:rv32
+<p>Create a <code class="docutils literal"><span class="pre">gdb.txt</span></code> file with the following instructions for gdb to connect to
+OpenOCD, load the .elf binary into the MiV_RV32&#8217;s memory and run the code:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>set $target_riscv = 1
+set mem inaccessible-by-default off
+set arch riscv:rv32
 target extended-remote localhost:3333
 load
 run
 </pre></div>
 </div>
-<p>Note that we used the <code class="docutils literal notranslate"><span class="pre">SHLS_ROOT_DIR</span></code> environment variable, it should point to where
-SmartHLS is installed. On the <code class="docutils literal notranslate"><span class="pre">SmartHLS</span> <span class="pre">Terminal</span></code> type the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; <span class="nb">export</span> <span class="nv">SHLS_ROOT_DIR</span><span class="o">=</span>/path/to/Microchip/SmartHLS_2023.2/SmartHLS
+<p>Note that we used the <code class="docutils literal"><span class="pre">SHLS_ROOT_DIR</span></code> environment variable, it should point to where
+SmartHLS is installed. On the <code class="docutils literal"><span class="pre">SmartHLS</span> <span class="pre">Terminal</span></code> type the following:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>$&gt; export SHLS_ROOT_DIR=/path/to/Microchip/SmartHLS_2023.2/SmartHLS
 </pre></div>
 </div>
 <p>Now run the SmartHLS SoC flow to:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Compile the <code class="docutils literal notranslate"><span class="pre">hw_add</span></code> function into a Verilog module</p></li>
-<li><p>Integrate the module into the MiV_RV32 Reference Design. See <a class="reference internal" href="hwarchitecture.html#miv-rv32-ref-design"><span class="std std-ref">MiV_RV32 Reference Design</span></a></p></li>
-<li><p>Run RTL synthesis</p></li>
-<li><p>Run place and route</p></li>
-<li><p>Check timing</p></li>
-<li><p>Program the FPGA</p></li>
+<li>Compile the <code class="docutils literal"><span class="pre">hw_add</span></code> function into a Verilog module</li>
+<li>Integrate the module into the MiV_RV32 Reference Design. See <a class="reference internal" href="hwarchitecture.html#miv-rv32-ref-design"><span>MiV_RV32 Reference Design</span></a></li>
+<li>Run RTL synthesis</li>
+<li>Run place and route</li>
+<li>Check timing</li>
+<li>Program the FPGA</li>
 </ol>
 </div></blockquote>
 <p>The command below will invoke all these tasks as they are dependencies to program
 the FPGA. This will take a few minutes:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; shls -a soc_accel_proj_program
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>$&gt; shls -a soc_accel_proj_program
 </pre></div>
 </div>
-<p>Now cross-compile the <code class="docutils literal notranslate"><span class="pre">simple_add.c</span></code> program. This will generate a
-<code class="docutils literal notranslate"><span class="pre">hls_output/simple_add.elf</span></code> file.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; shls soc_sw_compile_accel
+<p>Now cross-compile the <code class="docutils literal"><span class="pre">simple_add.c</span></code> program. This will generate a
+<code class="docutils literal"><span class="pre">hls_output/simple_add.elf</span></code> file.</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>$&gt; shls soc_sw_compile_accel
 </pre></div>
 </div>
-<p>In the <code class="docutils literal notranslate"><span class="pre">UART</span> <span class="pre">terminal</span></code> open the UART connection. Your device may be different:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; tio /dev/ttyUSB0 -b <span class="m">115200</span>
+<p>In the <code class="docutils literal"><span class="pre">UART</span> <span class="pre">terminal</span></code> open the UART connection. Your device may be different:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>$&gt; tio /dev/ttyUSB0 -b 115200
 </pre></div>
 </div>
-<p>In the <code class="docutils literal notranslate"><span class="pre">OpenOCD</span> <span class="pre">terminal</span></code> launch OpenOCD.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; openocd -f board/microsemi-riscv.cfg
+<p>In the <code class="docutils literal"><span class="pre">OpenOCD</span> <span class="pre">terminal</span></code> launch OpenOCD.</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>$&gt; openocd -f board/microsemi-riscv.cfg
 </pre></div>
 </div>
-<p>Now go back to the <code class="docutils literal notranslate"><span class="pre">SmartHLS</span> <span class="pre">terminal</span></code> and run gdb to execute the code on the MiV_RV32.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; riscv64-unknown-elf-gdb ./hls_output/simple_add.elf -x ./gdb.txt
+<p>Now go back to the <code class="docutils literal"><span class="pre">SmartHLS</span> <span class="pre">terminal</span></code> and run gdb to execute the code on the MiV_RV32.</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>$&gt; riscv64-unknown-elf-gdb ./hls_output/simple_add.elf -x ./gdb.txt
 </pre></div>
 </div>
-<p>At this point you should see the word <code class="docutils literal notranslate"><span class="pre">PASS</span></code> in the <code class="docutils literal notranslate"><span class="pre">UART</span> <span class="pre">terminal</span></code>.  You can
-type <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> and then press <code class="docutils literal notranslate"><span class="pre">q</span></code> to terminate the gdb session.</p>
-<p>Also, you can press <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> on the <code class="docutils literal notranslate"><span class="pre">OpenOCD</span> <span class="pre">terminal</span></code> to close the program,
+<p>At this point you should see the word <code class="docutils literal"><span class="pre">PASS</span></code> in the <code class="docutils literal"><span class="pre">UART</span> <span class="pre">terminal</span></code>.  You can
+type <code class="docutils literal"><span class="pre">Ctrl+C</span></code> and then press <code class="docutils literal"><span class="pre">q</span></code> to terminate the gdb session.</p>
+<p>Also, you can press <code class="docutils literal"><span class="pre">Ctrl+C</span></code> on the <code class="docutils literal"><span class="pre">OpenOCD</span> <span class="pre">terminal</span></code> to close the program,
 otherwise it would not release the JTAG cable.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -859,7 +865,7 @@ otherwise it would not release the JTAG cable.</p>
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "pfvideokit_setup.rst.txt".replace(/\.txt/g,'');
+	var pageName = "pfvideokit_setup.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]

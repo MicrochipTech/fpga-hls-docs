@@ -13,9 +13,9 @@
 
     gtag('config', 'G-VB7E9KG0X9');
   </script>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
+  <meta charset="utf-8">
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -498,11 +498,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -516,10 +526,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="SmartHLS Pragmas Manual" href="pragmas.html" />
     <link rel="prev" title="Optimization Guide" href="optimizationguide.html" /> 
 </head>
@@ -566,22 +572,22 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Hardware Architecture</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Hardware Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#circuit-topology">Circuit Topology</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#threaded-hardware-modules">Threaded Hardware Modules</a></li>
 </ul>
@@ -607,7 +613,7 @@ display:none;
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
@@ -620,7 +626,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pfvideokit_setup.html">PolarFire Video Kit Setup Instructions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -686,44 +692,44 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="hardware-architecture">
+  <div class="section" id="hardware-architecture">
 <span id="hwarch"></span><h1>Hardware Architecture<a class="headerlink" href="#hardware-architecture" title="Permalink to this headline">¶</a></h1>
 <p>This section describes the hardware architecture produced by SmartHLS.</p>
-<section id="circuit-topology">
+<div class="section" id="circuit-topology">
 <h2>Circuit Topology<a class="headerlink" href="#circuit-topology" title="Permalink to this headline">¶</a></h2>
 <p>Each C/C++ function corresponds to a hardware module in Verilog.
 For instance, if we have a software program with the following call graph:</p>
 <a class="reference internal image-reference" href="_images/hwarch_callgraph.png"><img alt="_images/hwarch_callgraph.png" class="align-center" src="_images/hwarch_callgraph.png" style="width: 223.5px; height: 208.5px;" /></a>
-<p>where <code class="docutils literal notranslate"><span class="pre">main</span></code> calls <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">d</span></code>, each of which calls <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, and <code class="docutils literal notranslate"><span class="pre">e</span></code>, respectively.
-Notice that function <code class="docutils literal notranslate"><span class="pre">c</span></code> is called by both <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.
+<p>where <code class="docutils literal"><span class="pre">main</span></code> calls <code class="docutils literal"><span class="pre">a</span></code>, <code class="docutils literal"><span class="pre">b</span></code>, and <code class="docutils literal"><span class="pre">d</span></code>, each of which calls <code class="docutils literal"><span class="pre">c</span></code>, <code class="docutils literal"><span class="pre">c</span></code>, and <code class="docutils literal"><span class="pre">e</span></code>, respectively.
+Notice that function <code class="docutils literal"><span class="pre">c</span></code> is called by both <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>.
 One way to create this system in hardware is to instantiate one module within
 another module, in a nested hierarchy, following how the functions are called in software:</p>
 <a class="reference internal image-reference" href="_images/circuit_arch_nested.png"><img alt="_images/circuit_arch_nested.png" class="align-center" src="_images/circuit_arch_nested.png" style="width: 227.25px; height: 100.5px;" /></a>
 <p>This architecture is employed by some of the other HLS tools, but it can create an unnecessary
-replication of hardware. Notice how module <code class="docutils literal notranslate"><span class="pre">c</span></code> has to be created twice, since the function <code class="docutils literal notranslate"><span class="pre">c</span></code> is called from different parent functions.
+replication of hardware. Notice how module <code class="docutils literal"><span class="pre">c</span></code> has to be created twice, since the function <code class="docutils literal"><span class="pre">c</span></code> is called from different parent functions.
 In SmartHLS, we instantiate all modules at the same level of hierarchy, and automatically create the necessary interconnect
 to connect them together.</p>
 <img alt="_images/circuit_arch_flat.png" class="align-center" src="_images/circuit_arch_flat.png" />
 <p>This prevents modules from being unnecessarily replicated, saving area.
-The hardware system may also use a functional unit (denoted as <code class="docutils literal notranslate"><span class="pre">FU</span></code> in the figure),
+The hardware system may also use a functional unit (denoted as <code class="docutils literal"><span class="pre">FU</span></code> in the figure),
 such as a floating-point unit, which is also created at the same level.
 This architecture also allows such units, which typically consume a lot of area,
 to be shared between different modules.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For a small function, or for a function that is only called once in software, SmartHLS may decide to <code class="docutils literal notranslate"><span class="pre">inline</span></code> the function into its parent function to improve performance.
+<p class="first admonition-title">Note</p>
+<p class="last">For a small function, or for a function that is only called once in software, SmartHLS may decide to <code class="docutils literal"><span class="pre">inline</span></code> the function into its parent function to improve performance.
 Any inlined function is included as part of its parent function, so there will not be a separate module in the Verilog for the inlined function.
 Thus you may not find all the software functions in the generated hardware.</p>
 </div>
-<section id="threaded-hardware-modules">
+<div class="section" id="threaded-hardware-modules">
 <h3>Threaded Hardware Modules<a class="headerlink" href="#threaded-hardware-modules" title="Permalink to this headline">¶</a></h3>
 <p>When threads are used in software, SmartHLS automatically compiles them to concurrently executing modules.
 This is synonymous to how multiple threads are compiled to execute on multiple processor cores in software.
 By default, each thread in software becomes an independent hardware module.
-For example, forking three threads of function <code class="docutils literal notranslate"><span class="pre">a</span></code> in software creates three concurrently executing instances of module <code class="docutils literal notranslate"><span class="pre">a</span></code> in hardware.</p>
-</section>
-</section>
-<section id="memory-architecture">
+For example, forking three threads of function <code class="docutils literal"><span class="pre">a</span></code> in software creates three concurrently executing instances of module <code class="docutils literal"><span class="pre">a</span></code> in hardware.</p>
+</div>
+</div>
+<div class="section" id="memory-architecture">
 <span id="mem-arch"></span><h2>Memory Architecture<a class="headerlink" href="#memory-architecture" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS stores any arrays (local or global) and global variables in a memory.
 We describe below what type of memories they are, as well as where the
@@ -731,16 +737,16 @@ memories are stored.</p>
 <p>In SmartHLS, there exists four hierarchies of memories: 1) Local memory, 2) shared-local memory, 3) aliased memory, and 4) I/O memory.
 Local, shared-local, and aliased memories exist in the generated hardware.
 I/O memories are data that are inputs/output to/from the generated hardware. They exist outside of the generated hardware (SmartHLS does not instantiate memories for them), where top-level memory interfaces are created for them.</p>
-<p>SmartHLS automatically determines the read latency for memories based on the target clock period and timing model. User can disable this function by changing <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> Tcl parameter. Alternatively, users can override the default values using <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter. The auto-determined latency can be found in <a class="reference internal" href="userguide.html#memory-usage"><span class="std std-ref">Memory Usage</span></a> section of SmartHLS report.</p>
-<section id="local-memory">
+<p>SmartHLS automatically determines the read latency for memories based on the target clock period and timing model. User can disable this function by changing <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span>ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> Tcl parameter. Alternatively, users can override the default values using <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span>set_operation_latency</span></a> Tcl parameter. The auto-determined latency can be found in <a class="reference internal" href="userguide.html#memory-usage"><span>Memory Usage</span></a> section of SmartHLS report.</p>
+<div class="section" id="local-memory">
 <span id="id1"></span><h3>Local Memory<a class="headerlink" href="#local-memory" title="Permalink to this headline">¶</a></h3>
 <p>SmartHLS uses points-to analysis to determine which memories are used by which
 functions. If a memory is determined to be used by a single function, where the function
 is to be compiled to hardware, that array is implemented as a local memory. A
 local memory is created and connected directly inside the module that accesses it.</p>
-<p>The read latency of local memories are determined by <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> on default setting. The local memory read latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
-</section>
-<section id="shared-local-memory">
+<p>The read latency of local memories are determined by <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span>ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> on default setting. The local memory read latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span>set_operation_latency</span></a> Tcl parameter.</p>
+</div>
+<div class="section" id="shared-local-memory">
 <span id="id2"></span><h3>Shared-Local Memory<a class="headerlink" href="#shared-local-memory" title="Permalink to this headline">¶</a></h3>
 <p>If a memory is accessed by multiple functions, where all the functions that access it are
 to be compiled to hardware, the memory is designated as a shared-local memory. A shared-local memory is
@@ -748,12 +754,12 @@ instantiated outside the modules (at the same level of hierarchy as the modules 
 and memory ports are created for the modules to connect to the memory. Arbitration
 is automatically created to handle contention for a shared-local memory.
 SmartHLS automatically optimizes the arbitration logic, so that if the modules that
-access the memory are executing sequentially, a simple <code class="docutils literal notranslate"><span class="pre">OR</span></code> gate is used for arbitration
+access the memory are executing sequentially, a simple <code class="docutils literal"><span class="pre">OR</span></code> gate is used for arbitration
 (which consumes only a small amount of area), but if the accessing modules are
-executing concurrently (with the use of <code class="docutils literal notranslate"><span class="pre">hls::thread</span></code>), a round-robin arbiter is automatically created to handle contention.</p>
-<p>The read latency of shared-local memories are determined by <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span class="std std-ref">ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> on default setting. The shared-local memory read latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
-</section>
-<section id="aliased-memory">
+executing concurrently (with the use of <code class="docutils literal"><span class="pre">hls::thread</span></code>), a round-robin arbiter is automatically created to handle contention.</p>
+<p>The read latency of shared-local memories are determined by <a class="reference internal" href="constraintsmanual.html#enable-automatic-memory-latency-setting"><span>ENABLE_AUTOMATIC_MEMORY_LATENCY_SETTING</span></a> on default setting. The shared-local memory read latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span>set_operation_latency</span></a> Tcl parameter.</p>
+</div>
+<div class="section" id="aliased-memory">
 <h3>Aliased Memory<a class="headerlink" href="#aliased-memory" title="Permalink to this headline">¶</a></h3>
 <p>There can be cases where a pointer can point to multiple arrays, causing pointer aliasing.
 These pointers need to be resolved at runtime. We designate the memories that such a pointer can refer to as
@@ -761,8 +767,8 @@ aliased memories, which are stored in a memory controller (described below).
 A memory controller contains all memories that can alias to each other, and
 allows memory accesses to be steered to the correct memory at runtime.
 There can be multiple memory controllers in a system, each containing a set of memories that alias to each other.</p>
-<p>Aliased memories have a read latency of 2 clock cycles. The aliased memory read latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span class="std std-ref">set_operation_latency</span></a> Tcl parameter.</p>
-<section id="memory-controller">
+<p>Aliased memories have a read latency of 2 clock cycles. The aliased memory read latency can be changed with the <a class="reference internal" href="constraintsmanual.html#set-operation-latency"><span>set_operation_latency</span></a> Tcl parameter.</p>
+<div class="section" id="memory-controller">
 <span id="id3"></span><h4>Memory Controller<a class="headerlink" href="#memory-controller" title="Permalink to this headline">¶</a></h4>
 <p>The purpose of the memory controller is to automatically resolve pointer
 ambiguity at runtime.
@@ -775,16 +781,16 @@ are dual-ported by default, unless only a single memory access is needed per cyc
 The memory controller steers memory accesses to the correct RAM, by using a tag,
 which is assigned to each aliased memory by SmartHLS. At runtime, the tag is used to determine which memory block to enable,
 with all other memory blocks disabled. The same tag is used to select the correct output data between all memory blocks.</p>
-</section>
-</section>
-<section id="i-o-memory">
+</div>
+</div>
+<div class="section" id="i-o-memory">
 <span id="io-memory"></span><h3>I/O Memory<a class="headerlink" href="#i-o-memory" title="Permalink to this headline">¶</a></h3>
 <p>Any memory that is accessed by both the software testbench (parent functions of the top-level function) and hardware functions (the top-level functions and its descendants)
 becomes an I/O memory. These are any non-constant arguments for top-level function or global variables that are accessed by both the software testbench and hardware functions.
 I/O memories become memory interfaces of the top-level module for the generated hardware, where no actual memories are instantiated within the generated hardware for them.
-For more information on interfaces, please refer to <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a>.</p>
-</section>
-<section id="memory-implementation">
+For more information on interfaces, please refer to <a class="reference internal" href="userguide.html#rtl-interface"><span>Top-Level RTL Interface</span></a>.</p>
+</div>
+<div class="section" id="memory-implementation">
 <h3>Memory Implementation<a class="headerlink" href="#memory-implementation" title="Permalink to this headline">¶</a></h3>
 <p>By default, each local, shared-local, and aliased memories are stored in a separate dual-ported on-chip RAM, where each RAM allows two accesses per clock cycle.
 All local memories can be accessed in parallel. All shared-local memories can be
@@ -792,7 +798,7 @@ accessed concurrently when there are no accesses to same memory in the same cloc
 If there are concurrent accesses to the same RAM, arbitration logic handles the contention automatically and stalls the appropriate modules.
 All independent memory controllers can also be accessed in parallel, but aliased memories which
 belong to the same memory controller will be accessed sequentially.</p>
-<section id="memory-optimizations">
+<div class="section" id="memory-optimizations">
 <h4>Memory Optimizations<a class="headerlink" href="#memory-optimizations" title="Permalink to this headline">¶</a></h4>
 <p>SmartHLS automatically stores each single-element global variable (non-array) in a set of registers, rather than a block RAM,
 to reduce memory usage and improve performance.
@@ -804,24 +810,20 @@ If an array is accessed in a loop, and the loop is unrolled, SmartHLS also may d
 <p>If only up to a single memory accessed is needed per cycle for a memory, SmartHLS will instantiate a single-ported RAM, otherwise a dual-ported RAM will be used.
 If a memory is only ever read from, SmartHLS will convert the memory to a read-only memory (ROM), even if the corresponding array is not declared as a constant in software.
 If a memory is not accessed at all, SmartHLS will automatically optimize away the memory.</p>
-</section>
-</section>
-</section>
-<section id="interfaces">
-<h2>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h2>
-<p>Please refer to the <a class="reference internal" href="userguide.html#rtl-interface"><span class="std std-ref">Top-Level RTL Interface</span></a> section for a detailed description on the interfaces that are created by SmartHLS.</p>
-</section>
-<section id="smarthls-reference-soc">
-<span id="reference-soc-arch"></span><h2>SmartHLS Reference SoC<a class="headerlink" href="#smarthls-reference-soc" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This feature is specific to SmartHLS SoC early access program (EAP), and requires a separate SmartHLS EAP license. If you are interested in participating in the EAP, please email <a class="reference external" href="mailto:SmartHLS&#37;&#52;&#48;microchip&#46;com">SmartHLS<span>&#64;</span>microchip<span>&#46;</span>com</a>.</p>
 </div>
+</div>
+</div>
+<div class="section" id="interfaces">
+<h2>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to the <a class="reference internal" href="userguide.html#rtl-interface"><span>Top-Level RTL Interface</span></a> section for a detailed description on the interfaces that are created by SmartHLS.</p>
+</div>
+<div class="section" id="smarthls-reference-soc">
+<span id="reference-soc-arch"></span><h2>SmartHLS Reference SoC<a class="headerlink" href="#smarthls-reference-soc" title="Permalink to this headline">¶</a></h2>
 <p>The SmartHLS SoC flow uses pre-existing reference designs that include a microprocessor (CPU) as the basis to automatically integrate SmartHLS-generated hardware modules and make them available to the processor.  Currently, SmartHLS uses the <a class="reference external" href="https://github.com/polarfire-soc/icicle-kit-reference-design/">Icicle Kit Reference Design</a>, which is meant to showcase the many features available in the PolarFire<sup>®</sup> SoC Icicle Kit, such as the use of the hardened RISC-V Quad-core Microprocessor Subsystem, SPI, PCIe, soft and hard DMA, inter-processor communications, etc. Explaining all these features is beyond the scope of this document. For a complete description of the reference design check the <a class="reference external" href="https://github.com/polarfire-soc/icicle-kit-reference-design/">Icicle Kit Reference Design</a> documentation.</p>
 <p>As an <em>ALPHA feature</em>, SmartHLS also supports attaching HLS-generated modules to the MiV_RV32 processor (a.k.a. Soft-MiV). The reference design for the MiV_RV32 processor targets the <a class="reference external" href="https://www.microchip.com/en-us/development-tool/MPF300-VIDEO-KIT-NS">PolarFire Video Kit</a>.</p>
 <p>This section presents an overview of how these two reference designs are used by SmartHLS to automatically connect hardware modules generated from C++. First we will describe the Icicle Kit Reference architecture followed by the MiV_RV32 Reference architecture.</p>
-</section>
-<section id="id5">
+</div>
+<div class="section" id="id5">
 <h2>Icicle Kit Reference Design<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>The Icicle Kit Reference Design is described in the following image:</p>
 <a class="reference internal image-reference" href="_images/reference_soc_arch.drawio.png"><img alt="_images/reference_soc_arch.drawio.png" class="align-center" src="_images/reference_soc_arch.drawio.png" style="width: 811.1999999999999px; height: 1225.2px;" /></a>
@@ -829,21 +831,21 @@ If a memory is not accessed at all, SmartHLS will automatically optimize away th
 <a class="reference external" href="https://onlinedocs.microchip.com/pr/GUID-0E320577-28E6-4365-9BB8-9E1416A0A6E4-en-US-3/index.html">PolarFire SoC MSS Technical Reference Manual</a>.</p>
 <p>On the top right-hand side of the diagram is the FPGA fabric. There are three sub-blocks created to group logic related to a specific FIC and keep the top-level design clean.  SmartHLS-generated hardware modules and accelerators are automatically instantiated and connected under the FIC_0_PERIPHERALS sub-module, which has three AXI interconnects: FIC_0_INITIATOR, DMA_INITIATOR and HLS_AXI_INTERCONNECT. The first two are part of the Icicle Kit Reference Design and are used to demonstrate how to control a soft-DMA module and LSRAMs (not shown in the diagram) from the MSS. The FIC_0_INITIATOR is used to transfer data in the MSS to Fabric direction, and the DMA_INITIATOR transfers data in the fabric to MSS direction. SmartHLS reuses those AXI interconnects to connect the HLS_AXI_INTERCONNECT and one or more accelerators in the design.</p>
 <p>An example architecture of a SmartHLS-generated module is shown at the bottom of the diagram. It has an AXI4 Target interface, and depending on the specified interface type, it can have an AXI4 Initiator interface as well. Each AXI target argument in the C++ function has a corresponding on-chip storage accessible to the MSS via AXI transactions and is also directly connected to the core of the hardware accelerator. In this case argA, argB and argC are AXI target arguments. The type of storage can be a local memory such as LSRAMs for pointer arguments (argA and argB), or simple flip-flop registers for scalar arguments (argC).  AXI Initiator arguments (argD) do not require additional storage since they directly access the MSS memory, such as external DDR.</p>
-<p>The interfaces are created based on the pragma, <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(axi_target/axi_initiator)</span></code> (see <a class="reference internal" href="pragmas.html#pragma-interface-axi-target-argument"><span class="std std-ref">AXI4 Target Interface for Pointer Argument</span></a>, <a class="reference internal" href="pragmas.html#pragma-interface-axi-initiator-argument"><span class="std std-ref">AXI4 Initiator Interface for Pointer Argument</span></a>). For details on the different data transfer methods for the AXI Target/Initiator arguments, see <a class="reference internal" href="userguide.html#soc-data-transfer-methods"><span class="std std-ref">SoC Data Transfer Methods</span></a>.</p>
-</section>
-<section id="miv-rv32-reference-design">
+<p>The interfaces are created based on the pragma, <code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;arg_name&gt;)</span> <span class="pre">type(axi_target/axi_initiator)</span></code> (see <a class="reference internal" href="pragmas.html#pragma-interface-axi-target-argument"><span>AXI4 Target Interface for Pointer Argument</span></a>, <a class="reference internal" href="pragmas.html#pragma-interface-axi-initiator-argument"><span>AXI4 Initiator Interface for Pointer Argument</span></a>). For details on the different data transfer methods for the AXI Target/Initiator arguments, see <a class="reference internal" href="userguide.html#soc-data-transfer-methods"><span>SoC Data Transfer Methods</span></a>.</p>
+</div>
+<div class="section" id="miv-rv32-reference-design">
 <span id="miv-rv32-ref-design"></span><h2>MiV_RV32 Reference Design<a class="headerlink" href="#miv-rv32-reference-design" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This feature is an alpha release.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">This feature is an alpha release.</p>
 </div>
 <p>The reference design for the MiV_RV32 is simpler compared to the Icicle Kit Reference design. The processor is implemented on the FPGA fabric and it runs baremetal, i.e. without an operating system. However, as can be seen on the following image, the processor has a few peripherals, such as General Purpose I/O, UART and a Timer module, which are connected via an Advanced Peripheral Bus (APB).</p>
 <a class="reference internal image-reference" href="_images/reference_miv_soc_arch.drawio.png"><img alt="_images/reference_miv_soc_arch.drawio.png" class="align-center" src="_images/reference_miv_soc_arch.drawio.png" style="width: 811.1999999999999px; height: 745.1999999999999px;" /></a>
 <p>The MiV_RV32 also has an AXI interconnect which is connected to a LSRAM memory block to store instructions and data for the processor.  Similar to the Icicle Kit Reference design, the SmartHLS-generated subsystem is also connected to this AXI interconnect. The architecture of the modules generated by SmartHLS is the same regardless of which reference design is used.</p>
-<p>One difference compared to the Icicle Kit Refernce Design is the DMA. For the Icicle Kit Reference Design, SmartHLS uses the hardened DMA part of the MSS, but the MiV_RV Reference Design SmartHLS uses a Soft-DMA implemented on the FPGA fabric.  When a C++ function argument is marked as AXI target with the DMA option set to true (e.g. <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;argname&gt;)</span> <span class="pre">type(axi_target)</span> <span class="pre">dma(true)</span></code>) SmartHLS will automatically instantiate the soft-DMA engine, connect it to the HLS AXI interconnect and generate the driver DMA API for the CPU to use it.  If the DMA option is later disabled (<code class="docutils literal notranslate"><span class="pre">dma(flase)</span></code>) then the Soft-DMA engine will be automatically removed.</p>
+<p>One difference compared to the Icicle Kit Refernce Design is the DMA. For the Icicle Kit Reference Design, SmartHLS uses the hardened DMA part of the MSS, but the MiV_RV Reference Design SmartHLS uses a Soft-DMA implemented on the FPGA fabric.  When a C++ function argument is marked as AXI target with the DMA option set to true (e.g. <code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">argument(&lt;argname&gt;)</span> <span class="pre">type(axi_target)</span> <span class="pre">dma(true)</span></code>) SmartHLS will automatically instantiate the soft-DMA engine, connect it to the HLS AXI interconnect and generate the driver DMA API for the CPU to use it.  If the DMA option is later disabled (<code class="docutils literal"><span class="pre">dma(flase)</span></code>) then the Soft-DMA engine will be automatically removed.</p>
 <p>Finally, the MiV_RV32 Reference Design also includes reset and clock circuitry, and most importantly, a JTAG module that allows the programming and debugging of the MiV_RV32 processor via OpenOCD using SoftConsole or the GNU Debugger (gdb) from the command line.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -889,7 +891,7 @@ If a memory is not accessed at all, SmartHLS will automatically optimize away th
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "hwarchitecture.rst.txt".replace(/\.txt/g,'');
+	var pageName = "hwarchitecture.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]

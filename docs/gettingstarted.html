@@ -13,9 +13,9 @@
 
     gtag('config', 'G-VB7E9KG0X9');
   </script>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
+  <meta charset="utf-8">
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header information-->
@@ -498,11 +498,21 @@ display:none;
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2023.2',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -516,10 +526,6 @@ display:none;
   <link rel="stylesheet" href="_static/css/header-footer.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/pro.min.css" media="all" />
 <link rel="stylesheet" href="_static/css/styles.e92b8b50b164f4a2ce2c.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Technical Support" href="techsupport.html" />
     <link rel="prev" title="Release Notes" href="releasenotes.html" /> 
 </head>
@@ -566,15 +572,15 @@ display:none;
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">User Guide Versions</span></p>
+              <p class="caption"><span class="caption-text">User Guide Versions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://microchiptech.github.io/fpga-hls-docs/">Latest Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">Previous Releases</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#license-setup">License Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
@@ -591,13 +597,13 @@ display:none;
 </li>
 <li class="toctree-l1"><a class="reference internal" href="techsupport.html">Technical Support</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Working with SmartHLS</span></p>
+<p class="caption"><span class="caption-text">Working with SmartHLS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizationguide.html">Optimization Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hwarchitecture.html">Hardware Architecture</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Additional References</span></p>
+<p class="caption"><span class="caption-text">Additional References</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pragmas.html">SmartHLS Pragmas Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constraintsmanual.html">Constraints Manual</a></li>
@@ -610,7 +616,7 @@ display:none;
 <li class="toctree-l1"><a class="reference internal" href="icicle_setup.html">Icicle Kit Setup Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pfvideokit_setup.html">PolarFire Video Kit Setup Instructions</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">SmartHLS Examples</span></p>
+<p class="caption"><span class="caption-text">SmartHLS Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples">GitHub Examples</a></li>
 </ul>
@@ -676,58 +682,58 @@ display:none;
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="getting-started">
+  <div class="section" id="getting-started">
 <span id="getstarted"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<section id="license-setup">
+<div class="section" id="license-setup">
 <h2>License Setup<a class="headerlink" href="#license-setup" title="Permalink to this headline">¶</a></h2>
-<p>First, you will need to setup <a class="reference internal" href="license_setup.html#license-setup"><span class="std std-ref">SmartHLS License</span></a>.</p>
-</section>
-<section id="installation">
+<p>First, you will need to setup <a class="reference internal" href="license_setup.html#license-setup"><span>SmartHLS License</span></a>.</p>
+</div>
+<div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>SmartHLS supports Windows 10 and Linux (CentOS 7).</p>
-<section id="windows">
+<div class="section" id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
-<p>Run the Windows installer program, <code class="docutils literal notranslate"><span class="pre">SmartHLS-2023.2-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
-</section>
-<section id="linux">
+<p>Run the Windows installer program, <code class="docutils literal"><span class="pre">SmartHLS-2023.2-Win64-Setup.exe</span></code>, and go through the steps in the installer.</p>
+</div>
+<div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<section id="centos">
+<div class="section" id="centos">
 <h4>CentOS<a class="headerlink" href="#centos" title="Permalink to this headline">¶</a></h4>
 <p>The CentOS installer is packaged as a self-extracting shell script that can be installed to a local
 directory. To run the installer:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>
 sh /path/to/smarthls-2023.2-centos-installer.run
 </pre></div>
 </div>
 <p>This will install SmartHLS into the INSTALLATION_DIRECTORY.  After the
 installation is completed, please add the SmartHLS bin directory to your path:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/SmartHLS-2023.2/SmartHLS/bin:<span class="nv">$PATH</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span>INSTALLATION_DIRECTORY<span class="k">)</span>/SmartHLS-2023.2/SmartHLS/bin:<span class="nv">$PATH</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="launching-smarthls-ide">
+</div>
+</div>
+<div class="section" id="launching-smarthls-ide">
 <h3>Launching SmartHLS IDE<a class="headerlink" href="#launching-smarthls-ide" title="Permalink to this headline">¶</a></h3>
-<p>On Windows or Linux, you can launch the SmartHLS IDE by running the <code class="docutils literal notranslate"><span class="pre">shls</span> <span class="pre">-g</span></code> command from the terminal.</p>
-</section>
-<section id="libero-and-modelsim">
+<p>On Windows or Linux, you can launch the SmartHLS IDE by running the <code class="docutils literal"><span class="pre">shls</span> <span class="pre">-g</span></code> command from the terminal.</p>
+</div>
+<div class="section" id="libero-and-modelsim">
 <h3>Libero and ModelSim<a class="headerlink" href="#libero-and-modelsim" title="Permalink to this headline">¶</a></h3>
 <p>You will need to install the <a class="reference external" href="https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions">Libero SoC software</a>
 to synthesize the generated hardware for Microchip FPGAs.
-After installing Libero, please make sure to download all of new IP cores (open a Libero project, go to the Catalog pane, and click on “Download them now!”, as shown below), as some IPs may be needed for SmartHLS.</p>
+After installing Libero, please make sure to download all of new IP cores (open a Libero project, go to the Catalog pane, and click on &#8220;Download them now!&#8221;, as shown below), as some IPs may be needed for SmartHLS.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/libero_ip_download.png"><img alt="_images/libero_ip_download.png" class="align-center" src="_images/libero_ip_download.png" style="width: 485.6px; height: 62.400000000000006px;" /></a>
 </div></blockquote>
 <p>Libero also comes with ModelSim which is used by SmartHLS to simulate the
 generated Verilog.
 Please note that the first time you simulate a generated hardware block with a fresh install of SmartHLS, ModelSim will compile our IP libraries, which may take some time.</p>
-</section>
-</section>
-<section id="quick-start-tutorial">
+</div>
+</div>
+<div class="section" id="quick-start-tutorial">
 <span id="quick-start"></span><h2>Quick Start Tutorial<a class="headerlink" href="#quick-start-tutorial" title="Permalink to this headline">¶</a></h2>
 <p>Please refer to our <a class="reference external" href="https://github.com/MicrochipTech/fpga-hls-examples/blob/main/sobel_tutorial">SmartHLS Tutorial for Microchip PolarFire: Sobel Filtering for Image Edge Detection</a> on how to use some of the major features and optimization techniques of SmartHLS.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -773,7 +779,7 @@ Please note that the first time you simulate a generated hardware block with a f
 <!-- Adds the "Ask a question" link beside every section header (h1/h2/h3/h4 tag) -->
 <script>
 function link(headingTitle) {
-	var pageName = "gettingstarted.rst.txt".replace(/\.txt/g,'');
+	var pageName = "gettingstarted.txt".replace(/\.txt/g,'');
 	var title = document.title;
 	var source = encodeURIComponent(
 		window.location.href.split('#')[0]
