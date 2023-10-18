@@ -912,6 +912,7 @@ user-defined <code class="docutils literal"><span class="pre">struct/class</span
 <h3>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
+<li>SmartHLS 2023.2 is not available through the Libero 2023.2 Linux Web Installer. Please use <a href="https://ww1.microchip.com/downloads/secure/aemdocuments/documents/fpga/media-content/fpga/v2023-2/Libero_SoC_v2023.2_lin.zip">the Linux Full Installer</a> to install SmartHLS 2023.2.</li>
 <li>Dataflow feature has known issues with control flow in dataflow functions. Using an explicit dataflow pipeline (i.e. each task is a function that is called directly in the dataflow function) can avoid these issues.</li>
 <li>Dataflow sub-functions are completely flattened by inlining all calls recursively. This can add some limitations, e.g. reading and writing the same FIFO in the same task will show an error as it is not supported.</li>
 </ul>
