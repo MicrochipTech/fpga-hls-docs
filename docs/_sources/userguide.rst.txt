@@ -334,7 +334,7 @@ SW/HW co-simulation consists of the following automated steps:
 
 1. SmartHLS runs your software program and saves all the inputs passed to the top-level function.
 2. SmartHLS automatically creates an RTL testbench that reads in the inputs from step 1 and passes them into the SmartHLS-generated hardware module.
-3. ModelSim simulates the testbench and saves the SmartHLS-generated module outputs.
+3. QuestaSim simulates the testbench and saves the SmartHLS-generated module outputs.
 4. SmartHLS runs your software program again, but uses the simulation outputs as the output of your top-level function.
 
 You should write your C/C++ testbench such that the ``main()`` function returns a 0 when all outputs from the top-level function are as expected and otherwise return a non-zero value up to 255. We use this return value to determine whether the SW/HW co-simulation has passed.
@@ -1943,8 +1943,13 @@ convert from one type to another or to convert to standard integral types or str
 |  Shift    | <<                     | Shift left     |     Y     |      Y      |    N/A   |
 |           +------------------------+----------------+-----------+-------------+----------+
 |           | >>                     | Shift right    |     Y     |      Y      |    N/A   |
+|           |                        | (signed: ashr, |           |             |          |
+|           |                        | unsigned: lshr)|           |             |          |
 |           +------------------------+----------------+-----------+-------------+----------+
 |           | .ashr(ap_uint numbits) | Arithmetic     |     Y     |      Y      |    N/A   |
+|           |                        | shift right    |           |             |          |
+|           +------------------------+----------------+-----------+-------------+----------+
+|           | .lshr(ap_uint numbits) | logical        |     Y     |      Y      |    N/A   |
 |           |                        | shift right    |           |             |          |
 +-----------+------------------------+----------------+-----------+-------------+----------+
 | Bit level | num(a, b)              | Range          |     Y     |      Y      |    N/A   |
@@ -2092,9 +2097,9 @@ For more details about when/why to use the ``LineBuffer`` class, see
 
   The SmartHLS script is shls. The following shls targets are relevant to the pure software flow:
    * ``shls sw``: generate an ELF file for the desired processor architecture
-   * ``shls swsim``: compile the application and simulate it with ModelSim (MIPS only)
-   * ``shls simulation``: simulate execution of the application on the processor using ModelSim (``make sw`` must have been run previously)(MIPS only)
-   * ``shls simulation_with_wave``: simulate execution of the application on the processor using ModelSim, with waveforms (``make sw`` must have been run previously)(MIPS only)
+   * ``shls swsim``: compile the application and simulate it with QuestaSim (MIPS only)
+   * ``shls simulation``: simulate execution of the application on the processor using QuestaSim (``make sw`` must have been run previously)(MIPS only)
+   * ``shls simulation_with_wave``: simulate execution of the application on the processor using QuestaSim, with waveforms (``make sw`` must have been run previously)(MIPS only)
    * ``shls run_on_board``: run the application on the board (``make sw`` must have been run previously)(ARM only)
    * ``shls emul``: compile and run the application in an emulator: gxemul for MIPS and QEMU for ARM
 
@@ -2396,7 +2401,7 @@ Launch Cygwin terminal on Windows
 Windows users can launch the terminal by opening ``<SMARTHLS_INSTALLATION_DIR>/cygwin64/Cygwin.bat``.
 Users can access their file directory on their computer by using ``/cygdrive/<drive letter>/<path>``
 as the prefix.
-For example, to go to ``C:\Microchip\SmartHLS-2023.2``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2023.2``.
+For example, to go to ``C:\Microchip\SmartHLS-2024.1``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2024.1``.
 
 Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2404,7 +2409,7 @@ Setup
 To run SmartHLS from the command line, your ``PATH`` environment variable should contain the paths to:
 
   * ``shls``: SmartHLS executable.
-  * ``vsim``: Modelsim's executable for HW simulation and SW/HW co-simulation.
+  * ``vsim``: QuestaSim's executable for HW simulation and SW/HW co-simulation.
   * ``libero``: Libero's executable for synthesis and Place & Route.  
   
 Here's an example that you can adapt to your system. Note that the paths to the ``vsim`` and ``libero`` executables are different for the Windows and Linux Libero installations.
@@ -2413,10 +2418,10 @@ Here's an example that you can adapt to your system. Note that the paths to the 
 
   export PATH=<SMARTHLS_INSTALLATION_DIR>/SmartHLS/bin:$PATH
   ################################ For Windows ################################
-  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/ModelSimPro/win32acoem:$PATH
+  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/QuestaSim/win64:$PATH
   export PATH=<LIBERO_SOC_INSTALLATION_DIR>/Designer/bin:$PATH
   ################################# For Linux #################################
-  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/ModelSimPro/modeltech/bin:$PATH
+  export PATH=<LIBERO_SOC_INSTALLATION_DIR>/QuestaSim/QuestaSim_ME_2023.1/bin:$PATH
   export PATH=<LIBERO_SOC_INSTALLATION_DIR>/Libero/bin64:$PATH
 
 SmartHLS comes with a bash script to provide autocompletion when using the command line on a Linux terminal.
@@ -2479,13 +2484,13 @@ cosim
   Run :ref:`sw_hw_cosimulation` to verify the generated circuit.
 
 cosim_wave
-  Same as ``cosim`` but with ModelSim waveform.
+  Same as ``cosim`` but with QuestaSim waveform.
 
 sim
-  Simulate the generated hardware in ModelSim (for an input software that has no top-level function specified, which is uncommon).
+  Simulate the generated hardware in QuestaSim (for an input software that has no top-level function specified, which is uncommon).
 
 wave
-  Same as above but with ModelSim waveform.
+  Same as above but with QuestaSim waveform.
 
 fpga
   Synthesize the generated hardware to target FPGA. This runs RTL synthesis and place-and-route for resource and timing results.
@@ -2546,17 +2551,17 @@ soc_*
 .. Other commands for the hardware flow are:
 ..
 ..  * **make sw**: run in software
-..  * **make w**: simulate the output Verilog file with ModelSim and show waveforms
+..  * **make w**: simulate the output Verilog file with QuestaSim and show waveforms
 ..  * **make p**: create a Libero project in the current directory
 ..  * **make q**: run the synthesis mapper on the Verilog file
 ..  * **make f**: run a full Libero compile Verilog file
-..  * **make watch**: debug the hardware implementation by comparing a ModelSim simulation trace to a pure software trace. See :ref:`watch`.
+..  * **make watch**: debug the hardware implementation by comparing a QuestaSim simulation trace to a pure software trace. See :ref:`watch`.
 ..  * **make dot**: compile all .dot graph files in the current directory into .ps files
 ..
 .. A few other useful commands for the hybrid and software only flows are:
 ..
-..  * **make hybridsim**: run the hybrid flow and simulate the output Verilog with ModelSim
-..  * **make swsim**: run the software only flow and simulate the MIPS processor executing the software with ModelSim
+..  * **make hybridsim**: run the hybrid flow and simulate the output Verilog with QuestaSim
+..  * **make swsim**: run the software only flow and simulate the MIPS processor executing the software with QuestaSim
 ..  * **make emul**: simulate MIPS assembly on GXemul MIPS emulator
 
 

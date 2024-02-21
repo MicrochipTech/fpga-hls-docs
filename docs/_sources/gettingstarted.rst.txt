@@ -18,7 +18,7 @@ SmartHLS supports Windows 10 and Linux (CentOS 7).
 Windows
 ++++++++++++++++++++++++++++++++++++
 
-Run the Windows installer program, ``SmartHLS-2023.2-Win64-Setup.exe``, and go through the steps in the installer.
+Run the Windows installer program, ``SmartHLS-2024.1-Win64-Setup.exe``, and go through the steps in the installer.
 
 Linux
 +++++++++++++++++++++
@@ -30,19 +30,19 @@ The CentOS installer is packaged as a self-extracting shell script that can be i
 directory. To run the installer::
 
     cd $(INSTALLATION_DIRECTORY)
-    sh /path/to/smarthls-2023.2-centos-installer.run
+    sh /path/to/smarthls-2024.1-centos-installer.run
 
 This will install SmartHLS into the INSTALLATION_DIRECTORY.  After the
 installation is completed, please add the SmartHLS bin directory to your path::
 
-    export PATH=$(INSTALLATION_DIRECTORY)/SmartHLS-2023.2/SmartHLS/bin:$PATH
+    export PATH=$(INSTALLATION_DIRECTORY)/SmartHLS-2024.1/SmartHLS/bin:$PATH
 
 Launching SmartHLS IDE
 +++++++++++++++++++++++
 
 On Windows or Linux, you can launch the SmartHLS IDE by running the ``shls -g`` command from the terminal. 
 
-Libero and ModelSim 
+Libero and QuestaSim
 +++++++++++++++++++++
 
 You will need to install the `Libero SoC software
@@ -55,9 +55,9 @@ After installing Libero, please make sure to download all of new IP cores (open 
         :align: center
 
 
-Libero also comes with ModelSim which is used by SmartHLS to simulate the
+Libero also comes with QuestaSim which is used by SmartHLS to simulate the
 generated Verilog. 
-Please note that the first time you simulate a generated hardware block with a fresh install of SmartHLS, ModelSim will compile our IP libraries, which may take some time.
+Please note that the first time you simulate a generated hardware block with a fresh install of SmartHLS, QuestaSim will compile our IP libraries, which may take some time.
 
 .. _quick_start:
 

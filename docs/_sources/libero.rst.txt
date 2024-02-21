@@ -3,6 +3,6 @@
 Supported Libero version
 ==================================
 
-SmartHLS supports Libero v2023.2. 
+SmartHLS supports Libero v2024.1. 
 
-The first two numbers of the SmartHLS version correspond to the compatible Libero version. Standalone SmartHLS releases are compatible with the previous Libero version and append a third number to the version. For example, SmartHLS v2023.2.1 would be compatible with Libero 2023.2.
+The first two numbers of the SmartHLS version correspond to the compatible Libero version. Standalone SmartHLS releases are compatible with the previous Libero version and append a third number to the version. For example, SmartHLS v2024.1.1 would be compatible with Libero 2024.1.

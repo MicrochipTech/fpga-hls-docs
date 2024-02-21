@@ -1,0 +1,100 @@
+.. :tocdepth: 3
+
+.. _license_setup:
+
+SmartHLS License
+==================================
+
+Setup
+------
+
+Please follow the below instructions to generate and install SmartHLS tool license:
+
+#.  Log into `Microchip Direct > FPGA Software and IP Core Products
+    <https://www.microchipdirect.com/fpga-software-products?_ga=2.64389999.1724603044.1642798569-550376685.1606760895>`_.
+#.  Click on the "Request Free License" button on the right.
+
+   .. image:: /images/license_screenshot_request.png
+        :align: center
+
+#.  Click "Register" beside either the "SmartHLS 1 Year Node Locked License for
+    Windows" or "SmartHLS 1 Year Floating License for Windows or Linux Server".
+
+   .. image:: /images/license_screenshot_register.png
+        :align: center
+
+#.  On the next page, enter the hard Disk ID (for node locked license) or MAC ID (for
+    floating license) of the machine based on the selected license option and click on
+    the "Submit" button. You will then be emailed a new ``license.dat`` license
+    file enabling you to use SmartHLS.
+#.  Open the SmartHLS ``license.dat`` file and copy the contents into your
+    existing Libero software license file with the same Libero license option
+    (Disk ID or MAC ID). For example, if you generated a node locked license for
+    the SmartHLS tool, you need to add the SmartHLS license file contents into the
+    Libero node locked license file.
+#.  Double check that your ``LM_LICENSE_FILE`` environment variable is set correctly.
+    
+.. note::
+
+    If you have not yet installed the license for the Libero Design Suite Software, refer to
+    https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/licensing or
+    your Libero license file email for instructions on how to download and install
+    your Libero license and software.
+
+
+Debugging License Issues
+-----------------------------
+
+If you are having license issues with SmartHLS try the following steps:
+
+1. Double check the ``LM_LICENSE_FILE`` is printed correctly in the SmartHLS license error message:
+
+   .. code-block:: text
+
+            Error: There is a problem with your SmartHLS feature license.
+            Your current environment variable is: LM_LICENSE_FILE=1702@server.domain.com
+            Please modify your LM_LICENSE_FILE environment variable and restart SmartHLS.
+
+   If you changed your ``LM_LICENSE_FILE`` environment variable then you will need to restart the SmartHLS IDE to detect the change. 
+
+2. Otherwise, on Windows run Start -> Command Prompt.  In the command prompt, run this command to debug issues checking out the "SmartHLS" feature:
+
+   .. code-block:: console
+
+            C:\Microchip\Libero_SoC_v2023.1\Designer\bin\lmutil.exe lmdiag SmartHLS
+
+   Make sure you can see ``This license can be checked out``. For example:
+
+   .. code-block:: text
+
+            -----------------------------------------------------
+            License file: 1702@server.domain.com
+            -----------------------------------------------------
+            "SmartHLS" v2022.08, vendor: actlmgrd, expiry: 14-aug-2041
+            License server: 10.241.70.175
+            floating license  expires: 14-aug-2041
+
+            This license can be checked out
+
+   If not, you will need to update your license.dat file to include the SmartHLS feature line.
+
+3. You can also check how many SmartHLS licenses are in use with:
+
+   .. code-block:: console
+
+            C:\Microchip\Libero_SoC_v2023.1\Designer\bin\lmutil.exe lmstat -f SmartHLS
+
+
+When is the License Checked?
+-----------------------------
+
+SmartHLS does not check the license when opening the SmartHLS IDE or when running the standard software flow (compiling/debugging/execution).
+
+SmartHLS will check for a valid license when ``Compile Software to Hardware`` is clicked to compile software to hardware:
+
+.. image:: /images/icon_hardware_flow.png
+        :align: center
+
+
+SmartHLS will also check for a valid license whenever running `shls` commands from the :ref:`cmdline`.
+

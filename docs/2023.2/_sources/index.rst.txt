@@ -1,0 +1,117 @@
+
+.. 
+   Copyright 2023 Microchip.
+
+.. meta::
+   :keywords: SmartHLS, HLS, Verilog, HDL, development, FPGA
+   :description: Learn more about SmartHLS.
+
+Overview
+=========  
+
+`Smart high-level synthesis (SmartHLS) Compiler <https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler>`__
+is an Eclipse-based integrated development environment that takes C++ software code as input and generates a SmartDesign IP component (Verilog HDL) as output. Hardware engineers can instantiate the generated SmartDesign IP component in the SmartDesign canvas available in Libero SoC design suite to build an FPGA system.
+
+
+
+.. figure:: images/flow.png
+   :alt: Comprehensive Set of Domain-Specific Accelerated Libraries
+   :align: right
+
+
+SmartHLS automatically compiles a C/C++ program into hardware described in Verilog HDL (Hardware Description Language). The generated hardware can be programmed onto an Microchip FPGA (Field-Programmable Gate Array).
+Hardware implemented on an FPGA can provide 2-10X performance and power benefits over the same computation running on regular processors.
+
+SmartHLS includes C/C++ to Verilog high-level synthesis tool and is tested on Windows and Linux 64-bit Operating systems.
+ 
+.. raw:: html
+   
+   <hr/>
+
+The following table describes each document shipped with SmartHLS.
+
+.. list-table::
+   :widths: 25 75
+   :header-rows: 1
+
+   * - Document Title
+     - Description
+   * - :ref:`getstarted`
+     - Installation and a quick start guide
+   * - :ref:`userguide`
+     - How to use SmartHLS to generate hardware
+   * - :ref:`optimizationguide`
+     - How to optimize the generated hardware
+   * - :ref:`hwarch`
+     - Synthesized hardware architecture	 
+   * - :ref:`pragmas`
+     - Pragmas manual
+   * - :ref:`constraints`
+     - Constraints manual
+   * - :ref:`license_setup`
+     - How to obtain a free license for SmartHLS
+   * - :ref:`devices`
+     - Supported FPGA devices
+   * - :ref:`libero`
+     - Supported Libero version
+   * - :ref:`FAQ`
+     - Frequently asked questions
+   * - :ref:`vhls_to_shls`
+     - SmartHLS Migration Guide
+   * - :ref:`release`
+     - New features and known problems with each release	 
+   * - :ref:`techsupport`
+     - How to create tech support cases and post to our forum
+
+	 
+For detailed trainings on using SmartHLS and example applications, see our `GitHub Examples <https://github.com/MicrochipTech/fpga-hls-examples>`__ 
+repository.
+
+.. toctree::
+   :caption: User Guide Versions
+   :hidden: 
+   
+   Latest Release <https://microchiptech.github.io/fpga-hls-docs/>
+   versions
+
+	 
+.. toctree::
+   :caption: Introduction   
+   :maxdepth: 3
+   :hidden:
+
+   releasenotes   
+   gettingstarted
+   techsupport
+
+
+.. toctree::
+   :caption: Working with SmartHLS   
+   :maxdepth: 5
+   :hidden:
+   
+   userguide
+   optimizationguide
+   hwarchitecture
+   
+.. toctree::
+   :caption: Additional References   
+   :maxdepth: 5
+   :hidden:
+   
+   pragmas
+   constraintsmanual
+   license_setup
+   devices
+   libero
+   faq
+   vhls_to_shls
+   precompiled_sw
+   icicle_setup
+   pfvideokit_setup
+
+.. toctree::
+   :caption: SmartHLS Examples   
+   :hidden:  
+   
+   GitHub Examples <https://github.com/MicrochipTech/fpga-hls-examples>   

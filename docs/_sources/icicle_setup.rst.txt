@@ -97,8 +97,8 @@ Step 3: Install Host PC Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The following programs are required to be installed on the host PC to set up the Icicle Kit:
 
-- SmartHLS v2023.2 or newer.
-- Libero v2023.2 or newer.
+- SmartHLS v2024.1 or newer.
+- Libero v2024.1 or newer.
 - A serial communication terminal, in this guide we will use the following:
 
   - Windows: `PuTTY <https://www.putty.org/>`_ 
@@ -131,7 +131,7 @@ Then right-click on Cygwin.bat and choose "Run as administrator". Administrator 
 .. image:: images/icicle_kit_setup/open_cygwin.png
 
 Cygwin tip: Users can access their file directory on their computer by using ``/cygdrive/<drive letter>/<path>``
-as the prefix.  For example, to go to ``C:\Microchip\SmartHLS-2023.2``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2023.2``.
+as the prefix.  For example, to go to ``C:\Microchip\SmartHLS-2024.1``, enter ``cd /cygdrive/c/Microchip/SmartHLS-2024.1``.
 
 
 HSS Serial Terminal
@@ -342,10 +342,10 @@ SmartHLS comes with a default bitstream that can be used to boot the board, whic
 
 1. Open FPExpress:
 
-   - On Windows, the program can be found by opening the Start Menu, then scrolling down the list of programs until you see the ``Microchip Libero SoC v2023.2`` folder (under the ``M`` letter) -> ``FPExpress``.
+   - On Windows, the program can be found by opening the Start Menu, then scrolling down the list of programs until you see the ``Microchip Libero SoC v2024.1`` folder (under the ``M`` letter) -> ``FPExpress``.
    - On Linux, you can navigate to the ``bin`` directory in your Libero installation, and then ``sudo ./fp6_env_install``, then open FPExpress with the command ``./FPExpress``.
    
-2. Click ``New...``, select ``Import FlashPro Express job file``, and navigate to your SmartHLS installation to select the job file: ``<SMARTHLS_INSTALLATION_DIR>\SmartHLS\boards\iciclekit\MPFS_ICICLE_BASE_DESIGN_2023_02.job``. For example: ``C:\Microchip\SmartHLS-2023.2\SmartHLS\boards\iciclekit\MPFS_ICICLE_BASE_DESIGN_2023_02.job``.  Then choose a temporary path for the FPExpress project location.
+2. Click ``New...``, select ``Import FlashPro Express job file``, and navigate to your SmartHLS installation to select the job file: ``<SMARTHLS_INSTALLATION_DIR>\SmartHLS\reference_designs\Icicle_SoC\MPFS_ICICLE_BASE_DESIGN_2024_01.job``. For example: ``C:\Microchip\SmartHLS-2024.1\SmartHLS\reference_designs\Icicle_SoC\MPFS_ICICLE_BASE_DESIGN_2024_01.job``.  Then choose a temporary path for the FPExpress project location.
 
 .. image:: images/icicle_kit_setup/fpexpress_browse_2.png
 
