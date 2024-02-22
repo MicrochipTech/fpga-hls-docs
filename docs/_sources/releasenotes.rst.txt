@@ -99,7 +99,7 @@ Software Features and Enhancements
 
    * Scheduler viewer also shows the same information:
 
-     .. image:: images/schedule_viewer_2023.2.png
+     .. image:: images/schedule_viewer_2024.1.png
         :width: 400
 
  * Improved HLS co-simulation reports:
@@ -188,7 +188,7 @@ Software Features and Enhancements
 
      #. Ran a sequence of functions with dataflow parallelism.
 
-   * To improve clarity in the 2023.2 release, the function pipeline pragma now only does 1), and the dataflow pragma does 2).
+   * To improve clarity in the 2024.1 release, the function pipeline pragma now only does 1), and the dataflow pragma does 2).
 
  * Improved burst transfer via AXI initiator interfaces.
    When a burst-able access pattern is detected, the user can specify the ``max_outstanding_reads``/``max_outstanding_writes`` interface pragma field (see :ref:`pragma_interface_axi_initiator_argument`)

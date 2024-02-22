@@ -7,39 +7,128 @@ This section describes how existing Vitis HLS / Vivado HLS designs can be
 easily migrated to SmartHLS.
 When migrating an existing C++ design from Vitis HLS / Vivado HLS, the pragmas
 and libraries used in the source code should be changed to the equivalent ones
-in SmartHLS.
+in SmartHLS. Changes to the C++ source code may also be necessary. 
+
+General Porting 
+--------------------------------------
+
+================================================  ==============================
+Vitis HLS / Vivado HLS                            SmartHLS
+================================================  ==============================
+``set_top <FUNC>`` (in synthesis Tcl file)        On the first line of ``<FUNC>``, add ``#pragma HLS function top``
+``#include <ap_int.h>``                           | ``#include <hls/ap_int.hpp>``
+                                                  | Depending on the type(s) used, add
+                                                  | ``using hls::ap_uint;``, and/or
+                                                  | ``using hls::ap_int;``
+``#include <ap_fixed.h>``                         | ``#include <hls/ap_fixpt.hpp>``
+                                                  | Depending on the type(s) used, add
+                                                  | ``using hls::ap_fixpt;``
+                                                  | ``#define ap_fixed  ap_fixpt``, and/or
+                                                  | ``using hls::ap_ufixpt;``
+                                                  | ``#define ap_ufixed ap_ufixpt``
+``#include <hls_stream.h>``                       | ``#include <hls/streaming.hpp>``
+                                                  | ``#define stream FIFO``
+``hls::stream`` constructor                       | Vitis/Vivado HLS’s stream constructor optionally takes a string name as argument, while 
+                                                    SmartHLS’s FIFO constructor optionally takes depth and type.
+                                                  | VHLS’s stream assumes infinite size in C simulation, so set equivalent SmartHLS FIFOs' depths very deep for C simulation.
+                                                  | Example of mapping an external FIFO:
+                                                  | VHLS: ``hls::stream<int> data;``
+                                                  | SmartHLS: ``hls::stream<int> data(1e4);``
+                                                  |
+                                                  | Example of mapping an internal FIFO:
+                                                  | VHLS:
+                                                  |     ``hls::stream<int> data;``
+                                                  |     ``#pragma HLS stream variable = data depth = 2``
+                                                  | SmartHLS
+                                                  |     ``#ifndef __SYNTHESIS__``
+                                                  |     ``#define INTERNAL_STREAM_DEPTH  1e4``
+                                                  |     ``#else``
+                                                  |     ``#define INTERNAL_STREAM_DEPTH  2``
+                                                  |     ``#endif``
+                                                  |     ``hls::stream<int> data(INTERNAL_STREAM_DEPTH);``
+                                                  |
+                                                  | VHLS’s stream constructor may take FIFO name as argument, which should be removed.                             
+``<AP_INT_VAR>.to_int()``                         | ``<AP_INT_VAR>.to_uint64()``, or ``<AP_INT_VAR>.to_int64()``
+                                                  |
+                                                  | VHLS’s ``ap_int`` has a list of C-type conversion functions (e.g. ``to_short()``, ``to_int()``,
+                                                    ``to_long()``), while SmartHLS only has ``to_uint64()``/``to_int64()`` and expects users to 
+                                                    add explicit casting to the return value.                                                  
+``<AP_INT_VAR>.range(7,0).to_int()``              | ``(ap_uint<..><AP_INT_VAR>.range(7,0)).to_int64()``
+                                                  |
+                                                  | In SmartHLS, the return value of ``<AP_INT_VAR>.range()`` cannot be used to directly invoke ``to_int64()``/``to_uint64()``.                                      
+``stringstream >> ap_fixpt<W, IW, Q_M, O_M>``     | ``std::stringstream istr(line)``
+                                                  | ``ap_fixpt<W, IW, Q_M, O_M> = args;``
+                                                  | ``double args_temp;``
+                                                  | ``istr >> args_temp;``
+                                                  | ``args = args_temp;``
+``#include <assert.h>``                           | ``#ifdef __SYNTHESIS__``
+                                                  | ``#define NDEBUG``
+                                                  | ``#endif``
+                                                  | ``#include <assert.h>``                                                  
+================================================  ==============================
+
 
 Pragmas
 --------------------------------------
 
-=======================  ==============================
-Vitis HLS / Vivado HLS   SmartHLS
-=======================  ==============================
-aggregate, data_pack      See the :ref:`pragma_memory_impl_pack` pragmas.
-allocation                | A global constraint of operation resources can be set via :ref:`set_resource_constraint`;
-                            constraining the operation resource within a function, a loop or a block of code is not yet available.
-                          | Functions that are not inlined (automatically by SmartHLS tool or specified via the :ref:`pragma_function_inline`
-                            pragma) always have a single RTL module instance in hardware, and it is shared by all callers.
-                            Replication of a function instance in hardware can be achieved by the :ref:`pragma_function_replicate` and :ref:`pragma_function_inline` pragmas.
-                            In the case of :ref:`multi-threading<pthreads_multithreading>`, each thread of a function creates an instance of
-                            the corresponding RTL module.
-array_partition           See the :ref:`pragma_memory_partition_argument` and :ref:`pragma_memory_partition_variable` pragmas.
-dataflow                  :ref:`dataflow_parallelism` and :ref:`Multi-threading<pthreads_multithreading>` can be used to implement a task-level (dataflow) pipeline.
-disaggregate              See the ``struct_fields`` option of the :ref:`pragma_memory_partition_argument` pragma.
-expression_balance        See :ref:`LATENCY_REDUCTION` TCL settings to control the expression balance optimization.
-function_instantiate      The equivalent optimization can be achieved with the :ref:`pragma_function_inline` pragma or C++ template functions.
-inline                    See the :ref:`pragma_function_inline` pragma.
-interface                 See :ref:`rtl_interface` for details about supported interfaces and corresponding pragmas.
-pipeline                  See :ref:`pragma_function_pipeline` and :ref:`pragma_loop_pipeline` pragmas.
-stable                    See the ``stable`` option of the :ref:`pragma_interface_scalar_argument` pragma.
-stream                    Streaming interface is implemented via the :ref:`rtl_interface_fifo_argument`.
-top                       See the :ref:`pragma_function_top` pragma.
-unroll                    See the :ref:`pragma_loop_unroll` pragma.
-=======================  ==============================
+============================    ==============================
+Vitis HLS / Vivado HLS          SmartHLS
+============================    ==============================
+aggregate, data_pack            See the :ref:`pragma_memory_impl_pack` pragmas.
+allocation                      | A global constraint of operation resources can be set via :ref:`set_resource_constraint`;
+                                  constraining the operation resource within a function, a loop or a block of code is not yet available.
+                                | Functions that are not inlined (automatically by SmartHLS tool or specified via the :ref:`pragma_function_inline`
+                                  pragma) always have a single RTL module instance in hardware, and it is shared by all callers.
+                                  Replication of a function instance in hardware can be achieved by the :ref:`pragma_function_replicate` and :ref:`pragma_function_inline` pragmas.
+                                  In the case of :ref:`multi-threading<pthreads_multithreading>`, each thread of a function creates an instance of
+                                  the corresponding RTL module.
+array_partition                 | See the :ref:`pragma_memory_partition_argument` and :ref:`pragma_memory_partition_variable` pragmas.
+                                | If the variable is globally/locally declared variable, move the pragma to right before the variable declaration.
+                                | If the variable is a top-level function argument, add the pragma to the beginning of the function definition block.
+                                | Example:
+                                | VHLS: ``#pragma HLS array_partition variable=<VAR> <TYPE> dim=<DIM>``
+                                | If ``<VAR>`` is a global/local declared variable, use ``#pragma HLS memory partition variable(<VAR>) type(<TYPE>) dim(<DIM>)`` + move it to right before the ``<VAR>`` variable declaration.
+                                | If ``<VAR>`` is a top-level function argument, use ``#pragma HLS memory partition argument(<VAR>) type(<TYPE>) dim(<DIM>)`` + add it add the beginning of the function definition block.
+                                |
+                                | SmartHLS supports complete memory partitioning in either 1 or all dimensions, while Vitis HLS can apply complete memory partitioning in more than 1 discrete dimensions. To port such case, users may need to reshape the array. Below is an example.
+                                | VHLS:
+                                |       ``ap_uint<12>    buffer[DIM_X][DIM_Y][DIM_Z];``
+                                |       ``#pragma HLS_ARRAY_PARTITION variable=buffer complete dim=1``
+                                |       ``#pragma HLS_ARRAY_PARTITION variable=buffer complete dim=2``
+                                |       ``// Access macro of 'buffer'``
+                                |       ``#define BUFFER(x,y,z)  (buffer[x][y][z])``
+                                | SHLS
+                                |       ``#pragma HLS memory partition variable(buffer) type(complete) dim(1)``
+                                |       ``ap_uint<12>    buffer[DIM_X*DIM_Y][DIM_Z];``
+                                |       ``// Access macro of 'buffer'``
+                                |       ``#define BUFFER(x,y,z)  (buffer[(x)*DIM_Y+(y)][z])``
+dataflow                        :ref:`dataflow_parallelism` and :ref:`Multi-threading<pthreads_multithreading>` can be used to implement a task-level (dataflow) pipeline.
+disaggregate                    See the ``struct_fields`` option of the :ref:`pragma_memory_partition_argument` pragma.
+expression_balance              See :ref:`LATENCY_REDUCTION` TCL settings to control the expression balance optimization.
+function_instantiate            The equivalent optimization can be achieved with the :ref:`pragma_function_inline` pragma or C++ template functions.
+inline                          See the :ref:`pragma_function_inline` pragma.
+inline off                      See the :ref:`pragma_function_noinline` pragma.
+interface                       See :ref:`rtl_interface` for details about supported interfaces and corresponding pragmas.
+loop_tripcount                  | See the :ref:`pragma_loop_bound` pragma, and lift it out of the loop. Note that SHLS does not capture the average number of loop iterations.
+                                | Example:
+                                | VHLS: ``#pragma HLS loop_tripcount min=<MIN> max=<MAX> avg=<AVG>``
+                                | SHLS: ``#pragma HLS loop bounds lower(<MIN>) upper(<MAX>)`` + lift outside the loop
+pipeline, pipeline II=<II>      | See :ref:`pragma_function_pipeline` and :ref:`pragma_loop_pipeline` pragmas.
+                                | If inside a loop, the pragma should be lifted outside the loop.
+                                | If inside a function, add the pragma to the beginning of the function definition block.                         
+pipeline off                    Remove since pipelining is not applied by default.                              
+stable                          See the ``stable`` option of the :ref:`pragma_interface_scalar_argument` pragma.
+stream                          Streaming interface is implemented via the :ref:`rtl_interface_fifo_argument`.
+top                             See the :ref:`pragma_function_top` pragma.
+unroll                          See the :ref:`pragma_loop_unroll` pragma, and lift it outside the loop. 
+============================    ==============================
+
+.. dependence may be included soon. If <VAR> is a global/local declared variable, ``#pragma HLS loop dependence variable(<name>) type(inter | intra) direction(RAW | WAR | WAR) dependent(true | false)  distance(<int>)argument(<name>)``, and lift it outside the loop
+..                                  If <VAR> is a function argument, ``#pragma HLS loop dependence variable(<VAR>) type(<TYPE>) direction(<DIR>) dependent(<IS_DEPENDENT_BOOL>) distance(<DIST>)``
 
 The following Vitis/Vivado HLS pragmas do not have an equivalent support in
 SmartHLS yet: array_map, array_reshape, bind_op, bind_storage, dependence,
-disaggregate, latency, loop_flatten, loop_merge, loop_tripcount, occurrence,
+disaggregate, latency, loop_flatten, loop_merge, occurrence,
 protocol, reset, shared.
 
 Libraries
@@ -48,7 +137,8 @@ Libraries
 Arbitrary Precision Data Types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Similar to Vitis/Vivado HLS, SmartHLS provides :ref:`ap_int` and :ref:`ap_fixpt`.
+Similar to Vitis/Vivado HLS, SmartHLS provides :ref:`ap_int` and :ref:`ap_fixpt`. Note that conversion of primitive type pointers to ``ap_int``/``ap_uint`` pointers by way of 
+simple casting is permitted in Vitis/Vivado HLS, but will result in unexpected behaviour in SHLS.
 
 Streaming Library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,14 +149,21 @@ provides a ``hls::FIFO`` template class in the :ref:`streaming_lib`.
 Math Library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SmartHLS supports a subset of functions in the :ref:`c_math_library`, but does
-not yet have a math function library that is optimized for hardware
-implementation with customizable arbitrary precisions.
+While SmartHLS supports a subset of functions in the :ref:`c_math_library`, SmartHLS
+also has a math library that is optimized for hardware implementation with customizable arbitrary precisions. This library is in active development.
+
+Vision Library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Like Vitis/Vivado HLS, SmartHLS has a `vision library <https://github.com/MicrochipTech/fpga-hls-libraries/tree/main/vision>`_ designed to simplify the
+development of video processing solutions on Microchip FPGA devices. The library 
+provides pre-optimized HLS C++ library functions for fast algorithm prototyping of
+video applications. Using this library, OpenCV-based designs can be ported onto 
+FPGAs with a faster time to market.
 
 Other Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Other libraries such as OpenCV, FFT, FIR, DDS, and SRL libraries are not yet
+Other libraries such as FFT, FIR, DDS, and SRL libraries are not yet
 supported by SmartHLS. We are actively developing libraries, such as the
 computer vision IPs.
 If you are interested in having support of certain IPs, please email us at

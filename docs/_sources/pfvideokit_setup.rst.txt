@@ -38,8 +38,8 @@ Step 3: Install Host PC Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The following programs are required to be installed on the host PC to set up the PolarFire Video Kit:
 
-- SmartHLS v2023.2 or newer.
-- Libero v2023.2 or newer.
+- SmartHLS v2024.1 or newer.
+- Libero v2024.1 or newer.
 - SoftConsole v2021.3 or later.
 - A serial communication terminal of your choosing. in this guide we will use 
   `tio <https://github.com/tio/tio>`_.
@@ -120,7 +120,7 @@ SmartHLS is installed. On the ``SmartHLS Terminal`` type the following:
 
 .. code:: bash
 
-   $> export SHLS_ROOT_DIR=/path/to/Microchip/SmartHLS_2023.2/SmartHLS
+   $> export SHLS_ROOT_DIR=/path/to/Microchip/SmartHLS_2024.1/SmartHLS
 
 Now run the SmartHLS SoC flow to:
 

@@ -38,5 +38,6 @@ If you encounter a SmartHLS bug or issue, please follow the steps below to creat
 SmartHLS Forum
 ---------------
 
-You can post questions or issues publicly to our community on the `Microchip SmartHLS Forum <https://www.microchip.com/forums/f559.aspx>`_.
+You can post questions or issues publicly to our community on the `Microchip SmartHLS Forum <https://forum.microchip.com/s/sub-forums?forumId=a553l000000J2q3AAC&forumName=FPGA&subForumId=a553l000000J2s2AAC&subForumName=FPGA%20design%20and%20debug%20tools%20--%20SmartHLS%20Tool>`_.
+
 The SmartHLS team actively monitors the forum.
